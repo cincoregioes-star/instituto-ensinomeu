@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#082b3b">
+<title>Importar apostilas | Instituto EnsinoMeu</title>
+<link rel="icon" href="assets/favicon.png">
+<style>
+:root{--navy:#092c41;--green:#0b664e;--gold:#d8b470;--ink:#153b39;--bg:#dae9e0}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#d4e6db,#e4eee8);font:16px/1.65 system-ui,"Segoe UI",sans-serif;color:var(--ink)}
+header{padding:17px max(20px,calc((100vw - 1080px)/2));background:var(--navy);color:#f9f9f6;display:flex;gap:15px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+a{color:#076344;font-weight:750}header a{color:#f1d99d;text-decoration:none}header strong{color:#fff}main{max-width:1060px;margin:25px auto;padding:0 20px 45px}
+h1{font-size:clamp(28px,4vw,43px);line-height:1.15;margin:12px 0}h2{font-size:22px;margin:12px 0}p{max-width:78ch}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.heading{background:linear-gradient(110deg,#0b5848,#133f58);padding:30px;border-radius:18px;color:#fff}.heading p{color:#e1eee6}.kicker{color:var(--gold);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.1em}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}.card{padding:18px;background:#c5dfd0;border:1px solid #a8cabc;border-radius:13px}.card strong{display:block;font-size:32px}.card span{font-size:13px}
+.panel{background:#cde3d5;border:1px solid #a7c8b9;padding:25px;border-radius:16px;margin:16px 0}
+.notice{background:#b9d6c7;border-left:4px solid #ba9b53;padding:12px 16px;border-radius:8px;font-size:14px}
+#file{display:block;width:100%;padding:17px;background:#e1f0e5;border:2px dashed #89b2a0;border-radius:12px;margin:16px 0}
+.buttons{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.btn{background:var(--green);color:white;border:0;border-radius:10px;padding:12px 22px;font-weight:850}.btn:disabled{opacity:.46;cursor:not-allowed}
+.progress-shell{height:19px;background:#97c2ae;border-radius:30px;overflow:hidden;margin-top:18px}
+#bar{width:0%;height:100%;background:linear-gradient(90deg,#087f5a,#d5b363);transition:width .18s}
+#status{padding:13px 16px;border-radius:10px;background:#b9d9c7;color:#0b4b37;font-weight:750;margin-top:14px;min-height:48px;white-space:pre-wrap}
+#status.error{background:#f0d4c9;color:#872e25}
+details{margin-top:15px}summary{cursor:pointer;font-weight:750}
+small{color:#375e51}footer{text-align:center;padding:22px;color:#466e60;font-size:13px}
+@media(max-width:640px){.cards{grid-template-columns:1fr}.panel{padding:17px}.heading{padding:22px}}
+</style>
+</head><body>
+<header><strong>INSTITUTO ENSINOMEU • Apostilas</strong><nav><a href="admin.html">← Administração</a> · <a href="painel.html">Área do aluno</a></nav></header>
+<main>
+<section class="heading"><span class="kicker">Área restrita • Fase piloto</span><h1>Importação privada das 309 apostilas</h1><p>Envie os PDFs prontos para o Supabase Storage privado, conservando os 12 planos e os três trimestres. Nenhum simulado será importado nesta operação.</p></section>
+<section class="cards" aria-label="Progresso"><div class="card"><strong id="expected">309</strong><span>Apostilas esperadas</span></div><div class="card"><strong id="uploaded">—</strong><span>Registradas no Supabase</span></div><div class="card"><strong id="remaining">—</strong><span>Pendentes de importação</span></div></section>
+<section class="panel"><h2>Selecionar o pacote das apostilas</h2>
+<p>Use o arquivo <strong>Instituto-EnsinoMeu-309-Apostilas-IMPORTACAO-PRIVADA.zip</strong>, preparado exclusivamente para esta transferência.</p>
+<input id="file" type="file" accept=".zip,application/zip" aria-label="Selecionar pacote ZIP das apostilas" disabled>
+<div class="buttons"><button id="start" class="btn" type="button" disabled>Iniciar importação privada</button><button id="refresh" class="btn" type="button" disabled>Atualizar situação</button></div>
+<div class="progress-shell" role="progressbar" aria-label="Progresso da importação" aria-valuemin="0" aria-valuemax="309" aria-valuenow="0" id="progress"><div id="bar"></div></div>
+<div id="status" role="status" aria-live="polite">Validando sua sessão administrativa…</div>
+<div class="notice" style="margin-top:16px"><strong>Segurança:</strong> os PDFs vão diretamente ao bucket privado do Instituto EnsinoMeu. O navegador recebe autorizações temporárias para cada arquivo, nunca a chave administrativa do Supabase. A importação pode ser retomada após uma interrupção selecionando o ZIP novamente.</div>
+<details><summary>O que acontece com os PDFs?</summary><p>O sistema confere nome, tamanho e SHA-256 do arquivo, envia por uma autorização temporária e registra o PDF no catálogo apenas após verificar que está no armazenamento privado. Os arquivos são marcados como <strong>revisão pedagógica pendente</strong>, sem qualquer afirmação de homologação.</p></details>
+</section>
+</main><footer>Instituto EnsinoMeu • Importação administrativa • Proibido publicar ZIP ou chaves no GitHub</footer>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="config.js"></script><script type="module" src="ensino-apostilas.js"></script>
+</body></html>
