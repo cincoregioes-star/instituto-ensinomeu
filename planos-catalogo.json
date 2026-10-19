@@ -1,7 +1,7 @@
 {
   "produto": "Instituto EnsinoMeu",
   "modelo": "plano_por_ano_serie",
-  "familia": "Acesso de responsável a até três séries no piloto; históricos por estudante ainda não separados.",
+  "familia": "Plano Família em preparação: cada estudante terá conta, matrícula e histórico individuais. A visualização pelo responsável exigirá vínculo familiar verificado. Sem cobrança ativa.",
   "planos": [
     {
       "id": "fi-1",
