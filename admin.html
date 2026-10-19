@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#092c40">
+<title>Administração | Instituto EnsinoMeu</title>
+<link rel="icon" href="assets/favicon.png">
+<style>
+:root{--navy:#0a2d42;--green:#0a604b;--gold:#d9b368;--paper:#deebe3;--card:#c8dfd2;--ink:#173d3b;--line:#a9caba;--muted:#41635c}
+*{box-sizing:border-box}body{margin:0;font:15px/1.58 system-ui,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(145deg,#d4e5db,#e7f0eb)}button,input,select{font:inherit}button{cursor:pointer}
+a{color:inherit}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.top{background:var(--navy);color:#fff;padding:14px max(18px,calc((100vw - 1260px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:0 4px 20px #08322723}
+.brand{text-decoration:none;display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.03em}.brand img{height:45px;width:45px;object-fit:contain;background:#e8f1eb;padding:3px;border-radius:10px}
+.top nav{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.top nav a{text-decoration:none;font-weight:750;color:#f6dfaf}.top nav button{background:#205866;border:1px solid #6d998f;color:#fff;padding:9px 13px;border-radius:9px}
+main{max-width:1260px;margin:auto;padding:26px 20px 60px}h1{font-size:clamp(27px,3.7vw,44px);line-height:1.2;margin:12px 0}h2{font-size:21px;margin:0 0 8px}h3{font-size:16px;margin:0 0 8px}
+.intro{background:linear-gradient(115deg,#0b5848,#143b54);color:white;padding:27px;border-radius:18px}
+.intro p{max-width:850px;color:#e1efea}.eyebrow{font-size:11px;color:#f4dc9c;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+.notice{background:#c1dbcd;border:1px solid #93bca8;border-radius:11px;padding:13px 16px;margin:18px 0;font-size:13px}
+.notice strong{color:#09563e}.status{background:#c7e3d4;border-radius:9px;padding:10px 12px;min-height:42px;margin:15px 0;color:#074b37;font-weight:700}
+.status.error{background:#f6ddd5;color:#852e27}.status[hidden],section[hidden],div[hidden]{display:none!important}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:19px 0}.stat{background:#c5dfd1;border:1px solid var(--line);padding:18px;border-radius:12px}.stat strong{display:block;font-size:26px}.stat span{font-size:12px;color:#3a6256}
+.panel{border:1px solid var(--line);background:#d1e6da;border-radius:17px;padding:22px;margin:21px 0}
+.toolrow{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin:14px 0}.toolrow input,.toolrow select{border:1px solid #97bba8;background:#ecf5ee;padding:11px 12px;border-radius:9px;min-width:150px}
+#users{display:grid;gap:12px}.user-card{background:#e0efe6;border:1px solid #accdbb;border-radius:12px;padding:18px;display:grid;grid-template-columns:minmax(180px,1.25fr) minmax(120px,1fr) minmax(190px,1.2fr);gap:18px;align-items:start}
+.user-card p{margin:5px 0;font-size:13px;overflow-wrap:anywhere}.muted{color:var(--muted);font-size:12px}.role{color:#0b5947;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.07em}
+.enrollments{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}.tag{font-size:11px;font-weight:750;background:#bedccd;padding:4px 8px;border-radius:99px}.tag.suspended{background:#e8d5c9;color:#84433b}
+.controls{display:grid;gap:10px}.controls label{font-weight:750;font-size:12px}.controls select{width:100%;padding:10px 12px;border:1px solid #93baa8;background:#f2f8f4;border-radius:9px}
+.actions{display:flex;gap:7px;flex-wrap:wrap}.btn{border:0;border-radius:9px;padding:10px 12px;font-weight:800;font-size:12px}.btn.primary{background:#0b634e;color:#fff}.btn.secondary{background:#bbd8ca;color:#184d3f;border:1px solid #8eb6a2}.btn:disabled{opacity:.45;cursor:not-allowed}
+.empty{padding:20px;color:#4f6f65}.footer{color:#55736a;text-align:center;font-size:12px;padding:12px}
+@media(max-width:870px){.user-card{grid-template-columns:1fr 1fr}.controls{grid-column:1/-1}.actions{justify-content:flex-start}}@media(max-width:550px){main{padding:16px 12px}.stats{grid-template-columns:1fr}.user-card{grid-template-columns:1fr}.controls{grid-column:auto}.top nav{font-size:12px}.panel{padding:14px}}
+</style></head><body>
+<header class="top"><a class="brand" href="index.html"><img src="assets/brasao.png" alt="Brasão EnsinoMeu"><span>INSTITUTO ENSINOMEU</span></a><nav aria-label="Navegação administrativa"><a href="painel.html">Meu painel</a><a href="planos.html">Planos</a><button id="logout" type="button">Sair</button></nav></header>
+<main>
+<section class="intro"><span class="eyebrow">Área restrita • Piloto V7.44</span><h1>Administração de matrículas</h1><p>Consulte perfis autorizados e controle os acessos gratuitos de teste por ano/série. Todas as ações são validadas no servidor e registradas para auditoria.</p></section>
+<div class="notice"><strong>Limites desta versão:</strong> não cria contas, não redefine senhas, não altera perfis e não ativa cobranças. Matrículas pagas e manuais não podem ser convertidas por este painel. Vínculos familiares exigem verificação administrativa separada.</div>
+<div id="feedback" role="status" aria-live="polite" class="status">Verificando autorização…</div>
+<section id="administration" hidden>
+<div class="stats" aria-label="Indicadores"><div class="stat"><strong id="total-users">—</strong><span>Perfis cadastrados</span></div><div class="stat"><strong id="total-students">—</strong><span>Perfis de estudantes</span></div><div class="stat"><strong id="total-enrollments">—</strong><span>Matrículas ativas</span></div></div>
+<div class="panel"><h2>Usuários e séries</h2><p class="muted">Acesso exclusivo do administrador. E-mails e matrículas não são expostos na vitrine pública.</p>
+<div class="toolrow"><label for="filter">Filtrar perfil <select id="filter"><option value="all">Todos</option><option value="admin">Administrador</option><option value="teacher">Professor / Diretor</option><option value="guardian">Responsável</option><option value="student">Estudante</option></select></label><button id="refresh" type="button" class="btn secondary">Atualizar lista</button></div>
+<div id="users" aria-live="polite"></div></div></section>
+</main><footer class="footer">Instituto EnsinoMeu • Administração técnica de teste • Dados restritos</footer>
+<script src="config.js"></script><script type="module" src="ensino-admin.js"></script>
+</body></html>
