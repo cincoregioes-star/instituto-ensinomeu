@@ -32,3 +32,31 @@ header .header-inner{gap:22px}
 
 /* EnsinoMeu V7.43.1 — reparação de layout e ícones SVG */
 :root{--max-width:1230px}html{scroll-padding-top:88px}body{font-size:16px;line-height:1.6;overflow-x:hidden}.wrap{width:min(100%,var(--max-width));max-width:var(--max-width);margin-inline:auto;padding-inline:24px}.icon{display:inline-block;vertical-align:middle;width:20px;height:20px;max-width:20px;max-height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}.svg-defs{position:absolute;width:0;height:0;overflow:hidden}.identity img{height:54px;width:54px;object-fit:contain}.hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:44px}.hero-copy{min-width:0}.hero-visual{min-width:0}.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.stage-photo{background-size:cover;background-position:center}.stage-card,.step,.access-link{min-width:0}.stage-grid,.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.access-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.slide-controls .icon,.hero-buttons .icon,.access-link .icon{width:19px;height:19px}.notice-right .icon{height:15px;width:15px}.grade-options .icon{width:17px;height:17px}.menu-toggle .icon{width:24px;height:24px}.hero-visual .slideshow{min-height:320px}.float-card .icon{width:23px;height:23px}@media(max-width:920px){.desktop-nav{display:none}.menu-toggle{display:inline-flex}.hero-grid{grid-template-columns:1fr}.access-links,.stage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.wrap{padding-inline:17px}.access-links,.stage-grid,.steps{grid-template-columns:1fr}.hero-grid{padding-block:40px 65px}.hero h1{font-size:clamp(37px,9vw,54px)}.hero-visual .slideshow{min-height:240px}.header-actions .header-text-link{display:none}}
+
+/* EnsinoMeu V7.43.2 — paleta sem fundos brancos */
+:root{--bg:#e2ede8;--paper:#e2ede8;--edge:#adcabf}
+body{background:linear-gradient(180deg,#dceae4 0%,#e5efe9 42%,#d9e8e1 100%)}
+.site-header{background:#082b3b!important;box-shadow:0 3px 20px #05233135!important}
+.site-header .desktop-nav a,.site-header .header-text-link,.site-header .identity-name,.site-header .identity-name strong,.site-header .identity-name small{color:#e6f1ed!important}
+.site-header .desktop-nav a:hover,.site-header .desktop-nav .nav-current{color:#ebc87d!important}
+.site-header .menu-toggle{background:#134a4c!important;color:#fff!important;border-color:#3d7370!important}
+.access-panel{background:#cfe3d9!important;border-color:#accabf!important;box-shadow:0 12px 32px #103d3920!important}
+.access-link{background:#bcd9cc!important;border-color:#9abfad!important;color:#143b35}
+.access-link:hover{background:#aad0c0!important}
+.access-icon,.step-icon,.about-benefits>div>span{background:#a3cbb9!important;color:#084e3c!important}
+.stage-card,.step,.faq-grid details{background:#d2e4db!important;border-color:#b1ccbd!important;box-shadow:0 8px 26px #0b39251a!important}
+.stage-card .stage-info,.step p,.faq-grid details p{color:#355d57}
+.stage-pill{background:#bad9cb!important}
+.grade-section{background:#d2e4da!important}
+.grade-selector{background:#bdd9ca!important;border-color:#a1c5b3!important;box-shadow:0 9px 26px #0b39251a!important}
+.grade-options a{background:#d2e8db!important;border-color:#a5c9b6!important}
+.grade-options a:hover{background:#c3decd!important}
+.grade-tabs button{background:#cfdfd5!important;border-color:#a1c5b3!important}
+.grade-tabs button.active{background:#0a694f!important;color:#fff!important}
+.about-section{background:#dae9e1!important}
+.about-benefits>div{background:#c8e0d5!important;border-color:#a9c9b8!important}
+.faq-section{background:#deebe5!important}
+.float-card{background:#0f3c45!important;color:#f4f8f5!important;border:1px solid #396567!important}
+.float-card small{color:#cde0da!important}
+.float-card-icon{background:#1b6357!important;color:#ebcb89!important}
+@media(max-width:930px){.mobile-menu{background:#0d3a45!important}.mobile-menu a{color:#e6f1ed!important;border-bottom-color:#35676b!important}}
