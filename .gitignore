@@ -1,0 +1,20 @@
+# PROTECAO CONTRA UPLOAD ACIDENTAL
+private/
+server/
+ferramentas/
+*.sqlite
+*.sqlite3
+*.db
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*service-role*
+*service_role*
+*secret-key*
+*secret_key*
+*.zip
+__pycache__/
+.venv/
+node_modules/
