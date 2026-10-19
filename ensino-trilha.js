@@ -51,6 +51,7 @@ async function init(){
  $('page-title').textContent=d.disciplina+' — '+d.trimestre+'º trimestre';
  $('count-lessons').textContent=d.aulas.length;$('count-practice').textContent=d.aulas.reduce((n,a)=>n+a.exercicios,0);$('count-videos').textContent=d.aulas.filter(a=>a.video_status==='published').length;
  $('back').href='painel.html?serie='+encodeURIComponent(grade);
+ ['avaliacao','simulado'].forEach(k=>{$(k+'-link').href='prova.html?disciplina='+encodeURIComponent(sid)+'&trimestre='+term+'&tipo='+k});
  const list=$('lesson-list');list.replaceChildren();
  d.aulas.forEach(a=>{
   const card=make('article','lesson');card.append(make('span','pill','Aula '+String(a.numero).padStart(2,'0')),make('h3','',a.titulo),make('p','help','Apostila: página '+a.pagina_apostila));
