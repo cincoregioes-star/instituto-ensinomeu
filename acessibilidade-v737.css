@@ -1,0 +1,7 @@
+
+/* Acessibilidade transversal V7.37 */
+.skip-link{position:absolute;z-index:99999;top:-90px;left:18px;padding:12px 18px;border-radius:9px;background:#fff;color:#071b30;font-weight:800}.skip-link:focus{top:12px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #e6b954!important;outline-offset:3px!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+.demo-public-banner{background:#153753;color:#fff;text-align:center;font:700 12px/1.5 system-ui,sans-serif;padding:9px 14px;border-bottom:2px solid #d6b368;letter-spacing:.025em;position:relative;z-index:9}

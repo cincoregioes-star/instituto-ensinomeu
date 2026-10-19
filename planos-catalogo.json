@@ -1,0 +1,254 @@
+{
+  "produto": "Instituto EnsinoMeu",
+  "modelo": "plano_por_ano_serie",
+  "familia": "Acesso de responsável a até três séries no piloto; históricos por estudante ainda não separados.",
+  "planos": [
+    {
+      "id": "fi-1",
+      "etapa": "Fundamental I",
+      "serie": "1º ano",
+      "ano": 1,
+      "titulo": "1º ano — Fundamental I",
+      "disciplinas": 7,
+      "materias": [
+        "Língua Portuguesa",
+        "Matemática",
+        "Ciências",
+        "História",
+        "Geografia",
+        "Arte",
+        "Educação Física"
+      ],
+      "trimestres": 3,
+      "acesso": "Demonstração — sem venda habilitada"
+    },
+    {
+      "id": "fi-2",
+      "etapa": "Fundamental I",
+      "serie": "2º ano",
+      "ano": 2,
+      "titulo": "2º ano — Fundamental I",
+      "disciplinas": 7,
+      "materias": [
+        "Língua Portuguesa",
+        "Matemática",
+        "Ciências",
+        "História",
+        "Geografia",
+        "Arte",
+        "Educação Física"
+      ],
+      "trimestres": 3,
+      "acesso": "Demonstração — sem venda habilitada"
+    },
+    {
+      "id": "fi-3",
+      "etapa": "Fundamental I",
+      "serie": "3º ano",
+      "ano": 3,
+      "titulo": "3º ano — Fundamental I",
+      "disciplinas": 7,
+      "materias": [
+        "Língua Portuguesa",
+        "Matemática",
+        "Ciências",
+        "História",
+        "Geografia",
+        "Arte",
+        "Educação Física"
+      ],
+      "trimestres": 3,
+      "acesso": "Demonstração — sem venda habilitada"
+    },
+    {
+      "id": "fi-4",
+      "etapa": "Fundamental I",
+      "serie": "4º ano",
+      "ano": 4,
+      "titulo": "4º ano — Fundamental I",
+      "disciplinas": 7,
+      "materias": [
+        "Língua Portuguesa",
+        "Matemática",
+        "Ciências",
+        "História",
+        "Geografia",
+        "Arte",
+        "Educação Física"
+      ],
+      "trimestres": 3,
+      "acesso": "Demonstração — sem venda habilitada"
+    },
+    {
+      "id": "fi-5",
+      "etapa": "Fundamental I",
+      "serie": "5º ano",
+      "ano": 5,
+      "titulo": "5º ano — Fundamental I",
+      "disciplinas": 7,
+      "materias": [
+        "Língua Portuguesa",
+        "Matemática",
+        "Ciências",
+        "História",
+        "Geografia",
+        "Arte",
+        "Educação Física"
+      ],
+      "trimestres": 3,
+      "acesso": "Demonstração — sem venda habilitada"
+    },
+    {
+      "id": "fii-6",
+      "etapa": "Fundamental II",
+      "serie": "6º ano",
+      "ano": 6,
+      "titulo": "6º ano — Fundamental II",
+      "disciplinas": 8,
+      "materias": [
+        "Língua Portuguesa",
+        "Matemática",
+        "Ciências",
+        "História",
+        "Geografia",
+        "Língua Inglesa",
+        "Arte",
+        "Educação Física"
+      ],
+      "trimestres": 3,
+      "acesso": "Demonstração — sem venda habilitada"
+    },
+    {
+      "id": "fii-7",
+      "etapa": "Fundamental II",
+      "serie": "7º ano",
+      "ano": 7,
+      "titulo": "7º ano — Fundamental II",
+      "disciplinas": 8,
+      "materias": [
+        "Língua Portuguesa",
+        "Matemática",
+        "Ciências",
+        "História",
+        "Geografia",
+        "Língua Inglesa",
+        "Arte",
+        "Educação Física"
+      ],
+      "trimestres": 3,
+      "acesso": "Demonstração — sem venda habilitada"
+    },
+    {
+      "id": "fii-8",
+      "etapa": "Fundamental II",
+      "serie": "8º ano",
+      "ano": 8,
+      "titulo": "8º ano — Fundamental II",
+      "disciplinas": 8,
+      "materias": [
+        "Língua Portuguesa",
+        "Matemática",
+        "Ciências",
+        "História",
+        "Geografia",
+        "Língua Inglesa",
+        "Arte",
+        "Educação Física"
+      ],
+      "trimestres": 3,
+      "acesso": "Demonstração — sem venda habilitada"
+    },
+    {
+      "id": "fii-9",
+      "etapa": "Fundamental II",
+      "serie": "9º ano",
+      "ano": 9,
+      "titulo": "9º ano — Fundamental II",
+      "disciplinas": 8,
+      "materias": [
+        "Língua Portuguesa",
+        "Matemática",
+        "Ciências",
+        "História",
+        "Geografia",
+        "Língua Inglesa",
+        "Arte",
+        "Educação Física"
+      ],
+      "trimestres": 3,
+      "acesso": "Demonstração — sem venda habilitada"
+    },
+    {
+      "id": "em-1",
+      "etapa": "Ensino Médio",
+      "serie": "1ª série",
+      "ano": 1,
+      "titulo": "1ª série — Ensino Médio",
+      "disciplinas": 12,
+      "materias": [
+        "Língua Portuguesa",
+        "Matemática",
+        "Física",
+        "Química",
+        "Biologia",
+        "História",
+        "Geografia",
+        "Filosofia",
+        "Sociologia",
+        "Língua Inglesa",
+        "Arte",
+        "Educação Física"
+      ],
+      "trimestres": 3,
+      "acesso": "Demonstração — sem venda habilitada"
+    },
+    {
+      "id": "em-2",
+      "etapa": "Ensino Médio",
+      "serie": "2ª série",
+      "ano": 2,
+      "titulo": "2ª série — Ensino Médio",
+      "disciplinas": 12,
+      "materias": [
+        "Língua Portuguesa",
+        "Matemática",
+        "Física",
+        "Química",
+        "Biologia",
+        "História",
+        "Geografia",
+        "Filosofia",
+        "Sociologia",
+        "Língua Inglesa",
+        "Arte",
+        "Educação Física"
+      ],
+      "trimestres": 3,
+      "acesso": "Demonstração — sem venda habilitada"
+    },
+    {
+      "id": "em-3",
+      "etapa": "Ensino Médio",
+      "serie": "3ª série",
+      "ano": 3,
+      "titulo": "3ª série — Ensino Médio",
+      "disciplinas": 12,
+      "materias": [
+        "Língua Portuguesa",
+        "Matemática",
+        "Física",
+        "Química",
+        "Biologia",
+        "História",
+        "Geografia",
+        "Filosofia",
+        "Sociologia",
+        "Língua Inglesa",
+        "Arte",
+        "Educação Física"
+      ],
+      "trimestres": 3,
+      "acesso": "Demonstração — sem venda habilitada"
+    }
+  ]
+}
