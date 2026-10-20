@@ -1,6 +1,6 @@
 import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.75.1/+esm';
 const cfg=window.ENSINOMEU_CONFIG||{},sb=createClient(cfg.supabaseUrl,cfg.supabasePublishableKey,{auth:{persistSession:true,autoRefreshToken:true}}),$=id=>document.getElementById(id),p=new URLSearchParams(location.search),sid=p.get('disciplina')||'',term=p.get('trimestre')||'',kind=p.get('tipo')||'';
-let session=null,questions=[],deadline=0,ticker=null,sending=false;
+let session=null,questions=[],deadline=0,ticker=null,sending=false,saveTimer=null,saveQueue=Promise.resolve(),lastSaved=null;
 const el=(tag,txt)=>{const n=document.createElement(tag);if(txt!==undefined)n.textContent=String(txt);return n};
 function show(msg){$('status').textContent=msg}
 async function api(path,body){
@@ -22,9 +22,10 @@ function currentAnswers(){
 function saveProgress(){
  try{if(storageKey())sessionStorage.setItem(storageKey(),JSON.stringify(currentAnswers()))}catch(_e){}
 }
-function restoreProgress(){
+function restoreProgress(serverAnswers=null){
  try{
-  const a=JSON.parse(sessionStorage.getItem(storageKey())||'null');
+  const local=JSON.parse(sessionStorage.getItem(storageKey())||'null');
+  const a=Array.isArray(local)&&local.length===questions.length?local:serverAnswers;
   if(!Array.isArray(a)||a.length!==questions.length)return;
   a.forEach((v,i)=>{
    if(!Number.isInteger(v)||v<0||v>3)return;
@@ -32,6 +33,24 @@ function restoreProgress(){
    if(input)input.checked=true;
   });
  }catch(_e){}
+}
+function scheduleSave(){
+ if(!session||$('taking').hidden||Date.now()>=deadline)return;
+ if(saveTimer!==null)clearTimeout(saveTimer);
+ saveTimer=setTimeout(()=>{
+  saveTimer=null;
+  const answers=currentAnswers(),snapshot=JSON.stringify(answers);
+  if(snapshot===lastSaved)return;
+  saveQueue=saveQueue.catch(()=>{}).then(async()=>{
+   if(!session||$('taking').hidden||Date.now()>=deadline)return;
+   $('save-status').textContent='Salvando respostas no servidor…';
+   await api(base()+'/salvar/'+encodeURIComponent(session),{respostas:answers});
+   lastSaved=snapshot;
+   if(!$('taking').hidden)$('save-status').textContent='Respostas salvas no servidor.';
+  }).catch(()=>{
+   if(!$('taking').hidden)$('save-status').textContent='Conexão instável: respostas preservadas nesta aba. Tentaremos salvar novamente na próxima alteração.';
+  });
+ },700);
 }
 async function init(){
  try{
@@ -63,7 +82,7 @@ function renderQuestions(){
  });
 }
 function showReport(d){
- clearInterval(ticker);ticker=null;
+ clearInterval(ticker);ticker=null;if(saveTimer!==null)clearTimeout(saveTimer);saveTimer=null;
  $('taking').hidden=true;$('report').hidden=false;
  $('score').textContent=(d.tempo_esgotado?'Prazo encerrado — ':'Resultado: ')+d.acertos+' de '+d.total+' ('+d.percentual+'%)';
  const dest=$('review');dest.replaceChildren();
@@ -80,7 +99,7 @@ async function sendAnswers(automatic=false){
  if(!session||sending)return;
  const answers=currentAnswers();
  if(!automatic&&answers.includes(-1)){show('Responda a todas as perguntas ou aguarde o término do tempo para entregar o que foi registrado.');return}
- sending=true;$('submit').disabled=true;
+ sending=true;if(saveTimer!==null)clearTimeout(saveTimer);saveTimer=null;$('submit').disabled=true;
  try{
   saveProgress();
   const d=await api(base()+'/corrigir/'+encodeURIComponent(session),{respostas:answers});
@@ -106,12 +125,15 @@ $('start').addEventListener('click',async()=>{
   session=d.sessao;deadline=new Date(d.expira_em).getTime();questions=d.questoes;
   if(!Number.isFinite(deadline)||!Array.isArray(questions)||!questions.length)throw Error('Resposta da prova inválida');
   $('intro').hidden=true;$('taking').hidden=false;$('submit').disabled=false;
-  renderQuestions();restoreProgress();
+  renderQuestions();restoreProgress(d.respostas_salvas);
+  lastSaved=Array.isArray(d.respostas_salvas)?JSON.stringify(d.respostas_salvas):null;
+  $('save-status').textContent=d.retomada?'Sessão recuperada. Respostas do servidor e desta aba foram restauradas quando disponíveis.':'As respostas serão salvas nesta aba e enviadas ao servidor durante a prova.';
+  if(d.retomada&&currentAnswers().some(x=>x>=0))scheduleSave();
   if(ticker)clearInterval(ticker);
   ticker=setInterval(tick,1000);tick();
   if(ticker)show(d.retomada?'Prova retomada. O cronômetro original foi mantido.':'Prova iniciada. O tempo é controlado pelo servidor.');
  }catch(e){show(e.message);$('start').disabled=false}
 });
-$('items').addEventListener('change',saveProgress);
+$('items').addEventListener('change',()=>{saveProgress();scheduleSave()});
 $('answers').addEventListener('submit',e=>{e.preventDefault();void sendAnswers(Date.now()>=deadline)});
 init();
