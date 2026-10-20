@@ -69,7 +69,7 @@ $('courses').addEventListener('click',async e=>{
   const win=window.open('about:blank','_blank');
   try{const result=await request('/material/'+cid+'/'+term);if(win)win.location.href=result.url;else location.assign(result.url)}catch(err){if(win)win.close();alert(err.message)}return;
  }
- try{const data=await request('/simulado/'+cid+'/'+term);EXAM={cid,term,questions:data.questoes,index:0,answers:[]};$('quiz-title').textContent=data.curso+' • '+data.trimestre;$('quiz-dialog').showModal();renderQuestion()}catch(err){alert(err.message)}
+ if(b.dataset.action==='quiz'){location.assign('prova.html?disciplina='+cid+'&trimestre='+term+'&tipo=simulado');return}
 });
 $('quiz-options').addEventListener('click',e=>{const b=e.target.closest('[data-answer]');if(!b||!EXAM)return;EXAM.answers[EXAM.index]=Number(b.dataset.answer);$('quiz-options').querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));$('quiz-next').disabled=false});
 $('quiz-next').addEventListener('click',async()=>{
