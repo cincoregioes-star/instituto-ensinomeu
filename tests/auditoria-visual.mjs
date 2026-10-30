@@ -29,10 +29,12 @@ for (const viewport of sizes) {
   const pairs=[...document.querySelectorAll('.access-link')].map(card=>({strong:rect(card.querySelector('strong')),small:rect(card.querySelector('small'))}));
   const hero=document.querySelector('.float-card');const title=hero.querySelector('strong'),subtitle=hero.querySelector('small');
   const footer=document.querySelector('.footer-grid');
+  const family=document.querySelector('.family-text');
+  const familyPosition={button:rect(family.querySelector('.button')),note:rect(family.querySelector('.implementation-note'))};
   const styles=getComputedStyle(footer);
   return {viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth,
    pairs,hero:{strong:rect(title),small:rect(subtitle)},
-   footerColumns:styles.gridTemplateColumns.split(/\s+/).length,
+   footerColumns:styles.gridTemplateColumns.split(/\s+/).length,family:familyPosition,
    contentLoaded:getComputedStyle(document.querySelector('.access-link')).display==='flex',
    pictureCount:document.querySelectorAll('.slide').length
   };
@@ -40,6 +42,7 @@ for (const viewport of sizes) {
  if(check.scrollWidth>viewport.width+2)failures.push(viewport.width+'px: overflow horizontal de '+(check.scrollWidth-viewport.width)+'px');
  for (const [i,p] of check.pairs.entries())if(p.small.top<p.strong.bottom-2)failures.push(viewport.width+'px: sobreposição do card '+(i+1));
  if(check.hero.small.top<check.hero.strong.bottom-2)failures.push(viewport.width+'px: legenda sobreposta');
+ if(check.family.note.top<check.family.button.bottom+4)failures.push(viewport.width+'px: aviso do Plano Família sobreposto ao botão');
  if(viewport.width>=1280 && check.footerColumns!==4)failures.push(viewport.width+'px: rodapé com '+check.footerColumns+' colunas');
  if(viewport.width<=390 && check.footerColumns!==1)failures.push(viewport.width+'px: rodapé móvel com '+check.footerColumns+' colunas');
  if(!check.contentLoaded || check.pictureCount!==1)failures.push(viewport.width+'px: CSS ou imagem institucional incoerente');
