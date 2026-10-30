@@ -59,10 +59,18 @@ for (const viewport of sizes) {
 const signup=await browser.newPage({viewport:{width:390,height:844}});
 const signupErrors=[];signup.on('pageerror',error=>signupErrors.push(error.message));
 signup.on('requestfailed',request=>signupErrors.push(request.url()+': '+request.failure()?.errorText));
-await signup.route('**/*supabase-js*',route=>route.fulfill({
- status:200,headers:{'content-type':'text/javascript','access-control-allow-origin':'*'},
- body:"export function createClient(){return {auth:{signUp:async payload=>{window.__testSignupPayload=payload;return {data:{user:{id:'teste-local'}},error:null}},signOut:async()=>({error:null})}}}"
-}));
+await signup.route('**/*',route=>{
+ const target=new URL(route.request().url());
+ if(target.hostname==='127.0.0.1')return route.continue();
+ return route.abort();
+});
+await signup.route('**/cadastro.js',async route=>{
+ const original=await readFile('cadastro.js','utf8');
+ const stub="const createClient=()=>({auth:{signUp:async payload=>{window.__testSignupPayload=payload;return {data:{user:{id:'teste-local'}},error:null}},signOut:async()=>({error:null})}});";
+ const modified=original.replace(/^import\s*\{\s*createClient\s*\}\s*from\s*[^;]+;/,stub);
+ if(modified===original)throw new Error('Não foi possível preparar o teste isolado');
+ return route.fulfill({status:200,contentType:'text/javascript; charset=utf-8',body:modified});
+});
 await signup.goto(url+'/cadastro.html',{waitUntil:'domcontentloaded'});
 for (const id of ['name','email','kind','grade','password','confirm','adult','privacy','signup-btn']){
  if(!(await signup.locator('#'+id).isVisible()))failures.push('Cadastro: campo oculto '+id);
