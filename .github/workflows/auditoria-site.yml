@@ -1,0 +1,36 @@
+name: Auditoria estrutural EnsinoMeu
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - '*.css'
+      - '*.js'
+      - 'tests/**'
+      - '.github/workflows/auditoria-site.yml'
+  pull_request:
+    paths:
+      - '*.html'
+      - '*.css'
+      - '*.js'
+      - 'tests/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar sintaxe dos scripts
+        run: |
+          node --check site.js
+          node --check cadastro.js
+          node --check ensino-auth.js
+          node --check ensino-painel.js
+          node --check ensino-admin.js
+      - name: Conferir HTML, navegação, cadastro e CSS
+        run: node tests/auditoria-site.mjs
