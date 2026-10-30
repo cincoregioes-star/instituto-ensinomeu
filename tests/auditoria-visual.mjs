@@ -54,10 +54,28 @@ for (const viewport of sizes) {
  await page.close();
 }
 const signup=await browser.newPage({viewport:{width:390,height:844}});
+await signup.route('**/*supabase-js*',route=>route.fulfill({
+ status:200,headers:{'content-type':'text/javascript','access-control-allow-origin':'*'},
+ body:"export function createClient(){return {auth:{signUp:async payload=>{window.__testSignupPayload=payload;return {data:{user:{id:'teste-local'}},error:null}},signOut:async()=>({error:null})}}}"
+}));
 await signup.goto(url+'/cadastro.html',{waitUntil:'domcontentloaded'});
 for (const id of ['name','email','kind','grade','password','confirm','adult','privacy','signup-btn']){
  if(!(await signup.locator('#'+id).isVisible()))failures.push('Cadastro: campo oculto '+id);
 }
+await signup.fill('#name','Responsável Teste');
+await signup.fill('#email','responsavel.teste@example.com');
+await signup.selectOption('#kind','guardian');
+await signup.selectOption('#grade','fii-9');
+await signup.fill('#password','senha_de_teste_1234!');
+await signup.fill('#confirm','senha_de_teste_1234!');
+await signup.check('#adult');
+await signup.check('#privacy');
+await signup.click('#signup-btn');
+try {await signup.locator('#message').getByText('Solicitação enviada',{exact:false}).waitFor({timeout:4000});}
+catch {failures.push('Cadastro: submissão simulada sem sucesso');}
+const payload=await signup.evaluate(()=>window.__testSignupPayload||null);
+if(!payload || payload.options?.data?.requested_grade!=='fii-9' || payload.options?.data?.requested_kind!=='guardian' || ('role' in (payload.options?.data||{})))
+ failures.push('Cadastro: dados de solicitação ou privilégios incorretos');
 await signup.screenshot({path:'artifacts/screenshots/cadastro-mobile.png',fullPage:true});
 await signup.close();
 } finally {await browser.close();server.close();}
