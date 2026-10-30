@@ -144,3 +144,16 @@ body{background:linear-gradient(180deg,#dceae4 0%,#e5efe9 42%,#d9e8e1 100%)}
 .hero-visual .slide-controls:empty{display:none}
 .site-footer .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(max-width:720px){.grades-count{width:max-content;margin-top:12px}.section-learning .section-intro,.faq-section .section-intro{display:block}.section-learning .section-intro>.text-link,.faq-section .section-intro>.text-link{display:inline-flex;margin-top:8px}.hero-visual .slideshow{min-height:260px}.site-footer .foot-bottom{flex-direction:column;align-items:flex-start}.notice-bar-inner{gap:8px}}
+
+
+/* V7.43.6 — cadastro público protegido e navegação */
+.header-signup{display:inline-flex;align-items:center;justify-content:center;padding:9px 13px;border:1px solid #d0b16f;border-radius:10px;color:#f6dfac;text-decoration:none;font-size:13px;font-weight:850;white-space:nowrap}
+.header-signup:hover,.header-signup:focus-visible{background:#244f49}
+.header-actions{flex:0 0 auto}
+.new-student{font-size:13px;color:#355b51}
+.new-student a{font-weight:850;color:#075f4a}
+.desktop-nav a{white-space:nowrap}
+@media(max-width:1140px){.header-text-link{display:none}.desktop-nav{gap:13px}}
+@media(max-width:990px){.desktop-nav{display:none}.menu-toggle{display:inline-flex}}
+@media(max-width:600px){.header-signup{font-size:12px;padding:8px}.header-inner{gap:8px}.identity-name{font-size:14px}.identity img{width:46px;height:46px}.header-actions .button-small{padding:9px 10px;font-size:12px}}
+@media(max-width:390px){.header-signup{display:none}}
