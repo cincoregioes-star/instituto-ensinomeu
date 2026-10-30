@@ -57,6 +57,8 @@ for (const viewport of sizes) {
  await page.close();
 }
 const signup=await browser.newPage({viewport:{width:390,height:844}});
+const signupErrors=[];signup.on('pageerror',error=>signupErrors.push(error.message));
+signup.on('requestfailed',request=>signupErrors.push(request.url()+': '+request.failure()?.errorText));
 await signup.route('**/*supabase-js*',route=>route.fulfill({
  status:200,headers:{'content-type':'text/javascript','access-control-allow-origin':'*'},
  body:"export function createClient(){return {auth:{signUp:async payload=>{window.__testSignupPayload=payload;return {data:{user:{id:'teste-local'}},error:null}},signOut:async()=>({error:null})}}}"
@@ -76,6 +78,7 @@ await signup.check('#privacy');
 await signup.click('#signup-btn');
 try {await signup.locator('#message').getByText('Solicitação enviada',{exact:false}).waitFor({timeout:4000});}
 catch {failures.push('Cadastro: submissão simulada sem sucesso');}
+console.log('Cadastro debug',JSON.stringify({message:await signup.locator('#message').innerText(),buttonDisabled:await signup.locator('#signup-btn').isDisabled(),formValid:await signup.locator('#signup').evaluate(e=>e.checkValidity()),errors:signupErrors}));
 const payload=await signup.evaluate(()=>window.__testSignupPayload||null);
 if(!payload || payload.options?.data?.requested_grade!=='fii-9' || payload.options?.data?.requested_kind!=='guardian' || ('role' in (payload.options?.data||{})))
  failures.push('Cadastro: dados de solicitação ou privilégios incorretos');
