@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#082b3b">
+<title>Criar conta | Instituto EnsinoMeu</title><link rel="icon" href="assets/favicon.png">
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:22px;display:grid;place-items:center;background:linear-gradient(125deg,#092c45,#076048);color:#173d40;font:16px/1.55 system-ui,sans-serif}
+main{width:min(540px,100%);background:#e6f1eb;border:1px solid #a7c7b9;border-radius:22px;padding:clamp(20px,4vw,36px);box-shadow:0 24px 70px #031b2c60}
+header{text-align:center}header img{width:72px;height:72px;object-fit:contain}h1{font-size:clamp(25px,4vw,34px);margin:12px 0 4px;line-height:1.15}
+p{margin:10px 0;color:#355f56}.info{padding:12px 14px;border-radius:11px;background:#cfe4da;font-size:13px}
+label{display:block;font-size:13px;font-weight:800;margin:16px 0 5px}
+input,select{font:inherit;width:100%;padding:12px;background:white;border:1px solid #a3bdb5;border-radius:10px;color:#153830}
+input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #d4a85f;outline-offset:2px}
+label.check{display:flex;align-items:flex-start;gap:10px;font-size:12px;font-weight:550;line-height:1.5}
+.check input{flex:none;width:18px;height:18px;margin-top:2px}
+button{width:100%;background:#08624d;color:white;font:inherit;font-weight:850;border:0;border-radius:11px;padding:14px;cursor:pointer;margin:18px 0 4px}
+button:disabled{cursor:wait;opacity:.65}a{color:#08624d;font-weight:750}
+#message{min-height:28px;color:#933b30;font-size:13px;font-weight:700}
+footer{font-size:13px;text-align:center;margin-top:14px}
+</style>
+</head>
+<body><main>
+<header><img src="assets/brasao.png" alt="Brasão do Instituto EnsinoMeu"><h1>Crie sua conta gratuita</h1><p>Cadastro de interesse em educação complementar.</p></header>
+<p class="info">Nesta fase, o cadastro é destinado a estudantes maiores de 18 anos ou a responsáveis legais. Acesso aos materiais e às séries somente após autorização administrativa. Sem cobrança.</p>
+<form id="signup" autocomplete="on">
+<label for="name">Nome completo do titular adulto</label><input id="name" name="name" autocomplete="name" maxlength="100" minlength="3" required>
+<label for="email">E-mail do titular adulto</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+<label for="kind">Perfil de interesse</label><select id="kind" name="kind" required>
+<option value="">Selecione</option><option value="adult_student">Sou estudante maior de 18 anos</option><option value="guardian">Sou responsável legal por um estudante</option></select>
+<label for="grade">Ano ou série de interesse</label><select id="grade" name="grade" required>
+<option value="">Selecione</option><option value="fi-1">1º ano Fundamental</option><option value="fi-2">2º ano Fundamental</option><option value="fi-3">3º ano Fundamental</option><option value="fi-4">4º ano Fundamental</option><option value="fi-5">5º ano Fundamental</option>
+<option value="fii-6">6º ano Fundamental</option><option value="fii-7">7º ano Fundamental</option><option value="fii-8">8º ano Fundamental</option><option value="fii-9">9º ano Fundamental</option>
+<option value="em-1">1ª série Médio</option><option value="em-2">2ª série Médio</option><option value="em-3">3ª série Médio</option></select>
+<label for="password">Senha (mínimo 12 caracteres)</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
+<label for="confirm">Repita a senha</label><input id="confirm" name="confirm" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
+<label class="check"><input type="checkbox" id="adult" required>Declaro que tenho 18 anos ou mais e que, caso o interesse seja para um menor de idade, sou seu responsável legal.</label>
+<label class="check"><input type="checkbox" id="privacy" required>Li a <a href="privacidade.html" target="_blank" rel="noopener noreferrer">Política de Privacidade</a> e concordo com o tratamento dos dados de cadastro descrito nela.</label>
+<button type="submit" id="signup-btn">Criar conta gratuita</button>
+<p id="message" role="status" aria-live="polite"></p>
+</form>
+<footer><a href="login.html">Já tenho conta</a> · <a href="index.html">Voltar ao Instituto</a></footer>
+</main><script src="config.js"></script><script type="module" src="cadastro.js"></script></body>
+</html>
