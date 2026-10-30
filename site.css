@@ -175,3 +175,10 @@ body{background:linear-gradient(180deg,#dceae4 0%,#e5efe9 42%,#d9e8e1 100%)}
  .access-panel,.grade-selector,.stage-card{min-width:0}
  .grade-tabs button{min-width:0;white-space:normal}
 }
+
+
+/* V7.43.8 — corrigir aviso de implantação ao lado do botão no Plano Família */
+.family-text>.implementation-note{display:block;max-width:440px;width:max-content;margin-top:15px;padding:10px 14px;border-radius:10px;background:#234e58;color:#edf4f0;border:1px solid #51747b;font-size:12px;line-height:1.55;white-space:normal;overflow-wrap:break-word}
+.family-text>.button{display:inline-flex;vertical-align:middle}
+.family-text .family-highlights span{display:inline-flex;align-items:center;gap:6px}
+@media(max-width:540px){.family-text>.implementation-note{max-width:100%;width:fit-content}}
