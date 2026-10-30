@@ -13,7 +13,7 @@ label{display:block;font-size:13px;font-weight:800;margin:16px 0 5px}
 input,select{font:inherit;width:100%;padding:12px;background:white;border:1px solid #a3bdb5;border-radius:10px;color:#153830}
 input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #d4a85f;outline-offset:2px}
 label.check{display:flex;align-items:flex-start;gap:10px;font-size:12px;font-weight:550;line-height:1.5}
-.check input{flex:none;width:18px;height:18px;margin-top:2px}
+.check>span{display:block;flex:1;min-width:0}.check input{flex:none;width:18px;height:18px;margin-top:2px}
 button{width:100%;background:#08624d;color:white;font:inherit;font-weight:850;border:0;border-radius:11px;padding:14px;cursor:pointer;margin:18px 0 4px}
 button:disabled{cursor:wait;opacity:.65}a{color:#08624d;font-weight:750}
 #message{min-height:28px;color:#933b30;font-size:13px;font-weight:700}
@@ -34,8 +34,8 @@ footer{font-size:13px;text-align:center;margin-top:14px}
 <option value="em-1">1ª série Médio</option><option value="em-2">2ª série Médio</option><option value="em-3">3ª série Médio</option></select>
 <label for="password">Senha (mínimo 12 caracteres)</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
 <label for="confirm">Repita a senha</label><input id="confirm" name="confirm" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
-<label class="check"><input type="checkbox" id="adult" required>Declaro que tenho 18 anos ou mais e que, caso o interesse seja para um menor de idade, sou seu responsável legal.</label>
-<label class="check"><input type="checkbox" id="privacy" required>Li a <a href="privacidade.html" target="_blank" rel="noopener noreferrer">Política de Privacidade</a> e concordo com o tratamento dos dados de cadastro descrito nela.</label>
+<label class="check"><input type="checkbox" id="adult" required><span>Declaro que tenho 18 anos ou mais e que, caso o interesse seja para um menor de idade, sou seu responsável legal.</span></label>
+<label class="check"><input type="checkbox" id="privacy" required><span>Li a <a href="privacidade.html" target="_blank" rel="noopener noreferrer">Política de Privacidade</a> e concordo com o tratamento dos dados de cadastro descrito nela.</span></label>
 <button type="submit" id="signup-btn">Criar conta gratuita</button>
 <p id="message" role="status" aria-live="polite"></p>
 </form>
