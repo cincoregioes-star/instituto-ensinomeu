@@ -34,3 +34,16 @@ jobs:
           node --check ensino-admin.js
       - name: Conferir HTML, navegação, cadastro e CSS
         run: node tests/auditoria-site.mjs
+      - name: Instalar dependência do teste visual
+        run: npm install --no-save --no-package-lock playwright@1.55.1
+      - name: Testar site no navegador Chromium
+        run: |
+          node --check tests/auditoria-visual.mjs
+          node tests/auditoria-visual.mjs
+      - name: Guardar capturas de teste
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ensino-auditoria-visual
+          path: artifacts/screenshots/
+          if-no-files-found: ignore
