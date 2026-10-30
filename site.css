@@ -157,3 +157,21 @@ body{background:linear-gradient(180deg,#dceae4 0%,#e5efe9 42%,#d9e8e1 100%)}
 @media(max-width:990px){.desktop-nav{display:none}.menu-toggle{display:inline-flex}}
 @media(max-width:600px){.header-signup{font-size:12px;padding:8px}.header-inner{gap:8px}.identity-name{font-size:14px}.identity img{width:46px;height:46px}.header-actions .button-small{padding:9px 10px;font-size:12px}}
 @media(max-width:390px){.header-signup{display:none}}
+
+
+/* V7.43.7 — elimina transbordamento em celulares compactos (360px) */
+@media(max-width:420px){
+ .header-inner{gap:6px!important}
+ .header-inner .identity{gap:7px;min-width:0;flex:1 1 auto}
+ .header-inner .identity img{width:40px;height:40px;flex:0 0 40px}
+ .header-inner .identity-name{font-size:12px;line-height:1.15;overflow-wrap:normal}
+ .header-inner .identity-name small{font-size:8px;letter-spacing:0}
+ .header-actions{gap:5px;flex:0 0 auto}
+ .header-actions .button-small{font-size:11px;padding:8px}
+ .header-actions .button-small .arrow{display:none}
+ .menu-toggle{padding:6px 8px}
+ .menu-toggle .icon{width:20px;height:20px;min-width:20px;min-height:20px}
+ .hero-buttons .button{padding:11px 13px;min-width:0}
+ .access-panel,.grade-selector,.stage-card{min-width:0}
+ .grade-tabs button{min-width:0;white-space:normal}
+}
