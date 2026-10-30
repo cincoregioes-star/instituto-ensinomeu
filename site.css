@@ -60,3 +60,26 @@ body{background:linear-gradient(180deg,#dceae4 0%,#e5efe9 42%,#d9e8e1 100%)}
 .float-card small{color:#cde0da!important}
 .float-card-icon{background:#1b6357!important;color:#ebcb89!important}
 @media(max-width:930px){.mobile-menu{background:#0d3a45!important}.mobile-menu a{color:#e6f1ed!important;border-bottom-color:#35676b!important}}
+
+
+/* V7.43.3 — correção de sobreposição, espaçamento e responsividade */
+.float-card{display:flex!important;align-items:center;gap:12px;max-width:min(330px,calc(100% - 24px));right:12px!important;bottom:-18px!important;padding:13px 16px!important;line-height:1.35}
+.float-card>div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.float-card strong,.float-card small{display:block;white-space:normal;overflow-wrap:anywhere}
+.float-card-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;border-radius:9px}
+.hero-visual{padding-bottom:20px}
+.access-link>span:not(.access-icon){display:flex;flex-direction:column;gap:3px;min-width:0;flex:1 1 auto}
+.access-link strong,.access-link small{display:block;line-height:1.4;overflow-wrap:break-word}
+.access-link small{font-size:12px;font-weight:500;color:#315c51}
+.access-link .access-arrow{flex:0 0 19px;margin-left:6px}
+.access-links{align-items:stretch}
+.access-link{min-width:0;gap:12px;align-items:center}
+.site-footer .footer-grid{display:grid;grid-template-columns:minmax(250px,2fr) repeat(3,minmax(125px,1fr));gap:28px}
+.site-footer .footer-grid>div{display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-width:0}
+.site-footer .footer-grid>div:first-child .identity{display:flex;flex-direction:row;align-items:center}
+.site-footer .footer-grid>div>strong{display:block;color:#fff;margin-bottom:5px}
+.site-footer .footer-grid a{display:inline-block;line-height:1.5;overflow-wrap:anywhere}
+.site-footer .footer-brand p{margin:5px 0 0}
+.steps{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1000px){.site-footer .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.site-footer .footer-grid,.steps{grid-template-columns:1fr}.float-card{position:relative;right:auto!important;bottom:auto!important;max-width:100%;margin:-10px 12px 0}.hero-visual{padding-bottom:0}.access-links{margin-inline:16px}.access-link{padding:15px}.site-footer .footer-grid{gap:22px}}
