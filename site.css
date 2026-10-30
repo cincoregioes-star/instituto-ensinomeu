@@ -83,3 +83,41 @@ body{background:linear-gradient(180deg,#dceae4 0%,#e5efe9 42%,#d9e8e1 100%)}
 .steps{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:1000px){.site-footer .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.site-footer .footer-grid,.steps{grid-template-columns:1fr}.float-card{position:relative;right:auto!important;bottom:auto!important;max-width:100%;margin:-10px 12px 0}.hero-visual{padding-bottom:0}.access-links{margin-inline:16px}.access-link{padding:15px}.site-footer .footer-grid{gap:22px}}
+
+
+/* V7.43.4 — auditoria adicional: hierarquia, slideshow, navegação e acessibilidade */
+.hero-visual .slideshow{isolation:isolate}
+.slideshow>img.slide{z-index:0;pointer-events:none}
+.slideshow>img.slide.is-active{z-index:1}
+.slide-overlay{z-index:2;pointer-events:none}
+.slide-caption{z-index:3;display:flex;flex-direction:column;align-items:flex-start;gap:5px;line-height:1.3}
+.slide-controls{position:absolute;left:0;right:0;bottom:8px;z-index:4;margin:0}
+.slideshow .slide-dots button{min-width:12px;min-height:12px}
+.slideshow .slide-controls>button{width:34px;height:34px}
+.hero-visual .float-card{z-index:5}
+.access-section{margin-top:-20px}
+.access-intro{padding-inline:27px}
+.access-intro p{margin:5px 0}
+.access-link{transition:transform .18s ease,box-shadow .18s ease}
+.access-link:hover{transform:translateY(-2px);box-shadow:0 8px 18px #0b3d3220}
+.access-link .access-icon{display:inline-flex;flex:0 0 46px;align-items:center;justify-content:center;width:46px;height:46px}
+.access-link strong{font-size:15px}
+.access-link small{line-height:1.45}
+.grade-footer{display:flex;align-items:center;gap:15px;flex-wrap:wrap}
+.grade-footer>span{display:inline-flex;align-items:center;gap:6px}
+.grade-footer>a{margin-left:auto}
+.about-benefits>div{display:flex;align-items:flex-start;gap:13px;padding:13px;border-radius:12px;margin-bottom:10px}
+.about-benefits>div>span{display:inline-flex;padding:10px;border-radius:10px}
+.about-benefits>div p{margin:3px 0}
+.site-footer .footer-grid>div:not(:first-child)>a{margin:0;padding:2px 0}
+.site-footer .footer-grid .identity-name{white-space:normal}
+.site-footer .footer-grid .identity-name small{line-height:1.4}
+.site-footer .footer-grid .identity img{flex:0 0 55px}
+.site-footer .footer-grid .footer-brand{gap:13px}
+.site-footer .footer-grid .footer-brand p{line-height:1.55}
+.mobile-menu{flex-direction:column;align-items:stretch}
+.mobile-menu a{display:block;border-bottom:1px solid #ffffff20}
+@media(max-width:1100px){.desktop-nav{gap:12px}.header-inner{gap:12px}.identity-name{font-size:16px}.header-actions{gap:8px}}
+@media(max-width:930px){.desktop-nav{display:none}.site-footer .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.hero-grid{padding-bottom:52px}.slideshow{min-height:250px}.access-section{margin-top:0}.access-intro{padding-inline:16px}.grade-footer>a{margin-left:0}.site-footer .footer-grid{grid-template-columns:1fr}.notice-right{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.slide,.access-link{transition:none!important}}
