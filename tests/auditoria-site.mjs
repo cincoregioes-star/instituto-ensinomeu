@@ -45,7 +45,7 @@ check('Slideshow sem repetições de mesmo brasão', () => {
   assert.ok(!index.includes('id="prev-slide"'));
 });
 check('CSS atualizado e principais componentes estilizados', () => {
-  assert.ok(index.includes('site.css?v=7437'));
+  assert.ok(index.includes('site.css?v=7438'));
   for (const selector of ['.access-link','.float-card','.footer-grid','.grades-count','.live-dot','.stage-index','.small-square','.header-signup'])
     assert.ok(css.includes(selector), selector);
   const cleaned = css.replace(/\/\*[\s\S]*?\*\//g,'');
