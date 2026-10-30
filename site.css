@@ -121,3 +121,26 @@ body{background:linear-gradient(180deg,#dceae4 0%,#e5efe9 42%,#d9e8e1 100%)}
 @media(max-width:930px){.desktop-nav{display:none}.site-footer .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){.hero-grid{padding-bottom:52px}.slideshow{min-height:250px}.access-section{margin-top:0}.access-intro{padding-inline:16px}.grade-footer>a{margin-left:0}.site-footer .footer-grid{grid-template-columns:1fr}.notice-right{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.slide,.access-link{transition:none!important}}
+
+
+/* V7.43.5 — auditoria estrutural: elementos sem estilo e hero institucional */
+.notice-bar-inner{align-items:center;justify-content:space-between;flex-wrap:wrap}
+.live-dot{display:inline-block;width:8px;height:8px;flex:0 0 8px;background:#d9b866;border-radius:100%;box-shadow:0 0 0 4px #d9b86620}
+.notice-sep{width:1px;height:14px;display:inline-block;background:#91ada5;opacity:.5;margin-inline:2px}
+.small-square{display:inline-block;width:9px;height:9px;background:var(--gold);border-radius:2px;margin-right:7px}
+.stage-index{color:#286e5b;font-size:11px;font-weight:850;letter-spacing:.08em}
+.grades-count{flex:0 0 auto;display:flex;align-items:center;gap:12px;color:#104f40;background:#bfdacc;border-radius:16px;padding:16px 19px}
+.grades-count strong{font-family:Outfit,system-ui,sans-serif;font-size:51px;line-height:1;font-weight:850;color:#075d49}
+.grades-count span{font-size:12px;line-height:1.4;font-weight:700}
+.section-learning .section-intro,.faq-section .section-intro{display:flex;align-items:end;justify-content:space-between;gap:18px;max-width:none}
+.section-learning .section-intro>div,.faq-section .section-intro>div{min-width:0;max-width:780px}
+.section-learning .section-intro>.text-link,.faq-section .section-intro>.text-link{flex:0 0 auto;margin-bottom:5px}
+.method-section .center-intro{max-width:790px;margin-bottom:32px}
+.method-section .center-intro p{margin-inline:auto;color:var(--muted)}
+.hero-visual .slideshow>img.slide.is-active{opacity:1;object-fit:contain;object-position:center}
+.hero-visual .slideshow .slide-caption{bottom:17px;left:18px;right:18px;background:linear-gradient(90deg,#092a39ed,#092a3970);padding:12px 15px;border-radius:11px}
+.hero-visual .slideshow .slide-overlay{height:28%}
+.hero-visual .slideshow{aspect-ratio:1.18;min-height:340px}
+.hero-visual .slide-controls:empty{display:none}
+.site-footer .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:720px){.grades-count{width:max-content;margin-top:12px}.section-learning .section-intro,.faq-section .section-intro{display:block}.section-learning .section-intro>.text-link,.faq-section .section-intro>.text-link{display:inline-flex;margin-top:8px}.hero-visual .slideshow{min-height:260px}.site-footer .foot-bottom{flex-direction:column;align-items:flex-start}.notice-bar-inner{gap:8px}}
