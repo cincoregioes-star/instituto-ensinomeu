@@ -6,6 +6,7 @@ on:
       - '*.html'
       - '*.css'
       - '*.js'
+      - '*.xml'
       - 'tests/**'
       - '.github/workflows/auditoria-site.yml'
   pull_request:
@@ -34,6 +35,8 @@ jobs:
           node --check ensino-admin.js
       - name: Conferir HTML, navegação, cadastro e CSS
         run: node tests/auditoria-site.mjs
+      - name: Auditar SEO, sitemap e indexação segura
+        run: node tests/auditoria-seo.mjs
       - name: Instalar dependência do teste visual
         run: npm install --no-save --no-package-lock playwright@1.55.1
       - name: Testar site no navegador Chromium
