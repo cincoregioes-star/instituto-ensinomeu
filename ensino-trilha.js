@@ -5,6 +5,10 @@ const endpoint=C.supabaseUrl+'/functions/v1/ensino-api',query=new URLSearchParam
 const sid=query.get('disciplina')||'',term=query.get('trimestre')||'';
 const grade='fii-9';
 let questions=[];
+const videosGeografiaPublicos = (sid === 'fii-9-geografia' && term === 'T1')
+ ? {1: 'geografia-9ano.html#titulo-video', 2: 'geografia-9ano.html#titulo-video-02'}
+ : {};
+function temVideoPublicado(a){return Boolean(videosGeografiaPublicos[a.numero] || a.video_status === 'published')}
 function message(msg,bad=false){$('feedback').textContent=msg;$('feedback').classList.toggle('error',bad)}
 async function api(path,body){
  const {data,error}=await sb.auth.getSession();if(error||!data.session?.access_token)throw Error('Entre novamente na sua conta.');
@@ -49,15 +53,17 @@ async function init(){
  const {data}=await sb.auth.getUser();if(!data?.user)throw Error('Faça login novamente.');
  const d=await api('/trilha/'+encodeURIComponent(sid)+'/'+term);
  $('page-title').textContent=d.disciplina+' — '+d.trimestre+'º trimestre';
- $('count-lessons').textContent=d.aulas.length;$('count-practice').textContent=d.aulas.reduce((n,a)=>n+a.exercicios,0);$('count-videos').textContent=d.aulas.filter(a=>a.video_status==='published').length;
+ $('count-lessons').textContent=d.aulas.length;$('count-practice').textContent=d.aulas.reduce((n,a)=>n+a.exercicios,0);$('count-videos').textContent=d.aulas.filter(temVideoPublicado).length;
  $('back').href='painel.html?serie='+encodeURIComponent(grade);
  ['avaliacao','simulado'].forEach(k=>{$(k+'-link').href='prova.html?disciplina='+encodeURIComponent(sid)+'&trimestre='+term+'&tipo='+k});
  const list=$('lesson-list');list.replaceChildren();
  d.aulas.forEach(a=>{
   const card=make('article','lesson');card.append(make('span','pill','Aula '+String(a.numero).padStart(2,'0')),make('h3','',a.titulo),make('p','help','Apostila: página '+a.pagina_apostila));
-  card.append(make('p','help',a.video_status==='published'?'Videoaula disponível':'Videoaula — produção futura'));
+  card.append(make('p','help',temVideoPublicado(a)?'Videoaula disponível':'Videoaula — produção futura'));
   const actions=make('div','actions'),btn=make('button','btn',a.exercicios?'Praticar ('+a.exercicios+' questões)':'Exercícios em preparação');
-  btn.type='button';btn.disabled=!a.exercicios;btn.addEventListener('click',()=>launch(a.numero));actions.append(btn);card.append(actions);list.append(card);
+  btn.type='button';btn.disabled=!a.exercicios;btn.addEventListener('click',()=>launch(a.numero));
+  if(videosGeografiaPublicos[a.numero]){const assistir=make('a','btn','▶ Assistir videoaula');assistir.href=videosGeografiaPublicos[a.numero];assistir.setAttribute('aria-label','Assistir à videoaula '+a.numero+' de Geografia');actions.append(assistir)}
+  actions.append(btn);card.append(actions);list.append(card);
  });
  $('content').hidden=false;message('Trilha carregada. Selecione uma aula para começar.');
  }catch(e){message(e.message,true)}
