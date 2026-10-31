@@ -1,0 +1,40 @@
+name: Reconstruir e publicar videoaula gratuita de Geografia
+on:
+  push:
+    branches: [main]
+    paths:
+      - "videos/9ano/geografia/.partes/**"
+      - ".github/workflows/publicar-video-geografia.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  montar-video:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruir MP4 original e conferir integridade
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          partes=(videos/9ano/geografia/.partes/aula01-globalizacao.mp4.part*)
+          test "${#partes[@]}" -eq 10
+          cat "${partes[@]}" > videos/9ano/geografia/aula01-globalizacao.mp4
+          echo "775f90bfd3d9c3bdc49d094fe3bdc0eb864b07a27a965978cae4e000a7bf6751  videos/9ano/geografia/aula01-globalizacao.mp4" | sha256sum -c -
+          test "$(stat -c%s videos/9ano/geografia/aula01-globalizacao.mp4)" -eq 18597020
+          rm -f "${partes[@]}"
+          rmdir videos/9ano/geografia/.partes || true
+      - name: Gravar MP4 na pasta publica do Instituto
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A videos/9ano/geografia
+          if ! git diff --cached --quiet; then
+            git commit -m "Publicar Aula 01 gratuita de Geografia do 9 ano em MP4"
+            git push origin HEAD:main
+          fi
