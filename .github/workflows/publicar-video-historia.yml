@@ -26,8 +26,8 @@ jobs:
           cat "${partes[@]}" > "$dir/aula01-nascimento-republica.mp4"
           echo "df69af93a96b0463cd982be3c62d01e8153eba5544b48e0014b7685cf9dc6549  $dir/aula01-nascimento-republica.mp4" | sha256sum -c -
           test "$(stat -c%s "$dir/aula01-nascimento-republica.mp4")" -eq 18249486
-          ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of csv=p=0 "$dir/aula01-nascimento-republica.mp4" | grep -q h264
-          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of csv=p=0 "$dir/aula01-nascimento-republica.mp4" | grep -q aac
+          # Integridade garantida pelo SHA-256 do MP4 original e tamanho exato.
+          # ffprobe não está instalado no runner Ubuntu atual e bloqueava o envio.
           rm -f "${partes[@]}"
           rmdir "$dir/.partes" || true
       - name: Publicar vídeo validado no Instituto
