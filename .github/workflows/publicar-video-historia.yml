@@ -1,0 +1,43 @@
+name: Publicar videoaula gratuita de História 9º ano
+on:
+  push:
+    branches: [main]
+    paths:
+      - "videos/9ano/historia/.partes/**"
+      - ".github/workflows/publicar-video-historia.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  montar-historia:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruir MP4 e validar integridade
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir="videos/9ano/historia"
+          mapfile -t partes < <(find "$dir/.partes" -maxdepth 1 -type f -name 'aula01-nascimento-republica.mp4.part*' | sort)
+          test "${#partes[@]}" -eq 9
+          cat "${partes[@]}" > "$dir/aula01-nascimento-republica.mp4"
+          echo "df69af93a96b0463cd982be3c62d01e8153eba5544b48e0014b7685cf9dc6549  $dir/aula01-nascimento-republica.mp4" | sha256sum -c -
+          test "$(stat -c%s "$dir/aula01-nascimento-republica.mp4")" -eq 18249486
+          ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of csv=p=0 "$dir/aula01-nascimento-republica.mp4" | grep -q h264
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of csv=p=0 "$dir/aula01-nascimento-republica.mp4" | grep -q aac
+          rm -f "${partes[@]}"
+          rmdir "$dir/.partes" || true
+      - name: Publicar vídeo validado no Instituto
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A videos/9ano/historia
+          if ! git diff --cached --quiet; then
+            git commit -m "Publicar História 9º ano Aula 01 em MP4 validado"
+            git push origin HEAD:main
+          fi
