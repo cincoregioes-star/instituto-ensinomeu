@@ -1,33 +1,33 @@
-# Instituto EnsinoMeu
+# Instituto EnsinoMeu — ambiente público e área de estudos
 
-Plataforma brasileira de **educação complementar**, organizada por ano/série e referenciada na **BNCC**. Não substitui o ensino regular, e a classificação pedagógica ainda está sujeita à revisão docente.
+Plataforma de educação complementar referenciada na BNCC, com 12 anos/séries, exercícios, trilhas e videoaulas.
 
-## Implantação nacional
+## Navegação simplificada (04/11/2026)
 
-Este repositório **público** será utilizado apenas para a **vitrine institucional e conteúdo expressamente público** do Instituto EnsinoMeu. A aplicação interna (autenticação, correção de simulados e acesso ao acervo) usa serviços protegidos do Supabase.
+- `index.html`: página inicial com navegação reduzida a Aulas gratuitas, Séries, Planos e Entrar.
+- `login.html` e `ensino-auth.js`: interface de nome de usuário e senha. A convenção técnica interna é `<usuario>@login.ensinomeu.invalid`; o formulário ainda aceita o e-mail antigo durante a transição.
+- `painel.html`: área de estudos simplificada, com a série do aluno e os trimestres organizados.
+- `cadastro.html`: cadastro público temporariamente encerrado até a gestão de contas estar configurada.
+- Videoaulas públicas: Geografia, História, Português e Matemática do 9º ano.
 
-**ATENÇÃO:** este repositório NÃO contém o código completo da plataforma. A versão de implantação é a V7.40, com acervo local privado. A publicação da vitrine e os testes online ainda devem ser concluídos.
+## Status real da migração de contas
 
-- Modelo comercial: **1 série = 1 plano = todas as disciplinas + 3 trimestres**.
-- 12 planos: 1º ao 9º ano do Ensino Fundamental e 1ª à 3ª série do Ensino Médio.
-- Plano Família: histórico individual e vínculos com responsáveis verificados.
-- Identidade visual: azul-marinho, verde-escuro, dourado e branco.
+**Ainda pendente:** criar no Supabase as duas novas contas de gestão e 16 alunos de teste (duas por série, de 5º ano do Fundamental à 3ª série do Ensino Médio), validá-las e então bloquear/revogar os cinco logins antigos. Não informar que as novas contas funcionam antes da confirmação com o backend. A conexão atual não autorizou a operação de criação das identidades.
 
-### Política de publicação
+**Importante:** as telas novas não substituem a criação real das contas no Supabase Auth. Não colocar senhas nos arquivos públicos.
 
-Nunca publicar aqui:
-- Diretórios `private/`, `server/` e `ferramentas/` da distribuição privada.
-- Bancos SQLite/PostgreSQL exportados, dados pessoais, logs ou senhas.
-- Apostilas privadas integrais, bancos de questões e gabaritos.
-- Arquivos `.env`, chaves `service_role` ou `sb_secret_...`.
-- Credenciais das cinco contas de teste.
+## Política de segurança e conteúdo
 
-A configuração do site pode incluir a **chave publicável** do Supabase, mas jamais uma chave administrativa. O controle real de acesso reside na autenticação do Supabase, em RLS e nos endpoints de servidor.
+Este repositório é **público** e não recebe senhas, hashes, tokens administrativos, banco de dados, dados pessoais de alunos, PDFs privados ou gabaritos. A autenticação e o controle de matrículas reais dependem do Supabase Auth, dos perfis ativos e da API protegida.
 
-Para o código-fonte interno, usar outro repositório **privado**, separado deste site público.
+Materiais e testes ainda estão sujeitos à revisão pedagógica. As aulas abertas não exigem login; a área interna só deve aceitar perfis autorizados.
 
-## Estado atual
+A configuração pública em `config.js` contém somente uma chave publicável, nunca a `service_role`.
 
-O projeto Supabase `instituto-ensinomeu` já existe. A publicação completa ainda depende da configuração da área do aluno, criação/verificação de usuários e importação protegida dos materiais. Nenhum pagamento foi ativado.
+## Estrutura
 
-> Instituto EnsinoMeu — educação complementar para todo o Brasil.
+- Vitrine: `index.html`, `planos.html`, `matematica-9ano.html` e outras páginas de aula.
+- Autenticação: `login.html`, `ensino-auth.js`, `config.js`.
+- Área do aluno: `painel.html`, `ensino-painel.js`.
+- Administração: `admin.html`, `ensino-admin.js`.
+- API: Supabase Edge Function `ensino-api` com verificação JWT.
