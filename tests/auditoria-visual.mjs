@@ -47,7 +47,7 @@ try{
     cardColor:getComputedStyle(document.querySelector('.lesson.math .lesson-top')).backgroundImage,
     menu:!!document.querySelector('.top')
   }));
-  if(content.cards!==4)failures.push('Início: devem existir quatro disciplinas com aulas gravadas');
+  if(content.cards!==5)failures.push('Início: devem existir cinco disciplinas com aulas gravadas');
   if(content.title!=='Aulas gravadas disponíveis')failures.push('Título incorreto na seção de videoaulas');
   if(!content.ebook)failures.push('Seção de e-books ausente');
   if(!content.cardColor?.includes('gradient'))failures.push('Cards sem paleta colorida');
