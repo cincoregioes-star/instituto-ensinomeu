@@ -1,0 +1,62 @@
+/* Instituto EnsinoMeu V8 — Layout acadêmico com menu lateral e cards coloridos */
+/* Aplicado apenas às áreas protegidas. Não altera autenticação ou dados. */
+:root{--v8-blue:#0874ce;--v8-green:#078d60;--v8-gold:#f3b924;--v8-teal:#02a5ac;--v8-deep:#062d4b}
+body[data-em-page="painel"],body[data-em-page="admin"]{background:#edf4f9!important}
+body[data-em-page="painel"]>header,body[data-em-page="admin"]>header{position:sticky;top:0;z-index:60;background:#062b49!important;box-shadow:0 4px 19px #062b492e;border-bottom:2px solid #0a7b75}
+body[data-em-page="painel"]>header .brand,body[data-em-page="admin"]>header .brand{color:#fff!important}
+.app-shell{display:grid;grid-template-columns:242px minmax(0,1fr);min-height:calc(100vh - 88px)}
+.app-sidebar{background:linear-gradient(177deg,#063b5f 0%,#052b49 68%,#074f56 100%);color:#fff;padding:26px 13px;box-shadow:6px 0 18px #072c3b1a;min-width:0}
+.sidebar-title{color:#f4cb60;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:950;margin:0 11px 15px;display:block}
+.sidebar-links{display:flex;flex-direction:column;gap:7px}
+.sidebar-links a,.sidebar-links button{display:flex;align-items:center;gap:11px;width:100%;padding:12px 13px;text-align:left;border-radius:11px;background:transparent;color:#e7f6fc;border:1px solid transparent;font-weight:800;text-decoration:none;font-size:14px;cursor:pointer}
+.sidebar-links a:hover,.sidebar-links button:hover{background:#0b6080;color:#fff}
+.sidebar-links .active{background:linear-gradient(120deg,#09a16e,#038c93);box-shadow:0 5px 13px #001d283b}
+.sidebar-links .side-icon{width:22px;flex:0 0 22px;text-align:center;font-size:18px}
+.sidebar-divider{height:1px;background:#ffffff27;margin:15px 12px}
+.sidebar-foot{padding:14px 12px;color:#c1dfdf;font-size:12px;line-height:1.5}
+.app-main{min-width:0;padding:0 16px 25px}
+body[data-em-page="painel"] main,body[data-em-page="admin"] main{max-width:1220px;margin:0 auto;padding:25px 14px 40px}
+body[data-em-page="painel"] .intro,body[data-em-page="admin"] .intro{position:relative;background:linear-gradient(112deg,#0b5fb1 0%,#077f8b 53%,#038765 100%)!important;color:#fff;border:0;border-radius:20px;overflow:hidden;box-shadow:0 12px 25px #07426625;padding:27px 33px}
+body[data-em-page="painel"] .intro:after,body[data-em-page="admin"] .intro:after{content:"";position:absolute;pointer-events:none;right:-48px;top:-85px;width:240px;height:240px;border:50px solid #ffffff1b;border-radius:50%}
+body[data-em-page="painel"] .intro .eyebrow,body[data-em-page="admin"] .intro .eyebrow{color:#ffe187}
+body[data-em-page="painel"] .intro h1,body[data-em-page="admin"] .intro h1{font-size:clamp(26px,3vw,37px);margin:7px 0 6px;line-height:1.2}
+body[data-em-page="painel"] .intro p,body[data-em-page="admin"] .intro p{color:#e9faf5;max-width:770px}
+body[data-em-page="painel"] .count,body[data-em-page="admin"] .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:17px 0 21px}
+body[data-em-page="painel"] .count .stat,body[data-em-page="admin"] .stats .stat{background:linear-gradient(115deg,#007c59,#00a778)!important;border:none;border-radius:15px;color:#fff;box-shadow:0 11px 22px #07446626;padding:21px 23px}
+body[data-em-page="painel"] .count .stat:nth-child(2),body[data-em-page="admin"] .stats .stat:nth-child(2){background:linear-gradient(115deg,#145cad,#0288db)!important}
+body[data-em-page="painel"] .count .stat:nth-child(3),body[data-em-page="admin"] .stats .stat:nth-child(3){background:linear-gradient(115deg,#b47a00,#edb218)!important}
+body[data-em-page="painel"] .count .stat strong,body[data-em-page="admin"] .stats .stat strong{font-size:32px;font-weight:950;line-height:1.1;color:white}
+body[data-em-page="painel"] .count .stat span,body[data-em-page="admin"] .stats .stat span{display:block;color:#fff;margin-top:6px;font-size:13px;font-weight:800}
+.quick-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin:15px 0 22px}
+.quick-card{border:none;border-radius:13px;padding:17px 16px;text-align:left;color:#fff;min-height:109px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;box-shadow:0 7px 16px #0343561e;text-decoration:none;cursor:pointer;font:inherit;transition:transform .15s}
+.quick-card:hover{transform:translateY(-3px)}
+.quick-card:nth-child(1){background:linear-gradient(120deg,#05815d,#03ac7c)}
+.quick-card:nth-child(2){background:linear-gradient(120deg,#1266b8,#0988d4)}
+.quick-card:nth-child(3){background:linear-gradient(120deg,#b9840a,#edbd25)}
+.quick-card:nth-child(4){background:linear-gradient(120deg,#057884,#05a7b3)}
+.quick-card b{font-size:16px;line-height:1.25}.quick-card small{font-size:12px;color:#f9fffe}.quick-card .q-ico{font-size:24px}
+body[data-em-page="painel"] .section-head h2{color:#092d49}
+body[data-em-page="painel"] .grade-card{background:#fff!important;border:1px solid #d6e6ec!important;border-top:5px solid #058f63!important;min-height:143px;box-shadow:0 8px 19px #12435c14}
+body[data-em-page="painel"] .grade-card[data-stage="Fundamental II"]{border-top-color:#1672cc!important}
+body[data-em-page="painel"] .grade-card[data-stage="Ensino Médio"]{border-top-color:#e7b12e!important}
+body[data-em-page="painel"] .grade-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px #075b7d2e}
+body[data-em-page="painel"] .panel,body[data-em-page="admin"] .panel{background:#fff;border:1px solid #d7e6ed;box-shadow:0 6px 21px #05466d11;border-radius:16px}
+body[data-em-page="painel"] .subject{background:#fbfdff;border:1px solid #d4e6eb;border-left:5px solid #06875f;border-radius:12px;box-shadow:0 5px 12px #0658760c}
+body[data-em-page="painel"] .subject:nth-child(4n+2){border-left-color:#1781d1}
+body[data-em-page="painel"] .subject:nth-child(4n+3){border-left-color:#e5ac1b}
+body[data-em-page="painel"] .subject:nth-child(4n+4){border-left-color:#00a5ab}
+body[data-em-page="painel"] .subject summary{background:#f7fbfd;padding:18px}
+body[data-em-page="painel"] .subject[open] summary{background:#e8f5f2}
+body[data-em-page="painel"] .btn{background:linear-gradient(125deg,#078b64,#04624f);color:#fff;border:0}
+body[data-em-page="painel"] .btn.alt,body[data-em-page="painel"] .btn.outline{background:#e9f4fd;color:#09568d;border:1px solid #b3d8ed}
+body[data-em-page="painel"] .notice{background:#eaf5f0;border-left:4px solid #068a5f;color:#3b6860}
+body[data-em-page="painel"] .selected-controls{background:#fff;padding:10px 13px;border-radius:12px;border:1px solid #d3e4e6}
+body[data-em-page="admin"] .toolrow{background:#eaf5fb;border-radius:13px;padding:14px}
+body[data-em-page="admin"] .user-card{background:#fff;border:1px solid #d4e7ed;border-left:5px solid #078f69}
+body[data-em-page="admin"] .user-card:nth-child(even){border-left-color:#1474d0}
+body[data-em-page="admin"] .notice{background:#eaf5f0;border-left:4px solid #078858}
+body[data-em-page="admin"] footer{background:#062d4b}
+@media(max-width:1150px){.app-shell{grid-template-columns:205px minmax(0,1fr)}.quick-grid{grid-template-columns:repeat(2,1fr)}.app-sidebar{padding:20px 8px}}
+@media(max-width:860px){.app-shell{display:block}.app-sidebar{position:sticky;top:70px;z-index:40;background:#073959;padding:9px 12px;box-shadow:0 4px 16px #052a4930}.sidebar-title,.sidebar-foot,.sidebar-divider{display:none}.sidebar-links{display:flex;flex-direction:row;overflow-x:auto;gap:5px;scrollbar-width:thin}.sidebar-links a,.sidebar-links button{white-space:nowrap;flex:0 0 auto;width:auto;font-size:12px;padding:9px 12px}.sidebar-links .side-icon{width:auto;flex:auto;font-size:15px}.app-main{padding:0 8px}}
+@media(max-width:600px){body[data-em-page="painel"] main,body[data-em-page="admin"] main{padding:14px 7px 24px}.quick-grid{grid-template-columns:repeat(2,1fr);gap:7px}.quick-card{padding:12px;min-height:105px}.quick-card b{font-size:13px}.quick-card small{font-size:11px}body[data-em-page="painel"] .intro,body[data-em-page="admin"] .intro{padding:21px}body[data-em-page="painel"] .count,body[data-em-page="admin"] .stats{gap:7px}body[data-em-page="painel"] .count .stat,body[data-em-page="admin"] .stats .stat{padding:12px}body[data-em-page="painel"] .count .stat strong,body[data-em-page="admin"] .stats .stat strong{font-size:23px}body[data-em-page="painel"] .count .stat span,body[data-em-page="admin"] .stats .stat span{font-size:10px}.sidebar-links a,.sidebar-links button{padding:8px 10px}}
+@media(prefers-reduced-motion:reduce){.quick-card{transition:none}}
