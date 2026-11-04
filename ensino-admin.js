@@ -4,7 +4,7 @@ const $=id=>document.getElementById(id);
 const sb=createClient(cfg.supabaseUrl,cfg.supabasePublishableKey,{auth:{persistSession:true,autoRefreshToken:true}});
 const api=cfg.supabaseUrl+'/functions/v1/ensino-api';
 const stages=[...Array.from({length:5},(_,i)=>({id:'fi-'+(i+1),name:(i+1)+'º ano • Fundamental I'})),...Array.from({length:4},(_,i)=>({id:'fii-'+(i+6),name:(i+6)+'º ano • Fundamental II'})),...Array.from({length:3},(_,i)=>({id:'em-'+(i+1),name:(i+1)+'ª série • Ensino Médio'}))];
-const roleNames={admin:'Administrador',teacher:'Diretor / Professor',guardian:'Responsável',student:'Estudante'};
+const roleNames={admin:'Administrador',teacher:'Coordenador',guardian:'Responsável',student:'Estudante'};
 let all=[];
 function message(msg,error=false){$('feedback').textContent=msg;$('feedback').classList.toggle('error',error)}
 async function request(path,options={}){
@@ -23,8 +23,8 @@ if(!records.length){list.append(make('p','empty','Nenhum perfil nessa categoria.
 for(const u of records){
 const card=make('article','user-card');
 const summary=make('div');
-summary.append(make('div','role',roleNames[u.perfil]||u.perfil),make('h3','',u.nome||'Sem nome'),make('p','',u.email||'E-mail não disponível'));
-summary.append(make('p','muted',u.email_confirmado?'E-mail confirmado':'E-mail ainda não confirmado'));
+summary.append(make('div','role',roleNames[u.perfil]||u.perfil),make('h3','',u.nome||'Sem nome'),make('p','',u.email&&u.email.endsWith('@login.ensinomeu.invalid')?'Usuário: '+u.email.split('@')[0]:'Conta anterior (legado)'));
+summary.append(make('p','muted',u.ativo?'Acesso ativo':'Acesso inativo'));
 const enroll=make('div');
 enroll.append(make('h3','','Matrículas'));
 const badges=make('div','enrollments');
