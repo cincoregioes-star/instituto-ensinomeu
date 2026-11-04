@@ -1,5 +1,6 @@
 /* Instituto EnsinoMeu V8 — Layout acadêmico com menu lateral e cards coloridos */
 /* Aplicado apenas às áreas protegidas. Não altera autenticação ou dados. */
+html[data-em-page="painel"] [hidden],html[data-em-page="admin"] [hidden]{display:none!important}
 :root{--v8-blue:#0874ce;--v8-green:#078d60;--v8-gold:#f3b924;--v8-teal:#02a5ac;--v8-deep:#062d4b}
 html[data-em-page="painel"] body,html[data-em-page="admin"] body{background:#edf4f9!important}
 html[data-em-page="painel"] body>header,html[data-em-page="admin"] body>header{position:sticky;top:0;z-index:60;background:#062b49!important;box-shadow:0 4px 19px #062b492e;border-bottom:2px solid #0a7b75}
