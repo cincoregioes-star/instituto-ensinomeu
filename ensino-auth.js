@@ -1,19 +1,35 @@
 import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.75.1/+esm';
-const config=window.ENSINOMEU_CONFIG||{};
-const $=id=>document.getElementById(id);
-const msg=(s,ok=false)=>{$('message').textContent=s;$('message').classList.toggle('ok',ok)};
-const configured=/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(config.supabaseUrl||'')&&/^sb_publishable_[\w.-]+$/.test(config.supabasePublishableKey||'');
-const supabase=configured?createClient(config.supabaseUrl,config.supabasePublishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
-let recovering=false;
-function section(mode){['login-form','recover-form','new-password-form'].forEach(id=>$(id).hidden=id!==mode);$('title').textContent=mode==='recover-form'?'Recuperar minha senha':mode==='new-password-form'?'Definir nova senha':'Acessar minha conta';msg('')}
-async function submit(form,job){const b=form.querySelector('button.primary');b.disabled=true;try{await job()}catch(e){msg(e.message||'Não foi possível completar a solicitação.')}finally{b.disabled=false}}
-if(!configured){msg('Configuração da autenticação não encontrada. Fale com a administração.');$('login-form').querySelector('button.primary').disabled=true}
+const C=window.ENSINOMEU_CONFIG||{};
+const field=id=>document.getElementById(id);
+const configured=/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(C.supabaseUrl||'')&&/^sb_publishable_[\w.-]+$/.test(C.supabasePublishableKey||'');
+const sb=configured?createClient(C.supabaseUrl,C.supabasePublishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}}):null;
+const form=field('login-form'),submit=field('submit');
+function status(message,success=false){field('message').textContent=message;field('message').classList.toggle('ok',success)}
+function toInternalEmail(username){
+  const value=String(username||'').trim().toLowerCase();
+  // Compatibilidade temporária com contas anteriores enquanto se provisionam os acessos por usuário.
+  if(value.includes('@'))return /^\S+@\S+\.\S+$/.test(value)?value:null;
+  if(!/^[a-z0-9][a-z0-9._-]{2,39}$/.test(value))return null;
+  // Este endereço é um identificador técnico interno do Supabase Auth; não recebe e-mails.
+  return value+'@login.ensinomeu.invalid';
+}
+if(!sb){submit.disabled=true;status('Autenticação indisponível. Contate a administração.')}
 else{
- supabase.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY'){recovering=true;section('new-password-form')}});
- const existing=await supabase.auth.getUser();if(existing.data?.user&&!recovering&&!location.hash.includes('type=recovery')&&!location.search.includes('type=recovery'))location.replace('painel.html');
- $('login-form').addEventListener('submit',e=>{e.preventDefault();submit(e.currentTarget,async()=>{const {error}=await supabase.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error)throw error;location.assign('painel.html')})});
- $('recover-link').addEventListener('click',()=>section('recover-form'));
- document.querySelector('[data-return]').addEventListener('click',()=>section('login-form'));
- $('recover-form').addEventListener('submit',e=>{e.preventDefault();submit(e.currentTarget,async()=>{const url=new URL('login.html',location.href).href;const {error}=await supabase.auth.resetPasswordForEmail($('recover-email').value.trim(),{redirectTo:url});if(error)throw error;msg('Se o e-mail estiver cadastrado, você receberá as instruções para recuperar sua conta.',true)})});
- $('new-password-form').addEventListener('submit',e=>{e.preventDefault();submit(e.currentTarget,async()=>{const pass=$('new-password').value;if(pass.length<12)throw Error('Use pelo menos 12 caracteres.');const {error}=await supabase.auth.updateUser({password:pass});if(error)throw error;msg('Senha atualizada. Redirecionando…',true);location.replace('painel.html')})});
+  const session=await sb.auth.getUser().catch(()=>({data:{user:null}}));
+  if(session.data?.user)location.replace('painel.html');
+  form.addEventListener('submit',async event=>{
+    event.preventDefault();if(submit.disabled)return;
+    const email=toInternalEmail(field('username').value),password=field('password').value;
+    if(!email){status('Informe um nome de usuário válido.');return}
+    submit.disabled=true;status('Autenticando…',true);
+    try{
+      const {data,error}=await sb.auth.signInWithPassword({email,password});
+      if(error||!data?.user)throw Error('Usuário ou senha incorretos.');
+      // Validação de autorização no servidor; não basta ter um token de login.
+      const response=await fetch(C.supabaseUrl+'/functions/v1/ensino-api/me',{
+        headers:{'Authorization':'Bearer '+data.session.access_token,'apikey':C.supabasePublishableKey},cache:'no-store'});
+      if(!response.ok){await sb.auth.signOut();throw Error('Conta sem autorização ativa para acessar o Instituto.')}
+      location.assign('painel.html');
+    }catch(e){status(e.message||'Não foi possível entrar.');submit.disabled=false}
+  });
 }
