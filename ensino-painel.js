@@ -18,7 +18,7 @@ async function init(){
    const {data,error}=await sb.auth.getUser();if(error||!data?.user){location.replace('login.html');return}
    ME=await request('/me');
    $('user-name').textContent=ME.nome||ME.username;
-   $('role').textContent=({student:'ÁREA DO ALUNO',teacher:'ÁREA DOCENTE',guardian:'ÁREA DA FAMÍLIA',admin:'ADMINISTRAÇÃO'})[ME.perfil]||'INSTITUTO ENSINOMEU';
+   $('role').textContent=({student:'ÁREA DO ALUNO',teacher:'COORDENAÇÃO PEDAGÓGICA',guardian:'ÁREA DA FAMÍLIA',admin:'ADMINISTRAÇÃO'})[ME.perfil]||'INSTITUTO ENSINOMEU';
    $('welcome').textContent='Bem-vindo(a), '+String(ME.nome||'estudante');
    const g=await request('/series');GRADES=g.series;
    const h=await request('/historico');HISTORY=h.resultados;
@@ -26,6 +26,7 @@ async function init(){
    if(ME.perfil==='guardian')await renderFamily();
    if(ME.perfil==='admin'){$('admin-panel').classList.remove('hidden')}
    const chosen=new URLSearchParams(location.search).get('serie');
+   $('back').hidden=GRADES.length===1;
    if(chosen&&GRADES.some(g=>g.id===chosen))await chooseGrade(chosen);
    else if(GRADES.length===1)await chooseGrade(GRADES[0].id);
  }catch(err){status('Não foi possível carregar o painel: '+err.message);$('welcome').textContent='Erro ao carregar sua área';console.error(err)}
