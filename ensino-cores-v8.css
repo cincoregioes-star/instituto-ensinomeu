@@ -1,0 +1,61 @@
+/* Instituto EnsinoMeu — Tema V8 UniBF-inspirado | 2026-11-04
+ * Criação original: identidade azul-marinho, esmeralda, azul royal e dourado.
+ * Não altera regras de acesso, dados ou comportamento pedagógico.
+ */
+:root{--em-navy:#052d4c;--em-deep:#05243d;--em-blue:#1269c0;--em-green:#078558;--em-teal:#02a8ac;--em-gold:#f5bc29;--em-paper:#f2f7fa;--em-ink:#082d47}
+html{scroll-padding-top:94px}
+body[data-em-page]{background:linear-gradient(180deg,#eef5fa 0%,#f8fbfd 55%,#eaf4f0 100%);color:var(--em-ink)}
+body[data-em-page] header{background:linear-gradient(100deg,#052b4b,#075b61)!important;color:#fff!important;box-shadow:0 5px 20px #052b4b28}
+body[data-em-page] header a,body[data-em-page] header nav a{color:#fff}
+body[data-em-page] header a:hover{color:#f6ca57}
+body[data-em-page] header img{object-fit:contain}
+body[data-em-page] .hero{background:linear-gradient(112deg,#053352 0%,#074c75 43%,#038879 100%)!important;border-bottom:5px solid #f5bd2f!important;color:#fff!important}
+body[data-em-page] .hero h1{color:#fff}
+body[data-em-page] .hero p{color:#e6f9f5}
+body[data-em-page] .kicker,body[data-em-page] .small{color:#ffe17d}
+body[data-em-page] .chips span,body[data-em-page] .badges span{background:#ffffff19;border-color:#ffffff5c;color:#fff}
+body[data-em-page] main{max-width:1190px}
+body[data-em-page] .card,body[data-em-page] .panel,body[data-em-page] .intro-card,body[data-em-page] .lesson,body[data-em-page] .user-card{border-color:#d4e7e4;box-shadow:0 10px 26px #07394b13}
+body[data-em-page] .card h2,body[data-em-page] .panel h2{color:#084363}
+body[data-em-page] .card:nth-child(4n+1){border-top:4px solid #07865b}
+body[data-em-page] .card:nth-child(4n+2){border-top:4px solid #1b6ed1}
+body[data-em-page] .card:nth-child(4n+3){border-top:4px solid #ecad19}
+body[data-em-page] .card:nth-child(4n+4){border-top:4px solid #03a7b3}
+body[data-em-page] .btn,body[data-em-page] .primary,body[data-em-page] .video-actions button{background:linear-gradient(125deg,#05845e,#086d57);box-shadow:0 4px 12px #036a502a;color:#fff;border:0}
+body[data-em-page] .btn:hover,body[data-em-page] .primary:hover,body[data-em-page] .video-actions button:hover{filter:brightness(1.07)}
+body[data-em-page] .btn.secondary,body[data-em-page] .btn.alt,body[data-em-page] .btn.outline{background:#eff9f3;color:#07654e;border:1px solid #add4c2;box-shadow:none}
+body[data-em-page] .player,body[data-em-page] .player-wrap{border:3px solid #057c62;border-radius:18px;box-shadow:0 16px 35px #09364e28;overflow:hidden}
+body[data-em-page] .card,body[data-em-page] .intro-card{background:#fff;border-radius:16px}
+body[data-em-page] .lesson.available{background:#effff8;border-color:#8ed5be}
+body[data-em-page] .status{font-weight:800}
+body[data-em-page] footer{background:#062c48;color:#e1f4f1}
+body[data-em-page] a:focus-visible,body[data-em-page] button:focus-visible{outline:3px solid #f4b52c;outline-offset:3px}
+body[data-em-page="painel"]{background:#f0f6fa}
+body[data-em-page="painel"] .intro{background:linear-gradient(100deg,#0b67aa,#08785c)!important}
+body[data-em-page="painel"] .stat:nth-child(3n+1){background:linear-gradient(120deg,#067c60,#03a889);color:#fff;border:0}
+body[data-em-page="painel"] .stat:nth-child(3n+2){background:linear-gradient(120deg,#1266c0,#0a82d8);color:#fff;border:0}
+body[data-em-page="painel"] .stat:nth-child(3n+3){background:linear-gradient(120deg,#c18605,#f2b719);color:#fff;border:0}
+body[data-em-page="painel"] .count .stat span,body[data-em-page="painel"] .count .stat strong{color:#fff}
+body[data-em-page="painel"] .grade-card{background:linear-gradient(160deg,#fff,#f0faf7);border-left:4px solid #048764;border-top:1px solid #cae2dd}
+body[data-em-page="painel"] .grade-card[data-stage="Fundamental II"]{border-left-color:#1c79d1}
+body[data-em-page="painel"] .grade-card[data-stage="Ensino Médio"]{border-left-color:#df9e0e}
+body[data-em-page="painel"] .grade-card:hover{box-shadow:0 12px 28px #07607826;transform:translateY(-3px)}
+body[data-em-page="painel"] .subject{background:#f7fbff;border-left:4px solid #02795d}
+body[data-em-page="painel"] .subject:nth-child(4n+2){border-left-color:#1878d1}
+body[data-em-page="painel"] .subject:nth-child(4n+3){border-left-color:#e8ae26}
+body[data-em-page="painel"] .subject:nth-child(4n+4){border-left-color:#05a5b1}
+body[data-em-page="painel"] .subject summary{background:#f8fcff}
+body[data-em-page="painel"] .subject[open] summary{background:#e3f5ef}
+body[data-em-page="painel"] .panel{background:#fff}
+body[data-em-page="painel"] .notice{background:#e6f5ee;border-left:4px solid #03875d;color:#225848}
+body[data-em-page="admin"]{background:#f1f6fc}
+body[data-em-page="admin"] .user-card{border-left:5px solid #067d5c}
+body[data-em-page="admin"] .user-card:nth-child(4n+2){border-left-color:#1374ca}
+body[data-em-page="admin"] .user-card:nth-child(4n+3){border-left-color:#e5ad25}
+body[data-em-page="admin"] .user-card:nth-child(4n+4){border-left-color:#11a6a7}
+body[data-em-page="planos"] .plan-card,body[data-em-page="planos"] article{box-shadow:0 9px 26px #0a386019}
+body[data-em-page="planos"] article:nth-of-type(4n+1){border-top:4px solid #09865e}
+body[data-em-page="planos"] article:nth-of-type(4n+2){border-top:4px solid #1874cf}
+body[data-em-page="planos"] article:nth-of-type(4n+3){border-top:4px solid #ecc046}
+body[data-em-page="planos"] article:nth-of-type(4n+4){border-top:4px solid #07aab2}
+@media(max-width:700px){body[data-em-page] .hero{padding-block:30px!important}body[data-em-page] .player,body[data-em-page] .player-wrap{border-width:2px}}
