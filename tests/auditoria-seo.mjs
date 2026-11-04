@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const read=p=>readFileSync(p,'utf8');
 const base='https://cincoregioes-star.github.io/instituto-ensinomeu/';
-const pages=['index.html','planos.html','privacidade.html','matematica-9ano.html','geografia-9ano.html','historia-9ano.html','portugues-9ano.html'];
+const pages=['index.html','planos.html','privacidade.html','matematica-9ano.html','geografia-9ano.html','historia-9ano.html','portugues-9ano.html','ciencias-9ano.html'];
 const protectedPages=['login.html','cadastro.html','painel.html','admin.html','apostilas.html','trilha.html','prova.html'];
 const sitemap=read('sitemap.xml');
 for(const file of pages){
