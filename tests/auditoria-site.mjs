@@ -15,13 +15,13 @@ const theme=read('ensino-cores-v8.css');
 const panelTheme=read('ensino-painel-v8.css');
 const plans=read('planos.html');
 check('Arquivos da versão V8 presentes',()=>{
- for(const f of ['index.html','login.html','cadastro.html','painel.html','admin.html','config.js','ensino-auth.js','ensino-painel.js','ensino-admin.js','ensino-cores-v8.css','ensino-painel-v8.css','assets/brasao.png','assets/favicon.png','planos.html','privacidade.html','matematica-9ano.html','geografia-9ano.html','historia-9ano.html','portugues-9ano.html'])assert.ok(existsSync(f),f);
+ for(const f of ['index.html','login.html','cadastro.html','painel.html','admin.html','config.js','ensino-auth.js','ensino-painel.js','ensino-admin.js','ensino-cores-v8.css','ensino-painel-v8.css','assets/brasao.png','assets/favicon.png','planos.html','privacidade.html','matematica-9ano.html','geografia-9ano.html','historia-9ano.html','portugues-9ano.html','ciencias-9ano.html'])assert.ok(existsSync(f),f);
 });
 check('Título correto e acesso às aulas gravadas',()=>{
  assert.ok(home.includes('Aulas gravadas disponíveis'));
  assert.ok(home.includes('id="aulas-gravadas"'));
  assert.ok(!home.includes('<h2>Aulas disponíveis</h2>'));
- for(const f of ['matematica-9ano.html','geografia-9ano.html','historia-9ano.html','portugues-9ano.html'])assert.ok(home.includes('href="'+f+'"'),f);
+ for(const f of ['matematica-9ano.html','geografia-9ano.html','historia-9ano.html','portugues-9ano.html','ciencias-9ano.html'])assert.ok(home.includes('href="'+f+'"'),f);
 });
 check('E-books apresentados separadamente sem disponibilidade inventada',()=>{
  assert.ok(home.includes('id="ebooks"'));
