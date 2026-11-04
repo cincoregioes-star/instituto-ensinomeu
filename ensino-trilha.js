@@ -63,6 +63,14 @@ async function init(){
   const actions=make('div','actions'),btn=make('button','btn',a.exercicios?'Praticar ('+a.exercicios+' questões)':'Exercícios em preparação');
   btn.type='button';btn.disabled=!a.exercicios;btn.addEventListener('click',()=>launch(a.numero));
   if(videosGeografiaPublicos[a.numero]){const assistir=make('a','btn','▶ Assistir videoaula');assistir.href=videosGeografiaPublicos[a.numero];assistir.setAttribute('aria-label','Assistir à videoaula '+a.numero+' de Geografia');actions.append(assistir)}
+  if(sid==='fii-9-geografia' && term==='T1' && Number(a.numero)===1){
+   const simulado=make('a','btn','🎮 Simulado digital — 20 questões');
+   simulado.href='simulados/geografia-9ano-aula01.html';
+   simulado.target='_blank';
+   simulado.rel='noopener';
+   simulado.setAttribute('aria-label','Abrir simulado gamer da Aula 01 de Geografia do 9º ano');
+   actions.append(simulado);
+  }
   actions.append(btn);card.append(actions);list.append(card);
  });
  $('content').hidden=false;message('Trilha carregada. Selecione uma aula para começar.');
