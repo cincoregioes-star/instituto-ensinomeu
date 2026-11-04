@@ -1,0 +1,42 @@
+name: Publicar videoaula de Língua Portuguesa — 9º ano
+on:
+  push:
+    branches: [main]
+    paths:
+      - "videos/9ano/portugues/.partes/**"
+      - ".github/workflows/publicar-video-portugues.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publicar-portugues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reunir partes e conferir integridade
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir="videos/9ano/portugues"
+          mkdir -p "$dir"
+          mapfile -t partes < <(find "$dir/.partes" -maxdepth 1 -type f -name 'aula01-frases-oracoes-periodos.mp4.part*' | sort)
+          test "${#partes[@]}" -eq 26
+          cat "${partes[@]}" > "$dir/aula01-frases-oracoes-periodos.mp4"
+          echo "476473eb522a6c6c2924aa38752fa781394bc5c7a70db74ff81ee636959c11b3  $dir/aula01-frases-oracoes-periodos.mp4" | sha256sum -c -
+          test "$(stat -c%s "$dir/aula01-frases-oracoes-periodos.mp4")" -eq 12665034
+          rm -f "${partes[@]}"
+          rmdir "$dir/.partes" 2>/dev/null || true
+      - name: Publicar video completo no GitHub Pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A videos/9ano/portugues
+          if ! git diff --cached --quiet; then
+            git commit -m "Publicar videoaula 01 de Portugues 9o ano validada por SHA-256"
+            git push origin HEAD:main
+          fi

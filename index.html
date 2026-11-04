@@ -135,6 +135,18 @@
       Promise.all(urls.map(function(url){return fetch(url,{method:'HEAD',cache:'no-store'}).then(function(r){return r.ok}).catch(function(){return false})})).then(function(ok){if(ok.some(Boolean)){const e=document.getElementById('aula-historia-gratis-home');if(e)e.hidden=false;}});
     })();
     </script>
+    <section id="aula-portugues-gratis-home" hidden aria-labelledby="portugues-gratis-home-titulo" style="background:linear-gradient(110deg,#063f5d,#08725a);color:white;border-block:2px solid #eac360">
+      <div class="wrap" style="padding-top:23px;padding-bottom:23px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px"><span style="font-size:12px;color:#ffdc81;font-weight:800;letter-spacing:.08em">AULA GRATUITA · 9º ANO · LÍNGUA PORTUGUESA</span>
+          <h2 id="portugues-gratis-home-titulo" style="color:#fff;font-size:clamp(21px,3vw,30px);margin:4px 0">Frases, orações e períodos</h2>
+          <p style="color:#e2f5ee;margin:0">Aula 01 · 40 slides · 11min55s · Narração Fernanda · Sem cadastro.</p>
+        </div>
+        <a class="button button-dark" href="portugues-9ano.html" style="flex:none">Assistir gratuitamente <svg class="icon arrow"><use href="#ico-arrow"/></svg></a>
+      </div>
+    </section>
+    <script>
+    (function(){fetch('videos/9ano/portugues/aula01-frases-oracoes-periodos.mp4',{method:'HEAD',cache:'no-store'}).then(function(r){if(r.ok){const e=document.getElementById('aula-portugues-gratis-home');if(e)e.hidden=false;}}).catch(function(){});})();
+    </script>
     <section class="access-section" aria-label="Acessos principais">
       <div class="wrap access-panel"><div class="access-intro"><span class="overline">ACESSO RÁPIDO</span><h2>Como deseja começar?</h2><p>Escolha sua área dentro da plataforma.</p><p class="new-student">Primeiro acesso? <a href="cadastro.html">Faça seu cadastro gratuito</a>.</p></div><div class="access-links">
         <a href="login.html" class="access-link"><span class="access-icon"><svg class="icon"><use href="#ico-book"/></svg></span><span><strong>Sou aluno</strong><small>Minhas disciplinas e atividades</small></span><svg class="icon access-arrow"><use href="#ico-arrow"/></svg></a>
