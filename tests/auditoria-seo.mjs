@@ -1,37 +1,31 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
-
-const read = path => readFileSync(path,'utf8');
-const base = 'https://cincoregioes-star.github.io/instituto-ensinomeu/';
-const publicPages = ['index.html','planos.html','privacidade.html'];
-const restrictedPages = ['login.html','cadastro.html','painel.html','admin.html','apostilas.html','trilha.html','prova.html'];
-const sitemap = read('sitemap.xml');
-
-for (const file of publicPages) {
-  const content=read(file);
-  const canonical = file === 'index.html' ? base : base+file;
-  assert.ok(content.includes('rel="canonical"'),file+' canonical ausente');
-  assert.ok(content.includes('href="'+canonical+'"'),file+' canonical incorreta');
-  assert.ok(content.includes('property="og:url"'),file+' Open Graph incompleto');
-  assert.ok(content.includes('property="og:image"'),file+' imagem Open Graph ausente');
-  assert.ok(!/name="robots"[^>]*noindex/i.test(content),file+' marcado noindex');
-  assert.ok(sitemap.includes('<loc>'+canonical+'</loc>'),file+' ausente no sitemap');
-  console.log('OK indexável: '+canonical);
+import {readFileSync} from 'node:fs';
+const read=p=>readFileSync(p,'utf8');
+const base='https://cincoregioes-star.github.io/instituto-ensinomeu/';
+const pages=['index.html','planos.html','privacidade.html','matematica-9ano.html','geografia-9ano.html','historia-9ano.html','portugues-9ano.html'];
+const protectedPages=['login.html','cadastro.html','painel.html','admin.html','apostilas.html','trilha.html','prova.html'];
+const sitemap=read('sitemap.xml');
+for(const file of pages){
+ const text=read(file),url=file==='index.html'?base:base+file;
+ assert.ok(text.includes('rel="canonical"'),file+' sem canonical');
+ assert.ok(text.includes('href="'+url+'"'),file+' canonical divergente');
+ assert.ok(text.includes('property="og:url"'),file+' sem og:url');
+ assert.ok(text.includes('property="og:image"'),file+' sem imagem social');
+ assert.ok(!/name="robots"[^>]*noindex/i.test(text),file+' indevidamente noindex');
+ assert.ok(sitemap.includes('<loc>'+url+'</loc>'),file+' ausente no sitemap');
+ console.log('OK público: '+file);
 }
-for(const file of restrictedPages){
-  const content=read(file);
-  assert.ok(/name="robots"[^>]*noindex/i.test(content),file+' deveria ser noindex');
-  assert.ok(!sitemap.includes('<loc>'+base+file+'</loc>'),file+' página restrita no sitemap');
+for(const file of protectedPages){
+ const text=read(file);
+ assert.ok(/name="robots"[^>]*noindex/i.test(text),file+' deve ser noindex');
+ assert.ok(!sitemap.includes('<loc>'+base+file+'</loc>'),file+' não pode aparecer no sitemap');
 }
-const home=read('index.html');
-const structured=home.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
-assert.ok(structured,'dados estruturados não encontrados');
-const json=JSON.parse(structured[1]);
-assert.equal(json['@context'],'https://schema.org');
-assert.ok(json['@graph'].some(e=>e['@type']==='EducationalOrganization' && e.url===base));
-assert.ok(json['@graph'].some(e=>e['@type']==='WebSite' && e.url===base));
-assert.ok(!sitemap.includes('login.html')&&!sitemap.includes('admin.html'));
-const urls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-assert.equal(urls.length,publicPages.length,'sitemap deve conter somente páginas públicas');
-assert.equal(new Set(urls).size,urls.length,'URLs duplicadas no sitemap');
-console.log('Auditoria de SEO e indexabilidade aprovada.');
+const index=read('index.html'),m=index.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+assert.ok(m,'JSON-LD ausente');
+const structured=JSON.parse(m[1]);assert.equal(structured['@context'],'https://schema.org');
+assert.ok(structured['@graph'].some(x=>x['@type']==='EducationalOrganization'&&x.url===base));
+assert.ok(structured['@graph'].some(x=>x['@type']==='WebSite'&&x.url===base));
+const links=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>x[1]);
+assert.equal(links.length,pages.length,'Sitemap deve incluir apenas páginas públicas enumeradas');
+assert.equal(new Set(links).size,links.length,'URLs duplicadas');
+console.log('Auditoria SEO V8 aprovada.');
