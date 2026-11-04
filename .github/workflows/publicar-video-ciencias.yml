@@ -1,0 +1,53 @@
+name: Publicar videoaula de Ciências — 9º ano
+on:
+  push:
+    branches: [main]
+    paths:
+      - "videos/9ano/ciencias/.partes/**"
+      - ".github/workflows/publicar-video-ciencias.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  reconstruir-ciencias:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruir MP4 e validar a integridade
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir="videos/9ano/ciencias"
+          video="$dir/aula01-materia-atomos.mp4"
+          mkdir -p "$dir"
+          mapfile -t partes < <(find "$dir/.partes" -maxdepth 1 -type f -name 'aula01-materia-atomos.mp4.part*.b64.txt' | sort)
+          if (( ${#partes[@]} == 0 )); then
+            echo "Sem partes pendentes para reconstrução."
+            test -s "$video"
+            exit 0
+          fi
+          test "${#partes[@]}" -eq 16
+          tmp="$video.partial"
+          : > "$tmp"
+          for p in "${partes[@]}"; do
+            base64 --decode "$p" >> "$tmp"
+          done
+          echo "ccf3390a6f9f1b7294ffb0519e2bfe6eebf30b09304ea844162a7e8584db0fbc  $tmp" | sha256sum -c -
+          test "$(stat -c%s "$tmp")" -eq 16640913
+          mv "$tmp" "$video"
+          rm -f "${partes[@]}"
+          rmdir "$dir/.partes" 2>/dev/null || true
+      - name: Publicar MP4 validado e remover partes temporárias
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A videos/9ano/ciencias
+          if ! git diff --cached --quiet; then
+            git commit -m "Publicar Ciências 9º ano Aula 01 com narração do Prof Matheus Silva"
+            git push origin HEAD:main
+          fi
