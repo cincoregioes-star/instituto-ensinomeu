@@ -4,7 +4,7 @@ const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const sb=createClient(C.supabaseUrl,C.supabasePublishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 const base=C.supabaseUrl+'/functions/v1/ensino-api';
-let ME=null,GRADES=[],SELECTED=null,COURSES=[],HISTORY=[],EXAM=null;
+let ME=null,GRADES=[],SELECTED=null,COURSES=[],HISTORY=[],EXAM=null,FILTER_MODE='all';
 async function request(path,opts={}){
  const session=await sb.auth.getSession();const jwt=session.data?.session?.access_token;if(!jwt)throw Error('Sessão expirada. Entre novamente.');
  const res=await fetch(base+path,{...opts,headers:{'Content-Type':'application/json','apikey':C.supabasePublishableKey,'Authorization':'Bearer '+jwt,...opts.headers}});
@@ -18,8 +18,10 @@ async function init(){
    const {data,error}=await sb.auth.getUser();if(error||!data?.user){location.replace('login.html');return}
    ME=await request('/me');
    $('user-name').textContent=ME.nome||ME.username;
+   document.body.dataset.role=ME.perfil;
+   if(ME.perfil==='admin')$('admin-side').hidden=false;
    $('role').textContent=({student:'ÁREA DO ALUNO',teacher:'COORDENAÇÃO PEDAGÓGICA',guardian:'ÁREA DA FAMÍLIA',admin:'ADMINISTRAÇÃO'})[ME.perfil]||'INSTITUTO ENSINOMEU';
-   $('welcome').textContent='Bem-vindo(a), '+String(ME.nome||'estudante');
+   $('welcome').textContent='Olá, '+String(ME.nome||'estudante');
    const g=await request('/series');GRADES=g.series;
    const h=await request('/historico');HISTORY=h.resultados;
    $('series-count').textContent=GRADES.length;$('quiz-count').textContent=HISTORY.length;renderGrades();
@@ -42,7 +44,7 @@ async function renderFamily(){
 }
 async function chooseGrade(id){
  const grade=GRADES.find(x=>x.id===id);if(!grade)return;
- SELECTED=grade;$('grade-home').classList.add('hidden');$('learning').classList.remove('hidden');
+ SELECTED=grade;FILTER_MODE='all';$('grade-home').classList.add('hidden');$('learning').classList.remove('hidden');
  $('stage-name').textContent=grade.etapa;$('selected-name').textContent=grade.serie;
  $('selected-subtitle').textContent=grade.disciplinas+' disciplinas • 3 trimestres';$('search').value='';
  $('courses').textContent='Carregando disciplinas…';
@@ -51,14 +53,39 @@ async function chooseGrade(id){
 }
 function renderCourses(){
  const query=$('search').value.toLocaleLowerCase('pt-BR');
- const items=COURSES.filter(x=>x.nome.toLocaleLowerCase('pt-BR').includes(query));
- $('courses').innerHTML=items.map(c=>`<details class="subject"><summary><span><b>${esc(c.nome)}</b><small>Plano anual • três trimestres</small></span></summary><div class="sub-body">${c.trimestres.map(t=>`<div class="trimester"><b>${esc(t.titulo)}</b><div class="actions"><button type="button" class="btn alt" data-action="pdf" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.pdf?'':'disabled'}>Abrir apostila PDF</button><button type="button" class="btn" data-action="quiz" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.simulado?'':'disabled'}>Fazer simulado</button><a class="btn alt" href="trilha.html?disciplina=${encodeURIComponent(c.id)}&trimestre=${encodeURIComponent(t.id)}" style="text-decoration:none">Aulas, vídeos e exercícios →</a></div></div>`).join('')}</div></details>`).join('')||'<p>Nenhuma disciplina encontrada.</p>';
+ const items=COURSES.filter(x=>x.nome.toLocaleLowerCase('pt-BR').includes(query)&&(FILTER_MODE==='all'||x.trimestres.some(t=>FILTER_MODE==='pdf'?t.pdf:t.simulado)));
+ $('courses').innerHTML=items.map(c=>`<details class="subject"><summary><span><b>${esc(c.nome)}</b><small>Plano anual • três trimestres</small></span></summary><div class="sub-body">${c.trimestres.filter(t=>FILTER_MODE==='all'||(FILTER_MODE==='pdf'?t.pdf:t.simulado)).map(t=>`<div class="trimester"><b>${esc(t.titulo)}</b><div class="actions"><button type="button" class="btn alt" data-action="pdf" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.pdf?'':'disabled'}>Abrir e-book PDF</button><button type="button" class="btn" data-action="quiz" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.simulado?'':'disabled'}>Fazer simulado</button><a class="btn alt" href="trilha.html?disciplina=${encodeURIComponent(c.id)}&trimestre=${encodeURIComponent(t.id)}" style="text-decoration:none">Aulas, vídeos e exercícios →</a></div></div>`).join('')}</div></details>`).join('')||'<p>'+(FILTER_MODE==='pdf'?'Nenhum e-book autorizado encontrado nesta série.':FILTER_MODE==='simulado'?'Nenhum simulado autorizado nesta série.':'Nenhuma disciplina encontrada.')+'</p>';
 }
 function renderHistory(){
  const list=HISTORY.filter(h=>COURSES.some(c=>c.id===h.course_id));
  $('history').innerHTML=list.length?list.slice(0,25).map(h=>`<article><b>${esc(COURSES.find(c=>c.id===h.course_id)?.nome||h.course_id)}</b><div>${esc(h.term_id)} • ${h.correct}/${h.total} questões</div><small>${esc(new Date(h.done_at).toLocaleString('pt-BR'))}</small></article>`).join(''):'<p class="helper">Nenhuma avaliação registrada nesta série.</p>';
 }
 function renderQuestion(){const q=EXAM.questions[EXAM.index];$('quiz-step').textContent='Questão '+(EXAM.index+1)+' de '+EXAM.questions.length;$('quiz-question').textContent=q.pergunta;$('quiz-options').innerHTML=q.opcoes.map((v,i)=>`<button type="button" class="quiz-option" data-answer="${i}">${'ABCD'[i]}. ${esc(v)}</button>`).join('');$('quiz-next').textContent=EXAM.index+1===EXAM.questions.length?'Corrigir simulado':'Próxima questão';$('quiz-next').disabled=true;$('quiz-next').classList.remove('hidden');$('quiz-error').textContent=''}
+
+async function openArea(action){
+ if(action==='grades'){
+   FILTER_MODE='all';
+   if(GRADES.length===1){if(!SELECTED)await chooseGrade(GRADES[0].id);document.getElementById('selected-name').scrollIntoView({behavior:'smooth',block:'start'});return}
+   if(SELECTED)$('back').click();
+   $('grade-home').scrollIntoView({behavior:'smooth',block:'start'});
+   return;
+ }
+ if(!SELECTED){
+   if(GRADES.length===1)await chooseGrade(GRADES[0].id);
+   else{$('grade-home').scrollIntoView({behavior:'smooth',block:'start'});return}
+ }
+ if(action==='history'){$('meu-progresso').scrollIntoView({behavior:'smooth',block:'start'});return}
+ FILTER_MODE=action==='ebooks'?'pdf':action==='exams'?'simulado':'all';
+ renderCourses();
+ const details=[...document.querySelectorAll('#courses details.subject')];
+ if(action==='ebooks'||action==='exams')details.forEach(el=>el.open=true);
+ $('expand-all').textContent=(action==='ebooks'||action==='exams')?'Recolher disciplinas':'Expandir disciplinas';
+ $('courses').scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.querySelectorAll('[data-action-side]').forEach(el=>{
+ el.addEventListener('click',()=>openArea(el.dataset.actionSide).catch(e=>alert(e.message||'Falha ao abrir área')));
+});
+
 $('grade-cards').addEventListener('click',e=>{const button=e.target.closest('button[data-grade]');if(button)chooseGrade(button.dataset.grade)});
 $('back').addEventListener('click',()=>{SELECTED=null;COURSES=[];$('grade-home').classList.remove('hidden');$('learning').classList.add('hidden');history.replaceState(null,'',location.pathname)});
 $('search').addEventListener('input',renderCourses);
