@@ -28,19 +28,28 @@ main{max-width:1260px;margin:auto;padding:26px 20px 60px}h1{font-size:clamp(27px
 .actions{display:flex;gap:7px;flex-wrap:wrap}.btn{border:0;border-radius:9px;padding:10px 12px;font-weight:800;font-size:12px}.btn.primary{background:#0b634e;color:#fff}.btn.secondary{background:#bbd8ca;color:#184d3f;border:1px solid #8eb6a2}.btn:disabled{opacity:.45;cursor:not-allowed}
 .empty{padding:20px;color:#4f6f65}.footer{color:#55736a;text-align:center;font-size:12px;padding:12px}
 @media(max-width:870px){.user-card{grid-template-columns:1fr 1fr}.controls{grid-column:1/-1}.actions{justify-content:flex-start}}@media(max-width:550px){main{padding:16px 12px}.stats{grid-template-columns:1fr}.user-card{grid-template-columns:1fr}.controls{grid-column:auto}.top nav{font-size:12px}.panel{padding:14px}}
-</style>  <link rel="stylesheet" href="ensino-visual-forte-v744.css?v=7441">
+</style>  <link rel="stylesheet" href="ensino-visual-forte-v744.css?v=7441"><link rel="stylesheet" href="ensino-cores-v8.css?v=8"><link rel="stylesheet" href="ensino-painel-v8.css?v=8">
 </head><body>
 <header class="top"><a class="brand" href="index.html"><img src="assets/brasao.png" alt="Brasão EnsinoMeu"><span>INSTITUTO ENSINOMEU</span></a><nav aria-label="Navegação administrativa"><a href="painel.html">Meu painel</a><a href="planos.html">Planos</a><button id="logout" type="button">Sair</button></nav></header>
-<main>
-<section class="intro"><span class="eyebrow">Área restrita • Piloto V7.44</span><h1>Administração de matrículas</h1><p>Consulte perfis autorizados e controle os acessos gratuitos de teste por ano/série. Todas as ações são validadas no servidor e registradas para auditoria.</p></section>
-<div class="notice"><strong>Apostilas prontas:</strong> <a href="apostilas.html">Abrir importação privada dos 309 PDFs →</a></div>
+<div class="app-shell"><aside class="app-sidebar" aria-label="Menu administrativo">
+<span class="sidebar-title">Gestão do Instituto</span><nav class="sidebar-links" aria-label="Menu lateral administrativo">
+<a href="index.html"><span class="side-icon" aria-hidden="true">⌂</span>Início</a>
+<a href="painel.html"><span class="side-icon" aria-hidden="true">▦</span>Meu painel</a>
+<a class="active" href="#administration"><span class="side-icon" aria-hidden="true">♙</span>Usuários e matrículas</a>
+<a href="apostilas.html"><span class="side-icon" aria-hidden="true">▤</span>E-books</a>
+<a href="index.html#aulas-gravadas"><span class="side-icon" aria-hidden="true">▶</span>Aulas gravadas</a>
+<a href="planos.html"><span class="side-icon" aria-hidden="true">◈</span>Planos por série</a>
+</nav><div class="sidebar-divider"></div><p class="sidebar-foot">Área administrativa<br>Dados restritos • Acesso autorizado.</p>
+</aside><div class="app-main"><main>
+<section class="intro"><span class="eyebrow">Área restrita • Piloto V7.44</span><h1>Painel de administração</h1><p>Consulte perfis autorizados e controle os acessos gratuitos de teste por ano/série. Todas as ações são validadas no servidor e registradas para auditoria.</p></section>
+<div class="notice"><strong>E-books catalogados:</strong> <a href="apostilas.html">Ver gestão privada dos 309 materiais →</a></div>
 <div class="notice"><strong>Limites desta versão:</strong> não cria contas, não redefine senhas, não altera perfis e não ativa cobranças. Matrículas pagas e manuais não podem ser convertidas por este painel. Vínculos familiares exigem verificação administrativa separada.</div>
 <div id="feedback" role="status" aria-live="polite" class="status">Verificando autorização…</div>
 <section id="administration" hidden>
 <div class="stats" aria-label="Indicadores"><div class="stat"><strong id="total-users">—</strong><span>Perfis cadastrados</span></div><div class="stat"><strong id="total-students">—</strong><span>Perfis de estudantes</span></div><div class="stat"><strong id="total-enrollments">—</strong><span>Matrículas ativas</span></div></div>
 <div class="panel"><h2>Usuários e séries</h2><p class="muted">Acesso exclusivo do administrador. E-mails e matrículas não são expostos na vitrine pública.</p>
-<div class="toolrow"><label for="filter">Filtrar perfil <select id="filter"><option value="all">Todos</option><option value="admin">Administrador</option><option value="teacher">Professor / Diretor</option><option value="guardian">Responsável</option><option value="student">Estudante</option></select></label><button id="refresh" type="button" class="btn secondary">Atualizar lista</button></div>
+<div class="toolrow"><label for="filter">Filtrar perfil <select id="filter"><option value="all">Todos</option><option value="admin">Administrador</option><option value="teacher">Coordenador / Professor</option><option value="guardian">Responsável</option><option value="student">Estudante</option></select></label><button id="refresh" type="button" class="btn secondary">Atualizar lista</button></div>
 <div id="users" aria-live="polite"></div></div></section>
-</main><footer class="footer">Instituto EnsinoMeu • Administração técnica de teste • Dados restritos</footer>
+</main></div></div><footer class="footer">Instituto EnsinoMeu • Administração técnica de teste • Dados restritos</footer>
 <script src="config.js"></script><script type="module" src="ensino-admin.js"></script>
 </body></html>
