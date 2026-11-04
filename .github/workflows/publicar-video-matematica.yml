@@ -1,0 +1,47 @@
+name: Publicar videoaula de Matemática — 9º ano
+on:
+  push:
+    branches: [main]
+    paths:
+      - "videos/9ano/matematica/.partes/**"
+      - ".github/workflows/publicar-video-matematica.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  reconstruir-video:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruir o MP4 original e validar SHA-256
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir="videos/9ano/matematica"
+          mkdir -p "$dir"
+          mapfile -t partes < <(find "$dir/.partes" -maxdepth 1 -type f -name 'aula01-numeros-reais.mp4.part*' | sort)
+          if (( ${#partes[@]} == 0 )); then
+            echo "MP4 já publicado; não há partes para reconstruir."
+            test -s "$dir/aula01-numeros-reais.mp4"
+            exit 0
+          fi
+          test "${#partes[@]}" -eq 15
+          cat "${partes[@]}" > "$dir/aula01-numeros-reais.mp4"
+          echo "50865078bf887350bd5ac265fb28ce765276186cf5b05a3b88448a3d42a207c3  $dir/aula01-numeros-reais.mp4" | sha256sum -c -
+          test "$(stat -c%s "$dir/aula01-numeros-reais.mp4")" -eq 23076204
+          rm -f "${partes[@]}"
+          rmdir "$dir/.partes" 2>/dev/null || true
+      - name: Publicar MP4 e remover partes temporárias
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A videos/9ano/matematica
+          if ! git diff --cached --quiet; then
+            git commit -m "Publicar aula 01 de Matemática 9º ano com voz Fernanda"
+            git push origin HEAD:main
+          fi
