@@ -16,8 +16,34 @@ button{font:inherit;cursor:pointer}.primary{width:100%;border:0;border-radius:11
 .note{font-size:12px;line-height:1.5;color:#537174;background:#eef7f1;border:1px solid #cce3d6;border-radius:10px;padding:12px;margin-top:12px}
 .back{margin-top:22px;text-decoration:none;color:#075d48;font-size:14px;font-weight:850;align-self:flex-start}.back:hover{text-decoration:underline}
 @media(max-width:700px){.shell{grid-template-columns:1fr}.intro{padding:23px 28px}.intro img{width:55px;height:55px}.intro h1{margin:12px 0 7px;font-size:25px}.intro p{font-size:13px}.main{padding:31px 26px}}
+</style><style>
+/* Login V8 — identidade acadêmica colorida */
+body{background:radial-gradient(circle at 85% 8%,#088d90 0%,#096aa0 24%,#073c68 52%,#051f3d 100%)}
+.shell{box-shadow:0 35px 80px #03162f99;border:1px solid #ffffff4a;max-width:970px}
+.intro{background:linear-gradient(155deg,#053456,#0866a0 52%,#06845f);position:relative;overflow:hidden}
+.intro:after{content:"";position:absolute;border:70px solid #ffffff14;width:265px;height:265px;right:-183px;top:-150px;border-radius:50%;pointer-events:none}
+.intro h1{font-size:clamp(32px,3.8vw,47px);max-width:430px}
+.intro h1 span{color:#ffe181}
+.intro p{font-size:16px;line-height:1.7;color:#e1f4f7}
+.intro small{font-size:12px;color:#ffe390}
+.login-highlights{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:25px 0 0}
+.login-highlights span{border:1px solid #ffffff5c;border-radius:10px;padding:10px 12px;font-size:12px;font-weight:900;color:#fff;background:#ffffff19}
+.login-highlights span:nth-child(1){background:#069b72a3}
+.login-highlights span:nth-child(2){background:#167ee4a8}
+.login-highlights span:nth-child(3){background:#c78c09c7}
+.login-highlights span:nth-child(4){background:#06a4a5a3}
+.main{background:linear-gradient(175deg,#fff,#f1f8fc)}
+.main h2{color:#063856;letter-spacing:-.03em;font-size:31px}
+.main .hint{color:#476979}
+.main label{color:#0a4764}
+.main input{border:2px solid #bad7e3;background:#fff}
+.main input:focus{border-color:#098d77;box-shadow:0 0 0 4px #15b6911c;outline:none}
+.main .primary{background:linear-gradient(110deg,#077f5a,#00967c);box-shadow:0 7px 17px #06765e38;font-weight:950}
+.main .primary:hover{background:linear-gradient(110deg,#069b70,#00a68b)}
+.main .note{background:#e8f6ef;border:1px solid #c4e6d1;color:#2d6254}
+@media(max-width:700px){.intro h1{font-size:27px}.login-highlights{margin-top:13px}.login-highlights span{padding:7px 9px}}
 </style></head>
-<body><div class="shell"><aside class="intro"><img src="assets/brasao.png" alt="Brasão do Instituto EnsinoMeu"><h1>Seu espaço de estudos.</h1><p>Acesse sua série, atividades, simulados e histórico em um painel organizado.</p><small>INSTITUTO ENSINOMEU · BNCC</small></aside>
+<body><div class="shell"><aside class="intro"><img src="assets/brasao.png" alt="Brasão do Instituto EnsinoMeu"><h1>Seu espaço de <span>estudos.</span></h1><p>Seu ambiente acadêmico com navegação simples, cores e conteúdos organizados para aprender mais.</p><div class="login-highlights"><span>▶ Aulas gravadas</span><span>▤ E-books</span><span>✓ Simulados</span><span>◈ Disciplinas</span></div><small>INSTITUTO ENSINOMEU · BNCC</small></aside>
 <main class="main"><h2>Acessar plataforma</h2><p class="hint">Digite seu usuário e sua senha de acesso.</p>
 <form id="login-form"><label for="username">Nome de usuário</label><input id="username" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Ex.: aluno5a" minlength="3" maxlength="254" required>
 <label for="password">Senha</label><input id="password" name="password" type="password" autocomplete="current-password" minlength="8" required>
