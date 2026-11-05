@@ -5,9 +5,22 @@ const endpoint=C.supabaseUrl+'/functions/v1/ensino-api',query=new URLSearchParam
 const sid=query.get('disciplina')||'',term=query.get('trimestre')||'';
 const grade='fii-9';
 let questions=[];
-const videosGeografiaPublicos = (sid === 'fii-9-geografia' && term === 'T1')
- ? {1: 'geografia-9ano.html#titulo-video', 2: 'geografia-9ano.html#titulo-video-02'}
- : {};
+const VIDEO_PUBLICO = {
+ 'fii-9-geografia':{1:'geografia-9ano.html#titulo-video',2:'geografia-9ano.html#titulo-video-02'},
+ 'fii-9-historia':{1:'historia-9ano.html'},
+ 'fii-9-matematica':{1:'matematica-9ano.html'},
+ 'fii-9-lingua-portuguesa':{1:'portugues-9ano.html'},
+ 'fii-9-ciencias':{1:'ciencias-9ano.html'}
+};
+const GAMER_PUBLICO = {
+ 'fii-9-geografia':{1:'simulados/geografia-9ano-aula01.html',2:'simulados/geografia-9ano-aula02.html'},
+ 'fii-9-historia':{1:'simulados/historia-9ano-aula01.html'},
+ 'fii-9-matematica':{1:'simulados/matematica-9ano-aula01.html'},
+ 'fii-9-lingua-portuguesa':{1:'simulados/portugues-9ano-aula01.html'},
+ 'fii-9-ciencias':{1:'simulados/ciencias-9ano-aula01.html'}
+};
+const videosGeografiaPublicos=term==='T1'?(VIDEO_PUBLICO[sid]||{}):{};
+const simuladosGamerPublicos=term==='T1'?(GAMER_PUBLICO[sid]||{}):{};
 function temVideoPublicado(a){return Boolean(videosGeografiaPublicos[a.numero] || a.video_status === 'published')}
 function message(msg,bad=false){$('feedback').textContent=msg;$('feedback').classList.toggle('error',bad)}
 async function api(path,body){
@@ -63,12 +76,10 @@ async function init(){
   const actions=make('div','actions'),btn=make('button','btn',a.exercicios?'Praticar ('+a.exercicios+' questões)':'Exercícios em preparação');
   btn.type='button';btn.disabled=!a.exercicios;btn.addEventListener('click',()=>launch(a.numero));
   if(videosGeografiaPublicos[a.numero]){const assistir=make('a','btn','▶ Assistir videoaula');assistir.href=videosGeografiaPublicos[a.numero];assistir.setAttribute('aria-label','Assistir à videoaula '+a.numero+' de Geografia');actions.append(assistir)}
-  if(sid==='fii-9-geografia' && term==='T1' && Number(a.numero)===1){
-   const simulado=make('a','btn','🎮 Simulado digital — 20 questões');
-   simulado.href='simulados/geografia-9ano-aula01.html';
-   simulado.target='_blank';
-   simulado.rel='noopener';
-   simulado.setAttribute('aria-label','Abrir simulado gamer da Aula 01 de Geografia do 9º ano');
+  if(simuladosGamerPublicos[a.numero]){
+   const simulado=make('a','btn','🎮 Simulado Gamer — 20 questões comentadas');
+   simulado.href=simuladosGamerPublicos[a.numero];
+   simulado.setAttribute('aria-label','Abrir simulado gamer da aula '+a.numero);
    actions.append(simulado);
   }
   actions.append(btn);card.append(actions);list.append(card);
