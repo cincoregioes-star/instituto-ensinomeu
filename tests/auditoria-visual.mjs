@@ -72,7 +72,9 @@ try{
   await noOverflow(page,file+' '+viewport.width);
   if(file==='painel.html'){
     if(!(await page.locator('.app-sidebar').isVisible()))failures.push('Painel: menu lateral indisponível');
-    if((await page.locator('.quick-card').count())!==4)failures.push('Painel: atalhos coloridos incompletos');
+    if((await page.locator('.quick-card').count())!==6)failures.push('Painel: são esperados seis atalhos de acesso');
+    if((await page.locator('a.quick-card[href="dashboard-aluno.html"]').count())!==1)failures.push('Painel: dashboard do aluno ausente');
+    if((await page.locator('a#painel-controle-card[hidden]').count())!==1)failures.push('Painel: controle administrativo não está oculto antes da autenticação');
     if(!(await page.locator('[data-action-side="ebooks"]').first().isVisible()))failures.push('Painel: atalho de e-books invisível');
   }
   if(file==='admin.html' && !(await page.locator('.app-sidebar').isVisible()))failures.push('Administração: menu lateral indisponível');
