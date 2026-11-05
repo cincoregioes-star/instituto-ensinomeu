@@ -102,6 +102,7 @@ function render(){
  '<p class="footer-note">Fonte: Supabase EnsinoMeu. Indicadores baseados em exercícios, simulados e avaliações efetivamente registrados; resultados de testes pilotos não têm valor de prova oficial. Nenhum dado é inventado. Limite: 1.000 registros por fonte no carregamento.</p>';
  [['subject','subject'],['period','period'],['type','type'],['user','user']].forEach(([id,key])=>{let el=$(id+'-filter');if(el)el.addEventListener('change',()=>{SELECT[key]=el.value;render()})});
  document.querySelectorAll('.select-student').forEach(el=>el.addEventListener('click',()=>{SELECT.user=el.dataset.uid;render();window.scrollTo({top:0,behavior:'smooth'})}));
+ $('csv').disabled=false;$('print').disabled=false;
  $('csv').onclick=()=>exportCsv(scope());
  $('print').onclick=()=>window.print();
 }
