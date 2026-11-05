@@ -53,10 +53,25 @@ async function chooseGrade(id){
  try{const data=await request('/cursos?serie='+encodeURIComponent(id));COURSES=data.cursos;$('course-count').textContent=COURSES.length;renderCourses();renderHistory();history.replaceState(null,'','?serie='+encodeURIComponent(id))}
  catch(err){$('courses').textContent=err.message}
 }
+
+const LESSON_LINKS={
+ 'fii-9-geografia':[
+  {title:'Aula 01 · Globalização',video:'geografia-9ano.html#titulo-video',quiz:'simulados/geografia-9ano-aula01.html'},
+  {title:'Aula 02 · Cadeias globais',video:'geografia-9ano.html#titulo-video-02',quiz:'simulados/geografia-9ano-aula02.html'}],
+ 'fii-9-historia':[{title:'Aula 01 · República Brasileira',video:'historia-9ano.html',quiz:'simulados/historia-9ano-aula01.html'}],
+ 'fii-9-matematica':[{title:'Aula 01 · Números reais',video:'matematica-9ano.html',quiz:'simulados/matematica-9ano-aula01.html'}],
+ 'fii-9-lingua-portuguesa':[{title:'Aula 01 · Frases e orações',video:'portugues-9ano.html',quiz:'simulados/portugues-9ano-aula01.html'}],
+ 'fii-9-ciencias':[{title:'Aula 01 · Matéria e átomos',video:'ciencias-9ano.html',quiz:'simulados/ciencias-9ano-aula01.html'}]
+};
+function lessonAccess(cid,term){
+ if(term!=='T1')return '';
+ return (LESSON_LINKS[cid]||[]).map(l=>'<a class="btn alt" href="'+l.video+'" style="text-decoration:none">▶ '+l.title+'</a><a class="btn" href="'+l.quiz+'" style="text-decoration:none">🎮 Simulado · '+l.title+'</a>').join('');
+}
+
 function renderCourses(){
  const query=$('search').value.toLocaleLowerCase('pt-BR');
  const items=COURSES.filter(x=>x.nome.toLocaleLowerCase('pt-BR').includes(query)&&(FILTER_MODE==='all'||x.trimestres.some(t=>FILTER_MODE==='pdf'?t.pdf:t.simulado)));
- $('courses').innerHTML=items.map(c=>`<details class="subject"><summary><span><b>${esc(c.nome)}</b><small>Plano anual • três trimestres</small></span></summary><div class="sub-body">${c.trimestres.filter(t=>FILTER_MODE==='all'||(FILTER_MODE==='pdf'?t.pdf:t.simulado)).map(t=>`<div class="trimester"><b>${esc(t.titulo)}</b><div class="actions"><button type="button" class="btn alt" data-action="pdf" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.pdf?'':'disabled'}>Abrir apostila PDF</button><button type="button" class="btn" data-action="quiz" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.simulado?'':'disabled'}>Fazer simulado</button><a class="btn alt" href="trilha.html?disciplina=${encodeURIComponent(c.id)}&trimestre=${encodeURIComponent(t.id)}" style="text-decoration:none">Aulas, vídeos e exercícios →</a>${c.id==='fii-9-geografia'&&t.id==='T1'?`<a class="btn alt" href="geografia-9ano.html#titulo-video" style="text-decoration:none" aria-label="Assistir videoaula 01 de Geografia do 9º ano">▶ Assistir videoaula 01</a><a class="btn" href="simulados/geografia-9ano-aula01.html" style="text-decoration:none" aria-label="Abrir simulado gamer aula 01 de Geografia do 9º ano">🎮 Simulado Gamer — Aula 01</a>`:''} </div></div>`).join('')}</div></details>`).join('')||'<p>'+(FILTER_MODE==='pdf'?'Nenhuma apostila autorizada encontrada nesta série.':FILTER_MODE==='simulado'?'Nenhum simulado autorizado nesta série.':'Nenhuma disciplina encontrada.')+'</p>';
+ $('courses').innerHTML=items.map(c=>`<details class="subject"><summary><span><b>${esc(c.nome)}</b><small>Plano anual • três trimestres</small></span></summary><div class="sub-body">${c.trimestres.filter(t=>FILTER_MODE==='all'||(FILTER_MODE==='pdf'?t.pdf:t.simulado)).map(t=>`<div class="trimester"><b>${esc(t.titulo)}</b><div class="actions"><button type="button" class="btn alt" data-action="pdf" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.pdf?'':'disabled'}>Abrir apostila PDF</button><button type="button" class="btn" data-action="quiz" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.simulado?'':'disabled'}>Fazer simulado</button><a class="btn alt" href="trilha.html?disciplina=${encodeURIComponent(c.id)}&trimestre=${encodeURIComponent(t.id)}" style="text-decoration:none">Aulas, vídeos e exercícios →</a>${lessonAccess(c.id,t.id)}</div></div>`).join('')}</div></details>`).join('')||'<p>'+(FILTER_MODE==='pdf'?'Nenhuma apostila autorizada encontrada nesta série.':FILTER_MODE==='simulado'?'Nenhum simulado autorizado nesta série.':'Nenhuma disciplina encontrada.')+'</p>';
 }
 function renderHistory(){
  const list=HISTORY.filter(h=>COURSES.some(c=>c.id===h.course_id));
