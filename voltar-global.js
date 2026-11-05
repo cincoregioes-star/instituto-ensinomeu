@@ -97,11 +97,17 @@
   document.head.appendChild(style);
   const nav = document.querySelector('header nav');
   const actions = document.querySelector('header .top-actions, header .actions');
-  const host = nav || actions;
-  if (host) {
-    host.insertBefore(button,host.firstChild);
-  } else {
-    button.classList.add('ensino-voltar--flutuante');
-    document.body.appendChild(button);
+  function position() {
+    const host = nav && nav.getClientRects().length ? nav : actions && actions.getClientRects().length ? actions : null;
+    const useFloating = window.innerWidth <= 760 || !host;
+    if (useFloating) {
+      button.classList.add('ensino-voltar--flutuante');
+      if (button.parentElement !== document.body) document.body.appendChild(button);
+    } else {
+      button.classList.remove('ensino-voltar--flutuante');
+      if (button.parentElement !== host) host.insertBefore(button,host.firstChild);
+    }
   }
+  position();
+  window.addEventListener('resize',position,{passive:true});
 })();
