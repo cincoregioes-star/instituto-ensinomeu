@@ -40,6 +40,7 @@ try{
   const page=await openPage('index.html',viewport);
   await page.locator('.lesson').first().waitFor({timeout:5000});
   const info=await noOverflow(page,'Início '+viewport.width);
+  if(!(await page.locator('#ensino-voltar-global').isVisible()))failures.push('Início '+viewport.width+': botão Voltar não está visível');
   const content=await page.evaluate(()=>({
     cards:document.querySelectorAll('.lesson').length,
     title:document.querySelector('#aulas-gravadas h2')?.textContent?.trim(),
@@ -70,6 +71,7 @@ try{
  ]){
   const page=await openPage(file,viewport);
   await noOverflow(page,file+' '+viewport.width);
+  if(!(await page.locator('#ensino-voltar-global').isVisible()))failures.push(file+': botão Voltar não está visível');
   if(file==='painel.html'){
     if(!(await page.locator('.app-sidebar').isVisible()))failures.push('Painel: menu lateral indisponível');
     if((await page.locator('.quick-card').count())!==6)failures.push('Painel: são esperados seis atalhos de acesso');
@@ -84,6 +86,25 @@ try{
   console.log('Layout '+file+' verificado em '+viewport.width+'px');
   await page.close();
  }
+ for(const [file,expected] of [
+   ['dashboard-aluno.html','painel.html'],
+   ['painel-controle.html','painel.html'],
+   ['trilha.html','painel.html'],
+   ['simulados/geografia-9ano-aula02.html','geografia-9ano.html'],
+   ['simulados/historia-9ano-aula01.html','historia-9ano.html']
+ ]){
+   const page=await openPage(file,{width:390,height:844});
+   const back=page.locator('#ensino-voltar-global');
+   if(!(await back.isVisible()))failures.push(file+': botão Voltar invisível');
+   const target=await back.getAttribute('href');
+   if(!target?.includes(expected))failures.push(file+': destino de retorno incorreto '+target);
+   await page.close();
+ }
+ const fromDirect=await openPage('simulados/geografia-9ano-aula02.html',{width:1100,height:820});
+ await fromDirect.locator('#ensino-voltar-global').click();
+ try{await fromDirect.waitForURL('**/geografia-9ano.html#titulo-video-02',{timeout:4000})}
+ catch{failures.push('Voltar após acesso direto ao simulado não abriu a videoaula de origem')}
+ await fromDirect.close();
 }finally{await browser.close();server.close()}
 if(failures.length){for(const f of failures)console.error('FALHA '+f);process.exitCode=1}
 else console.log('Auditoria visual V8 em Chromium aprovada nas resoluções selecionadas.');
