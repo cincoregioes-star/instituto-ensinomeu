@@ -87,4 +87,5 @@ document.getElementById('tela').addEventListener('click',async()=>{try{if(player
 document.getElementById('sair').addEventListener('click',async()=>{try{if(document.fullscreenElement&&document.exitFullscreen)await document.exitFullscreen();else if(document.webkitFullscreenElement&&document.webkitExitFullscreen)await document.webkitExitFullscreen();}catch(e){}});
 window.addEventListener('load',async()=>{try{const r=await fetch('videos/9ano/matematica/aula01-numeros-reais.mp4',{method:'HEAD',cache:'no-store'});if(!r.ok){baixar.hidden=true;msg('O arquivo de vídeo está temporariamente indisponível.')}}catch(e){msg('Não foi possível verificar o arquivo neste momento.')}})
 })();
-</script></body></html>
+</script><script src="voltar-global.js?v=20261105" defer></script>
+</body></html>
