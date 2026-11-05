@@ -19,6 +19,8 @@ async function init(){
    ME=await request('/me');
    $('user-name').textContent=ME.nome||ME.username;
    document.body.dataset.role=ME.perfil;
+   const gestorPermitido=(ME.id==='180a4afb-5fd8-4081-a12a-5034124f6454'&&ME.perfil==='admin')||(ME.id==='7dc06558-44d8-4638-9ced-02c5ce35e434'&&ME.perfil==='teacher');
+   const ctrl=$('painel-controle-card');if(ctrl&&gestorPermitido){ctrl.hidden=false;ctrl.style.display='';}
    if(ME.perfil==='admin')$('admin-side').hidden=false;
    $('role').textContent=({student:'ÁREA DO ALUNO',teacher:'COORDENAÇÃO PEDAGÓGICA',guardian:'ÁREA DA FAMÍLIA',admin:'ADMINISTRAÇÃO'})[ME.perfil]||'INSTITUTO ENSINOMEU';
    $('welcome').textContent='Olá, '+String(ME.nome||'estudante');
