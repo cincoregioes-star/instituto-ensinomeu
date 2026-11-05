@@ -42,7 +42,7 @@ function renderGrades(){
   {id:'Fundamental II',classe:'fundamental-ii',titulo:'Fundamental II',subtitulo:'6º ao 9º ano'},
   {id:'Ensino Médio',classe:'ensino-medio',titulo:'Ensino Médio',subtitulo:'1ª à 3ª série'}
  ];
- const numeroSerie=g=>Number(String(g.serie||'').match(/\\d+/)?.[0]||0);
+ const numeroSerie=g=>Number(String(g.serie||'').match(/\d+/)?.[0]||0);
  $('grade-cards').innerHTML=etapas.map(etapa=>{
   const grades=GRADES.filter(g=>g.etapa===etapa.id).sort((a,b)=>numeroSerie(a)-numeroSerie(b));
   if(!grades.length)return '';
