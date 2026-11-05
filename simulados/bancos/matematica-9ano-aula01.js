@@ -171,7 +171,7 @@ window.ENSINOMEU_QUIZ={
         "1/3."
       ],
       "correct": 2,
-      "explain": "0,75=75/100=3/4."
+      "explain": "Para converter 0,75 em fração, escrevemos 75/100 e simplificamos numerador e denominador por 25: 3/4."
     },
     {
       "topic": "Operações com raízes",
