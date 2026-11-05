@@ -37,6 +37,25 @@ main{max-width:1180px;padding-top:23px}
 .back[hidden]{display:none!important}
 @media(max-width:900px){.layout{grid-template-columns:1fr}}
 @media(max-width:640px){header{gap:8px}header a.brand{font-size:12px}header img{height:38px;width:38px}header nav{gap:7px}header nav a{font-size:12px}main{padding:15px 12px 32px}.intro{padding:20px}.count{gap:6px}.stat{padding:10px}.stat strong{font-size:20px}.stat span{font-size:11px}.grades{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.grade-card{padding:12px;min-height:120px}.grade-card b{font-size:19px}.course-grid{grid-template-columns:1fr}}
+
+/* Séries separadas por etapa de ensino, sem alterar os dados dos alunos */
+.grades{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}
+.grade-stage{min-width:0;background:#fff;border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:0 10px 24px #12354b12}
+.grade-stage-head{display:flex;justify-content:space-between;align-items:center;gap:8px;background:linear-gradient(100deg,#e5f5ed,#f6faf8);border-bottom:1px solid #cce2db;padding:15px}
+.grade-stage--fundamental-ii .grade-stage-head{background:linear-gradient(100deg,#e3eff9,#f7fbfd);border-bottom-color:#cee0ec}
+.grade-stage--ensino-medio .grade-stage-head{background:linear-gradient(100deg,#fff1d7,#fffaf1);border-bottom-color:#f0ddb6}
+.grade-stage-head h3{font-size:clamp(16px,1.7vw,22px);line-height:1.15;margin:0;color:#0d3c50}
+.grade-stage-head p{margin:4px 0 0;font-size:12px;color:#526f7a}
+.grade-stage-count{flex:0 0 auto;font-size:11px;font-weight:850;border-radius:999px;color:#0a6853;background:#fff;padding:5px 7px;white-space:nowrap}
+.grade-stage-list{display:grid;grid-template-columns:1fr;gap:9px;padding:12px}
+.grade-stage .grade-card{min-height:105px;padding:13px 14px;border:1px solid #dbe7e5;border-left:5px solid #218c78;border-top:1px solid #dbe7e5;box-shadow:0 2px 8px #12354b10;border-radius:11px}
+.grade-stage--fundamental-ii .grade-card{border-left-color:#1c6a9c}
+.grade-stage--ensino-medio .grade-card{border-left-color:#c49e56}
+.grade-stage .grade-card b{font-size:20px;margin:1px 0 3px}
+.grade-stage .grade-card small{font-size:11px}
+.grade-stage .grade-enter{color:#096955;font-weight:850;margin-top:5px}
+@media(max-width:1030px){.grades{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.grades{grid-template-columns:1fr}.grade-stage-list{grid-template-columns:1fr}.grade-stage .grade-card{min-height:94px}}
 </style>
 </head>
 <body><a class="skip" href="#main">Pular para conteúdo</a><header><a class="brand" href="index.html"><img src="assets/brasao.png" alt="Brasão Instituto EnsinoMeu"><span>INSTITUTO ENSINOMEU<small>ÁREA DE ESTUDOS · BNCC</small></span></a><nav aria-label="Menu principal"><a href="./">Início</a><a href="planos.html">Planos</a><span id="user-name"></span><button type="button" id="logout">Sair da conta</button></nav></header>
@@ -69,4 +88,4 @@ main{max-width:1180px;padding-top:23px}
 <footer class="footer">Instituto EnsinoMeu • Educação complementar • Referência nacional BNCC</footer>
 <dialog id="quiz-dialog" class="modal" aria-labelledby="quiz-title"><h2 id="quiz-title">Simulado</h2><p id="quiz-step" class="helper"></p><p id="quiz-question"></p><div id="quiz-options"></div><div class="actions"><button class="btn" id="quiz-next" type="button" disabled>Próxima questão</button><button class="btn outline" id="quiz-close" type="button">Fechar</button></div><p class="status" id="quiz-error" role="alert"></p></dialog>
 <dialog id="grades-dialog" class="modal" aria-labelledby="grades-dialog-title"><h2 id="grades-dialog-title">Editar séries autorizadas</h2><p class="helper">Selecione uma série para aluno ou até três para responsável.</p><form id="edit-grades-form"><div class="series-edit" id="edit-grades-options"></div><div class="actions"><button type="submit" class="btn">Salvar alterações</button><button type="button" class="btn outline" id="grades-cancel">Cancelar</button></div><p id="edit-grades-message" class="message" role="status"></p></form></dialog>
-<script src="config.js"></script><script type="module" src="ensino-painel.js?v=20261105c"></script></body></html>
+<script src="config.js"></script><script type="module" src="ensino-painel.js?v=20261105d"></script></body></html>
