@@ -13,6 +13,7 @@ async function load(){
  try{
   const {data:user,error}=await db.auth.getUser();
   if(error||!user?.user){$('notice').textContent='Faça login no Instituto EnsinoMeu para acessar este painel.';$('notice').hidden=false;return}
+  $('who').textContent=user.user.email||'Usuário conectado';
   const {data:ses}=await db.auth.getSession();
   const jwt=ses?.session?.access_token;
   if(!jwt)throw Error('Sessão expirada. Faça login novamente.');
@@ -24,7 +25,16 @@ async function load(){
   $('notice').hidden=true;$('content').hidden=false;
   $('who').textContent=body.usuario?.nome||'Usuário autenticado';
   render();
- }catch(e){$('notice').textContent=e.message;$('notice').hidden=false;$('content').hidden=true}
+ }catch(e){
+  const notice=$('notice');
+  notice.textContent=e.message;notice.hidden=false;$('content').hidden=true;
+  if(MODE==='controle' && /Painel exclusivo|Acesso exclusivo|não autorizado/i.test(e.message)){
+   const explanation=document.createElement('p');explanation.textContent='Esta sessão não é de Administrador ou Diretor. Use o botão abaixo para trocar de conta, sem alterar seus dados.';
+   const button=document.createElement('button');button.type='button';button.className='btn';button.textContent='Trocar para conta de Administrador ou Diretor';
+   button.addEventListener('click',async()=>{button.disabled=true;try{const result=await db.auth.signOut();if(result.error)throw result.error;location.assign('login.html');}catch(err){button.disabled=false;notice.append(document.createTextNode(' Não foi possível sair: '+err.message));}});
+   notice.append(explanation,button);
+  }
+ }
 }
 function normalize(d){
  const subjects=new Map((d.subjects||[]).map(x=>[x.id,x.name]));
