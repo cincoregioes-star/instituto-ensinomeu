@@ -37,8 +37,28 @@ async function init(){
 }
 function renderGrades(){
  if(!GRADES.length){status('Não há planos ativos vinculados à sua conta. Entre em contato com a administração para receber sua série.');return}
- $('grade-cards').innerHTML=GRADES.map(g=>`<button class="grade-card" type="button" data-grade="${esc(g.id)}" data-stage="${esc(g.etapa)}"><span class="tag">${esc(g.etapa)}</span><span class="arrow" aria-hidden="true">↗</span><b>${esc(g.serie)}</b><small>${g.disciplinas} disciplinas • 3 trimestres</small><small style="margin-top:7px;color:#096955;font-weight:800">Entrar na minha série →</small></button>`).join('');
+ const etapas=[
+  {id:'Fundamental I',classe:'fundamental-i',titulo:'Fundamental I',subtitulo:'1º ao 5º ano'},
+  {id:'Fundamental II',classe:'fundamental-ii',titulo:'Fundamental II',subtitulo:'6º ao 9º ano'},
+  {id:'Ensino Médio',classe:'ensino-medio',titulo:'Ensino Médio',subtitulo:'1ª à 3ª série'}
+ ];
+ const numeroSerie=g=>Number(String(g.serie||'').match(/\\d+/)?.[0]||0);
+ $('grade-cards').innerHTML=etapas.map(etapa=>{
+  const grades=GRADES.filter(g=>g.etapa===etapa.id).sort((a,b)=>numeroSerie(a)-numeroSerie(b));
+  if(!grades.length)return '';
+  const botoes=grades.map(g=>`<button class="grade-card" type="button" data-grade="${esc(g.id)}" data-stage="${esc(g.etapa)}" aria-label="Abrir ${esc(g.serie)} do ${esc(g.etapa)}">
+   <span class="arrow" aria-hidden="true">↗</span>
+   <b>${esc(g.serie)}</b>
+   <small>${g.disciplinas} disciplinas · 3 trimestres</small>
+   <small class="grade-enter">Entrar na minha série →</small>
+  </button>`).join('');
+  return `<section class="grade-stage grade-stage--${etapa.classe}" aria-label="${etapa.titulo}">
+   <div class="grade-stage-head"><div><h3>${etapa.titulo}</h3><p>${etapa.subtitulo}</p></div><span class="grade-stage-count">${grades.length} ${grades.length===1?'série':'séries'}</span></div>
+   <div class="grade-stage-list">${botoes}</div>
+  </section>`;
+ }).join('');
 }
+
 async function renderFamily(){
  const data=await request('/familia');
  $('family-panel').classList.remove('hidden');
