@@ -35,6 +35,14 @@ html[data-em-page="painel"] body .count .stat span,html[data-em-page="admin"] bo
 .quick-card:nth-child(2){background:linear-gradient(120deg,#1266b8,#0988d4)}
 .quick-card:nth-child(3){background:linear-gradient(120deg,#b9840a,#edbd25)}
 .quick-card:nth-child(4){background:linear-gradient(120deg,#057884,#05a7b3)}
+/* Novos atalhos de desempenho: fundo e contraste sempre legíveis */
+.quick-grid>.quick-card:nth-child(5){background:linear-gradient(120deg,#243b80,#4756bc)!important;color:#fff!important}
+.quick-grid>.quick-card:nth-child(6){background:linear-gradient(120deg,#065e65,#087f83)!important;color:#fff!important}
+.quick-grid>.quick-card:nth-child(5) b,.quick-grid>.quick-card:nth-child(6) b,
+.quick-grid>.quick-card:nth-child(5) small,.quick-grid>.quick-card:nth-child(6) small,
+.quick-grid>.quick-card:nth-child(5) .q-ico,.quick-grid>.quick-card:nth-child(6) .q-ico{color:#fff!important;opacity:1}
+@media(min-width:1151px){.quick-grid>.quick-card:nth-child(5),.quick-grid>.quick-card:nth-child(6){grid-column:span 2}}
+
 .quick-card b{font-size:16px;line-height:1.25}.quick-card small{font-size:12px;color:#f9fffe}.quick-card .q-ico{font-size:24px}
 html[data-em-page="painel"] body .section-head h2{color:#092d49}
 html[data-em-page="painel"] body .grade-card{background:#fff!important;border:1px solid #d6e6ec!important;border-top:5px solid #058f63!important;min-height:143px;box-shadow:0 8px 19px #12435c14}
