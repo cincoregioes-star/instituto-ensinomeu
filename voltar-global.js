@@ -4,7 +4,9 @@
 (() => {
   'use strict';
   if (document.getElementById('ensino-voltar-global')) return;
-  const base = '/instituto-ensinomeu/';
+  // Resolve o caminho pelo próprio script: funciona no GitHub Pages e no ambiente de testes.
+  const scriptURL = document.currentScript?.src || location.href;
+  const base = new URL('.',scriptURL).pathname;
   const pathname = location.pathname;
   if (!pathname.startsWith(base)) return;
   const relative = pathname.slice(base.length);
