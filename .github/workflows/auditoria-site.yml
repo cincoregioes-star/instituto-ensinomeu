@@ -42,6 +42,10 @@ jobs:
           node --check ensino-indicadores.js
           node --check simulados/motor-gamer.js
           node tests/auditoria-gamer.mjs
+      - name: Auditar botão Voltar em todas as telas
+        run: |
+          node --check voltar-global.js
+          node tests/auditoria-voltar.mjs
       - name: Instalar dependência do teste visual
         run: npm install --no-save --no-package-lock playwright@1.55.1
       - name: Testar site no navegador Chromium
