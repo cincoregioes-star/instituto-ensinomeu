@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR" data-em-page="ia-tutoria">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07334e"><meta name="robots" content="noindex,nofollow">
+<title>Central de dúvidas de IA | Instituto EnsinoMeu</title>
+<link rel="icon" href="favicon.ico">
+<style>
+:root{--navy:#07334e;--green:#0a6c50;--gold:#ebc260;--ink:#12334b;--muted:#4f6672;--paper:#eaf3f5;--line:#bed3d7}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);background:linear-gradient(125deg,#e7f2f6,#e4f2ea);font:15.5px/1.55 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}button,textarea,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.6}a{color:#075b4a;font-weight:750}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ecb23a;outline-offset:3px}
+header{background:linear-gradient(110deg,#062b47,#0b5848);color:#fff}.head{width:min(1190px,calc(100% - 28px));margin:auto;min-height:70px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:12px 0}.head a{color:#fff;text-decoration:none}.brand{font-weight:900;display:flex;align-items:center;gap:10px}.brand img{width:46px;height:46px;object-fit:contain;background:white;border-radius:11px;padding:3px}.brand small{display:block;font-size:10px;color:#c3e8cf;letter-spacing:.06em}.head nav{display:flex;flex-wrap:wrap;gap:8px}.head nav a{border:1px solid #ffffff61;border-radius:8px;padding:8px 10px;font-size:13px}.head nav a:hover{background:#ffffff24}
+.wrap{width:min(1190px,calc(100% - 28px));margin:20px auto 50px}.hero{border-radius:18px;background:linear-gradient(115deg,#083955,#087351);color:#fff;padding:26px 28px;box-shadow:0 12px 27px #10395524}.hero small{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:#f2d78c;font-weight:900}.hero h1{margin:10px 0;font-size:clamp(25px,3.7vw,39px);line-height:1.18}.hero p{max-width:800px;color:#e1f3ef}.columns{display:grid;grid-template-columns:350px minmax(0,1fr);gap:18px;align-items:start;margin-top:18px}.card{background:#fff;border:1px solid var(--line);box-shadow:0 7px 24px #11364b15;border-radius:17px;padding:21px}.card h2{margin:0 0 10px;font-size:22px;line-height:1.24}.card h3{font-size:17px;margin:0 0 7px}.muted{color:var(--muted);font-size:13px}.notice{padding:11px 14px;border-left:4px solid var(--gold);border-radius:8px;background:#fff9e9;margin:15px 0;font-size:13px}.field{display:block;font-weight:850;margin:15px 0 7px;font-size:13px}select,textarea{width:100%;background:#fbfdff;border:1px solid #a5c6cc;border-radius:10px;color:#183b50;padding:12px;min-height:45px}textarea{min-height:140px;resize:vertical}.meta{display:flex;justify-content:space-between;gap:10px;margin:7px 0 15px;font-size:12px;color:var(--muted)}.btn{background:var(--green);border:1px solid #067155;color:#fff;border-radius:10px;padding:11px 16px;min-height:45px;font-weight:850;transition:filter .12s,transform .12s}.btn:hover:not(:disabled){filter:brightness(1.08);transform:translateY(-1px)}.btn.alt{background:#f0f7f8;border-color:#b4ced5;color:#174d60}.status{margin:12px 0;min-height:23px;font-weight:750;color:#8a4520}.status.ok{color:#086a52}.tools{display:flex;gap:9px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:15px 0}.tools select{width:auto;min-width:170px}.question{border:1px solid #c7dce0;border-left:5px solid #168f72;border-radius:12px;margin:11px 0;padding:16px;background:#fbfdfd}.question[data-state="aberta"]{border-left-color:#bd8e2b}.question small{font-size:12px;color:var(--muted)}.question strong{display:block;margin:7px 0}.question p{overflow-wrap:anywhere;white-space:pre-wrap;margin:8px 0}.answer{margin-top:12px;background:#eaf5ef;border-radius:10px;padding:12px 14px;border:1px solid #c4ded4}.answer b{color:#075b46}.reply{border-top:1px dashed #c9d9dd;margin-top:13px;padding-top:10px}.reply textarea{min-height:98px}.reply .btn{margin-top:10px}.empty{text-align:center;padding:22px;background:#f5fafb;border-radius:10px;color:var(--muted)}footer{text-align:center;padding:19px;background:#092e49;color:#d9eeea;font-size:13px}[hidden]{display:none!important}@media(max-width:800px){.columns{grid-template-columns:1fr}.card{padding:17px}}@media(max-width:440px){.head nav{width:100%}.hero{padding:22px}.tools select{width:100%}}
+</style>
+</head>
+<body>
+<header><div class="head"><a href="index.html" class="brand"><img src="assets/brasao.png" alt=""><span>INSTITUTO ENSINOMEU<small>SUPORTE PEDAGÓGICO · IA</small></span></a><nav><a href="painel.html">Minha área</a><a href="ensino-ia.html">Aulas de IA</a><a href="index.html">Início</a></nav></div></header>
+<main class="wrap">
+<section class="hero"><small>Ambiente privado de aprendizagem</small><h1>Central de dúvidas de Inteligência Artificial</h1><p>Envie perguntas sobre a disciplina e consulte as orientações recebidas. As respostas são redigidas por integrantes autorizados da equipe pedagógica, não por um chatbot automático.</p></section>
+<div id="auth-error" class="notice" hidden>Você precisa entrar na plataforma com uma conta autorizada. <a href="login.html">Fazer login</a></div>
+<div class="columns" id="content" hidden>
+<aside class="card"><h2>Enviar uma dúvida</h2><p class="muted">Selecione sua série e descreva qual conceito, exemplo ou atividade precisa de orientação.</p>
+<form id="ask-form">
+<label class="field" for="grade">Minha série</label><select id="grade" required></select>
+<label class="field" for="question">Sua pergunta</label><textarea id="question" required minlength="12" maxlength="1200" placeholder="Ex.: Na aula sobre dados e padrões, qual é a diferença entre treinamento e teste?"></textarea>
+<div class="meta"><span>Entre 12 e 1.200 caracteres</span><span id="characters">0/1200</span></div>
+<button class="btn" id="send" type="submit">Enviar pergunta</button><p id="ask-status" class="status" role="status"></p></form>
+<div class="notice"><strong>Privacidade:</strong> não informe CPF, e-mail, endereço, senhas, telefone ou dados pessoais de colegas. As dúvidas são acessíveis ao autor e à equipe pedagógica autorizada.</div>
+<p class="muted">Até cinco novas perguntas por período de 24 horas. O envio não garante atendimento imediato.</p>
+</aside>
+<section class="card"><h2 id="list-title">Minhas perguntas e respostas</h2><p class="muted" id="list-intro">As respostas aparecerão aqui após o atendimento pedagógico.</p>
+<div class="tools"><button type="button" class="btn alt" id="refresh">Atualizar dúvidas</button><label for="filter">Exibir <select id="filter"><option value="all">Todas</option><option value="aberta">Aguardando resposta</option><option value="respondida">Respondidas</option></select></label></div>
+<p id="load-status" class="status" role="status">Verificando autorização…</p><div id="list"></div></section>
+</div>
+</main><footer>Instituto EnsinoMeu • Atendimento pedagógico complementar com acesso autorizado • <a style="color:#e8cb89" href="privacidade.html">Privacidade</a></footer>
+<script src="config.js"></script><script type="module" src="ia-tutoria.js?v=20261106"></script>
+<script src="voltar-global.js?v=20261105" defer></script>
+</body></html>
