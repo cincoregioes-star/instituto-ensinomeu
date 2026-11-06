@@ -2,6 +2,7 @@
 (()=>{
  const data=window.ENSINOMEU_IA_DATA, $=id=>document.getElementById(id);
  if(!data||!data.series){$('chapter-title').textContent='Não foi possível carregar o currículo.';return}
+ const extraData=window.ENSINOMEU_IA_EXT?.series||{};
  const grades=Object.keys(data.series),params=new URLSearchParams(location.search);
  let grade=grades.includes(params.get('serie'))?params.get('serie'):grades[0];
  let term=/^T[123]$/.test(params.get('trimestre')||'')?params.get('trimestre'):'T1';
@@ -13,7 +14,7 @@
  function node(tag,text,cls){const n=document.createElement(tag);if(text!=null)n.textContent=text;if(cls)n.className=cls;return n}
  grades.forEach(g=>{const o=node('option',data.series[g].nome);o.value=g;$('grade-select').append(o)});
  function render(){
-  const item=data.series[grade].trimestres[Number(term.slice(1))-1],body=$('chapter-body');
+  const index=Number(term.slice(1))-1,item=data.series[grade].trimestres[index],ext=extraData[grade]?.[index],body=$('chapter-body');
   $('grade-select').value=grade;$('term-select').value=term;
   const tabs=$('lesson-tabs');tabs.replaceChildren();
   item.aulas.forEach((name,i)=>{const n=node('button',name,'lesson-tab');n.type='button';n.setAttribute('aria-current',i+1===aula?'step':'false');n.addEventListener('click',()=>{aula=i+1;render()});tabs.append(n)});
@@ -24,16 +25,22 @@
    const block=node('div',null,cls);block.append(node(tag,title),node('p',content));body.append(block);
   };
   if(aula===1){
-    add('h3','Objetivo do estudo',item.conteudo,'');
+    add('h3','Objetivo do estudo',ext?.objetivo||item.conteudo,'');
+    add('h3','Entenda o conceito',item.conteudo+' '+(ext?.explicacao?.[0]||''),'');
+    if(ext?.vocabulario?.length)add('h3','Vocabulário da unidade',ext.vocabulario.join(' • '),'example');
     add('h3','Pergunta para pensar','O que você já sabe sobre '+item.tema.toLowerCase()+'? Escreva duas ideias antes de avançar.','example');
   }else if(aula===2){
     add('h3','Entenda com um exemplo',item.exemplo,'example');
+    if(ext?.explicacao?.[1])add('h3','Aprofundamento',ext.explicacao[1],'');
+    if(ext?.reflexao)add('h3','Questão para refletir',ext.reflexao,'example');
     add('h3','Observe e explique','Releia o exemplo e explique, com suas palavras, quais dados ou decisões humanas influenciam o resultado.','');
   }else if(aula===3){
     add('h3','Atividade prática',item.desafio,'activity');
+    if(ext?.laboratorio)add('h3','Laboratório guiado',ext.laboratorio,'activity');
     add('h3','Cuidados importantes','Use apenas exemplos fictícios, sem nomes, senhas, fotos pessoais ou dados privados. Registre o que funcionou e o que mudaria.','');
   }else{
     add('h3','Síntese','Revise o conceito, o exemplo e a atividade dos roteiros anteriores. Responda à questão abaixo e explique sua escolha.','');
+    if(ext?.reflexao)add('h3','Debate com o educador',ext.reflexao,'example');
     $('quiz-form').hidden=false;$('quiz-title').textContent=item.pergunta;const options=$('quiz-options');options.replaceChildren();
     item.opcoes.forEach((label,i)=>{const wrap=node('label',null,'option'),inp=document.createElement('input');inp.type='radio';inp.name='resposta';inp.value=String(i);inp.required=true;wrap.append(inp,document.createTextNode(' '+String.fromCharCode(65+i)+') '+label));options.append(wrap)});
   }
