@@ -54,7 +54,7 @@ function scheduleSave(){
 }
 async function init(){
  try{
-  if(!/^fii-9-[a-z0-9-]+$/.test(sid)||!/^T[123]$/.test(term)||!['avaliacao','simulado'].includes(kind))throw Error('Escolha uma avaliação no painel do 9º ano.');
+  if(!/^(fi-[1-5]|fii-[6-9]|em-[1-3])-[a-z0-9-]+$/.test(sid)||!/^T[123]$/.test(term)||!['avaliacao','simulado'].includes(kind))throw Error('Escolha uma avaliação no painel da sua série.');
   const d=await api(base());
   $('back').href='trilha.html?disciplina='+encodeURIComponent(sid)+'&trimestre='+term;
   $('returnlink').href=$('back').href;
