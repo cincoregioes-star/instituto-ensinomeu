@@ -100,6 +100,36 @@ try{
    if(!target?.includes(expected))failures.push(file+': destino de retorno incorreto '+target);
    await page.close();
  }
+
+ // Novas trilhas de IA e apostilas digitais sem dependência de autenticação.
+ for(const [file,viewport] of [['ensino-ia.html?serie=fi-5',{width:390,height:844}],['apostila-ia.html?serie=fii-7',{width:390,height:844}],['ia-tutoria.html',{width:390,height:844}]]){
+  const page=await openPage(file,viewport),name=file.split('?')[0];
+  await noOverflow(page,'IA '+name+' '+viewport.width);
+  if(!(await page.locator('#ensino-voltar-global').isVisible()))failures.push(name+': botão Voltar não disponível');
+  if(name==='ensino-ia.html'){
+   if((await page.locator('#grade-select option').count())!==8)failures.push('IA: faltam opções para as oito séries');
+   await page.locator('#lesson-tabs button').nth(3).click();
+   if(!(await page.locator('#quiz-form').isVisible()))failures.push('IA: autocorreção não abre');
+   else{
+    await page.locator('#quiz-form input[value="1"]').check();
+    await page.locator('#quiz-form button').click();
+    if(!(await page.locator('#quiz-feedback').isVisible()))failures.push('IA: autocorreção não apresenta retorno');
+   }
+   await page.locator('#grade-select').selectOption('em-3');
+   const href=await page.locator('#book-link').getAttribute('href');
+   if(!href?.includes('serie=em-3'))failures.push('IA: link da apostila não atualiza a série');
+  }
+  if(name==='apostila-ia.html'){
+   await page.locator('#book .unit').first().waitFor({timeout:5000});
+   if((await page.locator('#book .unit').count())!==4)failures.push('Apostila IA: três trimestres e conclusão não renderizados');
+   const count=await page.locator('#book .vocab').count();
+   if(count!==9)failures.push('Apostila IA: glossários incompletos '+count);
+   await page.locator('#grade').selectOption('em-2');
+   if(!(await page.locator('.cover h2').innerText()).includes('2ª'))failures.push('Apostila IA: troca de série não atualizou a capa');
+  }
+  if(name==='ia-tutoria.html'&&!await page.locator('#question').count())failures.push('Tutoria: formulário ausente');
+  await page.close();
+ }
  const fromDirect=await openPage('simulados/geografia-9ano-aula02.html',{width:1100,height:820});
  await fromDirect.locator('#ensino-voltar-global').click();
  try{await fromDirect.waitForURL('**/geografia-9ano.html#titulo-video-02',{timeout:4000})}
