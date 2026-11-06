@@ -28,7 +28,7 @@ main{padding:30px 0 55px}.player{position:relative;background:#07121e;border-rad
 .player:fullscreen video,.player:-webkit-full-screen video{max-height:100vh;width:100%;height:100%;object-fit:contain}
 .exit{display:none;position:absolute;right:16px;top:16px;z-index:10;border:2px solid #b6efdb;color:white;background:#092f40ee;font-weight:850;font-size:16px;padding:12px 18px;border-radius:10px;cursor:pointer}
 .player:fullscreen .exit,.player:-webkit-full-screen .exit{display:block}
-.controls{margin:16px 0;display:flex;gap:12px;flex-wrap:wrap;align-items:center}.btn{border:0;text-decoration:none;border-radius:10px;background:#08644d;color:white;padding:12px 18px;font-weight:800;font-size:15px;cursor:pointer}
+.controls{margin:16px 0;display:flex;gap:12px;flex-wrap:wrap;align-items:center}.speed-control{display:inline-flex;align-items:center;gap:9px;font-weight:800;color:#0a483c}.speed-control select{font:inherit;min-height:47px;padding:10px 12px;border:1px solid #9ac2b1;border-radius:10px;background:#e1f0e9;color:#094d3c;font-weight:800;cursor:pointer}.btn{border:0;text-decoration:none;border-radius:10px;background:#08644d;color:white;padding:12px 18px;font-weight:800;font-size:15px;cursor:pointer}
 .btn.secondary{background:#e1f0e9;color:#094d3c;border:1px solid #9ac2b1}.btn[disabled]{opacity:.5;cursor:not-allowed}
 .status{background:#fff3d8;border:1px solid #e4c27d;padding:16px;border-radius:12px;color:#583b04;margin-top:15px}
 .status[hidden]{display:none}.summary{background:white;border:1px solid #d4e3e0;border-radius:14px;padding:23px;margin-top:24px}.summary h2{margin:0 0 10px;font-size:23px}.summary ul{padding-left:22px}.summary li{margin:5px 0}
@@ -49,6 +49,7 @@ small{color:#50687a}footer{background:var(--navy);color:#d5e5e9;text-align:cente
 </div>
 <div class="controls">
 <button id="entrar" class="btn" type="button">⛶ Tela cheia</button>
+<label class="speed-control" for="velocidade">🎙 Ritmo da narração <select id="velocidade" aria-label="Velocidade da narração e dos slides"><option value="0.70">0,70x — bem pausado</option><option value="0.80">0,80x — pausado</option><option value="0.85" selected>0,85x — didático</option><option value="0.90">0,90x — levemente pausado</option><option value="1.00">1,00x — original</option></select></label>
 <a id="baixar" class="btn secondary" href="#" download hidden>↓ Baixar aula em MP4</a>
 <a class="btn" href="simulados/historia-9ano-aula01.html" style="text-decoration:none">🎮 Fazer simulado gamer — 20 questões</a>
 <a class="btn secondary" href="./">← Voltar ao Instituto</a>
@@ -65,6 +66,11 @@ small{color:#50687a}footer{background:var(--navy);color:#d5e5e9;text-align:cente
 (function(){
 const player=document.getElementById('player'),video=document.getElementById('video'),aviso=document.getElementById('aviso'),baixar=document.getElementById('baixar');
 const fontes=['videos/9ano/historia/aula01-nascimento-republica.mp4','videos/9ano/historia/aula01-nascimento-republica-720p.mp4'];
+const velocidade=document.getElementById('velocidade');
+function aplicarVelocidade(){const taxa=Number(velocidade.value)||0.85;video.defaultPlaybackRate=taxa;video.playbackRate=taxa;if('preservesPitch' in video)video.preservesPitch=true}
+velocidade.addEventListener('change',aplicarVelocidade);
+video.addEventListener('loadedmetadata',aplicarVelocidade);
+aplicarVelocidade();
 function status(t){aviso.textContent=t;aviso.hidden=false}
 function erro(){status('O arquivo MP4 ainda não está disponível no servidor. A página está preparada, mas a publicação do vídeo ainda precisa ser concluída.')}
 video.addEventListener('error',erro);
