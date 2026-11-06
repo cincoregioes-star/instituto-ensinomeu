@@ -1,0 +1,43 @@
+name: Historia 9o — montar versao com pausas didaticas
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/ajustar-historia-pausas.yml"
+      - "scripts/ajustar_historias_pausas.py"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  ajustar-video:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Conferir FFmpeg e o arquivo de origem
+        run: |
+          set -euo pipefail
+          ffmpeg -version | head -n 2
+          test -s videos/9ano/historia/aula01-nascimento-republica.mp4
+          ffprobe -v error -show_entries format=duration,size -of default=nw=1 videos/9ano/historia/aula01-nascimento-republica.mp4
+      - name: Detectar cortes, montar pausas e validar novo MP4
+        run: python3 scripts/ajustar_historias_pausas.py
+      - name: Salvar relatório e nova versão, mantendo MP4 original intacto
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add videos/9ano/historia/RELATORIO_PAUSAS.md || true
+          if [ -s videos/9ano/historia/aula01-nascimento-republica-pausada.mp4 ]; then
+            git add videos/9ano/historia/aula01-nascimento-republica-pausada.mp4
+          fi
+          if ! git diff --cached --quiet; then
+            git commit -m "Historia 9o: registrar cortes e publicar MP4 com pausas didaticas"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
