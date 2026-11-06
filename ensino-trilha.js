@@ -60,7 +60,7 @@ $('practice-form').addEventListener('submit',async e=>{
   message('Correção concluída e prática registrada no histórico.');$('results').scrollIntoView({behavior:'smooth'});
  }catch(ex){message(ex.message,true);$('grade').disabled=false}
 });
-$('pdf').addEventListener('click',openPdf);
+$('pdf').addEventListener('click',()=>{if(isIA)location.assign('apostila-ia.html?serie='+encodeURIComponent(grade));else openPdf()});
 async function init(){
  try{
  if(!/^(fi-[1-5]|fii-[6-9]|em-[1-3])-[a-z0-9-]+$/.test(sid)||!/^T[123]$/.test(term))throw Error('Escolha uma disciplina e trimestre no seu painel.');
@@ -69,7 +69,7 @@ async function init(){
  $('page-title').textContent=d.disciplina+' — '+d.trimestre+'º trimestre';
  $('count-lessons').textContent=d.aulas.length;$('count-practice').textContent=d.aulas.reduce((n,a)=>n+a.exercicios,0);$('count-videos').textContent=d.aulas.filter(temVideoPublicado).length;
  $('back').href='painel.html?serie='+encodeURIComponent(grade);
- if(isIA){$('pdf').textContent='📘 Abrir apostila digital (imprimir/PDF)';$('pdf').onclick=e=>{e.stopImmediatePropagation();location.assign('apostila-ia.html?serie='+encodeURIComponent(grade))};const heading=$('lesson-list').previousElementSibling;if(heading&&heading.tagName==='H2')heading.textContent='Roteiros de estudo do trimestre';}
+ if(isIA){$('pdf').textContent='📘 Abrir apostila digital (imprimir/PDF)';const heading=$('lesson-list').previousElementSibling;if(heading&&heading.tagName==='H2')heading.textContent='Roteiros de estudo do trimestre';}
  ['avaliacao','simulado'].forEach(k=>{$(k+'-link').href='prova.html?disciplina='+encodeURIComponent(sid)+'&trimestre='+term+'&tipo='+k});
  const list=$('lesson-list');list.replaceChildren();
  d.aulas.forEach(a=>{
