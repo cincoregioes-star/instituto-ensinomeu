@@ -40,3 +40,8 @@ A configuração pública em `config.js` contém somente uma chave publicável, 
 - O Supabase registra as disciplinas, os roteiros no catálogo e as avaliações **planejadas e bloqueadas**. Não há novas videoaulas ou PDFs de IA publicados, e provas formais não estão liberadas.
 - A área do aluno mantém autenticação e autorizações existentes. A página aberta de IA é demonstrativa e não exige matrícula.
 - Referenciais: BNCC Computação (Resolução CNE/CEB 1/2022) e Diretrizes de Educação Digital e Midiática (Resolução CNE/CEB 2/2025).
+
+## Apostilas digitais de IA (06/11/2026)
+- O aprofundamento original das 24 unidades está em `ensino-ia-aprofundamento.js`. Objetivos, explicações, glossários, laboratórios e reflexões complementam os 96 roteiros.
+- `apostila-ia.html` e `apostila-ia.js` produzem 8 apostilas digitais (uma por série) com 3 trimestres e 12 roteiros, preparadas para impressão em A4 ou opção do navegador 'Salvar como PDF'. Não há PDF armazenado no repositório.
+- As apostilas de IA são **material em revisão editorial**, sem nota oficial, sem substituir as 309 apostilas anteriores e sem acesso a dados privados.
