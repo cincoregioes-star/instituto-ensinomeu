@@ -1,0 +1,42 @@
+name: Publicar História 9º — nova voz Prof Matheus
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/montar-historia-prof-matheus.yml"
+      - "scripts/montar_historia_mateus.py"
+      - "videos/9ano/historia/.audio_upload/**"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  montar-historia-matheus:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Instalar FFmpeg
+        shell: bash
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y --no-install-recommends ffmpeg
+      - name: Montar e validar vídeo com nova voz
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/montar_historia_mateus.py
+      - name: Publicar MP4 validado e atualizar página da aula
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add historia-9ano.html videos/9ano/historia/aula01-nascimento-republica-matheus.mp4 videos/9ano/historia/VALIDACAO_MATHEUS.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Publicar História 9º: Prof. Matheus, 40 slides e MP4 validado"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
