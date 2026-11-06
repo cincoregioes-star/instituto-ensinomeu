@@ -17,10 +17,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Instalar FFmpeg (não presente no runner)
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y --no-install-recommends ffmpeg
       - name: Conferir FFmpeg e o arquivo de origem
         run: |
           set -euo pipefail
-          ffmpeg -version | head -n 2
+          ffmpeg -version
           test -s videos/9ano/historia/aula01-nascimento-republica.mp4
           ffprobe -v error -show_entries format=duration,size -of default=nw=1 videos/9ano/historia/aula01-nascimento-republica.mp4
       - name: Detectar cortes, montar pausas e validar novo MP4
