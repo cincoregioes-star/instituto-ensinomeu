@@ -69,7 +69,7 @@ async function init(){
  $('page-title').textContent=d.disciplina+' — '+d.trimestre+'º trimestre';
  $('count-lessons').textContent=d.aulas.length;$('count-practice').textContent=d.aulas.reduce((n,a)=>n+a.exercicios,0);$('count-videos').textContent=d.aulas.filter(temVideoPublicado).length;
  $('back').href='painel.html?serie='+encodeURIComponent(grade);
- if(isIA){$('pdf').hidden=true;const heading=$('lesson-list').previousElementSibling;if(heading&&heading.tagName==='H2')heading.textContent='Roteiros de estudo do trimestre';}
+ if(isIA){$('pdf').textContent='📘 Abrir apostila digital (imprimir/PDF)';$('pdf').onclick=e=>{e.stopImmediatePropagation();location.assign('apostila-ia.html?serie='+encodeURIComponent(grade))};const heading=$('lesson-list').previousElementSibling;if(heading&&heading.tagName==='H2')heading.textContent='Roteiros de estudo do trimestre';}
  ['avaliacao','simulado'].forEach(k=>{$(k+'-link').href='prova.html?disciplina='+encodeURIComponent(sid)+'&trimestre='+term+'&tipo='+k});
  const list=$('lesson-list');list.replaceChildren();
  d.aulas.forEach(a=>{
