@@ -1,0 +1,23 @@
+name: Destravar publicacao pendente do GitHub Pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/destravar-publicacao-historia.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+jobs:
+  liberar-publicacao:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Cancelar implantacao antiga travada
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api -X POST "repos/${{ github.repository }}/pages/deployments/b1c6d0fa2cb4c2c5e32fbd1948ae94c427102362/cancel"
+          echo "A implantacao antiga foi cancelada. Novas publicacoes podem prosseguir."
