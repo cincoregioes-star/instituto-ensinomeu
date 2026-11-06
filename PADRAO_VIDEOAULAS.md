@@ -16,8 +16,8 @@ Atualização editorial de 06/11/2026 — correção após teste da aula de Hist
 - Voz indicada pelo responsável: **Prof. Matheus Silva**, gerada no ElevenLabs.
 - Roteiro novo: **dois blocos com até 5.000 caracteres cada** (22 slides + 18 slides).
 - Imagens: **reaproveitar os 40 slides extraídos do MP4 original**, registrados em `videos/9ano/historia/slides_originais/` e no arquivo `slides_originais_historia_9ano.zip`.
-- MP3 novo: **aguardando os arquivos do usuário**; não afirmar que a nova voz já está incluída na aula.
-- Preservar o MP4 antigo; montar a nova versão em arquivo separado para validação antes da troca no site.
+- MP3 novo: **dois arquivos recebidos e incorporados na versão do Prof. Matheus Silva**, MP4 validado tecnicamente em 06/11/2026.
+- Versão nova publicada no arquivo canônico `videos/9ano/historia/aula01-nascimento-republica.mp4`, com 40 slides e voz Prof. Matheus Silva. A versão anterior permanece recuperável pelo histórico Git. A revisão auditiva humana e sincronização fina ainda estão pendentes.
 
 ## Verificação final obrigatória
 

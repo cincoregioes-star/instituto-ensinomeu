@@ -4,15 +4,14 @@
 
 O player gratuito está em `/historia-9ano.html`.
 
-**Arquivo MP4 esperado nesta pasta:**
+**Arquivo principal publicado nesta pasta (narração Prof. Matheus Silva):**
 
 `aula01-nascimento-republica.mp4`
 
-Vídeo final validado: H.264 / AAC, 1920×1080, 9min55,56s, 18.249.486 bytes.
+Vídeo principal atual: H.264 / AAC, 1920×1080, 9min40,205s, 23.188.008 bytes, voz do Prof. Matheus Silva em 1,00x. O arquivo canônico foi substituído pelo mesmo blob da versão `aula01-nascimento-republica-matheus.mp4` para manter os links existentes.
 
-### Publicar vídeo
-Na interface do GitHub, abra esta pasta, clique em **Add file → Upload files**, escolha o MP4 corrigido, renomeie para `aula01-nascimento-republica.mp4` e confirme em **Commit changes**.
+### Publicação atual
 
-A capa da página inicial do Instituto detecta automaticamente o MP4 por HTTP HEAD e mostra o card "Aula gratuita · 9º ano · História". O vídeo não deve ser anunciado como disponível enquanto o MP4 não estiver aqui.
+Os links existentes devem apontar para `aula01-nascimento-republica.mp4` e servir a versão do Prof. Matheus Silva. Não restaurar o MP4 anterior pela página ou por workflows.
 
 Alternativa de menor resolução: `aula01-nascimento-republica-720p.mp4` (o player verifica as duas opções).
