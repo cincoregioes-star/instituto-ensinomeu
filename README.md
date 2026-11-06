@@ -45,3 +45,10 @@ A configuração pública em `config.js` contém somente uma chave publicável, 
 - O aprofundamento original das 24 unidades está em `ensino-ia-aprofundamento.js`. Objetivos, explicações, glossários, laboratórios e reflexões complementam os 96 roteiros.
 - `apostila-ia.html` e `apostila-ia.js` produzem 8 apostilas digitais (uma por série) com 3 trimestres e 12 roteiros, preparadas para impressão em A4 ou opção do navegador 'Salvar como PDF'. Não há PDF armazenado no repositório.
 - As apostilas de IA são **material em revisão editorial**, sem nota oficial, sem substituir as 309 apostilas anteriores e sem acesso a dados privados.
+
+## Caixa de dúvidas pedagógicas (06/11/2026)
+
+- Nova tabela `public.ia_tutoria_perguntas`, com RLS ativada e acesso direto revogado de anon/authenticated. Apenas a Edge Function `ensino-api` (v10, JWT obrigatório) consulta e modifica dúvidas.
+- `ia-tutoria.html`/`ia-tutoria.js`: estudante autenticado envia dúvida da série com matrícula válida e acompanha somente suas mensagens; equipe pedagógica (`teacher`/`admin`) vê a fila e pode responder.
+- Limite de cinco perguntas a cada 24 horas. CPF/e-mail são rejeitados em verificações básicas; a interface instrui não enviar dados pessoais. Não há atendimento automático por IA nem prazo garantido de resposta.
+- Testes sem login devem falhar com 401. Validar em contas reais antes de divulgar a funcionalidade como homologada.
