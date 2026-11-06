@@ -3,7 +3,8 @@ const C=window.ENSINOMEU_CONFIG||{}, $=id=>document.getElementById(id);
 const sb=createClient(C.supabaseUrl,C.supabasePublishableKey,{auth:{persistSession:true,autoRefreshToken:true}});
 const endpoint=C.supabaseUrl+'/functions/v1/ensino-api',query=new URLSearchParams(location.search);
 const sid=query.get('disciplina')||'',term=query.get('trimestre')||'';
-const grade='fii-9';
+const grade=/^(fi-[1-5]|fii-[6-9]|em-[1-3])-/.exec(sid)?.[1]||'';
+const isIA=Boolean(grade)&&sid===grade+'-inteligencia-artificial';
 let questions=[];
 const VIDEO_PUBLICO = {
  'fii-9-geografia':{1:'geografia-9ano.html#titulo-video',2:'geografia-9ano.html#titulo-video-02'},
@@ -62,16 +63,17 @@ $('practice-form').addEventListener('submit',async e=>{
 $('pdf').addEventListener('click',openPdf);
 async function init(){
  try{
- if(!/^fii-9-[a-z0-9-]+$/.test(sid)||!/^T[123]$/.test(term))throw Error('Escolha uma disciplina e trimestre no seu painel.');
+ if(!/^(fi-[1-5]|fii-[6-9]|em-[1-3])-[a-z0-9-]+$/.test(sid)||!/^T[123]$/.test(term))throw Error('Escolha uma disciplina e trimestre no seu painel.');
  const {data}=await sb.auth.getUser();if(!data?.user)throw Error('Faça login novamente.');
  const d=await api('/trilha/'+encodeURIComponent(sid)+'/'+term);
  $('page-title').textContent=d.disciplina+' — '+d.trimestre+'º trimestre';
  $('count-lessons').textContent=d.aulas.length;$('count-practice').textContent=d.aulas.reduce((n,a)=>n+a.exercicios,0);$('count-videos').textContent=d.aulas.filter(temVideoPublicado).length;
  $('back').href='painel.html?serie='+encodeURIComponent(grade);
+ if(isIA){$('pdf').hidden=true;const heading=$('lesson-list').previousElementSibling;if(heading&&heading.tagName==='H2')heading.textContent='Roteiros de estudo do trimestre';}
  ['avaliacao','simulado'].forEach(k=>{$(k+'-link').href='prova.html?disciplina='+encodeURIComponent(sid)+'&trimestre='+term+'&tipo='+k});
  const list=$('lesson-list');list.replaceChildren();
  d.aulas.forEach(a=>{
-  const card=make('article','lesson');card.append(make('span','pill','Aula '+String(a.numero).padStart(2,'0')),make('h3','',a.titulo),make('p','help','Apostila: página '+a.pagina_apostila));
+  const card=make('article','lesson');card.append(make('span','pill','Aula '+String(a.numero).padStart(2,'0')),make('h3','',a.titulo),make('p','help',isIA?'Conteúdo disponível no roteiro digital':'Apostila: página '+a.pagina_apostila));
   card.append(make('p','help',temVideoPublicado(a)?'Videoaula disponível':'Videoaula — produção futura'));
   const actions=make('div','actions'),btn=make('button','btn',a.exercicios?'Praticar ('+a.exercicios+' questões)':'Exercícios em preparação');
   btn.type='button';btn.disabled=!a.exercicios;btn.addEventListener('click',()=>launch(a.numero));
@@ -82,6 +84,7 @@ async function init(){
    simulado.setAttribute('aria-label','Abrir simulado gamer da aula '+a.numero);
    actions.append(simulado);
   }
+  if(isIA){const guide=make('a','btn alt','📘 Ler roteiro completo');guide.href='ensino-ia.html?serie='+encodeURIComponent(grade)+'&trimestre='+term+'&aula='+a.numero;actions.append(guide)}
   actions.append(btn);card.append(actions);list.append(card);
  });
  $('content').hidden=false;message('Trilha carregada. Selecione uma aula para começar.');
