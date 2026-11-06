@@ -41,7 +41,7 @@ small{color:#50687a}footer{background:var(--navy);color:#d5e5e9;text-align:cente
 </head>
 <body>
 <header><div class="wrap nav"><a class="brand" href="./"><img src="assets/brasao.png" alt="">INSTITUTO ENSINOMEU</a><nav aria-label="Navegação"><a href="./">Início</a><a href="geografia-9ano.html">Geografia</a><a href="planos.html">Planos</a><a href="login.html">Área do aluno</a></nav></div></header>
-<section class="hero"><div class="wrap"><span class="eyebrow">1º trimestre · Aula 01 · Acesso gratuito</span><h1>História — 9º ano: O nascimento da República Brasileira</h1><p>Entenda a crise do Império, a Proclamação da República em 1889 e a formação da Primeira República. Uma aula de reforço escolar alinhada aos temas da BNCC, com reconstruções artísticas didáticas.</p><div class="chips"><span>40 slides</span><span>9min56s</span><span>Português brasileiro</span><span>Sem cadastro</span></div></div></section>
+<section class="hero"><div class="wrap"><span class="eyebrow">1º trimestre · Aula 01 · Acesso gratuito</span><h1>História — 9º ano: O nascimento da República Brasileira</h1><p>Entenda a crise do Império, a Proclamação da República em 1889 e a formação da Primeira República. Uma aula de reforço escolar alinhada aos temas da BNCC, com reconstruções artísticas didáticas.</p><div class="chips"><span>40 slides</span><span>Velocidade ajustável</span><span>Português brasileiro</span><span>Sem cadastro</span></div></div></section>
 <main class="wrap">
 <div class="player" id="player">
 <video id="video" controls playsinline preload="metadata" poster="assets/brasao.png" aria-label="Aula 01 de História do 9º ano, O nascimento da República Brasileira">Seu navegador não suporta reprodução de vídeo HTML5.</video>
@@ -49,7 +49,7 @@ small{color:#50687a}footer{background:var(--navy);color:#d5e5e9;text-align:cente
 </div>
 <div class="controls">
 <button id="entrar" class="btn" type="button">⛶ Tela cheia</button>
-<label class="speed-control" for="velocidade">🎙 Ritmo da narração <select id="velocidade" aria-label="Velocidade da narração e dos slides"><option value="0.70">0,70x — bem pausado</option><option value="0.80">0,80x — pausado</option><option value="0.85" selected>0,85x — didático</option><option value="0.90">0,90x — levemente pausado</option><option value="1.00">1,00x — original</option></select></label>
+<label class="speed-control" for="velocidade">🎙 Ritmo da narração <select id="velocidade" aria-label="Velocidade da narração e dos slides"><option value="0.70">0,70x — bem pausado</option><option value="0.80">0,80x — pausado</option><option value="0.85" selected>0,85x — mais lento</option><option value="0.90">0,90x — levemente pausado</option><option value="1.00">1,00x — padrão do arquivo</option></select></label>
 <a id="baixar" class="btn secondary" href="#" download hidden>↓ Baixar aula em MP4</a>
 <a class="btn" href="simulados/historia-9ano-aula01.html" style="text-decoration:none">🎮 Fazer simulado gamer — 20 questões</a>
 <a class="btn secondary" href="./">← Voltar ao Instituto</a>
@@ -65,9 +65,9 @@ small{color:#50687a}footer{background:var(--navy);color:#d5e5e9;text-align:cente
 <script>
 (function(){
 const player=document.getElementById('player'),video=document.getElementById('video'),aviso=document.getElementById('aviso'),baixar=document.getElementById('baixar');
-const fontes=['videos/9ano/historia/aula01-nascimento-republica.mp4','videos/9ano/historia/aula01-nascimento-republica-720p.mp4'];
+const fontes=[{url:'videos/9ano/historia/aula01-nascimento-republica-pausada.mp4',ritmo:'1.00'}, {url:'videos/9ano/historia/aula01-nascimento-republica.mp4',ritmo:'0.85'}, {url:'videos/9ano/historia/aula01-nascimento-republica-720p.mp4',ritmo:'0.85'}];
 const velocidade=document.getElementById('velocidade');
-function aplicarVelocidade(){const taxa=Number(velocidade.value)||0.85;video.defaultPlaybackRate=taxa;video.playbackRate=taxa;if('preservesPitch' in video)video.preservesPitch=true}
+function aplicarVelocidade(){const taxa=Number(velocidade.value)||1;video.defaultPlaybackRate=taxa;video.playbackRate=taxa;if('preservesPitch' in video)video.preservesPitch=true}
 velocidade.addEventListener('change',aplicarVelocidade);
 video.addEventListener('loadedmetadata',aplicarVelocidade);
 aplicarVelocidade();
@@ -76,7 +76,7 @@ function erro(){status('O arquivo MP4 ainda não está disponível no servidor. 
 video.addEventListener('error',erro);
 document.getElementById('entrar').addEventListener('click',async()=>{try{if(player.requestFullscreen)await player.requestFullscreen();else if(player.webkitRequestFullscreen)player.webkitRequestFullscreen();else if(video.webkitEnterFullscreen)video.webkitEnterFullscreen()}catch(e){status('O navegador não permitiu abrir em tela cheia.')}})
 document.getElementById('sair').addEventListener('click',async()=>{if(document.fullscreenElement&&document.exitFullscreen)await document.exitFullscreen();else if(document.webkitFullscreenElement&&document.webkitExitFullscreen)document.webkitExitFullscreen()})
-async function carregar(){for(const src of fontes){try{const r=await fetch(src,{method:'HEAD',cache:'no-store'});if(r.ok && (r.headers.get('content-type')||'').includes('video') || r.ok && src.endsWith('.mp4')){video.src=src;baixar.href=src;baixar.hidden=false;video.load();return}}catch(e){}}erro()}
+async function carregar(){for(const item of fontes){const src=item.url;try{const r=await fetch(src,{method:'HEAD',cache:'no-store'});if(r.ok && ((r.headers.get('content-type')||'').includes('video') || src.endsWith('.mp4'))){velocidade.value=item.ritmo;aplicarVelocidade();video.src=src;baixar.href=src;baixar.hidden=false;video.load();return}}catch(e){}}erro()}
 carregar();
 })();
 </script>
