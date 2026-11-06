@@ -17,6 +17,7 @@
   const index=Number(term.slice(1))-1,item=data.series[grade].trimestres[index],ext=extraData[grade]?.[index],body=$('chapter-body');
   $('grade-select').value=grade;$('term-select').value=term;
   const book=$('book-link');if(book)book.href='apostila-ia.html?serie='+encodeURIComponent(grade);
+  const tutor=$('tutor-link');if(tutor)tutor.href='ia-tutoria.html?serie='+encodeURIComponent(grade);
   const tabs=$('lesson-tabs');tabs.replaceChildren();
   item.aulas.forEach((name,i)=>{const n=node('button',name,'lesson-tab');n.type='button';n.setAttribute('aria-current',i+1===aula?'step':'false');n.addEventListener('click',()=>{aula=i+1;render()});tabs.append(n)});
   $('chapter-tag').textContent=data.series[grade].nome+' • '+term.replace('T','')+'º trimestre • Roteiro '+aula+'/4';
