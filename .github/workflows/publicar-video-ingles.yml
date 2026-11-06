@@ -1,0 +1,71 @@
+name: Publicar videoaula de Inglês — 9º ano
+on:
+  workflow_dispatch:
+    # O arquivo no Google Drive deve estar compartilhado como
+    # "Qualquer pessoa com o link" / "Leitor".
+permissions:
+  contents: write
+jobs:
+  publicar-ingles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Obter o MP4 original e validar SHA-256
+        shell: bash
+        run: |
+          set -euo pipefail
+          destino="videos/9ano/ingles/aula01-reading-news.mp4"
+          mkdir -p "$(dirname "$destino")"
+          checksum="f1ee48a043f22ac6e1005c50674a5374f469e3eb6d417b02106e189795fb062a"
+          tamanho=69509428
+          if [ -s "$destino" ]; then
+            if echo "$checksum  $destino" | sha256sum -c - >/dev/null; then
+              echo "O MP4 íntegro já está publicado."
+              exit 0
+            fi
+            echo "::error::O vídeo existente tem checksum diferente. Interrompendo por segurança."
+            exit 1
+          fi
+          python -m pip install --quiet 'gdown==5.2.0'
+          temporario="$(mktemp --suffix=.mp4)"
+          trap 'rm -f "$temporario"' EXIT
+          if ! gdown --id "1L3h5pTjqTeOqmssXRX0J66G8bQB4qyka" --output "$temporario"; then
+            echo "::error::Não foi possível obter o vídeo. No Drive, definir Acesso geral > Qualquer pessoa com o link > Leitor."
+            exit 1
+          fi
+          test "$(stat -c%s "$temporario")" -eq "$tamanho"
+          echo "$checksum  $temporario" | sha256sum -c -
+          mv "$temporario" "$destino"
+          trap - EXIT
+          echo "MP4 validado: $destino"
+      - name: Ativar a aula na trilha de Inglês
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          source=Path('ensino-trilha.js')
+          s=source.read_text(encoding='utf-8')
+          entry=" 'fii-9-lingua-inglesa':{1:'ingles-9ano.html'},\n"
+          if entry not in s:
+              needle=" 'fii-9-ciencias':{1:'ciencias-9ano.html'}\n};"
+              if needle not in s:
+                  raise SystemExit("O mapeamento existente mudou. Interrompendo para não danificar o painel.")
+              s=s.replace(needle," 'fii-9-ciencias':{1:'ciencias-9ano.html'},\n"+entry.rstrip("\n")+"\n};",1)
+              source.write_text(s,encoding='utf-8')
+          PY
+      - name: Publicar no site
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "videos/9ano/ingles/aula01-reading-news.mp4" "ensino-trilha.js"
+          if ! git diff --cached --quiet; then
+            git commit -m "Publicar aula 01 de Ingles 9o ano com MP4 validado"
+            git push origin HEAD:main
+          fi
