@@ -1,0 +1,42 @@
+name: História 9º — recuperar 40 slides do vídeo original
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/extrair_slides_historia.py"
+      - ".github/workflows/extrair-slides-historia.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  extrair-slides:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Instalar FFmpeg
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y --no-install-recommends ffmpeg
+      - name: Recuperar os 40 slides e validar
+        run: python3 scripts/extrair_slides_historia.py
+      - name: Salvar pacote dos slides
+        uses: actions/upload-artifact@v4
+        with:
+          name: Historia-9ano-Aula01-40-slides-originais
+          path: videos/9ano/historia/slides_originais_historia_9ano.zip
+          if-no-files-found: error
+      - name: Publicar os slides originais recuperados no GitHub
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add videos/9ano/historia/slides_originais videos/9ano/historia/slides_originais_historia_9ano.zip
+          if ! git diff --cached --quiet; then
+            git commit -m "História: recuperar slides 01 a 40 do MP4 original sem áudio"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
