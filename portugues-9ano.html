@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#092d47">
-<meta name="description" content="Aula 01 gratuita de Língua Portuguesa para o 9º ano: frases, orações e períodos, com 40 slides e narração Fernanda. Instituto EnsinoMeu.">
+<meta name="description" content="Aula 01 gratuita de Língua Portuguesa para o 9º ano: frases, orações e períodos, com 40 slides, 20 minutos, 6 questões comentadas e narração Prof. Matheus Silva. Instituto EnsinoMeu.">
 <meta property="og:title" content="Língua Portuguesa · 9º ano · Aula 01 | Instituto EnsinoMeu">
-<meta property="og:description" content="Frases, orações e períodos: aprenda com exemplos, exercícios e videoaula gratuita de 11min55s.">
+<meta property="og:description" content="Frases, orações e períodos: aprenda com exemplos, exercícios e videoaula gratuita de 20min00s.">
 <meta property="og:image" content="https://cincoregioes-star.github.io/instituto-ensinomeu/assets/brasao.png">
 <link rel="canonical" href="https://cincoregioes-star.github.io/instituto-ensinomeu/portugues-9ano.html">
 <link rel="icon" type="image/png" href="assets/favicon.png?v=20261103">
@@ -57,15 +57,15 @@ footer{background:#072d45;color:#e2f1f0;padding:24px 15px;text-align:center;font
 <nav aria-label="Navegação principal"><a href="./">Início</a><a href="geografia-9ano.html">Geografia</a><a href="historia-9ano.html">História</a><a href="planos.html">Planos</a><a href="login.html">Entrar</a></nav></div></header>
 <section class="hero"><div class="wrap"><span class="kicker">Aula 01 · 1º trimestre · Acesso gratuito</span>
 <h1>Língua Portuguesa — 9º ano</h1><p>Frases, orações e períodos: aprenda a distinguir frases nominais e verbais, localizar verbos e compreender períodos simples e compostos, com exemplos do cotidiano escolar.</p>
-<div class="chips"><span>40 slides didáticos</span><span>11min55s</span><span>Narração Fernanda, em português brasileiro</span><span>Sem cadastro</span><span>Reforço escolar alinhado à BNCC</span></div></div></section>
+<div class="chips"><span>40 slides didáticos</span><span>20min00s</span><span>10 min conteúdo + 10 min questões</span><span>6 questões resolvidas</span><span>Narração Prof. Matheus Silva · PT-BR</span><span>Sem cadastro</span><span>Reforço escolar alinhado à BNCC</span></div></div></section>
 <main class="wrap"><span class="kicker" style="color:#09614f">Videoaula gratuita</span><h2 class="main-title">Aula 01 — Frases, orações e períodos</h2>
 <div class="player" id="player">
 <video id="aula" controls playsinline preload="metadata" poster="assets/brasao.png" aria-label="Aula 01 de Língua Portuguesa do nono ano: frases, orações e períodos">
-<source src="videos/9ano/portugues/aula01-frases-oracoes-periodos.mp4" type="video/mp4">Seu navegador não suporta vídeo MP4.</video>
+<source src="videos/9ano/portugues/aula01-20min-prof-matheus.mp4" type="video/mp4">Seu navegador não suporta vídeo MP4.</video>
 <button class="exit" type="button" id="sair" aria-label="Sair da tela cheia">✕ Sair da tela cheia</button>
 </div>
 <div class="actions"><button class="btn" id="tela" type="button">⛶ Tela cheia</button>
-<a class="btn secondary" id="baixar" href="videos/9ano/portugues/aula01-frases-oracoes-periodos.mp4" download="EnsinoMeu_Portugues_9Ano_Aula01.mp4">↓ Baixar videoaula MP4</a>
+<a class="btn secondary" id="baixar" href="videos/9ano/portugues/aula01-20min-prof-matheus.mp4" download="EnsinoMeu_Portugues_9Ano_Aula01_20min.mp4">↓ Baixar videoaula MP4</a>
 <a class="btn" href="simulados/portugues-9ano-aula01.html" style="text-decoration:none">🎮 Fazer simulado gamer — 20 questões</a>
 <a class="btn secondary" href="./">← Voltar ao Instituto</a></div>
 <div id="aviso" class="alert" role="status" aria-live="polite" hidden></div>
@@ -89,7 +89,7 @@ function msg(t){aviso.textContent=t;aviso.hidden=false}
 video.addEventListener('error',()=>msg('O vídeo está temporariamente indisponível no servidor. Tente novamente mais tarde.'));
 document.getElementById('tela').addEventListener('click',async()=>{try{if(player.requestFullscreen)await player.requestFullscreen();else if(player.webkitRequestFullscreen)await player.webkitRequestFullscreen();else if(video.webkitEnterFullscreen)video.webkitEnterFullscreen();}catch(e){msg('Este navegador não permitiu a abertura em tela cheia.')}});
 document.getElementById('sair').addEventListener('click',async()=>{try{if(document.fullscreenElement&&document.exitFullscreen)await document.exitFullscreen();else if(document.webkitFullscreenElement&&document.webkitExitFullscreen)await document.webkitExitFullscreen();}catch(e){}});
-window.addEventListener('load',async()=>{try{const r=await fetch('videos/9ano/portugues/aula01-frases-oracoes-periodos.mp4',{method:'HEAD',cache:'no-store'});if(!r.ok){baixar.hidden=true;msg('O vídeo ainda está sendo publicado. Volte a esta página em alguns instantes.')}}catch(e){baixar.hidden=true;msg('Não foi possível verificar o arquivo de vídeo no momento.')}})
+window.addEventListener('load',async()=>{try{const r=await fetch('videos/9ano/portugues/aula01-20min-prof-matheus.mp4',{method:'HEAD',cache:'no-store'});if(!r.ok){baixar.hidden=true;msg('O vídeo ainda está sendo publicado. Volte a esta página em alguns instantes.')}}catch(e){baixar.hidden=true;msg('Não foi possível verificar o arquivo de vídeo no momento.')}})
 })();
 </script><script src="voltar-global.js?v=20261105" defer></script>
 </body></html>
