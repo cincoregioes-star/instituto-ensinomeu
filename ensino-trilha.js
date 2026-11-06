@@ -11,7 +11,8 @@ const VIDEO_PUBLICO = {
  'fii-9-historia':{1:'historia-9ano.html'},
  'fii-9-matematica':{1:'matematica-9ano.html'},
  'fii-9-lingua-portuguesa':{1:'portugues-9ano.html'},
- 'fii-9-ciencias':{1:'ciencias-9ano.html'}
+ 'fii-9-ciencias':{1:'ciencias-9ano.html'},
+ 'fii-9-lingua-inglesa':{1:'ingles-9ano.html'},
 };
 const GAMER_PUBLICO = {
  'fii-9-geografia':{1:'simulados/geografia-9ano-aula01.html',2:'simulados/geografia-9ano-aula02.html'},
