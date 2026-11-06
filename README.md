@@ -31,3 +31,12 @@ A configuração pública em `config.js` contém somente uma chave publicável, 
 - Área do aluno: `painel.html`, `ensino-painel.js`.
 - Administração: `admin.html`, `ensino-admin.js`.
 - API: Supabase Edge Function `ensino-api` com verificação JWT.
+
+## Trilha de Inteligência Artificial e Cultura Digital (06/11/2026)
+
+- Disciplina complementar adicionada do 5º ano ao 3º do Ensino Médio, em oito séries existentes, sem mexer nas matrículas.
+- O currículo consta em `ensino-ia-dados.js`: 3 trimestres e 4 roteiros por trimestre (96 roteiros).
+- `ensino-ia.html` e `ensino-ia.js`: estudo e exercício de autocorreção; progresso de estudo é armazenado apenas no navegador, sem identificação de aluno ou nota oficial.
+- O Supabase registra as disciplinas, os roteiros no catálogo e as avaliações **planejadas e bloqueadas**. Não há novas videoaulas ou PDFs de IA publicados, e provas formais não estão liberadas.
+- A área do aluno mantém autenticação e autorizações existentes. A página aberta de IA é demonstrativa e não exige matrícula.
+- Referenciais: BNCC Computação (Resolução CNE/CEB 1/2022) e Diretrizes de Educação Digital e Midiática (Resolução CNE/CEB 2/2025).
