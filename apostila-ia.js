@@ -57,6 +57,7 @@
   panel(end,'Fontes curriculares de referência',['Ministério da Educação — BNCC Computação, Resolução CNE/CEB nº 1 de 2022.','Ministério da Educação — Diretrizes Operacionais de Educação Digital e Midiática, Resolução CNE/CEB nº 2 de 2025.'],'');
   append(end,'p','Material original do Instituto EnsinoMeu. Apostila complementar em revisão pedagógica, sem equivalência com material didático oficialmente aprovado.','notes');book.append(end);
   element('study').href='ensino-ia.html?serie='+encodeURIComponent(grade);
+  const tutor=element('tutor-link');if(tutor)tutor.href='ia-tutoria.html?serie='+encodeURIComponent(grade);
   const url=new URL(location.href);url.searchParams.set('serie',grade);history.replaceState(null,'',url);
  }
  opts.addEventListener('change',()=>{grade=opts.value;render()});
