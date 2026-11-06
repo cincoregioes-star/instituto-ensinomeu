@@ -42,6 +42,14 @@ jobs:
           node --check ensino-indicadores.js
           node --check simulados/motor-gamer.js
           node tests/auditoria-gamer.mjs
+      - name: Auditar currículo, materiais e tutoria de IA
+        run: |
+          node --check ensino-ia.js
+          node --check ensino-ia-dados.js
+          node --check ensino-ia-aprofundamento.js
+          node --check apostila-ia.js
+          node --check ia-tutoria.js
+          node tests/auditoria-ia.mjs
       - name: Auditar botão Voltar em todas as telas
         run: |
           node --check voltar-global.js
