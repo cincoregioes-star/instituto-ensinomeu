@@ -1,0 +1,65 @@
+'use strict';
+(() => {
+ const dados=window.ENSINOMEU_IA_DATA,ext=window.ENSINOMEU_IA_EXT,element=id=>document.getElementById(id);
+ if(!dados||!ext){element('book').textContent='Não foi possível carregar a apostila. Atualize a página.';return}
+ const grades=Object.keys(dados.series),opts=element('grade'),params=new URLSearchParams(location.search);
+ let grade=grades.includes(params.get('serie'))?params.get('serie'):grades[0];
+ const make=(tag,text,cl)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cl)e.className=cl;return e};
+ const append=(par,tag,text,cl)=>{const a=make(tag,text,cl);par.append(a);return a};
+ const panel=(parent,title,contents,cls='')=>{const e=make('div',undefined,'panel '+cls);append(e,'strong',title);for(const p of contents)append(e,'p',p);parent.append(e)};
+ grades.forEach(g=>{const o=make('option',dados.series[g].nome);o.value=g;opts.append(o)});
+ function render(){
+  opts.value=grade;
+  const series=dados.series[grade],extras=ext.series[grade],book=element('book');book.replaceChildren();
+  document.title='Apostila IA — '+series.nome+' | Instituto EnsinoMeu';
+  const cover=make('section',undefined,'cover');
+  append(cover,'span','INSTITUTO ENSINOMEU • APOSTILA DIGITAL','eyebrow');
+  append(cover,'h1','Inteligência Artificial e Cultura Digital');
+  append(cover,'h2',series.nome);
+  append(cover,'p','Material didático complementar • 3 trimestres • 12 roteiros de estudo','meta');
+  append(cover,'p','Edição introdutória • 2026 • Uso escolar com acompanhamento pedagógico','meta');
+  book.append(cover);
+  const introduction=make('section',undefined,'intro');
+  append(introduction,'h2','Apresentação');
+  append(introduction,'p','Esta apostila foi elaborada como material de apoio à educação complementar. Apresenta conceitos de inteligência artificial, cultura digital, pensamento computacional, ética e projetos em linguagem progressiva para '+series.nome+'.');
+  append(introduction,'p','Orientações: leia cada roteiro, procure explicar as ideias com suas palavras, realize as experiências sem divulgar dados pessoais e confira o que aprendeu. Um adulto ou educador pode apoiar a leitura e comentar as atividades.');
+  append(introduction,'p','Referenciais gerais: BNCC Computação (Resolução CNE/CEB 1/2022), Educação Digital e Midiática (Resolução CNE/CEB 2/2025). Este material não constitui currículo homologado, nem substitui a escola regular.','notes');
+  book.append(introduction);
+  const toc=make('section',undefined,'toc');append(toc,'h2','Sumário');
+  const grid=append(toc,'div',undefined,'toc-list');
+  series.trimestres.forEach((mod,i)=>{const a=make('a',(i+1)+'º trimestre — '+mod.tema);a.href='#t'+(i+1);grid.append(a)});
+  book.append(toc);
+  series.trimestres.forEach((mod,index)=>{
+   const extra=extras[index],t=index+1,unit=make('section',undefined,'unit');
+   unit.id='t'+t;
+   append(unit,'div',(t)+'º trimestre · '+mod.tema,'lesson-num');
+   append(unit,'h2',mod.tema);
+   const title=make('div',undefined,'unit-head');append(title,'h3','O que você vai aprender');append(title,'p',extra.objetivo);unit.append(title);
+   append(unit,'div','Aula 1 de 4 · Entendendo o tema','lesson-num');append(unit,'h3','1. Conceitos essenciais');
+   append(unit,'p',mod.conteudo);extra.explicacao.forEach(txt=>append(unit,'p',txt));
+   append(unit,'h4','Palavras para lembrar');const list=append(unit,'div',undefined,'vocabulary');
+   extra.vocabulario.forEach(v=>append(list,'div',v,'vocab'));
+   append(unit,'div','Aula 2 de 4 · Observar e analisar','lesson-num');append(unit,'h3','2. Exemplo do cotidiano');
+   panel(unit,'Situação para observar',[mod.exemplo, 'Discuta: '+extra.reflexao],'');
+   append(unit,'div','Aula 3 de 4 · Experimentar','lesson-num');append(unit,'h3','3. Laboratório sem dados pessoais');
+   panel(unit,'Desafio principal',[mod.desafio,extra.laboratorio],'green');
+   append(unit,'h4','Registre sua investigação');append(unit,'p','O que observei ou produzi:');for(let n=0;n<4;n++)append(unit,'div',undefined,'space');
+   append(unit,'p','O que eu melhoraria e por quê:');for(let n=0;n<3;n++)append(unit,'div',undefined,'space');
+   append(unit,'div','Aula 4 de 4 · Revisar','lesson-num');append(unit,'h3','4. Avaliação formativa');
+   const questions=make('div',undefined,'panel gold');append(questions,'strong',mod.pergunta);
+   const ol=append(questions,'ul',undefined,'alternatives');mod.opcoes.forEach((x,i)=>append(ol,'li','(   ) '+String.fromCharCode(65+i)+') '+x));unit.append(questions);
+   append(unit,'p','Explique sua escolha, usando o que aprendeu:');for(let n=0;n<3;n++)append(unit,'div',undefined,'space');
+   panel(unit,'Checklist de aprendizagem',['Consigo explicar o conceito principal?','Consigo dar um exemplo e mostrar seus limites?','Respeitei a privacidade e conferi informações?','Posso justificar minha resposta sem copiar um texto pronto?'],'');
+   append(unit,'p','Autocorreção: consulte também a questão comentada no ambiente interativo do EnsinoMeu. Esta atividade não gera nota oficial.','notes');
+   book.append(unit);
+  });
+  const end=make('section',undefined,'unit');append(end,'h2','Encerramento e próximos passos');append(end,'p','Parabéns por concluir a leitura. Retome os temas que geraram dúvidas e compartilhe seu projeto com o educador responsável. Continue observando o mundo digital de maneira crítica, criativa e segura.');
+  panel(end,'Fontes curriculares de referência',['Ministério da Educação — BNCC Computação, Resolução CNE/CEB nº 1 de 2022.','Ministério da Educação — Diretrizes Operacionais de Educação Digital e Midiática, Resolução CNE/CEB nº 2 de 2025.'],'');
+  append(end,'p','Material original do Instituto EnsinoMeu. Apostila complementar em revisão pedagógica, sem equivalência com material didático oficialmente aprovado.','notes');book.append(end);
+  element('study').href='ensino-ia.html?serie='+encodeURIComponent(grade);
+  const url=new URL(location.href);url.searchParams.set('serie',grade);history.replaceState(null,'',url);
+ }
+ opts.addEventListener('change',()=>{grade=opts.value;render()});
+ ['print','print-bottom'].forEach(id=>element(id).addEventListener('click',()=>window.print()));
+ render();
+})();
