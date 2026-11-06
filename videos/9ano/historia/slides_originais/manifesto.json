@@ -1,0 +1,376 @@
+{
+  "aula": "História — 9º ano — Aula 01 — O nascimento da República Brasileira",
+  "origem": "MP4 ORIGINAL sem pausas artificiais: videos/9ano/historia/aula01-nascimento-republica.mp4",
+  "duracao_original_s": 595.56,
+  "resolucao_video": "1920x1080",
+  "quantidade": 40,
+  "total_pausas_artificiais_s": 0,
+  "voz_nova": "Prof. Matheus Silva — MP3s ainda pendentes",
+  "divisao_roteiro": {
+    "texto_1": "slides 01 a 22",
+    "texto_2": "slides 23 a 40"
+  },
+  "nota": "Captura visual dos slides no centro de seus intervalos; a montagem com a voz nova requer alinhar cada imagem à locução correspondente, sem desacelerar nem acrescentar silêncios artificiais.",
+  "slides": [
+    {
+      "slide": 1,
+      "imagem": "slide-01.jpg",
+      "inicio_original_s": 0.0,
+      "fim_original_s": 13.0,
+      "captura_s": 6.5,
+      "tamanho_bytes": 249526,
+      "sha256": "18ad7ae29cdfbbc9ff06eaa92a8a92724a6ef6c8609d87b707a494f666ca5cf0"
+    },
+    {
+      "slide": 2,
+      "imagem": "slide-02.jpg",
+      "inicio_original_s": 13.0,
+      "fim_original_s": 26.6,
+      "captura_s": 19.8,
+      "tamanho_bytes": 287821,
+      "sha256": "aa5b5f83e1a8634f2f0f5240ebbbcfb63af271dffefe9aa68f24edc9be704e49"
+    },
+    {
+      "slide": 3,
+      "imagem": "slide-03.jpg",
+      "inicio_original_s": 26.6,
+      "fim_original_s": 37.6,
+      "captura_s": 32.1,
+      "tamanho_bytes": 277854,
+      "sha256": "41eb4c811ebcc57d21b2c05b8c9c2df061792858728145a5562af0c7833f00e3"
+    },
+    {
+      "slide": 4,
+      "imagem": "slide-04.jpg",
+      "inicio_original_s": 37.6,
+      "fim_original_s": 47.4,
+      "captura_s": 42.5,
+      "tamanho_bytes": 264416,
+      "sha256": "a387e5c2adacdd143e9319f6d665118430d01ffedcbfc73c937f3ab2f21461c7"
+    },
+    {
+      "slide": 5,
+      "imagem": "slide-05.jpg",
+      "inicio_original_s": 47.4,
+      "fim_original_s": 62.4,
+      "captura_s": 54.9,
+      "tamanho_bytes": 298557,
+      "sha256": "6ac04d78ca0df5e17f4f03f86f07a47ba10663dec9f44dbf7c494b36744e8937"
+    },
+    {
+      "slide": 6,
+      "imagem": "slide-06.jpg",
+      "inicio_original_s": 62.4,
+      "fim_original_s": 76.4,
+      "captura_s": 69.4,
+      "tamanho_bytes": 272301,
+      "sha256": "1ac07c58ce3f5c03d3d94a09280b6938141c4d3582a831c0d6bf58ff1e33154a"
+    },
+    {
+      "slide": 7,
+      "imagem": "slide-07.jpg",
+      "inicio_original_s": 76.4,
+      "fim_original_s": 88.0,
+      "captura_s": 82.2,
+      "tamanho_bytes": 276250,
+      "sha256": "c92411e8264d75023bf8b90a83096e86d88d676fe0e815e34a2914bcef64152b"
+    },
+    {
+      "slide": 8,
+      "imagem": "slide-08.jpg",
+      "inicio_original_s": 88.0,
+      "fim_original_s": 100.4,
+      "captura_s": 94.2,
+      "tamanho_bytes": 267831,
+      "sha256": "32470249b9ac26ec3e51590066c45f8baf4d72ed5841d22e5874b3dfddf57f8f"
+    },
+    {
+      "slide": 9,
+      "imagem": "slide-09.jpg",
+      "inicio_original_s": 100.4,
+      "fim_original_s": 113.2,
+      "captura_s": 106.8,
+      "tamanho_bytes": 265619,
+      "sha256": "a92d9dfa24b86953858f44ced085e845c843c2ea22b169afbd7b00ab8788e0ee"
+    },
+    {
+      "slide": 10,
+      "imagem": "slide-10.jpg",
+      "inicio_original_s": 113.2,
+      "fim_original_s": 127.8,
+      "captura_s": 120.5,
+      "tamanho_bytes": 259396,
+      "sha256": "1aab882080f82e1328245aa14f30cbc1defef3201133ff97b3372810e86693ea"
+    },
+    {
+      "slide": 11,
+      "imagem": "slide-11.jpg",
+      "inicio_original_s": 127.8,
+      "fim_original_s": 139.8,
+      "captura_s": 133.8,
+      "tamanho_bytes": 246627,
+      "sha256": "b0e47f84362845584b3f5ca47eaab59db1010b0f39fa4266297c25bdfd20663c"
+    },
+    {
+      "slide": 12,
+      "imagem": "slide-12.jpg",
+      "inicio_original_s": 139.8,
+      "fim_original_s": 154.0,
+      "captura_s": 146.9,
+      "tamanho_bytes": 271541,
+      "sha256": "3c57d8479b179864a6ce2e44825e74721ca48a9edf82e71c8ad3a94db3226d3b"
+    },
+    {
+      "slide": 13,
+      "imagem": "slide-13.jpg",
+      "inicio_original_s": 154.0,
+      "fim_original_s": 170.0,
+      "captura_s": 162.0,
+      "tamanho_bytes": 256491,
+      "sha256": "bc42069357b6568bff63bf50cf3acd373e89c6c47a0d7878cf5c62383fe85956"
+    },
+    {
+      "slide": 14,
+      "imagem": "slide-14.jpg",
+      "inicio_original_s": 170.0,
+      "fim_original_s": 184.0,
+      "captura_s": 177.0,
+      "tamanho_bytes": 277267,
+      "sha256": "934b16ff0c714cf3b11cb29992ddea10028be68e619251277fac5c1ac815f855"
+    },
+    {
+      "slide": 15,
+      "imagem": "slide-15.jpg",
+      "inicio_original_s": 184.0,
+      "fim_original_s": 195.8,
+      "captura_s": 189.9,
+      "tamanho_bytes": 270119,
+      "sha256": "66649c8f548e042df26fc79c040fb60a36ecbb177ace8e1e542a9e410be231cb"
+    },
+    {
+      "slide": 16,
+      "imagem": "slide-16.jpg",
+      "inicio_original_s": 195.8,
+      "fim_original_s": 208.2,
+      "captura_s": 202.0,
+      "tamanho_bytes": 197869,
+      "sha256": "c21ff9db064b2268047d53365e644098c91f84e1c4553105b21138b00ba1c935"
+    },
+    {
+      "slide": 17,
+      "imagem": "slide-17.jpg",
+      "inicio_original_s": 208.2,
+      "fim_original_s": 219.2,
+      "captura_s": 213.7,
+      "tamanho_bytes": 257756,
+      "sha256": "d916c5fdd083d5c1475c0637ea7eb578435f430131b158c2d317afcd0e86d4cb"
+    },
+    {
+      "slide": 18,
+      "imagem": "slide-18.jpg",
+      "inicio_original_s": 219.2,
+      "fim_original_s": 232.6,
+      "captura_s": 225.9,
+      "tamanho_bytes": 263759,
+      "sha256": "bbef8bcc98639b04f63e16780424e41ebfc2befd98b063212ea8b602f997c877"
+    },
+    {
+      "slide": 19,
+      "imagem": "slide-19.jpg",
+      "inicio_original_s": 232.6,
+      "fim_original_s": 246.2,
+      "captura_s": 239.4,
+      "tamanho_bytes": 236911,
+      "sha256": "d332b112121659107002053269df8e070e294127976551713d1bc419bfca1930"
+    },
+    {
+      "slide": 20,
+      "imagem": "slide-20.jpg",
+      "inicio_original_s": 246.2,
+      "fim_original_s": 259.6,
+      "captura_s": 252.9,
+      "tamanho_bytes": 250863,
+      "sha256": "3f46cdcd60870e2089c3db05956cf5ae56e733d761e224fcb9501bc0f906917c"
+    },
+    {
+      "slide": 21,
+      "imagem": "slide-21.jpg",
+      "inicio_original_s": 259.6,
+      "fim_original_s": 276.0,
+      "captura_s": 267.8,
+      "tamanho_bytes": 274645,
+      "sha256": "6035cd6383c5e7efe989d159fc663072e1676755b364f8486100c9675f3b5857"
+    },
+    {
+      "slide": 22,
+      "imagem": "slide-22.jpg",
+      "inicio_original_s": 276.0,
+      "fim_original_s": 292.4,
+      "captura_s": 284.2,
+      "tamanho_bytes": 235761,
+      "sha256": "3f2ce7669e056ac4a1ac37942ac8a89531c81a226f96434453e56c85d584f52a"
+    },
+    {
+      "slide": 23,
+      "imagem": "slide-23.jpg",
+      "inicio_original_s": 292.4,
+      "fim_original_s": 309.0,
+      "captura_s": 300.7,
+      "tamanho_bytes": 259916,
+      "sha256": "84316a08302d12c215b61cdfe237d0fdf928a909c6748ae27ced1866818f4dc2"
+    },
+    {
+      "slide": 24,
+      "imagem": "slide-24.jpg",
+      "inicio_original_s": 309.0,
+      "fim_original_s": 325.8,
+      "captura_s": 317.4,
+      "tamanho_bytes": 293183,
+      "sha256": "6bcc43fe9a2241737bf33f3e69dbb88151a831d89fbdce8db64029ea78b69d07"
+    },
+    {
+      "slide": 25,
+      "imagem": "slide-25.jpg",
+      "inicio_original_s": 325.8,
+      "fim_original_s": 342.8,
+      "captura_s": 334.3,
+      "tamanho_bytes": 287895,
+      "sha256": "2601a52a9feb07b0e9e50d38a760a8e6bae7c90d77af5f46709b84e2e6afc53f"
+    },
+    {
+      "slide": 26,
+      "imagem": "slide-26.jpg",
+      "inicio_original_s": 342.8,
+      "fim_original_s": 359.6,
+      "captura_s": 351.2,
+      "tamanho_bytes": 285890,
+      "sha256": "721c16f5ff0b9e07317e2b91d76c7c3e1716abde7e3bdd36a299d5da6b9b1e5b"
+    },
+    {
+      "slide": 27,
+      "imagem": "slide-27.jpg",
+      "inicio_original_s": 359.6,
+      "fim_original_s": 376.0,
+      "captura_s": 367.8,
+      "tamanho_bytes": 288368,
+      "sha256": "806f36730ff6569f355d6ca074bef40ed9d78e86432ed4a4412f18b0eaf7debb"
+    },
+    {
+      "slide": 28,
+      "imagem": "slide-28.jpg",
+      "inicio_original_s": 376.0,
+      "fim_original_s": 392.8,
+      "captura_s": 384.4,
+      "tamanho_bytes": 294233,
+      "sha256": "09bb5e78c01e1b9258780ae3b96048635e68d1621efe5d71fdf852de9c8f51a8"
+    },
+    {
+      "slide": 29,
+      "imagem": "slide-29.jpg",
+      "inicio_original_s": 392.8,
+      "fim_original_s": 411.2,
+      "captura_s": 402.0,
+      "tamanho_bytes": 290241,
+      "sha256": "6393e3e3fa6412208bef3dd4ac2022649775c2dcf5b38543cd43347a5ef71d0f"
+    },
+    {
+      "slide": 30,
+      "imagem": "slide-30.jpg",
+      "inicio_original_s": 411.2,
+      "fim_original_s": 428.0,
+      "captura_s": 419.6,
+      "tamanho_bytes": 268445,
+      "sha256": "02243249a2f4f2304525b9e60b8c5c56c8e6476841488bd359a5a915e71d075b"
+    },
+    {
+      "slide": 31,
+      "imagem": "slide-31.jpg",
+      "inicio_original_s": 428.0,
+      "fim_original_s": 445.8,
+      "captura_s": 436.9,
+      "tamanho_bytes": 270802,
+      "sha256": "6793b9b1402ea9df26b9c2e300c1a714bd004cc524ec67f755da0f3448ca1526"
+    },
+    {
+      "slide": 32,
+      "imagem": "slide-32.jpg",
+      "inicio_original_s": 445.8,
+      "fim_original_s": 462.6,
+      "captura_s": 454.2,
+      "tamanho_bytes": 285527,
+      "sha256": "ccf1f539c4907e570ce2db6e2123cd8683259f6eefeba677ffd8fd5d3bc7fb71"
+    },
+    {
+      "slide": 33,
+      "imagem": "slide-33.jpg",
+      "inicio_original_s": 462.6,
+      "fim_original_s": 479.4,
+      "captura_s": 471.0,
+      "tamanho_bytes": 265207,
+      "sha256": "4d4c5a28b374955573701c63a1fa25cf3e45bdf4182f059b8f57524e74704038"
+    },
+    {
+      "slide": 34,
+      "imagem": "slide-34.jpg",
+      "inicio_original_s": 479.4,
+      "fim_original_s": 495.4,
+      "captura_s": 487.4,
+      "tamanho_bytes": 238384,
+      "sha256": "bae9e9ada64664f96b483e31a4397fbb36448f9f1c2436a866c4c1ded03ac6ba"
+    },
+    {
+      "slide": 35,
+      "imagem": "slide-35.jpg",
+      "inicio_original_s": 495.4,
+      "fim_original_s": 511.4,
+      "captura_s": 503.4,
+      "tamanho_bytes": 266734,
+      "sha256": "ee5f6bed518286e5fafc34678c8f0161ded55e79b5bcc4831aefba71ad8f3cdb"
+    },
+    {
+      "slide": 36,
+      "imagem": "slide-36.jpg",
+      "inicio_original_s": 511.4,
+      "fim_original_s": 528.2,
+      "captura_s": 519.8,
+      "tamanho_bytes": 255304,
+      "sha256": "f6a56e58c36ce30cc00615965f920f272dc6a54f64e55566ea65e85cf3cb004e"
+    },
+    {
+      "slide": 37,
+      "imagem": "slide-37.jpg",
+      "inicio_original_s": 528.2,
+      "fim_original_s": 545.2,
+      "captura_s": 536.7,
+      "tamanho_bytes": 281844,
+      "sha256": "3f06ea9caec32d1097affae0a87c255a3ddf2c6cd86edf5e77755dbe40b1b71b"
+    },
+    {
+      "slide": 38,
+      "imagem": "slide-38.jpg",
+      "inicio_original_s": 545.2,
+      "fim_original_s": 561.0,
+      "captura_s": 553.1,
+      "tamanho_bytes": 245212,
+      "sha256": "415d43e60e3d1ee7c19fbdbc1443a0edbe8e753d34d942c555e85f198eb1fca8"
+    },
+    {
+      "slide": 39,
+      "imagem": "slide-39.jpg",
+      "inicio_original_s": 561.0,
+      "fim_original_s": 577.8,
+      "captura_s": 569.4,
+      "tamanho_bytes": 263479,
+      "sha256": "c94effa0ade233cc19085053eab5275ba1951c031717491ac0d73734d91873d4"
+    },
+    {
+      "slide": 40,
+      "imagem": "slide-40.jpg",
+      "inicio_original_s": 577.8,
+      "fim_original_s": 595.56,
+      "captura_s": 586.68,
+      "tamanho_bytes": 263744,
+      "sha256": "97b84d34f595f9f1f5000fb1a3c5f0167962bd8e52c94b95186c53681c458dda"
+    }
+  ]
+}
