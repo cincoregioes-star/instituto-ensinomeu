@@ -85,7 +85,7 @@
       "serie": "5º ano",
       "ano": 5,
       "titulo": "5º ano — Fundamental I",
-      "disciplinas": 7,
+      "disciplinas": 8,
       "materias": [
         "Língua Portuguesa",
         "Matemática",
@@ -93,7 +93,8 @@
         "História",
         "Geografia",
         "Arte",
-        "Educação Física"
+        "Educação Física",
+        "Inteligência Artificial e Cultura Digital"
       ],
       "trimestres": 3,
       "acesso": "Demonstração — sem venda habilitada"
@@ -104,7 +105,7 @@
       "serie": "6º ano",
       "ano": 6,
       "titulo": "6º ano — Fundamental II",
-      "disciplinas": 8,
+      "disciplinas": 9,
       "materias": [
         "Língua Portuguesa",
         "Matemática",
@@ -113,7 +114,8 @@
         "Geografia",
         "Língua Inglesa",
         "Arte",
-        "Educação Física"
+        "Educação Física",
+        "Inteligência Artificial e Cultura Digital"
       ],
       "trimestres": 3,
       "acesso": "Demonstração — sem venda habilitada"
@@ -124,7 +126,7 @@
       "serie": "7º ano",
       "ano": 7,
       "titulo": "7º ano — Fundamental II",
-      "disciplinas": 8,
+      "disciplinas": 9,
       "materias": [
         "Língua Portuguesa",
         "Matemática",
@@ -133,7 +135,8 @@
         "Geografia",
         "Língua Inglesa",
         "Arte",
-        "Educação Física"
+        "Educação Física",
+        "Inteligência Artificial e Cultura Digital"
       ],
       "trimestres": 3,
       "acesso": "Demonstração — sem venda habilitada"
@@ -144,7 +147,7 @@
       "serie": "8º ano",
       "ano": 8,
       "titulo": "8º ano — Fundamental II",
-      "disciplinas": 8,
+      "disciplinas": 9,
       "materias": [
         "Língua Portuguesa",
         "Matemática",
@@ -153,7 +156,8 @@
         "Geografia",
         "Língua Inglesa",
         "Arte",
-        "Educação Física"
+        "Educação Física",
+        "Inteligência Artificial e Cultura Digital"
       ],
       "trimestres": 3,
       "acesso": "Demonstração — sem venda habilitada"
@@ -164,7 +168,7 @@
       "serie": "9º ano",
       "ano": 9,
       "titulo": "9º ano — Fundamental II",
-      "disciplinas": 8,
+      "disciplinas": 9,
       "materias": [
         "Língua Portuguesa",
         "Matemática",
@@ -173,7 +177,8 @@
         "Geografia",
         "Língua Inglesa",
         "Arte",
-        "Educação Física"
+        "Educação Física",
+        "Inteligência Artificial e Cultura Digital"
       ],
       "trimestres": 3,
       "acesso": "Demonstração — sem venda habilitada"
@@ -184,7 +189,7 @@
       "serie": "1ª série",
       "ano": 1,
       "titulo": "1ª série — Ensino Médio",
-      "disciplinas": 12,
+      "disciplinas": 13,
       "materias": [
         "Língua Portuguesa",
         "Matemática",
@@ -197,7 +202,8 @@
         "Sociologia",
         "Língua Inglesa",
         "Arte",
-        "Educação Física"
+        "Educação Física",
+        "Inteligência Artificial e Cultura Digital"
       ],
       "trimestres": 3,
       "acesso": "Demonstração — sem venda habilitada"
@@ -208,7 +214,7 @@
       "serie": "2ª série",
       "ano": 2,
       "titulo": "2ª série — Ensino Médio",
-      "disciplinas": 12,
+      "disciplinas": 13,
       "materias": [
         "Língua Portuguesa",
         "Matemática",
@@ -221,7 +227,8 @@
         "Sociologia",
         "Língua Inglesa",
         "Arte",
-        "Educação Física"
+        "Educação Física",
+        "Inteligência Artificial e Cultura Digital"
       ],
       "trimestres": 3,
       "acesso": "Demonstração — sem venda habilitada"
@@ -232,7 +239,7 @@
       "serie": "3ª série",
       "ano": 3,
       "titulo": "3ª série — Ensino Médio",
-      "disciplinas": 12,
+      "disciplinas": 13,
       "materias": [
         "Língua Portuguesa",
         "Matemática",
@@ -245,10 +252,12 @@
         "Sociologia",
         "Língua Inglesa",
         "Arte",
-        "Educação Física"
+        "Educação Física",
+        "Inteligência Artificial e Cultura Digital"
       ],
       "trimestres": 3,
       "acesso": "Demonstração — sem venda habilitada"
     }
-  ]
+  ],
+  "novidade_2026": "Inteligência Artificial e Cultura Digital: componente de educação complementar do 5º ano à 3ª série do Ensino Médio. Roteiros e atividades de autocorreção; avaliações formais planejadas."
 }
