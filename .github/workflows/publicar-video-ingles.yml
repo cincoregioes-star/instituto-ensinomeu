@@ -71,5 +71,21 @@ jobs:
           git add -- "videos/9ano/ingles/aula01-reading-news.mp4" "ensino-trilha.js"
           if ! git diff --cached --quiet; then
             git commit -m "Publicar aula 01 de Ingles 9o ano com MP4 validado"
-            git push origin HEAD:main
+            # O ramo principal pode ter recebido outras alterações desde o checkout.
+            # Reaplicar nosso commit sobre o HEAD atualizado, sem sobrescrever o restante.
+            for tentativa in 1 2 3 4; do
+              git fetch origin main
+              if ! git rebase origin/main; then
+                echo "::error::Conflito entre a publicação e alterações recentes; operação interrompida sem forçar o push."
+                git rebase --abort || true
+                exit 1
+              fi
+              if git push origin HEAD:main; then
+                echo "Publicação concluída no GitHub."
+                exit 0
+              fi
+              sleep 3
+            done
+            echo "::error::O ramo principal continuou mudando. Não forçamos alterações."
+            exit 1
           fi
