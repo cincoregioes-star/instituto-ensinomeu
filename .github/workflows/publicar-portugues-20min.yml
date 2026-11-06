@@ -1,0 +1,101 @@
+name: Publicar Português 9º ano — Aula 01 em 20 minutos
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/publicar-portugues-20min.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publicar-portugues-20min
+  cancel-in-progress: false
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Obter vídeo do Drive e verificar arquivo
+        shell: bash
+        run: |
+          set -euo pipefail
+          destino="videos/9ano/portugues/aula01-20min-prof-matheus.mp4"
+          checksum="b98b012e70e54ae0c72092a4e577899d4b1701dde66fc58545cebee9d2071b03"
+          tamanho=29256143
+          mkdir -p "$(dirname "$destino")"
+          if [ -s "$destino" ]; then
+            echo "$checksum  $destino" | sha256sum -c -
+          else
+            python -m pip install --quiet "gdown==5.2.0"
+            temporario="$(mktemp --suffix=.mp4)"
+            trap 'rm -f "$temporario"' EXIT
+            gdown --id "1kotdjASCOQTvoEmBsjIPJmS3WPtadoei" --output "$temporario"
+            test "$(stat -c%s "$temporario")" -eq "$tamanho"
+            echo "$checksum  $temporario" | sha256sum -c -
+            mv "$temporario" "$destino"
+            trap - EXIT
+          fi
+          test "$(stat -c%s "$destino")" -eq "$tamanho"
+      - name: Atualizar página da aula preservando estrutura e vídeo anterior
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p=Path("portugues-9ano.html")
+          s=p.read_text(encoding="utf-8")
+          antigo="videos/9ano/portugues/aula01-frases-oracoes-periodos.mp4"
+          novo="videos/9ano/portugues/aula01-20min-prof-matheus.mp4"
+          if novo in s:
+              print("Página já usa o novo vídeo.")
+          else:
+              if s.count(antigo)!=3:
+                  raise SystemExit("A estrutura da página mudou. Interrompendo a publicação sem sobrescrever alterações.")
+              if s.count("11min55s")!=2:
+                  raise SystemExit("A duração anterior não está conforme o padrão esperado.")
+              if "Narração Fernanda, em português brasileiro" not in s:
+                  raise SystemExit("A etiqueta da narração foi alterada. Revisar antes de publicar.")
+              s=s.replace(antigo, novo)
+              s=s.replace("11min55s","20min00s")
+              s=s.replace("Narração Fernanda, em português brasileiro",
+                          "Narração Prof. Matheus Silva · PT-BR")
+              s=s.replace("com 40 slides e narração Fernanda. Instituto EnsinoMeu.",
+                          "com 40 slides, 20 minutos, 6 questões comentadas e narração Prof. Matheus Silva. Instituto EnsinoMeu.")
+              s=s.replace("download=\"EnsinoMeu_Portugues_9Ano_Aula01.mp4\"",
+                          "download=\"EnsinoMeu_Portugues_9Ano_Aula01_20min.mp4\"")
+              s=s.replace("<span>40 slides didáticos</span><span>20min00s</span>",
+                          "<span>40 slides didáticos</span><span>20min00s</span><span>10 min conteúdo + 10 min questões</span><span>6 questões resolvidas</span>")
+              p.write_text(s,encoding="utf-8")
+              print("Player e metadados atualizados. O MP4 anterior permanece como backup.")
+          PY
+      - name: Publicar sem sobrescrever alterações simultâneas
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "videos/9ano/portugues/aula01-20min-prof-matheus.mp4" "portugues-9ano.html"
+          if git diff --cached --quiet; then
+            echo "Nenhuma mudança pendente; publicação anterior confirmada."
+            exit 0
+          fi
+          git commit -m "Publicar Português 9º ano: 20 min com 6 resoluções e Prof. Matheus"
+          for tentativa in 1 2 3 4; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              echo "::error::Conflito com alterações recentes. Não será feito push forçado."
+              git rebase --abort || true
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              echo "Arquivo e página publicados com integridade validada."
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "::error::Falha de sincronização com alterações simultâneas; o vídeo antigo foi preservado."
+          exit 1
