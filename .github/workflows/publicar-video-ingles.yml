@@ -1,5 +1,9 @@
 name: Publicar videoaula de Inglês — 9º ano
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publicar-video-ingles.yml'
   workflow_dispatch:
     # O arquivo no Google Drive deve estar compartilhado como
     # "Qualquer pessoa com o link" / "Leitor".
