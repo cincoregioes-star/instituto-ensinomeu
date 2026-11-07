@@ -3,7 +3,7 @@ window.ENSINOMEU_QUIZ={
   "disciplina": "Arte",
   "aula": 1,
   "titulo": "Ponto, linha, forma e cor",
-  "video": "../arte-9ano.html",
+  "video": "../trilha.html?disciplina=fii-9-arte&trimestre=T1",
   "questoes": [
     {
       "topic": "Elementos visuais",
@@ -285,5 +285,6 @@ window.ENSINOMEU_QUIZ={
       "correct": 3,
       "explain": "A leitura crítica combina observação de elementos visuais com interpretação contextual, sem impor significado único."
     }
-  ]
+  ],
+  "referencia": "apostila"
 };
