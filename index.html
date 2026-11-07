@@ -11,10 +11,26 @@
 :root{--navy:#052d4c;--deep:#061f37;--green:#007a54;--blue:#176cc1;--teal:#00a8b0;--gold:#f5c136;--ink:#0a2c46;--muted:#577081;--line:#d5e5ec;--paper:#f2f7fc}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px}body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--paper);color:var(--ink)}a{color:inherit}button{font:inherit;cursor:pointer}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .wrap{width:min(1230px,calc(100% - 42px));margin:auto}
-.top{position:sticky;top:0;z-index:50;background:#062b4b;color:#fff;box-shadow:0 5px 20px #052a483d}.top-inner{height:82px;display:flex;align-items:center;justify-content:space-between;gap:22px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:18px;line-height:1.15;font-weight:950;letter-spacing:.035em;white-space:nowrap}.brand img{width:54px;height:54px;object-fit:contain;background:white;padding:4px;border-radius:13px}.brand small{display:block;color:#b9ebd9;font-weight:750;font-size:10px;letter-spacing:.15em;margin-top:6px}
-.nav{display:flex;align-items:center;gap:4px}.nav a{font-size:14px;font-weight:800;text-decoration:none;padding:11px 13px;border-radius:10px;color:#e1f4f0}.nav a:hover{background:#124c60}.nav .sign{background:var(--gold);color:#072c44;margin-left:7px;box-shadow:0 4px 10px #0002}.nav .sign:hover{background:#ffdb66;color:#072c44}
-.mobile{display:none}.mobile summary{font-size:15px;font-weight:850;padding:9px 12px;border:1px solid #96bcbf;border-radius:9px;cursor:pointer;list-style:none}.mobile summary::-webkit-details-marker{display:none}.mobile-links{position:absolute;right:16px;top:75px;min-width:220px;display:grid;background:#073451;border-radius:13px;box-shadow:0 12px 24px #001f35aa;padding:11px}.mobile-links a{padding:12px;text-decoration:none;font-weight:800;border-radius:8px}.mobile-links a:hover{background:#17666a}
+.top{position:sticky;top:0;z-index:50;background:linear-gradient(110deg,#062742,#073653);color:#fff;border-bottom:1px solid #ffffff20;box-shadow:0 8px 28px #04233938;isolation:isolate}
+.top-inner{min-height:86px;display:flex;align-items:center;gap:clamp(16px,2vw,26px)}
+.brand{display:flex;flex:0 0 auto;align-items:center;gap:12px;text-decoration:none;font-size:17px;line-height:1.15;font-weight:950;letter-spacing:.025em;white-space:nowrap}
+.brand img{width:54px;height:54px;object-fit:contain;background:#fff;padding:4px;border-radius:14px;box-shadow:0 4px 14px #0002}
+.brand small{display:block;color:#a7e9d3;font-weight:800;font-size:10px;letter-spacing:.12em;margin-top:6px}
+.nav{display:flex;align-items:center;justify-content:flex-end;flex:1 1 auto;min-width:0;gap:4px}
+.nav a{display:inline-flex;align-items:center;justify-content:center;min-height:43px;font-size:13px;font-weight:850;line-height:1.2;text-decoration:none;padding:10px 11px;border-radius:11px;color:#e7f5fa;white-space:nowrap;transition:background .18s,color .18s,transform .18s}
+.nav a:hover,.nav a:focus-visible{background:#ffffff15;color:#fff;transform:translateY(-1px)}
+.header-actions{flex:0 0 auto;display:flex;align-items:center}
+.top-sign{display:inline-flex;align-items:center;justify-content:center;min-height:46px;min-width:110px;padding:10px 19px;border-radius:12px;background:var(--gold);color:#062c44;font-size:13px;line-height:1.1;font-weight:950;text-align:center;text-decoration:none;white-space:nowrap;box-shadow:0 7px 18px #0002;transition:transform .18s,background .18s}
+.top-sign:hover,.top-sign:focus-visible{background:#ffdd67;color:#062c44;transform:translateY(-2px)}
+.mobile{display:none;position:relative;margin-left:auto}
+.mobile summary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:43px;font-size:14px;font-weight:850;padding:9px 16px;border:1px solid #73aab9;border-radius:11px;cursor:pointer;list-style:none;background:#ffffff0b;color:#fff;user-select:none}
+.mobile summary:hover{background:#ffffff1d}.mobile summary::-webkit-details-marker{display:none}
+.mobile-links{position:absolute;right:0;top:calc(100% + 12px);width:min(310px,calc(100vw - 28px));display:flex;flex-direction:column;gap:4px;background:#06314f;border:1px solid #386379;border-radius:16px;box-shadow:0 18px 40px #00182ac9;padding:12px;max-height:calc(100vh - 110px);overflow-y:auto}
+.mobile-links a{display:block;padding:12px 14px;text-decoration:none;font-size:14px;font-weight:850;border-radius:9px;white-space:nowrap;color:#edf9fc}
+.mobile-links a:hover,.mobile-links a:focus-visible{background:#155870}
+.mobile-links a:last-child{margin-top:6px;background:var(--gold);color:#092d43;text-align:center}
+@media(max-width:1180px){.nav,.header-actions{display:none}.mobile{display:block}}
+@media(max-width:660px){.top-inner{min-height:72px;height:72px}.brand{font-size:12px}.brand img{width:43px;height:43px}.brand small{font-size:8px}.mobile summary{padding:9px 12px}}
 .hero{position:relative;overflow:hidden;background:radial-gradient(circle at 73% 12%,#0b81a9 0%,#084e7a 25%,#052d50 55%,#041e39 100%);color:#fff;border-bottom:6px solid var(--gold)}
 .hero:before{content:"";position:absolute;width:620px;height:620px;border:100px solid #00a87825;border-radius:50%;right:-180px;top:-210px}.hero:after{content:"";position:absolute;width:300px;height:300px;border:65px solid #f6c22f26;border-radius:50%;left:-200px;bottom:-230px}
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:44px;padding:75px 0 81px}
@@ -58,9 +74,11 @@
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap top-inner"><a class="brand" href="./"><img src="assets/brasao.png" alt=""><span>INSTITUTO ENSINOMEU<small>REFORÇO ESCOLAR • BNCC</small></span></a>
-<nav class="nav" aria-label="Menu principal"><a href="#aulas-gravadas">Aulas gravadas</a><a href="simulados/9ano.html">🎮 Simulados 9º ano</a><a href="#inteligencia-artificial">IA e Cultura Digital</a><a href="#ebooks">Apostilas</a><a href="#series">Séries</a><a href="planos.html">Planos</a><a href="login.html" class="sign">Entrar na plataforma</a></nav>
-<details class="mobile"><summary aria-label="Abrir menu">☰ Menu</summary><div class="mobile-links"><a href="#aulas-gravadas">Aulas gravadas</a><a href="#ebooks">Apostilas</a><a href="#series">Séries</a><a href="planos.html">Planos</a><a href="login.html">Entrar na plataforma</a></div></details>
+<header class="top"><div class="wrap top-inner">
+<a class="brand" href="./" aria-label="Instituto EnsinoMeu — página inicial"><img src="assets/brasao.png" alt="Brasão do Instituto EnsinoMeu"><span>INSTITUTO ENSINOMEU<small>REFORÇO ESCOLAR • BNCC</small></span></a>
+<nav class="nav" aria-label="Menu principal"><a href="#aulas-gravadas" aria-label="Aulas gravadas">Aulas</a><a href="simulados/9ano.html" aria-label="Simulados gamer do 9º ano">🎮 Simulados</a><a href="#inteligencia-artificial" aria-label="Inteligência Artificial e Cultura Digital">IA e Cultura</a><a href="#ebooks">Apostilas</a><a href="#series">Séries</a><a href="planos.html">Planos</a></nav>
+<div class="header-actions"><a href="login.html" class="top-sign" aria-label="Entrar na plataforma">Entrar</a></div>
+<details class="mobile"><summary aria-label="Abrir menu de navegação">☰ Menu</summary><nav class="mobile-links" aria-label="Menu para celular e tablet"><a href="#aulas-gravadas">▶ Aulas gravadas</a><a href="simulados/9ano.html">🎮 Simulados 9º ano</a><a href="#inteligencia-artificial">✦ IA e Cultura Digital</a><a href="#ebooks">▤ Apostilas</a><a href="#series">▦ Séries</a><a href="planos.html">★ Planos</a><a href="login.html">Entrar na plataforma</a></nav></details>
 </div></header>
 <section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">Aprendizagem alinhada à BNCC</span><h1>Reforço escolar com <span>conteúdos BNCC e desafios digitais.</span></h1>
 <p>Aulas gravadas, apostilas e atividades por série e trimestre. Em desenvolvimento: <strong>EnsinoMeu Play</strong>, com simulados digitais gamificados e avaliações para cada ano e série.</p>
@@ -100,5 +118,4 @@
 <section class="cta"><div class="wrap cta-inner"><div><h2>Seu ambiente de estudos está aqui.</h2><p>Faça login para acessar seus conteúdos e continuar seu aprendizado.</p></div><a class="btn btn-gold" href="login.html">Entrar na plataforma ↗</a></div></section>
 <footer class="footer"><div class="wrap footer-inner"><small>© <span id="ano">2026</span> Instituto EnsinoMeu · Reforço escolar baseado na BNCC · Não substitui a escola regular.</small><div><a href="privacidade.html">Privacidade</a> · <a href="planos.html">Planos</a> · <a href="login.html">Entrar</a></div></div></footer>
 <script>document.getElementById('ano').textContent=String(new Date().getFullYear());document.querySelectorAll('.mobile-links a').forEach(a=>a.addEventListener('click',()=>a.closest('details').open=false));</script>
-<script src="voltar-global.js?v=20261105" defer></script>
 </body></html>
