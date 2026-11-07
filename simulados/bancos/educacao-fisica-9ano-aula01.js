@@ -285,5 +285,6 @@ window.ENSINOMEU_QUIZ={
       "correct": 3,
       "explain": "A progressão coletiva pelo espaço livre pode criar uma oportunidade de ataque antes da reorganização adversária."
     }
-  ]
+  ],
+  "referencia": "apostila"
 };
