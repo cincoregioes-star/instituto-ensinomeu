@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#082b3e">
+<meta name="description" content="Educação Física 9º ano, aula 01: esportes de invasão e objetivos. Videoaula do Instituto EnsinoMeu alinhada à apostila do 1º trimestre.">
+<title>Educação Física — 9º ano • Aula 01 | Instituto EnsinoMeu</title>
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<style>
+:root{--navy:#082b3e;--green:#096750;--gold:#efc266;--ink:#153549;--light:#e4f1e9}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#e2f1e9,#c8e5d6);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink)}
+header{background:var(--navy);color:white;padding:15px max(18px,calc((100vw - 1200px)/2));display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.brand{display:flex;align-items:center;gap:12px;color:white;text-decoration:none;font-weight:900}
+.brand img{width:48px;height:48px;object-fit:contain}.brand small{display:block;font-weight:700;font-size:11px;color:var(--gold)}
+nav{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:750}
+main{width:min(1200px,calc(100% - 32px));margin:24px auto 50px}
+.hero{background:linear-gradient(115deg,#0e634d,#123955);border-radius:18px;padding:26px 30px;color:white}
+.hero h1{font-size:clamp(28px,4.2vw,46px);line-height:1.12;margin:6px 0 8px}
+.hero p{max-width:760px;margin:0;color:#e7f3ef}
+.kicker{color:#ffdb87;font-size:13px;letter-spacing:.06em;font-weight:900}
+.card{background:#f2f9f4;border:1px solid #a4cdb8;border-radius:18px;margin-top:18px;padding:22px;box-shadow:0 10px 32px #123d2c12}
+.player{background:#050b11;border-radius:13px;overflow:hidden;position:relative}
+.player video{width:100%;aspect-ratio:16/9;display:block;object-fit:contain;background:#050b11}
+.player:fullscreen video,.player:-webkit-full-screen video{height:100vh;max-height:100vh;width:100%;object-fit:contain}
+#load-box{min-height:180px;display:grid;place-items:center;color:#e2efe8;padding:24px;text-align:center}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:11px;margin-top:16px}
+.btn{font:800 14px/1.2 system-ui,sans-serif;background:var(--green);color:#fff;border:1px solid #0b634f;text-decoration:none;border-radius:10px;padding:12px 16px;cursor:pointer}
+.btn.alt{background:#eaf6ef;color:#075443;border-color:#81b5a0}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.actions label{font-size:14px;font-weight:750}
+select{padding:9px;border:1px solid #9abdb1;border-radius:7px;background:white;font:inherit}
+#status{font-size:14px;color:#8d421d;margin-top:11px;font-weight:750}
+.note{color:#45675a;font-size:14px}.details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.details div{background:#d7ebdd;padding:15px;border-radius:12px}
+.details strong{display:block;font-size:16px}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #d39f28;outline-offset:3px}
+footer{text-align:center;padding:24px;color:#4e7060;font-size:13px}
+@media(max-width:700px){.details{grid-template-columns:1fr}.hero{padding:22px}.card{padding:13px}header{padding:13px 18px}}
+</style>
+<link rel="stylesheet" href="ensino-cores-v8.css?v=8">
+</head>
+<body>
+<header>
+<a class="brand" href="index.html" aria-label="Página inicial do Instituto EnsinoMeu"><img src="assets/brasao.png" alt=""><span>INSTITUTO ENSINOMEU<small>ÁREA DE ESTUDOS · BNCC</small></span></a>
+<nav><a href="painel.html?serie=fii-9">← Voltar</a><a href="index.html">Início</a><a href="planos.html">Planos</a></nav>
+</header>
+<main>
+<section class="hero">
+<span class="kicker">9º ANO · EDUCAÇÃO FÍSICA · 1º TRIMESTRE · AULA 01</span>
+<h1>Esportes de invasão e objetivos</h1>
+<p>Futebol, futsal, handebol e basquetebol. Aprenda sobre ataque, defesa, criação de espaços, apoio e tomada de decisões conforme a apostila do Instituto EnsinoMeu.</p>
+</section>
+<section class="card" aria-labelledby="titulo-video">
+<h2 id="titulo-video">▶ Videoaula 01</h2>
+<div class="player" id="player">
+<div id="load-box" role="status" aria-live="polite">Verificando a disponibilidade da videoaula no Instituto EnsinoMeu…</div>
+<video id="video" controls playsinline preload="metadata" hidden aria-label="Aula 01 de Educação Física do 9º ano: esportes de invasão e objetivos">
+Seu navegador não suporta reprodução de vídeo MP4.
+</video>
+</div>
+<div class="actions">
+<button class="btn" type="button" id="fullscreen" disabled>⛶ Tela cheia</button>
+<label for="speed">Velocidade</label>
+<select id="speed" aria-label="Velocidade de reprodução" disabled>
+<option value="0.75">0,75×</option><option value="1" selected>1,00× (original)</option><option value="1.25">1,25×</option><option value="1.5">1,50×</option>
+</select>
+<a class="btn alt" id="download" download="EnsinoMeu_EducacaoFisica_9ano_Aula01.mp4" hidden>↓ Baixar MP4</a>
+<a class="btn alt" href="painel.html?serie=fii-9">← Voltar ao painel</a>
+</div>
+<p id="status" role="status" aria-live="polite"></p>
+<p class="note">Narração: Fernanda · Duração prevista: 11min28s · 40 imagens didáticas · Full HD. O controle de velocidade do player não altera o arquivo original.</p>
+</section>
+<section class="card">
+<h2>Conceitos principais da aula</h2>
+<div class="details">
+<div><strong>1. Objetivo</strong>Avançar pelo espaço adversário para pontuar, protegendo a própria meta.</div>
+<div><strong>2. Ataque e defesa</strong>Criar espaços e oferecer apoio; proteger a meta e recuperar a posse.</div>
+<div><strong>3. Técnica e tática</strong>Executar movimentos com qualidade e escolher quando e onde utilizá-los.</div>
+</div>
+<p><a href="trilha.html?disciplina=fii-9-educacao-fisica&amp;trimestre=T1">Abrir trilha e atividades da disciplina →</a></p>
+</section>
+</main>
+<footer>Instituto EnsinoMeu © 2026 · Educação complementar, apoio à apostila do 1º trimestre.</footer>
+<script>
+(()=>{
+"use strict";
+const video=document.getElementById("video"),box=document.getElementById("load-box");
+const status=document.getElementById("status"),full=document.getElementById("fullscreen");
+const speed=document.getElementById("speed"),download=document.getElementById("download");
+const player=document.getElementById("player");
+const src="videos/9ano/educacao-fisica/aula01-esportes-invasao.mp4";
+let loaded=false;
+async function verify(){
+  status.textContent="";
+  try {
+    let response=await fetch(src,{method:"HEAD",cache:"no-store"});
+    if(!response.ok && response.status!==206){
+      response=await fetch(src,{method:"GET",headers:{"Range":"bytes=0-0"},cache:"no-store"});
+      if(response.body)await response.body.cancel();
+    }
+    if(!response.ok && response.status!==206)throw Error("Arquivo ainda não disponível");
+    loaded=true;video.src=src;video.hidden=false;box.hidden=true;video.load();
+    full.disabled=false;speed.disabled=false;download.href=src;download.hidden=false;
+  }catch(e){
+    video.hidden=true;box.hidden=false;
+    box.textContent="A videoaula ainda não foi disponibilizada no servidor. As outras aulas continuam disponíveis normalmente.";
+    status.textContent="O MP4 da Aula 01 ainda está pendente de envio para o GitHub.";
+  }
+}
+video.addEventListener("error",()=>{if(loaded)status.textContent="Não foi possível reproduzir o MP4. Verifique o download ou sua conexão."});
+speed.addEventListener("change",()=>{const v=Number(speed.value);video.defaultPlaybackRate=v;video.playbackRate=v});
+video.addEventListener("loadedmetadata",()=>{video.defaultPlaybackRate=Number(speed.value);video.playbackRate=Number(speed.value)});
+full.addEventListener("click",async()=>{if(!loaded)return;try{if(player.requestFullscreen)await player.requestFullscreen();else if(video.webkitEnterFullscreen)video.webkitEnterFullscreen()}catch{status.textContent="O navegador não permitiu tela cheia."}});
+verify();
+})();
+</script>
+</body>
+</html>
