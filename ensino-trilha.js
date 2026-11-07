@@ -6,6 +6,8 @@ const sid=query.get('disciplina')||'',term=query.get('trimestre')||'';
 const grade=/^(fi-[1-5]|fii-[6-9]|em-[1-3])-/.exec(sid)?.[1]||'';
 const isIA=Boolean(grade)&&sid===grade+'-inteligencia-artificial';
 let questions=[];
+const VIDEO_EDF9_PATH='videos/9ano/educacao-fisica/aula01-esportes-invasao.mp4';
+let VIDEO_EDF9_OK=false;
 const VIDEO_PUBLICO = {
  'fii-9-geografia':{1:'geografia-9ano.html#titulo-video',2:'geografia-9ano.html#titulo-video-02'},
  'fii-9-historia':{1:'historia-9ano.html'},
@@ -27,7 +29,7 @@ const GAMER_PUBLICO = {
 };
 const videosGeografiaPublicos=term==='T1'?(VIDEO_PUBLICO[sid]||{}):{};
 const simuladosGamerPublicos=term==='T1'?(GAMER_PUBLICO[sid]||{}):{};
-function temVideoPublicado(a){return Boolean(videosGeografiaPublicos[a.numero] || a.video_status === 'published')}
+function temVideoPublicado(a){return Boolean(videosGeografiaPublicos[a.numero] || a.video_status === 'published' || (sid==='fii-9-educacao-fisica' && term==='T1' && a.numero===1 && VIDEO_EDF9_OK))}
 function message(msg,bad=false){$('feedback').textContent=msg;$('feedback').classList.toggle('error',bad)}
 async function api(path,body){
  const {data,error}=await sb.auth.getSession();if(error||!data.session?.access_token)throw Error('Entre novamente na sua conta.');
@@ -70,6 +72,9 @@ async function init(){
  try{
  if(!/^(fi-[1-5]|fii-[6-9]|em-[1-3])-[a-z0-9-]+$/.test(sid)||!/^T[123]$/.test(term))throw Error('Escolha uma disciplina e trimestre no seu painel.');
  const {data}=await sb.auth.getUser();if(!data?.user)throw Error('Faça login novamente.');
+ if(sid==='fii-9-educacao-fisica' && term==='T1'){
+   try{const head=await fetch(VIDEO_EDF9_PATH,{method:'HEAD',cache:'no-store'});VIDEO_EDF9_OK=head.ok || head.status===206}catch{VIDEO_EDF9_OK=false}
+ }
  const d=await api('/trilha/'+encodeURIComponent(sid)+'/'+term);
  $('page-title').textContent=d.disciplina+' — '+d.trimestre+'º trimestre';
  $('count-lessons').textContent=d.aulas.length;$('count-practice').textContent=d.aulas.reduce((n,a)=>n+a.exercicios,0);$('count-videos').textContent=d.aulas.filter(temVideoPublicado).length;
@@ -83,6 +88,12 @@ async function init(){
   const actions=make('div','actions'),btn=make('button','btn',a.exercicios?'Praticar ('+a.exercicios+' questões)':'Exercícios em preparação');
   btn.type='button';btn.disabled=!a.exercicios;btn.addEventListener('click',()=>launch(a.numero));
   if(videosGeografiaPublicos[a.numero]){const assistir=make('a','btn','▶ Assistir videoaula');assistir.href=videosGeografiaPublicos[a.numero];assistir.setAttribute('aria-label','Assistir à videoaula '+a.numero+' de '+d.disciplina);actions.append(assistir)}
+  if(VIDEO_EDF9_OK && sid==='fii-9-educacao-fisica' && term==='T1' && a.numero===1){
+   const assistir=make('a','btn','▶ Assistir videoaula de Educação Física');
+   assistir.href='educacao-fisica-9ano.html';
+   assistir.setAttribute('aria-label','Assistir à videoaula 01 de Educação Física do 9º ano');
+   actions.append(assistir);
+  }
   if(simuladosGamerPublicos[a.numero]){
    const simulado=make('a','btn','🎮 Simulado Gamer — 20 questões comentadas');
    simulado.href=simuladosGamerPublicos[a.numero];
