@@ -186,4 +186,23 @@
 <section class="cta"><div class="wrap cta-inner"><div><h2>Seu ambiente de estudos está aqui.</h2><p>Faça login para acessar seus conteúdos e continuar seu aprendizado.</p></div><a class="btn btn-gold" href="login.html">Entrar na plataforma ↗</a></div></section>
 <footer class="footer"><div class="wrap footer-inner"><small>© <span id="ano">2026</span> Instituto EnsinoMeu · Reforço escolar baseado na BNCC · Não substitui a escola regular.</small><div><a href="privacidade.html">Privacidade</a> · <a href="planos.html">Planos</a> · <a href="login.html">Entrar</a></div></div></footer>
 <script>document.getElementById('ano').textContent=String(new Date().getFullYear());document.querySelectorAll('.mobile-links a').forEach(a=>a.addEventListener('click',()=>a.closest('details').open=false));</script>
+<script>
+/* ENSINOMEU_EF9_CONDITIONAL_CARD: mostrar Educação Física somente após o MP4 estar disponível */
+(async()=>{
+  const arquivo='videos/9ano/educacao-fisica/aula01-esportes-invasao.mp4';
+  try{
+    const r=await fetch(arquivo,{method:'HEAD',cache:'no-store'});
+    if(!r.ok && r.status!==206)return;
+    const grade=document.querySelector('#aulas-gravadas .lesson-grid');
+    if(!grade || document.getElementById('ef9-video-card'))return;
+    const card=document.createElement('article');
+    card.className='lesson';card.id='ef9-video-card';
+    card.setAttribute('aria-label','Videoaula de Educação Física do 9º ano');
+    card.innerHTML='<div class="lesson-top" style="background:linear-gradient(120deg,#064d5c,#047b60);color:white"><span class="lesson-year">9º ANO · VIDEOAULA</span><h3 class="lesson-subject">Educação Física</h3><p class="lesson-topic">Esportes de invasão e objetivos</p></div><div class="lesson-body"><p>Futebol, futsal, handebol e basquetebol. Estratégias de ataque, defesa e cooperação.</p><div class="pills"><span class="pill">▶ 1 aula gravada</span><span class="pill gold">11min28s</span></div><a class="btn btn-green" href="educacao-fisica-9ano.html">Assistir Educação Física ↗</a></div>';
+    grade.append(card);
+    const count=document.querySelector('.metrics .metric strong');
+    if(count && /^\d+$/.test(count.textContent.trim()))count.textContent=String(Number(count.textContent.trim())+1);
+  }catch{ /* player não é divulgado até o arquivo existir */ }
+})();
+</script>
 </body></html>
