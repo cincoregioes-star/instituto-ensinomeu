@@ -20,7 +20,10 @@ const GAMER_PUBLICO = {
  'fii-9-historia':{1:'simulados/historia-9ano-aula01.html'},
  'fii-9-matematica':{1:'simulados/matematica-9ano-aula01.html'},
  'fii-9-lingua-portuguesa':{1:'simulados/portugues-9ano-aula01.html'},
- 'fii-9-ciencias':{1:'simulados/ciencias-9ano-aula01.html'}
+ 'fii-9-ciencias':{1:'simulados/ciencias-9ano-aula01.html'},
+ 'fii-9-arte':{1:'simulados/arte-9ano-aula01.html'},
+ 'fii-9-lingua-inglesa':{1:'simulados/ingles-9ano-aula01.html'},
+ 'fii-9-educacao-fisica':{1:'simulados/educacao-fisica-9ano-aula01.html'}
 };
 const videosGeografiaPublicos=term==='T1'?(VIDEO_PUBLICO[sid]||{}):{};
 const simuladosGamerPublicos=term==='T1'?(GAMER_PUBLICO[sid]||{}):{};
