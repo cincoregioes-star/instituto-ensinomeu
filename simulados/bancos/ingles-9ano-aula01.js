@@ -3,7 +3,7 @@ window.ENSINOMEU_QUIZ={
   "disciplina": "Língua Inglesa",
   "aula": 1,
   "titulo": "Simple Past: ações concluídas",
-  "video": "../ingles-9ano.html",
+  "video": "../trilha.html?disciplina=fii-9-lingua-inglesa&trimestre=T1",
   "questoes": [
     {
       "topic": "Simple Past",
@@ -285,5 +285,6 @@ window.ENSINOMEU_QUIZ={
       "correct": 3,
       "explain": "Traveled é passado regular, combinado com last week, expressão temporal de passado concluído."
     }
-  ]
+  ],
+  "referencia": "apostila"
 };
