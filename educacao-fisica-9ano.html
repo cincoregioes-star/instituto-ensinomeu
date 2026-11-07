@@ -25,6 +25,7 @@ main{width:min(1200px,calc(100% - 32px));margin:24px auto 50px}
 .player{background:#050b11;border-radius:13px;overflow:hidden;position:relative}
 .player video{width:100%;aspect-ratio:16/9;display:block;object-fit:contain;background:#050b11}
 .player:fullscreen video,.player:-webkit-full-screen video{height:100vh;max-height:100vh;width:100%;object-fit:contain}
+#load-box[hidden],.player video[hidden]{display:none!important}
 #load-box{min-height:180px;display:grid;place-items:center;color:#e2efe8;padding:24px;text-align:center}
 .actions{display:flex;flex-wrap:wrap;align-items:center;gap:11px;margin-top:16px}
 .btn{font:800 14px/1.2 system-ui,sans-serif;background:var(--green);color:#fff;border:1px solid #0b634f;text-decoration:none;border-radius:10px;padding:12px 16px;cursor:pointer}
