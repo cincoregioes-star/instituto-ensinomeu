@@ -1,0 +1,39 @@
+name: Verificar videoaula de Arte no GitHub Pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verificar-arte-site.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  conferir-arte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Testar pagina de Arte e MP4 publico
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://cincoregioes-star.github.io/instituto-ensinomeu"
+          pagina="$base/arte-9ano.html"
+          video="$base/videos/9ano/arte/aula01-arte-cultura-identidade.mp4"
+          pronto=0
+          for tentativa in $(seq 1 20); do
+            if curl -fLsS --max-time 12 "$pagina" -o /tmp/arte-9ano.html &&
+               grep -q 'id="aula-arte"' /tmp/arte-9ano.html &&
+               grep -q 'videos/9ano/arte/aula01-arte-cultura-identidade.mp4' /tmp/arte-9ano.html &&
+               ! grep -q 'drive.google.com' /tmp/arte-9ano.html; then
+               codigo="$(curl -sSIL --max-time 12 -o /dev/null -w '%{http_code}' "$video" || true)"
+               if [ "$codigo" = "200" ] || [ "$codigo" = "206" ]; then
+                 pronto=1
+                 echo "Página com player local: OK; vídeo servido pelo GitHub Pages: HTTP $codigo"
+                 break
+               fi
+            fi
+            echo "Tentativa $tentativa: atualizacao do GitHub Pages ainda nao confirmada."
+            sleep 8
+          done
+          test "$pronto" -eq 1
+          echo "Aula de Arte acessível via site, sem Google Drive."
