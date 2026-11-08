@@ -1,0 +1,33 @@
+name: Publicar História 8º ano — Aula 01
+on:
+  push:
+    paths:
+      - '.video-build/historia-8ano/**'
+      - '.github/workflows/publicar-historia-8ano.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Montar MP4 e validar integridade
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p videos/8ano/historia
+          cat .video-build/historia-8ano/chunk_*.bin > videos/8ano/historia/aula01-iluminismo.mp4
+          echo "7910b7aba99d7f9e9000ca6b3d8e242ac0e16001389a89c98921d406853bd3f4  videos/8ano/historia/aula01-iluminismo.mp4" | sha256sum -c -
+          test "$(wc -c < videos/8ano/historia/aula01-iluminismo.mp4)" -eq 20288624
+      - name: Confirmar vídeo no repositório
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add videos/8ano/historia/aula01-iluminismo.mp4
+          if ! git diff --cached --quiet; then
+            git commit -m "Publica videoaula História 8º ano — Iluminismo"
+            git push
+          fi
