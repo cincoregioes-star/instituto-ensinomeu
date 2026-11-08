@@ -44,7 +44,7 @@ small{color:#50687a}footer{background:var(--navy);color:#d5e5e9;text-align:cente
 <section class="hero"><div class="wrap"><span class="eyebrow">1º trimestre · Aula 01 · Acesso gratuito</span><h1>História — 8º ano: Iluminismo e crítica ao absolutismo</h1><p>Conheça os debates sobre razão, direitos, liberdade e limitação do poder. Estude Montesquieu, Voltaire e Rousseau, com identificações históricas e datas incorporadas às imagens.</p><div class="chips"><span>40 imagens</span><span>11min02s</span><span>Profª Fernanda • PT-BR</span><span>Sem cadastro</span></div></div></section>
 <main class="wrap">
 <div class="player" id="player">
-<video id="video" controls playsinline preload="metadata" poster="assets/brasao.png" aria-label="Aula 01 de História do 8º ano, Iluminismo e crítica ao absolutismo">Seu navegador não suporta reprodução de vídeo HTML5.</video>
+<video id="video" controls playsinline preload="metadata" src="videos/8ano/historia/aula01-iluminismo.mp4?v=20261108" poster="assets/brasao.png" aria-label="Aula 01 de História do 8º ano, Iluminismo e crítica ao absolutismo">Seu navegador não suporta reprodução de vídeo HTML5.</video>
 <button class="exit" id="sair" type="button">✕ Sair da tela cheia</button>
 </div>
 <div class="controls">
@@ -72,7 +72,7 @@ function erro(){status('O arquivo MP4 ainda não está disponível no servidor. 
 video.addEventListener('error',erro);
 document.getElementById('entrar').addEventListener('click',async()=>{try{if(player.requestFullscreen)await player.requestFullscreen();else if(player.webkitRequestFullscreen)player.webkitRequestFullscreen();else if(video.webkitEnterFullscreen)video.webkitEnterFullscreen()}catch(e){status('O navegador não permitiu abrir em tela cheia.')}})
 document.getElementById('sair').addEventListener('click',async()=>{if(document.fullscreenElement&&document.exitFullscreen)await document.exitFullscreen();else if(document.webkitFullscreenElement&&document.webkitExitFullscreen)document.webkitExitFullscreen()})
-async function carregar(){for(const item of fontes){const src=item.url;try{const r=await fetch(src,{method:'HEAD',cache:'no-store'});if(r.ok && ((r.headers.get('content-type')||'').includes('video') || src.split('?')[0].endsWith('.mp4'))){velocidade.value=item.ritmo;aplicarVelocidade();video.src=src;baixar.href=src;baixar.hidden=false;video.load();return}}catch(e){}}erro()}
+function carregar(){const src=fontes[0].url;video.src=src;baixar.href=src;baixar.hidden=false;video.load()}
 carregar();
 })();
 </script>
