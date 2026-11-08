@@ -205,4 +205,24 @@
   }catch{ /* player não é divulgado até o arquivo existir */ }
 })();
 </script>
+
+<script>
+/* ENSINOMEU_HIST8_VIDEO_CARD: exibir somente após o MP4 existir no GitHub Pages */
+(async()=>{
+ const arquivo='videos/8ano/historia/aula01-iluminismo.mp4';
+ try{
+  const r=await fetch(arquivo,{method:'HEAD',cache:'no-store'});
+  if(!r.ok)return;
+  const grade=document.querySelector('#aulas-gravadas .lesson-grid');
+  if(!grade||document.getElementById('hist8-video-card'))return;
+  const card=document.createElement('article');
+  card.className='lesson hist';card.id='hist8-video-card';
+  card.setAttribute('aria-label','Videoaula História 8º ano: Iluminismo e crítica ao absolutismo');
+  card.innerHTML='<div class="lesson-top"><span class="lesson-year">8º ANO · VIDEOAULA</span><h3 class="lesson-subject">História</h3><p class="lesson-topic">Iluminismo e crítica ao absolutismo</p></div><div class="lesson-body"><p>Montesquieu, Voltaire, Rousseau, liberdade, razão e direitos, com datas e nomes nos slides.</p><div class="pills"><span class="pill">▶ 1 aula gravada</span><span class="pill gold">11min02s</span><span class="pill book">Acesso gratuito</span></div><a class="btn btn-green" href="historia-8ano.html">Assistir História — 8º ano</a></div>';
+  grade.appendChild(card);
+  const total=document.querySelector('.metrics .metric strong');
+  if(total&&/^\d+$/.test(total.textContent.trim()))total.textContent=String(Number(total.textContent.trim())+1);
+ }catch(e){/* video não anunciado até o arquivo existir */}
+})();
+</script>
 </body></html>
