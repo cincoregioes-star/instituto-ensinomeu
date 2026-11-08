@@ -49,7 +49,7 @@ function renderGrades(){
   const botoes=grades.map(g=>`<button class="grade-card" type="button" data-grade="${esc(g.id)}" data-stage="${esc(g.etapa)}" aria-label="Abrir ${esc(g.serie)} do ${esc(g.etapa)}">
    <span class="arrow" aria-hidden="true">↗</span>
    <b>${esc(g.serie)}</b>
-   <small>${g.disciplinas} disciplinas · 3 trimestres</small>
+   <small>${Number(g.disciplinas)+1} disciplinas · 3 trimestres</small>
    <small class="grade-enter">Entrar na minha série →</small>
   </button>`).join('');
   return `<section class="grade-stage grade-stage--${etapa.classe}" aria-label="${etapa.titulo}">
@@ -68,9 +68,9 @@ async function chooseGrade(id){
  const grade=GRADES.find(x=>x.id===id);if(!grade)return;
  SELECTED=grade;FILTER_MODE='all';$('grade-home').classList.add('hidden');$('learning').classList.remove('hidden');
  $('stage-name').textContent=grade.etapa;$('selected-name').textContent=grade.serie;
- $('selected-subtitle').textContent=grade.disciplinas+' disciplinas • 3 trimestres';$('search').value='';
+ $('selected-subtitle').textContent=(Number(grade.disciplinas)+1)+' disciplinas • 3 trimestres';$('search').value='';
  $('courses').textContent='Carregando disciplinas…';
- try{const data=await request('/cursos?serie='+encodeURIComponent(id));COURSES=data.cursos;$('course-count').textContent=COURSES.length;renderCourses();renderHistory();history.replaceState(null,'','?serie='+encodeURIComponent(id))}
+ try{const data=await request('/cursos?serie='+encodeURIComponent(id));COURSES=data.cursos;$('course-count').textContent=COURSES.length+1;renderCourses();renderHistory();history.replaceState(null,'','?serie='+encodeURIComponent(id))}
  catch(err){$('courses').textContent=err.message}
 }
 
@@ -93,6 +93,13 @@ function renderCourses(){
  const query=$('search').value.toLocaleLowerCase('pt-BR');
  const items=COURSES.filter(x=>x.nome.toLocaleLowerCase('pt-BR').includes(query)&&(FILTER_MODE==='all'||x.trimestres.some(t=>FILTER_MODE==='pdf'?t.pdf:t.simulado)));
  $('courses').innerHTML=items.map(c=>`<details class="subject"><summary><span><b>${esc(c.nome)}</b><small>Plano anual • três trimestres</small></span></summary><div class="sub-body">${c.trimestres.filter(t=>FILTER_MODE==='all'||(FILTER_MODE==='pdf'?t.pdf:t.simulado)).map(t=>`<div class="trimester"><b>${esc(t.titulo)}</b><div class="actions"><button type="button" class="btn alt" data-action="pdf" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.pdf?'':'disabled'}>Abrir apostila PDF</button><button type="button" class="btn" data-action="quiz" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.simulado?'':'disabled'}>Fazer simulado</button><a class="btn alt" href="trilha.html?disciplina=${encodeURIComponent(c.id)}&trimestre=${encodeURIComponent(t.id)}" style="text-decoration:none">Aulas, vídeos e exercícios →</a>${c.id.endsWith("-inteligencia-artificial")?`<a class="btn" href="ensino-ia.html?serie=${encodeURIComponent(SELECTED.id)}&trimestre=${encodeURIComponent(t.id)}" style="text-decoration:none">🤖 Estudar IA — roteiro interativo</a><a class="btn alt" href="apostila-ia.html?serie=${encodeURIComponent(SELECTED.id)}" style="text-decoration:none">📘 Apostila digital de IA • salvar PDF</a>`:lessonAccess(c.id,t.id)}</div></div>`).join('')}</div></details>`).join('')||'<p>'+(FILTER_MODE==='pdf'?'Nenhuma apostila autorizada encontrada nesta série.':FILTER_MODE==='simulado'?'Nenhum simulado autorizado nesta série.':'Nenhuma disciplina encontrada.')+'</p>';
+ // Curso complementar público, sem modificar avaliações ou permissões existentes.
+ if(SELECTED&&'cidadania, ética e educação política'.includes(query)){
+  const cid=encodeURIComponent(SELECTED.id);
+  const card='<details class="subject" style="background:#07583f;color:white;border-color:#07583f"><summary><span><b style="font-size:25px;color:white">Cidadania, Ética e Educação Política</b><small style="color:#e2f8ed">9 aulas introdutórias • 3 trimestres</small></span></summary><div class="sub-body">'+[1,2,3].map(n=>'<div class="trimester"><b>'+n+'º trimestre</b><div class="actions"><a class="btn" style="background:#ffcd4b;color:#10354b;text-decoration:none" href="cidadania.html?serie='+cid+'&trimestre=T'+n+'">Estudar • atividades e questões comentadas</a></div></div>').join('')+'<p style="font-size:13px">Apostila da série para impressão dentro da disciplina. Exercícios de autocorreção; não integram o histórico de notas. Videoaulas ainda não produzidas.</p></div></details>';
+  if(!items.length)$('courses').innerHTML='';
+  $('courses').insertAdjacentHTML('beforeend',card);
+ }
 }
 function renderHistory(){
  const list=HISTORY.filter(h=>COURSES.some(c=>c.id===h.course_id));
