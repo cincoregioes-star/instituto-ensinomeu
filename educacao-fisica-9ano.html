@@ -46,7 +46,7 @@ footer{text-align:center;padding:24px;color:#4e7060;font-size:13px}
 <body>
 <header>
 <a class="brand" href="index.html" aria-label="Página inicial do Instituto EnsinoMeu"><img src="assets/brasao.png" alt=""><span>INSTITUTO ENSINOMEU<small>ÁREA DE ESTUDOS · BNCC</small></span></a>
-<nav><a href="painel.html?serie=fii-9">← Voltar</a><a href="index.html">Início</a><a href="planos.html">Planos</a></nav>
+<nav aria-label="Navegação principal"><a href="index.html">Início</a><a href="planos.html">Planos</a></nav>
 </header>
 <main>
 <section class="hero">
@@ -118,5 +118,6 @@ full.addEventListener("click",async()=>{if(!loaded)return;try{if(player.requestF
 verify();
 })();
 </script>
+<script src="voltar-global.js?v=20261105" defer></script>
 </body>
 </html>
