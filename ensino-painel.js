@@ -75,6 +75,7 @@ async function chooseGrade(id){
 }
 
 const LESSON_LINKS={
+ 'fii-8-historia':[{title:'Aula 01 · Iluminismo e crítica ao absolutismo',video:'historia-8ano.html'}],
  'fii-9-geografia':[
   {title:'Aula 01 · Globalização',video:'geografia-9ano.html#titulo-video',quiz:'simulados/geografia-9ano-aula01.html'},
   {title:'Aula 02 · Cadeias globais',video:'geografia-9ano.html#titulo-video-02',quiz:'simulados/geografia-9ano-aula02.html'}],
@@ -85,7 +86,7 @@ const LESSON_LINKS={
 };
 function lessonAccess(cid,term){
  if(term!=='T1')return '';
- return (LESSON_LINKS[cid]||[]).map(l=>'<a class="btn alt" href="'+l.video+'" style="text-decoration:none">▶ '+l.title+'</a><a class="btn" href="'+l.quiz+'" style="text-decoration:none">🎮 Simulado · '+l.title+'</a>').join('');
+ return (LESSON_LINKS[cid]||[]).map(l=>'<a class="btn alt" href="'+l.video+'" style="text-decoration:none">▶ '+l.title+'</a>'+(l.quiz?'<a class="btn" href="'+l.quiz+'" style="text-decoration:none">🎮 Simulado · '+l.title+'</a>':'')).join('');
 }
 
 function renderCourses(){
