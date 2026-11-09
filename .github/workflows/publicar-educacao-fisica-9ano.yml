@@ -1,0 +1,50 @@
+name: Publicar videoaula Educação Física 9º ano
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publicar-educacao-fisica-9ano.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publicar-video:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout completo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restaurar MP4 e conferir arquivo original
+        shell: bash
+        run: |
+          set -euo pipefail
+          arquivo="videos/9ano/educacao-fisica/aula01-esportes-invasao.mp4"
+          mkdir -p "$(dirname "$arquivo")"
+          if [ ! -f "$arquivo" ]; then
+            for numero in $(seq -w 0 20); do
+              parte=".video-build/educacao-fisica-9ano/parte-${numero}.bin"
+              if [ ! -s "$parte" ]; then
+                echo "::error::Parte ausente: $parte"
+                exit 1
+              fi
+              cat "$parte" >> "$arquivo"
+            done
+          fi
+          test "$(stat -c%s "$arquivo")" -eq 41717426
+          echo "04e65116aa0c612da03f57dcc6efc44ea95dbb050df246d7ee376b99af13ca37  $arquivo" | sha256sum -c -
+      - name: Publicar MP4 sem mudar vídeo e remover partes temporárias
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -r -q -- .video-build/educacao-fisica-9ano
+          git add -- videos/9ano/educacao-fisica/aula01-esportes-invasao.mp4
+          if git diff --cached --quiet; then
+            echo "MP4 já está no repositório."
+            exit 0
+          fi
+          git commit -m "Publicar MP4 Educação Física 9º ano aula 01"
+          git push origin HEAD:main
