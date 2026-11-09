@@ -76,23 +76,30 @@ async function chooseGrade(id){
 
 const LESSON_LINKS={
  'fii-8-historia':[{title:'Aula 01 · Iluminismo e crítica ao absolutismo',video:'historia-8ano.html'}],
+ 'fii-8-lingua-inglesa':[{title:'Aula 01 · Skimming e Scanning',video:'ingles-8ano.html'}],
  'fii-9-geografia':[
   {title:'Aula 01 · Globalização',video:'geografia-9ano.html#titulo-video',quiz:'simulados/geografia-9ano-aula01.html'},
   {title:'Aula 02 · Cadeias globais',video:'geografia-9ano.html#titulo-video-02',quiz:'simulados/geografia-9ano-aula02.html'}],
  'fii-9-historia':[{title:'Aula 01 · República Brasileira',video:'historia-9ano.html',quiz:'simulados/historia-9ano-aula01.html'}],
  'fii-9-matematica':[{title:'Aula 01 · Números reais',video:'matematica-9ano.html',quiz:'simulados/matematica-9ano-aula01.html'}],
  'fii-9-lingua-portuguesa':[{title:'Aula 01 · Frases e orações',video:'portugues-9ano.html',quiz:'simulados/portugues-9ano-aula01.html'}],
- 'fii-9-ciencias':[{title:'Aula 01 · Matéria e átomos',video:'ciencias-9ano.html',quiz:'simulados/ciencias-9ano-aula01.html'}]
+ 'fii-9-ciencias':[{title:'Aula 01 · Matéria e átomos',video:'ciencias-9ano.html',quiz:'simulados/ciencias-9ano-aula01.html'}],
+ 'fii-9-arte':[{title:'Aula 01 · Arte e cultura',video:'arte-9ano.html',quiz:'simulados/arte-9ano-aula01.html'}],
+ 'fii-9-lingua-inglesa':[{title:'Aula 01 · Leitura em inglês',video:'ingles-9ano.html',quiz:'simulados/ingles-9ano-aula01.html'}],
+ 'fii-9-educacao-fisica':[{title:'Aula 01 · Esportes de invasão',quiz:'simulados/educacao-fisica-9ano-aula01.html'}]
 };
+function hasPublicGamer(cid,term){
+ return term==='T1' && (LESSON_LINKS[cid]||[]).some(l=>Boolean(l.quiz));
+}
 function lessonAccess(cid,term){
  if(term!=='T1')return '';
- return (LESSON_LINKS[cid]||[]).map(l=>'<a class="btn alt" href="'+l.video+'" style="text-decoration:none">▶ '+l.title+'</a>'+(l.quiz?'<a class="btn" href="'+l.quiz+'" style="text-decoration:none">🎮 Simulado · '+l.title+'</a>':'')).join('');
+ return (LESSON_LINKS[cid]||[]).map(l=>(l.video?'<a class="btn alt" href="'+l.video+'" style="text-decoration:none">▶ '+l.title+'</a>':'')+(l.quiz?'<a class="btn" href="'+l.quiz+'" style="text-decoration:none">🎮 Simulado · '+l.title+'</a>':'')).join('');
 }
 
 function renderCourses(){
  const query=$('search').value.toLocaleLowerCase('pt-BR');
- const items=COURSES.filter(x=>x.nome.toLocaleLowerCase('pt-BR').includes(query)&&(FILTER_MODE==='all'||x.trimestres.some(t=>FILTER_MODE==='pdf'?t.pdf:t.simulado)));
- $('courses').innerHTML=items.map(c=>`<details class="subject"><summary><span><b>${esc(c.nome)}</b><small>Plano anual • três trimestres</small></span></summary><div class="sub-body">${c.trimestres.filter(t=>FILTER_MODE==='all'||(FILTER_MODE==='pdf'?t.pdf:t.simulado)).map(t=>`<div class="trimester"><b>${esc(t.titulo)}</b><div class="actions"><button type="button" class="btn alt" data-action="pdf" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.pdf?'':'disabled'}>Abrir apostila PDF</button><button type="button" class="btn" data-action="quiz" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.simulado?'':'disabled'}>Fazer simulado</button><a class="btn alt" href="trilha.html?disciplina=${encodeURIComponent(c.id)}&trimestre=${encodeURIComponent(t.id)}" style="text-decoration:none">Aulas, vídeos e exercícios →</a>${c.id.endsWith("-inteligencia-artificial")?`<a class="btn" href="ensino-ia.html?serie=${encodeURIComponent(SELECTED.id)}&trimestre=${encodeURIComponent(t.id)}" style="text-decoration:none">🤖 Estudar IA — roteiro interativo</a><a class="btn alt" href="apostila-ia.html?serie=${encodeURIComponent(SELECTED.id)}" style="text-decoration:none">📘 Apostila digital de IA • salvar PDF</a>`:lessonAccess(c.id,t.id)}</div></div>`).join('')}</div></details>`).join('')||'<p>'+(FILTER_MODE==='pdf'?'Nenhuma apostila autorizada encontrada nesta série.':FILTER_MODE==='simulado'?'Nenhum simulado autorizado nesta série.':'Nenhuma disciplina encontrada.')+'</p>';
+ const items=COURSES.filter(x=>x.nome.toLocaleLowerCase('pt-BR').includes(query)&&(FILTER_MODE==='all'||x.trimestres.some(t=>FILTER_MODE==='pdf'?t.pdf:(t.simulado||hasPublicGamer(x.id,t.id)))));
+ $('courses').innerHTML=items.map(c=>`<details class="subject"><summary><span><b>${esc(c.nome)}</b><small>Plano anual • três trimestres</small></span></summary><div class="sub-body">${c.trimestres.filter(t=>FILTER_MODE==='all'||(FILTER_MODE==='pdf'?t.pdf:(t.simulado||hasPublicGamer(c.id,t.id)))).map(t=>`<div class="trimester"><b>${esc(t.titulo)}</b><div class="actions"><button type="button" class="btn alt" data-action="pdf" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.pdf?'':'disabled'}>Abrir apostila PDF</button><button type="button" class="btn" data-action="quiz" data-course="${esc(c.id)}" data-term="${esc(t.id)}" ${t.simulado?'':'disabled'}>Fazer simulado</button><a class="btn alt" href="trilha.html?disciplina=${encodeURIComponent(c.id)}&trimestre=${encodeURIComponent(t.id)}" style="text-decoration:none">Aulas, vídeos e exercícios →</a>${c.id.endsWith("-inteligencia-artificial")?`<a class="btn" href="ensino-ia.html?serie=${encodeURIComponent(SELECTED.id)}&trimestre=${encodeURIComponent(t.id)}" style="text-decoration:none">🤖 Estudar IA — roteiro interativo</a><a class="btn alt" href="apostila-ia.html?serie=${encodeURIComponent(SELECTED.id)}" style="text-decoration:none">📘 Apostila digital de IA • salvar PDF</a>`:lessonAccess(c.id,t.id)}</div></div>`).join('')}</div></details>`).join('')||'<p>'+(FILTER_MODE==='pdf'?'Nenhuma apostila autorizada encontrada nesta série.':FILTER_MODE==='simulado'?'Nenhum simulado autorizado nesta série.':'Nenhuma disciplina encontrada.')+'</p>';
  // Curso complementar público, sem modificar avaliações ou permissões existentes.
  if(SELECTED&&'cidadania, ética e educação política'.includes(query)){
   const cid=encodeURIComponent(SELECTED.id);
