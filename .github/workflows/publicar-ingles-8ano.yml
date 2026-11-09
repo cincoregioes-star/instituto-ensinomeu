@@ -1,6 +1,10 @@
 name: Publicar Inglês 8º ano — Aula 01
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publicar-ingles-8ano.yml'
 permissions:
   contents: write
 jobs:
