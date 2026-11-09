@@ -75,8 +75,8 @@ async function chooseGrade(id){
 }
 
 const LESSON_LINKS={
- 'fii-8-historia':[{title:'Aula 01 · Iluminismo e crítica ao absolutismo',video:'historia-8ano.html'}],
- 'fii-8-lingua-inglesa':[{title:'Aula 01 · Skimming e Scanning',video:'ingles-8ano.html'}],
+ 'fii-8-historia':[{title:'Aula 01 · Iluminismo e crítica ao absolutismo',video:'historia-8ano.html',quiz:'simulados/historia-8ano-aula01.html'}],
+ 'fii-8-lingua-inglesa':[{title:'Aula 01 · Skimming e Scanning',video:'ingles-8ano.html',quiz:'simulados/ingles-8ano-aula01.html'}],
  'fii-9-geografia':[
   {title:'Aula 01 · Globalização',video:'geografia-9ano.html#titulo-video',quiz:'simulados/geografia-9ano-aula01.html'},
   {title:'Aula 02 · Cadeias globais',video:'geografia-9ano.html#titulo-video-02',quiz:'simulados/geografia-9ano-aula02.html'}],
@@ -84,8 +84,8 @@ const LESSON_LINKS={
  'fii-9-matematica':[{title:'Aula 01 · Números reais',video:'matematica-9ano.html',quiz:'simulados/matematica-9ano-aula01.html'}],
  'fii-9-lingua-portuguesa':[{title:'Aula 01 · Frases e orações',video:'portugues-9ano.html',quiz:'simulados/portugues-9ano-aula01.html'}],
  'fii-9-ciencias':[{title:'Aula 01 · Matéria e átomos',video:'ciencias-9ano.html',quiz:'simulados/ciencias-9ano-aula01.html'}],
- 'fii-9-arte':[{title:'Aula 01 · Arte e cultura',video:'arte-9ano.html',quiz:'simulados/arte-9ano-aula01.html'}],
- 'fii-9-lingua-inglesa':[{title:'Aula 01 · Leitura em inglês',video:'ingles-9ano.html',quiz:'simulados/ingles-9ano-aula01.html'}],
+ 'fii-9-arte':[{title:'Complementar · Arte, cultura e identidade',video:'arte-9ano.html'},{title:'Aula 01 · Ponto, linha, forma e cor',quiz:'simulados/arte-9ano-aula01.html'}],
+ 'fii-9-lingua-inglesa':[{title:'Complementar · Reading the News',video:'ingles-9ano.html'},{title:'Aula 01 · Simple Past',quiz:'simulados/ingles-9ano-aula01.html'}],
  'fii-9-educacao-fisica':[{title:'Aula 01 · Esportes de invasão',quiz:'simulados/educacao-fisica-9ano-aula01.html'}]
 };
 function hasPublicGamer(cid,term){
