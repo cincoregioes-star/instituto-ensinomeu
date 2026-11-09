@@ -1,7 +1,7 @@
 import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';
 const root=new URL('../',import.meta.url);
 const read=p=>fs.readFileSync(new URL(p,root),'utf8');
-const slugs=['geografia-9ano-aula02','historia-9ano-aula01','matematica-9ano-aula01','portugues-9ano-aula01','ciencias-9ano-aula01'];
+const slugs=['historia-8ano-aula01','ingles-8ano-aula01','geografia-9ano-aula02','historia-9ano-aula01','matematica-9ano-aula01','portugues-9ano-aula01','ciencias-9ano-aula01','arte-9ano-aula01','ingles-9ano-aula01','educacao-fisica-9ano-aula01'];
 for(const slug of slugs){
  const window={};
  vm.runInNewContext(read('simulados/bancos/'+slug+'.js'),{window},{timeout:1500});
@@ -19,4 +19,5 @@ const routes=['dashboard-aluno.html','painel-controle.html','ensino-indicadores.
 routes.forEach(p=>assert.ok(read(p).length>300,'Arquivo ausente: '+p));
 assert.ok(read('painel.html').includes('id="painel-controle-card" hidden'),'Atalho administrativo não está oculto');
 assert.ok(read('ensino-painel.js').includes("gestorPermitido"),'Filtro de menu ausente');
+assert.ok(read('simulados/8ano.html').includes('historia-8ano-aula01.html') && read('simulados/8ano.html').includes('ingles-8ano-aula01.html'),'Catálogo de simulados 8º ano incompleto');
 console.log('OK: Dashboard do aluno e Painel de Controle com proteção de menu e API declarada');
