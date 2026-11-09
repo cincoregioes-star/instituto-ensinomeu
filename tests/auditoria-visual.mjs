@@ -45,10 +45,12 @@ try{
     cards:document.querySelectorAll('.lesson').length,
     title:document.querySelector('#aulas-gravadas h2')?.textContent?.trim(),
     ebook:!!document.getElementById('ebooks'),
-    cardColor:getComputedStyle(document.querySelector('.lesson.math .lesson-top')).backgroundImage,
+    cardColor:getComputedStyle(document.querySelector('.lesson.math')).backgroundImage,
+    ingles8:!!document.getElementById('ingles8-video-card'),
     menu:!!document.querySelector('.top')
   }));
-  if(content.cards!==5)failures.push('Início: devem existir cinco disciplinas com aulas gravadas');
+  if(content.cards<9)failures.push('Início: catálogo deve apresentar pelo menos nove videoaulas por disciplina e série');
+  if(!content.ingles8)failures.push('Início: falta a videoaula de Inglês do 8º ano');
   if(content.title!=='Aulas gravadas disponíveis')failures.push('Título incorreto na seção de videoaulas');
   if(!content.ebook)failures.push('Seção de e-books ausente');
   if(!content.cardColor?.includes('gradient'))failures.push('Cards sem paleta colorida');
