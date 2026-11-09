@@ -12,6 +12,7 @@ const VIDEO_PUBLICO = {
  'fii-9-geografia':{1:'geografia-9ano.html#titulo-video',2:'geografia-9ano.html#titulo-video-02'},
  'fii-9-historia':{1:'historia-9ano.html'},
  'fii-8-historia':{1:'historia-8ano.html'},
+ 'fii-8-lingua-inglesa':{1:'ingles-8ano.html'},
  'fii-9-matematica':{1:'matematica-9ano.html'},
  'fii-9-lingua-portuguesa':{1:'portugues-9ano.html'},
  'fii-9-ciencias':{1:'ciencias-9ano.html'},
