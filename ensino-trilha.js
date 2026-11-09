@@ -16,10 +16,14 @@ const VIDEO_PUBLICO = {
  'fii-9-matematica':{1:'matematica-9ano.html'},
  'fii-9-lingua-portuguesa':{1:'portugues-9ano.html'},
  'fii-9-ciencias':{1:'ciencias-9ano.html'},
- 'fii-9-lingua-inglesa':{1:'ingles-9ano.html'},
- 'fii-9-arte':{1:'arte-9ano.html'},
+};
+const VIDEO_COMPLEMENTAR = {
+ 'fii-9-arte':{url:'arte-9ano.html',title:'Arte, cultura e identidade'},
+ 'fii-9-lingua-inglesa':{url:'ingles-9ano.html',title:'Reading the News'}
 };
 const GAMER_PUBLICO = {
+ 'fii-8-historia':{1:'simulados/historia-8ano-aula01.html'},
+ 'fii-8-lingua-inglesa':{1:'simulados/ingles-8ano-aula01.html'},
  'fii-9-geografia':{1:'simulados/geografia-9ano-aula01.html',2:'simulados/geografia-9ano-aula02.html'},
  'fii-9-historia':{1:'simulados/historia-9ano-aula01.html'},
  'fii-9-matematica':{1:'simulados/matematica-9ano-aula01.html'},
@@ -86,11 +90,13 @@ async function init(){
  const list=$('lesson-list');list.replaceChildren();
  d.aulas.forEach(a=>{
   const card=make('article','lesson');card.append(make('span','pill','Aula '+String(a.numero).padStart(2,'0')),make('h3','',a.titulo),make('p','help',isIA?'Conteúdo disponível no roteiro digital':'Apostila: página '+a.pagina_apostila));
-  card.append(make('p','help',temVideoPublicado(a)?'Videoaula disponível':'Videoaula — produção futura'));
+  const videoComplementar=(term==='T1'&&a.numero===1)?VIDEO_COMPLEMENTAR[sid]:null;
+   card.append(make('p','help',temVideoPublicado(a)?'Videoaula disponível':videoComplementar?'Aula da apostila: videoaula específica em produção. Há um vídeo complementar sobre outro tema.':'Videoaula — produção futura'));
   const actions=make('div','actions'),btn=make('button','btn',a.exercicios?'Praticar ('+a.exercicios+' questões)':'Exercícios em preparação');
   btn.type='button';btn.disabled=!a.exercicios;btn.addEventListener('click',()=>launch(a.numero));
   if(videosGeografiaPublicos[a.numero]){const assistir=make('a','btn','▶ Assistir videoaula');assistir.href=videosGeografiaPublicos[a.numero];assistir.setAttribute('aria-label','Assistir à videoaula '+a.numero+' de '+d.disciplina);actions.append(assistir)}
-  if(VIDEO_EDF9_OK && sid==='fii-9-educacao-fisica' && term==='T1' && a.numero===1){
+  if(videoComplementar){const complementar=make('a','btn alt','▶ Vídeo complementar — '+videoComplementar.title);complementar.href=videoComplementar.url;complementar.setAttribute('aria-label','Assistir ao vídeo complementar: '+videoComplementar.title);actions.append(complementar)}
+   if(VIDEO_EDF9_OK && sid==='fii-9-educacao-fisica' && term==='T1' && a.numero===1){
    const assistir=make('a','btn','▶ Assistir videoaula de Educação Física');
    assistir.href='educacao-fisica-9ano.html';
    assistir.setAttribute('aria-label','Assistir à videoaula 01 de Educação Física do 9º ano');
