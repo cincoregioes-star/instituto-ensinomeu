@@ -23,5 +23,5 @@ for(const file of htmlFiles){
  assert.ok(found[0][1].startsWith(wanted),name+' deve usar caminho correto do script');
  console.log('OK navegação Voltar: '+name);
 }
-assert.equal(htmlFiles.length,35,'Mudança no número de páginas: revisar inclusão de Voltar');
+assert.equal(htmlFiles.length,36,'Mudança no número de páginas: revisar inclusão de Voltar');
 console.log('OK: botão Voltar em todas as '+htmlFiles.length+' telas, sem duplicatas.');
