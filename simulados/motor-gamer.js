@@ -8,7 +8,7 @@ let order=[],answers=[],current=0,seconds=0,timer=null,started=false,stage='welc
 const song=document.getElementById('audio-bg'),yes=document.getElementById('audio-correct'),no=document.getElementById('audio-wrong');
 song.volume=.06;yes.volume=.45;no.volume=.45;
 document.getElementById('heading').textContent=Q.disciplina+' — Aula '+String(Q.aula).padStart(2,'0');
-document.getElementById('subtitle').textContent='9º ano · '+Q.titulo;
+document.getElementById('subtitle').textContent=(Q.serie||'9º ano')+' · '+Q.titulo;
 document.getElementById('video').href=Q.video;if(Q.referencia==='apostila')document.getElementById('video').textContent='📘 Apostila no painel';
 function past(){try{return JSON.parse(localStorage.getItem(storage)||'[]')||[]}catch{return []}}
 function remember(record){try{localStorage.setItem(storage,JSON.stringify([record,...past()].slice(0,30)))}catch{}}
