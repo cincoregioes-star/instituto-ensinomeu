@@ -12,24 +12,31 @@ permissions:
 
 jobs:
   publicar:
+    if: github.event.head_commit.message != 'Publicar video Geografia 8 ano Aula 01 com SHA-256 verificado'
     runs-on: ubuntu-latest
     steps:
       - name: Ler repositorio
         uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - name: Validar e unir partes sem perda de qualidade
+
+      - name: Validar e unir 47 partes sem perda de qualidade
         shell: bash
         run: |
           set -euo pipefail
           dir="envios/geografia8"
-          for num in 01 02 03 04 05; do
-            test -s "$dir/geo8_aula01.part$num" || { echo "::error::Parte $num ausente"; exit 1; }
+          partes=()
+          for n in $(seq 1 47); do
+            printf -v num '%03d' "$n"
+            p="$dir/geo8_aula01.part$num"
+            test -s "$p" || { echo "::error::Parte $num ausente"; exit 1; }
+            partes+=("$p")
           done
           mkdir -p videos/8ano/geografia
-          cat "$dir"/geo8_aula01.part{01,02,03,04,05} > videos/8ano/geografia/aula01-populacao-distribuicao.mp4
+          cat "${partes[@]}" > videos/8ano/geografia/aula01-populacao-distribuicao.mp4
           printf '%s  %s\n' '95ac3315bec4d408d2dd4f5bc3a8ada8bf0977c65cf3260e406332cd34e2ad2d' 'videos/8ano/geografia/aula01-populacao-distribuicao.mp4' | sha256sum -c -
           test "$(stat -c%s videos/8ano/geografia/aula01-populacao-distribuicao.mp4)" = "97777700"
+
       - name: Publicar video e limpar arquivos temporarios
         shell: bash
         run: |
@@ -37,15 +44,16 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add videos/8ano/geografia/aula01-populacao-distribuicao.mp4
-          git rm envios/geografia8/geo8_aula01.part{01,02,03,04,05}
+          git rm envios/geografia8/geo8_aula01.part???
           git commit -m "Publicar video Geografia 8 ano Aula 01 com SHA-256 verificado"
           git push
+
       - name: Solicitar reconstrucao do GitHub Pages
+        continue-on-error: true
         shell: bash
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          set -euo pipefail
           curl --fail-with-body -L --retry 3 --retry-delay 2 \
             -X POST \
             -H "Accept: application/vnd.github+json" \
