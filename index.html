@@ -207,5 +207,24 @@
 })();
 </script>
 
+<script>
+/* EnsinoMeu: exibir Geografia 8º ano somente quando o MP4 local estiver no GitHub Pages. */
+(async()=>{
+  const video='videos/8ano/geografia/aula01-populacao-distribuicao.mp4';
+  try{
+    const r=await fetch(video,{method:'HEAD',cache:'no-store'});
+    if(!r.ok && r.status!==206)return;
+    const grade=document.querySelector('#aulas-gravadas .lesson-grid');
+    if(!grade || document.getElementById('geo8-video-card'))return;
+    const card=document.createElement('article');
+    card.className='lesson geo';card.id='geo8-video-card';
+    card.setAttribute('aria-label','Videoaula de Geografia do 8º ano');
+    card.innerHTML='<div class="lesson-top"><span class="lesson-year">8º ANO · VIDEOAULA</span><h3 class="lesson-subject">Geografia</h3><p class="lesson-topic">População e distribuição espacial</p></div><div class="lesson-body"><p>População absoluta, densidade demográfica, mapas e planejamento do território. Narração Lucas.</p><div class="pills"><span class="pill">▶ 1 aula gravada</span><span class="pill gold">10min49s</span><span class="pill book">Acesso gratuito</span></div><a class="btn btn-green" href="geografia-8ano.html">▶ Assistir Geografia — 8º ano</a></div>';
+    grade.append(card);
+    const metric=[...document.querySelectorAll('.metrics .metric')].find(e=>e.textContent.includes('Videoaulas gravadas'));
+    if(metric){const n=metric.querySelector('strong');if(n&&Number.isFinite(Number(n.textContent)))n.textContent=String(Number(n.textContent)+1)}
+  }catch{ /* não mostrar link sem vídeo hospedado */ }
+})();
+</script>
 <script src="voltar-global.js?v=20261109" defer></script>
 </body></html>
