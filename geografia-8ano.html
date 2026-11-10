@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#073b57">
+<meta name="description" content="Aula 01 de Geografia do 8º ano — população e distribuição espacial. Videoaula gratuita do Instituto EnsinoMeu.">
+<meta property="og:title" content="Geografia 8º ano — Aula 01 | Instituto EnsinoMeu">
+<meta property="og:description" content="População absoluta, densidade demográfica, distribuição espacial e leitura de mapas.">
+<link rel="canonical" href="https://cincoregioes-star.github.io/instituto-ensinomeu/geografia-8ano.html">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<title>Geografia 8º ano — Aula 01 | Instituto EnsinoMeu</title>
+<style>
+:root{color-scheme:dark;--navy:#062f49;--deep:#082439;--green:#087653;--gold:#f5c64c;--white:#f3f9fc}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(160deg,#093f5b,#081c31 70%);min-height:100vh;color:var(--white)}
+a{color:inherit;text-decoration:none}header{background:#062b43;border-bottom:3px solid var(--gold);padding:15px 20px}
+.wrap{max-width:1200px;margin:auto}.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:12px;font-weight:850;font-size:clamp(18px,2vw,25px);letter-spacing:.02em}
+.brand img{width:55px;height:55px;object-fit:contain}.menu{display:flex;gap:15px;flex-wrap:wrap}.menu a:hover,.back:hover{text-decoration:underline}
+main{padding:30px 18px 60px}.pill{display:inline-block;padding:8px 14px;border:1px solid var(--gold);border-radius:999px;color:var(--gold);font-size:13px;font-weight:800;letter-spacing:.08em}
+h1{font-size:clamp(27px,4vw,44px);line-height:1.12;margin:18px 0 8px}.lead{font-size:clamp(16px,2.2vw,20px);color:#c4e1eb;line-height:1.45;margin:0 0 22px}
+.frame{background:#000;position:relative;aspect-ratio:16/9;width:100%;border-radius:16px;overflow:hidden;box-shadow:0 22px 55px #001626bb;border:2px solid #347e99}
+video{width:100%;height:100%;object-fit:contain;background:black;display:block}.frame:fullscreen{border:0;border-radius:0}
+.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:12px;padding:13px 18px;background:var(--green);color:white;font-weight:750;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;min-height:48px}
+.btn:hover{filter:brightness(1.12)}.btn.alt{background:#f2c84e;color:#07293c}.btn.neutral{background:#184b67}.btn[hidden]{display:none}.speed{padding:12px 14px;border:1px solid #47778b;border-radius:12px;display:flex;align-items:center;gap:10px}.speed select{background:#133d55;color:white;border:1px solid #6492a4;padding:6px;border-radius:6px;font-size:16px}
+.message{padding:15px;background:#163e52;border-left:4px solid #f2c84e;border-radius:10px;margin-top:15px;color:#fff;line-height:1.5}.message[hidden]{display:none}
+.summary{margin-top:28px;background:#0b3a53;border:1px solid #386d85;border-radius:16px;padding:23px}.summary h2{margin-top:0}.summary li{margin:8px 0;line-height:1.5}.summary small{color:#b9d2db}
+footer{text-align:center;padding:24px 14px;border-top:1px solid #35677e;color:#bdd5df;font-size:13px}
+@media(max-width:600px){.nav{justify-content:center}.menu{justify-content:center}.controls .btn{width:100%}.speed{width:100%;justify-content:space-between}}
+</style>
+<link rel="stylesheet" href="ensino-cores-v8.css?v=8">
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="./"><img src="assets/brasao.png" alt="">Instituto EnsinoMeu</a><nav class="menu"><a href="./">Início</a><a href="apostilas.html">Apostilas</a><a href="planos.html">Planos</a></nav></div></header>
+<main class="wrap">
+<div class="pill">GEOGRAFIA · 8º ANO · 1º TRIMESTRE</div>
+<h1>Aula 01 — População e distribuição espacial</h1>
+<p class="lead">Conceitos de população absoluta, distribuição espacial, densidade demográfica e interpretação de mapas. Narração: Lucas.</p>
+<div class="frame" id="player"><video id="aula" controls playsinline preload="metadata" poster="assets/brasao.png" aria-label="Videoaula de Geografia do 8º ano, População e distribuição espacial">Seu navegador não suporta vídeo HTML5.</video></div>
+<div class="controls">
+<button class="btn" type="button" id="fullscreen">⛶ Tela cheia</button>
+<label class="speed" for="velocidade">Velocidade <select id="velocidade"><option value="0.8">0,8×</option><option value="0.9">0,9×</option><option value="1" selected>1,0×</option><option value="1.1">1,1×</option><option value="1.25">1,25×</option></select></label>
+<a class="btn alt" id="baixar" download="EnsinoMeu_Geografia_8ano_Aula01.mp4" hidden>↓ Baixar MP4</a>
+<a class="btn neutral" href="./">← Voltar ao Instituto</a>
+</div>
+<p id="mensagem" class="message" role="status" aria-live="polite" hidden></p>
+<section class="summary"><h2>O que você vai aprender</h2><ul><li>Diferença entre população absoluta e densidade demográfica.</li><li>Fatores que influenciam a distribuição dos habitantes.</li><li>Como calcular habitantes por quilômetro quadrado.</li><li>Exemplo da apostila: 30 mil habitantes em 100 km² = 300 hab./km².</li><li>Como interpretar mapas e comparar áreas urbanas e rurais sem confundir média com distribuição uniforme.</li><li>Relação entre dados populacionais e planejamento de escolas, saúde e transporte.</li></ul><small>Mapas e imagens ilustrativos; os exemplos numéricos da aula são didáticos, não estatísticas oficiais de municípios reais. Material complementar sujeito a revisão pedagógica.</small></section>
+</main>
+<footer>Instituto EnsinoMeu © 2026 · Educação complementar · Videoaula gratuita</footer>
+<script>
+(function(){
+ const src='videos/8ano/geografia/aula01-populacao-distribuicao.mp4';
+ const v=document.getElementById('aula'),d=document.getElementById('baixar'),m=document.getElementById('mensagem');
+ const speed=document.getElementById('velocidade');
+ function status(t){m.textContent=t;m.hidden=false}
+ speed.addEventListener('change',()=>{v.playbackRate=Number(speed.value)||1});
+ v.addEventListener('loadedmetadata',()=>{v.playbackRate=Number(speed.value)||1});
+ v.addEventListener('error',()=>status('Não foi possível reproduzir o arquivo MP4. Confirme sua conexão e tente novamente.'));
+ document.getElementById('fullscreen').addEventListener('click',async()=>{try{if(v.requestFullscreen)await v.requestFullscreen();else if(v.webkitEnterFullscreen)v.webkitEnterFullscreen();else if(document.getElementById('player').requestFullscreen)await document.getElementById('player').requestFullscreen();}catch{status('Seu navegador não permitiu a tela cheia.')}})
+ fetch(src,{method:'HEAD',cache:'no-store'}).then(r=>{
+   if(!r.ok && r.status!==206)throw new Error('indisponivel');
+   v.src=src+'?v=lucas-corrigido-20261110';v.load();
+   d.href=src;d.hidden=false;
+ }).catch(()=>status('A publicação da videoaula está sendo concluída. O conteúdo será liberado aqui quando o MP4 estiver disponível no servidor.'));
+})();
+</script>
+<script src="voltar-global.js?v=20261109" defer></script>
+</body></html>
