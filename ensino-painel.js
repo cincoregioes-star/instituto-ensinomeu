@@ -88,6 +88,16 @@ const LESSON_LINKS={
  'fii-9-lingua-inglesa':[{title:'Complementar · Reading the News',video:'ingles-9ano.html'},{title:'Aula 01 · Simple Past',quiz:'simulados/ingles-9ano-aula01.html'}],
  'fii-9-educacao-fisica':[{title:'Aula 01 · Esportes de invasão',quiz:'simulados/educacao-fisica-9ano-aula01.html'}]
 };
+/* Mostrar Geografia 8º ano no painel apenas após disponibilidade do MP4. */
+(async()=>{
+  const arquivo='videos/8ano/geografia/aula01-populacao-distribuicao.mp4';
+  try{
+    const r=await fetch(arquivo,{method:'HEAD',cache:'no-store'});
+    if(!r.ok && r.status!==206)return;
+    LESSON_LINKS['fii-8-geografia']=[{title:'Aula 01 · População e distribuição espacial',video:'geografia-8ano.html'}];
+    if(SELECTED&&/8/.test(String(SELECTED.serie||''))&&COURSES.length)renderCourses();
+  }catch{ /* não divulgar vídeo indisponível */ }
+})();
 function hasPublicGamer(cid,term){
  return term==='T1' && (LESSON_LINKS[cid]||[]).some(l=>Boolean(l.quiz));
 }
