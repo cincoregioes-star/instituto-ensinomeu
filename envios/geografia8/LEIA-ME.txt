@@ -1,0 +1,1 @@
+ENVIO AUTOMATICO GEOGRAFIA 8º ANO\nArraste aqui, de uma unica vez, os 5 arquivos geo8_aula01.part01 a part05. O fluxo GitHub Actions verifica SHA-256 e cria o MP4 final sem perdas. Nao envie ZIP.\n
