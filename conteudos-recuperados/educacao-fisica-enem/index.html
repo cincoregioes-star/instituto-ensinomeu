@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDUCAÇÃO FÍSICA Gratuito ENEM</title>
+  <style>
+    :root{
+      --bg:#05070c;
+      --card:#11141b;
+      --card2:#171b24;
+      --blue:#00f3ff;
+      --pink:#ff00e6;
+      --green:#39ff14;
+      --red:#ff003c;
+      --yellow:#ffd400;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --line:rgba(255,255,255,.08);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#000;
+      color:var(--text);
+      min-height:100vh;
+      padding:20px 12px 40px;
+      text-align:center;
+      overflow-x:hidden;
+    }
+
+    header{
+      max-width:1100px;
+      margin:0 auto 24px;
+      border:2px solid var(--blue);
+      border-radius:24px;
+      padding:22px 16px;
+      background:linear-gradient(180deg,#0c0f16,#090b11);
+      box-shadow:0 0 22px rgba(0,243,255,.22);
+    }
+
+    header h1{
+      color:var(--blue);
+      font-size:clamp(2rem,4vw,3rem);
+      text-shadow:0 0 14px rgba(0,243,255,.7);
+      font-weight:900;
+    }
+
+    header p{
+      margin-top:10px;
+      color:var(--pink);
+      font-weight:800;
+      font-size:clamp(1rem,2vw,1.3rem);
+    }
+
+    #app{
+      width:100%;
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .box{
+      width:100%;
+      max-width:100%;
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:20px 16px;
+      box-shadow:0 0 20px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+
+    .btn{
+      display:block;
+      width:100%;
+      max-width:560px;
+      margin:10px auto;
+      padding:14px 16px;
+      border:2px solid var(--blue);
+      background:transparent;
+      color:#fff;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:800;
+      font-size:1rem;
+      line-height:1.45;
+      transition:.2s;
+      white-space:normal;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    .btn:hover:not(:disabled){
+      background:var(--blue);
+      color:#000;
+      box-shadow:0 0 18px rgba(0,243,255,.35);
+    }
+
+    .btn-voltar{
+      border-color:#666;
+      color:#ddd;
+    }
+
+    .btn-voltar:hover:not(:disabled){
+      background:#333;
+      color:#fff;
+      box-shadow:none;
+    }
+
+    .btn.correct{
+      background:var(--green)!important;
+      border-color:var(--green)!important;
+      color:#000!important;
+    }
+
+    .btn.wrong{
+      background:var(--red)!important;
+      border-color:var(--red)!important;
+      color:#fff!important;
+    }
+
+    .grid-areas{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .card-area{
+      background:linear-gradient(135deg, rgba(0,243,255,.08), rgba(255,0,230,.08));
+      border:1px solid rgba(0,243,255,.16);
+      border-radius:16px;
+      padding:16px;
+      text-align:left;
+      min-width:0;
+    }
+
+    .card-area h3{
+      color:var(--blue);
+      margin-bottom:8px;
+      font-size:1.12rem;
+      line-height:1.35;
+      word-break:break-word;
+    }
+
+    .card-area p{
+      color:#ddd;
+      font-size:.95rem;
+      line-height:1.45;
+      margin-bottom:10px;
+      word-break:break-word;
+    }
+
+    .status{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+      color:var(--pink);
+      font-weight:bold;
+      text-align:left;
+    }
+
+    #question-text{
+      font-size:1.05rem;
+      line-height:1.6;
+      margin:20px 0;
+      min-height:88px;
+      text-align:left;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    .question-label{
+      display:block;
+      color:var(--yellow);
+      font-weight:bold;
+      margin-bottom:8px;
+    }
+
+    .text-base{
+      display:block;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:14px;
+      margin:10px 0 14px;
+      color:#f5f5f5;
+      font-style:italic;
+      line-height:1.65;
+    }
+
+    .options-wrap{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-bottom:16px;
+      width:100%;
+      max-width:100%;
+    }
+
+    .option-btn{
+      width:100%;
+      max-width:100%;
+      margin:0;
+      text-align:left;
+      min-height:58px;
+    }
+
+    .result-number{
+      font-size:3rem;
+      color:var(--blue);
+      margin:12px 0;
+      font-weight:900;
+    }
+
+    .result-sub{
+      font-size:1.12rem;
+      color:#ddd;
+      margin-bottom:10px;
+    }
+
+    .mini{
+      color:var(--muted);
+      font-size:.96rem;
+      line-height:1.5;
+    }
+
+    @media (max-width:700px){
+      .grid-areas{
+        grid-template-columns:1fr;
+      }
+      .box{
+        padding:16px 12px;
+      }
+      #question-text{
+        font-size:1rem;
+      }
+      .btn{
+        font-size:.96rem;
+        padding:13px 12px;
+      }
+    }
+
+
+</style>
+</head>
+<body>
+<nav style="max-width:1100px;margin:0 auto 15px;text-align:left"><a href="../index.html" style="display:inline-block;padding:12px 16px;background:#113e5e;color:#fff;border-radius:11px;text-decoration:none;font:700 15px system-ui">← Voltar ao acervo EnsinoMeu</a></nav>
+
+<header>
+  <h1>EDUCAÇÃO FÍSICA Gratuito ENEM</h1>
+  <p>10 MÓDULOS • 200 QUESTÕES • RESPOSTAS EMBARALHADAS</p>
+</header>
+
+
+<div id="app"></div>
+
+<audio id="audio-bg" loop preload="auto" playsinline>
+  <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-correct" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-wrong" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const app = document.getElementById("app");
+const audioBg = document.getElementById("audio-bg");
+const audioCorrect = document.getElementById("audio-correct");
+const audioWrong = document.getElementById("audio-wrong");
+
+audioBg.volume = 0.06;
+audioCorrect.volume = 0.45;
+audioWrong.volume = 0.45;
+
+let audioLiberado = false;
+let areaAtual = "";
+let questoesAtuais = [];
+let indiceQuestao = 0;
+let acertosObjetivas = 0;
+let questaoRenderizadaAtual = null;
+
+document.addEventListener("click", destravarAudio, { once: true });
+document.addEventListener("touchstart", destravarAudio, { once: true });
+
+function destravarAudio() {
+  if (audioLiberado) return Promise.resolve(true);
+
+  audioBg.muted = true;
+  return audioBg.play()
+    .then(() => {
+      audioBg.pause();
+      audioBg.currentTime = 0;
+      audioBg.muted = false;
+      audioLiberado = true;
+
+      audioCorrect.play().then(() => {
+        audioCorrect.pause();
+        audioCorrect.currentTime = 0;
+      }).catch(() => {});
+
+      audioWrong.play().then(() => {
+        audioWrong.pause();
+        audioWrong.currentTime = 0;
+      }).catch(() => {});
+
+      return true;
+    })
+    .catch(() => false);
+}
+
+function tocarAudioFundo() {
+  if (!audioLiberado) return;
+  audioBg.currentTime = 0;
+  audioBg.play().catch(() => {});
+}
+
+function pararAudioFundo() {
+  audioBg.pause();
+  audioBg.currentTime = 0;
+}
+
+function tocarAcerto() {
+  audioCorrect.currentTime = 0;
+  audioCorrect.play().catch(() => {});
+}
+
+function tocarErro() {
+  audioWrong.currentTime = 0;
+  audioWrong.play().catch(() => {});
+}
+
+const areasEduFisica = [
+  { nome: "Esportes Coletivos", descricao: "Futebol, vôlei, basquete, handebol e lógica dos jogos coletivos." },
+  { nome: "Esportes Individuais", descricao: "Atletismo, ginástica, natação, lutas e modalidades individuais." },
+  { nome: "Corpo e Movimento", descricao: "Consciência corporal, coordenação, equilíbrio e movimento humano." },
+  { nome: "Saúde e Qualidade de Vida", descricao: "Atividade física, sedentarismo, prevenção e bem-estar." },
+  { nome: "Treinamento Físico", descricao: "Força, resistência, flexibilidade, velocidade e princípios do treino." },
+  { nome: "Jogos e Brincadeiras", descricao: "Cultura lúdica, cooperação, regras e aprendizagem." },
+  { nome: "Dança e Expressão Corporal", descricao: "Ritmo, criação, cultura corporal e expressão." },
+  { nome: "Lutas", descricao: "Capoeira, judô, karatê e fundamentos das lutas." },
+  { nome: "Esporte e Sociedade", descricao: "Mídia, inclusão, ética, cidadania e fenômenos sociais do esporte." },
+  { nome: "Educação Física Escolar", descricao: "Objetivos, conteúdos, inclusão e papel pedagógico." }
+];
+
+function criarObjetiva(area, numero, textoBase, pergunta, alternativas, correta, comentario) {
+  return {
+    tipo: "objetiva",
+    area,
+    numero,
+    base: textoBase,
+    q: pergunta,
+    o: alternativas,
+    c: correta,
+    coment: comentario
+  };
+}
+
+function gerarQuestoes(area, lista) {
+  return lista.map((item, i) =>
+    criarObjetiva(area, i + 1, item.base, item.q, item.o, item.c, item.coment)
+  );
+}
+
+function embaralharAlternativas(questao) {
+  const pares = questao.o.map((texto, idx) => ({ texto, correta: idx === questao.c }));
+  for (let i = pares.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pares[i], pares[j]] = [pares[j], pares[i]];
+  }
+  return {
+    ...questao,
+    opcoesRenderizadas: pares.map(p => p.texto),
+    corretaRenderizada: pares.findIndex(p => p.correta)
+  };
+}
+
+const bancoQuestoes = {
+  "Esportes Coletivos": gerarQuestoes("Esportes Coletivos", [
+    { base:`"Nos esportes coletivos, os jogadores atuam em grupo com objetivos comuns e cooperação tática."`, q:"Uma característica central dos esportes coletivos é:", o:["Atuação isolada sem interação","Cooperação entre companheiros de equipe","Ausência de regras","Exclusão da estratégia"], c:1, coment:"A cooperação é essencial nos esportes coletivos." },
+    { base:`"No futebol, as ações de ataque e defesa se alternam continuamente."`, q:"No futebol, quando a equipe perde a bola, ela passa para a fase de:", o:["Ataque","Defesa","Descanso","Pausa técnica"], c:1, coment:"Sem a posse da bola, a equipe precisa defender." },
+    { base:`"O voleibol organiza-se por fundamentos como saque, recepção, levantamento, ataque, bloqueio e defesa."`, q:"No voleibol, o fundamento que inicia a jogada é:", o:["Saque","Bloqueio","Levantamento","Cortada"], c:0, coment:"O saque coloca a bola em jogo." },
+    { base:`"No basquete, a equipe pontua ao converter a bola no cesto adversário."`, q:"No basquete, o objetivo principal é:", o:["Acertar o gol com os pés","Lançar a bola na cesta adversária","Derrubar a rede","Somente defender"], c:1, coment:"A pontuação acontece ao converter a cesta." },
+    { base:`"O handebol é disputado com as mãos e exige deslocamentos rápidos e troca de passes."`, q:"No handebol, a bola é conduzida predominantemente com:", o:["Pés","Mãos","Cabeça","Ombros"], c:1, coment:"O handebol é uma modalidade de manejo manual da bola." },
+    { base:`"A tática nos esportes coletivos depende da leitura do jogo e da tomada de decisão."`, q:"Tomada de decisão, nos esportes coletivos, significa:", o:["Agir mecanicamente sem pensar","Escolher a melhor ação conforme a situação","Parar o jogo sempre","Ignorar companheiros"], c:1, coment:"O jogador precisa decidir conforme o contexto do jogo." },
+    { base:`"Marcação, ocupação de espaço e cobertura são aspectos importantes da defesa."`, q:"Na fase defensiva, uma equipe busca:", o:["Abrir mão da organização","Impedir a progressão do adversário","Ficar parada","Evitar comunicação"], c:1, coment:"A defesa procura recuperar a posse e limitar o ataque adversário." },
+    { base:`"Passe é um fundamento importante em várias modalidades coletivas."`, q:"A função principal do passe é:", o:["Entregar a posse ao companheiro","Sempre finalizar a jogada","Parar a partida","Apenas marcar pontos"], c:0, coment:"O passe organiza a circulação da bola." },
+    { base:`"Nos esportes coletivos, a comunicação favorece o desempenho da equipe."`, q:"A comunicação em equipe ajuda a:", o:["Desorganizar o jogo","Melhorar coordenação e tomada de decisão","Eliminar a estratégia","Reduzir a participação"], c:1, coment:"Equipes se organizam melhor quando se comunicam." },
+    { base:`"No futsal, o espaço reduzido exige maior velocidade de raciocínio."`, q:"O espaço menor no futsal tende a exigir:", o:["Menor atenção","Decisões mais rápidas","Ausência de marcação","Menos técnica"], c:1, coment:"Espaços reduzidos aumentam a velocidade do jogo." },
+    { base:`"No vôlei, a equipe pode tocar na bola até três vezes antes de enviá-la ao outro lado."`, q:"No voleibol, o limite usual de toques por equipe é:", o:["Dois","Três","Quatro","Cinco"], c:1, coment:"A regra geral prevê até três toques." },
+    { base:`"No basquete, drible é o ato de quicar a bola para se deslocar com ela."`, q:"No basquete, o drible serve para:", o:["Transportar a bola em deslocamento","Substituir o passe totalmente","Finalizar obrigatoriamente","Anular a defesa"], c:0, coment:"O drible permite progressão individual com a bola." },
+    { base:`"No handebol, a circulação da bola e a criação de espaços são fundamentais."`, q:"Criar espaços no ataque ajuda a:", o:["Dificultar as ações ofensivas","Abrir possibilidades de finalização","Parar a equipe","Evitar passes"], c:1, coment:"Mais espaço favorece penetração e arremesso." },
+    { base:`"A regra e a estratégia variam entre modalidades, mas há princípios comuns."`, q:"Entre princípios comuns dos esportes coletivos, está:", o:["Cooperação e oposição","Ausência de regras","Isolamento total","Exclusão do adversário do espaço"], c:0, coment:"Esportes coletivos articulam cooperação entre companheiros e oposição ao adversário." },
+    { base:`"A transição defesa-ataque pode definir o ritmo do jogo."`, q:"Transição, nos esportes coletivos, é a passagem entre:", o:["Ataque e defesa","Treino e descanso","Árbitro e torcida","Quadra e arquibancada"], c:0, coment:"A equipe alterna rapidamente entre atacar e defender." },
+    { base:`"O trabalho coletivo não depende apenas de habilidade técnica, mas também de entendimento tático."`, q:"Entendimento tático é:", o:["Compreensão das ações do jogo","Apenas força física","Somente velocidade","Só execução mecânica"], c:0, coment:"Tática envolve leitura, posicionamento e decisão." },
+    { base:`"No futebol, impedimento é uma regra que interfere na organização ofensiva."`, q:"A regra do impedimento influencia:", o:["Posicionamento dos atacantes","A altura do gol","O tamanho da bola","O tempo do intervalo"], c:0, coment:"Atacantes precisam considerar o posicionamento defensivo." },
+    { base:`"Sistemas de jogo são formas de organizar a equipe em quadra ou campo."`, q:"Um sistema de jogo serve para:", o:["Orientar a organização coletiva","Eliminar a necessidade de treino","Substituir fundamentos","Apenas mudar uniforme"], c:0, coment:"Sistemas ajudam a equipe a se posicionar e agir coletivamente." },
+    { base:`"Fair play é uma noção importante no esporte."`, q:"Fair play está relacionado a:", o:["Jogo limpo e respeito","Violência intencional","Descumprimento das regras","Vantagem a qualquer custo"], c:0, coment:"É o princípio do jogo ético e respeitoso." },
+    { base:`"Os esportes coletivos fazem parte da cultura corporal e da vida social."`, q:"Isso significa que eles também são:", o:["Fenômenos culturais e sociais","Somente técnicas motoras","Práticas sem sentido social","Atividades isoladas da sociedade"], c:0, coment:"O esporte coletivo envolve cultura, convivência e valores sociais." }
+  ]),
+
+  "Esportes Individuais": gerarQuestoes("Esportes Individuais", [
+    { base:`"Nos esportes individuais, o desempenho do praticante depende diretamente de sua execução técnica e tática."`, q:"Uma característica dos esportes individuais é:", o:["Dependência exclusiva de companheiros","Responsabilidade direta do praticante pela execução","Ausência de regras","Falta de treino específico"], c:1, coment:"O desempenho recai diretamente sobre o praticante." },
+    { base:`"O atletismo reúne corridas, saltos, lançamentos e arremessos."`, q:"O atletismo é composto por provas de:", o:["Água e combate","Corridas, saltos e lançamentos","Somente ginástica","Somente dança"], c:1, coment:"Essas são as bases das modalidades do atletismo." },
+    { base:`"Na corrida de velocidade, a explosão inicial é importante."`, q:"Nas provas curtas de atletismo, destaca-se:", o:["Resistência prolongada apenas","Velocidade e potência","Jogo coletivo","Marcação por zona"], c:1, coment:"Corridas curtas exigem saída e aceleração explosiva." },
+    { base:`"Na maratona, o atleta precisa manter esforço por longa duração."`, q:"A maratona exige principalmente:", o:["Resistência aeróbica","Apenas força máxima","Só flexibilidade","Somente coordenação fina"], c:0, coment:"Provas longas dependem fortemente da resistência." },
+    { base:`"Na ginástica artística, o corpo executa movimentos técnicos em aparelhos ou solo."`, q:"Na ginástica artística, valoriza-se:", o:["Precisão técnica e controle corporal","Somente contato físico com adversário","Ausência de regras","Uso exclusivo de bola"], c:0, coment:"A modalidade exige técnica, equilíbrio e domínio corporal." },
+    { base:`"A natação envolve deslocamento eficiente na água com técnicas específicas."`, q:"Na natação, a técnica ajuda a:", o:["Melhorar eficiência do movimento","Eliminar a respiração","Substituir o treino","Anular a resistência da água"], c:0, coment:"Boa técnica reduz gasto e melhora desempenho." },
+    { base:`"O judô é uma luta de origem japonesa baseada em projeções, imobilizações e controle."`, q:"O judô é classificado como:", o:["Esporte coletivo","Esporte individual de combate","Dança competitiva","Jogo de rede"], c:1, coment:"É modalidade individual da categoria das lutas." },
+    { base:`"No salto em distância, a corrida de aproximação interfere no resultado."`, q:"No salto em distância, a impulsão depende também da:", o:["Corrida de aproximação","Marcação em zona","Recepção de passe","Cortada"], c:0, coment:"A velocidade da corrida influencia a impulsão." },
+    { base:`"Em esportes individuais, o autocontrole emocional pode interferir no rendimento."`, q:"Controle emocional é importante porque:", o:["Afeta concentração e execução","Não interfere em nada","Substitui a técnica","Só importa em jogos coletivos"], c:0, coment:"Aspectos emocionais influenciam foco e desempenho." },
+    { base:`"Nas lutas, o respeito às regras e ao adversário é fundamental."`, q:"Nas modalidades de combate, o respeito está ligado a:", o:["Ética esportiva","Ausência de arbitragem","Valer tudo","Desobediência às normas"], c:0, coment:"O combate esportivo exige controle e respeito." },
+    { base:`"O salto em altura exige coordenação, impulsão e técnica."`, q:"No salto em altura, é decisivo:", o:["Técnica de ultrapassagem da barra","Uso de bola","Ajuda de companheiros","Rede divisória"], c:0, coment:"A técnica influencia diretamente a eficiência do salto." },
+    { base:`"Na natação, diferentes estilos possuem padrões técnicos específicos."`, q:"Um exemplo de estilo da natação é:", o:["Peito","Cortada","Bloqueio","Drible"], c:0, coment:"Peito é um dos estilos da natação." },
+    { base:`"O treinamento em esportes individuais costuma ser mais personalizado."`, q:"Isso ocorre porque:", o:["Cada atleta apresenta necessidades específicas","Todos treinam do mesmo jeito","A técnica não importa","Não existe planejamento"], c:0, coment:"O treino considera características e objetivos do praticante." },
+    { base:`"Na ginástica rítmica, música, corpo e aparelhos se articulam."`, q:"A ginástica rítmica combina:", o:["Expressão corporal e técnica com aparelhos","Somente corrida","Apenas contato físico","Jogo coletivo com bola"], c:0, coment:"A modalidade integra técnica, música e expressão." },
+    { base:`"Em provas individuais, o resultado pode ser medido por tempo, distância, nota ou pontuação."`, q:"Isso mostra que o desempenho individual pode ser:", o:["Avaliado por diferentes critérios","Sempre decidido por votação da torcida","Sem critérios","Igual em toda modalidade"], c:0, coment:"Cada modalidade usa parâmetros específicos." },
+    { base:`"A concentração ajuda na execução de movimentos precisos."`, q:"Em modalidades como ginástica ou saltos, concentração contribui para:", o:["Precisão e controle técnico","Desorganização","Perda de foco","Redução do equilíbrio"], c:0, coment:"Foco mental favorece melhor execução." },
+    { base:`"Esportes individuais também fazem parte da cultura corporal."`, q:"Isso significa que eles expressam:", o:["Práticas corporais historicamente construídas","Somente rendimento físico","Apenas força bruta","Ausência de valores sociais"], c:0, coment:"São práticas culturais e não apenas físicas." },
+    { base:`"No atletismo, a largada é importante em várias provas."`, q:"Uma largada eficiente favorece:", o:["Melhor início da prova","Fim imediato da disputa","Desclassificação","Perda de equilíbrio obrigatória"], c:0, coment:"O começo da prova influencia o desempenho." },
+    { base:`"A evolução no esporte individual depende de treino contínuo e correção técnica."`, q:"Para evoluir, o praticante precisa:", o:["Treinar com regularidade","Evitar repetição","Dispensar orientação","Ignorar fundamentos"], c:0, coment:"A melhoria depende de prática constante e orientação." },
+    { base:`"Mesmo nas modalidades individuais, a participação de técnicos e equipe de apoio pode ser relevante."`, q:"Isso mostra que o esporte individual:", o:["Também envolve apoio e organização externa","Dispensa qualquer orientação","É sempre improvisado","Não depende de planejamento"], c:0, coment:"O atleta compete individualmente, mas pode ter suporte técnico importante." }
+  ]),
+
+  "Corpo e Movimento": gerarQuestoes("Corpo e Movimento", [
+    { base:`"O corpo humano realiza movimentos variados em diferentes contextos da vida cotidiana e do esporte."`, q:"O movimento corporal depende de:", o:["Interação entre corpo, espaço e ação","Somente força máxima","Ausência de coordenação","Rigidez permanente"], c:0, coment:"Movimento envolve corpo em ação em determinado espaço e contexto." },
+    { base:`"Coordenação motora permite organizar movimentos com eficiência."`, q:"Coordenação motora está relacionada a:", o:["Organização dos movimentos","Somente alongamento","Apenas velocidade","Falta de controle corporal"], c:0, coment:"Coordenar é combinar ações de forma eficiente." },
+    { base:`"O equilíbrio ajuda a manter o corpo estável em diferentes posições."`, q:"Equilíbrio corporal é a capacidade de:", o:["Manter estabilidade","Aumentar só a força","Correr mais rápido sempre","Ignorar o espaço"], c:0, coment:"Equilíbrio envolve controle postural e estabilidade." },
+    { base:`"O esquema corporal está ligado à percepção do próprio corpo."`, q:"Esquema corporal refere-se à:", o:["Consciência do próprio corpo","Peso do equipamento","Tempo do jogo","Apenas massa muscular"], c:0, coment:"É a percepção do corpo e de suas partes em ação." },
+    { base:`"A lateralidade ajuda na orientação corporal e na execução motora."`, q:"Lateralidade envolve:", o:["Predominância e referência entre lados do corpo","Somente altura","Apenas resistência","Falta de orientação espacial"], c:0, coment:"Direita/esquerda e dominância corporal fazem parte da lateralidade." },
+    { base:`"A percepção espacial é importante nas práticas corporais."`, q:"Percepção espacial ajuda o indivíduo a:", o:["Situar-se e mover-se no espaço","Ignorar obstáculos","Eliminar a coordenação","Substituir a visão"], c:0, coment:"Mover-se bem exige noção de espaço." },
+    { base:`"A percepção temporal auxilia na relação entre movimento e ritmo."`, q:"Percepção temporal está ligada a:", o:["Noção de tempo e ritmo do movimento","Somente força muscular","Altura corporal","Flexibilidade articular apenas"], c:0, coment:"Tempo e ritmo organizam a ação motora." },
+    { base:`"Movimentos locomotores incluem correr, andar e saltar."`, q:"Um exemplo de movimento locomotor é:", o:["Correr","Equilibrar uma bola parada","Sentar sem deslocar","Respirar"], c:0, coment:"Movimentos locomotores envolvem deslocamento do corpo." },
+    { base:`"Movimentos manipulativos envolvem controle de objetos."`, q:"Um exemplo de movimento manipulativo é:", o:["Arremessar uma bola","Ficar em pé","Dormir","Alongar o pescoço"], c:0, coment:"Manipular envolve controlar objetos com o corpo." },
+    { base:`"Movimentos estabilizadores ajudam no controle postural."`, q:"Um movimento estabilizador está ligado a:", o:["Manutenção da postura e equilíbrio","Somente corrida de velocidade","Uso de bola","Marcação tática"], c:0, coment:"Estabilização é base para outras ações motoras." },
+    { base:`"O desenvolvimento motor acontece ao longo da vida."`, q:"Desenvolvimento motor pode ser entendido como:", o:["Evolução das capacidades de movimento","Aumento automático de força apenas","Fim da aprendizagem corporal","Processo fixo sem mudanças"], c:0, coment:"O movimento se desenvolve conforme experiências e maturação." },
+    { base:`"Brincadeiras e jogos contribuem para o desenvolvimento corporal."`, q:"Nas brincadeiras, a criança pode desenvolver:", o:["Coordenação, equilíbrio e noção espacial","Somente competição","Apenas rendimento esportivo","Nenhuma aprendizagem motora"], c:0, coment:"O brincar é importante para o desenvolvimento motor." },
+    { base:`"A postura corporal influencia saúde e movimento."`, q:"Uma boa postura corporal contribui para:", o:["Melhor organização do movimento","Ausência total de fadiga","Fim da necessidade de exercício","Substituição do treino"], c:0, coment:"Postura adequada favorece eficiência e prevenção." },
+    { base:`"O corpo aprende movimentos por meio da prática."`, q:"Aprendizagem motora ocorre quando:", o:["O sujeito pratica e aperfeiçoa ações","O corpo para de se mover","Não há repetição","A técnica não é observada"], c:0, coment:"Prática e feedback ajudam na aprendizagem motora." },
+    { base:`"Capacidades físicas e habilidades motoras dialogam entre si."`, q:"Isso significa que força, coordenação e equilíbrio:", o:["Podem atuar juntos em uma ação","Nunca se relacionam","Servem só para esportes profissionais","Não influenciam o movimento"], c:0, coment:"As ações motoras combinam várias capacidades." },
+    { base:`"Expressão corporal é uma forma de comunicação por meio do corpo."`, q:"Expressão corporal permite:", o:["Comunicar ideias e emoções com o corpo","Eliminar o movimento","Substituir toda fala sempre","Impedir criação"], c:0, coment:"O corpo também comunica significados." },
+    { base:`"O alongamento pode auxiliar a mobilidade articular."`, q:"A mobilidade está relacionada à:", o:["Amplitude de movimento","Somente força máxima","Apenas resistência","Velocidade de reação"], c:0, coment:"Maior mobilidade favorece certas ações corporais." },
+    { base:`"Cada prática corporal exige combinações diferentes de capacidades."`, q:"Isso mostra que o movimento humano é:", o:["Complexo e variado","Sempre igual","Sem relação com o contexto","Apenas mecânico"], c:0, coment:"O movimento se adapta aos objetivos e situações." },
+    { base:`"No esporte e na vida diária, mover-se bem depende de percepção e ação."`, q:"Morar, caminhar, jogar e dançar exigem:", o:["Organização corporal no espaço e no tempo","Só força bruta","Somente velocidade","Ausência de controle"], c:0, coment:"A ação corporal integra percepção, decisão e execução." },
+    { base:`"Estudar corpo e movimento ajuda a compreender a cultura corporal."`, q:"Isso ocorre porque o corpo:", o:["É também construído social e culturalmente","Existe fora da sociedade","Serve apenas para competição","Não comunica nada"], c:0, coment:"O corpo carrega marcas culturais e modos de agir no mundo." }
+  ]),
+
+  "Saúde e Qualidade de Vida": gerarQuestoes("Saúde e Qualidade de Vida", [
+    { base:`"A prática regular de atividade física pode contribuir para a saúde física e mental."`, q:"Uma consequência positiva da atividade física regular é:", o:["Melhora da qualidade de vida","Aumento obrigatório do sedentarismo","Perda total de energia","Ausência de benefícios"], c:0, coment:"A atividade física favorece saúde e bem-estar." },
+    { base:`"O sedentarismo está associado a diversos riscos à saúde."`, q:"Sedentarismo significa:", o:["Baixo nível de atividade física","Excesso de treinamento","Somente prática esportiva intensa","Alimentação equilibrada"], c:0, coment:"Sedentarismo é a pouca movimentação no cotidiano." },
+    { base:`"Saúde não se limita à ausência de doença."`, q:"Uma visão ampliada de saúde considera:", o:["Bem-estar físico, mental e social","Somente exames laboratoriais","Apenas força muscular","Exclusivamente dieta"], c:0, coment:"Saúde envolve diferentes dimensões do bem-estar." },
+    { base:`"Atividade física pode auxiliar no controle do estresse."`, q:"Além do corpo, a prática física pode beneficiar:", o:["Saúde mental","Somente o uniforme","Apenas a quadra","Só o rendimento competitivo"], c:0, coment:"Movimento e exercício podem ajudar no equilíbrio emocional." },
+    { base:`"Sono, alimentação, hidratação e atividade física interferem na qualidade de vida."`, q:"Qualidade de vida envolve:", o:["Conjunto de hábitos saudáveis","Somente exercício intenso","Apenas descanso","Só alimentação"], c:0, coment:"É resultado de vários hábitos e condições de vida." },
+    { base:`"Exercícios físicos devem respeitar limites e condições individuais."`, q:"Isso indica a importância de:", o:["Adequação da prática ao indivíduo","Treinar sempre no limite extremo","Ignorar sinais do corpo","Copiar qualquer treino"], c:0, coment:"A prática precisa considerar idade, condição e objetivo." },
+    { base:`"Hidratação é importante antes, durante e após exercícios, dependendo da situação."`, q:"A hidratação adequada contribui para:", o:["Funcionamento corporal durante o esforço","Fim da fadiga instantaneamente","Substituir alimentação","Eliminar toda transpiração"], c:0, coment:"A água participa do equilíbrio do organismo." },
+    { base:`"Alimentação equilibrada e atividade física se complementam."`, q:"Uma alimentação equilibrada ajuda a:", o:["Sustentar energia e recuperação","Eliminar a necessidade de descanso","Substituir treino","Impedir movimento"], c:0, coment:"Boa alimentação contribui para disposição e recuperação." },
+    { base:`"Exercício físico é uma forma planejada de atividade física."`, q:"Exercício físico se caracteriza por ser:", o:["Planejado e estruturado","Qualquer movimento sem objetivo","Somente competição","Atividade sem repetição"], c:0, coment:"Exercício é planejado com intenção específica." },
+    { base:`"Atividade física inclui movimentos realizados no trabalho, lazer, deslocamento ou tarefas diárias."`, q:"Atividade física é um conceito:", o:["Mais amplo que exercício físico","Igual apenas à musculação","Limitado ao esporte de alto rendimento","Resumido à corrida"], c:0, coment:"Atividade física inclui diferentes formas de movimentação cotidiana." },
+    { base:`"A prevenção de doenças pode ser favorecida por hábitos saudáveis."`, q:"Um hábito preventivo importante é:", o:["Praticar atividade física regularmente","Dormir pouco sempre","Evitar água","Eliminar todo lazer"], c:0, coment:"Hábitos saudáveis reduzem riscos e favorecem bem-estar." },
+    { base:`"A saúde coletiva depende também de acesso a espaços públicos, segurança e condições sociais."`, q:"Isso mostra que saúde:", o:["Também depende de fatores sociais","É apenas escolha individual","Não tem relação com a sociedade","Depende só do esporte"], c:0, coment:"Condições sociais interferem na saúde da população." },
+    { base:`"Práticas corporais podem promover socialização e autoestima."`, q:"Além dos benefícios físicos, a atividade física pode favorecer:", o:["Convivência e autoconfiança","Isolamento obrigatório","Apenas competição","Nenhum ganho subjetivo"], c:0, coment:"O exercício pode fortalecer vínculos e autoestima." },
+    { base:`"O excesso de treino sem recuperação adequada pode ser prejudicial."`, q:"Isso mostra que saúde na prática corporal exige:", o:["Equilíbrio entre esforço e descanso","Treinar sem parar","Ignorar dores","Apenas intensidade"], c:0, coment:"Recuperação é parte do processo saudável." },
+    { base:`"Alongamento, aquecimento e volta à calma podem compor a prática de exercícios."`, q:"Esses momentos ajudam na:", o:["Preparação e recuperação corporal","Eliminação das regras","Substituição do treino principal","Redução do aprendizado"], c:0, coment:"Eles contribuem para melhor adaptação ao esforço." },
+    { base:`"A prática corporal pode ser prazerosa e não apenas obrigatória."`, q:"Quando a atividade física faz sentido para a pessoa, ela tende a:", o:["Ser mantida com mais facilidade","Ser sempre abandonada","Perder valor","Servir só para competição"], c:0, coment:"Prazer e significado favorecem adesão ao hábito." },
+    { base:`"A obesidade é uma questão complexa que envolve múltiplos fatores."`, q:"Isso significa que a saúde corporal não depende apenas de:", o:["Um único fator isolado","Hábitos e contexto juntos","Condições sociais","Alimentação e movimento"], c:0, coment:"Saúde e composição corporal são multifatoriais." },
+    { base:`"Práticas de lazer ativo podem combater o sedentarismo."`, q:"Um exemplo de lazer ativo é:", o:["Caminhar no parque","Ficar o dia todo sentado","Dormir a tarde inteira sempre","Só assistir televisão"], c:0, coment:"Lazer ativo inclui movimento corporal no tempo livre." },
+    { base:`"A escola pode estimular hábitos saudáveis desde cedo."`, q:"Nesse contexto, a Educação Física escolar pode:", o:["Contribuir para educação em saúde","Substituir toda a medicina","Ignorar hábitos de vida","Focar só em competição"], c:0, coment:"A escola é espaço de conscientização e prática corporal." },
+    { base:`"Qualidade de vida envolve relações entre corpo, saúde, ambiente e hábitos."`, q:"Portanto, cuidar da saúde significa:", o:["Adotar práticas equilibradas no cotidiano","Fazer apenas exercícios intensos","Cuidar só da alimentação","Ignorar descanso e bem-estar"], c:0, coment:"Saúde e qualidade de vida dependem de equilíbrio no modo de viver." }
+  ]),
+  "Treinamento Físico": gerarQuestoes("Treinamento Físico", [
+    { base:`"O treinamento físico é um processo planejado para desenvolver capacidades corporais."`, q:"Treinamento físico pode ser definido como:", o:["Processo organizado de exercícios","Movimento aleatório sem objetivo","Somente competição","Apenas alongamento"], c:0, coment:"Treinar envolve planejamento e objetivos específicos." },
+    { base:`"Força, resistência, velocidade e flexibilidade são capacidades físicas importantes."`, q:"Uma capacidade física básica é:", o:["Força","Somente talento","Uniforme","Arbitragem"], c:0, coment:"Força é uma das capacidades físicas fundamentais." },
+    { base:`"Resistência permite sustentar esforços por mais tempo."`, q:"A resistência está relacionada à capacidade de:", o:["Manter o esforço por duração maior","Dar um salto apenas","Ficar parado","Arremessar mais longe apenas"], c:0, coment:"Resistir é sustentar o trabalho físico por mais tempo." },
+    { base:`"Flexibilidade envolve amplitude de movimento das articulações."`, q:"Flexibilidade refere-se à:", o:["Amplitude de movimento","Somente potência","Velocidade de reação","Apenas equilíbrio"], c:0, coment:"A flexibilidade favorece movimentos mais amplos." },
+    { base:`"Velocidade é importante em ações curtas e rápidas."`, q:"A velocidade se destaca em:", o:["Ações rápidas e explosivas","Somente atividades lentas","Exclusivamente alongamento","Apenas descanso"], c:0, coment:"Velocidade é capacidade de responder e se mover rapidamente." },
+    { base:`"O princípio da individualidade biológica mostra que pessoas respondem de formas diferentes ao treino."`, q:"Esse princípio indica que o treino deve:", o:["Considerar características individuais","Ser igual para todos","Ignorar idade e condição física","Dispensar avaliação"], c:0, coment:"Cada pessoa tem necessidades e respostas próprias." },
+    { base:`"O princípio da sobrecarga envolve aumento gradual das exigências do treino."`, q:"Sobrecarga significa:", o:["Elevar estímulos de modo planejado","Treinar até a exaustão sempre","Nunca variar o treino","Ficar sem descanso"], c:0, coment:"Os estímulos precisam evoluir de forma progressiva." },
+    { base:`"A progressão no treinamento depende de regularidade e adaptação."`, q:"Regularidade no treino contribui para:", o:["Melhor desenvolvimento das capacidades","Perda automática de desempenho","Ausência de resultados","Desnecessidade de planejamento"], c:0, coment:"A continuidade favorece adaptações corporais." },
+    { base:`"Recuperação é parte importante do processo de treino."`, q:"Descanso adequado é importante porque:", o:["Permite recuperação e adaptação","Impede qualquer evolução","Substitui o treino","Só serve para atletas profissionais"], c:0, coment:"Sem recuperação, o corpo tem mais dificuldade para se adaptar." },
+    { base:`"O aquecimento prepara o corpo para o esforço."`, q:"Uma função do aquecimento é:", o:["Preparar o organismo para a atividade","Encerrar o treino","Substituir o exercício principal","Reduzir toda a frequência cardíaca"], c:0, coment:"O aquecimento aumenta gradualmente a prontidão corporal." },
+    { base:`"A volta à calma ajuda o organismo a retornar gradualmente a níveis de repouso."`, q:"A volta à calma acontece:", o:["Após o esforço principal","Antes do aquecimento","No lugar do treino","Somente em competições"], c:0, coment:"Ela auxilia a transição do corpo após a atividade." },
+    { base:`"Treinos podem ter objetivos distintos, como saúde, rendimento, reabilitação ou lazer."`, q:"O planejamento do treino depende de:", o:["Objetivos da prática","Somente moda","Apenas opinião da torcida","Um modelo único"], c:0, coment:"Objetivos diferentes exigem treinos diferentes." },
+    { base:`"A resistência cardiorrespiratória relaciona-se ao funcionamento do coração e dos pulmões durante o esforço."`, q:"Essa resistência é importante para:", o:["Atividades prolongadas","Somente saltos curtos","Exclusivamente lutas","Apenas flexibilidade"], c:0, coment:"A resistência cardiorrespiratória sustenta esforços mais longos." },
+    { base:`"A força muscular pode ser trabalhada com diferentes métodos."`, q:"Treinos de força buscam desenvolver:", o:["Capacidade de produzir tensão muscular","Somente velocidade de leitura","Apenas equilíbrio emocional","Noção de arbitragem"], c:0, coment:"Força é a capacidade muscular de produzir tensão." },
+    { base:`"Avaliação física pode orientar a organização do treino."`, q:"A avaliação serve para:", o:["Conhecer condições e acompanhar evolução","Eliminar a necessidade de treino","Garantir resultados imediatos","Substituir a prática"], c:0, coment:"Avaliar ajuda a planejar e reajustar o processo." },
+    { base:`"Treinos monótonos e repetitivos sem variação podem reduzir a motivação."`, q:"Variar exercícios pode ajudar a:", o:["Manter adesão e estímulo","Eliminar objetivos","Impedir adaptação","Parar a evolução"], c:0, coment:"A variedade pode favorecer motivação e desenvolvimento." },
+    { base:`"A intensidade do treino deve ser ajustada conforme a condição do praticante."`, q:"Intensidade corresponde ao:", o:["Grau de esforço da atividade","Nome do exercício","Tamanho da academia","Número do uniforme"], c:0, coment:"Intensidade expressa o quanto a atividade exige do corpo." },
+    { base:`"Volume de treino pode envolver tempo, distância, séries ou repetições."`, q:"No treinamento, volume está ligado à:", o:["Quantidade total de trabalho","Somente velocidade","Apenas tipo de tênis","Cor do ambiente"], c:0, coment:"Volume mede o total de carga realizada." },
+    { base:`"Treinar bem não significa apenas treinar muito."`, q:"Um bom treinamento exige:", o:["Qualidade, objetivo e recuperação","Excesso constante","Ausência de pausa","Improviso sem método"], c:0, coment:"O treino eficiente depende de equilíbrio e planejamento." },
+    { base:`"O treinamento físico pode ser ferramenta de saúde e não só de rendimento."`, q:"Isso mostra que o treino:", o:["Pode servir a diferentes finalidades","É exclusivo de atletas profissionais","Só importa em competição","Não se relaciona à saúde"], c:0, coment:"Treinamento pode ser voltado ao bem-estar, à saúde e ao desempenho." }
+  ]),
+
+  "Jogos e Brincadeiras": gerarQuestoes("Jogos e Brincadeiras", [
+    { base:`"Jogos e brincadeiras fazem parte da cultura corporal e da infância, mas também podem ocorrer em outras fases da vida."`, q:"Jogos e brincadeiras são importantes porque:", o:["Expressam cultura e aprendizagem","Não possuem valor educativo","Servem apenas para competição","Não envolvem regras"], c:0, coment:"Eles fazem parte da cultura e favorecem aprendizagens." },
+    { base:`"Brincar favorece imaginação, socialização e desenvolvimento motor."`, q:"Uma contribuição das brincadeiras é:", o:["Desenvolvimento corporal e social","Apenas cansaço","Ausência de interação","Somente rendimento competitivo"], c:0, coment:"Brincadeiras ajudam no desenvolvimento amplo da criança." },
+    { base:`"Jogos podem ser cooperativos ou competitivos."`, q:"Nos jogos cooperativos, o foco principal está em:", o:["Colaboração entre participantes","Eliminar o outro a qualquer custo","Só premiar o vencedor","Ausência de interação"], c:0, coment:"Jogos cooperativos valorizam ação conjunta." },
+    { base:`"Regras ajudam a organizar a dinâmica do jogo."`, q:"No jogo, as regras servem para:", o:["Organizar a participação e a dinâmica","Acabar com a brincadeira","Eliminar a criatividade sempre","Impedir aprendizagem"], c:0, coment:"As regras estruturam o funcionamento do jogo." },
+    { base:`"Brincadeiras tradicionais são transmitidas entre gerações."`, q:"Uma brincadeira tradicional faz parte:", o:["Do patrimônio cultural lúdico","Só do esporte profissional","Exclusivamente da mídia","Apenas da ginástica"], c:0, coment:"Elas carregam memória cultural coletiva." },
+    { base:`"Amarelinha, pega-pega e esconde-esconde são exemplos de práticas lúdicas conhecidas."`, q:"Essas atividades podem ser classificadas como:", o:["Brincadeiras populares","Esportes olímpicos","Somente exercícios de força","Lutas regulamentadas"], c:0, coment:"São práticas lúdicas tradicionais e populares." },
+    { base:`"No ambiente escolar, jogos podem ser usados com objetivos pedagógicos."`, q:"Na escola, o jogo pode:", o:["Favorecer aprendizagem e convivência","Substituir toda aula teórica","Eliminar regras de convívio","Ter só função de descanso"], c:0, coment:"Jogos também têm valor pedagógico." },
+    { base:`"Ao brincar, a criança aprende a lidar com regras, frustrações e cooperação."`, q:"Isso mostra que brincar também contribui para:", o:["Aprendizagem social","Ausência de limites","Apenas gasto de energia","Competição extrema"], c:0, coment:"Brincar envolve interação social e construção de regras." },
+    { base:`"Jogos podem estimular raciocínio, estratégia e tomada de decisão."`, q:"Em muitos jogos, o jogador precisa:", o:["Pensar e decidir durante a ação","Apenas repetir sem perceber o contexto","Ficar parado","Ignorar os outros participantes"], c:0, coment:"A tomada de decisão é comum em muitos jogos." },
+    { base:`"O brincar livre permite criação e imaginação."`, q:"Brincar livremente favorece:", o:["Criatividade","Somente disciplina rígida","Ausência de movimento","Fim da socialização"], c:0, coment:"A liberdade no brincar estimula invenção e expressão." },
+    { base:`"Jogos simbólicos são comuns na infância."`, q:"No jogo simbólico, a criança tende a:", o:["Representar papéis e situações imaginadas","Seguir apenas regras esportivas fixas","Evitar qualquer imaginação","Trabalhar só com bola"], c:0, coment:"O faz-de-conta é marca do jogo simbólico." },
+    { base:`"As brincadeiras podem variar conforme região, época e contexto cultural."`, q:"Isso mostra que brincar:", o:["Também é construção cultural","É sempre igual em todo lugar","Não tem relação com a sociedade","Depende só da tecnologia"], c:0, coment:"As formas de brincar mudam com o contexto social e cultural." },
+    { base:`"Jogos adaptados podem ampliar a participação de diferentes alunos."`, q:"Adaptar um jogo na escola pode servir para:", o:["Promover inclusão","Excluir quem tem dificuldade","Eliminar regras","Impedir cooperação"], c:0, coment:"Adaptações podem favorecer participação mais ampla." },
+    { base:`"Competição não precisa significar desrespeito."`, q:"Em jogos competitivos, é importante manter:", o:["Respeito às regras e aos colegas","Violência para vencer","Humilhação do adversário","Ausência de ética"], c:0, coment:"Competir com respeito faz parte da prática educativa." },
+    { base:`"Jogos cooperativos podem fortalecer o senso de grupo."`, q:"Quando todos atuam por um objetivo comum, desenvolve-se:", o:["Cooperação","Isolamento","Desorganização","Imobilidade"], c:0, coment:"Cooperar significa agir com os outros e não contra eles." },
+    { base:`"Brincadeiras também envolvem o corpo em ação."`, q:"Ao brincar, a criança pode desenvolver:", o:["Habilidades motoras","Somente força bruta","Apenas velocidade","Nada relacionado ao movimento"], c:0, coment:"Correr, saltar, equilibrar e manipular aparecem em muitas brincadeiras." },
+    { base:`"O jogo pode ser espaço de prazer e aprendizagem ao mesmo tempo."`, q:"Isso significa que jogar:", o:["Pode ensinar brincando","É apenas perda de tempo","Só vale se houver medalha","Não tem função educativa"], c:0, coment:"O lúdico pode ser também formativo." },
+    { base:`"Na Educação Física, jogos e brincadeiras não são conteúdos menores."`, q:"Na escola, eles devem ser vistos como:", o:["Conteúdos relevantes da cultura corporal","Atividades sem valor","Só recreio","Intervalo entre esportes"], c:0, coment:"Eles são parte importante do currículo da Educação Física." },
+    { base:`"A mediação do professor pode ampliar o sentido educativo do jogo."`, q:"O professor pode ajudar a:", o:["Refletir sobre regras, participação e valores","Transformar todo jogo em punição","Eliminar a diversão","Impedir adaptação"], c:0, coment:"A mediação docente qualifica a experiência lúdica." },
+    { base:`"Jogos e brincadeiras seguem presentes em diferentes idades e espaços sociais."`, q:"Portanto, brincar e jogar:", o:["Não se limitam apenas à infância","Só pertencem ao esporte profissional","Existem apenas na escola","São iguais ao treino físico"], c:0, coment:"O lúdico pode estar presente em várias fases da vida." }
+  ]),
+
+  "Dança e Expressão Corporal": gerarQuestoes("Dança e Expressão Corporal", [
+    { base:`"A dança utiliza o corpo, o ritmo e o movimento como formas de expressão."`, q:"Na dança, o corpo funciona como:", o:["Linguagem expressiva","Apenas suporte biológico","Somente instrumento de força","Objeto sem comunicação"], c:0, coment:"O corpo comunica sentidos por meio do movimento." },
+    { base:`"Ritmo é um elemento importante da dança."`, q:"Na dança, o ritmo ajuda a:", o:["Organizar o movimento no tempo","Eliminar a expressão","Substituir o corpo","Impedir criação"], c:0, coment:"O ritmo articula a temporalidade da dança." },
+    { base:`"Danças populares carregam identidades culturais e tradições."`, q:"Uma dança popular pode expressar:", o:["Cultura de um grupo ou região","Somente técnica esportiva","Ausência de história","Apenas improviso sem sentido"], c:0, coment:"Danças populares têm forte vínculo cultural." },
+    { base:`"A expressão corporal envolve comunicação por gestos, posturas e movimentos."`, q:"Expressão corporal permite:", o:["Transmitir emoções e ideias","Eliminar o corpo da comunicação","Substituir toda linguagem","Impedir criatividade"], c:0, coment:"O corpo é também meio de comunicação." },
+    { base:`"Na escola, a dança pode ampliar repertório cultural e sensibilidade."`, q:"Na Educação Física, a dança pode contribuir para:", o:["Vivência cultural e expressão","Somente competição","Exclusão de quem não sabe dançar","Treino de força máxima"], c:0, coment:"A dança amplia experiências corporais e culturais." },
+    { base:`"Coreografia é uma organização intencional dos movimentos."`, q:"Coreografar significa:", o:["Compor sequências de movimento","Improvisar sempre sem nenhuma escolha","Apenas copiar um vídeo","Eliminar a música"], c:0, coment:"Coreografia organiza ações no espaço e no tempo." },
+    { base:`"A improvisação pode estar presente na dança."`, q:"Improvisar na dança é:", o:["Criar movimentos em processo","Repetir mecanicamente um padrão","Ficar imóvel","Substituir o corpo pela voz"], c:0, coment:"A improvisação abre espaço para criação." },
+    { base:`"A dança contemporânea amplia as possibilidades de movimento."`, q:"Na dança contemporânea, é comum haver:", o:["Experimentação corporal","Obrigação de um único padrão","Somente passos clássicos","Ausência de pesquisa"], c:0, coment:"A dança contemporânea explora novas qualidades de movimento." },
+    { base:`"A relação com o espaço interfere no sentido da dança."`, q:"Na dança, o espaço:", o:["É parte da linguagem","Não altera nada","Serve apenas de cenário neutro","Só importa para a iluminação"], c:0, coment:"Corpo e espaço se articulam na construção da cena." },
+    { base:`"O gesto pode ser simbólico e expressivo."`, q:"Na dança, o gesto pode:", o:["Comunicar significados","Eliminar a emoção","Servir só de enfeite","Substituir o ritmo"], c:0, coment:"Gestos compõem a expressividade da dança." },
+    { base:`"Danças urbanas têm forte presença na cultura juvenil e nas cidades."`, q:"As danças urbanas podem ser compreendidas como:", o:["Expressões culturais contemporâneas","Somente técnicas clássicas","Atividades sem valor cultural","Jogos de tabuleiro"], c:0, coment:"São práticas culturais ligadas a contextos urbanos." },
+    { base:`"O figurino pode contribuir para a proposta estética da dança."`, q:"Na dança, o figurino:", o:["Também compõe a linguagem cênica","É irrelevante sempre","Substitui a movimentação","Serve só para competição"], c:0, coment:"Figurino ajuda a compor atmosfera e sentido." },
+    { base:`"A dança pode ocorrer em festas, rituais, espetáculos e práticas sociais."`, q:"Isso mostra que a dança possui:", o:["Múltiplas funções sociais","Apenas função esportiva","Somente uso escolar","Nenhuma relação com a cultura"], c:0, coment:"A dança existe em diversos contextos culturais." },
+    { base:`"A consciência corporal ajuda na qualidade do movimento."`, q:"Consciência corporal está ligada a:", o:["Percepção do próprio corpo em ação","Somente força muscular","Ausência de controle","Velocidade isolada"], c:0, coment:"Perceber o corpo melhora o movimento." },
+    { base:`"Trabalhar com dança na escola pode reduzir preconceitos corporais."`, q:"Isso acontece porque a dança pode:", o:["Valorizar diferentes formas de expressão","Impor um corpo ideal único","Excluir quem tem vergonha","Anular a participação"], c:0, coment:"A dança pode ampliar aceitação e diversidade corporal." },
+    { base:`"Dançar em grupo pode exigir atenção ao outro."`, q:"Em coreografias coletivas, é importante:", o:["Sincronia e cooperação","Atuação isolada","Ignorar o grupo","Evitar ritmo"], c:0, coment:"O grupo precisa organizar ações em conjunto." },
+    { base:`"A música pode dialogar com a dança, mas nem toda dança depende obrigatoriamente dela."`, q:"Sobre dança e música, é correto dizer que:", o:["Podem dialogar, mas a dança também pode existir com outros estímulos","São exatamente a mesma coisa","A dança não tem relação com som ou ritmo","Só existe dança com letra cantada"], c:0, coment:"A dança pode se apoiar em música, silêncio ou outros estímulos." },
+    { base:`"Diferentes culturas constroem diferentes danças."`, q:"Isso mostra que a dança é:", o:["Produção histórica e cultural","Fenômeno puramente biológico","Igual em todo lugar","Sem contexto social"], c:0, coment:"As danças carregam histórias e valores culturais." },
+    { base:`"Na Educação Física, a dança integra a cultura corporal."`, q:"Logo, a dança deve ser tratada como:", o:["Conteúdo importante de aprendizagem","Tema secundário sem valor","Apenas recreação","Somente apresentação final"], c:0, coment:"A dança é conteúdo relevante da área." },
+    { base:`"Expressão corporal e dança podem ampliar repertório de movimentos e de sensibilidade."`, q:"Essas práticas contribuem para:", o:["Criatividade e percepção corporal","Somente força máxima","Apenas corrida","Treino técnico de esportes coletivos"], c:0, coment:"Elas desenvolvem criação, sensibilidade e repertório motor." }
+  ]),
+  "Lutas": gerarQuestoes("Lutas", [
+    { base:`"As lutas são práticas corporais historicamente construídas em diferentes culturas."`, q:"As lutas podem ser entendidas como:", o:["Práticas corporais de confronto regulamentado","Atividades sem regras","Somente violência","Apenas jogos com bola"], c:0, coment:"Lutas esportivas possuem técnicas, regras e objetivos específicos." },
+    { base:`"No contexto escolar, o estudo das lutas não deve reforçar violência."`, q:"Trabalhar lutas na escola significa:", o:["Compreender técnicas, respeito e cultura","Estimular agressão","Substituir todas as outras práticas","Eliminar regras"], c:0, coment:"A abordagem escolar valoriza respeito, controle e conhecimento cultural." },
+    { base:`"Capoeira reúne luta, jogo, música e cultura afro-brasileira."`, q:"A capoeira pode ser compreendida como:", o:["Manifestação cultural e corporal brasileira","Somente dança sem luta","Esporte de rede","Exclusivamente ginástica"], c:0, coment:"Capoeira articula luta, ritmo, jogo e cultura." },
+    { base:`"Judô valoriza projeção, controle e respeito ao adversário."`, q:"No judô, um princípio importante é:", o:["Respeito e disciplina","Valer tudo","Ausência de regras","Ataque descontrolado"], c:0, coment:"A prática do judô envolve ética e disciplina." },
+    { base:`"As lutas podem desenvolver coordenação, agilidade e autocontrole."`, q:"Uma contribuição das lutas é:", o:["Desenvolvimento corporal e autocontrole","Apenas força bruta","Ausência de disciplina","Somente competição"], c:0, coment:"Lutas podem desenvolver capacidades físicas e emocionais." },
+    { base:`"No karatê, golpes e técnicas obedecem princípios e normas específicas."`, q:"Isso mostra que as lutas:", o:["São organizadas por regras","Não possuem estrutura","Dependem só de força","São iguais em qualquer contexto"], c:0, coment:"Cada luta tem fundamentos e regras próprios." },
+    { base:`"Em muitas lutas, o controle do corpo e da distância é decisivo."`, q:"A noção de distância ajuda o praticante a:", o:["Escolher melhor o momento de agir","Ignorar o adversário","Perder equilíbrio","Eliminar a técnica"], c:0, coment:"A distância influencia defesa e ataque." },
+    { base:`"Artes marciais também podem carregar valores filosóficos e culturais."`, q:"Isso significa que as lutas:", o:["Têm dimensões técnicas e culturais","São apenas confronto físico","Não têm história","Servem só para competição"], c:0, coment:"As lutas são também expressões culturais." },
+    { base:`"Na escola, adaptar as lutas favorece participação segura."`, q:"Adaptações pedagógicas servem para:", o:["Garantir segurança e inclusão","Aumentar o risco","Eliminar regras","Transformar a luta em violência"], c:0, coment:"A mediação pedagógica é essencial." },
+    { base:`"O respeito ao adversário é um valor central nas lutas."`, q:"Esse respeito aparece em:", o:["Cumprimento das regras e autocontrole","Ataques fora da regra","Humilhação do outro","Falta de ética"], c:0, coment:"A ética é parte importante das modalidades de luta." },
+    { base:`"A capoeira utiliza a roda como espaço de interação."`, q:"Na capoeira, a roda é importante porque:", o:["Organiza o jogo e a participação","Substitui o movimento","Elimina a música","Serve apenas de decoração"], c:0, coment:"A roda é espaço cultural e corporal da capoeira." },
+    { base:`"As lutas podem ser classificadas como de agarramento, golpes ou mistas, entre outras."`, q:"Essa classificação indica:", o:["Diferentes formas de confronto técnico","Ausência de critérios","Somente violência","Apenas dança"], c:0, coment:"As modalidades variam conforme suas técnicas predominantes." },
+    { base:`"No ensino das lutas, conhecer a origem histórica ajuda a ampliar o sentido da prática."`, q:"Estudar a origem das lutas contribui para:", o:["Compreender sua dimensão cultural","Treinar sem pensar","Ignorar tradições","Reduzir o conteúdo à força"], c:0, coment:"A história amplia a compreensão da prática corporal." },
+    { base:`"O autocontrole emocional é importante em lutas."`, q:"Isso porque o praticante precisa:", o:["Agir com disciplina e controle","Perder o controle para vencer","Ignorar o adversário","Eliminar a estratégia"], c:0, coment:"Lutar com controle é parte da ética e da técnica." },
+    { base:`"As lutas podem ser trabalhadas de forma lúdica na escola."`, q:"No contexto escolar, isso ajuda a:", o:["Introduzir fundamentos com segurança","Tornar a prática violenta","Eliminar a participação","Restringir a poucos alunos"], c:0, coment:"Jogos de oposição podem facilitar a aprendizagem das lutas." },
+    { base:`"Defesa e ataque são componentes importantes das lutas."`, q:"Esses componentes exigem:", o:["Percepção, tempo e técnica","Só tamanho corporal","Apenas força máxima","Ausência de atenção"], c:0, coment:"O praticante precisa decidir e agir com precisão." },
+    { base:`"As lutas fazem parte da cultura corporal de movimento."`, q:"Isso significa que elas são:", o:["Conteúdos relevantes da Educação Física","Práticas proibidas na escola","Somente esportes profissionais","Atividades sem valor educativo"], c:0, coment:"Lutas são conteúdos legítimos da área." },
+    { base:`"A mediação docente evita que as lutas sejam confundidas com agressão."`, q:"O professor deve orientar para:", o:["Prática ética e segura","Confronto sem controle","Valorização da violência","Exclusão dos menos habilidosos"], c:0, coment:"A educação corporal passa por respeito e segurança." },
+    { base:`"As lutas podem promover autoconfiança e responsabilidade."`, q:"Quando bem ensinadas, elas podem favorecer:", o:["Disciplina e respeito","Descontrole permanente","Desobediência às regras","Humilhação do colega"], c:0, coment:"A prática orientada pode fortalecer valores positivos." },
+    { base:`"Mais do que vencer, aprender lutas envolve compreender seu sentido corporal e cultural."`, q:"Portanto, estudar lutas é também estudar:", o:["Cultura, regras e movimento","Somente força física","Apenas competição","Nenhuma dimensão social"], c:0, coment:"As lutas articulam corpo, cultura e valores." }
+  ]),
+
+  "Esporte e Sociedade": gerarQuestoes("Esporte e Sociedade", [
+    { base:`"O esporte é um fenômeno social que ultrapassa a competição em si."`, q:"Isso significa que o esporte:", o:["Também envolve cultura, mídia e valores","É apenas exercício físico","Não tem relação com a sociedade","Só importa para atletas"], c:0, coment:"O esporte é parte importante da vida social contemporânea." },
+    { base:`"A mídia influencia a visibilidade de modalidades e atletas."`, q:"A relação entre esporte e mídia pode:", o:["Ampliar a popularidade de modalidades","Eliminar o interesse do público","Não mudar nada","Impedir patrocínios"], c:0, coment:"A mídia ajuda a construir narrativas e visibilidade esportiva." },
+    { base:`"O esporte pode tanto incluir quanto excluir, dependendo das condições de acesso."`, q:"Isso mostra que o esporte também envolve:", o:["Questões sociais de acesso","Somente técnica","Apenas uniforme","Nenhuma desigualdade"], c:0, coment:"Participação esportiva depende de oportunidades e condições sociais." },
+    { base:`"O fair play é um valor importante nas práticas esportivas."`, q:"Fair play está relacionado a:", o:["Ética e respeito no jogo","Vencer a qualquer custo","Desrespeitar o adversário","Ignorar as regras"], c:0, coment:"O jogo limpo valoriza ética e respeito." },
+    { base:`"Torcida, identidade e pertencimento são dimensões sociais do esporte."`, q:"O vínculo com um time pode envolver:", o:["Identidade coletiva","Apenas rendimento físico","Ausência de emoção","Somente treino individual"], c:0, coment:"O esporte mobiliza sentidos de pertencimento." },
+    { base:`"O esporte de alto rendimento difere do esporte educacional."`, q:"No esporte educacional, o foco deve estar mais em:", o:["Aprendizagem e formação","Lucro e espetáculo","Exclusão dos menos aptos","Resultados a qualquer custo"], c:0, coment:"Na escola, o esporte deve priorizar formação humana." },
+    { base:`"Megaeventos esportivos têm impactos econômicos, urbanos e culturais."`, q:"Isso mostra que o esporte pode influenciar:", o:["A vida social em várias dimensões","Apenas o placar das partidas","Somente a preparação física","Nenhum aspecto coletivo"], c:0, coment:"Eventos esportivos repercutem além da competição." },
+    { base:`"A presença feminina no esporte cresceu historicamente, mas ainda enfrenta desigualdades."`, q:"Isso revela que o esporte também expressa:", o:["Questões de gênero","Somente técnica","Apenas anatomia","Ausência de disputa social"], c:0, coment:"O esporte também reflete relações sociais e desigualdades." },
+    { base:`"O paradesporto amplia visibilidade e participação de pessoas com deficiência."`, q:"O paradesporto contribui para:", o:["Inclusão e reconhecimento","Exclusão esportiva","Redução de direitos","Fim da diversidade"], c:0, coment:"Ele amplia oportunidades e visibilidade." },
+    { base:`"Racismo e preconceito também podem aparecer no esporte."`, q:"Combater essas práticas exige:", o:["Ética, educação e responsabilidade social","Silêncio diante dos casos","Naturalização da violência","Apenas punição física"], c:0, coment:"O esporte deve ser espaço de respeito e cidadania." },
+    { base:`"O esporte pode ser usado como ferramenta educativa em projetos sociais."`, q:"Nesses projetos, o esporte pode ajudar a:", o:["Promover convivência e cidadania","Servir só para seleção de talentos","Excluir os menos habilidosos","Substituir toda a escola"], c:0, coment:"Projetos esportivos podem fortalecer vínculos e participação social." },
+    { base:`"Patrocínio e mercado influenciam o esporte contemporâneo."`, q:"A mercantilização do esporte está ligada a:", o:["Transformação do esporte em produto e espetáculo","Fim do interesse público","Ausência de mídia","Redução total do consumo"], c:0, coment:"O esporte contemporâneo também movimenta mercado e publicidade." },
+    { base:`"A escola pode problematizar modelos corporais difundidos pelo esporte midiático."`, q:"Isso é importante para:", o:["Evitar padrões excludentes","Impor um único corpo ideal","Eliminar a prática esportiva","Negar a cultura corporal"], c:0, coment:"A reflexão crítica ajuda a combater padrões excludentes." },
+    { base:`"O esporte pode fortalecer cooperação, superação e convivência."`, q:"Isso depende de:", o:["Forma como a prática é conduzida","Apenas do placar","Somente do árbitro","Ausência de regras"], c:0, coment:"Os valores do esporte dependem também da mediação pedagógica e social." },
+    { base:`"Violência entre torcidas e intolerância distorcem o sentido educativo do esporte."`, q:"Quando isso ocorre, perde-se:", o:["A dimensão ética e social positiva","A regra do impedimento","A necessidade de treino","A função do uniforme"], c:0, coment:"A violência contradiz valores de respeito e convivência." },
+    { base:`"O esporte também pode ser lazer e participação, não apenas alto rendimento."`, q:"Isso significa que existem diferentes formas de vivenciar o esporte:", o:["Competitiva, educativa e recreativa","Só profissional","Apenas olímpica","Exclusivamente escolar"], c:0, coment:"O esporte pode assumir sentidos variados." },
+    { base:`"O acesso desigual a espaços e materiais interfere na prática esportiva."`, q:"Esse problema se relaciona a:", o:["Desigualdade social","Falta de arbitragem","Excesso de regras","Ausência de talento"], c:0, coment:"Condições materiais e sociais influenciam oportunidades de prática." },
+    { base:`"A cobertura midiática privilegia algumas modalidades em detrimento de outras."`, q:"Isso pode gerar:", o:["Maior visibilidade para certos esportes","Distribuição totalmente equilibrada","Fim do interesse do público","Ausência de patrocínios"], c:0, coment:"A mídia contribui para hierarquizar modalidades." },
+    { base:`"O esporte pode funcionar como linguagem de integração social."`, q:"Isso ocorre quando ele favorece:", o:["Encontro, participação e convivência","Isolamento e preconceito","Somente lucro","Exclusão por rendimento"], c:0, coment:"O esporte pode aproximar pessoas e grupos." },
+    { base:`"Pensar esporte e sociedade é pensar também educação, cultura e cidadania."`, q:"Logo, o esporte deve ser analisado como:", o:["Fenômeno social e cultural","Só esforço físico","Apenas técnica corporal","Atividade neutra sem contexto"], c:0, coment:"O esporte expressa valores, disputas e identidades sociais." }
+  ]),
+
+  "Educação Física Escolar": gerarQuestoes("Educação Física Escolar", [
+    { base:`"A Educação Física escolar trabalha conteúdos da cultura corporal de movimento."`, q:"Na escola, a Educação Física deve abordar:", o:["Jogos, esportes, danças, lutas e ginásticas","Somente corrida","Apenas musculação","Exclusivamente futebol"], c:0, coment:"A área trabalha diferentes manifestações da cultura corporal." },
+    { base:`"A aula de Educação Física não deve se limitar à repetição técnica."`, q:"Isso significa que a disciplina também deve promover:", o:["Reflexão, participação e compreensão cultural","Somente competição","Exclusão dos menos habilidosos","Treino para rendimento"], c:0, coment:"A Educação Física escolar tem função formativa e crítica." },
+    { base:`"Inclusão é um princípio importante na escola."`, q:"Na Educação Física, inclusão significa:", o:["Garantir participação de todos os alunos","Selecionar apenas os melhores","Excluir quem tem dificuldade","Padronizar todos os corpos"], c:0, coment:"A aula deve acolher diferentes sujeitos e possibilidades." },
+    { base:`"A cultura corporal envolve práticas construídas historicamente pela sociedade."`, q:"Trabalhar cultura corporal na escola é:", o:["Valorizar práticas corporais como produção cultural","Ensinar só exercícios mecânicos","Ignorar a história das práticas","Reduzir a aula ao rendimento"], c:0, coment:"As práticas corporais têm história e significado social." },
+    { base:`"A avaliação em Educação Física pode considerar participação, aprendizagem e compreensão."`, q:"Avaliar na disciplina não deve significar apenas:", o:["Medir desempenho técnico isolado","Observar processos de aprendizagem","Considerar envolvimento","Acompanhar evolução"], c:0, coment:"A avaliação escolar deve ser mais ampla que o rendimento físico." },
+    { base:`"A Educação Física pode contribuir para a construção da autonomia dos estudantes."`, q:"Isso acontece quando o aluno:", o:["Compreende e participa criticamente das práticas","Apenas obedece sem entender","É excluído da aula","Repete sem refletir"], c:0, coment:"Autonomia envolve compreender e agir com consciência." },
+    { base:`"A disciplina também pode discutir saúde, corpo e mídia."`, q:"Isso mostra que a Educação Física escolar:", o:["Vai além da prática pela prática","Trabalha só exercícios","Não discute temas sociais","Serve apenas para recreio"], c:0, coment:"A área também problematiza temas ligados ao corpo e à sociedade." },
+    { base:`"O professor pode adaptar atividades conforme as necessidades da turma."`, q:"A adaptação pedagógica serve para:", o:["Favorecer participação e aprendizagem","Eliminar o conteúdo","Reduzir a importância da aula","Punir alunos"], c:0, coment:"Adaptar é uma estratégia importante para inclusão e ensino." },
+    { base:`"As aulas podem promover cooperação e respeito entre os estudantes."`, q:"Isso é importante porque a Educação Física também trabalha:", o:["Valores de convivência","Somente placares","Apenas força","Exclusivamente técnica"], c:0, coment:"Convivência, ética e respeito fazem parte da formação." },
+    { base:`"A ludicidade pode estar presente na Educação Física escolar."`, q:"Ludicidade nas aulas ajuda a:", o:["Tornar a aprendizagem mais significativa","Eliminar objetivos pedagógicos","Impedir a participação","Acabar com as regras"], c:0, coment:"O lúdico pode favorecer interesse e envolvimento." },
+    { base:`"O esporte escolar não precisa reproduzir o modelo do alto rendimento."`, q:"Na escola, o esporte deve ser tratado prioritariamente como:", o:["Conteúdo educativo","Seleção de atletas","Espetáculo midiático","Treino profissional"], c:0, coment:"A finalidade escolar é pedagógica e formativa." },
+    { base:`"O corpo, na escola, pode ser compreendido de maneira crítica e plural."`, q:"Isso significa reconhecer:", o:["Diversidade corporal e cultural","Um único modelo corporal ideal","Só rendimento físico","Apenas aparência"], c:0, coment:"A escola deve valorizar diferentes corpos e experiências." },
+    { base:`"A ginástica escolar pode explorar consciência corporal e diferentes movimentos."`, q:"Na Educação Física, a ginástica pode contribuir para:", o:["Conhecimento do corpo e movimento","Somente competição olímpica","Apenas acrobacias avançadas","Exclusão de iniciantes"], c:0, coment:"A ginástica escolar pode ser adaptada a diferentes contextos." },
+    { base:`"A dança na escola amplia repertório cultural."`, q:"Trabalhar dança nas aulas pode:", o:["Valorizar expressão e cultura","Restringir a participação","Servir só para festa","Eliminar reflexão"], c:0, coment:"A dança amplia vivências corporais e culturais." },
+    { base:`"A discussão sobre saúde nas aulas não deve ser moralizante."`, q:"Isso significa tratar saúde como:", o:["Tema complexo ligado a hábitos e contexto","Punição para quem não pratica exercício","Apenas peso corporal","Somente dieta"], c:0, coment:"Saúde envolve múltiplos fatores e deve ser trabalhada criticamente." },
+    { base:`"A Educação Física escolar participa da formação integral do estudante."`, q:"Formação integral significa considerar:", o:["Corpo, cultura, convivência e conhecimento","Só desempenho atlético","Apenas conteúdo teórico","Somente treino físico"], c:0, coment:"A área contribui para formação ampla do aluno." },
+    { base:`"O planejamento das aulas deve considerar objetivos pedagógicos claros."`, q:"Planejar a aula ajuda a:", o:["Organizar melhor o ensino","Eliminar a criatividade do professor","Substituir o conteúdo","Tornar a aula sem sentido"], c:0, coment:"Planejamento dá direção ao processo pedagógico." },
+    { base:`"A participação dos alunos pode ser ampliada quando eles compreendem o sentido das práticas."`, q:"Entender por que e para que praticar contribui para:", o:["Maior envolvimento e autonomia","Menor participação","Ausência de interesse","Eliminação do conteúdo"], c:0, coment:"Compreensão amplia o sentido da aula." },
+    { base:`"A Educação Física também pode dialogar com outras áreas do conhecimento."`, q:"Esse diálogo mostra um caráter:", o:["Interdisciplinar","Isolado","Exclusivamente biológico","Sem relação com a escola"], c:0, coment:"A área pode se articular com temas de saúde, cultura, história e sociedade." },
+    { base:`"A Educação Física escolar é um direito dos estudantes."`, q:"Isso significa que a disciplina deve:", o:["Garantir acesso às práticas corporais e ao conhecimento sobre elas","Selecionar poucos participantes","Ser opcional só para alguns","Focar apenas em campeonatos"], c:0, coment:"A disciplina compõe a formação escolar e deve alcançar todos os alunos." }
+  ])
+};
+
+function mostrarMenu() {
+  pararAudioFundo();
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue); margin-bottom:8px;">Escolha um módulo de Educação Física</h2>
+      <p class="mini">Cada módulo possui <strong>20 questões objetivas</strong>, com áudio e respostas embaralhadas.</p>
+      <div class="grid-areas">
+        ${areasEduFisica.map(area => `
+          <div class="card-area">
+            <h3>${area.nome}</h3>
+            <p>${area.descricao}</p>
+            <button class="btn" onclick="iniciarArea('${area.nome.replace(/'/g, "\\'")}')">Entrar neste módulo</button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function iniciarArea(nomeArea) {
+  await destravarAudio();
+  areaAtual = nomeArea;
+  questoesAtuais = bancoQuestoes[nomeArea] || [];
+  indiceQuestao = 0;
+  acertosObjetivas = 0;
+  questaoRenderizadaAtual = null;
+
+  if (!questoesAtuais.length) {
+    app.innerHTML = `
+      <div class="box">
+        <h2 style="color:var(--red);">Erro ao abrir o módulo</h2>
+        <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+      </div>
+    `;
+    return;
+  }
+
+  setTimeout(() => {
+    tocarAudioFundo();
+  }, 120);
+
+  carregarQuestao();
+}
+
+function montarEnunciado(questao) {
+  return `
+    <span class="question-label">Base para interpretação:</span>
+    <span class="text-base">${questao.base}</span>
+    <span class="question-label">Pergunta:</span>
+    ${questao.q}
+  `;
+}
+
+function carregarQuestao() {
+  const questao = questoesAtuais[indiceQuestao];
+  const total = questoesAtuais.length;
+  questaoRenderizadaAtual = embaralharAlternativas(questao);
+
+  let html = `
+    <div class="box">
+      <div class="status">
+        <span>${areaAtual}</span>
+        <span>Questão ${indiceQuestao + 1}/${total}</span>
+      </div>
+      <div id="question-text">${montarEnunciado(questaoRenderizadaAtual)}</div>
+      <div class="options-wrap">
+  `;
+
+  questaoRenderizadaAtual.opcoesRenderizadas.forEach((alt, idx) => {
+    html += `<button class="btn option-btn" onclick="responderObjetiva(${idx})">${alt}</button>`;
+  });
+
+  html += `
+      </div>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+
+  app.innerHTML = html;
+}
+
+function responderObjetiva(escolhida) {
+  const botoes = document.querySelectorAll(".option-btn");
+  const correta = questaoRenderizadaAtual.corretaRenderizada;
+
+  botoes.forEach((btn, idx) => {
+    btn.disabled = true;
+    if (idx === correta) btn.classList.add("correct");
+  });
+
+  if (escolhida === correta) {
+    acertosObjetivas++;
+    tocarAcerto();
+  } else {
+    botoes[escolhida].classList.add("wrong");
+    tocarErro();
+  }
+
+  setTimeout(() => {
+    indiceQuestao++;
+    if (indiceQuestao < questoesAtuais.length) {
+      carregarQuestao();
+    } else {
+      finalizarArea();
+    }
+  }, 900);
+}
+
+function finalizarArea() {
+  pararAudioFundo();
+
+  const notaFinal = acertosObjetivas * 10;
+  const totalPossivel = 200;
+  let feedback = "Você concluiu este módulo completo de Educação Física. Continue treinando os demais módulos para avançar no simulado Gratuito.";
+
+  if (notaFinal >= 160) feedback += " Excelente desempenho neste módulo.";
+  else if (notaFinal >= 100) feedback += " Bom resultado. Ainda dá para elevar sua pontuação.";
+  else feedback += " Este resultado mostra pontos que podem ser reforçados com mais treino.";
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue);">${areaAtual}</h2>
+      <div class="result-number">${notaFinal}/${totalPossivel}</div>
+      <div class="result-sub">Acertos: ${acertosObjetivas}/20</div>
+      <p class="mini" style="margin-bottom:18px;">${feedback}</p>
+
+      <button class="btn" onclick="iniciarArea('${areaAtual.replace(/'/g, "\\'")}')">Refazer este módulo</button>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+}
+
+mostrarMenu();
+
+
+
+</script>
+
+</body>
+</html>
