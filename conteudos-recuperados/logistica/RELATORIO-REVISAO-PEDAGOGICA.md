@@ -11,9 +11,9 @@
 | Questões originais preservadas | 120 |
 | Questões complementares publicadas | 1.080 |
 | Questões disponíveis no portal | **1.200** |
-| Questões com revisão pedagógica contextual rastreada | **24** |
-| Questões que ainda exigem revisão pedagógica individual | **1.176** |
-| Trilhas com duas questões revistas neste lote | **12 de 12** |
+| Questões com revisão pedagógica contextual rastreada | **56** |
+| Questões que ainda exigem revisão pedagógica individual | **1.144** |
+| Trilhas com pelo menos duas questões revisadas | **12 de 12** |
 
 A auditoria automatizada de estrutura verifica presença de quatro alternativas, gabarito válido, comentário de resposta e ausência de enunciados idênticos na mesma trilha. **Isso não comprova correção semântica, equivalência de dificuldade ou validade de avaliação.**
 
@@ -27,28 +27,28 @@ A auditoria automatizada de estrutura verifica presença de quatro alternativas,
 
 **Cautela nas áreas de segurança:** os exercícios de EHS e equipamentos são material de estudo, não certificação de segurança nem substituição de treinamento, autorização, manual do fabricante ou procedimento local.
 
-## 3. Correções efetivamente publicadas neste lote
+## 3. Correções efetivamente publicadas até agora
 
-Foram modificadas **24 perguntas adicionais: duas em cada uma das 12 trilhas**. O processo preservou o enunciado, a alternativa correta e as dez perguntas originais de cada trilha; substituiu três alternativas desconexas por erros plausíveis ligados ao mesmo cenário e acrescentou justificativa contextual sobre a resposta.
+**Primeiro lote:** 24 perguntas adicionais, duas por trilha. **Segundo lote:** outras **32 perguntas identificadas como prioritárias**, distribuídas em Segurança EHS (12), Movimentação (7) e Excel Administrativo (13). Foram examinadas as situações e substituídas alternativas desconexas por opções ligadas ao cenário, com explicações específicas sobre a resposta. Ao todo, **56 questões revisadas individualmente**. Os enunciados e a alternativa correta foram preservados nesses itens, bem como as dez questões originais de cada trilha.
 
 Os arquivos de dados registram essas intervenções com:
 `revisao: "pedagogica-contextual-2026-11-11"` e um campo de critério. O teste `tests/auditoria-pedagogica-logistica.mjs` valida a cobertura e assegura que não sejam confundidas com revisões ainda pendentes.
 
-| Trilha | Questões totais | Revisadas neste lote | Pendentes |
+| Trilha | Questões totais | Revisadas acumuladas | Pendentes |
 |---|---:|---:|---:|
 | Estoque | 100 | 2 | 98 |
 | Recebimento | 100 | 2 | 98 |
 | Picking | 100 | 2 | 98 |
 | Operação de CD | 100 | 2 | 98 |
 | Liderança | 100 | 2 | 98 |
-| Excel Administrativo | 100 | 2 | 98 |
-| Movimentação | 100 | 2 | 98 |
+| Excel Administrativo | 100 | 15 | 85 |
+| Movimentação | 100 | 9 | 91 |
 | Last Mile | 100 | 2 | 98 |
-| Segurança EHS | 100 | 2 | 98 |
+| Segurança EHS | 100 | 14 | 86 |
 | Inventário | 100 | 2 | 98 |
 | Expedição | 100 | 2 | 98 |
 | Packing | 100 | 2 | 98 |
-| **Total** | **1.200** | **24** | **1.176** |
+| **Total** | **1.200** | **56** | **1.144** |
 
 ## 4. Critérios para os próximos lotes
 
@@ -63,6 +63,6 @@ Os arquivos de dados registram essas intervenções com:
 
 ## 5. Fila de revisão priorizada
 
-Foi criada a lista `PENDENCIAS-PEDAGOGICAS-PRIORITARIAS.json`, contendo **120 itens ainda não revisados**, selecionados automaticamente por indício de pista lexical (diferença de similaridade de pelo menos 0,18 entre a resposta indicada e as outras alternativas). A lista inclui identificação da trilha, posição da questão, enunciado, resposta atual e prioridade. A marcação é **triagem**, não um diagnóstico definitivo de resposta incorreta.
+Foi criada a lista `PENDENCIAS-PEDAGOGICAS-PRIORITARIAS.json`, contendo **120 itens inicialmente sinalizados** por indício de pista lexical (diferença de similaridade de pelo menos 0,18 entre a resposta indicada e as outras alternativas). **Destes, 32 já receberam revisão individual e 88 permanecem na fila prioritária.** A lista inclui identificação da trilha, posição da questão, enunciado, resposta atual e prioridade. A marcação é **triagem**, não um diagnóstico definitivo de resposta incorreta.
 
-**Acompanhamento:** novas revisões deverão atualizar os bancos de questões, o marcador de revisão no próprio item, a cobertura do teste automatizado e este relatório, sem declarar como revisadas as questões apenas verificadas por algoritmo.
+**Acompanhamento:** a lista mantém o histórico das 120 sinalizações e indica o status de cada uma. O teste automático deve conferir se as revisões indicadas realmente existem nos bancos. Novas revisões deverão atualizar os bancos de questões, o marcador de revisão no próprio item, a cobertura do teste automatizado e este relatório, sem declarar como revisadas as questões apenas verificadas por algoritmo.
