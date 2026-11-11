@@ -72,6 +72,28 @@ assert.equal(originais,120);
 assert.equal(adicionadas,1080);
 assert.equal(revisadas,56);
 assert.equal(exemplosRevisados,24);
+
+const fila=JSON.parse(fs.readFileSync(root+"PENDENCIAS-PEDAGOGICAS-PRIORITARIAS.json","utf8"));
+assert.equal(fila.itens.length,120,"Fila histórica de prioridade alterada");
+let sinalizadosResolvidos=0;
+for(const item of fila.itens){
+ const idx=item.indiceNoBancoComplementar;
+ const validado=Number.isInteger(idx)&&extras[item.trilha]?.[idx]?.revisao==="pedagogica-contextual-2026-11-11";
+ if(item.status==="revisado-individualmente"){
+  assert.ok(validado,"Marcado como revisado mas sem alteração rastreada: "+item.trilha+":"+idx);
+  sinalizadosResolvidos++;
+ }else{
+  assert.equal(item.status,"pendente-de-revisao-humana","Status de fila desconhecido");
+  assert.ok(!validado,"Questão revisada não foi baixada da fila: "+item.trilha+":"+idx);
+ }
+}
+assert.equal(sinalizadosResolvidos,32);
+assert.equal(fila.totalRevisadasNaFila,32);
+assert.equal(fila.totalPendentesNaFila,88);
+assert.equal(fila.questoesRevisadasComMarcador,56);
+assert.equal(fila.pendentesRevisaoIndividual,1144);
+
 console.log("AUDITORIA PEDAGÓGICA INCREMENTAL:");
 console.log(JSON.stringify({total,originais,adicionadas,revisadas,pendentes:total-revisadas,porTrilha},null,2));
 console.log("AVISO: auditoria estrutural concluída; 1.144 questões ainda requerem revisão pedagógica individual.");
+console.log("Fila prioritária: 32 itens revistos e 88 pendentes, conferidos contra os arquivos de questões.");
