@@ -26,7 +26,7 @@ try{
  for(const [track,expected] of [["est",100],["rec",100],["pck",10]]){
   const page=await browser.newPage({viewport:{width:390,height:844}});
   page.on("pageerror",e=>errors.push(track+": "+e.message));
-  const url=origin+"/conteudos-recuperados/logistica/?trilha="+track;
+  const url=origin+"/conteudos-recuperados/logistica/index.html?trilha="+track;
   await page.goto(url,{waitUntil:"domcontentloaded"});
   await page.locator("#curso:not([hidden])").waitFor();
   const modules=await page.locator("#modulos .bloco").count();
