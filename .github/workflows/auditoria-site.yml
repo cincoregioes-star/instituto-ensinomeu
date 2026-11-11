@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - '*.html'
+      - '**/*.html'
       - '*.css'
       - '*.js'
       - '*.xml'
@@ -12,6 +13,7 @@ on:
   pull_request:
     paths:
       - '*.html'
+      - '**/*.html'
       - '*.css'
       - '*.js'
       - 'tests/**'
