@@ -34,7 +34,7 @@ for(const src of scripts){
 }
 const norm=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9$]/g,"");
 let total=0,originais=0,adicionadas=0,revisadas=0,exemplosRevisados=0;
-const revisoesEsperadas={seg:14,mov:9,adm:15};
+const revisoesEsperadas={seg:14,mov:9,adm:15,inv:10,sel:7,rec:9,est:10};
 const porTrilha=[];
 for(const track of base.tracks){
  const original=base.banks[track.id];
@@ -70,7 +70,7 @@ for(const track of base.tracks){
 assert.equal(total,1200);
 assert.equal(originais,120);
 assert.equal(adicionadas,1080);
-assert.equal(revisadas,56);
+assert.equal(revisadas,84);
 assert.equal(exemplosRevisados,24);
 
 const fila=JSON.parse(fs.readFileSync(root+"PENDENCIAS-PEDAGOGICAS-PRIORITARIAS.json","utf8"));
@@ -87,13 +87,13 @@ for(const item of fila.itens){
   assert.ok(!validado,"Questão revisada não foi baixada da fila: "+item.trilha+":"+idx);
  }
 }
-assert.equal(sinalizadosResolvidos,32);
-assert.equal(fila.totalRevisadasNaFila,32);
-assert.equal(fila.totalPendentesNaFila,88);
-assert.equal(fila.questoesRevisadasComMarcador,56);
-assert.equal(fila.pendentesRevisaoIndividual,1144);
+assert.equal(sinalizadosResolvidos,60);
+assert.equal(fila.totalRevisadasNaFila,60);
+assert.equal(fila.totalPendentesNaFila,60);
+assert.equal(fila.questoesRevisadasComMarcador,84);
+assert.equal(fila.pendentesRevisaoIndividual,1116);
 
 console.log("AUDITORIA PEDAGÓGICA INCREMENTAL:");
 console.log(JSON.stringify({total,originais,adicionadas,revisadas,pendentes:total-revisadas,porTrilha},null,2));
-console.log("AVISO: auditoria estrutural concluída; 1.144 questões ainda requerem revisão pedagógica individual.");
-console.log("Fila prioritária: 32 itens revistos e 88 pendentes, conferidos contra os arquivos de questões.");
+console.log("AVISO: auditoria estrutural concluída; 1.116 questões ainda requerem revisão pedagógica individual.");
+console.log("Fila prioritária: 60 itens revistos e 60 pendentes, conferidos contra os arquivos de questões.");
