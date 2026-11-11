@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sociologia ENEM — Gratuita | Gabarito Max</title>
+  <style>
+    :root{
+      --bg:#05070c;
+      --card:#11141b;
+      --card2:#171b24;
+      --blue:#00f3ff;
+      --pink:#ff00e6;
+      --green:#39ff14;
+      --red:#ff003c;
+      --yellow:#ffd400;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --line:rgba(255,255,255,.08);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#000;
+      color:var(--text);
+      min-height:100vh;
+      padding:20px 12px 40px;
+      text-align:center;
+      overflow-x:hidden;
+    }
+
+    header{
+      max-width:1100px;
+      margin:0 auto 24px;
+      border:2px solid var(--blue);
+      border-radius:24px;
+      padding:22px 16px;
+      background:linear-gradient(180deg,#0c0f16,#090b11);
+      box-shadow:0 0 22px rgba(0,243,255,.22);
+    }
+
+    header h1{
+      color:var(--blue);
+      font-size:clamp(2rem,4vw,3rem);
+      text-shadow:0 0 14px rgba(0,243,255,.7);
+      font-weight:900;
+    }
+
+    header p{
+      margin-top:10px;
+      color:var(--pink);
+      font-weight:800;
+      font-size:clamp(1rem,2vw,1.3rem);
+    }
+
+    #app{
+      width:100%;
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .box{
+      width:100%;
+      max-width:100%;
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:20px 16px;
+      box-shadow:0 0 20px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+
+    .btn{
+      display:block;
+      width:100%;
+      max-width:560px;
+      margin:10px auto;
+      padding:14px 16px;
+      border:2px solid var(--blue);
+      background:transparent;
+      color:#fff;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:800;
+      font-size:1rem;
+      line-height:1.45;
+      transition:.2s;
+      white-space:normal;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    .btn:hover:not(:disabled){
+      background:var(--blue);
+      color:#000;
+      box-shadow:0 0 18px rgba(0,243,255,.35);
+    }
+
+    .btn-voltar{
+      border-color:#666;
+      color:#ddd;
+    }
+
+    .btn-voltar:hover:not(:disabled){
+      background:#333;
+      color:#fff;
+      box-shadow:none;
+    }
+
+    .btn.correct{
+      background:var(--green)!important;
+      border-color:var(--green)!important;
+      color:#000!important;
+    }
+
+    .btn.wrong{
+      background:var(--red)!important;
+      border-color:var(--red)!important;
+      color:#fff!important;
+    }
+
+    .grid-areas{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .card-area{
+      background:linear-gradient(135deg, rgba(0,243,255,.08), rgba(255,0,230,.08));
+      border:1px solid rgba(0,243,255,.16);
+      border-radius:16px;
+      padding:16px;
+      text-align:left;
+      min-width:0;
+    }
+
+    .card-area h3{
+      color:var(--blue);
+      margin-bottom:8px;
+      font-size:1.12rem;
+      line-height:1.35;
+      word-break:break-word;
+    }
+
+    .card-area p{
+      color:#ddd;
+      font-size:.95rem;
+      line-height:1.45;
+      margin-bottom:10px;
+      word-break:break-word;
+    }
+
+    .status{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+      color:var(--pink);
+      font-weight:bold;
+      text-align:left;
+    }
+
+    #question-text{
+      font-size:1.05rem;
+      line-height:1.6;
+      margin:20px 0;
+      min-height:88px;
+      text-align:left;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    .question-label{
+      display:block;
+      color:var(--yellow);
+      font-weight:bold;
+      margin-bottom:8px;
+    }
+
+    .text-base{
+      display:block;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:14px;
+      margin:10px 0 14px;
+      color:#f5f5f5;
+      font-style:italic;
+      line-height:1.65;
+    }
+
+    .options-wrap{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-bottom:16px;
+      width:100%;
+      max-width:100%;
+    }
+
+    .option-btn{
+      width:100%;
+      max-width:100%;
+      margin:0;
+      text-align:left;
+      min-height:58px;
+    }
+
+    .result-number{
+      font-size:3rem;
+      color:var(--blue);
+      margin:12px 0;
+      font-weight:900;
+    }
+
+    .result-sub{
+      font-size:1.12rem;
+      color:#ddd;
+      margin-bottom:10px;
+    }
+
+    .mini{
+      color:var(--muted);
+      font-size:.96rem;
+      line-height:1.5;
+    }
+
+    @media (max-width:700px){
+      .grid-areas{
+        grid-template-columns:1fr;
+      }
+      .box{
+        padding:16px 12px;
+      }
+      #question-text{
+        font-size:1rem;
+      }
+      .btn{
+        font-size:.96rem;
+        padding:13px 12px;
+      }
+    }
+  
+.premium-radar-copa-box{
+  width:100%;
+  max-width:820px;
+  margin:18px auto 16px;
+  padding:16px;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(0,243,255,.10),rgba(255,212,0,.12));
+  border:1px solid rgba(255,212,0,.40);
+  box-shadow:0 0 18px rgba(255,212,0,.10);
+  text-align:center;
+}
+.premium-radar-copa-box h3{
+  color:#ffd400;
+  margin-bottom:8px;
+  font-size:1.12rem;
+  text-transform:uppercase;
+}
+.premium-radar-copa-box p{
+  color:#e5e7eb;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+.premium-radar-copa-box .radar-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.premium-radar-copa-box button,
+.premium-radar-copa-box a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:320px;
+  min-height:48px;
+  border-radius:999px;
+  padding:12px 14px;
+  font-weight:900;
+  text-decoration:none;
+  border:1px solid rgba(255,212,0,.65);
+}
+.premium-radar-copa-box button{
+  background:linear-gradient(135deg,#fff4bf,#ffd400,#f59e0b);
+  color:#06142e;
+  cursor:pointer;
+}
+.premium-radar-copa-box a{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+</style>
+<style id="ensinomeu-portal-acesso">.ensinomeu-voltar{position:fixed!important;left:12px!important;bottom:12px!important;z-index:2147483000!important;background:#063a32!important;color:white!important;border:1px solid #67e8c6!important;border-radius:999px!important;padding:10px 16px!important;font:700 13px/1.25 system-ui,sans-serif!important;text-decoration:none!important;box-shadow:0 5px 30px #000a!important;opacity:.94!important}.ensinomeu-voltar:focus,.ensinomeu-voltar:hover{background:#075a48!important;opacity:1!important}</style>
+</head>
+<body>
+<a class="ensinomeu-voltar" href="../index.html" aria-label="Voltar à biblioteca gratuita">← Biblioteca gratuita</a>
+
+<header>
+  <h1>SOCIOLOGIA ENEM — GRATUITA</h1>
+  <p>10 MÓDULOS • 200 QUESTÕES • ÁUDIOS • RESPOSTAS EMBARALHADAS</p>
+</header>
+
+
+<div id="app"></div>
+
+<audio id="audio-bg" loop preload="auto" playsinline>
+  <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-correct" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-wrong" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const app = document.getElementById("app");
+const audioBg = document.getElementById("audio-bg");
+const audioCorrect = document.getElementById("audio-correct");
+const audioWrong = document.getElementById("audio-wrong");
+
+audioBg.volume = 0.06;
+audioCorrect.volume = 0.45;
+audioWrong.volume = 0.45;
+
+let audioLiberado = false;
+let areaAtual = "";
+let questoesAtuais = [];
+let indiceQuestao = 0;
+let acertosObjetivas = 0;
+let questaoRenderizadaAtual = null;
+
+document.addEventListener("click", destravarAudio, { once: true });
+document.addEventListener("touchstart", destravarAudio, { once: true });
+
+function destravarAudio() {
+  if (audioLiberado) return Promise.resolve(true);
+
+  audioBg.muted = true;
+  return audioBg.play()
+    .then(() => {
+      audioBg.pause();
+      audioBg.currentTime = 0;
+      audioBg.muted = false;
+      audioLiberado = true;
+
+      audioCorrect.play().then(() => {
+        audioCorrect.pause();
+        audioCorrect.currentTime = 0;
+      }).catch(() => {});
+
+      audioWrong.play().then(() => {
+        audioWrong.pause();
+        audioWrong.currentTime = 0;
+      }).catch(() => {});
+
+      return true;
+    })
+    .catch(() => false);
+}
+
+function tocarAudioFundo() {
+  if (!audioLiberado) return;
+  audioBg.currentTime = 0;
+  audioBg.play().catch(() => {});
+}
+
+function pararAudioFundo() {
+  audioBg.pause();
+  audioBg.currentTime = 0;
+}
+
+function tocarAcerto() {
+  audioCorrect.currentTime = 0;
+  audioCorrect.play().catch(() => {});
+}
+
+function tocarErro() {
+  audioWrong.currentTime = 0;
+  audioWrong.play().catch(() => {});
+}
+
+const areas = [
+  { nome: "Introdução à Sociologia", descricao: "Surgimento da sociologia, sociedade, ciência social e olhar sociológico." },
+  { nome: "Clássicos da Sociologia", descricao: "Durkheim, Weber, Marx, Comte e conceitos fundamentais." },
+  { nome: "Cultura e Sociedade", descricao: "Cultura, etnocentrismo, relativismo cultural, identidade e diversidade." },
+  { nome: "Trabalho e Sociedade", descricao: "Trabalho, capitalismo, alienação, exploração, indústria e precarização." },
+  { nome: "Estado, Poder e Política", descricao: "Estado, poder, dominação, democracia, cidadania e participação política." },
+  { nome: "Desigualdade Social", descricao: "Classes sociais, estratificação, pobreza, mobilidade social e exclusão." },
+  { nome: "Movimentos Sociais", descricao: "Ações coletivas, direitos, movimentos sociais e participação cidadã." },
+  { nome: "Globalização e Tecnologia", descricao: "Globalização, redes, mídia, consumo, tecnologia e sociedade contemporânea." },
+  { nome: "Direitos Humanos e Cidadania", descricao: "Direitos civis, sociais, políticos, minorias e inclusão social." },
+  { nome: "Sociologia no ENEM", descricao: "Interpretação social, temas atuais, cidadania, cultura, trabalho e política." }
+];
+
+function criarObjetiva(area, numero, textoBase, pergunta, alternativas, correta) {
+  return {
+    tipo: "objetiva",
+    area,
+    numero,
+    base: textoBase,
+    q: pergunta,
+    o: alternativas,
+    c: correta
+  };
+}
+
+function gerarAreaBase(nomeArea, perguntasObjetivas) {
+  return perguntasObjetivas.map((item, i) =>
+    criarObjetiva(nomeArea, i + 1, item.base, item.q, item.o, item.c)
+  );
+}
+
+function embaralharAlternativas(questao) {
+  const pares = questao.o.map((texto, idx) => ({ texto, correta: idx === questao.c }));
+  for (let i = pares.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pares[i], pares[j]] = [pares[j], pares[i]];
+  }
+  return {
+    ...questao,
+    opcoesRenderizadas: pares.map(p => p.texto),
+    corretaRenderizada: pares.findIndex(p => p.correta)
+  };
+}
+
+const bancoQuestoes = {
+  "Introdução à Sociologia": gerarAreaBase(
+    "Introdução à Sociologia",
+    [
+      { base:`"A Sociologia surgiu como ciência no contexto das grandes transformações sociais provocadas pela Revolução Industrial e pela Revolução Francesa."`, q:"O surgimento da Sociologia está relacionado principalmente à necessidade de:", o:["Compreender as mudanças da sociedade moderna","Explicar fenômenos naturais sem sociedade","Substituir totalmente a Filosofia","Eliminar o estudo da política"], c:0 },
+      { base:`"A Sociologia procura analisar os fenômenos sociais de forma crítica e sistemática."`, q:"O objeto de estudo da Sociologia é:", o:["A sociedade e as relações sociais","Apenas os planetas","Somente os organismos vivos","Exclusivamente as reações químicas"], c:0 },
+      { base:`"O olhar sociológico permite estranhar aquilo que parece natural no cotidiano."`, q:"Estranhamento sociológico significa:", o:["Questionar práticas sociais vistas como naturais","Aceitar tudo sem reflexão","Ignorar problemas sociais","Afastar-se totalmente da realidade"], c:0 },
+      { base:`"A Sociologia analisa como os indivíduos são influenciados por instituições, normas, valores e estruturas sociais."`, q:"Um exemplo de instituição social é:", o:["Família","Montanha","Rio","Camada de ozônio"], c:0 },
+      { base:`"A sociedade é formada por relações entre indivíduos, grupos, regras e instituições."`, q:"Na perspectiva sociológica, o indivíduo:", o:["É influenciado pelo meio social","Vive totalmente isolado da sociedade","Não participa de relações sociais","É apenas um ser biológico"], c:0 },
+      { base:`"Augusto Comte é considerado um dos fundadores da Sociologia e defendia o positivismo."`, q:"Para o positivismo de Comte, a sociedade deveria ser estudada com base em:", o:["Método científico e observação","Mitos religiosos apenas","Opiniões sem evidência","Tradições sem análise"], c:0 },
+      { base:`"O termo Sociologia foi criado por Augusto Comte no século XIX."`, q:"A Sociologia nasceu em meio a transformações como:", o:["Industrialização e urbanização","Feudalismo antigo","Caça e coleta pré-histórica","Formação do Império Romano"], c:0 },
+      { base:`"O senso comum é formado por opiniões e explicações cotidianas, nem sempre baseadas em investigação científica."`, q:"A diferença entre Sociologia e senso comum é que a Sociologia busca:", o:["Análise crítica, sistemática e fundamentada","Repetir preconceitos cotidianos","Evitar pesquisa","Confirmar qualquer opinião"], c:0 },
+      { base:`"Os fatos sociais, as ações sociais e as relações de classe são temas importantes da Sociologia clássica."`, q:"Esses temas foram desenvolvidos principalmente por:", o:["Durkheim, Weber e Marx","Newton, Darwin e Einstein","Platão, Aristóteles e Sócrates","Freud, Skinner e Piaget"], c:0 },
+      { base:`"A Sociologia contribui para compreender desigualdades, conflitos, cultura, trabalho, política e cidadania."`, q:"Uma função importante da Sociologia é:", o:["Analisar criticamente a vida social","Impedir debates sociais","Negar desigualdades","Substituir todas as ciências"], c:0 },
+      { base:`"A imaginação sociológica permite relacionar experiências individuais com estruturas sociais mais amplas."`, q:"Esse conceito ajuda a perceber que problemas pessoais podem estar ligados a:", o:["Questões sociais e históricas","Apenas escolhas individuais isoladas","Fenômenos naturais sem sociedade","Fatores sem contexto"], c:0 },
+      { base:`"A socialização é o processo pelo qual indivíduos aprendem normas, valores e comportamentos de uma sociedade."`, q:"A socialização ocorre principalmente por meio de:", o:["Família, escola, mídia e grupos sociais","Apenas genética","Somente fenômenos climáticos","Movimentos das placas tectônicas"], c:0 },
+      { base:`"Normas sociais orientam comportamentos esperados em determinada sociedade."`, q:"Uma norma social é:", o:["Regra de convivência compartilhada","Lei da gravidade","Reação química","Formação de nuvem"], c:0 },
+      { base:`"Valores sociais indicam aquilo que uma sociedade considera importante, correto ou desejável."`, q:"Valores sociais influenciam:", o:["Comportamentos e julgamentos coletivos","A rotação da Terra","A composição das rochas","A pressão atmosférica"], c:0 },
+      { base:`"A Sociologia estuda tanto consenso quanto conflito na vida social."`, q:"Conflitos sociais podem revelar:", o:["Disputas por poder, direitos e recursos","Ausência de relações sociais","Fim das desigualdades","Harmonia obrigatória"], c:0 },
+      { base:`"A pesquisa sociológica pode usar métodos quantitativos e qualitativos."`, q:"Entrevistas, observação e questionários são:", o:["Técnicas de pesquisa social","Fenômenos geológicos","Reações físicas","Instrumentos agrícolas"], c:0 },
+      { base:`"O método científico exige investigação, dados e análise."`, q:"Na Sociologia, uma pesquisa deve:", o:["Basear-se em evidências e interpretação crítica","Confirmar opiniões sem dados","Ignorar contexto social","Evitar qualquer método"], c:0 },
+      { base:`"A Sociologia ajuda a compreender que muitos comportamentos são aprendidos socialmente."`, q:"Isso significa que práticas sociais:", o:["Variam conforme cultura e contexto histórico","São sempre iguais em todas as sociedades","São apenas naturais e imutáveis","Não sofrem influência do grupo"], c:0 },
+      { base:`"A vida em sociedade depende de cooperação, regras, conflitos e instituições."`, q:"Uma característica da sociedade é:", o:["Organização por relações sociais","Ausência total de normas","Isolamento completo dos indivíduos","Inexistência de cultura"], c:0 },
+      { base:`"A Sociologia permite analisar criticamente problemas contemporâneos como racismo, desigualdade, violência e exclusão."`, q:"Esse papel da Sociologia está ligado à:", o:["Compreensão crítica da realidade social","Repetição de preconceitos","Neutralização da cidadania","Negação dos direitos humanos"], c:0 }
+    ]
+  ),
+
+  "Clássicos da Sociologia": gerarAreaBase(
+    "Clássicos da Sociologia",
+    [
+      { base:`"Émile Durkheim defendia que a sociedade exerce influência sobre os indivíduos por meio de fatos sociais."`, q:"Para Durkheim, fato social é:", o:["Forma de agir, pensar e sentir exterior e coercitiva ao indivíduo","Escolha puramente individual sem influência social","Apenas fenômeno biológico","Reação química coletiva"], c:0 },
+      { base:`"Durkheim via a sociedade como uma realidade que ultrapassa os indivíduos."`, q:"Uma característica dos fatos sociais é:", o:["Coercitividade","Invisibilidade física total","Ausência de regras","Dependência exclusiva da vontade individual"], c:0 },
+      { base:`"A solidariedade social explica a coesão entre os membros de uma sociedade."`, q:"Para Durkheim, sociedades tradicionais tendem a apresentar:", o:["Solidariedade mecânica","Solidariedade orgânica apenas","Ausência de consciência coletiva","Individualismo industrial pleno"], c:0 },
+      { base:`"Na modernidade, a divisão do trabalho aumenta a interdependência social."`, q:"A solidariedade típica das sociedades modernas, segundo Durkheim, é:", o:["Orgânica","Mecânica","Feudal","Patriarcal apenas"], c:0 },
+      { base:`"Max Weber analisou a ação social como comportamento dotado de sentido para o indivíduo."`, q:"Para Weber, ação social é aquela que:", o:["Tem sentido atribuído pelo agente e se orienta pelo outro","É apenas reflexo biológico","Não envolve significado","É sempre inconsciente e natural"], c:0 },
+      { base:`"Weber classificou tipos de ação social."`, q:"Uma ação racional com relação a fins ocorre quando o indivíduo:", o:["Calcula meios para atingir objetivos","Age apenas por emoção momentânea","Segue tradição sem reflexão","Obedece por costume familiar"], c:0 },
+      { base:`"Weber estudou formas de dominação legítima."`, q:"A dominação baseada em leis e cargos burocráticos é chamada de:", o:["Racional-legal","Carismática","Tradicional","Mística"], c:0 },
+      { base:`"A dominação carismática depende da devoção às qualidades extraordinárias de um líder."`, q:"Um exemplo de dominação carismática envolve:", o:["Liderança baseada no carisma pessoal","Obediência apenas a leis impessoais","Costume herdado por tradição","Controle por parentesco"], c:0 },
+      { base:`"Karl Marx analisou a sociedade capitalista a partir da luta de classes."`, q:"Para Marx, a história das sociedades é marcada por:", o:["Conflitos entre classes sociais","Harmonia eterna entre ricos e pobres","Ausência de exploração","Fim do trabalho"], c:0 },
+      { base:`"No capitalismo, Marx identificou a oposição entre burguesia e proletariado."`, q:"A burguesia é a classe que:", o:["Detém os meios de produção","Vende apenas sua força de trabalho","Não participa da economia","É formada exclusivamente por camponeses"], c:0 },
+      { base:`"O proletariado vende sua força de trabalho em troca de salário."`, q:"Para Marx, o proletariado é:", o:["Classe trabalhadora assalariada","Classe proprietária dos meios de produção","Grupo de nobres hereditários","Setor sem relação com trabalho"], c:0 },
+      { base:`"A mais-valia é central na crítica marxista ao capitalismo."`, q:"Mais-valia refere-se:", o:["Ao valor produzido pelo trabalhador e apropriado pelo capitalista","Ao salário integral pago ao trabalhador","À ausência de lucro","Ao imposto estatal obrigatório"], c:0 },
+      { base:`"A alienação no trabalho ocorre quando o trabalhador perde controle sobre o processo e o produto de seu trabalho."`, q:"Alienação, em Marx, significa:", o:["Separação do trabalhador em relação ao produto e sentido do trabalho","Liberdade total no trabalho","Propriedade coletiva automática","Ausência de exploração"], c:0 },
+      { base:`"Comte defendia que a sociedade deveria ser compreendida cientificamente para alcançar ordem e progresso."`, q:"O positivismo valorizava:", o:["Ciência, ordem e observação","Mitos e tradição sem crítica","Anarquia social permanente","Negação do método"], c:0 },
+      { base:`"Durkheim, Weber e Marx analisaram a modernidade por diferentes perspectivas."`, q:"A diferença entre eles mostra que a Sociologia:", o:["Possui múltiplas teorias e métodos","Tem apenas uma explicação única","Não analisa conflitos","Recusa conceitos"], c:0 },
+      { base:`"Weber relacionou religião e economia em sua obra sobre a ética protestante."`, q:"Para Weber, certas ideias religiosas influenciaram:", o:["Condutas econômicas no capitalismo","A formação de placas tectônicas","A origem das espécies","A rotação do planeta"], c:0 },
+      { base:`"Durkheim estudou o suicídio como fenômeno social, não apenas individual."`, q:"Ao analisar o suicídio sociologicamente, Durkheim demonstrou que:", o:["Fenômenos individuais podem ter causas sociais","Todo ato individual é biológico apenas","A sociedade não influencia ninguém","Não é possível pesquisar dados sociais"], c:0 },
+      { base:`"Marx afirmava que a infraestrutura econômica influencia instituições, ideias e relações sociais."`, q:"Na teoria marxista, infraestrutura refere-se:", o:["À base econômica e aos modos de produção","Apenas a ruas e prédios","Ao sistema climático","À psicologia individual"], c:0 },
+      { base:`"Para Weber, o cientista social deve buscar compreender o sentido da ação social."`, q:"Esse método é chamado de:", o:["Sociologia compreensiva","Determinismo biológico","Evolucionismo natural","Geometria social"], c:0 },
+      { base:`"Os clássicos da Sociologia continuam sendo usados para analisar problemas atuais."`, q:"Isso ocorre porque seus conceitos ajudam a entender:", o:["Trabalho, poder, cultura, desigualdade e instituições","Somente fenômenos naturais","Apenas cálculos matemáticos","Exclusivamente doenças biológicas"], c:0 }
+    ]
+  ),
+
+  "Cultura e Sociedade": gerarAreaBase(
+    "Cultura e Sociedade",
+    [
+      { base:`"Cultura é o conjunto de valores, crenças, costumes, conhecimentos, símbolos e práticas de uma sociedade."`, q:"Na Sociologia, cultura refere-se:", o:["A modos de vida aprendidos socialmente","Apenas a obras de arte eruditas","Somente à genética humana","A fenômenos climáticos"], c:0 },
+      { base:`"A cultura é aprendida e transmitida socialmente."`, q:"O processo pelo qual uma pessoa aprende a cultura de seu grupo é chamado de:", o:["Socialização","Fotossíntese","Sedimentação","Rotação"], c:0 },
+      { base:`"Etnocentrismo ocorre quando uma cultura é julgada a partir dos valores de outra, considerada superior."`, q:"O etnocentrismo pode gerar:", o:["Preconceito e discriminação cultural","Respeito automático à diversidade","Compreensão igualitária","Relativização das práticas sociais"], c:0 },
+      { base:`"Relativismo cultural busca compreender práticas culturais dentro de seus próprios contextos."`, q:"O relativismo cultural defende:", o:["Compreender culturas sem julgá-las por padrões externos","Considerar uma cultura superior a todas","Eliminar a diversidade","Padronizar todos os costumes"], c:0 },
+      { base:`"A identidade social é construída nas relações com grupos, instituições e experiências culturais."`, q:"Identidade social envolve:", o:["Sentimento de pertencimento e reconhecimento","Apenas características biológicas","Ausência de relações sociais","Uma essência imutável sem contexto"], c:0 },
+      { base:`"A diversidade cultural revela a pluralidade de modos de vida existentes nas sociedades."`, q:"Valorizar a diversidade cultural significa:", o:["Reconhecer e respeitar diferentes formas de viver","Eliminar diferenças culturais","Impor uma cultura única","Negar tradições populares"], c:0 },
+      { base:`"A cultura popular expressa práticas, festas, saberes e manifestações de grupos sociais."`, q:"Um exemplo de cultura popular é:", o:["Festas tradicionais e manifestações comunitárias","Apenas ópera europeia","Somente ciência de laboratório","Exclusivamente cultura de elite"], c:0 },
+      { base:`"A cultura de massa é produzida e difundida por meios de comunicação para grandes públicos."`, q:"A cultura de massa está ligada principalmente:", o:["À mídia e indústria cultural","À vida isolada sem comunicação","À ausência de consumo","A rituais sem circulação pública"], c:0 },
+      { base:`"A indústria cultural transforma bens culturais em mercadorias de consumo."`, q:"O conceito de indústria cultural critica:", o:["A mercantilização da cultura","A inexistência da mídia","A ausência de propaganda","A cultura sem público"], c:0 },
+      { base:`"Símbolos são elementos que carregam significados compartilhados socialmente."`, q:"A linguagem é um exemplo de:", o:["Sistema simbólico","Fenômeno geológico","Reação química","Instinto sem aprendizagem"], c:0 },
+      { base:`"Normas culturais variam no tempo e no espaço."`, q:"Isso mostra que a cultura é:", o:["Histórica e socialmente construída","Natural e igual em todos os lugares","Biológica e imutável","Sem relação com a sociedade"], c:0 },
+      { base:`"Subculturas são formas culturais específicas dentro de uma sociedade mais ampla."`, q:"Um exemplo de subcultura pode ser:", o:["Grupo juvenil com linguagem e estilos próprios","Todos os habitantes do planeta igualmente","Apenas a cultura oficial do Estado","Um fenômeno atmosférico"], c:0 },
+      { base:`"Contracultura questiona valores dominantes de uma sociedade."`, q:"Movimentos contraculturais geralmente:", o:["Criticam padrões culturais hegemônicos","Reforçam sempre a cultura dominante","Negam qualquer mudança","Impedem diversidade"], c:0 },
+      { base:`"A apropriação cultural envolve uso de elementos de uma cultura por outro grupo, muitas vezes sem reconhecimento ou respeito."`, q:"O debate sobre apropriação cultural está ligado a:", o:["Poder, identidade e reconhecimento cultural","Fusos horários","Movimento dos rios","Clima regional"], c:0 },
+      { base:`"A globalização intensifica contatos culturais, mas também pode padronizar hábitos de consumo."`, q:"Um efeito cultural da globalização é:", o:["Circulação de culturas e homogeneização de padrões","Fim total da comunicação","Isolamento cultural absoluto","Desaparecimento da mídia"], c:0 },
+      { base:`"A aculturação ocorre quando grupos culturais entram em contato e transformam práticas sociais."`, q:"Aculturação significa:", o:["Mudanças culturais resultantes de contato entre grupos","Ausência de contato cultural","Preservação total sem mudanças","Imposição exclusiva da natureza"], c:0 },
+      { base:`"A cultura afro-brasileira e indígena são fundamentais para a formação social do Brasil."`, q:"Reconhecer essas culturas ajuda a combater:", o:["Racismo e apagamento histórico","Diversidade cultural","Direitos humanos","Educação inclusiva"], c:0 },
+      { base:`"Preconceito cultural ocorre quando práticas de um grupo são inferiorizadas por outro."`, q:"Uma atitude sociologicamente crítica contra o preconceito cultural é:", o:["Respeitar diferenças e analisar contextos","Reforçar estereótipos","Impor padrão único","Negar a história dos grupos"], c:0 },
+      { base:`"Cultura e poder estão relacionados, pois alguns grupos conseguem impor seus valores como dominantes."`, q:"Hegemonia cultural é:", o:["Predomínio de valores de um grupo sobre a sociedade","Ausência de cultura dominante","Igualdade total de influência","Fim das instituições"], c:0 },
+      { base:`"A cultura não é estática; ela se transforma com conflitos, trocas, tecnologias e mudanças históricas."`, q:"Isso significa que cultura é:", o:["Dinâmica e histórica","Imutável e natural","Genética e fixa","Sem relação com o tempo"], c:0 }
+    ]
+  ),
+    "Trabalho e Sociedade": gerarAreaBase(
+    "Trabalho e Sociedade",
+    [
+      { base:`"O trabalho é uma atividade humana fundamental para a produção da vida social e econômica."`, q:"Na Sociologia, o trabalho é entendido como:", o:["Atividade social que transforma a natureza e organiza relações sociais","Apenas esforço físico sem sentido social","Fenômeno biológico sem relação com sociedade","Atividade exclusiva das máquinas"], c:0 },
+      { base:`"No capitalismo, o trabalhador vende sua força de trabalho em troca de salário."`, q:"A força de trabalho é:", o:["A capacidade humana de produzir bens e serviços","Uma máquina industrial","O dinheiro acumulado pelo patrão","A propriedade da fábrica"], c:0 },
+      { base:`"Karl Marx analisou o trabalho assalariado como parte das relações capitalistas de produção."`, q:"Para Marx, o trabalhador assalariado pertence à classe:", o:["Proletária","Burguesa","Nobre","Feudal"], c:0 },
+      { base:`"A burguesia detém os meios de produção, como fábricas, terras, máquinas e capital."`, q:"No capitalismo, a burguesia é:", o:["Classe proprietária dos meios de produção","Classe que vende apenas força de trabalho","Grupo sem poder econômico","Trabalhadores rurais sem terra"], c:0 },
+      { base:`"A mais-valia é um conceito marxista que explica a exploração no capitalismo."`, q:"Mais-valia é:", o:["Valor produzido pelo trabalhador e apropriado pelo capitalista","Salário total pago ao trabalhador","Ausência de lucro","Imposto cobrado pelo Estado"], c:0 },
+      { base:`"A alienação ocorre quando o trabalhador perde controle sobre o produto e o sentido do trabalho."`, q:"Alienação no trabalho significa:", o:["Separação entre trabalhador, produto e processo produtivo","Liberdade plena no ambiente laboral","Propriedade coletiva automática","Ausência de exploração econômica"], c:0 },
+      { base:`"A Revolução Industrial modificou profundamente as formas de trabalho."`, q:"Uma consequência social da Revolução Industrial foi:", o:["Formação do proletariado urbano","Fim das fábricas","Retorno ao artesanato exclusivo","Desaparecimento das cidades"], c:0 },
+      { base:`"A divisão do trabalho aumentou a especialização das tarefas produtivas."`, q:"Na produção industrial, divisão do trabalho significa:", o:["Separação das atividades em tarefas específicas","Todos fazem tudo ao mesmo tempo","Ausência de organização produtiva","Fim da produção em série"], c:0 },
+      { base:`"O fordismo organizou a produção em massa com linha de montagem."`, q:"Uma característica do fordismo é:", o:["Produção padronizada e em larga escala","Produção artesanal individualizada","Ausência de controle do tempo","Trabalho sem máquinas"], c:0 },
+      { base:`"O taylorismo buscou controlar o tempo e os movimentos dos trabalhadores."`, q:"O taylorismo está associado à:", o:["Racionalização e controle do trabalho","Autonomia total do trabalhador","Fim da hierarquia fabril","Trabalho sem supervisão"], c:0 },
+      { base:`"O toyotismo tornou a produção mais flexível e adaptada à demanda."`, q:"Uma característica do toyotismo é:", o:["Produção enxuta e flexível","Estoque ilimitado","Produção apenas manual","Ausência de tecnologia"], c:0 },
+      { base:`"A precarização do trabalho envolve perda de direitos, instabilidade e insegurança laboral."`, q:"Um exemplo de precarização é:", o:["Trabalho sem garantias e baixa proteção social","Emprego estável com direitos ampliados","Redução da jornada com aumento salarial","Proteção integral do trabalhador"], c:0 },
+      { base:`"A informalidade é comum em economias marcadas por desigualdade e falta de oportunidades formais."`, q:"Trabalho informal é aquele que:", o:["Ocorre sem vínculo formal e proteção trabalhista plena","Tem todos os direitos garantidos","É sempre altamente remunerado","É exclusivo do setor público"], c:0 },
+      { base:`"A terceirização transfere atividades de uma empresa para outra."`, q:"A terceirização pode gerar debate porque:", o:["Pode reduzir custos e também precarizar relações de trabalho","Elimina qualquer desigualdade","Garante estabilidade automática","Impede contratação indireta"], c:0 },
+      { base:`"A automação substitui ou modifica tarefas humanas por máquinas e sistemas."`, q:"Um impacto social da automação é:", o:["Mudança nas exigências de qualificação e no emprego","Fim completo do trabalho humano em todos os setores","Desaparecimento da tecnologia","Retorno à produção feudal"], c:0 },
+      { base:`"A economia de aplicativos ampliou novas formas de trabalho mediadas por plataformas digitais."`, q:"Um problema associado ao trabalho por aplicativos é:", o:["Instabilidade de renda e ausência de direitos claros","Garantia universal de férias e aposentadoria","Fim da exploração","Controle total dos trabalhadores sobre as plataformas"], c:0 },
+      { base:`"O desemprego estrutural ocorre quando mudanças tecnológicas ou econômicas eliminam postos de trabalho."`, q:"Desemprego estrutural está ligado a:", o:["Transformações produtivas e tecnológicas","Férias coletivas temporárias","Escolha individual sem contexto","Fenômenos climáticos apenas"], c:0 },
+      { base:`"Sindicatos são organizações que defendem interesses coletivos dos trabalhadores."`, q:"Uma função dos sindicatos é:", o:["Lutar por direitos, salários e condições de trabalho","Eliminar toda negociação coletiva","Representar apenas patrões","Impedir participação trabalhista"], c:0 },
+      { base:`"A legislação trabalhista regula relações entre trabalhadores, empregadores e Estado."`, q:"Direitos trabalhistas servem para:", o:["Proteger trabalhadores e estabelecer garantias mínimas","Retirar toda proteção social","Impedir salários","Eliminar jornada de trabalho"], c:0 },
+      { base:`"O trabalho doméstico e de cuidado muitas vezes é invisibilizado, embora seja essencial à reprodução da vida social."`, q:"A invisibilidade do trabalho de cuidado revela:", o:["Desigualdades de gênero e valorização social do trabalho","Ausência de importância social","Fim da divisão sexual do trabalho","Igualdade plena automática"], c:0 }
+    ]
+  ),
+
+  "Estado, Poder e Política": gerarAreaBase(
+    "Estado, Poder e Política",
+    [
+      { base:`"O Estado moderno concentra instituições que exercem autoridade sobre um território e uma população."`, q:"Um elemento básico do Estado é:", o:["Território, população e governo","Apenas religião","Somente mercado","Ausência de leis"], c:0 },
+      { base:`"Max Weber definiu o Estado como a instituição que detém o monopólio legítimo da força em determinado território."`, q:"Para Weber, o Estado se caracteriza pelo:", o:["Monopólio legítimo da violência","Fim da autoridade legal","Ausência de burocracia","Controle apenas familiar"], c:0 },
+      { base:`"Poder é a capacidade de influenciar ou determinar o comportamento de outros indivíduos ou grupos."`, q:"Poder político refere-se:", o:["À capacidade de governar e tomar decisões coletivas","Apenas à força física individual","Somente ao consumo de bens","À ausência de autoridade"], c:0 },
+      { base:`"Dominação é uma forma de poder considerada legítima pelos dominados."`, q:"Weber classificou a dominação em:", o:["Tradicional, carismática e racional-legal","Natural, física e climática","Agrária, industrial e comercial","Local, global e biológica"], c:0 },
+      { base:`"A dominação tradicional baseia-se em costumes e tradições."`, q:"Um exemplo de dominação tradicional é:", o:["Obediência a autoridade herdada por costume","Obediência a leis burocráticas modernas","Liderança baseada só em carisma revolucionário","Decisão científica impessoal"], c:0 },
+      { base:`"A dominação racional-legal é típica de Estados modernos burocráticos."`, q:"Ela se baseia em:", o:["Leis, cargos e normas impessoais","Tradições familiares apenas","Qualidades extraordinárias do líder","Ausência de regras"], c:0 },
+      { base:`"Democracia é um regime político baseado na participação popular e na legitimidade do poder."`, q:"Um princípio democrático é:", o:["Participação política e garantia de direitos","Poder absoluto sem eleições","Censura permanente","Exclusão da cidadania"], c:0 },
+      { base:`"Cidadania envolve direitos e deveres dos indivíduos na vida social e política."`, q:"Direitos políticos incluem:", o:["Votar e ser votado","Apenas consumir produtos","Ter relevo natural","Controlar o clima"], c:0 },
+      { base:`"Direitos civis protegem liberdades individuais básicas."`, q:"Um exemplo de direito civil é:", o:["Liberdade de expressão","Acesso exclusivo ao luxo","Obrigação de censura","Direito de dominar outro grupo"], c:0 },
+      { base:`"Direitos sociais buscam garantir condições dignas de vida."`, q:"Um exemplo de direito social é:", o:["Educação, saúde e trabalho","Apenas voto","Somente propriedade privada de luxo","Poder hereditário"], c:0 },
+      { base:`"A participação política pode ocorrer por voto, movimentos sociais, conselhos, protestos e debates públicos."`, q:"Participação política não se limita a:", o:["Votar em eleições","Respirar","Dormir","Alimentar-se"], c:0 },
+      { base:`"Partidos políticos organizam projetos de poder e disputam eleições."`, q:"A função dos partidos políticos é:", o:["Representar ideias e disputar o governo","Eliminar a participação social","Substituir toda sociedade civil","Impedir eleições"], c:0 },
+      { base:`"Autoritarismo limita liberdades e concentra poder."`, q:"Um regime autoritário costuma apresentar:", o:["Censura, repressão e baixa participação popular","Liberdade plena de oposição","Rotatividade democrática ampla","Controle social inexistente"], c:0 },
+      { base:`"Totalitarismo é uma forma extrema de controle político e social."`, q:"Regimes totalitários buscam:", o:["Controlar Estado, sociedade, cultura e opinião","Ampliar pluralismo absoluto","Garantir oposição livre","Eliminar propaganda oficial"], c:0 },
+      { base:`"A opinião pública é influenciada por mídia, redes sociais, grupos e instituições."`, q:"A opinião pública pode interferir:", o:["Nas decisões políticas e debates sociais","Na rotação do planeta","Na formação de rios","Na composição química do ar"], c:0 },
+      { base:`"Burocracia é uma forma de organização baseada em regras, cargos e hierarquia."`, q:"Para Weber, a burocracia moderna é caracterizada por:", o:["Racionalidade, hierarquia e normas impessoais","Improvisação sem regras","Poder familiar exclusivo","Ausência de documentos"], c:0 },
+      { base:`"Políticas públicas são ações do Estado voltadas a problemas coletivos."`, q:"Um exemplo de política pública é:", o:["Programa de vacinação","Decisão privada sem impacto social","Fenômeno climático","Movimento natural das marés"], c:0 },
+      { base:`"A sociedade civil reúne organizações, associações e movimentos fora do controle direto do Estado."`, q:"Um exemplo de sociedade civil organizada é:", o:["ONGs e associações comunitárias","Apenas ministérios do governo","Somente Forças Armadas","Exclusivamente tribunais"], c:0 },
+      { base:`"A Constituição organiza direitos, deveres e funcionamento do Estado."`, q:"A Constituição é importante porque:", o:["Define normas fundamentais da vida política e jurídica","Elimina direitos sociais","Impede cidadania","Substitui toda participação popular"], c:0 },
+      { base:`"A democracia depende de instituições, participação, liberdade de imprensa e respeito às diferenças."`, q:"Uma ameaça à democracia é:", o:["Desinformação, autoritarismo e violência política","Participação cidadã","Pluralismo de ideias","Eleições livres"], c:0 }
+    ]
+  ),
+
+  "Desigualdade Social": gerarAreaBase(
+    "Desigualdade Social",
+    [
+      { base:`"Desigualdade social é a distribuição desigual de renda, poder, oportunidades e direitos."`, q:"A desigualdade social expressa:", o:["Diferenças estruturais de acesso a recursos e oportunidades","Igualdade plena entre todos","Ausência de classes sociais","Distribuição idêntica de renda"], c:0 },
+      { base:`"Estratificação social é a forma como a sociedade organiza hierarquias entre grupos."`, q:"Um sistema de estratificação social é:", o:["Classe social","Movimento de rotação","Fuso horário","Ciclo da água"], c:0 },
+      { base:`"Classes sociais são grupos definidos pela posição econômica e pelas relações de produção."`, q:"Na perspectiva marxista, as classes se definem principalmente pela:", o:["Relação com os meios de produção","Cor dos olhos","Idade biológica","Localização climática"], c:0 },
+      { base:`"A pobreza envolve falta de renda e acesso limitado a condições dignas de vida."`, q:"Pobreza não se resume apenas à renda porque também envolve:", o:["Acesso a saúde, educação, moradia e direitos","Apenas temperatura ambiental","Somente escolha individual","Exclusivamente fatores naturais"], c:0 },
+      { base:`"Mobilidade social é a mudança de posição de indivíduos ou grupos na estrutura social."`, q:"Quando uma pessoa melhora sua posição econômica, ocorre:", o:["Mobilidade social ascendente","Mobilidade descendente","Imobilidade absoluta","Estratificação biológica"], c:0 },
+      { base:`"A desigualdade racial no Brasil possui raízes históricas na escravidão e no racismo estrutural."`, q:"Racismo estrutural significa:", o:["Racismo presente nas instituições e práticas sociais","Preconceito apenas individual sem efeitos sociais","Ausência de desigualdade racial","Igualdade racial automática"], c:0 },
+      { base:`"A desigualdade de gênero aparece no mercado de trabalho, na política, na família e na violência."`, q:"Um exemplo de desigualdade de gênero é:", o:["Diferença salarial entre homens e mulheres","Igualdade plena de oportunidades","Ausência de violência contra mulheres","Distribuição igual do cuidado doméstico sempre"], c:0 },
+      { base:`"Interseccionalidade analisa como diferentes formas de desigualdade se cruzam."`, q:"Interseccionalidade considera:", o:["Raça, classe, gênero e outros marcadores sociais combinados","Somente renda isolada","Apenas idade biológica","Exclusivamente nacionalidade"], c:0 },
+      { base:`"A exclusão social ocorre quando grupos são impedidos de acessar direitos e participação plena."`, q:"Um exemplo de exclusão social é:", o:["Falta de acesso à moradia, educação e saúde","Garantia universal de direitos","Inclusão plena no mercado de trabalho","Igualdade total de oportunidades"], c:0 },
+      { base:`"A concentração de renda é uma das principais marcas das sociedades desiguais."`, q:"Concentração de renda significa:", o:["Grande parte da riqueza nas mãos de poucos","Distribuição igual da riqueza","Ausência de elites econômicas","Fim da pobreza"], c:0 },
+      { base:`"O Estado pode reduzir desigualdades por meio de políticas públicas."`, q:"Uma política pública de combate à desigualdade é:", o:["Ampliação do acesso à educação e saúde","Redução de direitos sociais","Eliminação de programas sociais","Aumento da exclusão"], c:0 },
+      { base:`"Meritocracia é a ideia de que posições sociais resultam apenas do mérito individual."`, q:"Uma crítica sociológica à meritocracia é que ela pode ignorar:", o:["Desigualdades estruturais de origem","Esforços individuais sempre inexistentes","Toda forma de educação","A existência de trabalho"], c:0 },
+      { base:`"Capital cultural é um conceito associado a Pierre Bourdieu."`, q:"Capital cultural refere-se:", o:["Conhecimentos, hábitos, títulos e repertórios valorizados socialmente","Dinheiro guardado no banco apenas","Força física","Propriedade de fábricas"], c:0 },
+      { base:`"Bourdieu analisou como a escola pode reproduzir desigualdades sociais."`, q:"A escola pode reproduzir desigualdades quando:", o:["Valoriza repertórios de grupos privilegiados como se fossem naturais","Garante igualdade total em todos os casos","Elimina diferenças sociais automaticamente","Impede qualquer avaliação"], c:0 },
+      { base:`"Preconceito é um julgamento negativo prévio sobre pessoas ou grupos."`, q:"Discriminação ocorre quando:", o:["O preconceito se transforma em prática de exclusão","Há respeito pleno à diversidade","Direitos são ampliados para todos","Diferenças são valorizadas"], c:0 },
+      { base:`"A desigualdade regional mostra diferenças entre áreas do mesmo país."`, q:"No Brasil, desigualdades regionais aparecem em:", o:["Renda, infraestrutura, serviços e oportunidades","Rotação da Terra","Fusos horários apenas","Clima sem sociedade"], c:0 },
+      { base:`"A segregação socioespacial separa grupos sociais no espaço urbano."`, q:"Ela pode ser percebida por:", o:["Bairros com infraestrutura muito desigual","Distribuição igual de serviços","Ausência de periferias","Fim da desigualdade urbana"], c:0 },
+      { base:`"A violência urbana pode estar relacionada a desigualdades, exclusão e ausência de políticas públicas."`, q:"Uma análise sociológica da violência deve considerar:", o:["Contexto social, econômico e institucional","Apenas natureza humana isolada","Somente clima","Fatores sem história"], c:0 },
+      { base:`"Inclusão social significa ampliar acesso a direitos e participação."`, q:"Uma medida de inclusão social é:", o:["Garantir acessibilidade, educação e oportunidades","Criar barreiras sociais","Reduzir direitos","Excluir minorias"], c:0 },
+      { base:`"A Sociologia analisa a desigualdade como fenômeno histórico e socialmente produzido."`, q:"Isso significa que a desigualdade:", o:["Pode ser transformada por ações sociais e políticas","É natural e imutável","Não tem relação com instituições","Não depende da história"], c:0 }
+    ]
+  ),
+    "Movimentos Sociais": gerarAreaBase(
+    "Movimentos Sociais",
+    [
+      { base:`"Movimentos sociais são ações coletivas organizadas por grupos que buscam mudanças, reconhecimento ou defesa de direitos."`, q:"Uma característica dos movimentos sociais é:", o:["Ação coletiva em torno de demandas sociais","Ação apenas individual sem organização","Ausência de objetivos políticos","Isolamento completo da sociedade"], c:0 },
+      { base:`"Movimentos sociais podem atuar por protestos, campanhas, ocupações, debates públicos e pressão institucional."`, q:"Uma forma de atuação de movimentos sociais é:", o:["Mobilização pública e reivindicação de direitos","Controle climático","Movimento de rotação","Produção industrial automática"], c:0 },
+      { base:`"O movimento operário surgiu ligado às condições de trabalho na sociedade industrial."`, q:"Uma pauta histórica do movimento operário foi:", o:["Melhores salários e direitos trabalhistas","Fim de toda organização coletiva","Apoio à exploração sem limites","Redução da cidadania"], c:0 },
+      { base:`"O movimento feminista luta contra desigualdades de gênero e por direitos das mulheres."`, q:"Uma pauta do feminismo é:", o:["Igualdade de direitos e combate à violência de gênero","Defesa da desigualdade salarial","Exclusão das mulheres da política","Fim da educação feminina"], c:0 },
+      { base:`"O movimento negro denuncia o racismo e reivindica igualdade, reconhecimento e reparação histórica."`, q:"Uma pauta do movimento negro é:", o:["Combate ao racismo estrutural","Reforço da discriminação racial","Negação da história da escravidão","Defesa da segregação"], c:0 },
+      { base:`"Movimentos indígenas lutam por território, cultura, autonomia e proteção ambiental."`, q:"Uma reivindicação central dos povos indígenas é:", o:["Demarcação e proteção de terras tradicionais","Eliminação de direitos territoriais","Abandono obrigatório das línguas indígenas","Proibição de manifestações culturais"], c:0 },
+      { base:`"Movimentos ambientalistas denunciam impactos ambientais e defendem sustentabilidade."`, q:"Uma pauta ambientalista é:", o:["Preservação de biomas e redução da poluição","Aumento do desmatamento","Descarte de lixo em rios","Eliminação de áreas protegidas"], c:0 },
+      { base:`"O movimento estudantil tem participação histórica em lutas por educação e democracia."`, q:"Uma pauta comum do movimento estudantil é:", o:["Educação pública de qualidade e participação política","Fim das escolas","Privatização obrigatória de todo ensino","Exclusão juvenil"], c:0 },
+      { base:`"Movimentos por moradia atuam diante do déficit habitacional e da segregação urbana."`, q:"Uma reivindicação desses movimentos é:", o:["Acesso à moradia digna","Aumento da especulação sem controle","Expulsão de populações pobres","Fim de políticas habitacionais"], c:0 },
+      { base:`"Os movimentos sociais podem ampliar a democracia ao incluir grupos historicamente excluídos."`, q:"A importância democrática dos movimentos sociais está em:", o:["Dar visibilidade a demandas e direitos","Eliminar participação popular","Concentrar poder em poucos grupos","Impedir debate público"], c:0 },
+      { base:`"Novos movimentos sociais muitas vezes enfatizam identidade, cultura, meio ambiente e reconhecimento."`, q:"Uma característica dos novos movimentos sociais é:", o:["Defesa de identidade, diversidade e direitos culturais","Atuação exclusiva por partidos tradicionais","Ausência de pautas simbólicas","Rejeição total da cidadania"], c:0 },
+      { base:`"A internet ampliou novas formas de mobilização social."`, q:"As redes sociais podem contribuir para:", o:["Organização, denúncia e divulgação de causas","Impedir toda mobilização","Eliminar a opinião pública","Acabar com movimentos sociais"], c:0 },
+      { base:`"Movimentos sociais enfrentam disputas com governos, empresas e grupos contrários às suas pautas."`, q:"Essas disputas revelam:", o:["Conflitos de interesses na sociedade","Ausência de poder nas relações sociais","Fim da política","Harmonia total entre grupos"], c:0 },
+      { base:`"A criminalização de movimentos sociais ocorre quando reivindicações são tratadas como ameaça ilegítima."`, q:"Sociologicamente, criminalizar movimentos pode:", o:["Enfraquecer a participação democrática","Ampliar automaticamente direitos","Eliminar desigualdades","Garantir diálogo plural"], c:0 },
+      { base:`"Movimentos sociais podem pressionar pela criação de leis e políticas públicas."`, q:"Essa atuação mostra que eles podem:", o:["Influenciar mudanças institucionais","Agir sem qualquer impacto","Eliminar o Estado","Substituir todos os poderes"], c:0 },
+      { base:`"A ação coletiva exige organização, identidade compartilhada e objetivos comuns."`, q:"Um elemento importante da ação coletiva é:", o:["Construção de pautas comuns","Isolamento individual","Ausência de comunicação","Falta de objetivos"], c:0 },
+      { base:`"Movimentos sociais podem ser locais, nacionais ou globais."`, q:"Um movimento global é aquele que:", o:["Articula demandas em diferentes países","Existe apenas em uma rua","Não usa comunicação","Não possui pauta pública"], c:0 },
+      { base:`"A luta por direitos civis marcou movimentos sociais em diferentes países."`, q:"Direitos civis estão relacionados a:", o:["Liberdades individuais e igualdade perante a lei","Apenas consumo","Propriedade de máquinas","Controle do clima"], c:0 },
+      { base:`"Movimentos sociais também produzem educação política e consciência coletiva."`, q:"Consciência coletiva em movimentos sociais significa:", o:["Percepção compartilhada de problemas e objetivos","Ausência de identidade","Pensamento imposto pela natureza","Isolamento sem comunicação"], c:0 },
+      { base:`"Os movimentos sociais são fundamentais para compreender conflitos e transformações nas sociedades contemporâneas."`, q:"Eles demonstram que a sociedade é:", o:["Dinâmica, conflitiva e transformável","Imutável e sem conflitos","Naturalmente igualitária sempre","Sem participação coletiva"], c:0 }
+    ]
+  ),
+
+  "Globalização e Tecnologia": gerarAreaBase(
+    "Globalização e Tecnologia",
+    [
+      { base:`"A globalização intensificou fluxos de mercadorias, capitais, pessoas, informações e culturas."`, q:"Uma característica da globalização é:", o:["Integração mundial por redes e fluxos","Isolamento completo dos países","Fim da comunicação internacional","Ausência de comércio"], c:0 },
+      { base:`"A tecnologia digital mudou relações de trabalho, consumo, comunicação e participação política."`, q:"Um efeito social das tecnologias digitais é:", o:["Aceleração da circulação de informações","Fim das redes sociais","Redução total da comunicação","Desaparecimento da mídia"], c:0 },
+      { base:`"A globalização conecta sociedades, mas não elimina desigualdades."`, q:"Uma contradição da globalização é:", o:["Integração econômica com desigualdades persistentes","Igualdade automática entre todos","Fim da pobreza mundial","Ausência de conflitos culturais"], c:0 },
+      { base:`"As redes sociais digitais permitem comunicação rápida e ampla."`, q:"Um impacto político das redes sociais é:", o:["Mobilização social e disputa de narrativas","Fim da opinião pública","Ausência de debates","Controle total da verdade"], c:0 },
+      { base:`"A desinformação circula rapidamente em ambientes digitais."`, q:"Um risco das fake news é:", o:["Manipular opiniões e prejudicar decisões coletivas","Aumentar sempre a qualidade da informação","Garantir neutralidade política","Eliminar conflitos sociais"], c:0 },
+      { base:`"A exclusão digital limita o acesso a oportunidades educacionais, profissionais e políticas."`, q:"Exclusão digital significa:", o:["Desigualdade no acesso e uso de tecnologias","Ausência de internet no planeta inteiro","Uso excessivo de redes por todos","Fim da desigualdade social"], c:0 },
+      { base:`"O consumo na sociedade contemporânea é influenciado por mídia, publicidade e plataformas digitais."`, q:"A sociedade de consumo é marcada por:", o:["Valorização do consumo como identidade e status","Rejeição total ao mercado","Ausência de propaganda","Fim do comércio"], c:0 },
+      { base:`"Algoritmos organizam conteúdos, recomendações e visibilidade nas plataformas digitais."`, q:"Algoritmos podem influenciar:", o:["O que as pessoas veem e consomem online","A rotação da Terra","A formação de rios","A composição do solo"], c:0 },
+      { base:`"A vigilância digital envolve coleta e uso de dados pessoais por empresas e governos."`, q:"Um debate ético da vigilância digital é:", o:["Privacidade e controle de dados","Formação de nuvens","Plantio agrícola","Movimento de placas"], c:0 },
+      { base:`"O trabalho remoto e a economia de plataformas cresceram com tecnologias digitais."`, q:"Um desafio da economia de plataformas é:", o:["Precarização e instabilidade laboral","Garantia universal de direitos","Fim de toda exploração","Ausência de controle algorítmico"], c:0 },
+      { base:`"A cultura global circula por filmes, músicas, marcas e redes digitais."`, q:"Um efeito cultural da globalização é:", o:["Difusão cultural e possível padronização de hábitos","Isolamento cultural absoluto","Fim de todas as identidades locais","Ausência de mídia"], c:0 },
+      { base:`"Hibridização cultural ocorre quando elementos de culturas diferentes se misturam."`, q:"Hibridização cultural significa:", o:["Mistura e recriação de práticas culturais","Separação absoluta entre culturas","Destruição obrigatória de toda tradição","Ausência de contato cultural"], c:0 },
+      { base:`"A comunicação em rede alterou a relação entre produtores e consumidores de informação."`, q:"Na internet, usuários podem:", o:["Produzir, compartilhar e comentar conteúdos","Apenas receber informações sem interação","Nunca participar de debates","Eliminar toda comunicação"], c:0 },
+      { base:`"A inteligência artificial levanta debates sobre trabalho, ética, privacidade e desigualdade."`, q:"Um impacto possível da IA no trabalho é:", o:["Automação de tarefas e mudança nas profissões","Fim imediato de toda atividade humana","Ausência de transformações produtivas","Retorno ao feudalismo"], c:0 },
+      { base:`"A tecnologia pode ampliar direitos, mas também reforçar desigualdades."`, q:"Isso ocorre porque:", o:["O acesso e o uso das tecnologias são socialmente desiguais","Todos têm as mesmas condições de acesso","Tecnologia elimina automaticamente pobreza","A internet não influencia a sociedade"], c:0 },
+      { base:`"A mídia possui papel importante na construção da opinião pública."`, q:"A mídia pode:", o:["Informar, influenciar e enquadrar debates sociais","Controlar o clima","Criar recursos naturais","Eliminar toda interpretação"], c:0 },
+      { base:`"Bolhas informacionais ocorrem quando indivíduos recebem conteúdos alinhados às suas crenças."`, q:"Um risco das bolhas informacionais é:", o:["Reduzir contato com opiniões diferentes","Ampliar sempre o diálogo plural","Garantir neutralidade absoluta","Eliminar polarização"], c:0 },
+      { base:`"A globalização econômica fortaleceu empresas transnacionais."`, q:"Empresas transnacionais são aquelas que:", o:["Atuam em vários países","Existem apenas em uma cidade","Não participam do comércio mundial","São sempre estatais locais"], c:0 },
+      { base:`"O tempo social parece acelerado com comunicações instantâneas."`, q:"A aceleração social está relacionada a:", o:["Rapidez das mudanças e da comunicação","Paralisação tecnológica","Fim das redes digitais","Ausência de inovação"], c:0 },
+      { base:`"A Sociologia analisa a tecnologia como produção social, não como algo neutro e isolado."`, q:"Isso significa que a tecnologia:", o:["Reflete interesses, valores e relações de poder","É sempre neutra e sem impacto social","Não depende da sociedade","Elimina todos os conflitos"], c:0 }
+    ]
+  ),
+
+  "Direitos Humanos e Cidadania": gerarAreaBase(
+    "Direitos Humanos e Cidadania",
+    [
+      { base:`"Direitos humanos são direitos fundamentais ligados à dignidade de todas as pessoas."`, q:"A ideia central dos direitos humanos é:", o:["Garantir dignidade, liberdade e igualdade","Garantir privilégios para poucos","Excluir minorias","Eliminar cidadania"], c:0 },
+      { base:`"A cidadania envolve direitos civis, políticos e sociais."`, q:"Direitos sociais incluem:", o:["Educação, saúde, trabalho e moradia","Apenas voto","Somente liberdade de expressão","Exclusivamente propriedade privada"], c:0 },
+      { base:`"Direitos civis protegem liberdades individuais."`, q:"Um exemplo de direito civil é:", o:["Liberdade de pensamento e expressão","Acesso à merenda escolar apenas","Voto obrigatório","Aposentadoria"], c:0 },
+      { base:`"Direitos políticos envolvem participação na vida pública."`, q:"Um exemplo de direito político é:", o:["Votar e ser votado","Acesso à saúde","Direito ao lazer","Direito à moradia"], c:0 },
+      { base:`"A cidadania plena depende do acesso real aos direitos."`, q:"Quando direitos existem na lei, mas não chegam a todos, há:", o:["Cidadania limitada ou incompleta","Igualdade plena","Ausência de desigualdade","Democracia perfeita"], c:0 },
+      { base:`"Minorais sociais podem enfrentar discriminação e exclusão."`, q:"Políticas de inclusão buscam:", o:["Garantir igualdade de oportunidades e reconhecimento","Reforçar exclusões","Eliminar direitos","Impedir participação social"], c:0 },
+      { base:`"A Constituição de 1988 ampliou direitos e ficou conhecida como Constituição Cidadã."`, q:"A Constituição Cidadã é associada à:", o:["Ampliação de direitos sociais e democráticos","Redução da cidadania","Fim das eleições","Ausência de garantias individuais"], c:0 },
+      { base:`"A Declaração Universal dos Direitos Humanos foi aprovada em 1948."`, q:"Esse documento surgiu no contexto de:", o:["Resposta às violações da Segunda Guerra Mundial","Expansão do feudalismo","Colonização do Brasil","Revolução Neolítica"], c:0 },
+      { base:`"Racismo viola direitos humanos e limita a cidadania de grupos racializados."`, q:"Combater o racismo envolve:", o:["Políticas antidiscriminatórias e reconhecimento histórico","Negar desigualdades raciais","Reforçar estereótipos","Impedir igualdade jurídica"], c:0 },
+      { base:`"A violência de gênero limita direitos, liberdade e segurança das mulheres."`, q:"Uma medida de enfrentamento é:", o:["Leis de proteção e políticas de igualdade","Culpar vítimas","Eliminar denúncia","Negar a violência"], c:0 },
+      { base:`"A acessibilidade é condição para inclusão de pessoas com deficiência."`, q:"Acessibilidade significa:", o:["Garantir condições de participação e acesso a espaços e serviços","Criar barreiras físicas","Excluir do trabalho","Negar direitos educacionais"], c:0 },
+      { base:`"A liberdade religiosa é parte dos direitos fundamentais."`, q:"Respeitar liberdade religiosa significa:", o:["Garantir o direito de crença e não crença","Impor uma religião única","Criminalizar todas as crenças","Negar diversidade religiosa"], c:0 },
+      { base:`"O direito à educação é essencial para exercício da cidadania."`, q:"A educação contribui para:", o:["Participação social, autonomia e acesso a oportunidades","Reduzir consciência cidadã","Impedir mobilidade social","Eliminar pensamento crítico"], c:0 },
+      { base:`"Direitos humanos são universais, mas sua efetivação depende de políticas e mobilização social."`, q:"Efetivar direitos significa:", o:["Garantir que saiam da lei e cheguem à vida concreta","Mantê-los apenas no papel","Eliminar políticas públicas","Reduzir acesso a serviços"], c:0 },
+      { base:`"A intolerância ameaça a convivência democrática."`, q:"Combater intolerância exige:", o:["Respeito à diversidade e igualdade de direitos","Censura de minorias","Exclusão do diferente","Imposição cultural única"], c:0 },
+      { base:`"O acesso à justiça é parte importante da cidadania."`, q:"Sem acesso à justiça, grupos vulneráveis podem:", o:["Ter direitos violados sem reparação adequada","Garantir igualdade plena","Resolver tudo sem instituições","Eliminar conflitos sociais"], c:0 },
+      { base:`"Direitos humanos não são privilégios, mas garantias básicas."`, q:"Uma visão correta sobre direitos humanos é:", o:["Protegem todas as pessoas","Servem apenas para alguns grupos","Eliminam deveres sociais","Defendem crimes"], c:0 },
+      { base:`"A cidadania ativa envolve participação, denúncia, organização e controle social."`, q:"Cidadania ativa significa:", o:["Participar da vida pública e defender direitos","Apenas obedecer sem questionar","Evitar qualquer participação","Ignorar problemas sociais"], c:0 },
+      { base:`"A democracia depende da proteção de direitos e liberdades."`, q:"Sem direitos humanos, a democracia:", o:["Fica enfraquecida","Torna-se automaticamente perfeita","Não sofre impactos","Dispensa cidadania"], c:0 },
+      { base:`"A Sociologia contribui para analisar direitos humanos como conquistas históricas e sociais."`, q:"Isso significa que direitos:", o:["Resultam de lutas, conflitos e mobilizações","São naturais sem história social","Não dependem de participação","São sempre garantidos automaticamente"], c:0 }
+    ]
+  ),
+
+  "Sociologia no ENEM": gerarAreaBase(
+    "Sociologia no ENEM",
+    [
+      { base:`"O ENEM costuma cobrar Sociologia por meio de textos, charges, dados sociais e situações do cotidiano."`, q:"Uma habilidade importante em Sociologia no ENEM é:", o:["Interpretar criticamente fenômenos sociais","Decorar fórmulas matemáticas apenas","Ignorar o texto-base","Responder por opinião sem análise"], c:0 },
+      { base:`"Questões sociológicas frequentemente relacionam indivíduo e sociedade."`, q:"Essa relação indica que comportamentos individuais podem ser influenciados por:", o:["Normas, instituições e estruturas sociais","Apenas genética","Somente clima","Movimento de rotação"], c:0 },
+      { base:`"O ENEM valoriza temas como cidadania, direitos humanos, desigualdade e cultura."`, q:"Esses temas exigem:", o:["Análise crítica e contextualizada","Memorização sem interpretação","Negação da realidade social","Ausência de leitura"], c:0 },
+      { base:`"Charges sociais costumam apresentar críticas a desigualdades, política, consumo ou preconceitos."`, q:"Para interpretar uma charge sociológica, é preciso observar:", o:["Contexto, símbolos e crítica social","Apenas o desenho isolado","Somente a cor do fundo","Nenhuma legenda"], c:0 },
+      { base:`"Dados estatísticos sobre renda, raça, gênero ou educação ajudam a compreender desigualdades."`, q:"Ao analisar dados sociais, deve-se:", o:["Relacioná-los ao contexto histórico e social","Ignorar desigualdades","Escolher a alternativa mais longa","Desconsiderar grupos sociais"], c:0 },
+      { base:`"O conceito de cidadania é recorrente em questões de Sociologia."`, q:"Cidadania envolve:", o:["Direitos, deveres e participação social","Apenas consumo","Somente renda","Controle climático"], c:0 },
+      { base:`"O trabalho é tema frequente no ENEM, especialmente em relação a capitalismo, tecnologia e direitos."`, q:"Um problema do mundo do trabalho atual é:", o:["Precarização e informalidade","Excesso de direitos garantidos a todos","Fim do desemprego","Ausência de desigualdades"], c:0 },
+      { base:`"Cultura no ENEM pode aparecer em debates sobre diversidade, etnocentrismo e indústria cultural."`, q:"Etnocentrismo é:", o:["Julgar outra cultura como inferior a partir da própria","Respeitar todas as culturas igualmente","Compreender contextos culturais","Valorizar a diversidade"], c:0 },
+      { base:`"Relativismo cultural aparece como contraponto ao preconceito cultural."`, q:"Relativismo cultural propõe:", o:["Compreender práticas culturais em seus contextos","Impor uma cultura única","Negar diversidade","Hierarquizar povos"], c:0 },
+      { base:`"A desigualdade social pode ser analisada por classe, raça, gênero e território."`, q:"Uma abordagem sociológica da desigualdade reconhece que ela é:", o:["Produzida historicamente e socialmente","Natural e imutável","Sem relação com instituições","Apenas fruto do acaso"], c:0 },
+      { base:`"Movimentos sociais aparecem no ENEM como formas de participação e luta por direitos."`, q:"Movimentos sociais são importantes porque:", o:["Dão visibilidade a demandas coletivas","Impedem cidadania","Eliminam democracia","Proíbem participação popular"], c:0 },
+      { base:`"A democracia envolve participação, pluralismo e respeito a direitos."`, q:"Um elemento essencial da democracia é:", o:["Liberdade de expressão e participação política","Censura permanente","Poder absoluto","Eliminação da oposição"], c:0 },
+      { base:`"A globalização afeta cultura, trabalho, consumo e comunicação."`, q:"Uma contradição da globalização é:", o:["Integração com manutenção de desigualdades","Igualdade automática","Fim dos conflitos","Ausência de tecnologia"], c:0 },
+      { base:`"A mídia influencia a formação da opinião pública."`, q:"Uma análise sociológica da mídia considera:", o:["Poder, interesses, representação e circulação de informações","Apenas entretenimento sem efeitos sociais","Fenômenos naturais","Rotação terrestre"], c:0 },
+      { base:`"A socialização é tema base para compreender formação de comportamentos."`, q:"Socialização é:", o:["Aprendizagem de normas, valores e práticas sociais","Processo químico","Movimento climático","Ato puramente biológico sem sociedade"], c:0 },
+      { base:`"Instituições sociais organizam a vida coletiva."`, q:"Família, escola, Estado e religião são exemplos de:", o:["Instituições sociais","Fenômenos físicos","Elementos químicos","Acidentes geográficos"], c:0 },
+      { base:`"O ENEM pode cobrar racismo estrutural, desigualdade racial e políticas afirmativas."`, q:"Políticas afirmativas buscam:", o:["Reduzir desigualdades históricas e ampliar oportunidades","Aumentar exclusão","Negar racismo","Eliminar direitos"], c:0 },
+      { base:`"Questões sobre gênero discutem desigualdade, violência, trabalho e representação."`, q:"Uma análise sociológica de gênero considera:", o:["Papéis sociais construídos historicamente","Apenas biologia sem sociedade","Ausência de desigualdade","Neutralidade total das instituições"], c:0 },
+      { base:`"A cidadania digital envolve participação, acesso, segurança e responsabilidade no ambiente online."`, q:"Um desafio da cidadania digital é:", o:["Combater desinformação e exclusão digital","Impedir acesso à internet","Eliminar participação online","Negar privacidade"], c:0 },
+      { base:`"A Sociologia no ENEM exige leitura atenta e relação entre conceito e realidade social."`, q:"A melhor estratégia para responder questões de Sociologia é:", o:["Interpretar o texto-base e aplicar conceitos sociais","Responder por achismo","Ignorar alternativas","Decorar apenas nomes sem contexto"], c:0 }
+    ]
+  )
+};
+
+function mostrarMenu() {
+  pararAudioFundo();
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue); margin-bottom:8px;">Escolha um módulo de Sociologia</h2>
+      <p class="mini">Versão gratuita completa com <strong>10 módulos</strong> e <strong>200 questões</strong>.</p>
+
+      <div class="grid-areas">
+        ${areas.map(area => `
+          <div class="card-area">
+            <h3>${area.nome}</h3>
+            <p>${area.descricao}</p>
+            <button class="btn" onclick="iniciarArea('${area.nome.replace(/'/g, "\\'")}')">
+              Entrar neste módulo
+            </button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function iniciarArea(nomeArea) {
+  await destravarAudio();
+  areaAtual = nomeArea;
+  questoesAtuais = bancoQuestoes[nomeArea] || [];
+  indiceQuestao = 0;
+  acertosObjetivas = 0;
+  questaoRenderizadaAtual = null;
+
+  if (!questoesAtuais.length) {
+    app.innerHTML = `
+      <div class="box">
+        <h2 style="color:var(--red);">Erro ao abrir o módulo</h2>
+        <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+      </div>
+    `;
+    return;
+  }
+
+  setTimeout(() => {
+    tocarAudioFundo();
+  }, 120);
+
+  carregarQuestao();
+}
+
+function montarEnunciado(questao) {
+  return `
+    <span class="question-label">Base para interpretação:</span>
+    <span class="text-base">${questao.base}</span>
+    <span class="question-label">Pergunta:</span>
+    ${questao.q}
+  `;
+}
+
+function carregarQuestao() {
+  const questao = questoesAtuais[indiceQuestao];
+  const total = questoesAtuais.length;
+  questaoRenderizadaAtual = embaralharAlternativas(questao);
+
+  let html = `
+    <div class="box">
+      <div class="status">
+        <span>${areaAtual}</span>
+        <span>Questão ${indiceQuestao + 1}/${total}</span>
+      </div>
+      <div id="question-text">${montarEnunciado(questaoRenderizadaAtual)}</div>
+      <div class="options-wrap">
+  `;
+
+  questaoRenderizadaAtual.opcoesRenderizadas.forEach((alt, idx) => {
+    html += `<button class="btn option-btn" onclick="responderObjetiva(${idx})">${alt}</button>`;
+  });
+
+  html += `
+      </div>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+
+  app.innerHTML = html;
+}
+
+function responderObjetiva(escolhida) {
+  const botoes = document.querySelectorAll(".option-btn");
+  const correta = questaoRenderizadaAtual.corretaRenderizada;
+
+  botoes.forEach((btn, idx) => {
+    btn.disabled = true;
+    if (idx === correta) btn.classList.add("correct");
+  });
+
+  if (escolhida === correta) {
+    acertosObjetivas++;
+    tocarAcerto();
+  } else {
+    botoes[escolhida].classList.add("wrong");
+    tocarErro();
+  }
+
+  setTimeout(() => {
+    indiceQuestao++;
+    if (indiceQuestao < questoesAtuais.length) {
+      carregarQuestao();
+    } else {
+      finalizarArea();
+    }
+  }, 900);
+}
+
+function finalizarArea() {
+  pararAudioFundo();
+
+  const notaFinal = acertosObjetivas * 10;
+  const totalPossivel = questoesAtuais.length * 10;
+
+  let feedback = "Módulo concluído. Continue treinando os outros módulos para completar as 200 questões de Sociologia.";
+
+  if (notaFinal >= 160) feedback = "Excelente desempenho! Você demonstrou domínio forte neste módulo.";
+  else if (notaFinal >= 120) feedback = "Bom desempenho! Continue revisando para fortalecer os pontos fracos.";
+  else if (notaFinal >= 80) feedback = "Resultado intermediário. Refaça o módulo e revise os temas com mais atenção.";
+  else feedback = "Atenção: este módulo mostrou dificuldades importantes. Refaça e revise os conteúdos.";
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue);">${areaAtual}</h2>
+      <div class="result-number">${notaFinal}/${totalPossivel}</div>
+      <div class="result-sub">Acertos: ${acertosObjetivas}/${questoesAtuais.length}</div>
+      <p class="mini" style="margin-bottom:18px;">${feedback}</p>
+
+      <button class="btn" onclick="iniciarArea('${areaAtual.replace(/'/g, "\\'")}')">Refazer este módulo</button>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+}
+
+mostrarMenu();
+
+
+</script>
+
+</body>
+</html>
