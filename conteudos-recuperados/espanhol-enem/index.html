@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espanhol Gratuito ENEM</title>
+  <style>
+    :root{
+      --bg:#05070c;
+      --card:#11141b;
+      --card2:#171b24;
+      --blue:#00f3ff;
+      --pink:#ff00e6;
+      --green:#39ff14;
+      --red:#ff003c;
+      --yellow:#ffd400;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --line:rgba(255,255,255,.08);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#000;
+      color:var(--text);
+      min-height:100vh;
+      padding:20px 12px 40px;
+      text-align:center;
+      overflow-x:hidden;
+    }
+
+    header{
+      max-width:1100px;
+      margin:0 auto 24px;
+      border:2px solid var(--blue);
+      border-radius:24px;
+      padding:22px 16px;
+      background:linear-gradient(180deg,#0c0f16,#090b11);
+      box-shadow:0 0 22px rgba(0,243,255,.22);
+    }
+
+    header h1{
+      color:var(--blue);
+      font-size:clamp(2rem,4vw,3rem);
+      text-shadow:0 0 14px rgba(0,243,255,.7);
+      font-weight:900;
+    }
+
+    header p{
+      margin-top:10px;
+      color:var(--pink);
+      font-weight:800;
+      font-size:clamp(1rem,2vw,1.3rem);
+    }
+
+    #app{
+      width:100%;
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .box{
+      width:100%;
+      max-width:100%;
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:20px 16px;
+      box-shadow:0 0 20px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+
+    .btn{
+      display:block;
+      width:100%;
+      max-width:560px;
+      margin:10px auto;
+      padding:14px 16px;
+      border:2px solid var(--blue);
+      background:transparent;
+      color:#fff;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:800;
+      font-size:1rem;
+      line-height:1.45;
+      transition:.2s;
+      white-space:normal;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    .btn:hover:not(:disabled){
+      background:var(--blue);
+      color:#000;
+      box-shadow:0 0 18px rgba(0,243,255,.35);
+    }
+
+    .btn-voltar{
+      border-color:#666;
+      color:#ddd;
+    }
+
+    .btn-voltar:hover:not(:disabled){
+      background:#333;
+      color:#fff;
+      box-shadow:none;
+    }
+
+    .btn.correct{
+      background:var(--green)!important;
+      border-color:var(--green)!important;
+      color:#000!important;
+    }
+
+    .btn.wrong{
+      background:var(--red)!important;
+      border-color:var(--red)!important;
+      color:#fff!important;
+    }
+
+    .grid-areas{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .card-area{
+      background:linear-gradient(135deg, rgba(0,243,255,.08), rgba(255,0,230,.08));
+      border:1px solid rgba(0,243,255,.16);
+      border-radius:16px;
+      padding:16px;
+      text-align:left;
+      min-width:0;
+    }
+
+    .card-area h3{
+      color:var(--blue);
+      margin-bottom:8px;
+      font-size:1.12rem;
+      line-height:1.35;
+      word-break:break-word;
+    }
+
+    .card-area p{
+      color:#ddd;
+      font-size:.95rem;
+      line-height:1.45;
+      margin-bottom:10px;
+      word-break:break-word;
+    }
+
+    .status{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+      color:var(--pink);
+      font-weight:bold;
+      text-align:left;
+    }
+
+    #question-text{
+      font-size:1.05rem;
+      line-height:1.6;
+      margin:20px 0;
+      min-height:88px;
+      text-align:left;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    .question-label{
+      display:block;
+      color:var(--yellow);
+      font-weight:bold;
+      margin-bottom:8px;
+    }
+
+    .text-base{
+      display:block;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:14px;
+      margin:10px 0 14px;
+      color:#f5f5f5;
+      font-style:italic;
+      line-height:1.65;
+    }
+
+    .options-wrap{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-bottom:16px;
+      width:100%;
+      max-width:100%;
+    }
+
+    .option-btn{
+      width:100%;
+      max-width:100%;
+      margin:0;
+      text-align:left;
+      min-height:58px;
+    }
+
+    textarea{
+      width:100%;
+      min-height:140px;
+      background:#0c0f14;
+      border:2px solid var(--blue);
+      color:#fff;
+      border-radius:12px;
+      padding:12px;
+      font-size:1rem;
+      resize:vertical;
+      margin-bottom:14px;
+    }
+
+    .result-number{
+      font-size:3rem;
+      color:var(--blue);
+      margin:12px 0;
+      font-weight:900;
+    }
+
+    .result-sub{
+      font-size:1.12rem;
+      color:#ddd;
+      margin-bottom:10px;
+    }
+
+    .mini{
+      color:var(--muted);
+      font-size:.96rem;
+      line-height:1.5;
+    }
+
+    label{
+      display:block;
+      text-align:left;
+      margin:10px 0 6px;
+      color:var(--yellow);
+      font-weight:bold;
+    }
+
+    .input-nota{
+      width:100%;
+      padding:12px;
+      background:#101010;
+      border:2px solid var(--blue);
+      color:#fff;
+      border-radius:10px;
+      margin-bottom:12px;
+    }
+
+    .disc-box{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      padding:16px;
+      margin-bottom:16px;
+      text-align:left;
+    }
+
+    .disc-box h3{
+      color:var(--blue);
+      margin-bottom:8px;
+    }
+
+    .disc-box p{
+      margin-bottom:8px;
+      line-height:1.55;
+      word-break:break-word;
+    }
+
+    @media (max-width:700px){
+      .grid-areas{
+        grid-template-columns:1fr;
+      }
+      .box{
+        padding:16px 12px;
+      }
+      #question-text{
+        font-size:1rem;
+      }
+      .btn{
+        font-size:.96rem;
+        padding:13px 12px;
+      }
+    }
+
+
+</style>
+</head>
+<body>
+<nav style="max-width:1100px;margin:0 auto 15px;text-align:left"><a href="../index.html" style="display:inline-block;padding:12px 16px;background:#113e5e;color:#fff;border-radius:11px;text-decoration:none;font:700 15px system-ui">← Voltar ao acervo EnsinoMeu</a></nav>
+
+<header>
+  <h1>ESPANHOL Gratuito ENEM</h1>
+  <p>10 MÓDULOS • 20 OBJETIVAS + 2 DISCURSIVAS POR MÓDULO</p>
+</header>
+
+
+<div id="app"></div>
+
+<audio id="audio-bg" loop preload="auto" playsinline>
+  <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-correct" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-wrong" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const app = document.getElementById("app");
+const audioBg = document.getElementById("audio-bg");
+const audioCorrect = document.getElementById("audio-correct");
+const audioWrong = document.getElementById("audio-wrong");
+
+audioBg.volume = 0.06;
+audioCorrect.volume = 0.45;
+audioWrong.volume = 0.45;
+
+let audioLiberado = false;
+let areaAtual = "";
+let questoesAtuais = [];
+let indiceQuestao = 0;
+let acertosObjetivas = 0;
+let respostasDiscursivas = ["", ""];
+let notasDiscursivas = [0, 0];
+let questaoRenderizadaAtual = null;
+
+document.addEventListener("click", destravarAudio, { once: true });
+document.addEventListener("touchstart", destravarAudio, { once: true });
+
+function destravarAudio() {
+  if (audioLiberado) return Promise.resolve(true);
+
+  audioBg.muted = true;
+  return audioBg.play()
+    .then(() => {
+      audioBg.pause();
+      audioBg.currentTime = 0;
+      audioBg.muted = false;
+      audioLiberado = true;
+
+      audioCorrect.play().then(() => {
+        audioCorrect.pause();
+        audioCorrect.currentTime = 0;
+      }).catch(() => {});
+
+      audioWrong.play().then(() => {
+        audioWrong.pause();
+        audioWrong.currentTime = 0;
+      }).catch(() => {});
+
+      return true;
+    })
+    .catch(() => false);
+}
+
+function tocarAudioFundo() {
+  if (!audioLiberado) return;
+  audioBg.currentTime = 0;
+  audioBg.play().catch(() => {});
+}
+
+function pararAudioFundo() {
+  audioBg.pause();
+  audioBg.currentTime = 0;
+}
+
+function tocarAcerto() {
+  audioCorrect.currentTime = 0;
+  audioCorrect.play().catch(() => {});
+}
+
+function tocarErro() {
+  audioWrong.currentTime = 0;
+  audioWrong.play().catch(() => {});
+}
+
+const areasEspanhol = [
+  { nome: "Comprensión Lectora", descricao: "Interpretação de textos em espanhol." },
+  { nome: "Vocabulario en Contexto", descricao: "Sentido de palavras e expressões no contexto." },
+  { nome: "Gramática Básica", descricao: "Estruturas básicas da língua espanhola." },
+  { nome: "Tiempos Verbales", descricao: "Tempos verbais mais cobrados em prova." },
+  { nome: "Pronombres y Artículos", descricao: "Pronomes, artigos e referências textuais." },
+  { nome: "Conectores y Significado", descricao: "Conectores e relações lógicas do texto." },
+  { nome: "Anuncios y Campañas", descricao: "Leitura de anúncios, cartazes e campanhas." },
+  { nome: "Preposiciones y Expresiones", descricao: "Preposições e expressões frequentes." },
+  { nome: "Falsos Cognatos", descricao: "Palavras parecidas com o português que confundem." },
+  { nome: "Producción Escrita", descricao: "Respostas discursivas e escrita aplicada." }
+];
+
+function criarObjetiva(area, numero, textoBase, pergunta, alternativas, correta, comentario) {
+  return { tipo: "objetiva", area, numero, base: textoBase, q: pergunta, o: alternativas, c: correta, coment: comentario };
+}
+
+function criarDiscursiva(area, numero, pergunta, gabarito) {
+  return { tipo: "discursiva", area, numero, q: pergunta, gabarito };
+}
+
+function gerarAreaBase(nomeArea, perguntasObjetivas, discursivas) {
+  const objetivas = perguntasObjetivas.map((item, i) =>
+    criarObjetiva(nomeArea, i + 1, item.base, item.q, item.o, item.c, item.coment)
+  );
+  const disc = discursivas.map((item, i) =>
+    criarDiscursiva(nomeArea, 21 + i, item.q, item.g)
+  );
+  return [...objetivas, ...disc];
+}
+
+function embaralharAlternativas(questao) {
+  const pares = questao.o.map((texto, idx) => ({ texto, correta: idx === questao.c }));
+  for (let i = pares.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pares[i], pares[j]] = [pares[j], pares[i]];
+  }
+  return {
+    ...questao,
+    opcoesRenderizadas: pares.map(p => p.texto),
+    corretaRenderizada: pares.findIndex(p => p.correta)
+  };
+}
+
+const bancoQuestoes = {
+  "Comprensión Lectora": gerarAreaBase(
+    "Comprensión Lectora",
+    [
+      { base:`"Los estudiantes leen todos los días para mejorar su aprendizaje."`, q:"De acordo com o texto, por que os estudantes leem todos os dias?", o:["Para melhorar a aprendizagem","Para viajar de ônibus","Para descansar mais","Para evitar a escola"], c:0, coment:"O texto liga leitura diária à melhoria da aprendizagem." },
+      { base:`"La escuela organiza una campaña para reciclar papel y plástico."`, q:"Qual é o objetivo da escola?", o:["Organizar uma campanha de reciclagem","Fechar a biblioteca","Cancelar aulas","Vender livros"], c:0, coment:"Campaña para reciclar papel y plástico." },
+      { base:`"Muchos jóvenes usan internet para estudiar y buscar información."`, q:"Segundo o texto, os jovens usam a internet para:", o:["Brincar apenas","Estudar e buscar informação","Dormir melhor","Evitar leitura"], c:1, coment:"A finalidade aparece claramente." },
+      { base:`"El museo abre a las nueve y cierra a las cinco."`, q:"De acordo com o texto, o museu:", o:["Funciona das 9 às 17 horas","Abre à noite","Fecha ao meio-dia","Só abre aos domingos"], c:0, coment:"Abre a las nueve y cierra a las cinco." },
+      { base:`"Caminar al colegio puede ser saludable y económico."`, q:"No texto, caminhar para a escola pode ser:", o:["Saudável e econômico","Perigoso e caro","Muito lento e inútil","Apenas divertido"], c:0, coment:"A frase traz os dois benefícios." },
+      { base:`"Los profesores tienen un papel importante en la educación."`, q:"Segundo o texto, os professores têm um papel:", o:["Sem importância","Importante na educação","Exclusivamente administrativo","Apenas esportivo"], c:1, coment:"Papel importante en la educación." },
+      { base:`"Leer ayuda a comprender diferentes culturas."`, q:"A leitura ajuda a:", o:["Compreender culturas diferentes","Esquecer a escola","Parar de estudar línguas","Decorar números"], c:0, coment:"O texto associa leitura à compreensão cultural." },
+      { base:`"La alimentación saludable da más energía a los estudiantes."`, q:"Segundo o texto, alimentação saudável dá aos estudantes:", o:["Mais sono","Mais energia","Mais preguiça","Menos concentração"], c:1, coment:"Da más energía." },
+      { base:`"Algunas personas prefieren estudiar por la noche porque trabajan durante el día."`, q:"Por que algumas pessoas estudam à noite?", o:["Porque trabalham durante o dia","Porque odeiam a manhã","Porque não existe escola de manhã","Porque estão de férias"], c:0, coment:"A causa aparece na frase." },
+      { base:`"La biblioteca es un lugar tranquilo para leer y concentrarse."`, q:"No texto, a biblioteca é apresentada como um lugar:", o:["Barulhento","Tranquilo para leitura e concentração","Fechado para alunos","Usado só para jogos"], c:1, coment:"Lugar tranquilo para leer y concentrarse." },
+      { base:`"El transporte público puede reducir el tráfico y la contaminación."`, q:"Segundo o texto, o transporte público pode:", o:["Aumentar a poluição","Reduzir trânsito e poluição","Substituir bicicletas","Fechar ruas"], c:1, coment:"Reducir el tráfico y la contaminación." },
+      { base:`"El proyecto enseña a los alumnos cómo cultivar verduras."`, q:"O projeto ensina os alunos a:", o:["Cozinhar carne","Cultivar verduras","Vender roupas","Dirigir ônibus"], c:1, coment:"Cultivar verduras." },
+      { base:`"Practicar todos los días facilita el aprendizaje."`, q:"A ideia principal do texto é:", o:["Praticar diariamente facilita aprender","Aprender é sempre difícil","Estudar não ajuda","Prática atrapalha"], c:0, coment:"A frase é direta." },
+      { base:`"El agua es esencial para la vida y la salud."`, q:"Segundo o texto, a água é:", o:["Pouco importante","Essencial para a vida e a saúde","Apenas para atletas","Desnecessária"], c:1, coment:"Esencial para la vida y la salud." },
+      { base:`"Los jóvenes deben cuidar el medio ambiente."`, q:"O texto defende que os jovens devem:", o:["Ignorar a natureza","Cuidar do meio ambiente","Evitar reciclagem","Usar mais plástico"], c:1, coment:"Cuidar el medio ambiente." },
+      { base:`"La música puede ayudar a algunos alumnos a relajarse antes de los exámenes."`, q:"Segundo o texto, a música pode ajudar alguns alunos a:", o:["Dormir na prova","Relaxar antes dos exames","Esquecer o conteúdo","Parar de estudar"], c:1, coment:"Relajarse antes de los exámenes." },
+      { base:`"Una rutina equilibrada incluye estudio, descanso y actividad física."`, q:"Uma rotina equilibrada inclui:", o:["Só estudo","Estudo, descanso e atividade física","Só descanso","Só exercício"], c:1, coment:"Os três elementos aparecem no texto." },
+      { base:`"Internet ofrece acceso a información de todo el mundo."`, q:"De acordo com o texto, a internet oferece acesso a:", o:["Apenas notícias locais","Informações do mundo todo","Somente jogos","Somente mensagens escolares"], c:1, coment:"Información de todo el mundo." },
+      { base:`"Las clases en línea pueden ser flexibles y accesibles."`, q:"As aulas online podem ser:", o:["Flexíveis e acessíveis","Sempre caras","Sempre presenciais","Sem utilidade"], c:0, coment:"Flexibles y accesibles." },
+      { base:`"La campaña invita a las personas a usar menos plástico."`, q:"A campanha convida as pessoas a:", o:["Comprar mais plástico","Usar menos plástico","Fechar mercados","Parar de reciclar"], c:1, coment:"Usar menos plástico." }
+    ],
+    [
+      { q:"Explique, em português, por que o contexto ajuda na compreensão de textos em espanhol.", g:"Porque o contexto ajuda a identificar o sentido de palavras e ideias, mesmo quando o leitor não conhece todo o vocabulário." },
+      { q:"Escreva, em espanhol, uma frase curta sobre a importância de estudar todos os dias.", g:"Exemplo: Estudiar todos los días ayuda a mejorar el aprendizaje." }
+    ]
+  ),
+
+  "Vocabulario en Contexto": gerarAreaBase(
+    "Vocabulario en Contexto",
+    [
+      { base:`"Ella está cansada después del trabajo."`, q:"A palavra 'cansada' significa:", o:["Animada","Cansada","Atrasada","Silenciosa"], c:1, coment:"Cansada em espanhol tem o mesmo sentido do português." },
+      { base:`"Este coche es barato."`, q:"No texto, 'barato' quer dizer:", o:["Barato","Pesado","Velho","Rápido"], c:0, coment:"Barato = barato." },
+      { base:`"La habitación es ruidosa."`, q:"A palavra 'ruidosa' significa:", o:["Silenciosa","Barulhenta","Vazia","Limpa"], c:1, coment:"Ruidosa = barulhenta." },
+      { base:`"Me levanto a las seis."`, q:"A expressão 'me levanto' significa:", o:["Vou dormir","Me levanto","Chego cedo","Pego o ônibus"], c:1, coment:"Levantar-se = levantar." },
+      { base:`"Trabajo en una biblioteca."`, q:"A palavra 'biblioteca' significa:", o:["Livraria","Biblioteca","Laboratório","Igreja"], c:1, coment:"Biblioteca = biblioteca." },
+      { base:`"Él es un profesor amable."`, q:"A palavra 'amable' significa:", o:["Rígido","Amável","Perigoso","Fraco"], c:1, coment:"Amable = amável/gentil." },
+      { base:`"Es peligroso cruzar aquí."`, q:"'Peligroso' quer dizer:", o:["Seguro","Barato","Perigoso","Lento"], c:2, coment:"Peligroso = perigoso." },
+      { base:`"Llego temprano todos los días."`, q:"A palavra 'temprano' significa:", o:["Tarde","Cedo","Devagar","Ontem"], c:1, coment:"Temprano = cedo." },
+      { base:`"Compró un reloj nuevo."`, q:"No texto, 'reloj' significa:", o:["Relógio","Janela","Camisa","Bolsa"], c:0, coment:"Reloj = relógio." },
+      { base:`"Mi trabajo es estresante."`, q:"A palavra 'trabajo' significa:", o:["Descanso","Passeio","Trabalho","Escola"], c:2, coment:"Trabajo = trabalho." },
+      { base:`"La comida está deliciosa."`, q:"A palavra 'deliciosa' significa:", o:["Queimada","Gostosa","Fria","Seca"], c:1, coment:"Deliciosa = gostosa." },
+      { base:`"El clima está caliente hoy."`, q:"No contexto, 'clima' significa:", o:["Clima / tempo","Relógio","Bairro","Livro"], c:0, coment:"Clima = clima." },
+      { base:`"Necesito más tiempo."`, q:"O verbo 'necesito' significa:", o:["Espero","Preciso","Esqueço","Durmo"], c:1, coment:"Necesitar = precisar." },
+      { base:`"Ella está ocupada esta mañana."`, q:"A palavra 'ocupada' significa:", o:["Livre","Ocupada","Feliz","Pronta"], c:1, coment:"Ocupada = ocupada." },
+      { base:`"Estos zapatos están en oferta."`, q:"A expressão 'en oferta' significa:", o:["Quebrado","Em promoção","Reservado","Proibido"], c:1, coment:"En oferta = em promoção." },
+      { base:`"Por favor, abre la ventana."`, q:"O verbo 'abre' significa:", o:["Fecha","Abre","Empurra","Apaga"], c:1, coment:"Abrir = abrir." },
+      { base:`"La fruta es saludable."`, q:"A palavra 'saludable' significa:", o:["Doce","Saudável","Perigoso","Estranho"], c:1, coment:"Saludable = saudável." },
+      { base:`"Él llega tarde a clase."`, q:"A palavra 'tarde' significa:", o:["Cedo","Atrasado","Preparado","Disposto"], c:1, coment:"Llegar tarde = chegar atrasado." },
+      { base:`"Los niños aprenden rápido."`, q:"O verbo 'aprenden' significa:", o:["Ensinam","Aprendem","Vendiem","Esquecem"], c:1, coment:"Aprender = aprender." },
+      { base:`"Necesitas hacer una pausa."`, q:"A expressão 'hacer una pausa' significa:", o:["Fazer uma pausa","Pagar uma conta","Sair correndo","Estudar mais"], c:0, coment:"Hacer una pausa = fazer uma pausa." }
+    ],
+    [
+      { q:"Explique, em português, por que o vocabulário deve ser analisado dentro do contexto.", g:"Porque uma palavra pode mudar de sentido dependendo da frase e da situação em que aparece." },
+      { q:"Escreva, em espanhol, uma frase com a palavra 'saludable'.", g:"Exemplo: Comer frutas todos los días es saludable." }
+    ]
+  ),
+
+  "Gramática Básica": gerarAreaBase(
+    "Gramática Básica",
+    [
+      { base:`"Ella estudia todos los días."`, q:"Qual frase está correta no presente?", o:["Ella estudia todos los días.","Ella estudiar todos los días.","Ella estudian todos los días.","Ella estudio todos los días."], c:0, coment:"Conjugação correta de estudiar na 3ª pessoa singular." },
+      { base:`"Nosotros somos estudiantes."`, q:"Complete corretamente: Nosotros ____ estudiantes.", o:["soy","eres","somos","es"], c:2, coment:"Nosotros somos." },
+      { base:`"Él no come carne."`, q:"Qual é a forma negativa correta?", o:["Él no come carne.","Él no comes carne.","Él not come carne.","Él no comer carne."], c:0, coment:"Negação em espanhol usa 'no' antes do verbo." },
+      { base:`"¿Tú estás feliz?"`, q:"Complete corretamente: Tú ____ feliz.", o:["está","estás","estoy","somos"], c:1, coment:"Tú estás." },
+      { base:`"Los niños juegan afuera."`, q:"Qual é o plural correto de 'niño'?", o:["niños","niñes","niñoss","niñ"], c:0, coment:"Niño → niños." },
+      { base:`"Yo soy profesor."`, q:"Complete corretamente: Yo ____ profesor.", o:["soy","somos","es","eres"], c:0, coment:"Yo soy." },
+      { base:`"Nosotros tenemos un coche."`, q:"Qual frase está correta?", o:["Nosotros tiene un coche.","Nosotros tenemos un coche.","Nosotros tengo un coche.","Nosotros tenéis un coche."], c:1, coment:"Nosotros tenemos." },
+      { base:`"El gato está sobre la mesa."`, q:"No contexto, 'sobre' significa:", o:["Debaixo","Sobre / em cima de","Ao lado","Longe"], c:1, coment:"Sobre = sobre/em cima de." },
+      { base:`"Yo estoy cansado."`, q:"Qual pronome está correto?", o:["Me estoy cansado.","Yo estoy cansado.","Mi estoy cansado.","Mío estoy cansado."], c:1, coment:"Yo é o pronome sujeito correto." },
+      { base:`"Este libro es mío."`, q:"No texto, 'mío' indica:", o:["Artigo","Pronome possessivo","Verbo","Conector"], c:1, coment:"Mío = meu, pronome possessivo." },
+      { base:`"¿Dónde vives?"`, q:"Qual pergunta está correta?", o:["¿Dónde vives?","¿Dónde vive tú?","¿Dónde tú vivir?","¿Dónde estás vivir?"], c:0, coment:"Estrutura correta da pergunta." },
+      { base:`"Ella tiene una manzana."`, q:"Qual artigo está correto antes de 'manzana'?", o:["un","una","unos","unas"], c:1, coment:"Manzana é feminino singular." },
+      { base:`"Hay dos libros en la mesa."`, q:"A palavra 'hay' indica:", o:["Não existe","Existe / há","Foi","Era"], c:1, coment:"Hay = há/existe." },
+      { base:`"Mis padres están en casa."`, q:"Complete corretamente: Mis padres ____ en casa.", o:["está","están","estoy","somos"], c:1, coment:"Padres é plural." },
+      { base:`"Mi libro es nuevo."`, q:"Qual expressão está correta?", o:["yo libro","mi libro","mío libro","me libro"], c:1, coment:"Mi + substantivo." },
+      { base:`"Estudiamos por la mañana."`, q:"A expressão 'por la mañana' significa:", o:["À noite","Pela manhã","À tarde","Na escola"], c:1, coment:"Por la mañana = pela manhã." },
+      { base:`"Ella puede cantar."`, q:"Qual frase está correta?", o:["Ella puede cantar.","Ella puede canta.","Ella pueden cantar.","Ella puedar cantar."], c:0, coment:"Poder + infinitivo." },
+      { base:`"Su nombre es Lucas."`, q:"A palavra 'su' indica:", o:["Posse","Negação","Tempo","Contraste"], c:0, coment:"Su = seu/sua." },
+      { base:`"¿Trabaja ella aquí?"`, q:"Qual frase interrogativa está correta?", o:["¿Trabaja ella aquí?","¿Ella trabaja aquí? interrogativa obrigatória","¿Trabajar ella aquí?","¿Trabaja aquí ella no?"], c:0, coment:"Forma correta de pergunta." },
+      { base:`"Ellos son nuestros amigos."`, q:"A palavra 'nuestros' indica:", o:["Lugar","Posse no plural","Tempo verbal","Comparação"], c:1, coment:"Nuestros = nossos." }
+    ],
+    [
+      { q:"Explique, em português, a diferença entre 'mi' e 'mío'.", g:"'Mi' acompanha o substantivo, como em 'mi libro'. 'Mío' substitui o substantivo, como em 'este libro es mío'." },
+      { q:"Escreva, em espanhol, uma frase simples com 'hay'.", g:"Exemplo: Hay tres estudiantes en la sala." }
+    ]
+  ),
+
+  "Tiempos Verbales": gerarAreaBase(
+    "Tiempos Verbales",
+    [
+      { base:`"Ella estudia todos los días."`, q:"A frase acima está em qual tempo verbal?", o:["Presente","Pretérito","Futuro","Imperativo"], c:0, coment:"Indica rotina no presente." },
+      { base:`"Ahora estamos leyendo."`, q:"A expressão 'estamos leyendo' indica:", o:["Passado finalizado","Ação em andamento","Futuro distante","Ordem"], c:1, coment:"Perífrase de ação em andamento." },
+      { base:`"Ayer fui al colegio."`, q:"A palavra 'ayer' indica:", o:["Presente","Passado","Futuro","Condição"], c:1, coment:"Ayer = ontem." },
+      { base:`"Mañana estudiaré más."`, q:"A forma verbal 'estudiaré' está no:", o:["Presente","Pretérito","Futuro","Imperativo"], c:2, coment:"Terminação de futuro." },
+      { base:`"Cuando llegué, ella dormía."`, q:"Na frase, 'dormía' indica:", o:["Ação habitual ou em progresso no passado","Futuro","Ordem","Presente"], c:0, coment:"Imperfecto." },
+      { base:`"Nosotros comimos temprano."`, q:"'Comimos' indica:", o:["Futuro","Pretérito perfeito simples","Presente contínuo","Subjuntivo"], c:1, coment:"Ação concluída no passado." },
+      { base:`"Ellos van a viajar mañana."`, q:"A estrutura 'van a viajar' indica:", o:["Passado","Futuro próximo","Presente habitual","Ordem"], c:1, coment:"Ir a + infinitivo." },
+      { base:`"Siempre leo antes de dormir."`, q:"A palavra 'siempre' sugere:", o:["Hábito","Passado concluído","Futuro incerto","Negação"], c:0, coment:"Siempre = sempre, hábito." },
+      { base:`"En este momento ella escribe un correo."`, q:"A expressão 'en este momento' indica:", o:["Passado","Ação atual","Comparação","Lugar"], c:1, coment:"Momento presente." },
+      { base:`"El año pasado vivimos en Recife."`, q:"A expressão 'el año pasado' indica:", o:["Presente","Passado","Futuro","Dúvida"], c:1, coment:"Ano passado = passado." },
+      { base:`"Mañana habrá una reunión."`, q:"A forma 'habrá' está no:", o:["Futuro","Presente","Pretérito","Imperativo"], c:0, coment:"Futuro do verbo haber." },
+      { base:`"Mientras estudiaba, escuchaba música."`, q:"As formas 'estudiaba' e 'escuchaba' indicam:", o:["Ações simultâneas no passado","Ordem","Ações futuras","Negação"], c:0, coment:"Imperfecto em duas ações simultâneas." },
+      { base:`"Ya terminé la tarea."`, q:"No contexto, 'terminé' indica:", o:["Ação concluída","Ação futura","Ordem","Hábito"], c:0, coment:"Pretérito perfeito simples." },
+      { base:`"Cada día practicamos español."`, q:"A frase indica:", o:["Rotina","Acontecimento único no passado","Futuro","Condição"], c:0, coment:"Cada día = rotina." },
+      { base:`"Dentro de una hora saldré."`, q:"'Saldré' indica:", o:["Passado","Futuro","Presente","Proibição"], c:1, coment:"Saída no futuro." },
+      { base:`"A las ocho estaba cenando."`, q:"A forma 'estaba cenando' indica:", o:["Ação em progresso no passado","Ação futura","Ordem","Presente"], c:0, coment:"Imperfecto + gerúndio." },
+      { base:`"Mis amigos juegan los fines de semana."`, q:"A expressão 'los fines de semana' sugere:", o:["Hábito","Passado encerrado","Ordem","Futuro incerto"], c:0, coment:"Indica repetição/hábito." },
+      { base:`"Después estudiaré para la prueba."`, q:"A forma 'estudiaré' indica:", o:["Futuro","Passado","Presente","Negação"], c:0, coment:"Futuro simples." },
+      { base:`"Cuando era niño, leía mucho."`, q:"A forma 'leía' sugere:", o:["Hábito no passado","Futuro","Ordem","Ação única"], c:0, coment:"Imperfecto de hábito." },
+      { base:`"Hoy tengo clase y mañana descansaré."`, q:"Na frase, aparece:", o:["Só passado","Presente e futuro","Só futuro","Só imperativo"], c:1, coment:"Tengo = presente; descansaré = futuro." }
+    ],
+    [
+      { q:"Explique, em português, a diferença entre presente habitual e ação em andamento em espanhol.", g:"O presente habitual indica rotina ou fato frequente; a ação em andamento aparece em estruturas como estar + gerúndio." },
+      { q:"Escreva, em espanhol, uma frase no passado e outra no futuro.", g:"Exemplo: Ayer estudié mucho. / Mañana estudiaré más." }
+    ]
+  ),
+    "Pronombres y Artículos": gerarAreaBase(
+    "Pronombres y Artículos",
+    [
+      { base:`"Yo estudio español."`, q:"Qual pronome está correto na frase?", o:["Yo","Me","Mi","Mío"], c:0, coment:"Yo é pronome sujeito." },
+      { base:`"Este es mi cuaderno."`, q:"A palavra 'mi' indica:", o:["Pronome objeto","Posse","Tempo verbal","Conector"], c:1, coment:"Mi = meu/minha." },
+      { base:`"Ese cuaderno es mío."`, q:"A palavra 'mío' é:", o:["Artigo","Pronome possessivo","Verbo","Adjetivo de cor"], c:1, coment:"Mío substitui o substantivo." },
+      { base:`"Ellos son mis amigos."`, q:"A palavra 'ellos' é:", o:["Pronome sujeito","Artigo","Preposição","Verbo"], c:0, coment:"Ellos = eles." },
+      { base:`"La profesora los vio."`, q:"Na frase, 'los' funciona como:", o:["Artigo feminino","Pronome objeto","Conector","Advérbio"], c:1, coment:"Los retoma um objeto masculino plural." },
+      { base:`"Nuestra casa es grande."`, q:"A palavra 'nuestra' indica:", o:["Lugar","Posse","Tempo","Negação"], c:1, coment:"Nuestra = nossa." },
+      { base:`"El libro es de ella."`, q:"A expressão 'de ella' indica:", o:["Posse","Lugar","Tempo verbal","Condição"], c:0, coment:"De ella = dela." },
+      { base:`"Tengo una mochila."`, q:"Qual artigo está correto em 'una mochila'?", o:["Artigo feminino singular","Artigo masculino plural","Pronome sujeito","Preposição"], c:0, coment:"Una = artigo feminino singular." },
+      { base:`"Los estudiantes llegaron temprano."`, q:"A palavra 'los' em 'los estudiantes' funciona como:", o:["Pronome objeto","Artigo definido masculino plural","Verbo","Conector"], c:1, coment:"Los = artigo." },
+      { base:`"Un profesor llegó."`, q:"A palavra 'un' é:", o:["Artigo indefinido masculino singular","Pronome possessivo","Advérbio","Preposição"], c:0, coment:"Un = artigo indefinido." },
+      { base:`"Ella me llamó ayer."`, q:"Na frase, 'me' é:", o:["Pronome objeto","Artigo","Conector","Verbo"], c:0, coment:"Me = pronome objeto." },
+      { base:`"Nosotros vivimos aquí."`, q:"A palavra 'nosotros' significa:", o:["Eles","Nós","Vocês","Ela"], c:1, coment:"Nosotros = nós." },
+      { base:`"Sus libros están en la mesa."`, q:"A palavra 'sus' indica:", o:["Negação","Posse","Lugar","Comparação"], c:1, coment:"Sus = seus/suas." },
+      { base:`"Estas son mis llaves."`, q:"A palavra 'estas' está no:", o:["Singular masculino","Plural feminino","Plural masculino","Singular feminino"], c:1, coment:"Estas = plural feminino." },
+      { base:`"¿Dónde está tu celular?"`, q:"A palavra 'tu' indica:", o:["Passado","Posse","Lugar","Condição"], c:1, coment:"Tu = teu/tua." },
+      { base:`"A nosotros nos gusta leer."`, q:"Na frase, aparece a ideia de:", o:["Lugar","Preferência","Negação","Passado"], c:1, coment:"Nos gusta = gostamos." },
+      { base:`"El problema es nuestro."`, q:"A palavra 'nuestro' funciona como:", o:["Pronome possessivo","Artigo","Advérbio","Conector"], c:0, coment:"Nuestro = nosso." },
+      { base:`"Las niñas estudian mucho."`, q:"A palavra 'las' é:", o:["Artigo definido feminino plural","Pronome masculino","Verbo","Preposição"], c:0, coment:"Las = artigo feminino plural." },
+      { base:`"Te vi en la escuela."`, q:"Na frase, 'te' funciona como:", o:["Pronome objeto","Artigo definido","Conector","Advérbio"], c:0, coment:"Te = pronome objeto." },
+      { base:`"Ese lápiz es tuyo."`, q:"A palavra 'tuyo' indica:", o:["Tempo verbal","Posse","Negação","Lugar"], c:1, coment:"Tuyo = teu." }
+    ],
+    [
+      { q:"Explique, em português, a diferença entre 'mi' e 'mío' em espanhol.", g:"'Mi' acompanha o substantivo, enquanto 'mío' substitui o substantivo e funciona como pronome possessivo." },
+      { q:"Escreva, em espanhol, uma frase com artigo definido e outra com pronome possessivo.", g:"Exemplo: El libro está en la mesa. / Ese libro es mío." }
+    ]
+  ),
+
+  "Conectores y Significado": gerarAreaBase(
+    "Conectores y Significado",
+    [
+      { base:`"Quería salir, pero estaba cansado."`, q:"O conector 'pero' indica:", o:["Adição","Contraste","Tempo","Lugar"], c:1, coment:"Pero = mas." },
+      { base:`"Estudia y trabaja."`, q:"O conector 'y' indica:", o:["Contraste","Adição","Resultado","Condição"], c:1, coment:"Y = e." },
+      { base:`"Me quedé en casa porque llovía."`, q:"'Porque' introduz ideia de:", o:["Causa","Contraste","Pergunta","Lugar"], c:0, coment:"Porque = porque." },
+      { base:`"Estudió mucho, por eso aprobó."`, q:"A expressão 'por eso' indica:", o:["Resultado","Contraste","Tempo passado","Lugar"], c:0, coment:"Por eso = por isso." },
+      { base:`"Sin embargo, el proyecto no fue aprobado."`, q:"A expressão 'sin embargo' tem sentido de:", o:["Também","No entanto","Porque","Mais cedo"], c:1, coment:"Sin embargo = no entanto." },
+      { base:`"Aunque era tarde, siguieron trabajando."`, q:"'Aunque' indica:", o:["Adição","Contraste / concessão","Lugar","Exemplo"], c:1, coment:"Aunque = embora." },
+      { base:`"Por ejemplo, muchos jóvenes estudian en línea."`, q:"A expressão 'por ejemplo' serve para:", o:["Dar exemplo","Negar","Concluir","Comparar"], c:0, coment:"Por ejemplo = por exemplo." },
+      { base:`"La calle estaba cerrada; por lo tanto, volvimos."`, q:"A expressão 'por lo tanto' indica:", o:["Conclusão / resultado","Contraste","Pergunta","Tempo"], c:0, coment:"Por lo tanto = portanto." },
+      { base:`"Primero lee el texto y después responde."`, q:"As palavras 'primero' e 'después' indicam:", o:["Cor","Sequência","Proibição","Comparação"], c:1, coment:"Marcam ordem/sequência." },
+      { base:`"Mientras algunos prefieren libros, otros prefieren videos."`, q:"No contexto, 'mientras' indica:", o:["Comparação/contraste","Lugar","Negação","Tempo futuro apenas"], c:0, coment:"Aqui opõe duas preferências." },
+      { base:`"Además, la escuela ofrece internet gratis."`, q:"A palavra 'además' significa:", o:["Porém","Além disso","Talvez","Ontem"], c:1, coment:"Además = além disso." },
+      { base:`"En vez de conducir, caminó al trabajo."`, q:"A expressão 'en vez de' indica:", o:["Substituição","Adição","Dúvida","Intensidade"], c:0, coment:"En vez de = em vez de." },
+      { base:`"Terminó la tarea y luego vio televisión."`, q:"A palavra 'luego' indica:", o:["Condição","Sequência","Lugar","Negação"], c:1, coment:"Luego = depois." },
+      { base:`"Como resultado, mejoró la situación."`, q:"A expressão 'como resultado' indica:", o:["Contraste","Resultado","Pergunta","Tempo"], c:1, coment:"Como resultado = como resultado." },
+      { base:`"Puedes ir en autobús o en tren."`, q:"A palavra 'o' indica:", o:["Alternativa","Causa","Conclusão","Contraste"], c:0, coment:"O = ou." },
+      { base:`"Por otro lado, estudiar en casa puede ser difícil."`, q:"A expressão 'por otro lado' indica:", o:["Adição","Outro ponto de vista / contraste","Passado","Lugar"], c:1, coment:"Por otro lado = por outro lado." },
+      { base:`"Ya que estaba enfermo, no fue a clase."`, q:"A expressão 'ya que' indica:", o:["Motivo","Cor","Plural","Comparação"], c:0, coment:"Ya que = já que / porque." },
+      { base:`"No obstante, terminaron el proyecto."`, q:"'No obstante' tem sentido de:", o:["Mesmo assim / no entanto","Por isso","Talvez","Logo"], c:0, coment:"No obstante = no entanto." },
+      { base:`"Además de estudiar, trabaja por la tarde."`, q:"A expressão 'además de' significa:", o:["Exceto","Além de","Embora","Porque"], c:1, coment:"Además de = além de." },
+      { base:`"Los conectores ayudan a organizar las ideas."`, q:"Segundo o texto, os conectores ajudam a:", o:["Desorganizar o texto","Organizar as ideias","Eliminar verbos","Retirar sentido"], c:1, coment:"Ajudam na organização do texto." }
+    ],
+    [
+      { q:"Explique, em português, por que os conectores são importantes na compreensão textual em espanhol.", g:"Porque mostram relações como causa, contraste, adição e conclusão, ajudando o leitor a compreender melhor o texto." },
+      { q:"Escreva, em espanhol, uma frase com 'porque' e outra com 'pero'.", g:"Exemplo: Me quedé en casa porque llovía. / Quería salir, pero estaba cansado." }
+    ]
+  ),
+
+  "Anuncios y Campañas": gerarAreaBase(
+    "Anuncios y Campañas",
+    [
+      { base:`"¡Compra ahora y ahorra más!"`, q:"Qual é a intenção principal do anúncio?", o:["Ensinar gramática","Incentivar a compra","Narrar um fato histórico","Descrever uma cidade"], c:1, coment:"Compra ahora indica venda/persuasão." },
+      { base:`"Oferta limitada: 50% de descuento."`, q:"A expressão 'oferta limitada' sugere:", o:["Oferta permanente","Oferta por tempo limitado","Produto quebrado","Venda proibida"], c:1, coment:"Cria senso de urgência." },
+      { base:`"Únete a la campaña para cuidar el planeta."`, q:"O texto convida o leitor a:", o:["Ignorar o problema","Participar de uma campanha","Comprar sapatos","Fechar a escola"], c:1, coment:"Únete = junte-se." },
+      { base:`"Envío gratis en todas las compras."`, q:"A expressão 'envío gratis' significa:", o:["Produto grátis","Entrega sem custo","Compra cancelada","Entrega obrigatória internacional"], c:1, coment:"Envío gratis = frete grátis." },
+      { base:`"Nueva colección disponible ahora."`, q:"A expressão 'nueva colección' refere-se a:", o:["Produtos antigos","Nova linha de produtos","Livros usados","Aulas de reforço"], c:1, coment:"Coleção nova." },
+      { base:`"Haz clic aquí para más información."`, q:"A frase orienta o leitor a:", o:["Fechar a página","Acessar mais informações","Parar de ler","Escrever carta"], c:1, coment:"Haz clic aquí = clique aqui." },
+      { base:`"Productos ecológicos para tu hogar."`, q:"A expressão 'ecológicos' está ligada a:", o:["Tecnologia pesada","Cuidado ambiental","Velocidade","Jogos"], c:1, coment:"Ecológicos = relacionados ao meio ambiente." },
+      { base:`"Ahorra agua, salva vidas."`, q:"A campanha busca:", o:["Vender garrafas","Conscientizar sobre economia de água","Promover esportes","Ensinar matemática"], c:1, coment:"Mensagem de conscientização." },
+      { base:`"Vuelta al cole: precios especiales."`, q:"No contexto, 'precios especiales' significa:", o:["Silêncio","Preços promocionais","Loja fechada","Compra proibida"], c:1, coment:"Preço especial = promoção." },
+      { base:`"Solo hoy: precios increíbles."`, q:"A frase cria sensação de:", o:["Calma","Urgência","Humor","Passado"], c:1, coment:"Solo hoy = apenas hoje." },
+      { base:`"Hábitos saludables empiezan hoy."`, q:"A mensagem principal é:", o:["Hábitos saudáveis devem começar hoje","Exercício é proibido","Comer bem é caro","Saúde é irrelevante"], c:0, coment:"Incentivo a hábitos saudáveis." },
+      { base:`"Visita nuestra página y aprende más."`, q:"O leitor é orientado a:", o:["Ignorar o site","Visitar a página para saber mais","Comprar obrigatoriamente","Telefonar"], c:1, coment:"Visita nuestra página." },
+      { base:`"Los mejores precios de la ciudad."`, q:"A frase busca destacar:", o:["Localização apenas","Preço vantajoso","História da empresa","Cor da loja"], c:1, coment:"Melhores preços." },
+      { base:`"Protege tu futuro: estudia hoy."`, q:"O anúncio relaciona estudo a:", o:["Perda de tempo","Construção do futuro","Só diversão","Descanso"], c:1, coment:"Protege tu futuro." },
+      { base:`"Biblioteca pública abierta para todos."`, q:"Segundo o texto, a biblioteca pública:", o:["Está fechada","Está aberta para todos","É só para professores","Exige compra"], c:1, coment:"Abierta para todos." },
+      { base:`"Usa menos plástico."`, q:"A frase é um exemplo de:", o:["Instrução / orientação","Piada","Narrativa","Definição científica"], c:0, coment:"Imperativo / orientação." },
+      { base:`"Inscríbete ahora."`, q:"A expressão é usada para:", o:["Alertar perigo","Incentivar inscrição imediata","Falar do passado","Explicar gramática"], c:1, coment:"Inscríbete = inscreva-se." },
+      { base:`"Educación de calidad para todos."`, q:"A frase destaca:", o:["Educação de qualidade para todos","Educação cara para poucos","Propaganda sem sentido","Curso presencial obrigatório"], c:0, coment:"Mensagem de inclusão e qualidade." },
+      { base:`"Zona libre de humo."`, q:"A expressão indica:", o:["Lugar permitido para fumar","Área onde fumar é proibido","Área de lazer","Local de compra"], c:1, coment:"Libre de humo = sem fumaça." },
+      { base:`"Sé parte del cambio."`, q:"A frase convida o leitor a:", o:["Ficar parado","Participar da mudança","Abandonar o projeto","Desligar o celular"], c:1, coment:"Sé parte del cambio." }
+    ],
+    [
+      { q:"Explique, em português, como anúncios usam linguagem e imagem para convencer o público.", g:"Anúncios combinam recursos visuais e verbais para chamar atenção, destacar vantagens e persuadir o leitor." },
+      { q:"Escreva, em espanhol, um slogan curto para um curso de espanhol.", g:"Exemplo: Aprende español, abre nuevas puertas." }
+    ]
+  ),
+    "Preposiciones y Expresiones": gerarAreaBase(
+    "Preposiciones y Expresiones",
+    [
+      { base:`"El libro está sobre la mesa."`, q:"A preposição 'sobre' significa:", o:["Debaixo","Sobre / em cima de","Dentro","Longe"], c:1, coment:"Sobre = em cima de." },
+      { base:`"Vive en Brasil."`, q:"A preposição correta no texto é:", o:["en","a","de","por"], c:0, coment:"En Brasil." },
+      { base:`"Estudiamos por la mañana."`, q:"A expressão 'por la mañana' significa:", o:["Pela manhã","À noite","Ao meio-dia","No domingo"], c:0, coment:"Por la mañana = pela manhã." },
+      { base:`"Las clases empiezan a las ocho."`, q:"A expressão 'a las ocho' indica:", o:["Lugar","Hora","Causa","Condição"], c:1, coment:"Indica horário." },
+      { base:`"Voy a la escuela en autobús."`, q:"No texto, 'en autobús' significa:", o:["A pé","De ônibus","De trem","De bicicleta"], c:1, coment:"En autobús = de ônibus." },
+      { base:`"Está interesado en música."`, q:"A expressão correta no texto é:", o:["interesado en","interesado de","interesado para","interesado sobre"], c:0, coment:"Interesado en." },
+      { base:`"El gato está dentro de la caja."`, q:"A expressão 'dentro de' significa:", o:["Em cima de","Dentro de","Atrás de","Ao lado de"], c:1, coment:"Dentro de = dentro de." },
+      { base:`"Voy al mercado después de clase."`, q:"A expressão 'después de' significa:", o:["Antes de","Depois de","Durante","Sem"], c:1, coment:"Después de = depois de." },
+      { base:`"Cerca de la escuela hay una plaza."`, q:"A expressão 'cerca de' significa:", o:["Longe de","Perto de","Dentro de","Debaixo de"], c:1, coment:"Cerca de = perto de." },
+      { base:`"Trabajo con mis amigos."`, q:"A preposição 'con' significa:", o:["Sem","Com","Para","Sobre"], c:1, coment:"Con = com." },
+      { base:`"Estoy de acuerdo contigo."`, q:"A expressão 'de acuerdo' indica:", o:["Discordância","Concordância","Lugar","Tempo"], c:1, coment:"De acuerdo = de acordo." },
+      { base:`"Salió sin paraguas."`, q:"A preposição 'sin' significa:", o:["Com","Sem","Para","Até"], c:1, coment:"Sin = sem." },
+      { base:`"El restaurante está frente a la plaza."`, q:"A expressão 'frente a' significa:", o:["Atrás de","Em frente a","Dentro de","Perto de"], c:1, coment:"Frente a = em frente a." },
+      { base:`"Voy para casa ahora."`, q:"A palavra 'para' indica, no contexto:", o:["Origem","Destino / direção","Negação","Tempo passado"], c:1, coment:"Para = direção/finalidade." },
+      { base:`"El cuaderno está debajo de la silla."`, q:"A expressão 'debajo de' significa:", o:["Em cima de","Debaixo de","Ao lado de","Longe de"], c:1, coment:"Debajo de = debaixo de." },
+      { base:`"Hablamos sobre el proyecto."`, q:"A preposição 'sobre' indica:", o:["Assunto / sobre","Lugar interno","Origem","Tempo"], c:0, coment:"Sobre = sobre/acerca de." },
+      { base:`"La tienda está al lado del banco."`, q:"A expressão 'al lado de' significa:", o:["Na frente de","Ao lado de","Dentro de","Depois de"], c:1, coment:"Al lado de = ao lado de." },
+      { base:`"Llegó antes de las nueve."`, q:"A expressão 'antes de' significa:", o:["Depois de","Antes de","Sem","Com"], c:1, coment:"Antes de = antes de." },
+      { base:`"Estamos en clase."`, q:"No contexto, 'en clase' significa:", o:["Na aula","Na rua","Em casa","No ônibus"], c:0, coment:"En clase = na aula." },
+      { base:`"Voy con mi hermana al cine."`, q:"A palavra 'con' indica:", o:["Companhia","Lugar","Tempo","Comparação"], c:0, coment:"Con = com, companhia." }
+    ],
+    [
+      { q:"Explique, em português, por que as preposições são importantes em espanhol.", g:"Porque elas conectam palavras e ideias corretamente e podem mudar totalmente o sentido da frase." },
+      { q:"Escreva, em espanhol, uma frase com 'con' e outra com 'sin'.", g:"Exemplo: Voy con mi amigo. / Salí sin paraguas." }
+    ]
+  ),
+
+  "Falsos Cognatos": gerarAreaBase(
+    "Falsos Cognatos",
+    [
+      { base:`"Estoy embarazada."`, q:"A palavra 'embarazada' significa:", o:["Embaraçada","Grávida","Confusa","Apressada"], c:1, coment:"Falso cognato clássico." },
+      { base:`"La oficina está cerrada."`, q:"No texto, 'oficina' significa:", o:["Oficina mecânica","Escritório","Sala de aula","Biblioteca"], c:1, coment:"Oficina em espanhol = escritório." },
+      { base:`"Voy a asistir a la reunión."`, q:"O verbo 'asistir' significa:", o:["Assistir TV","Comparecer","Ajudar financeiramente","Cancelar"], c:1, coment:"Asistir = comparecer." },
+      { base:`"La carpeta está sobre la mesa."`, q:"No texto, 'carpeta' significa:", o:["Carpete","Pasta","Tapete","Caixa"], c:1, coment:"Carpeta = pasta." },
+      { base:`"Necesito recordar la fecha."`, q:"O verbo 'recordar' significa:", o:["Gravar em vídeo","Lembrar","Esquecer","Anotar"], c:1, coment:"Recordar = lembrar." },
+      { base:`"Él es muy largo para su edad."`, q:"No contexto, 'largo' significa:", o:["Largo/comprido","Largo de tempo","Lento","Pesado"], c:0, coment:"Largo em espanhol = comprido." },
+      { base:`"La policía busca una rata en el laboratorio."`, q:"A palavra 'rata' significa:", o:["Barata","Ratazana","Erro","Corda"], c:1, coment:"Rata = rato/ratazana." },
+      { base:`"Voy a tomar una cita con el médico."`, q:"A palavra 'cita' significa:", o:["Citação textual apenas","Encontro / consulta marcada","Cidade","Receita"], c:1, coment:"Cita = encontro, compromisso." },
+      { base:`"El vaso está lleno."`, q:"A palavra 'vaso' significa:", o:["Vaso sanitário","Copo","Jarro","Balde"], c:1, coment:"Vaso = copo em muitos contextos." },
+      { base:`"La firma está al final del documento."`, q:"A palavra 'firma' significa:", o:["Empresa","Assinatura","Fechadura","Marcação"], c:1, coment:"Firma pode significar assinatura." },
+      { base:`"El suceso ocurrió anoche."`, q:"A palavra 'suceso' significa:", o:["Sucesso positivo","Acontecimento","Vitória","Premiação"], c:1, coment:"Suceso = acontecimento." },
+      { base:`"Ella está sensible hoy."`, q:"No texto, 'sensible' significa:", o:["Sensata","Sensível","Inteligente","Brava"], c:1, coment:"Sensible = sensível." },
+      { base:`"Voy a constiparme si salgo sin abrigo."`, q:"No contexto, 'constiparme' está relacionado a:", o:["Prisão de ventre","Resfriado","Fome","Sono"], c:1, coment:"Constipado em espanhol costuma ligar-se a resfriado." },
+      { base:`"La universidad ofrece un curso de idiomas."`, q:"A palavra 'curso' significa:", o:["Percurso","Curso","Corrida","Fila"], c:1, coment:"Aqui não é falso cognato; é cognato verdadeiro, usado para contraste." },
+      { base:`"El colegio está cerca de mi casa."`, q:"A palavra 'colegio' significa, no contexto mais comum:", o:["Colégio / escola","Colégio eleitoral apenas","Conselho profissional","Faculdade"], c:0, coment:"Colegio = escola/colégio." },
+      { base:`"El apellido de Ana es Torres."`, q:"A palavra 'apellido' significa:", o:["Apelido","Sobrenome","Nome artístico","Comentário"], c:1, coment:"Apellido = sobrenome." },
+      { base:`"Voy a discutir el problema mañana."`, q:"O verbo 'discutir' pode significar:", o:["Brigar necessariamente","Debater / discutir um tema","Ignorar","Apagar"], c:1, coment:"Em muitos contextos, discutir = debater." },
+      { base:`"La ropa está en el armario."`, q:"A palavra 'armario' significa:", o:["Armário","Armação","Armadilha","Arquivo"], c:0, coment:"Armario = armário." },
+      { base:`"Fue un gran evento, no un gran éxito todavía."`, q:"A frase ajuda a mostrar que 'suceso' não significa necessariamente:", o:["Acontecimento","Sucesso positivo","Fato","Evento"], c:1, coment:"Suceso não é igual a sucesso." },
+      { base:`"Estoy embarazada de seis meses."`, q:"A palavra 'embarazada' não significa:", o:["Grávida","Embaraçada","Gestante","Mulher esperando bebê"], c:1, coment:"É falso cognato." }
+    ],
+    [
+      { q:"Explique, em português, o que são falsos cognatos em espanhol.", g:"São palavras parecidas com o português, mas que têm significado diferente e podem causar confusão na interpretação." },
+      { q:"Escreva, em espanhol, uma frase usando corretamente 'embarazada' ou 'asistir'.", g:"Exemplo: Ella está embarazada. / Voy a asistir a la reunión." }
+    ]
+  ),
+
+  "Producción Escrita": gerarAreaBase(
+    "Producción Escrita",
+    [
+      { base:`"En mi opinión, los estudiantes deben leer más."`, q:"A expressão 'En mi opinión' é usada para:", o:["Dar ordem","Apresentar opinião","Falar de passado","Indicar lugar"], c:1, coment:"En mi opinión = na minha opinião." },
+      { base:`"Un buen párrafo tiene una idea principal clara."`, q:"Segundo o texto, um bom parágrafo deve ter:", o:["Ideia principal clara","Muitas frases aleatórias","Só palavras difíceis","Nenhum verbo"], c:0, coment:"Idea principal clara." },
+      { base:`"Los alumnos necesitan tecnología porque ayuda al aprendizaje."`, q:"No texto, 'porque' introduz:", o:["Contraste","Motivo","Lugar","Dúvida"], c:1, coment:"Porque = causa." },
+      { base:`"Por ejemplo, las aplicaciones pueden mejorar el vocabulario."`, q:"A expressão 'por ejemplo' serve para:", o:["Dar exemplo","Negar ideia","Concluir","Marcar tempo"], c:0, coment:"Por ejemplo = por exemplo." },
+      { base:`"La conclusión cierra la idea principal."`, q:"Segundo o texto, a conclusão:", o:["Abre novo tema","Fecha a ideia principal","Elimina a tese","Bagunça o texto"], c:1, coment:"A conclusão encerra a ideia central." },
+      { base:`"Las frases cortas y claras pueden mejorar la escritura."`, q:"O texto sugere que frases curtas e claras podem:", o:["Piorar a escrita","Melhorar a escrita","Eliminar o sentido","Substituir conectores"], c:1, coment:"Claras y cortas = melhora da escrita." },
+      { base:`"Estoy de acuerdo con la educación pública de calidad."`, q:"A expressão 'estoy de acuerdo' indica:", o:["Discordância","Concordância","Passado","Explicação de lugar"], c:1, coment:"Estoy de acuerdo = concordo." },
+      { base:`"Una respuesta fuerte es clara y relevante."`, q:"Segundo o texto, uma boa resposta deve ser:", o:["Confusa","Clara e relevante","Muito longa sem foco","Sem relação com a pergunta"], c:1, coment:"Clara y relevante." },
+      { base:`"Los conectores ayudan a organizar las ideas en la escritura."`, q:"Os conectores ajudam a:", o:["Apagar o sentido","Organizar as ideias","Eliminar verbos","Criar erro"], c:1, coment:"Organizam as ideias." },
+      { base:`"Los estudiantes deben escribir de forma directa y clara."`, q:"A recomendação do texto é que os estudantes escrevam:", o:["De forma indireta","De forma direta e clara","Só com palavras difíceis","Sem pontuação"], c:1, coment:"Directa y clara." },
+      { base:`"Las clases en línea son útiles, pero el contacto presencial también es importante."`, q:"O conector 'pero' mostra:", o:["Adição","Contraste","Resultado","Exemplo"], c:1, coment:"Pero = contraste." },
+      { base:`"La frase temática presenta la idea principal del párrafo."`, q:"Segundo o texto, a frase temática serve para:", o:["Esconder a ideia principal","Apresentar a ideia principal","Trocar de assunto","Finalizar o texto"], c:1, coment:"Presenta la idea principal." },
+      { base:`"La puntuación ayuda a organizar el significado."`, q:"No texto, a pontuação ajuda a:", o:["Bagunçar o texto","Organizar o significado","Eliminar vocabulário","Substituir o tema"], c:1, coment:"Organiza o significado." },
+      { base:`"En una respuesta breve, cada frase debe ser relevante."`, q:"Segundo o texto, cada frase da resposta curta deve ser:", o:["Aleatória","Relevante","Muito longa","Desconectada"], c:1, coment:"Cada frase debe ser relevante." },
+      { base:`"La buena escritura necesita coherencia y propósito claro."`, q:"Uma boa escrita precisa de:", o:["Só vocabulário difícil","Coerência e propósito claro","Apenas frases longas","Muita repetição"], c:1, coment:"Coherencia y propósito claro." },
+      { base:`"Los ejemplos pueden apoyar las ideas."`, q:"Os exemplos ajudam a:", o:["Enfraquecer as ideias","Sustentar as ideias","Eliminar argumentos","Trocar o idioma"], c:1, coment:"Apoiam as ideias." },
+      { base:`"La frase final puede resumir el párrafo."`, q:"A frase final pode:", o:["Criar assunto sem relação","Resumir o parágrafo","Retirar a ideia central","Impedir a compreensão"], c:1, coment:"Resume o parágrafo." },
+      { base:`"El lenguaje educado es importante en la escritura formal."`, q:"Segundo o texto, na escrita formal é importante usar linguagem:", o:["Agressiva","Educada","Sem sentido","Só abreviada"], c:1, coment:"Lenguaje educado." },
+      { base:`"La respuesta discursiva debe responder directamente a la pregunta."`, q:"A principal recomendação é que a resposta discursiva:", o:["Fuja do tema","Responda diretamente à pergunta","Use só palavras soltas","Ignore o enunciado"], c:1, coment:"Responder diretamente." },
+      { base:`"La escritura mejora con la práctica."`, q:"De acordo com o texto, a escrita melhora com:", o:["Sorte","Prática","Silêncio","Só tradução"], c:1, coment:"Mejora con la práctica." }
+    ],
+    [
+      { q:"Explique, em português, o que torna uma boa resposta curta em espanhol.", g:"Uma boa resposta curta é clara, relevante ao enunciado, compreensível gramaticalmente e bem organizada." },
+      { q:"Escreva, em espanhol, de 3 a 5 linhas sobre por que aprender espanhol é importante hoje.", g:"Ideia esperada: o espanhol é importante para estudo, trabalho, comunicação, viagens e acesso a novas oportunidades." }
+    ]
+  )
+};
+
+function mostrarMenu() {
+  pararAudioFundo();
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue); margin-bottom:8px;">Escolha um módulo de Espanhol</h2>
+      <p class="mini">Cada módulo possui <strong>20 questões objetivas</strong> e <strong>2 discursivas</strong>.</p>
+      <div class="grid-areas">
+        ${areasEspanhol.map(area => `
+          <div class="card-area">
+            <h3>${area.nome}</h3>
+            <p>${area.descricao}</p>
+            <button class="btn" onclick="iniciarArea('${area.nome.replace(/'/g, "\\'")}')">Entrar neste módulo</button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function iniciarArea(nomeArea) {
+  await destravarAudio();
+  areaAtual = nomeArea;
+  questoesAtuais = bancoQuestoes[nomeArea] || [];
+  indiceQuestao = 0;
+  acertosObjetivas = 0;
+  respostasDiscursivas = ["", ""];
+  notasDiscursivas = [0, 0];
+  questaoRenderizadaAtual = null;
+
+  if (!questoesAtuais.length) {
+    app.innerHTML = `
+      <div class="box">
+        <h2 style="color:var(--red);">Erro ao abrir o módulo</h2>
+        <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+      </div>
+    `;
+    return;
+  }
+
+  setTimeout(() => {
+    tocarAudioFundo();
+  }, 120);
+
+  carregarQuestao();
+}
+
+function montarEnunciado(questao) {
+  return `
+    <span class="question-label">Texto base em espanhol:</span>
+    <span class="text-base">${questao.base}</span>
+    <span class="question-label">Pergunta:</span>
+    ${questao.q}
+  `;
+}
+
+function carregarQuestao() {
+  const questao = questoesAtuais[indiceQuestao];
+  const total = questoesAtuais.length;
+
+  let html = `
+    <div class="box">
+      <div class="status">
+        <span>${areaAtual}</span>
+        <span>Questão ${indiceQuestao + 1}/${total}</span>
+      </div>
+  `;
+
+  if (questao.tipo === "objetiva") {
+    questaoRenderizadaAtual = embaralharAlternativas(questao);
+    html += `<div id="question-text">${montarEnunciado(questaoRenderizadaAtual)}</div>`;
+    html += `<div class="options-wrap">`;
+    questaoRenderizadaAtual.opcoesRenderizadas.forEach((alt, idx) => {
+      html += `<button class="btn option-btn" onclick="responderObjetiva(${idx})">${alt}</button>`;
+    });
+    html += `</div>`;
+  } else {
+    const discIndex = indiceQuestao - 20;
+    questaoRenderizadaAtual = null;
+    html += `
+      <div id="question-text">${questao.q}</div>
+      <textarea id="resposta-discursiva" placeholder="Digite sua resposta aqui...">${respostasDiscursivas[discIndex] || ""}</textarea>
+      <button class="btn" onclick="salvarDiscursivaEAvancar()">Salvar resposta e continuar</button>
+    `;
+  }
+
+  html += `<button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button></div>`;
+  app.innerHTML = html;
+}
+
+function responderObjetiva(escolhida) {
+  const botoes = document.querySelectorAll(".option-btn");
+  const correta = questaoRenderizadaAtual.corretaRenderizada;
+
+  botoes.forEach((btn, idx) => {
+    btn.disabled = true;
+    if (idx === correta) btn.classList.add("correct");
+  });
+
+  if (escolhida !== correta) {
+    botoes[escolhida].classList.add("wrong");
+    tocarErro();
+  } else {
+    acertosObjetivas++;
+    tocarAcerto();
+  }
+
+  setTimeout(() => {
+    indiceQuestao++;
+    if (indiceQuestao < questoesAtuais.length) {
+      carregarQuestao();
+    } else {
+      mostrarAvaliacaoDiscursivas();
+    }
+  }, 900);
+}
+
+function salvarDiscursivaEAvancar() {
+  const discIndex = indiceQuestao - 20;
+  respostasDiscursivas[discIndex] = document.getElementById("resposta-discursiva").value.trim();
+  indiceQuestao++;
+
+  if (indiceQuestao < questoesAtuais.length) {
+    carregarQuestao();
+  } else {
+    mostrarAvaliacaoDiscursivas();
+  }
+}
+
+function mostrarAvaliacaoDiscursivas() {
+  pararAudioFundo();
+  const discursivas = questoesAtuais.filter(q => q.tipo === "discursiva");
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--pink); margin-bottom:10px;">Avalie suas questões discursivas</h2>
+      <p class="mini" style="margin-bottom:18px;">Dê uma nota de 0 a 10 para cada resposta com base no gabarito.</p>
+      ${discursivas.map((q, i) => `
+        <div class="disc-box">
+          <h3>Discursiva ${i + 1}</h3>
+          <p><strong>Pergunta:</strong> ${q.q}</p>
+          <p><strong>Sua resposta:</strong><br>${respostasDiscursivas[i] ? respostasDiscursivas[i] : "<em>Não respondida</em>"}</p>
+          <p style="color:var(--pink);"><strong>Gabarito esperado:</strong><br>${q.gabarito}</p>
+          <label>Nota (0 a 10)</label>
+          <input class="input-nota" type="number" min="0" max="10" value="${notasDiscursivas[i]}" data-index="${i}">
+        </div>
+      `).join("")}
+      <button class="btn" onclick="finalizarArea()">Finalizar módulo</button>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+}
+
+function finalizarArea() {
+  const inputs = document.querySelectorAll(".input-nota");
+  let somaDisc = 0;
+
+  inputs.forEach(input => {
+    let valor = Number(input.value);
+    if (isNaN(valor) || valor < 0) valor = 0;
+    if (valor > 10) valor = 10;
+    somaDisc += valor;
+  });
+
+  const notaObjetiva = acertosObjetivas * 4;
+  const notaDiscursiva = somaDisc;
+  const notaFinal = notaObjetiva + notaDiscursiva;
+
+  let feedback = "";
+  if (notaFinal >= 85) feedback = "Excelente desempenho. Você está muito forte nesse módulo de Espanhol.";
+  else if (notaFinal >= 60) feedback = "Bom resultado. Com mais treino, sua nota pode subir bastante.";
+  else feedback = "Você já identificou pontos de melhoria. Continue praticando e revisando.";
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue);">${areaAtual}</h2>
+      <div class="result-number">${notaFinal}/100</div>
+      <div class="result-sub">Objetivas: ${notaObjetiva}/80 • Discursivas: ${notaDiscursiva}/20</div>
+      <p class="mini" style="margin-bottom:18px;">${feedback}</p>
+      <button class="btn" onclick="iniciarArea('${areaAtual.replace(/'/g, "\\'")}')">Refazer este módulo</button>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+}
+
+mostrarMenu();
+
+
+
+</script>
+
+</body>
+</html>
