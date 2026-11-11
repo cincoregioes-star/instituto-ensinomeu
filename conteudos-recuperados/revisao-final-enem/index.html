@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revisão Final ENEM</title>
+
+<style>
+body{background:#000;color:#fff;font-family:Arial;text-align:center;padding:10px}
+header{border:2px solid cyan;border-radius:20px;padding:20px;margin-bottom:20px}
+h1{color:cyan}
+p{color:#ff00e6;font-weight:bold}
+
+.box{background:#111;padding:15px;border-radius:15px;margin-top:20px}
+.btn{display:block;width:100%;margin:8px 0;padding:12px;border:2px solid cyan;background:none;color:#fff;border-radius:10px;cursor:pointer}
+.correct{background:#39ff14;color:#000}
+.wrong{background:red}
+
+.comment{display:none;background:#222;padding:10px;margin-top:10px;border-radius:10px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+
+.premium-radar-copa-box{
+  width:100%;
+  max-width:820px;
+  margin:18px auto 16px;
+  padding:16px;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(0,243,255,.10),rgba(255,212,0,.12));
+  border:1px solid rgba(255,212,0,.40);
+  box-shadow:0 0 18px rgba(255,212,0,.10);
+  text-align:center;
+}
+.premium-radar-copa-box h3{
+  color:#ffd400;
+  margin-bottom:8px;
+  font-size:1.12rem;
+  text-transform:uppercase;
+}
+.premium-radar-copa-box p{
+  color:#e5e7eb;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+.premium-radar-copa-box .radar-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.premium-radar-copa-box button,
+.premium-radar-copa-box a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:320px;
+  min-height:48px;
+  border-radius:999px;
+  padding:12px 14px;
+  font-weight:900;
+  text-decoration:none;
+  border:1px solid rgba(255,212,0,.65);
+}
+.premium-radar-copa-box button{
+  background:linear-gradient(135deg,#fff4bf,#ffd400,#f59e0b);
+  color:#06142e;
+  cursor:pointer;
+}
+.premium-radar-copa-box a{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+</style>
+<style id="ensinomeu-portal-acesso">.ensinomeu-voltar{position:fixed!important;left:12px!important;bottom:12px!important;z-index:2147483000!important;background:#063a32!important;color:white!important;border:1px solid #67e8c6!important;border-radius:999px!important;padding:10px 16px!important;font:700 13px/1.25 system-ui,sans-serif!important;text-decoration:none!important;box-shadow:0 5px 30px #000a!important;opacity:.94!important}.ensinomeu-voltar:focus,.ensinomeu-voltar:hover{background:#075a48!important;opacity:1!important}</style>
+</head>
+
+<body>
+<a class="ensinomeu-voltar" href="../index.html" aria-label="Voltar à biblioteca gratuita">← Biblioteca gratuita</a>
+
+<header>
+<h1>REVISÃO FINAL ENEM</h1>
+<p>GRATUITO: 5 MÓDULOS • 50 QUESTÕES</p>
+</header>
+
+
+<div id="app"></div>
+
+<audio id="bg" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3">
+</audio>
+
+<audio id="acerto">
+<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3">
+</audio>
+
+<audio id="erro">
+<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3">
+</audio>
+
+<script>
+
+const app=document.getElementById("app");
+const bg=document.getElementById("bg");
+const acerto=document.getElementById("acerto");
+const erro=document.getElementById("erro");
+
+bg.volume=0.03;
+acerto.volume=0.6;
+erro.volume=0.6;
+
+let moduloAtual="";
+let questoes=[];
+let index=0;
+let acertosCount=0;
+let travado=false;
+
+function embaralhar(a){return a.sort(()=>Math.random()-0.5)}
+
+function iniciarModulo(nome){
+moduloAtual=nome;
+questoes=banco[nome];
+index=0;
+acertosCount=0;
+
+bg.currentTime=0;
+bg.play().catch(()=>{});
+
+carregar();
+}
+
+function carregar(){
+travado=false;
+let q=questoes[index];
+
+let op=q.o.map((t,i)=>({t,c:i==q.c}));
+op=embaralhar(op);
+
+let correta=op.findIndex(x=>x.c);
+
+app.innerHTML=`
+<div class="box">
+<h3>${moduloAtual}</h3>
+<p>Questão ${index+1}/10</p>
+
+<p>${q.q}</p>
+
+${op.map((o,i)=>`<button class="btn opcao" onclick="responder(${i},${correta})">${o.t}</button>`).join("")}
+
+<div id="coment" class="comment"></div>
+
+<button id="nextBtn" class="btn" style="display:none" onclick="proxima()">Próxima</button>
+
+<button class="btn" onclick="menu()">Menu</button>
+</div>`;
+}
+
+function responder(escolha,correta){
+if(travado)return;
+travado=true;
+
+let botoes=document.querySelectorAll(".opcao");
+let coment=document.getElementById("coment");
+let next=document.getElementById("nextBtn");
+
+botoes.forEach((b,i)=>{
+b.disabled=true;
+if(i==correta)b.classList.add("correct");
+if(i==escolha && escolha!=correta)b.classList.add("wrong");
+});
+
+if(escolha==correta){
+acertosCount++;
+acerto.play();
+}else{
+erro.play();
+}
+
+coment.style.display="block";
+coment.innerHTML=questoes[index].coment;
+
+next.style.display="block";
+}
+
+function proxima(){
+index++;
+if(index<questoes.length)carregar();
+else finalizar();
+}
+
+function finalizar(){
+bg.pause();
+bg.currentTime=0;
+
+app.innerHTML=`
+<div class="box">
+<h2>Resultado</h2>
+<p>${acertosCount}/10</p>
+<button class="btn" onclick="menu()">Menu</button>
+</div>`;
+}
+
+function menu(){
+bg.pause();
+bg.currentTime=0;
+
+app.innerHTML=`
+<div class="box">
+<h2>Escolha o módulo</h2>
+
+<div class="grid">
+${Object.keys(banco).map(m=>`
+<button class="btn" onclick="iniciarModulo('${m}')">${m}</button>
+`).join("")}
+</div>
+
+</div>`;
+}
+
+/* BANCO SIMPLES (10 por módulo) */
+
+const banco={
+"Linguagens":[
+{q:"Qual é o objetivo principal de um texto dissertativo?",o:["Convencer","Narrar","Descrever","Entreter"],c:0,coment:"Texto dissertativo busca argumentar."},
+{q:"Coesão serve para:",o:["Ligação de ideias","Erro gramatical","Enfeite","Resumo"],c:0,coment:"Coesão conecta ideias."},
+{q:"Interpretação exige:",o:["Compreensão","Memorização","Chute","Cópia"],c:0,coment:"Interpretar é compreender."},
+{q:"Gênero textual é:",o:["Tipo de texto","Erro","Imagem","Título"],c:0,coment:"Refere-se à estrutura do texto."},
+{q:"Linguagem formal evita:",o:["Gírias","Clareza","Organização","Coesão"],c:0,coment:"Formal não usa gírias."},
+{q:"Argumento é:",o:["Defesa de ideia","Resumo","Erro","Tema"],c:0,coment:"Argumento sustenta tese."},
+{q:"Tema é:",o:["Assunto","Resposta","Erro","Título"],c:0,coment:"Tema é o assunto."},
+{q:"Conclusão serve para:",o:["Fechar ideia","Abrir assunto","Confundir","Narrar"],c:0,coment:"Conclusão finaliza."},
+{q:"Introdução apresenta:",o:["Tese","Resposta","Erro","Fim"],c:0,coment:"Introdução traz tese."},
+{q:"Texto claro é:",o:["Objetivo","Confuso","Longo","Curto"],c:0,coment:"Clareza é essencial."}
+],
+
+"Humanas":[
+{q:"Democracia significa:",o:["Participação","Ditadura","Repressão","Controle"],c:0,coment:"Democracia envolve participação."},
+{q:"Cidadania é:",o:["Direitos e deveres","Dinheiro","Voto apenas","Lei"],c:0,coment:"Cidadania envolve direitos."},
+{q:"História estuda:",o:["Passado","Futuro","Presente","Nada"],c:0,coment:"História analisa o passado."},
+{q:"Geografia analisa:",o:["Espaço","Tempo","Língua","Arte"],c:0,coment:"Geografia estuda o espaço."},
+{q:"Política trata de:",o:["Organização social","Dinheiro","Saúde","Arte"],c:0,coment:"Política organiza sociedade."},
+{q:"Sociedade é:",o:["Grupo humano","Lugar","Tempo","Objeto"],c:0,coment:"Sociedade é coletivo."},
+{q:"Cultura é:",o:["Costumes","Dinheiro","Lei","Tempo"],c:0,coment:"Cultura envolve hábitos."},
+{q:"Estado é:",o:["Organização","Pessoa","Lugar","Tempo"],c:0,coment:"Estado organiza sociedade."},
+{q:"Economia trata de:",o:["Produção","História","Arte","Tempo"],c:0,coment:"Economia trata de bens."},
+{q:"Globalização é:",o:["Integração","Isolamento","Separação","Divisão"],c:0,coment:"Globalização conecta países."}
+],
+
+"Natureza":[
+{q:"Água é:",o:["H2O","CO2","O2","NaCl"],c:0,coment:"Fórmula da água."},
+{q:"Fotossíntese ocorre em:",o:["Plantas","Pedras","Água","Fogo"],c:0,coment:"Plantas produzem energia."},
+{q:"Gravidade puxa:",o:["Corpos","Luz","Som","Ar"],c:0,coment:"Força gravitacional."},
+{q:"Célula é:",o:["Unidade da vida","Átomo","Molécula","Corpo"],c:0,coment:"Célula é base da vida."},
+{q:"Energia solar é:",o:["Renovável","Poluente","Fóssil","Nuclear"],c:0,coment:"Energia limpa."},
+{q:"Oxigênio serve para:",o:["Respiração","Comida","Luz","Som"],c:0,coment:"Respiração celular."},
+{q:"Planeta Terra é:",o:["Rochoso","Gasoso","Líquido","Fogo"],c:0,coment:"Planeta sólido."},
+{q:"Calor é:",o:["Energia","Luz","Som","Ar"],c:0,coment:"Forma de energia."},
+{q:"Força é:",o:["Interação","Objeto","Tempo","Cor"],c:0,coment:"Força gera movimento."},
+{q:"DNA guarda:",o:["Informação genética","Energia","Calor","Som"],c:0,coment:"DNA guarda dados genéticos."}
+],
+
+"Matemática":[
+{q:"2+2=",o:["4","3","5","6"],c:0,coment:"Soma básica."},
+{q:"10/2=",o:["5","2","10","8"],c:0,coment:"Divisão."},
+{q:"5x5=",o:["25","10","20","30"],c:0,coment:"Multiplicação."},
+{q:"√9=",o:["3","2","4","1"],c:0,coment:"Raiz."},
+{q:"100% =",o:["1","100","10","0"],c:0,coment:"Porcentagem."},
+{q:"Área quadrado lado 2=",o:["4","2","8","6"],c:0,coment:"Área."},
+{q:"1+1=",o:["2","3","1","0"],c:0,coment:"Soma."},
+{q:"3²=",o:["9","6","3","12"],c:0,coment:"Potência."},
+{q:"10-5=",o:["5","4","3","2"],c:0,coment:"Subtração."},
+{q:"Metade de 20=",o:["10","5","15","20"],c:0,coment:"Dividir por 2."}
+],
+
+"Redação":[
+{q:"Texto ENEM é:",o:["Argumentativo","Narrativo","Poético","Carta"],c:0,coment:"Dissertativo-argumentativo."},
+{q:"Tese é:",o:["Ideia principal","Erro","Tema","Resumo"],c:0,coment:"Posicionamento."},
+{q:"Conclusão tem:",o:["Solução","Erro","Tema","Nada"],c:0,coment:"Intervenção."},
+{q:"Coesão é:",o:["Ligação","Erro","Tema","Nada"],c:0,coment:"Conectivos."},
+{q:"Repertório é:",o:["Conhecimento","Erro","Tema","Nada"],c:0,coment:"Base externa."},
+{q:"Argumento é:",o:["Defesa","Erro","Tema","Nada"],c:0,coment:"Sustentação."},
+{q:"Tema é:",o:["Assunto","Erro","Resposta","Nada"],c:0,coment:"Base do texto."},
+{q:"Introdução tem:",o:["Tese","Fim","Erro","Nada"],c:0,coment:"Início do texto."},
+{q:"Desenvolvimento:",o:["Argumenta","Resume","Erro","Nada"],c:0,coment:"Explica."},
+{q:"Nota máxima:",o:["1000","500","800","900"],c:0,coment:"ENEM redação."}
+]
+};
+
+menu();
+
+
+</script>
+</body>
+</html>
