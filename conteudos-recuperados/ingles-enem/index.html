@@ -2154,8 +2154,8 @@ function mostrarMenu() {
   `;
 }
 
-async function iniciarArea(nomeArea) {
-  await destravarAudio();
+function iniciarArea(nomeArea) {
+  destravarAudio();
   areaAtual = nomeArea;
   questoesAtuais = bancoQuestoes[nomeArea] || [];
   indiceQuestao = 0;
