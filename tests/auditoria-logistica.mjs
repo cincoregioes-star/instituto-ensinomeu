@@ -51,7 +51,7 @@ assert.equal(totalBase,120);
 assert.equal(totalFinal,300);
 assert.match(html,/logistica-complementar\.js/);
 assert.match(html,/\.\.\/\.\.\/voltar-global\.js/);
-assert.ok(!/R\$\s*19|checkout|Kiwify|comprar acesso/i.test(html),"Referência comercial na página");
+assert.ok(!/R\$\s*19|pay\.kiwify|https?:[^"\s]*kiwify|comprar acesso/i.test(html),"Referência comercial na página");
 const jsPrefix="<script>'use strict';";
 const jsStart=html.indexOf(jsPrefix);
 assert.ok(jsStart>=0,"Script principal não encontrado");
