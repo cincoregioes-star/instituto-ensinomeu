@@ -1,13 +1,17 @@
-// Auditoria automática do acervo Gabarito Logística no EnsinoMeu.
-// Preserva 120 questões originais; exige 90 complementares para est e rec.
+// Auditoria automatizada dos 12 simulados de Logística
+// Preserva 120 questões antigas e confere 90 novas em Estoque e Recebimento.
 import fs from "node:fs";
 import vm from "node:vm";
 import assert from "node:assert/strict";
+
 const html=fs.readFileSync("conteudos-recuperados/logistica/index.html","utf8");
 const extra=fs.readFileSync("conteudos-recuperados/logistica/logistica-complementar.js","utf8");
-const m=html.match(/<script id="dados" type="application\\/json">([\\s\\S]*?)<\\/script>/);
-assert.ok(m,"Base original não encontrada no HTML");
-const base=JSON.parse(m[1]);
+const startTag='<script id="dados" type="application/json">';
+const pos=html.indexOf(startTag);
+assert.ok(pos>=0,"Bancos originais não encontrados");
+const end=html.indexOf("</script>",pos+startTag.length);
+assert.ok(end>pos,"JSON incompleto");
+const base=JSON.parse(html.slice(pos+startTag.length,end));
 const sandbox={window:{}};
 vm.runInNewContext(extra,sandbox);
 const ampl=sandbox.window.LOGISTICA_EXTRAS;
@@ -15,16 +19,17 @@ assert.ok(ampl && typeof ampl==="object");
 assert.equal(base.tracks.length,12);
 assert.deepEqual(Object.keys(ampl).sort(),["est","rec"]);
 let totalBase=0,totalFinal=0;
-const normalizar=s=>String(s).normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
+const normalizar=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
+
 for(const trilha of base.tracks){
- const original=base.banks[trilha.id];
- assert.ok(Array.isArray(original));
- assert.equal(original.length,10,"Trilha original alterada: "+trilha.id);
- totalBase+=original.length;
+ const orig=base.banks[trilha.id];
+ assert.ok(Array.isArray(orig));
+ assert.equal(orig.length,10,"Trilha original alterada: "+trilha.id);
+ totalBase+=orig.length;
  const novas=ampl[trilha.id]||[];
  const expected=["est","rec"].includes(trilha.id)?90:0;
  assert.equal(novas.length,expected,"Ampliação incompleta: "+trilha.id);
- const full=[...original,...novas];
+ const full=[...orig,...novas];
  const expectedFull=expected?100:10;
  assert.equal(full.length,expectedFull,"Contagem incorreta: "+trilha.id);
  const byModule=expectedFull===100?20:5;
@@ -44,10 +49,13 @@ for(const trilha of base.tracks){
 }
 assert.equal(totalBase,120);
 assert.equal(totalFinal,300);
-assert.match(html,/logistica-complementar\\.js/);
-assert.match(html,/\\.\\.\\/\\.\\.\\/voltar-global\\.js/);
-assert.ok(!/R\\$\\s*19|checkout|Kiwify|comprar acesso/i.test(html),"Referência comercial na página");
-const js=html.match(/<script>'use strict';([\\s\\S]*?)<\\/script>/);
-assert.ok(js,"Script principal não encontrado");
-new Function("'use strict';"+js[1]);
-console.log("OK Logística: 12 trilhas, 120 questões originais, 180 novas, 300 totais; 5 módulos de 20 em Estoque e Recebimento.");
+assert.match(html,/logistica-complementar\.js/);
+assert.match(html,/\.\.\/\.\.\/voltar-global\.js/);
+assert.ok(!/R\$\s*19|checkout|Kiwify|comprar acesso/i.test(html),"Referência comercial na página");
+const jsPrefix="<script>'use strict';";
+const jsStart=html.indexOf(jsPrefix);
+assert.ok(jsStart>=0,"Script principal não encontrado");
+const jsEnd=html.indexOf("</script>",jsStart+jsPrefix.length);
+assert.ok(jsEnd>jsStart);
+new Function("'use strict';"+html.slice(jsStart+jsPrefix.length,jsEnd));
+console.log("OK Logística: 12 trilhas; 120 questões originais; 180 novas; 300 totais; 5 módulos de 20 para Estoque e Recebimento.");
