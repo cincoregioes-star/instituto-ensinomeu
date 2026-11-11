@@ -1,61 +1,59 @@
-// Auditoria automatizada dos 12 simulados de Logística
-// Preserva 120 questões antigas e confere 90 novas em Estoque e Recebimento.
+// Auditoria técnica dos bancos do Gabarito Logística no EnsinoMeu.
+// 12 trilhas com 10 questões originais cada; 4 trilhas ampliadas para 100.
 import fs from "node:fs";
 import vm from "node:vm";
 import assert from "node:assert/strict";
 
-const html=fs.readFileSync("conteudos-recuperados/logistica/index.html","utf8");
-const extra=fs.readFileSync("conteudos-recuperados/logistica/logistica-complementar.js","utf8");
-const startTag='<script id="dados" type="application/json">';
-const pos=html.indexOf(startTag);
-assert.ok(pos>=0,"Bancos originais não encontrados");
-const end=html.indexOf("</script>",pos+startTag.length);
-assert.ok(end>pos,"JSON incompleto");
-const base=JSON.parse(html.slice(pos+startTag.length,end));
+const dir="conteudos-recuperados/logistica/";
+const html=fs.readFileSync(dir+"index.html","utf8");
+const marker='<script id="dados" type="application/json">';
+const pos=html.indexOf(marker);
+assert.ok(pos>=0,"Banco original não encontrado");
+const end=html.indexOf("</script>",pos+marker.length);
+assert.ok(end>pos,"JSON original incompleto");
+const base=JSON.parse(html.slice(pos+marker.length,end));
 const sandbox={window:{}};
-vm.runInNewContext(extra,sandbox);
-const ampl=sandbox.window.LOGISTICA_EXTRAS;
-assert.ok(ampl && typeof ampl==="object");
-assert.equal(base.tracks.length,12);
-assert.deepEqual(Object.keys(ampl).sort(),["est","rec"]);
-let totalBase=0,totalFinal=0;
-const normalizar=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
-
-for(const trilha of base.tracks){
- const orig=base.banks[trilha.id];
- assert.ok(Array.isArray(orig));
- assert.equal(orig.length,10,"Trilha original alterada: "+trilha.id);
- totalBase+=orig.length;
- const novas=ampl[trilha.id]||[];
- const expected=["est","rec"].includes(trilha.id)?90:0;
- assert.equal(novas.length,expected,"Ampliação incompleta: "+trilha.id);
- const full=[...orig,...novas];
- const expectedFull=expected?100:10;
- assert.equal(full.length,expectedFull,"Contagem incorreta: "+trilha.id);
- const byModule=expectedFull===100?20:5;
- assert.equal(full.length%byModule,0);
- assert.equal(full.length/byModule,expectedFull===100?5:2);
- const seen=new Set();
- full.forEach((q,i)=>{
-  assert.equal(typeof q.q,"string");assert.ok(q.q.trim().length>=18,trilha.id+" pergunta "+i);
-  assert.ok(Array.isArray(q.o)&&q.o.length===4,trilha.id+" quatro alternativas "+i);
-  assert.ok(q.o.every(v=>typeof v==="string"&&v.trim().length>=5),trilha.id+" alternativas preenchidas "+i);
-  assert.equal(new Set(q.o.map(normalizar)).size,4,trilha.id+" alternativas repetidas "+i);
-  assert.ok(Number.isInteger(q.a)&&q.a>=0&&q.a<=3,trilha.id+" gabarito "+i);
-  assert.ok(q.e&&q.e.length>=20,trilha.id+" explicação "+i);
-  const key=normalizar(q.q);assert.ok(!seen.has(key),"Pergunta duplicada: "+trilha.id+" "+i);seen.add(key);
- });
- totalFinal+=full.length;
+for(const path of ["logistica-complementar.js","logistica-complementar-lote2.js"]){
+ vm.runInNewContext(fs.readFileSync(dir+path,"utf8"),sandbox,{timeout:3000});
+ assert.ok(html.includes('src="'+path+'"'),"Script não incluído na página: "+path);
 }
-assert.equal(totalBase,120);
-assert.equal(totalFinal,300);
-assert.match(html,/logistica-complementar\.js/);
+const allExtras={...sandbox.window.LOGISTICA_EXTRAS,...sandbox.window.LOGISTICA_EXTRAS_LOTE2};
+const completeIds=["est","rec","pck","ops"];
+assert.equal(base.tracks.length,12,"Trilhas incorretas");
+assert.deepEqual(Object.keys(allExtras).sort(),completeIds.slice().sort(),"Bancos completos incorretos");
+let initial=0,total=0,newCount=0;
+const normalize=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
+for(const track of base.tracks){
+ const original=base.banks[track.id],added=allExtras[track.id]||[];
+ assert.equal(original?.length,10,"O banco original foi alterado: "+track.id);
+ const full=completeIds.includes(track.id);
+ assert.equal(added.length,full?90:0,"Número incorreto de questões novas em "+track.id);
+ const questions=[...original,...added];
+ assert.equal(questions.length,full?100:10,"Total inválido da trilha "+track.id);
+ assert.equal(questions.length/(full?20:5),full?5:2);
+ const unique=new Set();
+ questions.forEach((q,i)=>{
+  assert.ok(typeof q.q==="string"&&q.q.trim().length>=18,"Enunciado incompleto "+track.id+":"+i);
+  assert.ok(Array.isArray(q.o)&&q.o.length===4,"Quatro alternativas ausentes "+track.id+":"+i);
+  assert.ok(q.o.every(a=>typeof a==="string"&&a.trim().length>=6),"Alternativa inválida "+track.id+":"+i);
+  assert.equal(new Set(q.o.map(normalize)).size,4,"Alternativas duplicadas "+track.id+":"+i);
+  assert.ok(Number.isInteger(q.a)&&q.a>=0&&q.a<4,"Gabarito fora do intervalo "+track.id+":"+i);
+  assert.ok(typeof q.e==="string"&&q.e.length>=20,"Explicação ausente "+track.id+":"+i);
+  const k=normalize(q.q);
+  assert.ok(!unique.has(k),"Enunciado repetido "+track.id+":"+i);
+  unique.add(k);
+ });
+ initial+=original.length;total+=questions.length;newCount+=added.length;
+}
+assert.equal(initial,120);
+assert.equal(newCount,360);
+assert.equal(total,480);
 assert.match(html,/\.\.\/\.\.\/voltar-global\.js/);
-assert.ok(!/R\$\s*19|pay\.kiwify|https?:[^"\s]*kiwify|comprar acesso/i.test(html),"Referência comercial na página");
-const jsPrefix="<script>'use strict';";
-const jsStart=html.indexOf(jsPrefix);
-assert.ok(jsStart>=0,"Script principal não encontrado");
-const jsEnd=html.indexOf("</script>",jsStart+jsPrefix.length);
+assert.doesNotMatch(html,/R\$\s*19|https?:[^"\s]*kiwify|comprar acesso/i);
+const inlineTag="<script>'use strict';";
+const jsStart=html.indexOf(inlineTag);
+assert.ok(jsStart>=0,"Script da interface não encontrado");
+const jsEnd=html.indexOf("</script>",jsStart+inlineTag.length);
 assert.ok(jsEnd>jsStart);
-new Function("'use strict';"+html.slice(jsStart+jsPrefix.length,jsEnd));
-console.log("OK Logística: 12 trilhas; 120 questões originais; 180 novas; 300 totais; 5 módulos de 20 para Estoque e Recebimento.");
+new Function("'use strict';"+html.slice(jsStart+inlineTag.length,jsEnd));
+console.log("OK Logística: 12 trilhas, 120 questões preservadas, 360 adicionadas, 480 totais; 4 trilhas completas com 5 módulos de 20.");
