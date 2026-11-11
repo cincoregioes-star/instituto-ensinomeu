@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matemática ENEM — Gratuita | Gabarito Max</title>
+
+<style>
+:root{
+  --card:#11141b;
+  --card2:#171b24;
+  --blue:#00f3ff;
+  --pink:#ff00e6;
+  --green:#39ff14;
+  --red:#ff003c;
+  --yellow:#ffd400;
+  --text:#ffffff;
+  --muted:#cfcfcf;
+  --line:rgba(255,255,255,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{
+  background:#000;
+  color:var(--text);
+  min-height:100vh;
+  padding:20px 12px 40px;
+  text-align:center;
+  overflow-x:hidden;
+}
+header{
+  max-width:1100px;
+  margin:0 auto 24px;
+  border:2px solid var(--blue);
+  border-radius:24px;
+  padding:22px 16px;
+  background:linear-gradient(180deg,#0c0f16,#090b11);
+  box-shadow:0 0 22px rgba(0,243,255,.22);
+}
+header h1{
+  color:var(--blue);
+  font-size:clamp(2rem,4vw,3rem);
+  text-shadow:0 0 14px rgba(0,243,255,.7);
+  font-weight:900;
+}
+header p{
+  margin-top:10px;
+  color:var(--pink);
+  font-weight:800;
+  font-size:clamp(1rem,2vw,1.3rem);
+}
+#app{width:100%;max-width:1100px;margin:0 auto}
+.box{
+  width:100%;
+  background:linear-gradient(180deg,var(--card),var(--card2));
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:20px 16px;
+  box-shadow:0 0 20px rgba(0,0,0,.35);
+  overflow:hidden;
+}
+.btn{
+  display:block;
+  width:100%;
+  max-width:560px;
+  margin:10px auto;
+  padding:14px 16px;
+  border:2px solid var(--blue);
+  background:transparent;
+  color:#fff;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:800;
+  font-size:1rem;
+  line-height:1.45;
+  transition:.2s;
+  white-space:normal;
+  word-break:break-word;
+}
+.btn:hover:not(:disabled){
+  background:var(--blue);
+  color:#000;
+  box-shadow:0 0 18px rgba(0,243,255,.35);
+}
+.btn-voltar{border-color:#666;color:#ddd}
+.btn-voltar:hover:not(:disabled){background:#333;color:#fff;box-shadow:none}
+.btn.correct{background:var(--green)!important;border-color:var(--green)!important;color:#000!important}
+.btn.wrong{background:var(--red)!important;border-color:var(--red)!important;color:#fff!important}
+.grid-areas{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  margin-top:18px;
+}
+.card-area{
+  background:linear-gradient(135deg,rgba(0,243,255,.08),rgba(255,0,230,.08));
+  border:1px solid rgba(0,243,255,.16);
+  border-radius:16px;
+  padding:16px;
+  text-align:left;
+}
+.card-area h3{
+  color:var(--blue);
+  margin-bottom:8px;
+  font-size:1.12rem;
+}
+.card-area p{
+  color:#ddd;
+  font-size:.95rem;
+  line-height:1.45;
+  margin-bottom:10px;
+}
+.status{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+  color:var(--pink);
+  font-weight:bold;
+  text-align:left;
+}
+#question-text{
+  font-size:1.05rem;
+  line-height:1.6;
+  margin:20px 0;
+  min-height:88px;
+  text-align:left;
+  word-break:break-word;
+}
+.question-label{
+  display:block;
+  color:var(--yellow);
+  font-weight:bold;
+  margin-bottom:8px;
+}
+.text-base{
+  display:block;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  padding:14px;
+  margin:10px 0 14px;
+  color:#f5f5f5;
+  font-style:italic;
+  line-height:1.65;
+}
+.options-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-bottom:16px;
+}
+.option-btn{
+  width:100%;
+  max-width:100%;
+  margin:0;
+  text-align:left;
+  min-height:58px;
+}
+.result-number{
+  font-size:3rem;
+  color:var(--blue);
+  margin:12px 0;
+  font-weight:900;
+}
+.result-sub{
+  font-size:1.12rem;
+  color:#ddd;
+  margin-bottom:10px;
+}
+.mini{color:var(--muted);font-size:.96rem;line-height:1.5}
+@media(max-width:700px){
+  .grid-areas{grid-template-columns:1fr}
+  .box{padding:16px 12px}
+  #question-text{font-size:1rem}
+  .btn{font-size:.96rem;padding:13px 12px}
+}
+
+.premium-radar-copa-box{
+  width:100%;
+  max-width:820px;
+  margin:18px auto 16px;
+  padding:16px;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(0,243,255,.10),rgba(255,212,0,.12));
+  border:1px solid rgba(255,212,0,.40);
+  box-shadow:0 0 18px rgba(255,212,0,.10);
+  text-align:center;
+}
+.premium-radar-copa-box h3{
+  color:#ffd400;
+  margin-bottom:8px;
+  font-size:1.12rem;
+  text-transform:uppercase;
+}
+.premium-radar-copa-box p{
+  color:#e5e7eb;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+.premium-radar-copa-box .radar-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.premium-radar-copa-box button,
+.premium-radar-copa-box a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:320px;
+  min-height:48px;
+  border-radius:999px;
+  padding:12px 14px;
+  font-weight:900;
+  text-decoration:none;
+  border:1px solid rgba(255,212,0,.65);
+}
+.premium-radar-copa-box button{
+  background:linear-gradient(135deg,#fff4bf,#ffd400,#f59e0b);
+  color:#06142e;
+  cursor:pointer;
+}
+.premium-radar-copa-box a{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+</style>
+<style id="ensinomeu-portal-acesso">.ensinomeu-voltar{position:fixed!important;left:12px!important;bottom:12px!important;z-index:2147483000!important;background:#063a32!important;color:white!important;border:1px solid #67e8c6!important;border-radius:999px!important;padding:10px 16px!important;font:700 13px/1.25 system-ui,sans-serif!important;text-decoration:none!important;box-shadow:0 5px 30px #000a!important;opacity:.94!important}.ensinomeu-voltar:focus,.ensinomeu-voltar:hover{background:#075a48!important;opacity:1!important}</style>
+</head>
+
+<body>
+<a class="ensinomeu-voltar" href="../index.html" aria-label="Voltar à biblioteca gratuita">← Biblioteca gratuita</a>
+
+<header>
+  <h1>MATEMÁTICA ENEM — GRATUITA</h1>
+  <p>10 MÓDULOS • 200 QUESTÕES • ÁUDIOS • RESPOSTAS EMBARALHADAS</p>
+</header>
+
+
+<div id="app"></div>
+
+<audio id="audio-bg" loop preload="auto" playsinline>
+  <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-correct" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-wrong" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const app = document.getElementById("app");
+const audioBg = document.getElementById("audio-bg");
+const audioCorrect = document.getElementById("audio-correct");
+const audioWrong = document.getElementById("audio-wrong");
+
+audioBg.volume = 0.06;
+audioCorrect.volume = 0.45;
+audioWrong.volume = 0.45;
+
+let audioLiberado = false;
+let areaAtual = "";
+let questoesAtuais = [];
+let indiceQuestao = 0;
+let acertosObjetivas = 0;
+let questaoRenderizadaAtual = null;
+
+document.addEventListener("click", destravarAudio, { once:true });
+document.addEventListener("touchstart", destravarAudio, { once:true });
+
+function destravarAudio(){
+  if(audioLiberado) return Promise.resolve(true);
+  audioBg.muted = true;
+  return audioBg.play().then(()=>{
+    audioBg.pause();
+    audioBg.currentTime = 0;
+    audioBg.muted = false;
+    audioLiberado = true;
+
+    audioCorrect.play().then(()=>{
+      audioCorrect.pause();
+      audioCorrect.currentTime = 0;
+    }).catch(()=>{});
+
+    audioWrong.play().then(()=>{
+      audioWrong.pause();
+      audioWrong.currentTime = 0;
+    }).catch(()=>{});
+
+    return true;
+  }).catch(()=>false);
+}
+
+function tocarAudioFundo(){
+  if(!audioLiberado) return;
+  audioBg.currentTime = 0;
+  audioBg.play().catch(()=>{});
+}
+
+function pararAudioFundo(){
+  audioBg.pause();
+  audioBg.currentTime = 0;
+}
+
+function tocarAcerto(){
+  audioCorrect.currentTime = 0;
+  audioCorrect.play().catch(()=>{});
+}
+
+function tocarErro(){
+  audioWrong.currentTime = 0;
+  audioWrong.play().catch(()=>{});
+}
+
+const areasMatematica = [
+  {nome:"Aritmética",descricao:"Operações, números, frações, potências e raízes."},
+  {nome:"Álgebra",descricao:"Expressões, equações, sistemas e produtos notáveis."},
+  {nome:"Geometria Plana",descricao:"Áreas, perímetros, triângulos, círculos e polígonos."},
+  {nome:"Geometria Espacial",descricao:"Volumes, áreas, prismas, cilindros, cones e esferas."},
+  {nome:"Funções",descricao:"Função afim, quadrática, gráficos e interpretação."},
+  {nome:"Porcentagem e Razão",descricao:"Porcentagem, proporção, escalas e regra de três."},
+  {nome:"Probabilidade",descricao:"Eventos, chances, combinações e análise de possibilidades."},
+  {nome:"Estatística",descricao:"Média, mediana, moda, gráficos e interpretação de dados."},
+  {nome:"Matemática Financeira",descricao:"Juros simples, compostos, descontos e aumentos."},
+  {nome:"ENEM Aplicado",descricao:"Problemas contextualizados no modelo ENEM."}
+];
+
+function criarObjetiva(area, numero, textoBase, pergunta, alternativas, correta, comentario){
+  return {tipo:"objetiva",area,numero,base:textoBase,q:pergunta,o:alternativas,c:correta,coment:comentario};
+}
+
+function gerarQuestoes(area, lista){
+  return lista.map((item,i)=>criarObjetiva(area,i+1,item.base,item.q,item.o,item.c,item.coment));
+}
+
+function embaralharAlternativas(questao){
+  const pares = questao.o.map((texto,idx)=>({texto,correta:idx===questao.c}));
+  for(let i=pares.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [pares[i],pares[j]] = [pares[j],pares[i]];
+  }
+  return {
+    ...questao,
+    opcoesRenderizadas:pares.map(p=>p.texto),
+    corretaRenderizada:pares.findIndex(p=>p.correta)
+  };
+}
+
+const bancoQuestoes = {
+  "Aritmética": gerarQuestoes("Aritmética", [
+    {base:"Uma compra custou R$ 18,00 e outra custou R$ 27,00.",q:"Qual foi o gasto total?",o:["R$ 35,00","R$ 40,00","R$ 45,00","R$ 50,00"],c:2,coment:"18 + 27 = 45."},
+    {base:"Um estudante tinha 80 figurinhas e deu 25 a um amigo.",q:"Com quantas figurinhas ele ficou?",o:["45","55","60","65"],c:1,coment:"80 - 25 = 55."},
+    {base:"Uma caixa tem 12 lápis. Foram compradas 6 caixas.",q:"Quantos lápis foram comprados?",o:["60","66","72","84"],c:2,coment:"12 x 6 = 72."},
+    {base:"Um pacote com 48 balas será dividido igualmente entre 8 crianças.",q:"Quantas balas cada criança receberá?",o:["4","5","6","8"],c:2,coment:"48 ÷ 8 = 6."},
+    {base:"Em uma expressão numérica, a multiplicação deve ser feita antes da adição.",q:"Qual é o valor de 5 + 4 x 3?",o:["17","27","22","15"],c:0,coment:"4 x 3 = 12; 5 + 12 = 17."},
+    {base:"Potenciação representa multiplicação de fatores iguais.",q:"Qual é o valor de 3²?",o:["6","9","12","18"],c:1,coment:"3² = 3 x 3 = 9."},
+    {base:"A raiz quadrada de um número é o valor que multiplicado por ele mesmo gera esse número.",q:"Qual é a raiz quadrada de 64?",o:["6","7","8","9"],c:2,coment:"8 x 8 = 64."},
+    {base:"Frações podem representar partes de um todo.",q:"Quanto é 1/2 de 100?",o:["25","40","50","75"],c:2,coment:"Metade de 100 é 50."},
+    {base:"Um número par é divisível por 2.",q:"Qual dos números abaixo é par?",o:["13","21","34","45"],c:2,coment:"34 é divisível por 2."},
+    {base:"Números primos têm apenas dois divisores naturais: 1 e ele mesmo.",q:"Qual dos números abaixo é primo?",o:["9","15","17","21"],c:2,coment:"17 só é divisível por 1 e por 17."},
+    {base:"A soma de três números é 120. Dois deles são 35 e 45.",q:"Qual é o terceiro número?",o:["30","35","40","45"],c:2,coment:"35 + 45 = 80; 120 - 80 = 40."},
+    {base:"Um ônibus percorre 60 km em 1 hora.",q:"Em 3 horas, mantendo o mesmo ritmo, ele percorre:",o:["120 km","150 km","180 km","200 km"],c:2,coment:"60 x 3 = 180."},
+    {base:"Um produto custa R$ 96,00 e será dividido em 4 parcelas iguais.",q:"Qual o valor de cada parcela?",o:["R$ 20,00","R$ 22,00","R$ 24,00","R$ 26,00"],c:2,coment:"96 ÷ 4 = 24."},
+    {base:"O dobro de um número é obtido multiplicando-o por 2.",q:"Qual é o dobro de 37?",o:["64","72","74","84"],c:2,coment:"37 x 2 = 74."},
+    {base:"O triplo de um número é obtido multiplicando-o por 3.",q:"Qual é o triplo de 18?",o:["36","45","54","60"],c:2,coment:"18 x 3 = 54."},
+    {base:"Uma escola tem 9 turmas com 32 alunos cada.",q:"Quantos alunos há ao todo?",o:["278","288","298","308"],c:1,coment:"9 x 32 = 288."},
+    {base:"Uma pessoa leu 15 páginas por dia durante 7 dias.",q:"Quantas páginas ela leu?",o:["95","100","105","115"],c:2,coment:"15 x 7 = 105."},
+    {base:"Uma dívida de R$ 200,00 foi reduzida em R$ 75,00.",q:"Qual o valor restante?",o:["R$ 115,00","R$ 120,00","R$ 125,00","R$ 130,00"],c:2,coment:"200 - 75 = 125."},
+    {base:"Um número foi multiplicado por 5 e resultou em 45.",q:"Qual era o número?",o:["7","8","9","10"],c:2,coment:"45 ÷ 5 = 9."},
+    {base:"Uma sequência começa em 4 e aumenta de 4 em 4.",q:"Qual é o 5º termo da sequência 4, 8, 12, 16, ...?",o:["18","20","22","24"],c:1,coment:"4, 8, 12, 16, 20."}
+  ]),
+
+  "Álgebra": gerarQuestoes("Álgebra", [
+    {base:"Uma equação representa uma igualdade com valor desconhecido.",q:"Na equação x + 5 = 12, qual é o valor de x?",o:["5","6","7","8"],c:2,coment:"x = 12 - 5 = 7."},
+    {base:"Resolver uma equação é encontrar o valor que torna a igualdade verdadeira.",q:"Na equação 2x = 18, x vale:",o:["6","7","8","9"],c:3,coment:"x = 18 ÷ 2 = 9."},
+    {base:"Expressões algébricas usam letras para representar números.",q:"Se a = 4, qual é o valor de 3a?",o:["7","10","12","16"],c:2,coment:"3 x 4 = 12."},
+    {base:"Uma expressão pode ser simplificada agrupando termos semelhantes.",q:"Qual é a forma simplificada de 2x + 3x?",o:["5","5x","6x","x²"],c:1,coment:"2x + 3x = 5x."},
+    {base:"Produto notável é uma forma especial de multiplicação algébrica.",q:"Qual é o resultado de (x + 2)(x + 2)?",o:["x² + 4","x² + 2x + 4","x² + 4x + 4","2x + 4"],c:2,coment:"(x+2)² = x² + 4x + 4."},
+    {base:"Substitua x por 3 na expressão.",q:"Qual é o valor de x² + 1 para x = 3?",o:["7","8","9","10"],c:3,coment:"3² + 1 = 9 + 1 = 10."},
+    {base:"Uma equação do 1º grau tem incógnita com expoente 1.",q:"Qual é a solução de x - 9 = 4?",o:["11","12","13","14"],c:2,coment:"x = 4 + 9 = 13."},
+    {base:"Em uma balança, os dois lados devem permanecer iguais.",q:"Se 3x = 30, qual é x?",o:["8","9","10","12"],c:2,coment:"30 ÷ 3 = 10."},
+    {base:"Sistemas de equações podem resolver problemas com duas incógnitas.",q:"Se x + y = 10 e x = 6, então y vale:",o:["2","3","4","5"],c:2,coment:"6 + y = 10; y = 4."},
+    {base:"O oposto de um número muda seu sinal.",q:"Qual é o oposto de -8?",o:["-16","-8","0","8"],c:3,coment:"O oposto de -8 é 8."},
+    {base:"A distributiva permite multiplicar um número por uma soma.",q:"Qual é o resultado de 2(x + 3)?",o:["2x + 3","2x + 6","x + 6","5x"],c:1,coment:"2 multiplica x e 3."},
+    {base:"Equações podem representar problemas cotidianos.",q:"Um número somado com 10 resulta 25. Qual é o número?",o:["10","12","15","20"],c:2,coment:"x + 10 = 25; x = 15."},
+    {base:"Termos semelhantes possuem a mesma parte literal.",q:"Qual expressão é semelhante a 4x?",o:["4y","x²","7x","xy"],c:2,coment:"7x tem a mesma parte literal x."},
+    {base:"Potências com a mesma base podem ser multiplicadas somando os expoentes.",q:"x² · x³ é igual a:",o:["x⁵","x⁶","x⁹","2x⁵"],c:0,coment:"Soma-se 2 + 3 = 5."},
+    {base:"Uma inequação usa sinais como >, <, ≥ ou ≤.",q:"Se x > 5, qual valor satisfaz a inequação?",o:["3","4","5","6"],c:3,coment:"6 é maior que 5."},
+    {base:"Na expressão 5x - 2, substitua x por 4.",q:"Qual é o valor obtido?",o:["16","18","20","22"],c:1,coment:"5 x 4 - 2 = 18."},
+    {base:"Fatorar é escrever uma expressão como produto.",q:"Qual é a fatoração de 6x + 9?",o:["3(2x + 3)","2(3x + 9)","9(6x + 1)","x(6 + 9)"],c:0,coment:"O fator comum é 3."},
+    {base:"O quadrado da soma é um produto notável.",q:"(a + b)² é igual a:",o:["a² + b²","a² + 2ab + b²","a² - 2ab + b²","2a + 2b"],c:1,coment:"Fórmula do quadrado da soma."},
+    {base:"Uma equação simples pode ser resolvida isolando a incógnita.",q:"Em x/4 = 5, x vale:",o:["10","15","20","25"],c:2,coment:"x = 5 x 4 = 20."},
+    {base:"Uma expressão algébrica representa relações matemáticas.",q:"Se n representa um número, o dobro de n é:",o:["n + 2","n/2","2n","n²"],c:2,coment:"Dobro é multiplicar por 2."}
+  ]),
+
+  "Geometria Plana": gerarQuestoes("Geometria Plana", [
+    {base:"Um quadrado tem todos os lados iguais.",q:"Qual é a área de um quadrado de lado 5 cm?",o:["10 cm²","20 cm²","25 cm²","30 cm²"],c:2,coment:"Área = lado x lado = 25."},
+    {base:"O perímetro é a soma das medidas dos lados.",q:"Qual é o perímetro de um quadrado de lado 6 cm?",o:["12 cm","18 cm","24 cm","36 cm"],c:2,coment:"4 x 6 = 24."},
+    {base:"Um retângulo mede 8 cm de comprimento e 3 cm de largura.",q:"Qual é sua área?",o:["11 cm²","22 cm²","24 cm²","30 cm²"],c:2,coment:"8 x 3 = 24."},
+    {base:"A área do triângulo é base vezes altura dividido por 2.",q:"Qual é a área de um triângulo de base 10 e altura 6?",o:["20","30","40","60"],c:1,coment:"10 x 6 ÷ 2 = 30."},
+    {base:"O círculo possui raio, diâmetro e circunferência.",q:"Se o raio mede 4 cm, o diâmetro mede:",o:["2 cm","4 cm","8 cm","16 cm"],c:2,coment:"Diâmetro = 2 x raio."},
+    {base:"Um triângulo equilátero possui todos os lados iguais.",q:"Se cada lado mede 7 cm, o perímetro é:",o:["14 cm","21 cm","28 cm","49 cm"],c:1,coment:"7 + 7 + 7 = 21."},
+    {base:"A soma dos ângulos internos de um triângulo é sempre 180°.",q:"Se dois ângulos medem 60° e 70°, o terceiro mede:",o:["40°","50°","60°","70°"],c:1,coment:"180 - 130 = 50."},
+    {base:"Um ângulo reto mede 90°.",q:"Um ângulo de 90° é chamado de:",o:["Agudo","Reto","Obtuso","Raso"],c:1,coment:"Ângulo reto mede 90°."},
+    {base:"O losango possui quatro lados iguais.",q:"Qual característica é verdadeira para todo losango?",o:["Quatro lados iguais","Quatro ângulos retos sempre","Nenhum lado igual","Cinco lados"],c:0,coment:"O losango tem quatro lados congruentes."},
+    {base:"Um trapézio possui pelo menos um par de lados paralelos.",q:"A principal característica do trapézio é:",o:["Ter três lados","Ter um par de lados paralelos","Ter todos os lados iguais","Ser sempre circular"],c:1,coment:"Trapézio tem bases paralelas."},
+    {base:"Polígonos são figuras planas fechadas formadas por segmentos de reta.",q:"Qual figura é um polígono?",o:["Círculo","Triângulo","Esfera","Cone"],c:1,coment:"Triângulo é polígono."},
+    {base:"Um hexágono possui seis lados.",q:"Quantos lados tem um hexágono?",o:["5","6","7","8"],c:1,coment:"Hexa significa seis."},
+    {base:"A circunferência é a linha que delimita o círculo.",q:"O ponto central de uma circunferência é chamado de:",o:["Raio","Centro","Diâmetro","Corda"],c:1,coment:"Centro é o ponto equidistante da circunferência."},
+    {base:"O raio liga o centro a um ponto da circunferência.",q:"Se o diâmetro é 18 cm, o raio é:",o:["6 cm","8 cm","9 cm","12 cm"],c:2,coment:"Raio é metade do diâmetro."},
+    {base:"Retas paralelas não se encontram.",q:"Retas paralelas são aquelas que:",o:["Sempre se cruzam","Nunca se cruzam no plano","Formam círculo","Têm tamanhos diferentes"],c:1,coment:"Paralelas mantêm a mesma direção."},
+    {base:"Retas perpendiculares se cruzam formando ângulo reto.",q:"Retas perpendiculares formam:",o:["30°","45°","90°","180°"],c:2,coment:"Formam 90°."},
+    {base:"A área de um paralelogramo é base vezes altura.",q:"Qual a área de um paralelogramo de base 12 e altura 5?",o:["17","30","60","120"],c:2,coment:"12 x 5 = 60."},
+    {base:"Um pentágono tem cinco lados.",q:"Qual figura possui 5 lados?",o:["Triângulo","Quadrado","Pentágono","Hexágono"],c:2,coment:"Pentágono possui cinco lados."},
+    {base:"Congruência significa mesma forma e mesma medida.",q:"Figuras congruentes são:",o:["Sempre diferentes","Iguais em forma e tamanho","Apenas parecidas","Sempre círculos"],c:1,coment:"Congruentes têm mesma forma e tamanho."},
+    {base:"Semelhança envolve mesma forma, mas tamanho proporcional.",q:"Figuras semelhantes possuem:",o:["Mesma forma e medidas proporcionais","Mesma cor obrigatória","Mesma posição sempre","Áreas iguais sempre"],c:0,coment:"Semelhança preserva forma e proporções."}
+  ]),
+    "Geometria Espacial": gerarQuestoes("Geometria Espacial", [
+    {base:"Um cubo possui todas as arestas com a mesma medida.",q:"Qual é o volume de um cubo de aresta 3?",o:["9","18","27","36"],c:2,coment:"Volume = 3³ = 27."},
+    {base:"O paralelepípedo tem comprimento, largura e altura.",q:"Qual o volume de um bloco 4 x 5 x 6?",o:["60","90","100","120"],c:3,coment:"4 x 5 x 6 = 120."},
+    {base:"Um prisma possui duas bases paralelas e congruentes.",q:"O volume de um prisma é dado por:",o:["Área da base x altura","Perímetro x altura","Raio x altura","Diagonal x lado"],c:0,coment:"V = Ab x h."},
+    {base:"O cilindro possui duas bases circulares.",q:"Um objeto com formato de lata se aproxima de um:",o:["Cubo","Cone","Cilindro","Pirâmide"],c:2,coment:"Latas geralmente têm formato cilíndrico."},
+    {base:"O cone possui uma base circular e um vértice.",q:"Um chapéu de festa lembra um:",o:["Cilindro","Cone","Cubo","Prisma"],c:1,coment:"Cone tem base circular e ponta."},
+    {base:"A esfera não possui faces planas.",q:"Uma bola de futebol se aproxima de uma:",o:["Esfera","Pirâmide","Cubo","Prisma"],c:0,coment:"Bola lembra esfera."},
+    {base:"A pirâmide possui uma base e faces laterais triangulares.",q:"As faces laterais de uma pirâmide são geralmente:",o:["Quadrados","Círculos","Triângulos","Retângulos"],c:2,coment:"Faces laterais triangulares."},
+    {base:"Arestas são segmentos onde duas faces se encontram.",q:"Em um cubo, quantas arestas existem?",o:["6","8","12","16"],c:2,coment:"O cubo tem 12 arestas."},
+    {base:"Vértices são pontos onde arestas se encontram.",q:"Quantos vértices tem um cubo?",o:["6","8","10","12"],c:1,coment:"O cubo tem 8 vértices."},
+    {base:"Faces são superfícies planas de um sólido.",q:"Quantas faces tem um cubo?",o:["4","5","6","8"],c:2,coment:"O cubo tem 6 faces."},
+    {base:"O volume mede o espaço ocupado por um sólido.",q:"A unidade comum de volume é:",o:["cm","cm²","cm³","kg"],c:2,coment:"Volume é medido em unidades cúbicas."},
+    {base:"Área de superfície soma as áreas das faces.",q:"A área total de um cubo de aresta 2 é:",o:["12","18","24","36"],c:2,coment:"6 x 2² = 24."},
+    {base:"Um cilindro tem raio e altura.",q:"A base do cilindro é:",o:["Triangular","Quadrada","Circular","Pentagonal"],c:2,coment:"A base é círculo."},
+    {base:"Um cone possui uma base e altura.",q:"A ponta do cone é chamada de:",o:["Centro","Vértice","Face","Aresta"],c:1,coment:"A ponta é o vértice."},
+    {base:"Sólidos geométricos aparecem em objetos cotidianos.",q:"Uma caixa de sapato lembra um:",o:["Paralelepípedo","Cone","Esfera","Cilindro"],c:0,coment:"Caixa lembra paralelepípedo."},
+    {base:"Uma pirâmide de base quadrada tem 5 faces.",q:"Quantas faces laterais ela possui?",o:["2","3","4","5"],c:2,coment:"São quatro faces laterais triangulares."},
+    {base:"O volume do cubo depende da aresta elevada ao cubo.",q:"Se a aresta dobra, o volume:",o:["Dobra","Triplica","Fica 4 vezes maior","Fica 8 vezes maior"],c:3,coment:"(2a)³ = 8a³."},
+    {base:"Um reservatório tem formato de paralelepípedo.",q:"Se mede 2 m x 3 m x 4 m, seu volume é:",o:["9 m³","12 m³","18 m³","24 m³"],c:3,coment:"2 x 3 x 4 = 24."},
+    {base:"A esfera tem todos os pontos da superfície à mesma distância do centro.",q:"Essa distância é chamada de:",o:["Raio","Aresta","Face","Base"],c:0,coment:"Distância do centro à superfície é raio."},
+    {base:"A planificação mostra as faces de um sólido no plano.",q:"A planificação de um cubo possui:",o:["4 quadrados","5 quadrados","6 quadrados","8 quadrados"],c:2,coment:"O cubo tem 6 faces quadradas."}
+  ]),
+
+  "Funções": gerarQuestoes("Funções", [
+    {base:"Uma função associa cada valor de entrada a um único valor de saída.",q:"Na função f(x)=x+2, quanto vale f(3)?",o:["3","4","5","6"],c:2,coment:"f(3)=3+2=5."},
+    {base:"Função afim tem forma f(x)=ax+b.",q:"Qual das funções abaixo é afim?",o:["f(x)=x²","f(x)=2x+1","f(x)=1/x","f(x)=√x"],c:1,coment:"2x+1 é função afim."},
+    {base:"Função quadrática tem termo x².",q:"Qual é uma função quadrática?",o:["f(x)=x+3","f(x)=2x","f(x)=x²+1","f(x)=5"],c:2,coment:"x² caracteriza função quadrática."},
+    {base:"Em f(x)=2x, a saída é o dobro da entrada.",q:"Quanto vale f(5)?",o:["7","10","12","15"],c:1,coment:"2 x 5 = 10."},
+    {base:"O gráfico de uma função afim é uma reta.",q:"O gráfico de f(x)=3x+2 é:",o:["Parábola","Reta","Circunferência","Hipérbole"],c:1,coment:"Função afim gera reta."},
+    {base:"O gráfico da função quadrática é uma parábola.",q:"O gráfico de f(x)=x² é:",o:["Reta","Parábola","Círculo","Ponto único"],c:1,coment:"Função quadrática gera parábola."},
+    {base:"O coeficiente b em f(x)=ax+b indica o ponto em que a reta corta o eixo y.",q:"Em f(x)=2x+5, o valor de b é:",o:["2","3","5","7"],c:2,coment:"b = 5."},
+    {base:"O coeficiente a indica crescimento ou decrescimento em função afim.",q:"f(x)= -2x + 1 é:",o:["Crescente","Decrescente","Constante","Quadrática"],c:1,coment:"a negativo indica decrescimento."},
+    {base:"Uma função constante mantém sempre o mesmo valor.",q:"Qual é função constante?",o:["f(x)=x","f(x)=2x+1","f(x)=7","f(x)=x²"],c:2,coment:"f(x)=7 não depende de x."},
+    {base:"A raiz da função é o valor de x que torna f(x)=0.",q:"A raiz de f(x)=x-4 é:",o:["0","2","4","8"],c:2,coment:"x-4=0; x=4."},
+    {base:"Uma função pode representar custo em função da quantidade.",q:"Se C(x)=5x, o custo de 6 unidades é:",o:["R$ 20","R$ 25","R$ 30","R$ 35"],c:2,coment:"5 x 6 = 30."},
+    {base:"Funções ajudam a modelar situações reais.",q:"Se uma corrida custa R$ 8 fixos mais R$ 2 por km, a função é:",o:["C=8x","C=2x+8","C=x+10","C=16x"],c:1,coment:"Custo fixo 8 mais 2 por km."},
+    {base:"Na função f(x)=x², substitua x por 4.",q:"Qual é f(4)?",o:["8","12","16","20"],c:2,coment:"4² = 16."},
+    {base:"O domínio é o conjunto de valores possíveis para x.",q:"Em uma função real simples f(x)=x+1, x representa:",o:["Entrada","Saída","Gráfico","Raiz sempre"],c:0,coment:"x é a entrada."},
+    {base:"A imagem é o conjunto de valores de saída.",q:"Em f(2)=9, o valor 9 representa:",o:["Entrada","Saída","Domínio","Coeficiente"],c:1,coment:"f(2) é saída."},
+    {base:"Função crescente aumenta quando x aumenta.",q:"Qual função é crescente?",o:["f(x)=-x","f(x)=-2x+1","f(x)=3x+1","f(x)=10"],c:2,coment:"Coeficiente positivo indica crescimento."},
+    {base:"Função decrescente diminui quando x aumenta.",q:"Qual função é decrescente?",o:["f(x)=5x","f(x)=x+2","f(x)=-3x+4","f(x)=7"],c:2,coment:"Coeficiente negativo."},
+    {base:"A parábola pode ter concavidade para cima ou para baixo.",q:"Em f(x)=x²+2, a concavidade é:",o:["Para cima","Para baixo","Lateral","Inexistente"],c:0,coment:"Coeficiente de x² positivo."},
+    {base:"Se f(x)=10-x, a função diminui quando x aumenta.",q:"Quanto vale f(3)?",o:["5","6","7","8"],c:2,coment:"10 - 3 = 7."},
+    {base:"O gráfico é uma representação visual da função.",q:"Uma função afim é representada graficamente por:",o:["Reta","Esfera","Cone","Tabela apenas"],c:0,coment:"Função afim gera reta."}
+  ]),
+
+  "Porcentagem e Razão": gerarQuestoes("Porcentagem e Razão", [
+    {base:"Porcentagem significa uma parte em cada 100.",q:"Quanto é 10% de 200?",o:["10","20","30","40"],c:1,coment:"10% de 200 = 20."},
+    {base:"Um produto custa R$ 100,00 e teve desconto de 20%.",q:"Qual o valor do desconto?",o:["R$ 10","R$ 20","R$ 30","R$ 40"],c:1,coment:"20% de 100 = 20."},
+    {base:"Um produto de R$ 80,00 teve aumento de 25%.",q:"Qual foi o aumento?",o:["R$ 10","R$ 15","R$ 20","R$ 25"],c:2,coment:"25% de 80 = 20."},
+    {base:"Razão compara duas grandezas.",q:"A razão entre 2 e 4 é:",o:["1/2","2","4","6"],c:0,coment:"2/4 = 1/2."},
+    {base:"Proporção é igualdade entre razões.",q:"Se 2/4 = x/8, então x vale:",o:["2","3","4","5"],c:2,coment:"2/4 = 4/8."},
+    {base:"Regra de três resolve problemas de proporcionalidade.",q:"Se 2 cadernos custam R$ 10, 4 cadernos custam:",o:["R$ 15","R$ 20","R$ 25","R$ 30"],c:1,coment:"Dobrou a quantidade, dobra o preço."},
+    {base:"Uma escala 1:100 significa que 1 unidade no desenho representa 100 reais.",q:"Em uma escala 1:100, 2 cm representam:",o:["20 cm","100 cm","200 cm","300 cm"],c:2,coment:"2 x 100 = 200."},
+    {base:"A porcentagem pode ser convertida em decimal.",q:"25% corresponde a:",o:["0,25","2,5","25","0,025"],c:0,coment:"25/100 = 0,25."},
+    {base:"50% representa metade.",q:"50% de 90 é:",o:["30","40","45","50"],c:2,coment:"Metade de 90 é 45."},
+    {base:"75% representa três quartos.",q:"75% de 40 é:",o:["20","25","30","35"],c:2,coment:"0,75 x 40 = 30."},
+    {base:"Um valor aumentou de 100 para 120.",q:"Qual foi o aumento percentual?",o:["10%","15%","20%","25%"],c:2,coment:"Aumentou 20 sobre 100 = 20%."},
+    {base:"Um valor caiu de 200 para 150.",q:"Qual foi a redução percentual?",o:["15%","20%","25%","30%"],c:2,coment:"Caiu 50 de 200 = 25%."},
+    {base:"Uma turma tem 40 alunos e 25% faltaram.",q:"Quantos faltaram?",o:["5","10","15","20"],c:1,coment:"25% de 40 = 10."},
+    {base:"Uma receita usa 2 xícaras de açúcar para 4 de farinha.",q:"A razão açúcar/farinha é:",o:["1/2","2","4","6"],c:0,coment:"2/4 = 1/2."},
+    {base:"Em um mapa, 1 cm representa 5 km.",q:"3 cm representam:",o:["10 km","15 km","20 km","25 km"],c:1,coment:"3 x 5 = 15."},
+    {base:"Uma loja oferece 10% de desconto em R$ 300.",q:"Preço final será:",o:["R$ 250","R$ 260","R$ 270","R$ 290"],c:2,coment:"Desconto 30; final 270."},
+    {base:"Um salário de R$ 1.000 teve aumento de 8%.",q:"Novo salário:",o:["R$ 1.060","R$ 1.080","R$ 1.100","R$ 1.120"],c:1,coment:"8% de 1000 = 80."},
+    {base:"A razão entre meninos e meninas é 3:2.",q:"Se há 15 meninos, há quantas meninas?",o:["8","10","12","15"],c:1,coment:"3 partes = 15; 1 parte = 5; 2 partes = 10."},
+    {base:"Uma prova tem 50 questões e o aluno acertou 80%.",q:"Quantas questões acertou?",o:["30","35","40","45"],c:2,coment:"80% de 50 = 40."},
+    {base:"Uma população passou de 1.000 para 1.100 habitantes.",q:"O crescimento foi de:",o:["5%","10%","15%","20%"],c:1,coment:"Aumentou 100 de 1000 = 10%."}
+  ]),
+
+  "Probabilidade": gerarQuestoes("Probabilidade", [
+    {base:"Probabilidade mede a chance de um evento acontecer.",q:"Ao lançar uma moeda, a chance de sair cara é:",o:["1/4","1/3","1/2","1"],c:2,coment:"Há duas faces possíveis."},
+    {base:"Um dado comum tem seis faces.",q:"A chance de sair o número 3 é:",o:["1/2","1/3","1/6","1/12"],c:2,coment:"Uma face favorável em seis."},
+    {base:"Em um saco há 3 bolas vermelhas e 2 azuis.",q:"A chance de retirar uma vermelha é:",o:["2/5","3/5","1/5","5/3"],c:1,coment:"3 vermelhas em 5 bolas."},
+    {base:"Evento certo tem probabilidade 1.",q:"Ao lançar um dado comum, sair número menor que 7 é:",o:["Impossível","Pouco provável","Certo","Nulo"],c:2,coment:"Todos os números do dado são menores que 7."},
+    {base:"Evento impossível tem probabilidade 0.",q:"Ao lançar dado comum, sair 8 é:",o:["Certo","Impossível","Provável","Metade"],c:1,coment:"Dado comum vai de 1 a 6."},
+    {base:"Uma urna tem 10 fichas numeradas de 1 a 10.",q:"A chance de tirar número par é:",o:["1/5","1/4","1/2","3/5"],c:2,coment:"Há 5 pares em 10."},
+    {base:"Uma urna tem fichas de 1 a 5.",q:"A chance de tirar número maior que 3 é:",o:["1/5","2/5","3/5","4/5"],c:1,coment:"Números 4 e 5."},
+    {base:"Em uma turma com 20 alunos, 12 são meninas.",q:"Escolhendo um aluno ao acaso, chance de ser menina:",o:["2/5","3/5","1/2","4/5"],c:1,coment:"12/20 = 3/5."},
+    {base:"Um baralho comum tem 52 cartas, sendo 4 ases.",q:"Chance de retirar um ás:",o:["1/13","1/10","1/4","4/13"],c:0,coment:"4/52 = 1/13."},
+    {base:"Dois eventos independentes não interferem um no outro.",q:"Dois lançamentos de moeda têm resultados:",o:["Dependentes sempre","Independentes","Impossíveis","Iguais sempre"],c:1,coment:"Um lançamento não altera o outro."},
+    {base:"Ao lançar um dado, sair número par tem 3 casos favoráveis.",q:"Probabilidade de sair par:",o:["1/6","1/3","1/2","2/3"],c:2,coment:"3/6 = 1/2."},
+    {base:"Em um sorteio há 100 números.",q:"Chance de acertar um número específico:",o:["1/10","1/50","1/100","1/1000"],c:2,coment:"Um caso favorável em 100."},
+    {base:"Uma caixa possui 4 chocolates e 6 balas.",q:"Chance de pegar chocolate:",o:["2/5","3/5","4/6","6/10"],c:0,coment:"4/10 = 2/5."},
+    {base:"A soma das probabilidades de todos os resultados possíveis é:",q:"Qual é essa soma?",o:["0","0,5","1","2"],c:2,coment:"Total das probabilidades = 1."},
+    {base:"Evento complementar é o que não acontece em relação ao evento original.",q:"Se a chance de chover é 30%, a chance de não chover é:",o:["30%","50%","70%","100%"],c:2,coment:"100% - 30% = 70%."},
+    {base:"Uma senha tem 10 possibilidades igualmente prováveis.",q:"Chance de acertar tentando uma vez:",o:["1/2","1/5","1/10","1/20"],c:2,coment:"Uma chance em dez."},
+    {base:"Em uma roleta com 8 partes iguais, 2 são verdes.",q:"Chance de cair no verde:",o:["1/2","1/4","1/6","1/8"],c:1,coment:"2/8 = 1/4."},
+    {base:"Em uma prova de múltipla escolha com 5 alternativas.",q:"Chutando uma questão, chance de acertar:",o:["10%","20%","25%","50%"],c:1,coment:"1/5 = 20%."},
+    {base:"Uma sacola tem 5 bolas pretas e 5 brancas.",q:"Chance de retirar preta:",o:["1/5","1/4","1/2","1"],c:2,coment:"5/10 = 1/2."},
+    {base:"Probabilidade pode ser expressa em fração, decimal ou porcentagem.",q:"A probabilidade 1/4 corresponde a:",o:["10%","20%","25%","50%"],c:2,coment:"1/4 = 0,25 = 25%."}
+  ]),
+
+  "Estatística": gerarQuestoes("Estatística", [
+    {base:"A média aritmética é a soma dos valores dividida pela quantidade.",q:"Média de 4, 6 e 8:",o:["5","6","7","8"],c:1,coment:"(4+6+8)/3 = 6."},
+    {base:"A mediana é o valor central de uma sequência ordenada.",q:"Mediana de 2, 5, 9:",o:["2","5","7","9"],c:1,coment:"O valor central é 5."},
+    {base:"A moda é o valor que mais aparece.",q:"Moda de 1, 2, 2, 3, 4:",o:["1","2","3","4"],c:1,coment:"2 aparece mais vezes."},
+    {base:"Gráficos ajudam a visualizar informações.",q:"O gráfico de barras é usado para:",o:["Comparar categorias","Medir ângulos","Calcular volume","Resolver equações"],c:0,coment:"Barras comparam valores."},
+    {base:"Uma tabela organiza dados em linhas e colunas.",q:"Tabelas servem para:",o:["Organizar informações","Eliminar dados","Apenas desenhar","Medir área"],c:0,coment:"Tabelas facilitam leitura de dados."},
+    {base:"Amplitude é a diferença entre maior e menor valor.",q:"Amplitude de 3, 7, 10:",o:["3","7","10","13"],c:1,coment:"10 - 3 = 7."},
+    {base:"Um conjunto tem notas 6, 8, 10.",q:"A média é:",o:["7","8","9","10"],c:1,coment:"24/3 = 8."},
+    {base:"Dados podem ser qualitativos ou quantitativos.",q:"Altura de alunos é dado:",o:["Qualitativo","Quantitativo","Nominal apenas","Textual"],c:1,coment:"Altura é numérica."},
+    {base:"Cor dos olhos é uma variável não numérica.",q:"Cor dos olhos é dado:",o:["Quantitativo","Qualitativo","Decimal","Percentual"],c:1,coment:"É uma categoria."},
+    {base:"Um gráfico de setores também é chamado de gráfico de pizza.",q:"Esse gráfico mostra:",o:["Partes de um todo","Apenas tempo","Equações","Volumes"],c:0,coment:"Setores representam partes do total."},
+    {base:"A frequência indica quantas vezes um valor aparece.",q:"Se 7 aparece 4 vezes, sua frequência é:",o:["3","4","7","11"],c:1,coment:"Frequência é quantidade de ocorrências."},
+    {base:"Uma pesquisa ouviu 100 pessoas.",q:"Se 40 preferem futebol, isso representa:",o:["20%","30%","40%","50%"],c:2,coment:"40 de 100 = 40%."},
+    {base:"A média pode ser influenciada por valores extremos.",q:"Um valor muito alto pode:",o:["Diminuir sempre a média","Aumentar a média","Não alterar nada","Eliminar a mediana"],c:1,coment:"Valores extremos impactam a média."},
+    {base:"A mediana é menos sensível a extremos.",q:"Em dados ordenados, a mediana é:",o:["Valor central","Maior valor","Menor valor","Soma total"],c:0,coment:"Mediana é valor central."},
+    {base:"Notas: 5, 5, 6, 9, 10.",q:"A moda é:",o:["5","6","9","10"],c:0,coment:"5 aparece duas vezes."},
+    {base:"Notas: 4, 7, 9, 10.",q:"Mediana é:",o:["7","8","9","10"],c:1,coment:"(7+9)/2 = 8."},
+    {base:"Um gráfico mostra crescimento ao longo dos anos.",q:"O melhor gráfico para evolução temporal costuma ser:",o:["Linha","Pizza","Tabela sem dados","Desenho livre"],c:0,coment:"Gráfico de linha mostra evolução."},
+    {base:"Em estatística, amostra é parte da população.",q:"Uma amostra é:",o:["Todo o universo","Parte analisada","Valor máximo","Média"],c:1,coment:"Amostra representa parte do grupo."},
+    {base:"População estatística é o conjunto total de interesse.",q:"População é:",o:["Conjunto total estudado","Apenas uma pessoa","Valor médio","Dado perdido"],c:0,coment:"População é o todo considerado."},
+    {base:"Dados estatísticos ajudam a tomar decisões.",q:"A estatística é útil para:",o:["Interpretar dados","Ignorar informações","Eliminar cálculos","Criar apenas figuras"],c:0,coment:"Estatística auxilia análise e decisão."}
+  ]),
+    "Matemática Financeira": gerarQuestoes("Matemática Financeira", [
+    {base:"Juros simples são calculados sobre o capital inicial.",q:"Juros simples de R$ 100 a 10% ao mês por 1 mês:",o:["R$ 5","R$ 10","R$ 20","R$ 100"],c:1,coment:"10% de 100 = 10."},
+    {base:"Montante é capital mais juros.",q:"Capital R$ 100 com juros R$ 20 gera montante:",o:["R$ 80","R$ 100","R$ 120","R$ 140"],c:2,coment:"100 + 20 = 120."},
+    {base:"Desconto reduz o preço de um produto.",q:"Produto de R$ 200 com desconto de 10% custa:",o:["R$ 160","R$ 170","R$ 180","R$ 190"],c:2,coment:"Desconto 20; preço 180."},
+    {base:"Aumento percentual eleva o valor inicial.",q:"R$ 50 com aumento de 20% vira:",o:["R$ 55","R$ 60","R$ 65","R$ 70"],c:1,coment:"20% de 50 = 10; final 60."},
+    {base:"Juros compostos incidem sobre o montante acumulado.",q:"Nos juros compostos, os juros são calculados sobre:",o:["Capital inicial sempre","Montante acumulado","Apenas o desconto","O valor zero"],c:1,coment:"Juros sobre juros."},
+    {base:"Um capital de R$ 1.000 rende 5% em um mês.",q:"Juro obtido:",o:["R$ 25","R$ 50","R$ 100","R$ 150"],c:1,coment:"5% de 1000 = 50."},
+    {base:"Uma dívida de R$ 500 recebeu multa de 10%.",q:"Valor da multa:",o:["R$ 25","R$ 50","R$ 75","R$ 100"],c:1,coment:"10% de 500 = 50."},
+    {base:"Um produto de R$ 300 foi vendido por R$ 270.",q:"Desconto percentual:",o:["5%","10%","15%","20%"],c:1,coment:"Desconto 30 de 300 = 10%."},
+    {base:"Um preço passou de R$ 80 para R$ 100.",q:"Aumento percentual:",o:["20%","25%","30%","40%"],c:1,coment:"Aumento 20 de 80 = 25%."},
+    {base:"Capital é o valor inicial aplicado ou emprestado.",q:"Em uma aplicação de R$ 600, o capital é:",o:["R$ 60","R$ 600","R$ 660","R$ 6.000"],c:1,coment:"Capital é valor inicial."},
+    {base:"Taxa de juros indica percentual cobrado ou recebido.",q:"Uma taxa de 2% ao mês significa:",o:["2 a cada 100 por mês","2 a cada 10 por ano","20 a cada 100 por dia","200% ao mês"],c:0,coment:"2% = 2 por 100."},
+    {base:"Um produto à vista custa R$ 400 e no cartão custa R$ 440.",q:"A diferença é:",o:["R$ 20","R$ 30","R$ 40","R$ 50"],c:2,coment:"440 - 400 = 40."},
+    {base:"Um desconto de 50% representa metade do valor.",q:"50% de R$ 360 é:",o:["R$ 120","R$ 150","R$ 180","R$ 200"],c:2,coment:"Metade de 360 = 180."},
+    {base:"Uma aplicação rendeu R$ 90 sobre capital de R$ 900.",q:"Rendimento percentual:",o:["5%","10%","15%","20%"],c:1,coment:"90/900 = 10%."},
+    {base:"Em uma promoção, dois produtos de R$ 60 cada saem por R$ 100.",q:"Economia total:",o:["R$ 10","R$ 20","R$ 30","R$ 40"],c:1,coment:"Preço normal 120; economia 20."},
+    {base:"Parcelamento pode ter juros embutidos.",q:"3 parcelas de R$ 50 totalizam:",o:["R$ 100","R$ 120","R$ 150","R$ 180"],c:2,coment:"3 x 50 = 150."},
+    {base:"Um produto custa R$ 150 e teve desconto de R$ 30.",q:"Preço final:",o:["R$ 100","R$ 110","R$ 120","R$ 130"],c:2,coment:"150 - 30 = 120."},
+    {base:"Uma conta atrasada de R$ 200 teve acréscimo de R$ 20.",q:"Percentual de acréscimo:",o:["5%","10%","15%","20%"],c:1,coment:"20/200 = 10%."},
+    {base:"Juros simples podem ser calculados por J = C · i · t.",q:"Se C=100, i=10% e t=2, juros:",o:["R$ 10","R$ 20","R$ 30","R$ 40"],c:1,coment:"100 x 0,10 x 2 = 20."},
+    {base:"Educação financeira ajuda a comparar preços e evitar dívidas.",q:"Uma atitude financeira adequada é:",o:["Comparar preços e planejar gastos","Comprar sem verificar","Ignorar juros","Parcelar sempre sem calcular"],c:0,coment:"Planejamento evita prejuízos."}
+  ]),
+
+  "ENEM Aplicado": gerarQuestoes("ENEM Aplicado", [
+    {base:"Um reservatório tinha 500 litros de água e perdeu 20% do volume.",q:"Quantos litros restaram?",o:["300","350","400","450"],c:2,coment:"Perdeu 100 litros; restaram 400."},
+    {base:"Um aplicativo cobra R$ 5 fixos mais R$ 2 por quilômetro.",q:"Para 10 km, o valor será:",o:["R$ 20","R$ 25","R$ 30","R$ 35"],c:1,coment:"5 + 2x10 = 25."},
+    {base:"Uma escola arrecadou 240 kg de alimentos em 6 turmas igualmente.",q:"Média por turma:",o:["30 kg","35 kg","40 kg","45 kg"],c:2,coment:"240/6 = 40."},
+    {base:"Um mapa usa escala 1 cm para 4 km.",q:"Uma distância de 7 cm representa:",o:["18 km","24 km","28 km","32 km"],c:2,coment:"7 x 4 = 28."},
+    {base:"Uma loja deu 15% de desconto em um produto de R$ 200.",q:"Preço final:",o:["R$ 150","R$ 160","R$ 170","R$ 185"],c:2,coment:"Desconto 30; final 170."},
+    {base:"Uma pessoa caminha 3 km por dia durante 20 dias.",q:"Distância total:",o:["40 km","50 km","60 km","70 km"],c:2,coment:"3 x 20 = 60."},
+    {base:"Uma sala tem 12 meninos e 18 meninas.",q:"Total de alunos:",o:["24","26","28","30"],c:3,coment:"12 + 18 = 30."},
+    {base:"Na mesma sala, 18 de 30 alunos são meninas.",q:"Percentual de meninas:",o:["40%","50%","60%","70%"],c:2,coment:"18/30 = 60%."},
+    {base:"Um terreno retangular mede 20 m por 15 m.",q:"Área do terreno:",o:["250 m²","280 m²","300 m²","350 m²"],c:2,coment:"20 x 15 = 300."},
+    {base:"Uma praça circular tem raio 10 m.",q:"O diâmetro mede:",o:["10 m","15 m","20 m","30 m"],c:2,coment:"Diâmetro = 2 x raio."},
+    {base:"Um pacote com 5 kg custa R$ 25.",q:"Preço por kg:",o:["R$ 3","R$ 4","R$ 5","R$ 6"],c:2,coment:"25/5 = 5."},
+    {base:"Um ônibus leva 40 passageiros. Foram usados 5 ônibus cheios.",q:"Total de passageiros:",o:["180","190","200","220"],c:2,coment:"40 x 5 = 200."},
+    {base:"Uma pesquisa entrevistou 200 pessoas. 80 preferem matemática.",q:"Percentual que prefere matemática:",o:["30%","35%","40%","45%"],c:2,coment:"80/200 = 40%."},
+    {base:"Um celular passou de R$ 1.000 para R$ 900.",q:"Desconto percentual:",o:["5%","10%","15%","20%"],c:1,coment:"Desconto 100 de 1000 = 10%."},
+    {base:"Uma receita para 4 pessoas usa 2 xícaras de arroz.",q:"Para 8 pessoas, serão necessárias:",o:["3 xícaras","4 xícaras","5 xícaras","6 xícaras"],c:1,coment:"Dobrou pessoas, dobra arroz."},
+    {base:"Uma conta de luz de R$ 120 teve aumento de 25%.",q:"Novo valor:",o:["R$ 140","R$ 145","R$ 150","R$ 160"],c:2,coment:"25% de 120 = 30; total 150."},
+    {base:"Um aluno acertou 16 questões de 20.",q:"Percentual de acertos:",o:["60%","70%","80%","90%"],c:2,coment:"16/20 = 80%."},
+    {base:"Uma caixa tem 3 bolas verdes e 7 amarelas.",q:"Chance de retirar verde:",o:["20%","30%","40%","70%"],c:1,coment:"3/10 = 30%."},
+    {base:"Um gráfico mostra vendas: janeiro 100, fevereiro 150.",q:"O aumento foi de:",o:["30 unidades","40 unidades","50 unidades","60 unidades"],c:2,coment:"150 - 100 = 50."},
+    {base:"Um produto custa R$ 240 dividido em 6 parcelas iguais.",q:"Valor de cada parcela:",o:["R$ 30","R$ 35","R$ 40","R$ 45"],c:2,coment:"240/6 = 40."}
+  ])
+};
+
+function mostrarMenu(){
+  pararAudioFundo();
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue);margin-bottom:8px;">Escolha um módulo de Matemática</h2>
+      <p class="mini">Cada módulo possui <strong>20 questões objetivas</strong>, com áudio e respostas embaralhadas.</p>
+      <div class="grid-areas">
+        ${areasMatematica.map(area=>`
+          <div class="card-area">
+            <h3>${area.nome}</h3>
+            <p>${area.descricao}</p>
+            <button class="btn" onclick="iniciarArea('${area.nome.replace(/'/g,"\\'")}')">Entrar neste módulo</button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function iniciarArea(nomeArea){
+  await destravarAudio();
+  areaAtual = nomeArea;
+  questoesAtuais = bancoQuestoes[nomeArea] || [];
+  indiceQuestao = 0;
+  acertosObjetivas = 0;
+  questaoRenderizadaAtual = null;
+
+  if(!questoesAtuais.length){
+    app.innerHTML = `
+      <div class="box">
+        <h2 style="color:var(--red);">Erro ao abrir o módulo</h2>
+        <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+      </div>
+    `;
+    return;
+  }
+
+  setTimeout(()=>{tocarAudioFundo();},120);
+  carregarQuestao();
+}
+
+function montarEnunciado(questao){
+  return `
+    <span class="question-label">Base para resolução:</span>
+    <span class="text-base">${questao.base}</span>
+    <span class="question-label">Pergunta:</span>
+    ${questao.q}
+  `;
+}
+
+function carregarQuestao(){
+  const questao = questoesAtuais[indiceQuestao];
+  const total = questoesAtuais.length;
+  questaoRenderizadaAtual = embaralharAlternativas(questao);
+
+  let html = `
+    <div class="box">
+      <div class="status">
+        <span>${areaAtual}</span>
+        <span>Questão ${indiceQuestao + 1}/${total}</span>
+      </div>
+      <div id="question-text">${montarEnunciado(questaoRenderizadaAtual)}</div>
+      <div class="options-wrap">
+  `;
+
+  questaoRenderizadaAtual.opcoesRenderizadas.forEach((alt,idx)=>{
+    html += `<button class="btn option-btn" onclick="responderObjetiva(${idx})">${alt}</button>`;
+  });
+
+  html += `
+      </div>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+
+  app.innerHTML = html;
+}
+
+function responderObjetiva(escolhida){
+  const botoes = document.querySelectorAll(".option-btn");
+  const correta = questaoRenderizadaAtual.corretaRenderizada;
+
+  botoes.forEach((btn,idx)=>{
+    btn.disabled = true;
+    if(idx === correta) btn.classList.add("correct");
+  });
+
+  if(escolhida === correta){
+    acertosObjetivas++;
+    tocarAcerto();
+  }else{
+    if(botoes[escolhida]) botoes[escolhida].classList.add("wrong");
+    tocarErro();
+  }
+
+  setTimeout(()=>{
+    indiceQuestao++;
+    if(indiceQuestao < questoesAtuais.length){
+      carregarQuestao();
+    }else{
+      finalizarArea();
+    }
+  },900);
+}
+
+function finalizarArea(){
+  pararAudioFundo();
+
+  const notaFinal = acertosObjetivas * 10;
+  const totalPossivel = 200;
+  let feedback = "Você concluiu este módulo completo de Matemática. Continue treinando os demais módulos para avançar no simulado gratuito.";
+
+  if(notaFinal >= 160) feedback += " Excelente desempenho neste módulo.";
+  else if(notaFinal >= 100) feedback += " Bom resultado. Ainda dá para elevar sua pontuação.";
+  else feedback += " Este resultado mostra pontos que precisam ser reforçados com mais treino.";
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue);">${areaAtual}</h2>
+      <div class="result-number">${notaFinal}/${totalPossivel}</div>
+      <div class="result-sub">Acertos: ${acertosObjetivas}/20</div>
+      <p class="mini" style="margin-bottom:18px;">${feedback}</p>
+
+      <button class="btn" onclick="iniciarArea('${areaAtual.replace(/'/g,"\\'")}')">Refazer este módulo</button>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+}
+
+mostrarMenu();
+
+
+</script>
+
+</body>
+</html>
