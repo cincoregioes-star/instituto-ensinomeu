@@ -61,6 +61,10 @@ jobs:
           node --check tests/auditoria-logistica.mjs
           node --check conteudos-recuperados/logistica/logistica-complementar.js
           node tests/auditoria-logistica.mjs
+      - name: Auditar cobertura da revisão pedagógica de Logística
+        run: |
+          node --check tests/auditoria-pedagogica-logistica.mjs
+          node tests/auditoria-pedagogica-logistica.mjs
       - name: Instalar dependência do teste visual
         run: npm install --no-save --no-package-lock playwright@1.55.1
       - name: Testar Logística no Chromium (100 questões e layout mobile)
