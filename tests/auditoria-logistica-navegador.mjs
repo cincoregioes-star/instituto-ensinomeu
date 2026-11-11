@@ -23,7 +23,7 @@ const browser=await chromium.launch({headless:true,executablePath:process.env.CH
 const fail=(message)=>{throw new Error(message)};
 const errors=[];
 try{
- for(const [track,expected] of [["est",100],["rec",100],["pck",10]]){
+ for(const [track,expected] of [["est",100],["rec",100],["pck",100],["ops",100],["pak",10]]){
   const page=await browser.newPage({viewport:{width:390,height:844}});
   page.on("pageerror",e=>errors.push(track+": "+e.message));
   const url=origin+"/conteudos-recuperados/logistica/index.html?trilha="+track;
@@ -44,7 +44,7 @@ try{
    if(!current.includes("Questão "+(j+1)+" de "+num))fail(track+": contador incorreto "+current);
    const a=await page.evaluate(({track,j})=>{
     const base=JSON.parse(document.getElementById("dados").textContent);
-    const bank=[...base.banks[track],...(window.LOGISTICA_EXTRAS?.[track]||[])];
+    const bank=[...base.banks[track],...(window.LOGISTICA_EXTRAS?.[track]||[]),...(window.LOGISTICA_EXTRAS_LOTE2?.[track]||[])];
     return bank[j].a;
    },{track,j});
    await page.locator("#alternativas button").nth(a).click();
@@ -64,7 +64,7 @@ try{
   console.log("OK Chromium "+track+": "+modules+" módulos; avanço, correção, resultado, revisão e layout móvel.");
  }
  if(errors.length)fail("Erros JavaScript: "+errors.join("; "));
- console.log("OK: dois cursos completos e uma trilha parcial operacionais no navegador.");
+ console.log("OK: quatro cursos completos e uma trilha parcial operacionais no navegador.");
 }finally{
  await browser.close();server.close();
 }
