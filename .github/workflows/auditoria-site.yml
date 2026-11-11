@@ -63,6 +63,8 @@ jobs:
           node tests/auditoria-logistica.mjs
       - name: Instalar dependência do teste visual
         run: npm install --no-save --no-package-lock playwright@1.55.1
+      - name: Testar Logística no Chromium (100 questões e layout mobile)
+        run: node tests/auditoria-logistica-navegador.mjs
       - name: Testar site no navegador Chromium
         run: |
           node --check tests/auditoria-visual.mjs
