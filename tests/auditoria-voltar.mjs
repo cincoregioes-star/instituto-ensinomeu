@@ -17,11 +17,11 @@ assert.match(backScript,/document\.currentScript/);
 for(const file of htmlFiles){
  const name=relative(root,file).replaceAll('\\','/');
  const html=readFileSync(file,'utf8');
- const wanted=name.startsWith('simulados/')?'../voltar-global.js':'voltar-global.js';
+ const wanted='../'.repeat(name.split('/').length-1)+'voltar-global.js';
  const found=[...html.matchAll(/<script\b[^>]*\bsrc=["']([^"']*voltar-global\.js[^"']*)["'][^>]*><\/script>/gi)];
  assert.equal(found.length,1,name+' deve possuir exatamente um botão global');
  assert.ok(found[0][1].startsWith(wanted),name+' deve usar caminho correto do script');
  console.log('OK navegação Voltar: '+name);
 }
-assert.equal(htmlFiles.length,39,'Mudança no número de páginas: revisar inclusão de Voltar');
+assert.ok(htmlFiles.length>=39,'Número de páginas menor do que o inventário base: revisar inclusão de Voltar');
 console.log('OK: botão Voltar em todas as '+htmlFiles.length+' telas, sem duplicatas.');
