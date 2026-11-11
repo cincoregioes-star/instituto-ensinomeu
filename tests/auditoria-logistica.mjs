@@ -1,5 +1,5 @@
 // Auditoria técnica dos bancos do Gabarito Logística no EnsinoMeu.
-// 12 trilhas com 10 questões originais cada; 4 trilhas ampliadas para 100.
+// 12 trilhas com 10 questões originais cada; 6 trilhas ampliadas para 100.
 import fs from "node:fs";
 import vm from "node:vm";
 import assert from "node:assert/strict";
@@ -13,12 +13,12 @@ const end=html.indexOf("</script>",pos+marker.length);
 assert.ok(end>pos,"JSON original incompleto");
 const base=JSON.parse(html.slice(pos+marker.length,end));
 const sandbox={window:{}};
-for(const path of ["logistica-complementar.js","logistica-complementar-lote2.js"]){
+for(const path of ["logistica-complementar.js","logistica-complementar-lote2.js","logistica-complementar-lote3.js"]){
  vm.runInNewContext(fs.readFileSync(dir+path,"utf8"),sandbox,{timeout:3000});
  assert.ok(html.includes('src="'+path+'"'),"Script não incluído na página: "+path);
 }
-const allExtras={...sandbox.window.LOGISTICA_EXTRAS,...sandbox.window.LOGISTICA_EXTRAS_LOTE2};
-const completeIds=["est","rec","pck","ops"];
+const allExtras={...sandbox.window.LOGISTICA_EXTRAS,...sandbox.window.LOGISTICA_EXTRAS_LOTE2,...sandbox.window.LOGISTICA_EXTRAS_LOTE3};
+const completeIds=["est","rec","pck","ops","sel","adm"];
 assert.equal(base.tracks.length,12,"Trilhas incorretas");
 assert.deepEqual(Object.keys(allExtras).sort(),completeIds.slice().sort(),"Bancos completos incorretos");
 let initial=0,total=0,newCount=0;
@@ -46,8 +46,8 @@ for(const track of base.tracks){
  initial+=original.length;total+=questions.length;newCount+=added.length;
 }
 assert.equal(initial,120);
-assert.equal(newCount,360);
-assert.equal(total,480);
+assert.equal(newCount,540);
+assert.equal(total,660);
 assert.match(html,/\.\.\/\.\.\/voltar-global\.js/);
 assert.doesNotMatch(html,/R\$\s*19|https?:[^"\s]*kiwify|comprar acesso/i);
 const inlineTag="<script>'use strict';";
@@ -56,4 +56,8 @@ assert.ok(jsStart>=0,"Script da interface não encontrado");
 const jsEnd=html.indexOf("</script>",jsStart+inlineTag.length);
 assert.ok(jsEnd>jsStart);
 new Function("'use strict';"+html.slice(jsStart+inlineTag.length,jsEnd));
-console.log("OK Logística: 12 trilhas, 120 questões preservadas, 360 adicionadas, 480 totais; 4 trilhas completas com 5 módulos de 20.");
+const math=allExtras.adm.filter(q=>q.habilidade==="cálculo aplicado");
+assert.equal(math.length,15,"Deverão existir 15 exercícios quantitativos de Excel");
+const answers=[80,15,5,15,29,92,8,150,"=C5*$B$2",3,75,85,465,5,800];
+math.forEach((q,i)=>assert.equal(q.o[q.a],String(answers[i]),"Gabarito numérico inválido no cálculo "+(i+1)));
+console.log("OK Logística: 12 trilhas, 120 questões preservadas, 540 adicionadas, 660 totais; 6 trilhas completas com 5 módulos de 20.");
