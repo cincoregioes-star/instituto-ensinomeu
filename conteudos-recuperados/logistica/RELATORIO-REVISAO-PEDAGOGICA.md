@@ -60,3 +60,9 @@ Os arquivos de dados registram essas intervenções com:
 6. Registrar somente questões efetivamente examinadas com marca de revisão e validar o simulador após cada publicação.
 
 **Ordem prioritária:** Segurança EHS, Movimentação, Excel, Inventário, demais trilhas; começar pelos itens com pistas lexicais excessivas e avaliações de maior risco. Nenhuma pendência deve ser considerada concluída apenas por ter passado no teste técnico.
+
+## 5. Fila de revisão priorizada
+
+Foi criada a lista `PENDENCIAS-PEDAGOGICAS-PRIORITARIAS.json`, contendo **120 itens ainda não revisados**, selecionados automaticamente por indício de pista lexical (diferença de similaridade de pelo menos 0,18 entre a resposta indicada e as outras alternativas). A lista inclui identificação da trilha, posição da questão, enunciado, resposta atual e prioridade. A marcação é **triagem**, não um diagnóstico definitivo de resposta incorreta.
+
+**Acompanhamento:** novas revisões deverão atualizar os bancos de questões, o marcador de revisão no próprio item, a cobertura do teste automatizado e este relatório, sem declarar como revisadas as questões apenas verificadas por algoritmo.
