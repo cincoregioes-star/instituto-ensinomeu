@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="theme-color" content="#061426">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Gabarito Data Center 2026 — Gratuito | Redes, Fibra e Conectividade</title>
+  <style>
+    :root{
+      --bg:#020912;--bg2:#061426;--panel:#0a1d31;--panel2:#0d2942;
+      --cyan:#13d9ff;--cyan2:#9ceeff;--lime:#c7ff3f;--gold:#ffc53d;
+      --green:#38eda0;--red:#ff5572;--white:#f7fbff;--muted:#a9bfd1;
+      --line:rgba(127,226,255,.2);--radius:22px;--shadow:0 24px 70px rgba(0,0,0,.42)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:
+      radial-gradient(circle at 10% 0,rgba(19,217,255,.19),transparent 30rem),
+      radial-gradient(circle at 95% 6%,rgba(199,255,63,.1),transparent 25rem),
+      linear-gradient(145deg,var(--bg),var(--bg2) 52%,#041b2a)}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;background-image:linear-gradient(rgba(127,226,255,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(127,226,255,.14) 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(#000,transparent 82%)}
+    button,input{font:inherit}button{cursor:pointer}a{color:var(--cyan2)}
+    .shell{position:relative;z-index:1;width:min(1120px,calc(100% - 30px));margin:auto}
+    .topbar{padding:19px 0 8px}
+    .topbar__inner{display:flex;align-items:center;justify-content:space-between;gap:15px}
+    .brand{display:flex;align-items:center;gap:12px;color:var(--white);text-decoration:none}
+    .logo{width:56px;height:56px;display:grid;place-items:center;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,rgba(19,217,255,.23),rgba(199,255,63,.08));box-shadow:0 0 35px rgba(19,217,255,.16)}
+    .logo svg{width:40px;height:40px}.brand strong{display:block;letter-spacing:.07em}.brand small{display:block;color:var(--gold);font-size:.67rem;letter-spacing:.2em;margin-top:3px}
+    .sound{display:flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(2,9,18,.66)}
+    .sound button{display:flex;align-items:center;gap:7px;color:var(--white);background:none;border:0;padding:5px}.dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+    .sound button.off .dot{background:var(--red);box-shadow:0 0 12px var(--red)}.sound input{width:80px;accent-color:var(--cyan)}
+    main{padding:34px 0 58px}.view[hidden]{display:none!important}
+    .panel{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,rgba(13,41,66,.94),rgba(6,20,38,.9));box-shadow:var(--shadow);backdrop-filter:blur(14px)}
+    .hero{display:grid;grid-template-columns:1.25fr .75fr;overflow:hidden}.hero__copy{padding:clamp(28px,5vw,52px);position:relative}.hero__copy:after{content:"";position:absolute;width:250px;height:250px;right:-140px;top:-140px;border:40px solid rgba(19,217,255,.06);border-radius:50%}
+    .tag{display:inline-flex;align-items:center;gap:8px;color:var(--lime);font-weight:900;font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 17px}.tag:before{content:"";width:26px;height:2px;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+    h1,h2,h3,p{margin-top:0}.hero h1{font-size:clamp(2.15rem,5.6vw,4.45rem);line-height:.97;letter-spacing:-.055em;margin-bottom:18px}.hero h1 span{display:block;color:var(--cyan)}
+    .lead{color:#d1dfeb;line-height:1.7;font-size:clamp(.98rem,2vw,1.1rem);max-width:710px}.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}.chip{padding:8px 11px;border:1px solid rgba(19,217,255,.25);border-radius:999px;background:rgba(19,217,255,.08);font-size:.79rem;color:#daf8ff}
+    .hero__side{padding:28px;background:linear-gradient(145deg,rgba(255,197,61,.1),rgba(2,9,18,.35));display:flex;flex-direction:column;justify-content:center;gap:13px}.premium-stamp{align-self:flex-start;padding:8px 11px;border:1px solid rgba(255,197,61,.46);border-radius:9px;color:var(--gold);font-size:.74rem;font-weight:900;letter-spacing:.12em}.hero__side strong{font-size:3.5rem;line-height:1;color:var(--cyan)}.hero__side p{color:var(--muted);line-height:1.55;margin:0}
+    .section-head{text-align:center;margin:41px 0 18px}.section-head h2{font-size:clamp(1.55rem,4vw,2.3rem);letter-spacing:-.035em;margin-bottom:7px}.section-head p{color:var(--muted);margin:0}
+    .module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}.module{padding:24px;position:relative;overflow:hidden}.module__number{width:44px;height:44px;display:grid;place-items:center;border:1px solid rgba(19,217,255,.29);border-radius:13px;background:rgba(19,217,255,.11);color:var(--cyan);font-weight:900;margin-bottom:16px}.module h3{font-size:1.25rem;margin-bottom:8px}.module p{color:var(--muted);line-height:1.58;min-height:50px}.module__meta{display:flex;justify-content:space-between;gap:10px;color:#d5e4ef;font-size:.8rem;margin:17px 0 13px}.track{height:8px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.08);margin-bottom:17px}.track span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--cyan),var(--lime));transition:width .35s}
+    .btn{border:0;border-radius:13px;padding:13px 18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:850;transition:transform .18s,filter .18s}.btn:hover{transform:translateY(-2px);filter:brightness(1.07)}.btn--primary{background:linear-gradient(95deg,var(--cyan),#57e5ff 48%,var(--lime));color:#03101a;box-shadow:0 12px 34px rgba(19,217,255,.16)}.btn--ghost{color:var(--white);background:rgba(19,217,255,.08);border:1px solid rgba(19,217,255,.26)}.btn--danger{color:#ffc4cd;background:rgba(255,85,114,.09);border:1px solid rgba(255,85,114,.28)}.btn--block{width:100%}
+    .notice{margin-top:18px;padding:17px 19px;border:1px solid rgba(255,197,61,.27);border-radius:16px;background:rgba(255,197,61,.07);color:#ffe8b0;font-size:.87rem;line-height:1.6}
+    .quiz-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:18px}.quiz-head small{display:block;color:var(--lime);font-weight:900;letter-spacing:.12em;text-transform:uppercase}.quiz-head h1{font-size:clamp(1.7rem,4vw,2.65rem);margin:7px 0 0}.timer{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(2,9,18,.67);font-variant-numeric:tabular-nums}.timer.warn{color:var(--gold);border-color:rgba(255,197,61,.46)}.timer.danger{color:#ffc2cc;border-color:rgba(255,85,114,.52);animation:pulse 1s infinite}@keyframes pulse{50%{box-shadow:0 0 23px rgba(255,85,114,.2)}}
+    .progress-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:.82rem;margin-bottom:8px}.quiz-progress{margin-bottom:18px}
+    .question{padding:clamp(24px,5vw,41px)}.question__type{color:var(--cyan2);text-transform:uppercase;letter-spacing:.12em;font-size:.74rem;font-weight:900;margin-bottom:14px}.question h2{font-size:clamp(1.25rem,3vw,1.8rem);line-height:1.4;letter-spacing:-.025em;margin-bottom:24px}.options{display:grid;gap:11px}.option{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:15px;background:rgba(2,9,18,.47);color:var(--white);display:grid;grid-template-columns:37px 1fr;gap:12px;align-items:center;text-align:left;line-height:1.48;transition:.18s}.option:hover:not(:disabled){transform:translateX(3px);border-color:rgba(19,217,255,.48);background:rgba(19,217,255,.08)}.option:disabled{cursor:default}.letter{width:35px;height:35px;display:grid;place-items:center;border-radius:10px;color:var(--cyan2);font-weight:900;background:rgba(19,217,255,.09);border:1px solid rgba(19,217,255,.19)}.option.correct{border-color:rgba(56,237,160,.64);background:rgba(56,237,160,.1)}.option.correct .letter{background:var(--green);color:#03150e;border-color:var(--green)}.option.wrong{border-color:rgba(255,85,114,.64);background:rgba(255,85,114,.1)}.option.wrong .letter{background:var(--red);color:#fff;border-color:var(--red)}
+    .feedback{margin-top:19px;padding:17px;border:1px solid var(--line);border-radius:15px;background:rgba(2,9,18,.52);line-height:1.6}.feedback.good{border-color:rgba(56,237,160,.37)}.feedback.bad{border-color:rgba(255,85,114,.37)}.feedback strong{display:block;margin-bottom:4px}.feedback p{color:#cbdbe6;margin:0}.quiz-actions{display:flex;align-items:center;justify-content:space-between;gap:13px;margin-top:18px}
+    .result{padding:clamp(27px,5vw,47px);text-align:center}.result__badge{display:inline-block;padding:8px 11px;border:1px solid rgba(199,255,63,.31);border-radius:999px;color:var(--lime);font-size:.72rem;font-weight:900;letter-spacing:.12em}.result h1{font-size:clamp(2rem,5vw,3.3rem);margin:18px 0 8px}.result>p{color:var(--muted);line-height:1.65}.score-ring{--score:0;width:180px;height:180px;margin:26px auto;display:grid;place-items:center;border-radius:50%;background:conic-gradient(var(--lime) calc(var(--score)*1%),rgba(255,255,255,.08) 0);position:relative}.score-ring:before{content:"";position:absolute;inset:14px;border-radius:50%;background:var(--bg2);border:1px solid var(--line)}.score-ring div{position:relative}.score-ring b{display:block;font-size:3rem;line-height:1}.score-ring span{font-size:.78rem;color:var(--muted)}.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;max-width:650px;margin:0 auto 25px}.result-stat{padding:17px;border:1px solid var(--line);border-radius:15px;background:rgba(2,9,18,.36)}.result-stat b{display:block;font-size:1.35rem;color:var(--cyan2)}.result-stat span{font-size:.76rem;color:var(--muted)}.result-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}.review{text-align:left;margin-top:27px}.review h2{margin-bottom:13px}.review-item{padding:17px;margin-bottom:10px;border:1px solid var(--line);border-radius:15px;background:rgba(2,9,18,.38)}.review-item strong{display:block;line-height:1.45;margin-bottom:7px}.review-item p{font-size:.89rem;line-height:1.55;margin:5px 0;color:var(--muted)}.review-item .right{color:var(--green)}.review-item .chosen{color:#ffbdc8}
+    footer{position:relative;z-index:1;padding:27px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.81rem;line-height:1.6}.footer-inner{display:flex;justify-content:space-between;gap:24px}.footer-inner p{margin:0}.footer-inner div:last-child{text-align:right}
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    @media(max-width:780px){.hero{grid-template-columns:1fr}.hero__side{min-height:230px}.module-grid{grid-template-columns:1fr}}
+    @media(max-width:580px){.shell{width:min(100% - 22px,1120px)}.logo{width:47px;height:47px}.brand strong{font-size:.88rem}.brand small{font-size:.58rem}.sound input,.sound-label{display:none}.hero,.panel{border-radius:18px}.hero__copy{padding:27px 21px}.quiz-head{align-items:flex-start}.timer{padding:8px 10px}.quiz-actions{align-items:stretch;flex-direction:column-reverse}.quiz-actions .btn{width:100%}.result-stats{grid-template-columns:1fr}.footer-inner{display:block}.footer-inner div:last-child{text-align:left;margin-top:12px}.option{grid-template-columns:34px 1fr;padding:13px}.letter{width:32px;height:32px}}
+    @media print{body{background:#fff;color:#111}.topbar,#homeView,#quizView,footer,.result-actions{display:none!important}.result{box-shadow:none;background:#fff;border:1px solid #bbb}.score-ring:before{background:#fff}.result h1,.score-ring b{color:#111}.review-item{background:#fff;color:#111}.review-item p{color:#333}}
+  </style>
+<style id="ensinomeu-portal-acesso">.ensinomeu-voltar{position:fixed!important;left:12px!important;bottom:12px!important;z-index:2147483000!important;background:#063a32!important;color:white!important;border:1px solid #67e8c6!important;border-radius:999px!important;padding:10px 16px!important;font:700 13px/1.25 system-ui,sans-serif!important;text-decoration:none!important;box-shadow:0 5px 30px #000a!important;opacity:.94!important}.ensinomeu-voltar:focus,.ensinomeu-voltar:hover{background:#075a48!important;opacity:1!important}</style>
+</head>
+<body>
+<a class="ensinomeu-voltar" href="../index.html" aria-label="Voltar à biblioteca gratuita">← Biblioteca gratuita</a>
+  <header class="topbar">
+    <div class="shell topbar__inner">
+      <a class="brand" id="brandHome" href="#" aria-label="Voltar ao início">
+        <span class="logo" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><rect x="7" y="5" width="34" height="38" rx="7" stroke="#13d9ff" stroke-width="2"/><path d="M13 14h22M13 23h22M13 32h22" stroke="#9ceeff" stroke-width="2"/><circle cx="16" cy="14" r="2" fill="#c7ff3f"/><circle cx="16" cy="23" r="2" fill="#c7ff3f"/><circle cx="16" cy="32" r="2" fill="#ffc53d"/><path d="M29 11v6m0 3v6m0 3v6" stroke="#13d9ff" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <span><strong>GABARITO DATA CENTER</strong><small>GRATUITO 2026</small></span>
+      </a>
+      <div class="sound" aria-label="Controles de áudio">
+        <button id="soundToggle" type="button" aria-pressed="true"><span class="dot"></span><span class="sound-label">Som ligado</span></button>
+        <label class="sr-only" for="volume">Volume</label><input id="volume" type="range" min="0" max="1" value="0.35" step="0.05">
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="view" id="homeView">
+      <div class="hero panel">
+        <div class="hero__copy"><p class="tag">Acesso livre • gratuito</p><h1 id="heroTitle"></h1><p class="lead" id="heroLead"></p><div class="chips"><span class="chip" id="moduleChip"></span><span class="chip" id="questionChip"></span><span class="chip">Correção comentada</span><span class="chip">Áudios ativos</span><span class="chip">Progresso salvo</span></div></div>
+        <aside class="hero__side"><span class="premium-stamp">CONTEÚDO GRATUITO</span><strong id="questionTotal"></strong><p>questões para atualização profissional. Todos os módulos estão liberados e o melhor resultado fica salvo neste dispositivo.</p></aside>
+      </div>
+      <div class="section-head"><h2>Escolha um módulo</h2><p>Cada módulo possui 20 questões, alternativas embaralhadas e comentário imediato.</p></div>
+      <div class="module-grid" id="moduleGrid"></div>
+      <div class="notice"><strong>Aviso profissional:</strong> este material é independente e educacional. Procedimentos locais, normas vigentes, análise de risco, autorização formal e orientação de profissionais habilitados sempre prevalecem. O simulado não habilita o aluno a executar atividades críticas.</div>
+    </section>
+
+    <section class="view" id="quizView" hidden>
+      <div class="quiz-head"><div><small id="quizLabel">Gratuito 2026</small><h1 id="quizTitle"></h1></div><div class="timer" id="timerBox"><span aria-hidden="true">◷</span><b id="timerText">01:15</b></div></div>
+      <div class="quiz-progress"><div class="progress-meta"><span id="counter">Questão 1 de 20</span><span id="liveScore">0 acertos</span></div><div class="track"><span id="quizBar" style="width:0"></span></div></div>
+      <article class="question panel"><div class="question__type" id="questionType">Conhecimento aplicado</div><h2 id="questionText"></h2><div class="options" id="options"></div><div class="feedback" id="feedback" hidden aria-live="polite"><strong id="feedbackTitle"></strong><p id="feedbackText"></p></div></article>
+      <div class="quiz-actions"><button class="btn btn--danger" id="exitQuiz" type="button">Sair do módulo</button><button class="btn btn--primary" id="nextQuestion" type="button" hidden>Próxima questão</button></div>
+    </section>
+
+    <section class="view" id="resultView" hidden>
+      <article class="result panel"><span class="result__badge">MÓDULO CONCLUÍDO</span><h1 id="resultTitle">Seu resultado</h1><p id="resultMessage"></p><div class="score-ring" id="scoreRing"><div><b id="resultPercent">0%</b><span>aproveitamento</span></div></div><div class="result-stats"><div class="result-stat"><b id="resultCorrect">0/20</b><span>acertos</span></div><div class="result-stat"><b id="resultWrong">0</b><span>erros ou tempo esgotado</span></div><div class="result-stat"><b id="resultTime">00:00</b><span>tempo total</span></div></div><div class="result-actions"><button class="btn btn--primary" id="retry" type="button">Refazer módulo</button><button class="btn btn--ghost" id="returnHome" type="button">Escolher outro módulo</button><button class="btn btn--ghost" id="printResult" type="button">Imprimir resultado</button></div><div class="review" id="review"><h2>Revisão das questões erradas</h2><div id="reviewList"></div></div></article>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-inner"><div><p><strong>GABARITO DATA CENTER GRATUITO 2026</strong></p><p>Material independente para preparação e atualização profissional.</p></div><div><p>Equipe técnica e dúvidas</p><p><a href="mailto:cincoregioes@gmail.com">cincoregioes@gmail.com</a></p></div></div></footer>
+
+  <audio id="backgroundAudio" loop preload="metadata" src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3"></audio>
+  <audio id="correctAudio" preload="metadata" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3"></audio>
+  <audio id="wrongAudio" preload="metadata" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3"></audio>
+
+  <script>
+    "use strict";
+    const TRACK={"slug":"redes-fibra-conectividade","title":"Redes, Fibra e Conectividade","description":"Fundamentos de redes, cabeamento, fibra, switching, roteamento, organização física e diagnóstico de conectividade.","modules":[{"id":"fundamentos-redes","name":"Fundamentos de redes","summary":"Endereçamento, transporte e resolução usados em conectividade.","concepts":[{"term":"Endereço MAC","fact":"Identifica uma interface no enlace e é usado por switches dentro do domínio local."},{"term":"Endereço IP","fact":"Identifica logicamente uma interface e permite roteamento entre redes."},{"term":"Máscara de sub-rede","fact":"Define quais bits pertencem à rede e quais identificam hosts."},{"term":"Gateway padrão","fact":"É o próximo salto usado para alcançar destinos fora da rede local."},{"term":"ARP","fact":"Relaciona endereços IPv4 a endereços de enlace na rede local."},{"term":"TCP","fact":"Oferece transporte orientado a conexão com entrega ordenada e controle."},{"term":"UDP","fact":"Oferece datagramas sem confirmação e com menor sobrecarga."},{"term":"Porta","fact":"Identifica o serviço ou processo associado ao transporte TCP ou UDP."},{"term":"MTU","fact":"É o maior tamanho de unidade que uma interface transmite sem fragmentação no enlace."},{"term":"DNS","fact":"Resolve nomes e registros usados para localizar serviços e recursos."}]},{"id":"cabeamento","name":"Cabeamento estruturado","summary":"Elementos, instalação, identificação e certificação do enlace.","concepts":[{"term":"Cabeamento estruturado","fact":"Organiza meios e componentes de telecomunicações em arquitetura padronizada."},{"term":"Enlace permanente","fact":"Abrange a parte fixa entre pontos de terminação, sem os cordões de equipamento."},{"term":"Canal","fact":"Inclui o enlace permanente e os cordões usados na conexão final."},{"term":"Patch panel","fact":"Termina cabos horizontais e permite manobras organizadas por cordões."},{"term":"Categoria de cobre","fact":"Define desempenho de componentes e enlaces para faixas de aplicação."},{"term":"Pinagem","fact":"Deve seguir o mesmo esquema aprovado nas duas extremidades do enlace."},{"term":"Raio de curvatura","fact":"Limita deformação do cabo e preserva características elétricas ou ópticas."},{"term":"Interferência eletromagnética","fact":"Pode degradar sinais e exige separação, rota e aterramento conforme projeto."},{"term":"Identificação","fact":"Relaciona origem, destino, rack, painel e porta de forma única."},{"term":"Certificador","fact":"Mede parâmetros do enlace e compara resultados com o limite da categoria."}]},{"id":"fibra","name":"Fibra óptica e testes","summary":"Tipos de fibra, conectores, perdas e instrumentos.","concepts":[{"term":"Fibra monomodo","fact":"Possui núcleo menor e é indicada para enlaces de maior alcance e determinadas ópticas."},{"term":"Fibra multimodo","fact":"Possui núcleo maior e atende aplicações de menor alcance conforme a classe e a óptica."},{"term":"Conector","fact":"Realiza terminação removível e precisa de tipo, polimento e limpeza compatíveis."},{"term":"Polaridade","fact":"Garante que transmissão de uma extremidade alcance recepção na outra."},{"term":"Orçamento de perda","fact":"Compara potência disponível e perdas previstas para determinar margem do enlace."},{"term":"OTDR","fact":"Localiza eventos e estima distância e perda ao analisar retroespalhamento."},{"term":"Medidor de potência","fact":"Mede potência óptica recebida e apoia teste de perda com fonte adequada."},{"term":"Limpeza","fact":"É essencial porque contaminação na face do conector aumenta perda e reflexão."},{"term":"Raio de curvatura","fact":"Evita perdas por dobra e dano mecânico ao cabo óptico."},{"term":"Emenda","fact":"Une fibras permanentemente e deve ser protegida e registrada."}]},{"id":"switching","name":"Switching e VLANs","summary":"Comutação, segmentação e prevenção de loops.","concepts":[{"term":"Switch","fact":"Encaminha quadros com base em endereços MAC aprendidos por porta."},{"term":"Tabela MAC","fact":"Relaciona endereços de origem às portas onde foram observados."},{"term":"VLAN","fact":"Cria segmentação lógica de camada dois dentro da infraestrutura de switching."},{"term":"Porta de acesso","fact":"Transporta normalmente uma única VLAN para o dispositivo final."},{"term":"Trunk","fact":"Transporta múltiplas VLANs identificadas entre dispositivos compatíveis."},{"term":"STP","fact":"Bloqueia caminhos redundantes para prevenir loops de camada dois."},{"term":"LACP","fact":"Negocia agregação de enlaces para capacidade e redundância."},{"term":"Port-channel","fact":"Trata múltiplos enlaces físicos como uma interface lógica."},{"term":"LLDP","fact":"Anuncia identidade e capacidades a vizinhos diretamente conectados."},{"term":"Storm control","fact":"Limita tráfego excessivo de broadcast, multicast ou destino desconhecido."}]},{"id":"roteamento","name":"Roteamento e redundância","summary":"Seleção de caminhos, políticas e convergência.","concepts":[{"term":"Rota","fact":"Relaciona um prefixo de destino a próximo salto ou interface de saída."},{"term":"Rota padrão","fact":"É usada quando nenhuma rota mais específica corresponde ao destino."},{"term":"Roteamento estático","fact":"Usa rotas configuradas manualmente e não aprende mudanças automaticamente."},{"term":"Roteamento dinâmico","fact":"Troca informações para aprender e recalcular caminhos."},{"term":"OSPF","fact":"É um protocolo de estado de enlace usado para roteamento interno."},{"term":"BGP","fact":"Troca informações de alcance entre sistemas autônomos e aplica políticas."},{"term":"ECMP","fact":"Permite usar caminhos de mesmo custo para um destino."},{"term":"Redundância de gateway","fact":"Mantém um endereço virtual disponível entre roteadores participantes."},{"term":"ACL","fact":"Permite ou nega tráfego com base em critérios definidos."},{"term":"BFD","fact":"Detecta rapidamente falhas de encaminhamento entre pares compatíveis."}]},{"id":"racks-patching","name":"Racks, patching e organização","summary":"Organização física que reduz erro e preserva fluxo de ar.","concepts":[{"term":"Unidade de rack","fact":"É a medida vertical padronizada usada para posicionar equipamentos."},{"term":"Fluxo frontal para traseiro","fact":"Alinha entradas e saídas de ar dos equipamentos com corredores adequados."},{"term":"Patch cord","fact":"Realiza conexão removível e deve ter tipo, comprimento e identificação corretos."},{"term":"Gerenciador horizontal","fact":"Organiza cordões na frente do rack e reduz esforço sobre portas."},{"term":"Gerenciador vertical","fact":"Conduz cabos ao longo do rack e preserva acesso e raio de curvatura."},{"term":"Caminhos A e B","fact":"Devem permanecer fisicamente identificados e separados conforme a arquitetura."},{"term":"Reserva técnica","fact":"Mantém comprimento controlado para manobra sem criar emaranhados."},{"term":"Mapa de portas","fact":"Relaciona conexão lógica e física para acelerar mudança e diagnóstico."},{"term":"Registro de mudança","fact":"Documenta origem, destino, motivo, responsável e validação do patching."},{"term":"Capacidade do rack","fact":"Considera espaço, peso, energia, refrigeração e portas disponíveis."}]},{"id":"troubleshooting-conectividade","name":"Troubleshooting de conectividade","summary":"Testes progressivos do físico ao serviço.","concepts":[{"term":"Estado de link","fact":"Confirma detecção física, mas não prova conectividade fim a fim."},{"term":"Estado da interface","fact":"Combina condição administrativa, operacional, velocidade e negociação."},{"term":"Contadores de erro","fact":"Podem indicar problema de mídia, óptica, duplex, ruído ou congestionamento."},{"term":"Ping","fact":"Testa alcance ICMP quando permitido e não garante saúde da aplicação."},{"term":"Traceroute","fact":"Ajuda a observar saltos e onde o caminho deixa de responder."},{"term":"Tabela ARP ou MAC","fact":"Confirma aprendizado local e ajuda a localizar o ponto de conexão."},{"term":"Consulta DNS","fact":"Distingue falha de resolução de falha de transporte ou aplicação."},{"term":"Potência óptica","fact":"Deve ser comparada com limites do transceptor e orçamento do enlace."},{"term":"Isolamento de mudança","fact":"Compara condição antes e depois e evita alterar múltiplas variáveis ao mesmo tempo."},{"term":"Captura de pacotes","fact":"Mostra tráfego observado e deve respeitar autorização, privacidade e escopo."}]}]};
+    const LETTERS=["A","B","C","D"];
+    const STORAGE_KEY="gdc-premium-"+TRACK.slug+"-v1";
+    const state={module:null,session:[],index:0,answers:[],remaining:75,timer:null,startedAt:0,sound:true,volume:.35};
+    const el=function(id){return document.getElementById(id)};
+    const views={home:el("homeView"),quiz:el("quizView"),result:el("resultView")};
+    const audio={background:el("backgroundAudio"),correct:el("correctAudio"),wrong:el("wrongAudio")};
+
+    function safeLoad(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||{}}catch(error){return {}}}
+    function safeSave(value){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(value))}catch(error){}}
+    function showView(name){Object.keys(views).forEach(function(key){views[key].hidden=key!==name});window.scrollTo({top:0,behavior:"smooth"})}
+    function shuffle(items){const copy=items.slice();for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const tmp=copy[i];copy[i]=copy[j];copy[j]=tmp}return copy}
+    function formatTime(seconds){return String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0")}
+    function setVolumes(){audio.background.volume=state.volume*.42;audio.correct.volume=state.volume;audio.wrong.volume=state.volume}
+    function startBackground(){if(state.sound)audio.background.play().catch(function(){})}
+    function stopBackground(){audio.background.pause()}
+    function playEffect(kind){if(!state.sound)return;audio[kind].currentTime=0;audio[kind].play().catch(function(){})}
+    function toggleSound(){state.sound=!state.sound;const button=el("soundToggle");button.classList.toggle("off",!state.sound);button.setAttribute("aria-pressed",String(state.sound));button.querySelector(".sound-label").textContent=state.sound?"Som ligado":"Som desligado";if(state.sound&&!views.quiz.hidden)startBackground();else stopBackground()}
+
+    function conceptQuestions(module){
+      const generated=[];
+      module.concepts.forEach(function(concept,index){
+        const otherFacts=module.concepts.filter(function(item){return item.term!==concept.term}).map(function(item){return item.fact});
+        const factOptions=shuffle(otherFacts).slice(0,3).concat([concept.fact]);
+        const shuffledFacts=shuffle(factOptions);
+        generated.push({
+          type:"Conceito técnico",
+          q:"No contexto de "+module.name+", qual alternativa descreve corretamente “"+concept.term+"”?",
+          o:shuffledFacts,
+          a:shuffledFacts.indexOf(concept.fact),
+          e:concept.term+": "+concept.fact
+        });
+        const otherTerms=module.concepts.filter(function(item){return item.term!==concept.term}).map(function(item){return item.term});
+        const termOptions=shuffle(otherTerms).slice(0,3).concat([concept.term]);
+        const shuffledTerms=shuffle(termOptions);
+        generated.push({
+          type:"Aplicação e identificação",
+          q:"Qual conceito está diretamente associado à descrição: “"+concept.fact+"”?",
+          o:shuffledTerms,
+          a:shuffledTerms.indexOf(concept.term),
+          e:"A descrição corresponde a "+concept.term+". "+concept.fact
+        });
+      });
+      return generated;
+    }
+    function randomizeQuestion(question){const options=shuffle(question.o.map(function(text,index){return{text:text,correct:index===question.a}}));return{type:question.type,q:question.q,o:options.map(function(item){return item.text}),a:options.findIndex(function(item){return item.correct}),e:question.e}}
+
+    function initHeader(){
+      const parts=TRACK.title.split(" ");
+      const cut=Math.max(1,Math.ceil(parts.length/2));
+      el("heroTitle").innerHTML=parts.slice(0,cut).join(" ")+"<span>"+parts.slice(cut).join(" ")+"</span>";
+      el("heroLead").textContent=TRACK.description;
+      const total=TRACK.modules.length*20;
+      el("moduleChip").textContent=TRACK.modules.length+" módulos";
+      el("questionChip").textContent=total+" questões";
+      el("questionTotal").textContent=String(total);
+    }
+    function renderHome(){
+      const saved=safeLoad();const grid=el("moduleGrid");grid.textContent="";
+      TRACK.modules.forEach(function(module,index){
+        const progress=saved[module.id];const best=progress&&progress.best?progress.best:0;
+        const card=document.createElement("article");card.className="module panel";
+        const number=document.createElement("div");number.className="module__number";number.textContent=String(index+1).padStart(2,"0");
+        const title=document.createElement("h3");title.textContent=module.name;
+        const description=document.createElement("p");description.textContent=module.summary;
+        const meta=document.createElement("div");meta.className="module__meta";
+        const left=document.createElement("span");left.textContent="20 questões";
+        const right=document.createElement("span");right.textContent=progress?"Melhor: "+best+"%":"Não iniciado";
+        meta.append(left,right);
+        const track=document.createElement("div");track.className="track";const fill=document.createElement("span");fill.style.width=best+"%";track.appendChild(fill);
+        const button=document.createElement("button");button.className="btn btn--ghost btn--block";button.type="button";button.textContent=progress?"Refazer módulo":"Iniciar módulo";button.addEventListener("click",function(){startModule(module.id)});
+        card.append(number,title,description,meta,track,button);grid.appendChild(card);
+      });
+      showView("home");
+    }
+    function startModule(id){const module=TRACK.modules.find(function(item){return item.id===id});state.module=module;state.session=shuffle(conceptQuestions(module).map(randomizeQuestion));state.index=0;state.answers=[];state.startedAt=Date.now();el("quizLabel").textContent="Gratuito 2026 • "+TRACK.title;el("quizTitle").textContent=module.name;showView("quiz");startBackground();renderQuestion()}
+    function renderQuestion(){clearInterval(state.timer);state.remaining=75;const current=state.session[state.index];el("counter").textContent="Questão "+(state.index+1)+" de "+state.session.length;el("liveScore").textContent=state.answers.filter(function(answer){return answer.correct}).length+" acertos";el("quizBar").style.width=(state.index/state.session.length*100)+"%";el("questionType").textContent=current.type;el("questionText").textContent=current.q;el("feedback").hidden=true;el("nextQuestion").hidden=true;const list=el("options");list.textContent="";current.o.forEach(function(text,index){const button=document.createElement("button");button.className="option";button.type="button";const letter=document.createElement("span");letter.className="letter";letter.textContent=LETTERS[index];const copy=document.createElement("span");copy.textContent=text;button.append(letter,copy);button.addEventListener("click",function(){answer(index,false)});list.appendChild(button)});updateTimer();state.timer=setInterval(function(){state.remaining--;updateTimer();if(state.remaining<=0){clearInterval(state.timer);answer(-1,true)}},1000)}
+    function updateTimer(){const box=el("timerBox");el("timerText").textContent=formatTime(Math.max(0,state.remaining));box.classList.toggle("warn",state.remaining<=25&&state.remaining>10);box.classList.toggle("danger",state.remaining<=10)}
+    function answer(selected,timedOut){clearInterval(state.timer);const current=state.session[state.index];const buttons=Array.from(el("options").querySelectorAll(".option"));if(buttons.some(function(button){return button.disabled}))return;const correct=selected===current.a;buttons.forEach(function(button,index){button.disabled=true;if(index===current.a)button.classList.add("correct");else if(index===selected)button.classList.add("wrong")});state.answers.push({question:current,selected:selected,correct:correct,timedOut:timedOut});const feedback=el("feedback");feedback.hidden=false;feedback.className="feedback "+(correct?"good":"bad");el("feedbackTitle").textContent=correct?"Resposta correta!":timedOut?"Tempo esgotado.":"Resposta incorreta.";el("feedbackText").textContent=current.e;playEffect(correct?"correct":"wrong");el("liveScore").textContent=state.answers.filter(function(item){return item.correct}).length+" acertos";el("nextQuestion").hidden=false;el("nextQuestion").textContent=state.index===state.session.length-1?"Ver resultado":"Próxima questão"}
+    function next(){if(state.answers.length<=state.index)return;if(state.index<state.session.length-1){state.index++;renderQuestion()}else finish()}
+    function finish(){clearInterval(state.timer);stopBackground();const total=state.session.length;const correct=state.answers.filter(function(item){return item.correct}).length;const percent=Math.round(correct/total*100);const elapsed=Math.max(1,Math.round((Date.now()-state.startedAt)/1000));const saved=safeLoad();const old=saved[state.module.id]||{best:0,attempts:0};saved[state.module.id]={best:Math.max(old.best,percent),last:percent,attempts:old.attempts+1,completedAt:new Date().toISOString()};safeSave(saved);el("resultTitle").textContent=state.module.name;el("resultMessage").textContent=messageFor(percent);el("resultPercent").textContent=percent+"%";el("scoreRing").style.setProperty("--score",percent);el("resultCorrect").textContent=correct+"/"+total;el("resultWrong").textContent=String(total-correct);el("resultTime").textContent=formatTime(elapsed);renderReview();showView("result")}
+    function messageFor(score){if(score===100)return"Excelente! Você dominou os conceitos deste módulo.";if(score>=85)return"Muito bom. Seu desempenho está consistente para este módulo.";if(score>=70)return"Bom resultado. Revise os pontos errados e refaça para consolidar.";if(score>=50)return"Há uma base útil, mas ainda existem lacunas importantes.";return"Revise os comentários com atenção antes de tentar novamente."}
+    function renderReview(){const list=el("reviewList");list.textContent="";const misses=state.answers.filter(function(item){return !item.correct});el("review").hidden=misses.length===0;if(!misses.length)return;misses.forEach(function(item,index){const card=document.createElement("article");card.className="review-item";const title=document.createElement("strong");title.textContent=(index+1)+". "+item.question.q;const chosen=document.createElement("p");chosen.className="chosen";chosen.textContent=item.timedOut?"Sua resposta: tempo esgotado":"Sua resposta: "+item.question.o[item.selected];const right=document.createElement("p");right.className="right";right.textContent="Correta: "+item.question.o[item.question.a];const explanation=document.createElement("p");explanation.textContent=item.question.e;card.append(title,chosen,right,explanation);list.appendChild(card)})}
+    function exitQuiz(){if(state.answers.length&&state.answers.length<state.session.length&&!confirm("Sair agora? Esta tentativa não será salva."))return;clearInterval(state.timer);stopBackground();renderHome()}
+
+    el("soundToggle").addEventListener("click",toggleSound);
+    el("volume").addEventListener("input",function(event){state.volume=Number(event.target.value);setVolumes()});
+    el("brandHome").addEventListener("click",function(event){event.preventDefault();if(!views.quiz.hidden)exitQuiz();else renderHome()});
+    el("exitQuiz").addEventListener("click",exitQuiz);el("nextQuestion").addEventListener("click",next);el("returnHome").addEventListener("click",renderHome);el("retry").addEventListener("click",function(){startModule(state.module.id)});el("printResult").addEventListener("click",function(){window.print()});
+    setVolumes();initHeader();renderHome();
+  </script>
+</body>
+</html>
