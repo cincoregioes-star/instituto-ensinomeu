@@ -1,7 +1,7 @@
 {
   "produto": "Instituto EnsinoMeu",
   "modelo": "plano_por_ano_serie",
-  "familia": "Plano Família em preparação: cada estudante terá conta, matrícula e histórico individuais. A visualização pelo responsável exigirá vínculo familiar verificado. Sem cobrança ativa.",
+  "familia": "Perfis familiares gratuitos em preparação: cada estudante terá conta, matrícula e histórico individuais. A visualização pelo responsável exigirá vínculo familiar verificado. Sem cobrança ativa.",
   "planos": [
     {
       "id": "fi-1",
