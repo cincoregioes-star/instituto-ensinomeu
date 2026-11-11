@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redação ENEM 300 Questões</title>
+
+<style>
+:root{
+--card:#11141b;
+--blue:#00f3ff;
+--pink:#ff00e6;
+--green:#39ff14;
+--red:#ff003c;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#000;color:#fff;padding:15px;text-align:center}
+
+header{
+max-width:1100px;margin:auto;
+border:2px solid var(--blue);
+border-radius:20px;
+padding:20px;
+}
+
+header h1{color:var(--blue)}
+header p{color:var(--pink);font-weight:bold}
+
+.box{
+max-width:1100px;margin:20px auto;
+background:var(--card);
+padding:20px;border-radius:20px;
+}
+
+.btn{
+width:100%;margin:8px 0;padding:14px;
+border:2px solid var(--blue);
+background:none;color:#fff;
+border-radius:10px;cursor:pointer;font-weight:bold;
+}
+
+.correct{background:var(--green);color:#000}
+.wrong{background:var(--red)}
+
+.comment{
+margin-top:12px;padding:12px;
+background:#111;border-radius:10px;
+display:none;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+@media(max-width:700px){
+.grid{grid-template-columns:1fr}
+}
+
+.premium-radar-copa-box{
+  width:100%;
+  max-width:820px;
+  margin:18px auto 16px;
+  padding:16px;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(0,243,255,.10),rgba(255,212,0,.12));
+  border:1px solid rgba(255,212,0,.40);
+  box-shadow:0 0 18px rgba(255,212,0,.10);
+  text-align:center;
+}
+.premium-radar-copa-box h3{
+  color:#ffd400;
+  margin-bottom:8px;
+  font-size:1.12rem;
+  text-transform:uppercase;
+}
+.premium-radar-copa-box p{
+  color:#e5e7eb;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+.premium-radar-copa-box .radar-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.premium-radar-copa-box button,
+.premium-radar-copa-box a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:320px;
+  min-height:48px;
+  border-radius:999px;
+  padding:12px 14px;
+  font-weight:900;
+  text-decoration:none;
+  border:1px solid rgba(255,212,0,.65);
+}
+.premium-radar-copa-box button{
+  background:linear-gradient(135deg,#fff4bf,#ffd400,#f59e0b);
+  color:#06142e;
+  cursor:pointer;
+}
+.premium-radar-copa-box a{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+</style>
+<style id="ensinomeu-portal-acesso">.ensinomeu-voltar{position:fixed!important;left:12px!important;bottom:12px!important;z-index:2147483000!important;background:#063a32!important;color:white!important;border:1px solid #67e8c6!important;border-radius:999px!important;padding:10px 16px!important;font:700 13px/1.25 system-ui,sans-serif!important;text-decoration:none!important;box-shadow:0 5px 30px #000a!important;opacity:.94!important}.ensinomeu-voltar:focus,.ensinomeu-voltar:hover{background:#075a48!important;opacity:1!important}</style>
+</head>
+
+<body>
+<a class="ensinomeu-voltar" href="../index.html" aria-label="Voltar à biblioteca gratuita">← Biblioteca gratuita</a>
+
+<header>
+<h1>REDAÇÃO ENEM 300 QUESTÕES</h1>
+<p>12 MÓDULOS • 300 QUESTÕES</p>
+</header>
+
+
+<div id="app"></div>
+
+<!-- ÁUDIO (OCULTO PARA O USUÁRIO) -->
+<audio id="bg" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3">
+</audio>
+
+<audio id="acerto">
+<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3">
+</audio>
+
+<audio id="erro">
+<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3">
+</audio>
+
+<script>
+
+const app = document.getElementById("app");
+const bg = document.getElementById("bg");
+const acertoAudio = document.getElementById("acerto");
+const erroAudio = document.getElementById("erro");
+
+bg.volume = 0.03;
+acertoAudio.volume = 0.6;
+erroAudio.volume = 0.6;
+
+let moduloAtual="";
+let questoes=[];
+let index=0;
+let acertos=0;
+let travado=false;
+
+function embaralhar(a){return a.sort(()=>Math.random()-0.5)}
+
+function iniciarModulo(nome){
+moduloAtual=nome;
+questoes=banco[nome];
+index=0;
+acertos=0;
+
+bg.currentTime=0;
+bg.play().catch(()=>{});
+
+carregar();
+}
+
+function carregar(){
+travado=false;
+let q=questoes[index];
+
+let op=q.o.map((t,i)=>({t,c:i==q.c}));
+op=embaralhar(op);
+
+let correta=op.findIndex(x=>x.c);
+
+app.innerHTML=`
+<div class="box">
+
+<h3>${moduloAtual}</h3>
+<p>Questão ${index+1}/25</p>
+
+<p style="margin:15px 0">${q.q}</p>
+
+${op.map((o,i)=>`
+<button class="btn opcao" onclick="responder(${i},${correta})">${o.t}</button>
+`).join("")}
+
+<div id="coment" class="comment"></div>
+
+<button id="nextBtn" class="btn" style="display:none" onclick="proxima()">Próxima pergunta</button>
+
+<button class="btn" onclick="menu()">Retornar ao menu</button>
+
+</div>`;
+}
+
+function responder(escolha,correta){
+
+if(travado) return;
+travado=true;
+
+let botoes=document.querySelectorAll(".opcao");
+let coment=document.getElementById("coment");
+let nextBtn=document.getElementById("nextBtn");
+
+botoes.forEach((b,i)=>{
+b.disabled=true;
+if(i==correta)b.classList.add("correct");
+if(i==escolha && escolha!=correta)b.classList.add("wrong");
+});
+
+if(escolha==correta){
+acertos++;
+acertoAudio.currentTime=0;
+acertoAudio.play().catch(()=>{});
+}else{
+erroAudio.currentTime=0;
+erroAudio.play().catch(()=>{});
+}
+
+coment.style.display="block";
+coment.innerHTML=questoes[index].coment;
+
+nextBtn.style.display="block";
+}
+
+function proxima(){
+index++;
+if(index<questoes.length) carregar();
+else finalizar();
+}
+
+function finalizar(){
+
+bg.pause();
+bg.currentTime=0;
+
+app.innerHTML=`
+<div class="box">
+<h2>Resultado</h2>
+<p>${acertos}/25</p>
+<button class="btn" onclick="menu()">Menu</button>
+</div>`;
+}
+
+function menu(){
+
+bg.pause();
+bg.currentTime=0;
+
+app.innerHTML=`
+<div class="box">
+
+<h2>Escolha o módulo</h2>
+
+<div class="grid">
+${Object.keys(banco).map(m=>`
+<button class="btn" onclick="iniciarModulo('${m}')">${m}</button>
+`).join("")}
+</div>
+
+</div>`;
+}
+const banco={
+
+"Introdução à Redação ENEM":[
+{base:"A redação do ENEM cobra um texto com defesa de ponto de vista.",q:"Qual é o tipo textual exigido na redação do ENEM?",o:["Narrativo","Dissertativo-argumentativo","Poético","Carta pessoal"],c:1,coment:"O ENEM exige texto dissertativo-argumentativo, com tese e argumentos."},
+{base:"A redação é corrigida por cinco competências.",q:"Quantas competências formam a correção da redação?",o:["3","4","5","6"],c:2,coment:"São cinco competências, cada uma valendo até 200 pontos."},
+{base:"A nota máxima da redação é muito valorizada no ENEM.",q:"Qual é a pontuação máxima da redação?",o:["500 pontos","800 pontos","1000 pontos","1200 pontos"],c:2,coment:"A redação do ENEM vale até 1000 pontos."},
+{base:"A proposta apresenta um problema social brasileiro.",q:"A redação deve tratar principalmente de:",o:["Tema livre","Tema social proposto","Experiência pessoal sem análise","Resumo dos textos motivadores"],c:1,coment:"O texto precisa discutir o tema social proposto pela prova."},
+{base:"A estrutura ajuda o corretor a entender o projeto de texto.",q:"Qual estrutura é mais adequada?",o:["Introdução, desenvolvimento e conclusão","Somente conclusão","Lista de frases","Apenas opinião"],c:0,coment:"A estrutura clássica mais segura é introdução, desenvolvimento e conclusão."},
+{base:"A tese apresenta o posicionamento central do candidato.",q:"Onde a tese costuma aparecer?",o:["Na introdução","No título apenas","Depois da proposta de intervenção","Fora do texto"],c:0,coment:"A tese normalmente aparece na introdução."},
+{base:"A Competência 1 avalia o domínio da norma-padrão.",q:"Qual linguagem deve ser usada?",o:["Formal","Com gírias","Internetês","Abreviada"],c:0,coment:"A linguagem deve ser formal e adequada à norma-padrão."},
+{base:"A Competência 5 avalia a solução proposta.",q:"Qual competência avalia a proposta de intervenção?",o:["Competência 1","Competência 2","Competência 3","Competência 5"],c:3,coment:"A proposta de intervenção é avaliada na Competência 5."},
+{base:"A redação do ENEM deve evitar marcas excessivas de subjetividade.",q:"O uso de primeira pessoa deve ser:",o:["Obrigatório","Exagerado","Evitado","Único recurso possível"],c:2,coment:"É melhor usar uma linguagem impessoal e objetiva."},
+{base:"O texto precisa defender uma ideia.",q:"O principal objetivo do texto dissertativo-argumentativo é:",o:["Convencer com argumentos","Apenas narrar uma história","Fazer poesia","Copiar a coletânea"],c:0,coment:"O texto deve defender uma tese com argumentos."},
+{base:"Um texto bem organizado costuma ter quatro parágrafos.",q:"Quantos parágrafos são mais comuns em uma redação ENEM?",o:["1","2","4","10 obrigatoriamente"],c:2,coment:"O modelo mais usado é introdução, dois desenvolvimentos e conclusão."},
+{base:"A introdução abre o texto.",q:"A função da introdução é:",o:["Apresentar tema e tese","Encerrar o texto","Trazer somente intervenção","Ignorar o problema"],c:0,coment:"A introdução apresenta o tema e a tese."},
+{base:"A conclusão fecha o raciocínio.",q:"A conclusão deve apresentar:",o:["Nova tese sem ligação","Proposta de intervenção","Cópia da introdução","Tema diferente"],c:1,coment:"A conclusão deve apresentar intervenção para o problema."},
+{base:"Erros gramaticais prejudicam a Competência 1.",q:"O texto deve evitar principalmente:",o:["Argumento","Tese","Erro gramatical recorrente","Intervenção"],c:2,coment:"Erros recorrentes de norma-padrão diminuem a nota."},
+{base:"Os textos motivadores ajudam a compreender o tema.",q:"A coletânea deve ser usada para:",o:["Copiar integralmente","Apoiar a interpretação","Substituir a redação","Ignorar o tema"],c:1,coment:"A coletânea serve como apoio, não como texto a ser copiado."},
+{base:"Coerência é sentido lógico.",q:"A redação precisa ter coerência?",o:["Sim","Não","Opcional","Apenas no título"],c:0,coment:"Sim. Sem coerência, o texto perde sentido."},
+{base:"Fuga ao tema é um dos erros mais graves.",q:"É permitido fugir do tema?",o:["Sim","Não","Às vezes","Somente na conclusão"],c:1,coment:"Fugir totalmente do tema pode zerar a redação."},
+{base:"A norma formal é cobrada.",q:"A linguagem adequada é:",o:["Formal","Gíria","Internetês","Linguagem de meme"],c:0,coment:"A redação deve ser escrita em linguagem formal."},
+{base:"O texto do ENEM exige defesa de ponto de vista.",q:"O texto deve ter como objetivo:",o:["Confundir","Argumentar","Narrar ficção","Descrever paisagem"],c:1,coment:"A redação exige argumentação."},
+{base:"A correção é feita por critérios específicos.",q:"A redação avalia:",o:["Somente opinião","Cinco competências","Letra bonita apenas","Tempo gasto"],c:1,coment:"A nota vem das cinco competências."},
+{base:"O ENEM costuma cobrar problemas sociais.",q:"Qual é o foco mais comum da redação?",o:["Gramática pura","Tema social","Cálculo matemático","Experiência pessoal isolada"],c:1,coment:"A prova costuma propor temas sociais brasileiros."},
+{base:"Copiar os textos motivadores compromete a autoria.",q:"Pode copiar o texto motivador?",o:["Sim","Não","Sempre","É obrigatório"],c:1,coment:"Não. O texto deve ser autoral."},
+{base:"Autoria é essencial para a redação.",q:"O texto deve ser:",o:["Autoral","Copiado","Sem tese","Sem argumento"],c:0,coment:"A redação precisa ser autoral."},
+{base:"A defesa de uma tese organiza o texto.",q:"O principal objetivo da redação é:",o:["Passar tempo","Convencer com argumentos","Enfeitar frases","Copiar modelos"],c:1,coment:"O texto busca convencer por meio da argumentação."},
+{base:"Clareza facilita a leitura do corretor.",q:"A redação exige clareza?",o:["Sim","Não","Somente na conclusão","Nunca"],c:0,coment:"Clareza é essencial para boa nota."}
+],
+
+"Interpretação de Tema":[
+{base:"Antes de escrever, é preciso entender a frase-tema.",q:"Qual é o primeiro passo?",o:["Escrever imediatamente","Interpretar o tema","Copiar a coletânea","Ignorar o comando"],c:1,coment:"Interpretar o tema evita fuga e tangenciamento."},
+{base:"Fuga ao tema ocorre quando o texto abandona o assunto proposto.",q:"Fuga ao tema significa:",o:["Abordar corretamente","Ignorar o tema","Explicar bem","Argumentar com clareza"],c:1,coment:"Fugir do tema pode zerar a redação."},
+{base:"As palavras-chave mostram o recorte da proposta.",q:"Palavras-chave servem para:",o:["Confundir","Orientar o texto","Enfeitar a frase","Serem ignoradas"],c:1,coment:"Elas mostram o caminho correto da redação."},
+{base:"A redação do ENEM trabalha problemas coletivos.",q:"Tema social exige:",o:["Opinião individual sem análise","Visão coletiva","História fictícia","Poema"],c:1,coment:"O tema deve ser analisado como problema social."},
+{base:"A coletânea apresenta pistas do recorte temático.",q:"A coletânea:",o:["Define uma resposta pronta","Ajuda a interpretação","Substitui o texto","Deve ser ignorada"],c:1,coment:"Ela ajuda a entender o tema, mas não deve ser copiada."},
+{base:"Tangenciar é tratar apenas parte do assunto.",q:"Tangenciar o tema é:",o:["Fugir totalmente","Abordar parcialmente","Acertar tudo","Copiar bem"],c:1,coment:"O tangenciamento reduz muito a nota."},
+{base:"O tema exige leitura cuidadosa.",q:"Para compreender o tema, é necessário:",o:["Decoreba","Interpretação","Chute","Resumo solto"],c:1,coment:"Interpretar bem é a base da redação."},
+{base:"O candidato não escolhe o tema.",q:"O tema deve ser:",o:["Ignorado","Seguido fielmente","Mudado","Criado pelo aluno"],c:1,coment:"É obrigatório seguir o tema proposto."},
+{base:"A frase-tema delimita o assunto.",q:"O tema é:",o:["Livre","Proposto","Opcional","Escolhido pelo candidato"],c:1,coment:"O tema vem definido na prova."},
+{base:"Um erro comum é falar de assunto parecido, mas fora do recorte.",q:"Qual é um erro comum?",o:["Interpretar bem","Fugir do tema","Argumentar","Ler a coletânea"],c:1,coment:"Falar de assunto parecido pode ser fuga parcial ou total."},
+{base:"Tema bem interpretado permite tese forte.",q:"O tema deve ser analisado de modo:",o:["Superficial","Profundo","Ignorado","Aleatório"],c:1,coment:"Uma boa análise evita texto raso."},
+{base:"Foco temático mantém a redação organizada.",q:"O tema exige foco?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Todos os parágrafos devem dialogar com o tema."},
+{base:"O tema orienta a tese e os argumentos.",q:"O tema define:",o:["A direção do texto","A cor da caneta","A letra do aluno","O título obrigatório"],c:0,coment:"O tema define o caminho da redação."},
+{base:"Interpretar bem reduz risco de anulação.",q:"Interpretar bem evita:",o:["Nota alta","Erro de tema","Escrever melhor","Planejamento"],c:1,coment:"A interpretação evita fuga e tangenciamento."},
+{base:"A tese nasce da compreensão do tema.",q:"O tema é base do:",o:["Texto","Título decorativo","Erro","Resumo sem análise"],c:0,coment:"Toda a redação deve nascer do tema."},
+{base:"Os textos motivadores ajudam a delimitar a discussão.",q:"O tema precisa:",o:["Ignorar a coletânea","Usar a coletânea como apoio","Copiar tudo","Excluir os dados"],c:1,coment:"A coletânea deve apoiar a leitura do tema."},
+{base:"Problemas sociais afetam grupos e instituições.",q:"Tema é social porque:",o:["Afeta a sociedade","É apenas pessoal","É livre","É opcional"],c:0,coment:"A redação deve analisar impactos coletivos."},
+{base:"A frase-tema não pode ser abandonada.",q:"O tema deve ser respeitado:",o:["Sempre","Nunca","Pouco","Somente no título"],c:0,coment:"Respeitar o tema é obrigatório."},
+{base:"Análise crítica vai além de repetir o tema.",q:"Tema exige análise crítica?",o:["Sim","Não","Só na conclusão","Nunca"],c:0,coment:"A redação precisa analisar causas e consequências."},
+{base:"Todos os parágrafos devem manter unidade temática.",q:"O tema orienta:",o:["Tudo","Nada","Apenas gramática","Só o título"],c:0,coment:"O tema orienta toda a redação."},
+{base:"Mudar o tema compromete a redação.",q:"O tema não pode ser:",o:["Mudado","Interpretado","Analisado","Explicado"],c:0,coment:"O tema deve ser mantido."},
+{base:"Argumentos devem responder ao problema proposto.",q:"O tema é base de:",o:["Argumentos","Cópia","Desenho","Assinatura"],c:0,coment:"Os argumentos precisam nascer do tema."},
+{base:"A redação precisa deixar claro que entendeu a proposta.",q:"O tema precisa ser:",o:["Claro","Confuso","Ignorado","Opcional"],c:0,coment:"Clareza temática é essencial."},
+{base:"A tese responde ao tema.",q:"O tema define a tese?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"A tese deve responder diretamente ao tema."},
+{base:"Planejamento começa pela leitura do tema.",q:"O tema deve ser entendido antes de:",o:["Escrever","Entregar a prova","Pular linhas","Fazer rasura"],c:0,coment:"Antes de escrever, entenda o tema."}
+],
+
+"Introdução Perfeita":[
+{base:"A introdução abre o texto e apresenta a direção da redação.",q:"A introdução deve:",o:["Apresentar tema e tese","Concluir tudo","Ignorar o tema","Copiar a coletânea"],c:0,coment:"Uma boa introdução apresenta tema, contexto e tese."},
+{base:"A tese é a opinião central defendida.",q:"Tese é:",o:["Opinião central","Resumo da coletânea","Conclusão pronta","Erro gramatical"],c:0,coment:"A tese é o ponto de vista que será defendido."},
+{base:"A introdução mostra o problema e o posicionamento.",q:"A introdução contém:",o:["Tema e tese","Só conclusão","Só exemplo","Nada importante"],c:0,coment:"Ela precisa apresentar o tema e a tese."},
+{base:"Contextualizar é situar o tema em uma realidade maior.",q:"Contextualizar é:",o:["Apresentar um cenário ligado ao tema","Ignorar o tema","Copiar tudo","Confundir o corretor"],c:0,coment:"A contextualização aproxima o leitor do tema."},
+{base:"A abertura precisa ser compreensível.",q:"A introdução deve ser:",o:["Clara","Confusa","Exageradamente longa","Aleatória"],c:0,coment:"Clareza é essencial desde a primeira linha."},
+{base:"A tese precisa aparecer de forma visível.",q:"A tese deve ser:",o:["Explícita","Oculta","Ignorada","Aleatória"],c:0,coment:"Tese explícita facilita a correção."},
+{base:"Frases muito vagas deixam o texto fraco.",q:"Uma introdução ruim costuma ser:",o:["Genérica","Clara","Direta","Objetiva"],c:0,coment:"Introdução genérica não mostra domínio do tema."},
+{base:"A introdução apresenta o problema social.",q:"A introdução deve apresentar:",o:["Problema","Conclusão completa","Intervenção inteira","Nada"],c:0,coment:"A introdução precisa mostrar o problema discutido."},
+{base:"A introdução guia o restante do texto.",q:"A introdução deve guiar:",o:["O texto","A rasura","A cópia","O título apenas"],c:0,coment:"Ela direciona os argumentos."},
+{base:"A tese organiza os desenvolvimentos.",q:"A tese organiza:",o:["Argumentos","Erros","Assinatura","Espaçamento"],c:0,coment:"Cada argumento deve dialogar com a tese."},
+{base:"Copiar a coletânea reduz autoria.",q:"A introdução não deve:",o:["Copiar a coletânea","Apresentar tese","Contextualizar","Ser clara"],c:0,coment:"A redação precisa ser autoral."},
+{base:"Uma abertura objetiva é mais segura.",q:"Uma boa introdução é:",o:["Objetiva","Confusa","Longa demais","Vaga"],c:0,coment:"Objetividade ajuda a compreensão."},
+{base:"A tese responde ao comando temático.",q:"A tese responde ao:",o:["Tema","Erro","Resumo","Título decorativo"],c:0,coment:"A tese precisa responder ao tema."},
+{base:"A introdução é a primeira parte do texto.",q:"A introdução é:",o:["Início","Fim","Comentário","Rascunho"],c:0,coment:"É o início da redação."},
+{base:"A introdução precisa fazer sentido com o restante.",q:"A introdução precisa de:",o:["Coerência","Gíria","Contradição","Desvio de tema"],c:0,coment:"A introdução deve ser coerente com os argumentos."},
+{base:"Introdução clara melhora a leitura.",q:"Introdução clara melhora:",o:["A nota","A fuga ao tema","A confusão","O erro"],c:0,coment:"Clareza ajuda o corretor a entender seu projeto."},
+{base:"A introdução não deve ser enorme.",q:"A introdução deve ser:",o:["Equilibrada","Maior que todo o texto","Sem tese","Sem tema"],c:0,coment:"Ela precisa ser objetiva e suficiente."},
+{base:"A primeira parte apresenta o caminho da redação.",q:"A introdução inicia:",o:["O texto","A conclusão","A proposta","A correção"],c:0,coment:"Ela abre o texto."},
+{base:"A introdução direciona os desenvolvimentos.",q:"A introdução define:",o:["O rumo do texto","A nota automaticamente","A quantidade de rasuras","A assinatura"],c:0,coment:"Ela orienta a argumentação."},
+{base:"Sem boa introdução, o texto fica sem direção.",q:"A introdução é base da redação?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ela apresenta o projeto do texto."},
+{base:"Vagueza prejudica a abertura.",q:"A introdução deve evitar:",o:["Vagueza","Clareza","Objetividade","Coerência"],c:0,coment:"Frases vagas deixam a introdução fraca."},
+{base:"A introdução apresenta o problema social.",q:"A introdução contém problema?",o:["Sim","Não","Somente às vezes","Nunca"],c:0,coment:"Deve apresentar o problema do tema."},
+{base:"A linguagem formal já deve aparecer no início.",q:"A introdução deve ser formal?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Toda a redação deve ser formal."},
+{base:"A introdução prepara a argumentação.",q:"A introdução prepara:",o:["Argumentos","Erros","Cópias","Desenhos"],c:0,coment:"Ela antecipa o caminho argumentativo."},
+{base:"Uma introdução forte melhora o projeto de texto.",q:"A introdução é essencial?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ela é essencial para uma redação organizada."}
+],
+
+"Argumentação 1":[
+{base:"O desenvolvimento precisa sustentar a tese.",q:"Argumentação serve para:",o:["Provar a tese","Confundir","Ignorar o tema","Copiar"],c:0,coment:"Argumentar é defender a tese com explicações."},
+{base:"O parágrafo precisa ter uma ideia central.",q:"O parágrafo argumentativo deve ter:",o:["Ideia central","Assunto aleatório","Somente conclusão","Lista sem lógica"],c:0,coment:"A ideia central organiza o parágrafo."},
+{base:"Argumento sem explicação fica fraco.",q:"Um argumento precisa de:",o:["Explicação","Só opinião","Nada","Título"],c:0,coment:"A explicação mostra por que o argumento é válido."},
+{base:"Exemplos precisam ser analisados.",q:"Depois de citar exemplo, o aluno deve:",o:["Explicar a relação com a tese","Ignorar","Copiar outro exemplo","Encerrar"],c:0,coment:"Exemplo sem análise não sustenta argumento."},
+{base:"Um argumento forte é específico.",q:"Argumento forte é:",o:["Claro e desenvolvido","Confuso","Vago","Sem relação"],c:0,coment:"Clareza e desenvolvimento fortalecem o argumento."},
+{base:"A argumentação precisa manter sentido.",q:"Argumentação exige:",o:["Coerência","Gíria","Contradição","Nada"],c:0,coment:"Sem coerência, o argumento perde força."},
+{base:"Argumentos devem seguir raciocínio lógico.",q:"Argumento deve ser:",o:["Lógico","Aleatório","Confuso","Contraditório"],c:0,coment:"Lógica é indispensável."},
+{base:"Cada desenvolvimento deve ter foco.",q:"Um parágrafo deve trabalhar:",o:["Uma ideia central","Dez ideias soltas","Nenhuma ideia","Apenas título"],c:0,coment:"Um foco por parágrafo melhora a clareza."},
+{base:"Argumentar pode envolver causa e consequência.",q:"Argumento pode usar:",o:["Causa e consequência","Desenho","Assinatura","Cópia"],c:0,coment:"Causa e consequência são estratégias úteis."},
+{base:"Repetição empobrece o desenvolvimento.",q:"A argumentação deve evitar:",o:["Repetição vazia","Clareza","Lógica","Coerência"],c:0,coment:"Repetir sem avançar prejudica a progressão."},
+{base:"O texto precisa convencer o corretor.",q:"Argumento precisa convencer?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim, com justificativas bem construídas."},
+{base:"Afirmação sem explicação não basta.",q:"Argumento sem explicação é:",o:["Fraco","Forte","Excelente","Completo"],c:0,coment:"É preciso explicar o porquê."},
+{base:"A argumentação aparece nos desenvolvimentos.",q:"Argumentação é parte do:",o:["Desenvolvimento","Título","Assinatura","Cabeçalho"],c:0,coment:"Os desenvolvimentos sustentam a tese."},
+{base:"Argumentar é analisar, não apenas citar.",q:"Um bom argumento:",o:["Analisa","Ignora","Confunde","Copia"],c:0,coment:"Análise transforma opinião em argumento."},
+{base:"A Competência 3 avalia organização dos argumentos.",q:"Argumentação exige lógica?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. A lógica melhora a Competência 3."},
+{base:"Exemplos ajudam a tornar a ideia concreta.",q:"Argumento pode ter exemplo?",o:["Sim","Não","Nunca","É proibido"],c:0,coment:"Exemplos ajudam quando são explicados."},
+{base:"Coerência sustenta o desenvolvimento.",q:"Argumentação precisa de coerência?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ideias desconectadas reduzem nota."},
+{base:"Generalização vazia enfraquece o texto.",q:"A argumentação deve evitar:",o:["Generalização","Clareza","Lógica","Detalhamento"],c:0,coment:"Generalizações sem prova são frágeis."},
+{base:"Detalhamento melhora a análise.",q:"Argumento forte é:",o:["Detalhado","Vago","Curto demais","Confuso"],c:0,coment:"Detalhar ajuda a provar a tese."},
+{base:"Um bom argumento explica causa ou consequência.",q:"Argumento deve explicar:",o:["Por quê","Nada","Assinatura","Título"],c:0,coment:"Explicar o porquê é essencial."},
+{base:"Argumentação pesa bastante na nota.",q:"Argumentação ajuda na:",o:["Nota","Fuga","Cópia","Rasura"],c:0,coment:"Boa argumentação melhora a nota."},
+{base:"Sem argumento, não há texto dissertativo-argumentativo.",q:"Argumentação é essencial?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. É o centro do texto."},
+{base:"Clareza facilita a compreensão do argumento.",q:"Argumento deve ser claro?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Argumento confuso perde força."},
+{base:"Vagueza prejudica a defesa da tese.",q:"Argumento ruim é:",o:["Vago","Claro","Forte","Bem explicado"],c:0,coment:"Argumento vago não convence."},
+{base:"O desenvolvimento precisa sustentar a tese.",q:"Argumentação sustenta:",o:["A tese","O erro","A assinatura","A fuga"],c:0,coment:"Os argumentos sustentam a tese."}
+],
+
+"Argumentação 2":[
+{base:"O segundo desenvolvimento amplia a discussão.",q:"O segundo desenvolvimento deve:",o:["Aprofundar a tese","Repetir tudo","Ignorar tema","Concluir sem análise"],c:0,coment:"O D2 deve acrescentar novo argumento."},
+{base:"A progressão textual mostra avanço das ideias.",q:"Progressão textual significa:",o:["Avanço de ideias","Repetição","Erro","Resumo"],c:0,coment:"O texto precisa evoluir de um parágrafo para outro."},
+{base:"O D2 não deve copiar o D1.",q:"O D2 deve trazer:",o:["Novo argumento","Mesmo argumento","Nada","Somente conclusão"],c:0,coment:"O D2 precisa ampliar a tese."},
+{base:"Conectivos ajudam a ligar os argumentos.",q:"Qual conectivo é adequado para somar ideia?",o:["Além disso","Fim","Oi","Nada"],c:0,coment:"'Além disso' adiciona uma nova ideia."},
+{base:"Contradição prejudica a coerência.",q:"O D2 não deve:",o:["Contradizer a tese","Aprofundar","Explicar","Analisar"],c:0,coment:"Contradições quebram a lógica do texto."},
+{base:"O segundo argumento pode mostrar efeitos do problema.",q:"Argumentação 2 pode tratar de:",o:["Consequência","Nada","Erro","Título"],c:0,coment:"Consequências aprofundam a análise."},
+{base:"O texto deve avançar, não repetir.",q:"Texto precisa de:",o:["Progressão","Repetição","Contradição","Nada"],c:0,coment:"Progressão melhora a Competência 3."},
+{base:"O D2 complementa a defesa do ponto de vista.",q:"D2 fortalece:",o:["A tese","A fuga","A cópia","A rasura"],c:0,coment:"O segundo argumento reforça a tese."},
+{base:"O segundo desenvolvimento precisa ser coerente.",q:"D2 precisa de lógica?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Sem lógica, o texto fica fraco."},
+{base:"Os parágrafos precisam conversar entre si.",q:"D2 deve conectar com:",o:["D1 e tese","Nada","Erro","Assinatura"],c:0,coment:"O texto deve ter unidade."},
+{base:"Fuga ao tema pode ocorrer em qualquer parágrafo.",q:"D2 não pode:",o:["Fugir do tema","Explicar","Argumentar","Conectar"],c:0,coment:"Todos os parágrafos devem manter o tema."},
+{base:"O D2 completa a análise.",q:"Argumentação 2 completa o texto?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim, ela amplia o desenvolvimento."},
+{base:"Segundo desenvolvimento bem construído melhora a nota.",q:"D2 ajuda na:",o:["Nota","Fuga","Cópia","Rasura"],c:0,coment:"Um bom D2 fortalece o projeto de texto."},
+{base:"Exemplos podem reforçar o segundo argumento.",q:"D2 pode ter exemplo?",o:["Sim","Não","É proibido","Nunca"],c:0,coment:"Pode, desde que o exemplo seja explicado."},
+{base:"Clareza é necessária em todos os parágrafos.",q:"D2 deve ser claro?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Clareza evita confusão."},
+{base:"O D2 não deve repetir o D1.",q:"D2 deve evitar:",o:["Repetição","Clareza","Lógica","Coerência"],c:0,coment:"Repetir empobrece a progressão."},
+{base:"O D2 pertence à parte argumentativa.",q:"D2 é parte do:",o:["Desenvolvimento","Introdução","Conclusão","Título"],c:0,coment:"É o segundo desenvolvimento."},
+{base:"O D2 precisa manter sentido com o texto.",q:"D2 precisa de coerência?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Coerência mantém a unidade."},
+{base:"A tese é sustentada por todos os argumentos.",q:"D2 fortalece a tese?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ele deve sustentar a tese."},
+{base:"Análise é mais importante que opinião solta.",q:"D2 deve analisar?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. A análise aprofunda a ideia."},
+{base:"Objetividade facilita a leitura.",q:"D2 deve ser objetivo?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim, sem enrolação."},
+{base:"Estrutura ajuda a organizar o parágrafo.",q:"D2 precisa de estrutura?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Idealmente: ideia, explicação e exemplo."},
+{base:"Um segundo argumento forte melhora o texto.",q:"D2 melhora a redação?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ele torna o texto mais completo."},
+{base:"Ligação entre parágrafos melhora a leitura.",q:"D2 ajuda a coerência?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim, quando se conecta ao restante."},
+{base:"Para um modelo de quatro parágrafos, o D2 é importante.",q:"D2 é obrigatório nesse modelo?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. No modelo recomendado, há dois desenvolvimentos."}
+],
+"Repertório Sociocultural":[
+{base:"Repertório é conhecimento usado para fortalecer a argumentação.",q:"Repertório é:",o:["Conhecimento externo","Erro","Resumo","Nada"],c:0,coment:"Repertório é conhecimento aplicado ao tema."},
+{base:"Repertório precisa dialogar com o tema.",q:"Repertório deve ser:",o:["Pertinente","Aleatório","Copiado","Errado"],c:0,coment:"Repertório pertinente tem relação clara com o tema."},
+{base:"A Constituição Federal é muito usada em temas de cidadania.",q:"A Constituição é:",o:["Repertório válido","Erro","Resumo","Nada"],c:0,coment:"É um repertório legitimado e produtivo quando bem usado."},
+{base:"Obras culturais podem ajudar na argumentação.",q:"Filmes podem ser:",o:["Repertório","Erro","Resumo","Nada"],c:0,coment:"Filmes servem como repertório se forem conectados ao tema."},
+{base:"Citar sem explicar enfraquece o texto.",q:"Repertório precisa de explicação?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sempre explique a relação entre repertório e argumento."},
+{base:"Repertório solto não ajuda a tese.",q:"Repertório sem ligação é:",o:["Fraco","Forte","Bom","Ótimo"],c:0,coment:"Repertório sem relação parece decorado."},
+{base:"Bom repertório aumenta valor argumentativo.",q:"Repertório melhora:",o:["A nota","O erro","A fuga","A cópia"],c:0,coment:"Quando bem aplicado, melhora principalmente a Competência 2."},
+{base:"O repertório precisa ser compreensível.",q:"Repertório deve ser claro?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. O corretor precisa entender a relação."},
+{base:"Repertório produtivo fortalece argumento.",q:"Repertório deve ajudar o argumento?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ele deve servir ao raciocínio."},
+{base:"Repertório forçado prejudica a naturalidade.",q:"Repertório não pode ser:",o:["Forçado","Natural","Explicado","Coerente"],c:0,coment:"Evite colocar repertório só para enfeitar."},
+{base:"História pode explicar raízes de problemas sociais.",q:"Repertório pode ser histórico?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim, quando se relaciona ao tema."},
+{base:"Atualidades ajudam em temas sociais.",q:"Repertório pode ser atual?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Atualidades são boas fontes de repertório."},
+{base:"Leis ajudam em temas de cidadania e direitos.",q:"Repertório pode ser lei?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Leis são repertórios legitimados."},
+{base:"Sem ligação, repertório vira enfeite.",q:"Repertório precisa de ligação?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Explique sempre a conexão."},
+{base:"A tese é fortalecida por repertórios bem usados.",q:"Repertório ajuda a tese?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim, quando sustenta o ponto de vista."},
+{base:"Citação mal aplicada compromete a argumentação.",q:"Repertório mal usado:",o:["Prejudica","Ajuda","Não muda","Melhora sempre"],c:0,coment:"Pode parecer artificial ou sem sentido."},
+{base:"O repertório bom é analisado.",q:"Repertório bom é:",o:["Explicado","Solto","Errado","Copiado"],c:0,coment:"Ele precisa ser explicado."},
+{base:"Repertório qualifica a argumentação.",q:"Repertório aumenta:",o:["Qualidade do texto","Erro","Fuga","Cópia"],c:0,coment:"Aumenta a qualidade argumentativa."},
+{base:"Repertório precisa fazer sentido no contexto.",q:"Repertório deve ser coerente?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Repertório incoerente atrapalha."},
+{base:"Repertório bem aplicado diferencia o texto.",q:"Repertório é diferencial?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. É um diferencial para notas altas."},
+{base:"A Competência 2 avalia compreensão do tema e repertório.",q:"Repertório melhora qual competência diretamente?",o:["2","1","3","5"],c:0,coment:"O repertório é avaliado na Competência 2."},
+{base:"Pertinência é relação com o tema.",q:"Repertório deve ser pertinente?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Pertinência é essencial."},
+{base:"Nem todo repertório famoso é bom.",q:"Repertório deve ser usado com cuidado?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. O uso precisa ser produtivo."},
+{base:"Dados estatísticos podem reforçar argumentos.",q:"Repertório pode ser dados?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim, de preferência com fonte confiável."},
+{base:"Repertório ajuda a sustentar uma tese.",q:"Repertório ajuda a convencer?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ele dá força ao argumento."}
+],
+
+"Coesão e Coerência":[
+{base:"Coesão liga palavras, frases e parágrafos.",q:"Coesão liga:",o:["Partes do texto","Erros","Resumo","Nada"],c:0,coment:"Coesão conecta as ideias."},
+{base:"Coerência é a lógica do texto.",q:"Coerência é:",o:["Sentido lógico","Erro","Resumo","Nada"],c:0,coment:"Coerência mantém o sentido."},
+{base:"Conectivos ajudam a organizar relações.",q:"Conectivo serve para:",o:["Ligar ideias","Confundir","Copiar","Nada"],c:0,coment:"Conectivos melhoram a fluidez."},
+{base:"Conectivos de adição somam argumentos.",q:"Qual é exemplo de conectivo?",o:["Além disso","Nada","Erro","Resumo"],c:0,coment:"'Além disso' soma ideias."},
+{base:"Texto coerente faz sentido do início ao fim.",q:"Texto coerente:",o:["Tem sentido","É confuso","É contraditório","Não tem tese"],c:0,coment:"Coerência é sentido lógico."},
+{base:"Sem ligação, o texto fica quebrado.",q:"Coesão evita:",o:["Quebra de texto","Clareza","Lógica","Coerência"],c:0,coment:"Coesão evita saltos bruscos."},
+{base:"Contradições prejudicam a redação.",q:"Coerência evita:",o:["Contradição","Clareza","Lógica","Organização"],c:0,coment:"Coerência impede ideias contraditórias."},
+{base:"Oposição indica contraste.",q:"Qual é conectivo de oposição?",o:["Entretanto","Além disso","Logo","Porque"],c:0,coment:"'Entretanto' indica oposição."},
+{base:"Conclusão indica fechamento de raciocínio.",q:"Qual é conectivo de conclusão?",o:["Portanto","Além disso","Entretanto","Porque"],c:0,coment:"'Portanto' indica conclusão."},
+{base:"Causa indica motivo.",q:"Qual é conectivo de causa?",o:["Porque","Além disso","Portanto","Entretanto"],c:0,coment:"'Porque' indica causa."},
+{base:"Fluidez melhora a leitura.",q:"Texto precisa de fluidez?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. A leitura deve ser natural."},
+{base:"Parágrafos separam ideias.",q:"Parágrafos ajudam na:",o:["Organização","Fuga","Cópia","Rasura"],c:0,coment:"Parágrafos organizam o texto."},
+{base:"Coesão melhora conexão textual.",q:"Coesão melhora:",o:["O texto","O erro","A fuga","A cópia"],c:0,coment:"Coesão dá continuidade às ideias."},
+{base:"Coerência facilita entendimento.",q:"Coerência melhora:",o:["Entendimento","Erro","Fuga","Rasura"],c:0,coment:"Coerência melhora a compreensão."},
+{base:"Sem coesão, as ideias ficam soltas.",q:"Sem coesão:",o:["O texto quebra","Melhora sempre","Nada acontece","A nota sobe"],c:0,coment:"O texto perde fluidez."},
+{base:"Sem coerência, o leitor não entende.",q:"Sem coerência:",o:["O texto fica sem sentido","Melhora","Nada","A nota sobe"],c:0,coment:"A falta de coerência compromete o texto."},
+{base:"A Competência 4 avalia coesão.",q:"Coesão é importante?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ela é avaliada na Competência 4."},
+{base:"Coerência é essencial para defender a tese.",q:"Coerência é essencial?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Sem coerência não há bom argumento."},
+{base:"Texto bom tem ligação e lógica.",q:"Texto bom tem:",o:["Coesão e coerência","Erro","Nada","Cópia"],c:0,coment:"Esses dois elementos são fundamentais."},
+{base:"Conectivos são ferramentas de coesão.",q:"Coesão usa conectivos?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim, mas não só eles."},
+{base:"A lógica precisa permanecer em todo o texto.",q:"Coerência mantém:",o:["Lógica","Erro","Fuga","Cópia"],c:0,coment:"Coerência mantém a lógica."},
+{base:"Frases precisam se conectar.",q:"Coesão liga frases?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ela liga frases e parágrafos."},
+{base:"Ideias opostas sem explicação confundem.",q:"Coerência evita contradição?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Contradição reduz qualidade."},
+{base:"Leitura fluida facilita a correção.",q:"Coesão ajuda a leitura?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. O corretor entende melhor."},
+{base:"Entendimento depende de sentido lógico.",q:"Coerência ajuda no entendimento?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Coerência facilita compreensão."}
+],
+
+"Proposta de Intervenção":[
+{base:"A intervenção aparece na conclusão.",q:"Intervenção aparece na:",o:["Conclusão","Introdução","Título","Nada"],c:0,coment:"A intervenção deve fechar a redação."},
+{base:"A proposta deve responder ao problema discutido.",q:"Intervenção resolve:",o:["O problema","O título","A assinatura","Nada"],c:0,coment:"Ela precisa solucionar o problema analisado."},
+{base:"Agente é quem executa a ação.",q:"Intervenção precisa de agente?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. O agente é obrigatório para proposta completa."},
+{base:"Ação é o que será feito.",q:"Intervenção precisa de ação?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. A ação mostra o que deve ser feito."},
+{base:"Meio é como a ação será realizada.",q:"Intervenção precisa de meio?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. O meio detalha como executar."},
+{base:"Finalidade é o objetivo da proposta.",q:"Intervenção precisa de finalidade?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ela mostra para que a ação será feita."},
+{base:"Detalhamento especifica melhor algum elemento.",q:"Intervenção precisa de detalhamento?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. O detalhamento aumenta a pontuação."},
+{base:"A proposta completa possui cinco elementos.",q:"Intervenção completa tem:",o:["5 elementos","1 elemento","2 elementos","3 elementos"],c:0,coment:"Agente, ação, meio, finalidade e detalhamento."},
+{base:"O agente é responsável pela execução.",q:"Agente é:",o:["Quem faz","O que faz","Como faz","Por que faz"],c:0,coment:"Agente é quem realiza a ação."},
+{base:"A ação é o verbo prático da proposta.",q:"Ação é:",o:["O que faz","Quem faz","Como faz","Por que faz"],c:0,coment:"A ação mostra o que será feito."},
+{base:"O meio indica forma de execução.",q:"Meio é:",o:["Como faz","Quem faz","O que faz","Por que faz"],c:0,coment:"Meio é o modo de realizar a ação."},
+{base:"Finalidade indica objetivo.",q:"Finalidade é:",o:["Objetivo","Erro","Resumo","Nada"],c:0,coment:"É o objetivo da intervenção."},
+{base:"Detalhamento aprofunda a proposta.",q:"Detalhamento é:",o:["Explicação específica","Erro","Nada","Resumo"],c:0,coment:"Detalhar melhora a proposta."},
+{base:"A proposta deve respeitar valores humanos.",q:"Intervenção deve respeitar:",o:["Direitos humanos","Erro","Nada","Resumo"],c:0,coment:"Desrespeito aos direitos humanos prejudica a redação."},
+{base:"Propostas violentas são inadequadas.",q:"Violência na intervenção é:",o:["Errada","Correta","Opcional","Normal"],c:0,coment:"Não se deve propor violência ou exclusão."},
+{base:"Proposta vaga perde pontos.",q:"Intervenção vaga é:",o:["Errada","Completa","Excelente","Ideal"],c:0,coment:"É preciso ser específica."},
+{base:"A Competência 5 vale até 200 pontos.",q:"Intervenção melhora:",o:["A nota","A fuga","A cópia","A rasura"],c:0,coment:"Uma intervenção completa melhora a nota."},
+{base:"No ENEM, a conclusão deve propor solução.",q:"Intervenção é obrigatória para alta nota?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Sem intervenção, a Competência 5 fica baixa."},
+{base:"A intervenção encerra o raciocínio.",q:"Intervenção fecha o texto?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ela fecha a redação com solução."},
+{base:"Clareza é importante na proposta.",q:"Intervenção deve ser clara?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Proposta confusa perde força."},
+{base:"Detalhes ajudam o corretor a identificar os elementos.",q:"Intervenção deve ser detalhada?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Detalhamento é um dos elementos."},
+{base:"A proposta deve fazer sentido com o problema.",q:"Intervenção precisa de lógica?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. A solução precisa ser viável e coerente."},
+{base:"A intervenção deve dialogar com os argumentos.",q:"Intervenção precisa de coerência?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ela deve resolver o problema discutido."},
+{base:"Boa intervenção aumenta chance de nota alta.",q:"Intervenção ajuda a melhorar a nota?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. É decisiva na Competência 5."},
+{base:"Muitos alunos perdem pontos na proposta.",q:"Intervenção é diferencial?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Uma proposta completa diferencia o texto."}
+],
+
+"Erros que Zeram Redação":[
+{base:"Fuga total ao tema é erro gravíssimo.",q:"Fuga total ao tema causa:",o:["Nota zero","Nota máxima","Nada","Aumento de nota"],c:0,coment:"Fuga total pode zerar a redação."},
+{base:"O ENEM exige texto dissertativo-argumentativo.",q:"Texto fora do tipo exigido:",o:["Pode zerar","Aumenta nota","Não interfere","É obrigatório"],c:0,coment:"Texto fora do gênero pode ser anulado."},
+{base:"A proposta não pode violar direitos humanos.",q:"Desrespeito aos direitos humanos:",o:["Prejudica gravemente","Aumenta nota","Não muda nada","É obrigatório"],c:0,coment:"Propostas violentas ou desumanas são inadequadas."},
+{base:"Texto muito curto pode ser insuficiente.",q:"Texto muito curto:",o:["Pode zerar","Melhora nota","Não interfere","É ideal"],c:0,coment:"Texto insuficiente pode ser anulado."},
+{base:"Copiar a coletânea compromete a autoria.",q:"Cópia da coletânea:",o:["Prejudica","Ajuda","Não muda","Melhora"],c:0,coment:"Cópia extensa é erro."},
+{base:"Identificação indevida não é permitida.",q:"Assinar a redação no corpo do texto é:",o:["Erro","Correto","Opcional","Normal"],c:0,coment:"Não se deve identificar no corpo da redação."},
+{base:"Desenhos podem caracterizar anulação.",q:"Desenhos na redação são:",o:["Erro","Corretos","Obrigatórios","Recomendados"],c:0,coment:"A folha deve conter texto adequado."},
+{base:"Palavrões prejudicam a formalidade.",q:"Palavrões são:",o:["Erro","Corretos","Obrigatórios","Ideais"],c:0,coment:"A linguagem deve ser formal e respeitosa."},
+{base:"O tema precisa ser seguido.",q:"Fugir do tema é:",o:["Erro grave","Correto","Opcional","Normal"],c:0,coment:"Fugir do tema é um dos erros mais graves."},
+{base:"Letra ilegível pode impedir avaliação.",q:"Texto ilegível:",o:["Prejudica","Ajuda","Não muda","Melhora"],c:0,coment:"Se o corretor não consegue ler, a nota é prejudicada."},
+{base:"O texto precisa defender ponto de vista.",q:"Não argumentar:",o:["Prejudica","Ajuda","Não muda","Melhora"],c:0,coment:"Sem argumentação, o texto não cumpre o gênero."},
+{base:"Tese é o centro do texto.",q:"Não ter tese é:",o:["Erro","Correto","Opcional","Ideal"],c:0,coment:"Sem tese, o texto fica sem direção."},
+{base:"Conclusão fecha o projeto textual.",q:"Sem conclusão:",o:["Prejudica","Ajuda","Não muda","Melhora"],c:0,coment:"A ausência de conclusão prejudica a estrutura."},
+{base:"A intervenção vale pontos na Competência 5.",q:"Sem intervenção:",o:["Perde pontos","Ganha pontos","Não muda","É melhor"],c:0,coment:"Sem intervenção, a Competência 5 fica baixa."},
+{base:"Contradições quebram a lógica.",q:"Contradição é:",o:["Erro","Correta","Opcional","Normal"],c:0,coment:"Contradição prejudica coerência."},
+{base:"Coerência depende de sentido.",q:"Texto sem sentido é:",o:["Erro","Correto","Opcional","Ideal"],c:0,coment:"Texto sem sentido perde nota."},
+{base:"A norma-padrão é avaliada.",q:"Erro gramatical grave e recorrente:",o:["Prejudica","Ajuda","Não muda","Melhora"],c:0,coment:"Erros recorrentes reduzem a Competência 1."},
+{base:"Tema errado compromete toda a redação.",q:"Tema errado:",o:["Pode zerar","Melhora","Não muda","Ajuda"],c:0,coment:"Tema errado pode ser fuga total."},
+{base:"Plágio não é permitido.",q:"Copiar redação pronta:",o:["Pode zerar","Melhora","Não muda","Ajuda"],c:0,coment:"Redação precisa ser autoral."},
+{base:"O comando da prova deve ser seguido.",q:"Ignorar a proposta é:",o:["Erro","Correto","Opcional","Ideal"],c:0,coment:"Ignorar a proposta compromete o texto."},
+{base:"Desenvolvimento sustenta a tese.",q:"Não desenvolver argumentos é:",o:["Erro","Correto","Opcional","Ideal"],c:0,coment:"Sem desenvolvimento, a argumentação fica fraca."},
+{base:"Organização textual é importante.",q:"Texto bagunçado:",o:["Prejudica","Ajuda","Não muda","Melhora"],c:0,coment:"Bagunça prejudica leitura e coerência."},
+{base:"Parágrafos organizam o texto.",q:"Sem parágrafos:",o:["Prejudica","Ajuda","Não muda","Melhora"],c:0,coment:"A ausência de parágrafos atrapalha a estrutura."},
+{base:"Coesão liga as ideias.",q:"Sem coesão:",o:["Erro","Correto","Opcional","Ideal"],c:0,coment:"Sem coesão, o texto fica quebrado."},
+{base:"Coerência mantém sentido.",q:"Sem coerência:",o:["Erro","Correto","Opcional","Ideal"],c:0,coment:"Sem coerência, o texto perde lógica."}
+],
+"Redação Nota 1000":[
+{base:"Nota 1000 exige domínio equilibrado das competências.",q:"Nota 1000 exige:",o:["Domínio das competências","Erro","Cópia","Fuga"],c:0,coment:"É preciso ir bem nas cinco competências."},
+{base:"Tese clara orienta todo o texto.",q:"Tese clara:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Tese clara melhora o projeto de texto."},
+{base:"Argumentação sustenta a tese.",q:"Argumentação forte:",o:["Aumenta qualidade","Diminui qualidade","Não importa","É proibida"],c:0,coment:"Bons argumentos são essenciais."},
+{base:"Repertório produtivo fortalece a Competência 2.",q:"Repertório produtivo:",o:["Melhora o texto","Piora sempre","Não importa","É proibido"],c:0,coment:"Repertório bem aplicado melhora a nota."},
+{base:"Coesão organiza a leitura.",q:"Coesão correta:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Coesão é avaliada na Competência 4."},
+{base:"A intervenção completa vale muitos pontos.",q:"Intervenção completa:",o:["Ajuda","Prejudica","Não importa","É proibida"],c:0,coment:"Intervenção completa melhora a Competência 5."},
+{base:"Clareza ajuda o corretor a entender o texto.",q:"Clareza textual:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Clareza é essencial."},
+{base:"Coerência mantém sentido.",q:"Coerência:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Coerência é indispensável."},
+{base:"Progressão mostra avanço argumentativo.",q:"Progressão textual:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"As ideias devem avançar."},
+{base:"Organização facilita a avaliação.",q:"Texto organizado:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Organização melhora o projeto textual."},
+{base:"A introdução apresenta a direção do texto.",q:"Boa introdução:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Introdução forte orienta a redação."},
+{base:"Desenvolvimentos sustentam a tese.",q:"Desenvolvimento forte:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Desenvolvimento forte melhora a argumentação."},
+{base:"A conclusão deve propor solução.",q:"Conclusão completa:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Conclusão com intervenção completa ajuda muito."},
+{base:"Erros graves derrubam nota.",q:"Sem erros graves:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Evitar erros graves é essencial."},
+{base:"A norma-padrão é cobrada.",q:"Texto formal:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Linguagem formal é necessária."},
+{base:"Repertório deve ser explicado.",q:"Repertório bem usado:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Repertório produtivo fortalece a redação."},
+{base:"Argumentos precisam ser claros.",q:"Argumentos claros:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Clareza argumentativa melhora a nota."},
+{base:"Conectivos ligam ideias.",q:"Conectivos:",o:["Ajudam","Prejudicam sempre","Não importam","São proibidos"],c:0,coment:"Conectivos melhoram coesão."},
+{base:"Foco temático é obrigatório.",q:"Sem fuga ao tema:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Manter o tema é essencial."},
+{base:"O texto precisa estar completo.",q:"Texto completo:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Introdução, desenvolvimento e conclusão são essenciais."},
+{base:"Consistência é alinhamento entre tese, argumentos e intervenção.",q:"Redação excelente é:",o:["Consistente","Fraca","Confusa","Sem tese"],c:0,coment:"Consistência é marca de redações fortes."},
+{base:"Boa escrita facilita a compreensão.",q:"Boa escrita:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Boa escrita melhora a comunicação."},
+{base:"O texto precisa ter lógica.",q:"Lógica textual:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"A lógica sustenta a coerência."},
+{base:"Planejar evita fugir do tema.",q:"Planejamento:",o:["Ajuda","Prejudica","Não importa","É erro"],c:0,coment:"Planejar antes de escrever melhora o texto."},
+{base:"Treino melhora desempenho.",q:"Treino:",o:["Melhora","Piora","Não muda","É proibido"],c:0,coment:"Treinar é fundamental para evoluir."}
+],
+
+"Temas ENEM":[
+{base:"Tema social exige análise de problema coletivo.",q:"Tema social exige:",o:["Análise","Resumo sem opinião","Narrativa fictícia","Nada"],c:0,coment:"O tema social deve ser analisado criticamente."},
+{base:"Inclusão digital envolve acesso à tecnologia.",q:"Tema inclusão digital trata de:",o:["Acesso à tecnologia","Cópia","Resumo","Erro"],c:0,coment:"O foco é democratizar acesso e uso da tecnologia."},
+{base:"Educação costuma aparecer como problema social.",q:"Tema educação envolve:",o:["Problema social","Nada","Resumo","Erro"],c:0,coment:"Educação pode envolver acesso, evasão e qualidade."},
+{base:"Saúde mental é tema social relevante.",q:"Tema saúde mental envolve:",o:["Problema social","Nada","Resumo","Erro"],c:0,coment:"Pode envolver jovens, escola, trabalho e atendimento."},
+{base:"Meio ambiente é tema frequente.",q:"Tema meio ambiente envolve:",o:["Problema social","Nada","Resumo","Erro"],c:0,coment:"Pode envolver preservação, consumo e políticas públicas."},
+{base:"Todo tema ENEM pede proposta.",q:"Tema exige intervenção?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. A conclusão deve propor solução."},
+{base:"A tese responde ao tema.",q:"Tema exige tese?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Sem tese, o texto perde direção."},
+{base:"Argumentos defendem a tese.",q:"Tema exige argumento?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. É texto argumentativo."},
+{base:"Coesão conecta ideias sobre o tema.",q:"Tema exige coesão?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. As ideias precisam estar conectadas."},
+{base:"Coerência mantém sentido.",q:"Tema exige coerência?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. O texto precisa ter lógica."},
+{base:"O tema orienta todo o texto.",q:"Tema é base do texto?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Tudo deve dialogar com o tema."},
+{base:"Sem tema, não há direção.",q:"Tema orienta a redação?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ele orienta tese e argumentos."},
+{base:"A proposta deve ser seguida.",q:"Tema deve ser respeitado?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Respeitar o tema é obrigatório."},
+{base:"Ignorar tema é erro grave.",q:"Tema não pode ser ignorado?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ignorar pode zerar."},
+{base:"O atendimento ao tema influencia a nota.",q:"Tema influencia a nota?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. A Competência 2 avalia isso."},
+{base:"Análise crítica aprofunda o tema.",q:"Tema exige análise crítica?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Não basta repetir a frase-tema."},
+{base:"Estrutura ajuda a organizar o tema.",q:"Tema exige estrutura?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Estrutura melhora o texto."},
+{base:"Linguagem formal é cobrada em qualquer tema.",q:"Tema exige linguagem formal?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. A norma-padrão é avaliada."},
+{base:"A conclusão responde ao tema com solução.",q:"Tema exige conclusão?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. O texto precisa ser fechado."},
+{base:"Clareza evita interpretação confusa.",q:"Tema exige clareza?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Clareza ajuda a nota."},
+{base:"Foco evita tangenciamento.",q:"Tema exige foco?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. O texto não pode se dispersar."},
+{base:"Organização evita bagunça textual.",q:"Tema exige organização?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Organização fortalece o texto."},
+{base:"A lógica sustenta a tese.",q:"Tema exige lógica?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. A argumentação precisa ser lógica."},
+{base:"Consistência mantém alinhamento.",q:"Tema exige consistência?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Tese, argumentos e intervenção devem se alinhar."},
+{base:"Prática melhora interpretação de temas.",q:"Tema exige prática?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Treinar temas melhora desempenho."}
+],
+
+"Simulado Completo de Redação":[
+{base:"Antes de escrever, leia o comando com atenção.",q:"Primeiro passo:",o:["Interpretar o tema","Escrever sem ler","Ignorar","Copiar"],c:0,coment:"Interpretar o tema vem antes de escrever."},
+{base:"Introdução apresenta o caminho do texto.",q:"Introdução deve:",o:["Apresentar tese","Ignorar","Copiar","Resumo"],c:0,coment:"A tese deve aparecer na introdução."},
+{base:"O primeiro desenvolvimento sustenta a tese.",q:"D1 deve:",o:["Argumentar","Ignorar","Copiar","Resumo"],c:0,coment:"D1 apresenta e explica o primeiro argumento."},
+{base:"O segundo desenvolvimento amplia a análise.",q:"D2 deve:",o:["Aprofundar","Ignorar","Copiar","Resumo"],c:0,coment:"D2 traz novo argumento ou consequência."},
+{base:"A conclusão fecha com solução.",q:"Conclusão deve:",o:["Intervir","Ignorar","Copiar","Resumo"],c:0,coment:"A conclusão deve trazer proposta de intervenção."},
+{base:"Sentido lógico é indispensável.",q:"Texto deve ser:",o:["Coerente","Confuso","Contraditório","Sem tese"],c:0,coment:"Coerência mantém sentido."},
+{base:"As partes precisam estar ligadas.",q:"Texto deve ter:",o:["Coesão","Erro","Nada","Cópia"],c:0,coment:"Coesão liga as ideias."},
+{base:"A tese orienta tudo.",q:"Texto deve ter tese?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Sem tese, não há direção."},
+{base:"Texto argumentativo precisa de argumentos.",q:"Texto deve ter argumento?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Argumentos defendem a tese."},
+{base:"A redação precisa ser fechada.",q:"Texto deve ter conclusão?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. A conclusão fecha o projeto."},
+{base:"Erros graves derrubam nota.",q:"Texto deve evitar erro?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Revise sempre."},
+{base:"Clareza facilita a correção.",q:"Texto deve ter clareza?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Texto claro é melhor avaliado."},
+{base:"A norma-padrão é exigida.",q:"Texto deve ser formal?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Linguagem formal é obrigatória."},
+{base:"Argumentos precisam seguir raciocínio lógico.",q:"Texto deve ter lógica?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Lógica sustenta a coerência."},
+{base:"Organização melhora leitura.",q:"Texto deve ter organização?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Organização é essencial."},
+{base:"Simulado serve para medir preparo.",q:"Simulado serve para:",o:["Treinar","Ignorar","Copiar","Nada"],c:0,coment:"Simulado ajuda a treinar e diagnosticar falhas."},
+{base:"Prática constante melhora resultado.",q:"Simulado melhora:",o:["Desempenho","Erro","Fuga","Cópia"],c:0,coment:"Treino melhora desempenho."},
+{base:"O resultado indica pontos fortes e fracos.",q:"Simulado mostra:",o:["Nível","Erro apenas","Nada","Resumo"],c:0,coment:"Ele mostra seu nível atual."},
+{base:"Concentração melhora o treino.",q:"Simulado exige foco?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Faça como se fosse prova."},
+{base:"A repetição melhora habilidade.",q:"Simulado exige prática?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Redação melhora com treino."},
+{base:"Treinar simula o dia da prova.",q:"Simulado prepara para prova?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ele reduz insegurança."},
+{base:"Treino aumenta chance de melhorar nota.",q:"Simulado ajuda aprovação?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ajuda a corrigir pontos fracos."},
+{base:"Disciplina é importante para estudar redação.",q:"Simulado exige disciplina?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Constância é fundamental."},
+{base:"Prática direcionada melhora desempenho.",q:"Simulado melhora nota?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim, quando acompanhado de revisão."},
+{base:"Treino final integra todos os módulos.",q:"Simulado é essencial?",o:["Sim","Não","Pouco","Nunca"],c:0,coment:"Sim. Ele aplica tudo o que foi treinado."}
+]
+
+};
+
+menu();
+
+
+</script>
+</body>
+</html>
