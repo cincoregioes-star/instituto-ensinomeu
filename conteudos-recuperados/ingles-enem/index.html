@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inglês Gratuito ENEM</title>
+  <style>
+    :root{
+      --bg:#05070c;
+      --card:#11141b;
+      --card2:#171b24;
+      --blue:#00f3ff;
+      --pink:#ff00e6;
+      --green:#39ff14;
+      --red:#ff003c;
+      --yellow:#ffd400;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --line:rgba(255,255,255,.08);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#000;
+      color:var(--text);
+      min-height:100vh;
+      padding:20px 12px 40px;
+      text-align:center;
+      overflow-x:hidden;
+    }
+
+    header{
+      max-width:1100px;
+      margin:0 auto 24px;
+      border:2px solid var(--blue);
+      border-radius:24px;
+      padding:22px 16px;
+      background:linear-gradient(180deg,#0c0f16,#090b11);
+      box-shadow:0 0 22px rgba(0,243,255,.22);
+    }
+
+    header h1{
+      color:var(--blue);
+      font-size:clamp(2rem,4vw,3rem);
+      text-shadow:0 0 14px rgba(0,243,255,.7);
+      font-weight:900;
+    }
+
+    header p{
+      margin-top:10px;
+      color:var(--pink);
+      font-weight:800;
+      font-size:clamp(1rem,2vw,1.3rem);
+    }
+
+    #app{
+      width:100%;
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .box{
+      width:100%;
+      max-width:100%;
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:20px 16px;
+      box-shadow:0 0 20px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+
+    .btn{
+      display:block;
+      width:100%;
+      max-width:560px;
+      margin:10px auto;
+      padding:14px 16px;
+      border:2px solid var(--blue);
+      background:transparent;
+      color:#fff;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:800;
+      font-size:1rem;
+      line-height:1.45;
+      transition:.2s;
+      white-space:normal;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    .btn:hover:not(:disabled){
+      background:var(--blue);
+      color:#000;
+      box-shadow:0 0 18px rgba(0,243,255,.35);
+    }
+
+    .btn-voltar{
+      border-color:#666;
+      color:#ddd;
+    }
+
+    .btn-voltar:hover:not(:disabled){
+      background:#333;
+      color:#fff;
+      box-shadow:none;
+    }
+
+    .btn.correct{
+      background:var(--green) !important;
+      border-color:var(--green) !important;
+      color:#000 !important;
+    }
+
+    .btn.wrong{
+      background:var(--red) !important;
+      border-color:var(--red) !important;
+      color:#fff !important;
+    }
+
+    .grid-areas{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .card-area{
+      background:linear-gradient(135deg, rgba(0,243,255,.08), rgba(255,0,230,.08));
+      border:1px solid rgba(0,243,255,.16);
+      border-radius:16px;
+      padding:16px;
+      text-align:left;
+      min-width:0;
+    }
+
+    .card-area h3{
+      color:var(--blue);
+      margin-bottom:8px;
+      font-size:1.12rem;
+      line-height:1.35;
+      word-break:break-word;
+    }
+
+    .card-area p{
+      color:#ddd;
+      font-size:.95rem;
+      line-height:1.45;
+      margin-bottom:10px;
+      word-break:break-word;
+    }
+
+    .status{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+      color:var(--pink);
+      font-weight:bold;
+      text-align:left;
+    }
+
+    #question-text{
+      font-size:1.08rem;
+      line-height:1.6;
+      margin:20px 0;
+      min-height:88px;
+      text-align:left;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    .question-label{
+      display:block;
+      color:var(--yellow);
+      font-weight:bold;
+      margin-bottom:8px;
+    }
+
+    .text-base{
+      display:block;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:14px;
+      margin:10px 0 14px;
+      color:#f5f5f5;
+      font-style:italic;
+      line-height:1.65;
+    }
+
+    .options-wrap{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-bottom:16px;
+      width:100%;
+      max-width:100%;
+    }
+
+    .option-btn{
+      width:100%;
+      max-width:100%;
+      margin:0;
+      text-align:left;
+      min-height:58px;
+    }
+
+    textarea{
+      width:100%;
+      min-height:140px;
+      background:#0c0f14;
+      border:2px solid var(--blue);
+      color:#fff;
+      border-radius:12px;
+      padding:12px;
+      font-size:1rem;
+      resize:vertical;
+      margin-bottom:14px;
+    }
+
+    .result-number{
+      font-size:3rem;
+      color:var(--blue);
+      margin:12px 0;
+      font-weight:900;
+    }
+
+    .result-sub{
+      font-size:1.12rem;
+      color:#ddd;
+      margin-bottom:10px;
+    }
+
+    .mini{
+      color:var(--muted);
+      font-size:.96rem;
+      line-height:1.5;
+    }
+
+    label{
+      display:block;
+      text-align:left;
+      margin:10px 0 6px;
+      color:var(--yellow);
+      font-weight:bold;
+    }
+
+    .input-nota{
+      width:100%;
+      padding:12px;
+      background:#101010;
+      border:2px solid var(--blue);
+      color:#fff;
+      border-radius:10px;
+      margin-bottom:12px;
+    }
+
+    .disc-box{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      padding:16px;
+      margin-bottom:16px;
+      text-align:left;
+    }
+
+    .disc-box h3{
+      color:var(--blue);
+      margin-bottom:8px;
+    }
+
+    .disc-box p{
+      margin-bottom:8px;
+      line-height:1.55;
+      word-break:break-word;
+    }
+
+    @media (max-width:700px){
+      .grid-areas{
+        grid-template-columns:1fr;
+      }
+
+      .box{
+        padding:16px 12px;
+      }
+
+      #question-text{
+        font-size:1rem;
+      }
+
+      .btn{
+        font-size:.96rem;
+        padding:13px 12px;
+      }
+    }
+
+
+</style>
+</head>
+<body>
+<nav style="max-width:1100px;margin:0 auto 15px;text-align:left"><a href="../index.html" style="display:inline-block;padding:12px 16px;background:#113e5e;color:#fff;border-radius:11px;text-decoration:none;font:700 15px system-ui">← Voltar ao acervo EnsinoMeu</a></nav>
+
+<header>
+  <h1>INGLÊS Gratuito ENEM</h1>
+  <p>10 MÓDULOS • 20 OBJETIVAS + 2 DISCURSIVAS POR MÓDULO</p>
+</header>
+
+
+<div id="app"></div>
+
+<audio id="audio-bg" loop preload="auto" playsinline>
+  <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-correct" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-wrong" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const app = document.getElementById("app");
+const audioBg = document.getElementById("audio-bg");
+const audioCorrect = document.getElementById("audio-correct");
+const audioWrong = document.getElementById("audio-wrong");
+
+audioBg.volume = 0.06;
+audioCorrect.volume = 0.45;
+audioWrong.volume = 0.45;
+
+let audioLiberado = false;
+let areaAtual = "";
+let questoesAtuais = [];
+let indiceQuestao = 0;
+let acertosObjetivas = 0;
+let respostasDiscursivas = ["", ""];
+let notasDiscursivas = [0, 0];
+let questaoRenderizadaAtual = null;
+
+document.addEventListener("click", destravarAudio, { once: true });
+document.addEventListener("touchstart", destravarAudio, { once: true });
+
+function destravarAudio() {
+  if (audioLiberado) return Promise.resolve(true);
+
+  audioBg.muted = true;
+  return audioBg.play()
+    .then(() => {
+      audioBg.pause();
+      audioBg.currentTime = 0;
+      audioBg.muted = false;
+      audioLiberado = true;
+
+      audioCorrect.play().then(() => {
+        audioCorrect.pause();
+        audioCorrect.currentTime = 0;
+      }).catch(() => {});
+
+      audioWrong.play().then(() => {
+        audioWrong.pause();
+        audioWrong.currentTime = 0;
+      }).catch(() => {});
+
+      return true;
+    })
+    .catch(() => false);
+}
+
+function tocarAudioFundo() {
+  if (!audioLiberado) return;
+  audioBg.currentTime = 0;
+  audioBg.play().catch(() => {});
+}
+
+function pararAudioFundo() {
+  audioBg.pause();
+  audioBg.currentTime = 0;
+}
+
+function tocarAcerto() {
+  audioCorrect.currentTime = 0;
+  audioCorrect.play().catch(() => {});
+}
+
+function tocarErro() {
+  audioWrong.currentTime = 0;
+  audioWrong.play().catch(() => {});
+}
+
+const areasEnglish = [
+  { nome: "Reading Comprehension", descricao: "Compreensão de textos em inglês e interpretação global." },
+  { nome: "Vocabulary in Context", descricao: "Sentido de palavras e expressões de acordo com o contexto." },
+  { nome: "Grammar Basics", descricao: "Estruturas básicas de frases e uso essencial da língua." },
+  { nome: "Verb Tenses", descricao: "Tempos verbais cobrados em leitura e compreensão." },
+  { nome: "Modal Verbs", descricao: "Can, could, should, must, may e outros modais." },
+  { nome: "Prepositions and Phrasal Verbs", descricao: "Preposições e phrasal verbs frequentes em prova." },
+  { nome: "Pronouns and Articles", descricao: "Pronomes, artigos e referências textuais." },
+  { nome: "Advertisements and Text Interpretation", descricao: "Anúncios, campanhas, avisos e interpretação funcional." },
+  { nome: "Connectors and Text Meaning", descricao: "Conectores, relações lógicas e coesão textual." },
+  { nome: "Writing and Discursive English", descricao: "Produção curta, resposta discursiva e leitura aplicada." }
+];
+
+function criarObjetiva(area, numero, textoBase, pergunta, alternativas, correta, comentario) {
+  return {
+    tipo: "objetiva",
+    area,
+    numero,
+    base: textoBase,
+    q: pergunta,
+    o: alternativas,
+    c: correta,
+    coment: comentario
+  };
+}
+
+function criarDiscursiva(area, numero, pergunta, gabarito) {
+  return {
+    tipo: "discursiva",
+    area,
+    numero,
+    q: pergunta,
+    gabarito
+  };
+}
+
+function gerarAreaBase(nomeArea, perguntasObjetivas, discursivas) {
+  const objetivas = perguntasObjetivas.map((item, i) =>
+    criarObjetiva(nomeArea, i + 1, item.base, item.q, item.o, item.c, item.coment)
+  );
+  const disc = discursivas.map((item, i) =>
+    criarDiscursiva(nomeArea, 21 + i, item.q, item.g)
+  );
+  return [...objetivas, ...disc];
+}
+
+function embaralharAlternativas(questao) {
+  const pares = questao.o.map((texto, idx) => ({ texto, correta: idx === questao.c }));
+  for (let i = pares.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pares[i], pares[j]] = [pares[j], pares[i]];
+  }
+  return {
+    ...questao,
+    opcoesRenderizadas: pares.map(p => p.texto),
+    corretaRenderizada: pares.findIndex(p => p.correta)
+  };
+}
+
+const bancoQuestoes = {
+  "Reading Comprehension": gerarAreaBase(
+    "Reading Comprehension",
+    [
+      {
+        base: `"Students need to study every day to improve their skills."`,
+        q: "De acordo com o texto, qual é a ideia principal?",
+        o: [
+          "Estudar diariamente melhora as habilidades",
+          "Os estudantes não precisam estudar",
+          "O texto trata de lazer e descanso",
+          "A frase fala apenas de professores"
+        ],
+        c: 0,
+        coment: "A frase afirma que estudar todos os dias melhora as habilidades."
+      },
+      {
+        base: `"Many schools use technology to help students learn faster."`,
+        q: "Segundo o texto, a tecnologia é usada para:",
+        o: [
+          "Diminuir o aprendizado",
+          "Ajudar os alunos a aprender mais rápido",
+          "Substituir todos os professores",
+          "Impedir o estudo em casa"
+        ],
+        c: 1,
+        coment: "O texto diz claramente que a tecnologia ajuda os alunos a aprender mais rápido."
+      },
+      {
+        base: `"He usually studies at night because he works during the day."`,
+        q: "Por que ele estuda à noite?",
+        o: [
+          "Porque gosta mais do escuro",
+          "Porque trabalha durante o dia",
+          "Porque não tem aula pela manhã",
+          "Porque está de férias"
+        ],
+        c: 1,
+        coment: "A causa aparece após 'because'."
+      },
+      {
+        base: `"The campaign encourages people to recycle more."`,
+        q: "Qual é o objetivo da campanha?",
+        o: [
+          "Incentivar mais reciclagem",
+          "Vender lixeiras escolares",
+          "Explicar regras de matemática",
+          "Promover competições esportivas"
+        ],
+        c: 0,
+        coment: "A campanha encoraja a reciclagem."
+      },
+      {
+        base: `"Online classes can be flexible and accessible."`,
+        q: "O texto afirma que aulas online podem ser:",
+        o: [
+          "Caras e lentas",
+          "Flexíveis e acessíveis",
+          "Sempre presenciais",
+          "Inúteis para o estudante"
+        ],
+        c: 1,
+        coment: "Flexible and accessible = flexíveis e acessíveis."
+      },
+      {
+        base: `"Students should read books to improve vocabulary."`,
+        q: "O texto recomenda:",
+        o: [
+          "Evitar leitura",
+          "Ler livros para melhorar o vocabulário",
+          "Estudar apenas gramática",
+          "Trocar leitura por vídeos apenas"
+        ],
+        c: 1,
+        coment: "Should indica recomendação."
+      },
+      {
+        base: `"Healthy food helps students have more energy."`,
+        q: "Segundo o texto, a alimentação saudável ajuda os alunos a terem:",
+        o: [
+          "Mais energia",
+          "Menos disposição",
+          "Menos interesse em estudar",
+          "Mais sono durante a aula"
+        ],
+        c: 0,
+        coment: "Healthy food helps students have more energy."
+      },
+      {
+        base: `"Teachers play an important role in education."`,
+        q: "No texto, os professores são apresentados como:",
+        o: [
+          "Pouco importantes",
+          "Importantes na educação",
+          "Desnecessários nas escolas",
+          "Responsáveis apenas por disciplina"
+        ],
+        c: 1,
+        coment: "Important role = papel importante."
+      },
+      {
+        base: `"Reading helps students understand different cultures."`,
+        q: "De acordo com a frase, a leitura ajuda os alunos a:",
+        o: [
+          "Evitar outras culturas",
+          "Compreender diferentes culturas",
+          "Parar de estudar línguas",
+          "Memorizar números"
+        ],
+        c: 1,
+        coment: "O texto relaciona leitura à compreensão de culturas diferentes."
+      },
+      {
+        base: `"Practice makes learning easier."`,
+        q: "A ideia do texto é que:",
+        o: [
+          "Praticar dificulta o aprendizado",
+          "Aprender depende apenas de sorte",
+          "A prática facilita o aprendizado",
+          "O estudo não exige repetição"
+        ],
+        c: 2,
+        coment: "Practice makes learning easier = a prática torna aprender mais fácil."
+      },
+      {
+        base: `"The museum opens at 9 a.m. and closes at 5 p.m."`,
+        q: "Segundo o texto, o museu:",
+        o: [
+          "Abre às 5h",
+          "Fecha às 9h",
+          "Funciona das 9h às 17h",
+          "Não abre pela manhã"
+        ],
+        c: 2,
+        coment: "Opens at 9 a.m. and closes at 5 p.m."
+      },
+      {
+        base: `"Public transportation can reduce traffic and pollution."`,
+        q: "De acordo com o texto, o transporte público pode:",
+        o: [
+          "Aumentar a poluição",
+          "Reduzir trânsito e poluição",
+          "Substituir bicicletas",
+          "Criar mais acidentes sempre"
+        ],
+        c: 1,
+        coment: "O texto menciona redução de trânsito e poluição."
+      },
+      {
+        base: `"The library is a quiet place where students can focus."`,
+        q: "No texto, a biblioteca é apresentada como um lugar:",
+        o: [
+          "Barulhento e movimentado",
+          "Tranquilo para concentração",
+          "Fechado para estudantes",
+          "Usado apenas para jogos"
+        ],
+        c: 1,
+        coment: "Quiet place where students can focus."
+      },
+      {
+        base: `"Water is essential for life and health."`,
+        q: "O texto afirma que a água é:",
+        o: [
+          "Secundária para a saúde",
+          "Essencial para a vida e a saúde",
+          "Importante apenas para esportes",
+          "Inútil no cotidiano"
+        ],
+        c: 1,
+        coment: "Essential for life and health."
+      },
+      {
+        base: `"Some teenagers spend too much time on their phones."`,
+        q: "Segundo o texto, alguns adolescentes:",
+        o: [
+          "Usam pouco o celular",
+          "Passam tempo demais no celular",
+          "Não têm celular",
+          "Estudam apenas no celular"
+        ],
+        c: 1,
+        coment: "Too much time = tempo demais."
+      },
+      {
+        base: `"The school project teaches students how to grow vegetables."`,
+        q: "Qual é a finalidade do projeto escolar?",
+        o: [
+          "Ensinar a plantar hortaliças",
+          "Vender ferramentas",
+          "Trocar aulas por esporte",
+          "Ensinar apenas matemática"
+        ],
+        c: 0,
+        coment: "The project teaches students how to grow vegetables."
+      },
+      {
+        base: `"Walking to school can be healthy and economical."`,
+        q: "O texto sugere que caminhar para a escola pode ser:",
+        o: [
+          "Saudável e econômico",
+          "Perigoso e caro",
+          "Impossível para todos",
+          "Apenas cansativo"
+        ],
+        c: 0,
+        coment: "Healthy and economical."
+      },
+      {
+        base: `"The internet gives people access to information from around the world."`,
+        q: "De acordo com o texto, a internet dá acesso a:",
+        o: [
+          "Informações do mundo todo",
+          "Apenas notícias locais",
+          "Somente jogos",
+          "Informações sem utilidade"
+        ],
+        c: 0,
+        coment: "Access to information from around the world."
+      },
+      {
+        base: `"Music can help some students relax before exams."`,
+        q: "Segundo o texto, a música pode ajudar alguns alunos a:",
+        o: [
+          "Esquecer os estudos",
+          "Relaxar antes das provas",
+          "Dormir durante a prova",
+          "Evitar a escola"
+        ],
+        c: 1,
+        coment: "Relax before exams."
+      },
+      {
+        base: `"A balanced routine includes study, rest and physical activity."`,
+        q: "Uma rotina equilibrada inclui:",
+        o: [
+          "Apenas estudo",
+          "Estudo, descanso e atividade física",
+          "Somente descanso",
+          "Apenas exercícios"
+        ],
+        c: 1,
+        coment: "O texto cita os três elementos."
+      }
+    ],
+    [
+      {
+        q: "Explique, em português, por que o contexto é importante para entender um texto em inglês.",
+        g: "Porque o contexto ajuda a identificar o sentido de palavras e expressões, além da intenção do texto, mesmo quando o leitor não conhece todos os termos."
+      },
+      {
+        q: "Escreva, em inglês, uma frase curta mostrando a ideia principal de um texto escolar sobre estudo.",
+        g: "Exemplo: Students should study every day to improve their knowledge."
+      }
+    ]
+  ),
+
+  "Vocabulary in Context": gerarAreaBase(
+    "Vocabulary in Context",
+    [
+      {
+        base: `"She is tired after work."`,
+        q: "No contexto, a palavra 'tired' significa:",
+        o: ["Cansada", "Animada", "Atrasada", "Silenciosa"],
+        c: 0,
+        coment: "Tired = cansada."
+      },
+      {
+        base: `"This car is cheap."`,
+        q: "No texto, 'cheap' quer dizer:",
+        o: ["Rápido", "Barato", "Novo", "Grande"],
+        c: 1,
+        coment: "Cheap = barato."
+      },
+      {
+        base: `"The room is noisy."`,
+        q: "A palavra 'noisy' significa:",
+        o: ["Escuro", "Limpo", "Barulhento", "Vazio"],
+        c: 2,
+        coment: "Noisy = barulhento."
+      },
+      {
+        base: `"I get up at 6 a.m."`,
+        q: "A expressão 'get up' significa:",
+        o: ["Levantar", "Dormir", "Comer", "Chegar"],
+        c: 0,
+        coment: "Get up = levantar."
+      },
+      {
+        base: `"She works in a library."`,
+        q: "No contexto, 'library' significa:",
+        o: ["Livraria", "Biblioteca", "Laboratório", "Sala de aula"],
+        c: 1,
+        coment: "Library = biblioteca."
+      },
+      {
+        base: `"He is a friendly teacher."`,
+        q: "A palavra 'friendly' significa:",
+        o: ["Rígido", "Amigável", "Cansado", "Perigoso"],
+        c: 1,
+        coment: "Friendly = amigável."
+      },
+      {
+        base: `"It is dangerous to cross here."`,
+        q: "No texto, 'dangerous' quer dizer:",
+        o: ["Seguro", "Perigoso", "Longe", "Barato"],
+        c: 1,
+        coment: "Dangerous = perigoso."
+      },
+      {
+        base: `"I wake up early every day."`,
+        q: "A palavra 'early' significa:",
+        o: ["Tarde", "Devagar", "Cedo", "Rápido"],
+        c: 2,
+        coment: "Early = cedo."
+      },
+      {
+        base: `"He bought a watch yesterday."`,
+        q: "No contexto, 'watch' significa:",
+        o: ["Relógio", "Bolsa", "Janela", "Camisa"],
+        c: 0,
+        coment: "Watch = relógio."
+      },
+      {
+        base: `"My job is stressful."`,
+        q: "A palavra 'job' significa:",
+        o: ["Descanso", "Trabalho", "Estudo", "Passeio"],
+        c: 1,
+        coment: "Job = trabalho."
+      },
+      {
+        base: `"The cake is delicious."`,
+        q: "No texto, 'delicious' quer dizer:",
+        o: ["Queimado", "Gostoso", "Frio", "Seco"],
+        c: 1,
+        coment: "Delicious = gostoso."
+      },
+      {
+        base: `"The weather is hot today."`,
+        q: "A palavra 'weather' significa:",
+        o: ["Horário", "Clima / tempo", "Rua", "Estação de trem"],
+        c: 1,
+        coment: "Weather = clima/tempo."
+      },
+      {
+        base: `"I need more time."`,
+        q: "No contexto, o verbo 'need' significa:",
+        o: ["Gostar", "Precisar", "Esperar", "Ganhar"],
+        c: 1,
+        coment: "Need = precisar."
+      },
+      {
+        base: `"She is busy this morning."`,
+        q: "A palavra 'busy' significa:",
+        o: ["Livre", "Ocupada", "Doente", "Feliz"],
+        c: 1,
+        coment: "Busy = ocupada."
+      },
+      {
+        base: `"These shoes are for sale."`,
+        q: "A expressão 'for sale' significa:",
+        o: ["De graça", "À venda", "Quebrado", "Reservado"],
+        c: 1,
+        coment: "For sale = à venda."
+      },
+      {
+        base: `"Please open the window."`,
+        q: "O verbo 'open' significa:",
+        o: ["Fechar", "Abrir", "Empurrar", "Apagar"],
+        c: 1,
+        coment: "Open = abrir."
+      },
+      {
+        base: `"Fruit is healthy."`,
+        q: "No contexto, 'healthy' quer dizer:",
+        o: ["Doce", "Saudável", "Perigoso", "Estranho"],
+        c: 1,
+        coment: "Healthy = saudável."
+      },
+      {
+        base: `"He is late for class."`,
+        q: "A palavra 'late' significa:",
+        o: ["Adiantado", "Atrasado", "Pronto", "Disposto"],
+        c: 1,
+        coment: "Late = atrasado."
+      },
+      {
+        base: `"Children learn fast."`,
+        q: "O verbo 'learn' significa:",
+        o: ["Ensinar", "Aprender", "Esquecer", "Vender"],
+        c: 1,
+        coment: "Learn = aprender."
+      },
+      {
+        base: `"You need to take a break."`,
+        q: "A expressão 'take a break' significa:",
+        o: ["Fazer uma pausa", "Pagar uma conta", "Ir correr", "Estudar mais"],
+        c: 0,
+        coment: "Take a break = fazer uma pausa."
+      }
+    ],
+    [
+      {
+        q: "Explique, em português, por que entender o vocabulário no contexto é melhor do que traduzir palavras isoladas.",
+        g: "Porque a mesma palavra pode ter sentidos diferentes dependendo da frase e da situação comunicativa."
+      },
+      {
+        q: "Escreva, em inglês, uma frase com a palavra 'healthy'.",
+        g: "Exemplo: Eating vegetables every day is healthy."
+      }
+    ]
+  ),
+
+  "Grammar Basics": gerarAreaBase(
+    "Grammar Basics",
+    [
+      {
+        base: `"She goes to school every day."`,
+        q: "Qual alternativa apresenta a estrutura correta no simple present para a 3ª pessoa do singular?",
+        o: [
+          "She goes to school every day.",
+          "She go to school every day.",
+          "She going to school every day.",
+          "She gone to school every day."
+        ],
+        c: 0,
+        coment: "Na 3ª pessoa do singular, o verbo geralmente recebe -s ou -es."
+      },
+      {
+        base: `"They are students."`,
+        q: "Complete corretamente: They ____ students.",
+        o: ["is", "am", "are", "be"],
+        c: 2,
+        coment: "They pede are."
+      },
+      {
+        base: `"He doesn't like coffee."`,
+        q: "Qual é a forma negativa correta no simple present?",
+        o: [
+          "He don't like coffee.",
+          "He doesn't like coffee.",
+          "He not like coffee.",
+          "He isn't like coffee."
+        ],
+        c: 1,
+        coment: "Doesn't + verbo na forma base."
+      },
+      {
+        base: `"Are you happy?"`,
+        q: "Complete corretamente: ____ you happy?",
+        o: ["Am", "Is", "Are", "Be"],
+        c: 2,
+        coment: "You pede are."
+      },
+      {
+        base: `"Children are playing outside."`,
+        q: "Qual é o plural correto de 'child'?",
+        o: ["childs", "childes", "children", "childrens"],
+        c: 2,
+        coment: "Children é plural irregular."
+      },
+      {
+        base: `"I am a teacher."`,
+        q: "Complete corretamente: I ____ a teacher.",
+        o: ["is", "am", "are", "be"],
+        c: 1,
+        coment: "I am."
+      },
+      {
+        base: `"We have a car."`,
+        q: "Qual frase está correta?",
+        o: [
+          "We has a car.",
+          "We have a car.",
+          "We having a car.",
+          "We haves a car."
+        ],
+        c: 1,
+        coment: "We have."
+      },
+      {
+        base: `"The cat is on the table."`,
+        q: "Complete corretamente: The cat is ____ the table.",
+        o: ["on", "at", "from", "for"],
+        c: 0,
+        coment: "On the table."
+      },
+      {
+        base: `"I am tired."`,
+        q: "Qual pronome está correto na frase?",
+        o: ["Me am tired.", "I am tired.", "My am tired.", "Mine am tired."],
+        c: 1,
+        coment: "O pronome sujeito correto é I."
+      },
+      {
+        base: `"This book is mine."`,
+        q: "Complete corretamente: This book is ____.",
+        o: ["my", "mine", "me", "I"],
+        c: 1,
+        coment: "Mine é pronome possessivo."
+      },
+      {
+        base: `"Where do you live?"`,
+        q: "Qual é a pergunta correta no simple present?",
+        o: [
+          "Where you live?",
+          "Where do you live?",
+          "Where does you live?",
+          "Where are live you?"
+        ],
+        c: 1,
+        coment: "Pergunta com do + sujeito + verbo base."
+      },
+      {
+        base: `"She has an apple."`,
+        q: "Complete corretamente: She has ____ apple.",
+        o: ["a", "an", "thee", "some"],
+        c: 1,
+        coment: "An antes de som vocálico."
+      },
+      {
+        base: `"There are two books."`,
+        q: "Qual frase está correta?",
+        o: [
+          "There is two books.",
+          "There are two books.",
+          "There be two books.",
+          "There has two books."
+        ],
+        c: 1,
+        coment: "Plural pede are."
+      },
+      {
+        base: `"My parents are at home."`,
+        q: "Complete corretamente: My parents ____ at home.",
+        o: ["is", "am", "are", "be"],
+        c: 2,
+        coment: "Parents é plural."
+      },
+      {
+        base: `"My book is new."`,
+        q: "Qual expressão está correta?",
+        o: ["I book", "me book", "my book", "mine book"],
+        c: 2,
+        coment: "My é adjetivo possessivo."
+      },
+      {
+        base: `"We study in the morning."`,
+        q: "Complete corretamente: We study ____ the morning.",
+        o: ["in", "on", "at", "for"],
+        c: 0,
+        coment: "In the morning."
+      },
+      {
+        base: `"She can sing well."`,
+        q: "Qual frase está correta com modal verb?",
+        o: [
+          "She can sings.",
+          "She can sing.",
+          "She cans sing.",
+          "She can to sing."
+        ],
+        c: 1,
+        coment: "Modal + verbo base."
+      },
+      {
+        base: `"His name is Lucas."`,
+        q: "Complete corretamente: ____ name is Lucas.",
+        o: ["He", "Him", "His", "He's"],
+        c: 2,
+        coment: "His name."
+      },
+      {
+        base: `"Does she work here?"`,
+        q: "Qual pergunta está correta?",
+        o: [
+          "Do she work here?",
+          "Does she work here?",
+          "Does she works here?",
+          "Do she works here?"
+        ],
+        c: 1,
+        coment: "Does + verbo base."
+      },
+      {
+        base: `"They are our friends."`,
+        q: "Complete corretamente: They are ____ friends.",
+        o: ["our", "we", "us", "ours"],
+        c: 0,
+        coment: "Our friends."
+      }
+    ],
+    [
+      {
+        q: "Explique, em português, a diferença entre 'my' e 'mine'.",
+        g: "'My' é adjetivo possessivo e vem antes do substantivo. 'Mine' é pronome possessivo e substitui o substantivo."
+      },
+      {
+        q: "Escreva, em inglês, uma frase simples com 'there are'.",
+        g: "Exemplo: There are three students in the classroom."
+      }
+    ]
+  ),
+
+  "Verb Tenses": gerarAreaBase(
+    "Verb Tenses",
+    [
+      {
+        base: `"She studies every day."`,
+        q: "Qual frase está correta no simple present?",
+        o: [
+          "She study every day.",
+          "She studies every day.",
+          "She studying every day.",
+          "She studied every day now."
+        ],
+        c: 1,
+        coment: "3ª pessoa do singular: studies."
+      },
+      {
+        base: `"They are running now."`,
+        q: "Complete corretamente no present continuous: They ____ now.",
+        o: ["run", "runs", "are running", "is running"],
+        c: 2,
+        coment: "Now sugere present continuous."
+      },
+      {
+        base: `"Yesterday I went to school."`,
+        q: "Qual é a forma correta do verbo 'go' no passado simples?",
+        o: ["goes", "went", "gone", "going"],
+        c: 1,
+        coment: "Went é o passado simples."
+      },
+      {
+        base: `"Yesterday I went to school."`,
+        q: "Complete corretamente: Yesterday I ____ to school.",
+        o: ["go", "goes", "went", "am going"],
+        c: 2,
+        coment: "Yesterday indica passado."
+      },
+      {
+        base: `"I will study tomorrow."`,
+        q: "Qual frase expressa corretamente o futuro?",
+        o: [
+          "I am study tomorrow.",
+          "I will study tomorrow.",
+          "I studied tomorrow.",
+          "I study yesterday."
+        ],
+        c: 1,
+        coment: "Will + verbo base."
+      },
+      {
+        base: `"She is watching TV at the moment."`,
+        q: "Complete corretamente: She ____ TV at the moment.",
+        o: ["watch", "watches", "is watching", "watched"],
+        c: 2,
+        coment: "At the moment = present continuous."
+      },
+      {
+        base: `"We were happy."`,
+        q: "Qual frase está correta no passado do verbo to be?",
+        o: ["We was happy.", "We were happy.", "We is happy.", "We be happy."],
+        c: 1,
+        coment: "We were."
+      },
+      {
+        base: `"He usually has breakfast at 7."`,
+        q: "Complete corretamente: He usually ____ breakfast at 7.",
+        o: ["have", "has", "having", "had"],
+        c: 1,
+        coment: "Usually = simple present."
+      },
+      {
+        base: `"I went home after class."`,
+        q: "Qual frase está correta?",
+        o: [
+          "I am went home.",
+          "I went home.",
+          "I going home yesterday.",
+          "I gone home."
+        ],
+        c: 1,
+        coment: "Went é a forma correta aqui."
+      },
+      {
+        base: `"Listen! The baby is crying."`,
+        q: "Complete corretamente: Listen! The baby ____.",
+        o: ["cry", "cries", "is crying", "cried"],
+        c: 2,
+        coment: "Listen! sugere ação em andamento."
+      },
+      {
+        base: `"They will arrive soon."`,
+        q: "Qual frase está correta no futuro?",
+        o: [
+          "They will arrives soon.",
+          "They will arrive soon.",
+          "They will arrived soon.",
+          "They arriving soon."
+        ],
+        c: 1,
+        coment: "Will + verbo base."
+      },
+      {
+        base: `"Last year she lived in Fortaleza."`,
+        q: "Complete corretamente: Last year she ____ in Fortaleza.",
+        o: ["live", "lives", "lived", "is living"],
+        c: 2,
+        coment: "Last year = passado."
+      },
+      {
+        base: `"I didn't study yesterday."`,
+        q: "Qual frase negativa está correta?",
+        o: [
+          "I don't studied yesterday.",
+          "I didn't study yesterday.",
+          "I didn't studied yesterday.",
+          "I no study yesterday."
+        ],
+        c: 1,
+        coment: "Didn't + verbo base."
+      },
+      {
+        base: `"Right now we are studying English."`,
+        q: "Complete corretamente: Right now we ____ English.",
+        o: ["study", "studies", "are studying", "studied"],
+        c: 2,
+        coment: "Right now = present continuous."
+      },
+      {
+        base: `"He will be here tomorrow."`,
+        q: "Qual frase está correta?",
+        o: [
+          "He will be here tomorrow.",
+          "He is here yesterday.",
+          "He were here tomorrow.",
+          "He be here now tomorrow."
+        ],
+        c: 0,
+        coment: "Future com will be."
+      },
+      {
+        base: `"My friends play soccer every weekend."`,
+        q: "Complete corretamente: My friends ____ soccer every weekend.",
+        o: ["play", "plays", "played now", "are play"],
+        c: 0,
+        coment: "Every weekend indica hábito."
+      },
+      {
+        base: `"She didn't go to class."`,
+        q: "Qual negativa no passado está correta?",
+        o: [
+          "She didn't went.",
+          "She didn't go.",
+          "She doesn't went.",
+          "She no go."
+        ],
+        c: 1,
+        coment: "Didn't + verbo base."
+      },
+      {
+        base: `"At 8 p.m. yesterday, I was eating dinner."`,
+        q: "Complete corretamente: At 8 p.m. yesterday, I ____ dinner.",
+        o: ["eat", "ate", "was eating", "am eating"],
+        c: 2,
+        coment: "Ação em progresso no passado."
+      },
+      {
+        base: `"The train leaves at 6 tomorrow."`,
+        q: "No contexto, a frase usa o simple present para expressar:",
+        o: [
+          "Passado habitual",
+          "Futuro programado",
+          "Ação impossível",
+          "Negação"
+        ],
+        c: 1,
+        coment: "Horários fixos podem usar simple present para futuro programado."
+      },
+      {
+        base: `"When I called, she was sleeping."`,
+        q: "Complete corretamente: When I called, she ____.",
+        o: ["sleep", "slept", "was sleeping", "is sleeping"],
+        c: 2,
+        coment: "Ação em andamento no passado."
+      }
+    ],
+    [
+      {
+        q: "Explique, em português, a diferença entre simple present e present continuous.",
+        g: "Simple present expressa rotina, fato e hábito. Present continuous expressa ação em andamento no momento ou situação temporária."
+      },
+      {
+        q: "Escreva, em inglês, uma frase no passado e outra no futuro.",
+        g: "Exemplo: I studied yesterday. / I will study tomorrow."
+      }
+    ]
+  ),
+    "Vocabulary in Context": gerarAreaBase(
+    "Vocabulary in Context",
+    [
+      {
+        base: `"She is tired after work."`,
+        q: "No contexto, a palavra 'tired' significa:",
+        o: ["Cansada", "Animada", "Atrasada", "Silenciosa"],
+        c: 0,
+        coment: "Tired = cansada."
+      },
+      {
+        base: `"This car is cheap."`,
+        q: "No texto, 'cheap' quer dizer:",
+        o: ["Rápido", "Barato", "Novo", "Grande"],
+        c: 1,
+        coment: "Cheap = barato."
+      },
+      {
+        base: `"The room is noisy."`,
+        q: "A palavra 'noisy' significa:",
+        o: ["Escuro", "Limpo", "Barulhento", "Vazio"],
+        c: 2,
+        coment: "Noisy = barulhento."
+      },
+      {
+        base: `"I get up at 6 a.m."`,
+        q: "A expressão 'get up' significa:",
+        o: ["Levantar", "Dormir", "Comer", "Chegar"],
+        c: 0,
+        coment: "Get up = levantar."
+      },
+      {
+        base: `"She works in a library."`,
+        q: "No contexto, 'library' significa:",
+        o: ["Livraria", "Biblioteca", "Laboratório", "Sala de aula"],
+        c: 1,
+        coment: "Library = biblioteca."
+      },
+      {
+        base: `"He is a friendly teacher."`,
+        q: "A palavra 'friendly' significa:",
+        o: ["Rígido", "Amigável", "Cansado", "Perigoso"],
+        c: 1,
+        coment: "Friendly = amigável."
+      },
+      {
+        base: `"It is dangerous to cross here."`,
+        q: "No texto, 'dangerous' quer dizer:",
+        o: ["Seguro", "Perigoso", "Longe", "Barato"],
+        c: 1,
+        coment: "Dangerous = perigoso."
+      },
+      {
+        base: `"I wake up early every day."`,
+        q: "A palavra 'early' significa:",
+        o: ["Tarde", "Devagar", "Cedo", "Rápido"],
+        c: 2,
+        coment: "Early = cedo."
+      },
+      {
+        base: `"He bought a watch yesterday."`,
+        q: "No contexto, 'watch' significa:",
+        o: ["Relógio", "Bolsa", "Janela", "Camisa"],
+        c: 0,
+        coment: "Watch = relógio."
+      },
+      {
+        base: `"My job is stressful."`,
+        q: "A palavra 'job' significa:",
+        o: ["Descanso", "Trabalho", "Estudo", "Passeio"],
+        c: 1,
+        coment: "Job = trabalho."
+      },
+      {
+        base: `"The cake is delicious."`,
+        q: "No texto, 'delicious' quer dizer:",
+        o: ["Queimado", "Gostoso", "Frio", "Seco"],
+        c: 1,
+        coment: "Delicious = gostoso."
+      },
+      {
+        base: `"The weather is hot today."`,
+        q: "A palavra 'weather' significa:",
+        o: ["Horário", "Clima / tempo", "Rua", "Estação de trem"],
+        c: 1,
+        coment: "Weather = clima/tempo."
+      },
+      {
+        base: `"I need more time."`,
+        q: "No contexto, o verbo 'need' significa:",
+        o: ["Gostar", "Precisar", "Esperar", "Ganhar"],
+        c: 1,
+        coment: "Need = precisar."
+      },
+      {
+        base: `"She is busy this morning."`,
+        q: "A palavra 'busy' significa:",
+        o: ["Livre", "Ocupada", "Doente", "Feliz"],
+        c: 1,
+        coment: "Busy = ocupada."
+      },
+      {
+        base: `"These shoes are for sale."`,
+        q: "A expressão 'for sale' significa:",
+        o: ["De graça", "À venda", "Quebrado", "Reservado"],
+        c: 1,
+        coment: "For sale = à venda."
+      },
+      {
+        base: `"Please open the window."`,
+        q: "O verbo 'open' significa:",
+        o: ["Fechar", "Abrir", "Empurrar", "Apagar"],
+        c: 1,
+        coment: "Open = abrir."
+      },
+      {
+        base: `"Fruit is healthy."`,
+        q: "No contexto, 'healthy' quer dizer:",
+        o: ["Doce", "Saudável", "Perigoso", "Estranho"],
+        c: 1,
+        coment: "Healthy = saudável."
+      },
+      {
+        base: `"He is late for class."`,
+        q: "A palavra 'late' significa:",
+        o: ["Adiantado", "Atrasado", "Pronto", "Disposto"],
+        c: 1,
+        coment: "Late = atrasado."
+      },
+      {
+        base: `"Children learn fast."`,
+        q: "O verbo 'learn' significa:",
+        o: ["Ensinar", "Aprender", "Esquecer", "Vender"],
+        c: 1,
+        coment: "Learn = aprender."
+      },
+      {
+        base: `"You need to take a break."`,
+        q: "A expressão 'take a break' significa:",
+        o: ["Fazer uma pausa", "Pagar uma conta", "Ir correr", "Estudar mais"],
+        c: 0,
+        coment: "Take a break = fazer uma pausa."
+      }
+    ],
+    [
+      {
+        q: "Explique, em português, por que entender o vocabulário no contexto é melhor do que traduzir palavras isoladas.",
+        g: "Porque a mesma palavra pode ter sentidos diferentes dependendo da frase e da situação comunicativa."
+      },
+      {
+        q: "Escreva, em inglês, uma frase com a palavra 'healthy'.",
+        g: "Exemplo: Eating vegetables every day is healthy."
+      }
+    ]
+  ),
+
+  "Grammar Basics": gerarAreaBase(
+    "Grammar Basics",
+    [
+      {
+        base: `"She goes to school every day."`,
+        q: "Qual alternativa apresenta a estrutura correta no simple present para a 3ª pessoa do singular?",
+        o: [
+          "She goes to school every day.",
+          "She go to school every day.",
+          "She going to school every day.",
+          "She gone to school every day."
+        ],
+        c: 0,
+        coment: "Na 3ª pessoa do singular, o verbo geralmente recebe -s ou -es."
+      },
+      {
+        base: `"They are students."`,
+        q: "Complete corretamente: They ____ students.",
+        o: ["is", "am", "are", "be"],
+        c: 2,
+        coment: "They pede are."
+      },
+      {
+        base: `"He doesn't like coffee."`,
+        q: "Qual é a forma negativa correta no simple present?",
+        o: [
+          "He don't like coffee.",
+          "He doesn't like coffee.",
+          "He not like coffee.",
+          "He isn't like coffee."
+        ],
+        c: 1,
+        coment: "Doesn't + verbo na forma base."
+      },
+      {
+        base: `"Are you happy?"`,
+        q: "Complete corretamente: ____ you happy?",
+        o: ["Am", "Is", "Are", "Be"],
+        c: 2,
+        coment: "You pede are."
+      },
+      {
+        base: `"Children are playing outside."`,
+        q: "Qual é o plural correto de 'child'?",
+        o: ["childs", "childes", "children", "childrens"],
+        c: 2,
+        coment: "Children é plural irregular."
+      },
+      {
+        base: `"I am a teacher."`,
+        q: "Complete corretamente: I ____ a teacher.",
+        o: ["is", "am", "are", "be"],
+        c: 1,
+        coment: "I am."
+      },
+      {
+        base: `"We have a car."`,
+        q: "Qual frase está correta?",
+        o: [
+          "We has a car.",
+          "We have a car.",
+          "We having a car.",
+          "We haves a car."
+        ],
+        c: 1,
+        coment: "We have."
+      },
+      {
+        base: `"The cat is on the table."`,
+        q: "Complete corretamente: The cat is ____ the table.",
+        o: ["on", "at", "from", "for"],
+        c: 0,
+        coment: "On the table."
+      },
+      {
+        base: `"I am tired."`,
+        q: "Qual pronome está correto na frase?",
+        o: ["Me am tired.", "I am tired.", "My am tired.", "Mine am tired."],
+        c: 1,
+        coment: "O pronome sujeito correto é I."
+      },
+      {
+        base: `"This book is mine."`,
+        q: "Complete corretamente: This book is ____.",
+        o: ["my", "mine", "me", "I"],
+        c: 1,
+        coment: "Mine é pronome possessivo."
+      },
+      {
+        base: `"Where do you live?"`,
+        q: "Qual é a pergunta correta no simple present?",
+        o: [
+          "Where you live?",
+          "Where do you live?",
+          "Where does you live?",
+          "Where are live you?"
+        ],
+        c: 1,
+        coment: "Pergunta com do + sujeito + verbo base."
+      },
+      {
+        base: `"She has an apple."`,
+        q: "Complete corretamente: She has ____ apple.",
+        o: ["a", "an", "thee", "some"],
+        c: 1,
+        coment: "An antes de som vocálico."
+      },
+      {
+        base: `"There are two books."`,
+        q: "Qual frase está correta?",
+        o: [
+          "There is two books.",
+          "There are two books.",
+          "There be two books.",
+          "There has two books."
+        ],
+        c: 1,
+        coment: "Plural pede are."
+      },
+      {
+        base: `"My parents are at home."`,
+        q: "Complete corretamente: My parents ____ at home.",
+        o: ["is", "am", "are", "be"],
+        c: 2,
+        coment: "Parents é plural."
+      },
+      {
+        base: `"My book is new."`,
+        q: "Qual expressão está correta?",
+        o: ["I book", "me book", "my book", "mine book"],
+        c: 2,
+        coment: "My é adjetivo possessivo."
+      },
+      {
+        base: `"We study in the morning."`,
+        q: "Complete corretamente: We study ____ the morning.",
+        o: ["in", "on", "at", "for"],
+        c: 0,
+        coment: "In the morning."
+      },
+      {
+        base: `"She can sing well."`,
+        q: "Qual frase está correta com modal verb?",
+        o: [
+          "She can sings.",
+          "She can sing.",
+          "She cans sing.",
+          "She can to sing."
+        ],
+        c: 1,
+        coment: "Modal + verbo base."
+      },
+      {
+        base: `"His name is Lucas."`,
+        q: "Complete corretamente: ____ name is Lucas.",
+        o: ["He", "Him", "His", "He's"],
+        c: 2,
+        coment: "His name."
+      },
+      {
+        base: `"Does she work here?"`,
+        q: "Qual pergunta está correta?",
+        o: [
+          "Do she work here?",
+          "Does she work here?",
+          "Does she works here?",
+          "Do she works here?"
+        ],
+        c: 1,
+        coment: "Does + verbo base."
+      },
+      {
+        base: `"They are our friends."`,
+        q: "Complete corretamente: They are ____ friends.",
+        o: ["our", "we", "us", "ours"],
+        c: 0,
+        coment: "Our friends."
+      }
+    ],
+    [
+      {
+        q: "Explique, em português, a diferença entre 'my' e 'mine'.",
+        g: "'My' é adjetivo possessivo e vem antes do substantivo. 'Mine' é pronome possessivo e substitui o substantivo."
+      },
+      {
+        q: "Escreva, em inglês, uma frase simples com 'there are'.",
+        g: "Exemplo: There are three students in the classroom."
+      }
+    ]
+  ),
+
+  "Verb Tenses": gerarAreaBase(
+    "Verb Tenses",
+    [
+      {
+        base: `"She studies every day."`,
+        q: "Qual frase está correta no simple present?",
+        o: [
+          "She study every day.",
+          "She studies every day.",
+          "She studying every day.",
+          "She studied every day now."
+        ],
+        c: 1,
+        coment: "3ª pessoa do singular: studies."
+      },
+      {
+        base: `"They are running now."`,
+        q: "Complete corretamente no present continuous: They ____ now.",
+        o: ["run", "runs", "are running", "is running"],
+        c: 2,
+        coment: "Now sugere present continuous."
+      },
+      {
+        base: `"Yesterday I went to school."`,
+        q: "Qual é a forma correta do verbo 'go' no passado simples?",
+        o: ["goes", "went", "gone", "going"],
+        c: 1,
+        coment: "Went é o passado simples."
+      },
+      {
+        base: `"Yesterday I went to school."`,
+        q: "Complete corretamente: Yesterday I ____ to school.",
+        o: ["go", "goes", "went", "am going"],
+        c: 2,
+        coment: "Yesterday indica passado."
+      },
+      {
+        base: `"I will study tomorrow."`,
+        q: "Qual frase expressa corretamente o futuro?",
+        o: [
+          "I am study tomorrow.",
+          "I will study tomorrow.",
+          "I studied tomorrow.",
+          "I study yesterday."
+        ],
+        c: 1,
+        coment: "Will + verbo base."
+      },
+      {
+        base: `"She is watching TV at the moment."`,
+        q: "Complete corretamente: She ____ TV at the moment.",
+        o: ["watch", "watches", "is watching", "watched"],
+        c: 2,
+        coment: "At the moment = present continuous."
+      },
+      {
+        base: `"We were happy."`,
+        q: "Qual frase está correta no passado do verbo to be?",
+        o: ["We was happy.", "We were happy.", "We is happy.", "We be happy."],
+        c: 1,
+        coment: "We were."
+      },
+      {
+        base: `"He usually has breakfast at 7."`,
+        q: "Complete corretamente: He usually ____ breakfast at 7.",
+        o: ["have", "has", "having", "had"],
+        c: 1,
+        coment: "Usually = simple present."
+      },
+      {
+        base: `"I went home after class."`,
+        q: "Qual frase está correta?",
+        o: [
+          "I am went home.",
+          "I went home.",
+          "I going home yesterday.",
+          "I gone home."
+        ],
+        c: 1,
+        coment: "Went é a forma correta aqui."
+      },
+      {
+        base: `"Listen! The baby is crying."`,
+        q: "Complete corretamente: Listen! The baby ____.",
+        o: ["cry", "cries", "is crying", "cried"],
+        c: 2,
+        coment: "Listen! sugere ação em andamento."
+      },
+      {
+        base: `"They will arrive soon."`,
+        q: "Qual frase está correta no futuro?",
+        o: [
+          "They will arrives soon.",
+          "They will arrive soon.",
+          "They will arrived soon.",
+          "They arriving soon."
+        ],
+        c: 1,
+        coment: "Will + verbo base."
+      },
+      {
+        base: `"Last year she lived in Fortaleza."`,
+        q: "Complete corretamente: Last year she ____ in Fortaleza.",
+        o: ["live", "lives", "lived", "is living"],
+        c: 2,
+        coment: "Last year = passado."
+      },
+      {
+        base: `"I didn't study yesterday."`,
+        q: "Qual frase negativa está correta?",
+        o: [
+          "I don't studied yesterday.",
+          "I didn't study yesterday.",
+          "I didn't studied yesterday.",
+          "I no study yesterday."
+        ],
+        c: 1,
+        coment: "Didn't + verbo base."
+      },
+      {
+        base: `"Right now we are studying English."`,
+        q: "Complete corretamente: Right now we ____ English.",
+        o: ["study", "studies", "are studying", "studied"],
+        c: 2,
+        coment: "Right now = present continuous."
+      },
+      {
+        base: `"He will be here tomorrow."`,
+        q: "Qual frase está correta?",
+        o: [
+          "He will be here tomorrow.",
+          "He is here yesterday.",
+          "He were here tomorrow.",
+          "He be here now tomorrow."
+        ],
+        c: 0,
+        coment: "Future com will be."
+      },
+      {
+        base: `"My friends play soccer every weekend."`,
+        q: "Complete corretamente: My friends ____ soccer every weekend.",
+        o: ["play", "plays", "played now", "are play"],
+        c: 0,
+        coment: "Every weekend indica hábito."
+      },
+      {
+        base: `"She didn't go to class."`,
+        q: "Qual negativa no passado está correta?",
+        o: [
+          "She didn't went.",
+          "She didn't go.",
+          "She doesn't went.",
+          "She no go."
+        ],
+        c: 1,
+        coment: "Didn't + verbo base."
+      },
+      {
+        base: `"At 8 p.m. yesterday, I was eating dinner."`,
+        q: "Complete corretamente: At 8 p.m. yesterday, I ____ dinner.",
+        o: ["eat", "ate", "was eating", "am eating"],
+        c: 2,
+        coment: "Ação em progresso no passado."
+      },
+      {
+        base: `"The train leaves at 6 tomorrow."`,
+        q: "No contexto, a frase usa o simple present para expressar:",
+        o: [
+          "Passado habitual",
+          "Futuro programado",
+          "Ação impossível",
+          "Negação"
+        ],
+        c: 1,
+        coment: "Horários fixos podem usar simple present para futuro programado."
+      },
+      {
+        base: `"When I called, she was sleeping."`,
+        q: "Complete corretamente: When I called, she ____.",
+        o: ["sleep", "slept", "was sleeping", "is sleeping"],
+        c: 2,
+        coment: "Ação em andamento no passado."
+      }
+    ],
+    [
+      {
+        q: "Explique, em português, a diferença entre simple present e present continuous.",
+        g: "Simple present expressa rotina, fato e hábito. Present continuous expressa ação em andamento no momento ou situação temporária."
+      },
+      {
+        q: "Escreva, em inglês, uma frase no passado e outra no futuro.",
+        g: "Exemplo: I studied yesterday. / I will study tomorrow."
+      }
+    ]
+  ),
+    "Modal Verbs": gerarAreaBase(
+    "Modal Verbs",
+    [
+      {
+        base: `"She can sing well."`,
+        q: "Qual frase está correta com modal verb?",
+        o: ["She can sings well.", "She can sing well.", "She cans sing well.", "She can to sing well."],
+        c: 1,
+        coment: "Modal + verbo base."
+      },
+      {
+        base: `"Students must wear uniforms."`,
+        q: "No contexto, 'must' indica:",
+        o: ["Possibilidade", "Obrigação", "Comparação", "Passado"],
+        c: 1,
+        coment: "Must geralmente indica obrigação."
+      },
+      {
+        base: `"You should study more."`,
+        q: "Qual frase está correta com 'should'?",
+        o: ["You should to study.", "You should study.", "You should studied.", "You should studies."],
+        c: 1,
+        coment: "Should + verbo base."
+      },
+      {
+        base: `"It may rain later."`,
+        q: "No contexto, 'may' expressa:",
+        o: ["Obrigação", "Permissão ou possibilidade", "Negação", "Passado certo"],
+        c: 1,
+        coment: "May indica possibilidade ou permissão."
+      },
+      {
+        base: `"May I come in?"`,
+        q: "A frase acima é usada para:",
+        o: ["Dar ordem", "Pedir permissão", "Falar do passado", "Negar um pedido"],
+        c: 1,
+        coment: "May I...? é usado para pedir permissão."
+      },
+      {
+        base: `"You should wear a seat belt."`,
+        q: "No texto, a ideia principal é de:",
+        o: ["Proibição", "Conselho", "Passado", "Dúvida extrema"],
+        c: 1,
+        coment: "Should indica conselho."
+      },
+      {
+        base: `"He can drive."`,
+        q: "No contexto, 'can' expressa:",
+        o: ["Habilidade", "Passado", "Obrigação", "Artigo"],
+        c: 0,
+        coment: "Can expressa habilidade."
+      },
+      {
+        base: `"He must go now."`,
+        q: "Qual frase está correta?",
+        o: ["He musts go now.", "He must go now.", "He must goes now.", "He must going now."],
+        c: 1,
+        coment: "Must + verbo base."
+      },
+      {
+        base: `"We might be late."`,
+        q: "No contexto, 'might' indica:",
+        o: ["Certeza absoluta", "Possibilidade", "Obrigação", "Capacidade física"],
+        c: 1,
+        coment: "Might indica possibilidade."
+      },
+      {
+        base: `"You should sleep earlier."`,
+        q: "A frase apresenta:",
+        o: ["Uma ameaça", "Um conselho", "Uma descrição", "Uma pergunta"],
+        c: 1,
+        coment: "Should = conselho."
+      },
+      {
+        base: `"She can speak English."`,
+        q: "A frase mostra que ela:",
+        o: ["É obrigada a falar", "Tem habilidade para falar", "Falou no passado apenas", "Não pode falar"],
+        c: 1,
+        coment: "Can mostra habilidade."
+      },
+      {
+        base: `"You mustn't smoke here."`,
+        q: "No contexto, 'mustn't' indica:",
+        o: ["Permissão", "Proibição", "Conselho", "Convite"],
+        c: 1,
+        coment: "Mustn't = proibição."
+      },
+      {
+        base: `"When he was young, he could run fast."`,
+        q: "Na frase, 'could' indica:",
+        o: ["Obrigação atual", "Habilidade no passado", "Pedido formal", "Possibilidade futura"],
+        c: 1,
+        coment: "Could frequentemente expressa habilidade no passado."
+      },
+      {
+        base: `"Could you help me, please?"`,
+        q: "A frase é um exemplo de:",
+        o: ["Pedido educado", "Ordem agressiva", "Pergunta no passado", "Comparação"],
+        c: 0,
+        coment: "Could you...? é pedido educado."
+      },
+      {
+        base: `"They might come later."`,
+        q: "Qual frase está correta?",
+        o: ["They might come later.", "They might comes later.", "They might to come later.", "They might came later."],
+        c: 0,
+        coment: "Might + verbo base."
+      },
+      {
+        base: `"You should not waste water."`,
+        q: "A expressão 'should not' indica:",
+        o: ["Recomendação negativa", "Passado", "Obrigação total", "Convite"],
+        c: 0,
+        coment: "Should not = recomendação para não fazer."
+      },
+      {
+        base: `"Students must respect the rules."`,
+        q: "De acordo com a frase, os estudantes:",
+        o: ["Podem ignorar as regras", "Devem respeitar as regras", "Respeitaram as regras ontem", "Não conhecem as regras"],
+        c: 1,
+        coment: "Must mostra necessidade/obrigação."
+      },
+      {
+        base: `"Can she dance?"`,
+        q: "A pergunta quer saber se ela:",
+        o: ["Quer dançar no futuro", "Sabe / consegue dançar", "Dançou ontem", "Foi obrigada a dançar"],
+        c: 1,
+        coment: "Can = habilidade."
+      },
+      {
+        base: `"Would you like some coffee?"`,
+        q: "A frase acima é usada para:",
+        o: ["Oferecer algo de forma educada", "Negar algo", "Falar do passado", "Dar uma ordem"],
+        c: 0,
+        coment: "Would you like...? é oferta/pergunta educada."
+      },
+      {
+        base: `"I would like some water, please."`,
+        q: "Na frase, 'would like' significa:",
+        o: ["Odeio", "Gostaria", "Comprei", "Precisei"],
+        c: 1,
+        coment: "Would like = gostaria."
+      }
+    ],
+    [
+      {
+        q: "Explique, em português, a diferença entre 'must' e 'should'.",
+        g: "'Must' normalmente indica obrigação forte ou necessidade. 'Should' indica conselho ou recomendação."
+      },
+      {
+        q: "Escreva, em inglês, uma frase com 'can' e outra com 'should'.",
+        g: "Exemplo: I can read in English. / You should practice every day."
+      }
+    ]
+  ),
+
+  "Prepositions and Phrasal Verbs": gerarAreaBase(
+    "Prepositions and Phrasal Verbs",
+    [
+      { base: `"The book is on the table."`, q: "Complete corretamente: The book is ____ the table.", o: ["on", "in", "at", "from"], c: 0, coment: "On the table." },
+      { base: `"She lives in Brazil."`, q: "Complete corretamente: She lives ____ Brazil.", o: ["at", "on", "in", "to"], c: 2, coment: "In Brazil." },
+      { base: `"We study in the morning."`, q: "Complete corretamente: We study ____ the morning.", o: ["on", "in", "at", "from"], c: 1, coment: "In the morning." },
+      { base: `"Classes start on Monday."`, q: "Qual expressão está correta?", o: ["at Monday", "on Monday", "in Monday", "for Monday"], c: 1, coment: "On Monday." },
+      { base: `"I am looking for my keys."`, q: "No contexto, 'look for' significa:", o: ["Olhar para", "Procurar", "Desligar", "Esperar"], c: 1, coment: "Look for = procurar." },
+      { base: `"Please turn off the lights."`, q: "A expressão 'turn off' significa:", o: ["Ligar", "Desligar", "Entrar", "Continuar"], c: 1, coment: "Turn off = desligar." },
+      { base: `"He arrived at 8 o’clock."`, q: "Complete corretamente: He arrived ____ 8 o’clock.", o: ["in", "at", "on", "to"], c: 1, coment: "At 8 o'clock." },
+      { base: `"She is interested in music."`, q: "Qual frase está correta?", o: ["She is interested on music.", "She is interested in music.", "She is interested at music.", "She is interested for music."], c: 1, coment: "Interested in." },
+      { base: `"He decided to give up."`, q: "No contexto, 'give up' significa:", o: ["Continuar", "Desistir", "Entregar um objeto", "Levantar da cama"], c: 1, coment: "Give up = desistir." },
+      { base: `"The cat is in the box."`, q: "Complete corretamente: The cat is ____ the box.", o: ["in", "on", "at", "for"], c: 0, coment: "In the box." },
+      { base: `"She is good at English."`, q: "Qual expressão está correta?", o: ["good in English", "good at English", "good on English", "good for English"], c: 1, coment: "Good at." },
+      { base: `"I wake up at 6 a.m."`, q: "A expressão 'wake up' significa:", o: ["Dormir", "Acordar", "Cozinhar", "Chegar"], c: 1, coment: "Wake up = acordar." },
+      { base: `"I go to school by bus."`, q: "Complete corretamente: I go ____ school by bus.", o: ["for", "to", "at", "in"], c: 1, coment: "Go to school." },
+      { base: `"He depends on his parents."`, q: "Qual frase está correta?", o: ["He depends of his parents.", "He depends on his parents.", "He depends in his parents.", "He depends at his parents."], c: 1, coment: "Depends on." },
+      { base: `"Put on your jacket."`, q: "No contexto, 'put on' significa:", o: ["Tirar", "Vestir / colocar", "Procurar", "Apagar"], c: 1, coment: "Put on = vestir / colocar." },
+      { base: `"The picture is on the wall."`, q: "Complete corretamente: The picture is ____ the wall.", o: ["on", "in", "at", "under to"], c: 0, coment: "On the wall." },
+      { base: `"I’m afraid of dogs."`, q: "Qual frase está correta?", o: ["I’m afraid of dogs.", "I’m afraid from dogs.", "I’m afraid at dogs.", "I’m afraid in dogs."], c: 0, coment: "Afraid of." },
+      { base: `"The plane will take off soon."`, q: "No contexto, 'take off' pode significar:", o: ["Vestir", "Decolar", "Dormir", "Chegar"], c: 1, coment: "Take off = decolar." },
+      { base: `"They were born in 2010."`, q: "Complete corretamente: They were born ____ 2010.", o: ["on", "in", "at", "to"], c: 1, coment: "In 2010." },
+      { base: `"I listen to music every day."`, q: "Qual expressão está correta?", o: ["listen to music", "listen music", "listen at music", "listen for music always"], c: 0, coment: "Listen to music." }
+    ],
+    [
+      {
+        q: "Explique, em português, por que as preposições são importantes em inglês.",
+        g: "Porque elas conectam palavras e ideias corretamente, e a troca da preposição pode mudar o sentido da frase."
+      },
+      {
+        q: "Escreva, em inglês, uma frase com um phrasal verb.",
+        g: "Exemplo: I wake up early every day."
+      }
+    ]
+  ),
+
+  "Pronouns and Articles": gerarAreaBase(
+    "Pronouns and Articles",
+    [
+      { base: `"I like pizza."`, q: "Qual pronome sujeito está correto?", o: ["Me like pizza.", "I like pizza.", "My like pizza.", "Mine like pizza."], c: 1, coment: "I é pronome sujeito." },
+      { base: `"This is my car."`, q: "Complete corretamente: This is ____ car.", o: ["me", "I", "my", "mine car"], c: 2, coment: "My car." },
+      { base: `"This book is mine."`, q: "Qual frase está correta?", o: ["This book is my.", "This book is mine.", "This book is me.", "This book is I."], c: 1, coment: "Mine é pronome possessivo." },
+      { base: `"They are my friends."`, q: "Complete corretamente: ____ are my friends.", o: ["They", "Them", "Their", "Theirs"], c: 0, coment: "They = pronome sujeito." },
+      { base: `"She loves me."`, q: "Qual pronome objeto está correto?", o: ["She loves I.", "She loves me.", "She loves my.", "She loves mine."], c: 1, coment: "Me é pronome objeto." },
+      { base: `"Their house is big."`, q: "Complete corretamente: ____ house is big.", o: ["Their", "Them", "They", "Theirs house"], c: 0, coment: "Their house." },
+      { base: `"The dog is hers."`, q: "Qual frase está correta?", o: ["The dog is she.", "The dog is hers.", "The dog is her dog hers.", "The dog is her."], c: 1, coment: "Hers é pronome possessivo." },
+      { base: `"I saw him yesterday."`, q: "Complete corretamente: I saw ____ yesterday.", o: ["he", "his", "him", "they"], c: 2, coment: "Him é pronome objeto." },
+      { base: `"She has an apple."`, q: "Qual artigo está correto antes de 'apple'?", o: ["a", "an", "thee", "some"], c: 1, coment: "An antes de som vocálico." },
+      { base: `"I have a dog and a cat."`, q: "Complete corretamente: I have ____ dog and ____ cat.", o: ["a / a", "an / an", "a / an", "the / the"], c: 0, coment: "Dog e cat começam com som consonantal." },
+      { base: `"The sun is hot."`, q: "Qual frase está correta?", o: ["The sun is hot.", "Sun is hot.", "A sun is hot.", "An sun is hot."], c: 0, coment: "Usa-se the para elementos únicos como the sun." },
+      { base: `"The book on the desk is mine."`, q: "Complete corretamente: ____ book on the desk is mine.", o: ["A", "An", "The", "Some"], c: 2, coment: "Trata-se de livro específico." },
+      { base: `"Maria is tired. She wants to rest."`, q: "Qual pronome retoma corretamente 'Maria'?", o: ["She", "He", "It", "They"], c: 0, coment: "Maria = she." },
+      { base: `"This gift is for her."`, q: "Complete corretamente: This gift is for ____.", o: ["she", "her", "hers", "their"], c: 1, coment: "Após preposição, usa-se pronome objeto." },
+      { base: `"We invited them."`, q: "Qual frase está correta?", o: ["We invited they.", "We invited them.", "We invited their.", "We invited theirs."], c: 1, coment: "Them = pronome objeto." },
+      { base: `"Our teacher is very kind."`, q: "Complete corretamente: ____ teacher is very kind.", o: ["Our", "Us", "We", "Ours"], c: 0, coment: "Our = adjetivo possessivo." },
+      { base: `"The information is useful."`, q: "Qual frase está correta?", o: ["The information is useful.", "An information is useful.", "A information is useful.", "Some informations are useful."], c: 0, coment: "Information é incontável." },
+      { base: `"Is this pen yours?"`, q: "Complete corretamente: Is this pen ____?", o: ["your", "yours", "you", "yours pen"], c: 1, coment: "Yours substitui o substantivo." },
+      { base: `"I saw an elephant."`, q: "Qual frase está correta?", o: ["I saw a elephant.", "I saw an elephant.", "I saw the elephant generic first mention always.", "I saw some elephant."], c: 1, coment: "An before vowel sound." },
+      { base: `"Those students are in the room."`, q: "Complete corretamente: ____ students are in the room.", o: ["Those", "Them", "Their", "Theirs"], c: 0, coment: "Those students." }
+    ],
+    [
+      {
+        q: "Explique, em português, a diferença entre adjetivos possessivos e pronomes possessivos.",
+        g: "Adjetivos possessivos vêm antes do substantivo, como 'my book'. Pronomes possessivos substituem o substantivo, como 'this book is mine'."
+      },
+      {
+        q: "Escreva, em inglês, uma frase com 'their' e outra com 'theirs'.",
+        g: "Exemplo: Their house is new. / The blue car is theirs."
+      }
+    ]
+  ),
+
+  "Advertisements and Text Interpretation": gerarAreaBase(
+    "Advertisements and Text Interpretation",
+    [
+      { base: `"Buy now and save money!"`, q: "Qual é a principal intenção do anúncio?", o: ["Ensinar gramática", "Incentivar a compra", "Descrever uma viagem", "Narrar um fato histórico"], c: 1, coment: "Buy now indica intenção de venda/persuasão." },
+      { base: `"Limited offer: 50% off."`, q: "A expressão 'limited offer' sugere:", o: ["Oferta permanente", "Oferta por tempo limitado", "Produto quebrado", "Compra proibida"], c: 1, coment: "Limited offer cria senso de urgência." },
+      { base: `"Join us to protect the planet."`, q: "O texto convida o leitor a:", o: ["Ignorar o problema", "Participar de uma causa", "Comprar roupas", "Mudar de escola"], c: 1, coment: "Join us = participe." },
+      { base: `"Free delivery on all orders."`, q: "A expressão 'free delivery' significa:", o: ["Produto grátis", "Entrega sem custo", "Venda cancelada", "Entrega internacional obrigatória"], c: 1, coment: "Free delivery = entrega gratuita." },
+      { base: `"New collection available now."`, q: "No anúncio, 'new collection' refere-se a:", o: ["Produtos antigos", "Nova linha de produtos", "Livros usados", "Sala de aula"], c: 1, coment: "New collection = nova coleção." },
+      { base: `"Click here for more information."`, q: "A frase acima orienta o leitor a:", o: ["Fechar a página", "Acessar mais informações", "Parar de ler", "Escrever uma carta"], c: 1, coment: "Click here indica acesso a mais detalhes." },
+      { base: `"Eco-friendly products for your home."`, q: "A expressão 'eco-friendly' está relacionada a:", o: ["Tecnologia pesada", "Cuidado com o meio ambiente", "Alta velocidade", "Jogos digitais"], c: 1, coment: "Eco-friendly = favorável ao meio ambiente." },
+      { base: `"Save water. Save life."`, q: "A campanha busca:", o: ["Vender filtros", "Conscientizar sobre economia de água", "Promover esportes", "Ensinar matemática"], c: 1, coment: "É uma campanha de conscientização." },
+      { base: `"Back to school sale."`, q: "A expressão 'sale' no contexto significa:", o: ["Silêncio", "Promoção", "Fechamento", "Proibição"], c: 1, coment: "Sale = promoção/liquidação." },
+      { base: `"Only today: special prices."`, q: "A frase cria sensação de:", o: ["Calma", "Urgência", "Humor", "Passado"], c: 1, coment: "Only today gera urgência." },
+      { base: `"Healthy habits start now."`, q: "A mensagem principal do anúncio é:", o: ["Hábitos saudáveis devem começar agora", "Exercício é proibido", "Comer bem é caro", "A saúde é irrelevante"], c: 0, coment: "A frase incentiva hábitos saudáveis." },
+      { base: `"Visit our website and learn more."`, q: "No texto, o leitor é orientado a:", o: ["Ignorar o site", "Visitar o site para saber mais", "Comprar obrigatoriamente", "Telefonar para a escola"], c: 1, coment: "Visit our website = visite o site." },
+      { base: `"Best prices in town!"`, q: "A frase busca destacar:", o: ["Localização do produto apenas", "Preço vantajoso", "História da empresa", "Qualidade do papel"], c: 1, coment: "Best prices destaca vantagem econômica." },
+      { base: `"Protect your future: study today."`, q: "A campanha associa estudo a:", o: ["Perda de tempo", "Construção do futuro", "Apenas diversão", "Descanso"], c: 1, coment: "Study today / protect your future." },
+      { base: `"Public library open to all."`, q: "A mensagem informa que a biblioteca pública:", o: ["Está fechada", "Está aberta a todos", "Funciona só para professores", "Exige compra"], c: 1, coment: "Open to all = aberta a todos." },
+      { base: `"Use less plastic."`, q: "A frase acima apresenta:", o: ["Uma instrução / orientação", "Uma piada", "Uma narrativa", "Uma definição técnica"], c: 0, coment: "É uma orientação em modo imperativo." },
+      { base: `"Enroll now!"`, q: "A expressão é usada para:", o: ["Advertir sobre perigo", "Incentivar inscrição imediata", "Falar do passado", "Explicar gramática"], c: 1, coment: "Enroll now = inscreva-se agora." },
+      { base: `"Quality education for everyone."`, q: "A frase destaca:", o: ["Educação de qualidade acessível", "Educação cara para poucos", "Apenas propaganda sem sentido", "Cursos presenciais obrigatórios"], c: 0, coment: "A frase valoriza acesso à educação de qualidade." },
+      { base: `"No smoking area."`, q: "A expressão indica:", o: ["Lugar permitido para fumar", "Área onde fumar é proibido", "Área de lazer", "Local de compra"], c: 1, coment: "No smoking = proibido fumar." },
+      { base: `"Be part of the change."`, q: "A frase convida o leitor a:", o: ["Ficar parado", "Participar da mudança", "Abandonar o projeto", "Desligar o celular"], c: 1, coment: "Be part of the change = participe da mudança." }
+    ],
+    [
+      {
+        q: "Explique, em português, como anúncios usam linguagem e imagem para convencer o público.",
+        g: "Anúncios combinam linguagem verbal e visual para chamar atenção, criar interesse, reforçar vantagens e persuadir o leitor."
+      },
+      {
+        q: "Escreva, em inglês, um slogan curto para um curso de inglês.",
+        g: "Exemplo: Learn English, change your future."
+      }
+    ]
+  ),
+
+  "Connectors and Text Meaning": gerarAreaBase(
+    "Connectors and Text Meaning",
+    [
+      { base: `"I wanted to go, but I was tired."`, q: "O conector 'but' indica:", o: ["Adição", "Contraste", "Tempo", "Local"], c: 1, coment: "But = contraste." },
+      { base: `"She studies and works."`, q: "O conector 'and' indica:", o: ["Contraste", "Adição", "Resultado", "Condição"], c: 1, coment: "And = adição." },
+      { base: `"I stayed home because it was raining."`, q: "A palavra 'because' introduz ideia de:", o: ["Causa", "Contraste", "Pergunta", "Lugar"], c: 0, coment: "Because = causa/motivo." },
+      { base: `"He studied hard, so he passed the exam."`, q: "No texto, 'so' indica:", o: ["Resultado", "Contraste", "Tempo passado", "Adjetivo"], c: 0, coment: "So = resultado." },
+      { base: `"However, the project was not approved."`, q: "A palavra 'however' tem sentido próximo de:", o: ["Também", "Porém", "Porque", "Logo cedo"], c: 1, coment: "However = porém/no entanto." },
+      { base: `"Although it was late, they continued working."`, q: "O conector 'although' indica:", o: ["Adição", "Contraste", "Local", "Exemplo"], c: 1, coment: "Although = embora / contraste." },
+      { base: `"For example, many students use apps to study."`, q: "A expressão 'for example' serve para:", o: ["Introduzir exemplo", "Marcar conclusão", "Mostrar oposição", "Indicar futuro"], c: 0, coment: "For example = por exemplo." },
+      { base: `"The road was closed; therefore, we returned home."`, q: "A palavra 'therefore' indica:", o: ["Contraste", "Conclusão / resultado", "Lugar", "Pergunta"], c: 1, coment: "Therefore = portanto." },
+      { base: `"First, read the text. Then, answer the questions."`, q: "As palavras 'first' e 'then' ajudam a indicar:", o: ["Cor", "Sequência", "Plural", "Proibição"], c: 1, coment: "Elas marcam sequência de ações." },
+      { base: `"While some students prefer books, others prefer videos."`, q: "No contexto, 'while' indica:", o: ["Apenas tempo", "Comparação / contraste", "Lugar", "Passado"], c: 1, coment: "Aqui while opõe duas preferências." },
+      { base: `"In addition, the school offers free Wi-Fi."`, q: "A expressão 'in addition' significa:", o: ["Em contraste", "Além disso", "Talvez", "No passado"], c: 1, coment: "In addition = além disso." },
+      { base: `"Instead of driving, she walked to work."`, q: "A expressão 'instead of' indica:", o: ["Substituição", "Adição", "Dúvida", "Intensidade"], c: 0, coment: "Instead of = em vez de." },
+      { base: `"He finished his homework, then he watched TV."`, q: "No texto, 'then' expressa:", o: ["Condição", "Sequência", "Negação", "Conselho"], c: 1, coment: "Then = depois / em seguida." },
+      { base: `"The team trained a lot. As a result, they won."`, q: "A expressão 'as a result' indica:", o: ["Contraste", "Resultado", "Pergunta", "Tempo"], c: 1, coment: "As a result = como resultado." },
+      { base: `"You can travel by bus or by train."`, q: "A palavra 'or' indica:", o: ["Alternativa", "Causa", "Conclusão", "Contraste"], c: 0, coment: "Or = alternativa." },
+      { base: `"On the other hand, online learning can be lonely."`, q: "A expressão 'on the other hand' indica:", o: ["Adição", "Outro ponto de vista / contraste", "Passado", "Local"], c: 1, coment: "Ela introduz contraste ou outra perspectiva." },
+      { base: `"Since it was cold, we stayed inside."`, q: "No contexto, 'since' indica:", o: ["Motivo", "Cor", "Plural", "Intensidade"], c: 0, coment: "Aqui since = porque / já que." },
+      { base: `"Students were tired; nevertheless, they finished the task."`, q: "A palavra 'nevertheless' tem sentido de:", o: ["Por isso", "Mesmo assim / no entanto", "Talvez", "Logo"], c: 1, coment: "Nevertheless marca contraste concessivo." },
+      { base: `"Besides studying, he works in the afternoon."`, q: "No contexto, 'besides' significa:", o: ["Exceto", "Além de", "Porque", "Embora"], c: 1, coment: "Besides = além de." },
+      { base: `"Connectors help readers understand relationships between ideas."`, q: "Segundo o texto, os conectores ajudam o leitor a:", o: ["Ignorar o sentido", "Entender relações entre ideias", "Trocar verbos", "Eliminar o texto"], c: 1, coment: "Os conectores organizam e esclarecem o sentido." }
+    ],
+    [
+      {
+        q: "Explique, em português, por que os conectores são importantes na compreensão textual.",
+        g: "Porque mostram relações como causa, contraste, adição e conclusão, ajudando o leitor a entender a lógica do texto."
+      },
+      {
+        q: "Escreva, em inglês, uma frase com 'because' e outra com 'however'.",
+        g: "Exemplo: I stayed home because it was raining. / I wanted to go; however, I was tired."
+      }
+    ]
+  ),
+
+  "Writing and Discursive English": gerarAreaBase(
+    "Writing and Discursive English",
+    [
+      { base: `"In my opinion, schools should invest in technology."`, q: "A expressão 'In my opinion' é usada para:", o: ["Dar ordem", "Apresentar opinião", "Expressar passado", "Indicar lugar"], c: 1, coment: "In my opinion introduz opinião." },
+      { base: `"A good paragraph has a clear main idea."`, q: "Segundo o texto, um bom parágrafo deve ter:", o: ["Ideia principal clara", "Muitas frases aleatórias", "Apenas palavras difíceis", "Nenhum verbo"], c: 0, coment: "Main idea clara é essencial." },
+      { base: `"Students need technology because it helps learning."`, q: "No texto, 'because' introduz:", o: ["Contraste", "Motivo", "Lugar", "Dúvida"], c: 1, coment: "Because = motivo." },
+      { base: `"For example, apps can improve vocabulary."`, q: "A expressão 'for example' serve para:", o: ["Dar exemplo", "Negar ideia", "Encerrar o texto", "Marcar tempo"], c: 0, coment: "For example = por exemplo." },
+      { base: `"A conclusion usually closes the main point."`, q: "Segundo o texto, a conclusão normalmente:", o: ["Abre tema novo", "Fecha o ponto principal", "Elimina a tese", "Torna o texto incoerente"], c: 1, coment: "A conclusão fecha a ideia principal." },
+      { base: `"Short clear sentences can make writing better."`, q: "O texto sugere que frases curtas e claras podem:", o: ["Piorar o texto", "Melhorar a escrita", "Eliminar o sentido", "Substituir conectores"], c: 1, coment: "Clareza melhora a escrita." },
+      { base: `"I agree that education changes lives."`, q: "A expressão 'I agree that' indica:", o: ["Discordância", "Concordância", "Passado", "Explicação de lugar"], c: 1, coment: "I agree that = eu concordo que." },
+      { base: `"A strong answer is clear, relevant and connected."`, q: "Segundo o texto, uma boa resposta deve ser:", o: ["Confusa", "Clara, relevante e conectada", "Longa e sem foco", "Sem relação com a pergunta"], c: 1, coment: "A resposta forte é clara e relevante." },
+      { base: `"Connectors help organize ideas in writing."`, q: "No contexto, conectores ajudam a:", o: ["Apagar o sentido", "Organizar ideias", "Eliminar verbos", "Criar erro"], c: 1, coment: "Connectors organize ideas." },
+      { base: `"Students should write directly and clearly."`, q: "A recomendação do texto é que os estudantes escrevam:", o: ["De forma indireta e confusa", "De forma direta e clara", "Somente com palavras difíceis", "Sem pontuação"], c: 1, coment: "Directly and clearly." },
+      { base: `"Online classes are useful, but face-to-face interaction is important too."`, q: "O conector 'but' mostra:", o: ["Adição", "Contraste", "Resultado", "Exemplo"], c: 1, coment: "But = contraste." },
+      { base: `"A topic sentence introduces the main idea of the paragraph."`, q: "A topic sentence serve para:", o: ["Esconder a ideia principal", "Apresentar a ideia principal", "Trocar o assunto", "Finalizar o texto"], c: 1, coment: "Ela introduz a ideia central." },
+      { base: `"Punctuation helps organize meaning."`, q: "Segundo o texto, a pontuação ajuda a:", o: ["Bagunçar o sentido", "Organizar o significado", "Eliminar vocabulário", "Substituir o tema"], c: 1, coment: "Punctuation helps organize meaning." },
+      { base: `"In a short answer, every sentence should be relevant."`, q: "No texto, cada frase da resposta curta deve ser:", o: ["Aleatória", "Relevante", "Desconectada", "Muito longa sem função"], c: 1, coment: "Relevant = relevante." },
+      { base: `"Good writing needs coherence and clear purpose."`, q: "Uma boa escrita, segundo o texto, precisa de:", o: ["Somente vocabulário difícil", "Coerência e propósito claro", "Apenas frases longas", "Muitas repetições"], c: 1, coment: "Coherence and clear purpose." },
+      { base: `"Students can use examples to support ideas."`, q: "O uso de exemplos ajuda a:", o: ["Enfraquecer as ideias", "Sustentar as ideias", "Eliminar argumentos", "Trocar o idioma"], c: 1, coment: "Examples support ideas." },
+      { base: `"A final sentence can summarize the paragraph."`, q: "A frase final pode:", o: ["Criar assunto sem relação", "Resumir o parágrafo", "Retirar a ideia central", "Impedir a compreensão"], c: 1, coment: "Ela pode resumir o parágrafo." },
+      { base: `"Polite language is important in formal writing."`, q: "Segundo o texto, em escrita formal é importante usar linguagem:", o: ["Agressiva", "Educada", "Sem sentido", "Somente abreviada"], c: 1, coment: "Polite language = linguagem educada." },
+      { base: `"A discursive answer should answer the question directly."`, q: "A recomendação principal é que a resposta discursiva:", o: ["Fuja do tema", "Responda diretamente à pergunta", "Use só palavras soltas", "Ignore o enunciado"], c: 1, coment: "Directly = diretamente." },
+      { base: `"English writing becomes better with practice."`, q: "De acordo com o texto, a escrita em inglês melhora com:", o: ["Sorte", "Prática", "Silêncio", "Apenas tradução"], c: 1, coment: "With practice = com prática." }
+    ],
+    [
+      {
+        q: "Explique, em português, o que torna uma boa resposta curta em inglês.",
+        g: "Uma boa resposta curta é clara, relevante à pergunta, compreensível gramaticalmente e bem organizada."
+      },
+      {
+        q: "Escreva, em inglês, de 3 a 5 linhas sobre por que aprender inglês é importante hoje.",
+        g: "Ideia esperada: o inglês é importante para estudo, trabalho, acesso à informação, comunicação e oportunidades globais."
+      }
+    ]
+  )
+};
+
+function mostrarMenu() {
+  pararAudioFundo();
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue); margin-bottom:8px;">Escolha um módulo de Inglês</h2>
+      <p class="mini">Cada módulo possui <strong>20 questões objetivas</strong> e <strong>2 discursivas</strong>.</p>
+      <div class="grid-areas">
+        ${areasEnglish.map(area => `
+          <div class="card-area">
+            <h3>${area.nome}</h3>
+            <p>${area.descricao}</p>
+            <button class="btn" onclick="iniciarArea('${area.nome.replace(/'/g, "\\'")}')">Entrar neste módulo</button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function iniciarArea(nomeArea) {
+  await destravarAudio();
+  areaAtual = nomeArea;
+  questoesAtuais = bancoQuestoes[nomeArea] || [];
+  indiceQuestao = 0;
+  acertosObjetivas = 0;
+  respostasDiscursivas = ["", ""];
+  notasDiscursivas = [0, 0];
+  questaoRenderizadaAtual = null;
+
+  if (!questoesAtuais.length) {
+    app.innerHTML = `
+      <div class="box">
+        <h2 style="color:var(--red);">Erro ao abrir o módulo</h2>
+        <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+      </div>
+    `;
+    return;
+  }
+
+  setTimeout(() => {
+    tocarAudioFundo();
+  }, 120);
+
+  carregarQuestao();
+}
+
+function montarEnunciado(questao) {
+  return `
+    <span class="question-label">Texto base em inglês:</span>
+    <span class="text-base">${questao.base}</span>
+    <span class="question-label">Pergunta:</span>
+    ${questao.q}
+  `;
+}
+
+function carregarQuestao() {
+  const questao = questoesAtuais[indiceQuestao];
+  const total = questoesAtuais.length;
+
+  let html = `
+    <div class="box">
+      <div class="status">
+        <span>${areaAtual}</span>
+        <span>Questão ${indiceQuestao + 1}/${total}</span>
+      </div>
+  `;
+
+  if (questao.tipo === "objetiva") {
+    questaoRenderizadaAtual = embaralharAlternativas(questao);
+    html += `<div id="question-text">${montarEnunciado(questaoRenderizadaAtual)}</div>`;
+    html += `<div class="options-wrap">`;
+    questaoRenderizadaAtual.opcoesRenderizadas.forEach((alt, idx) => {
+      html += `<button class="btn option-btn" onclick="responderObjetiva(${idx})">${alt}</button>`;
+    });
+    html += `</div>`;
+  } else {
+    const discIndex = indiceQuestao - 20;
+    questaoRenderizadaAtual = null;
+    html += `
+      <div id="question-text">${questao.q}</div>
+      <textarea id="resposta-discursiva" placeholder="Digite sua resposta aqui...">${respostasDiscursivas[discIndex] || ""}</textarea>
+      <button class="btn" onclick="salvarDiscursivaEAvancar()">Salvar resposta e continuar</button>
+    `;
+  }
+
+  html += `<button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button></div>`;
+  app.innerHTML = html;
+}
+
+function responderObjetiva(escolhida) {
+  const botoes = document.querySelectorAll(".option-btn");
+  const correta = questaoRenderizadaAtual.corretaRenderizada;
+
+  botoes.forEach((btn, idx) => {
+    btn.disabled = true;
+    if (idx === correta) btn.classList.add("correct");
+  });
+
+  if (escolhida !== correta) {
+    botoes[escolhida].classList.add("wrong");
+    tocarErro();
+  } else {
+    acertosObjetivas++;
+    tocarAcerto();
+  }
+
+  setTimeout(() => {
+    indiceQuestao++;
+    if (indiceQuestao < questoesAtuais.length) {
+      carregarQuestao();
+    } else {
+      mostrarAvaliacaoDiscursivas();
+    }
+  }, 900);
+}
+
+function salvarDiscursivaEAvancar() {
+  const discIndex = indiceQuestao - 20;
+  respostasDiscursivas[discIndex] = document.getElementById("resposta-discursiva").value.trim();
+  indiceQuestao++;
+
+  if (indiceQuestao < questoesAtuais.length) {
+    carregarQuestao();
+  } else {
+    mostrarAvaliacaoDiscursivas();
+  }
+}
+
+function mostrarAvaliacaoDiscursivas() {
+  pararAudioFundo();
+  const discursivas = questoesAtuais.filter(q => q.tipo === "discursiva");
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--pink); margin-bottom:10px;">Avalie suas questões discursivas</h2>
+      <p class="mini" style="margin-bottom:18px;">Dê uma nota de 0 a 10 para cada resposta com base no gabarito.</p>
+      ${discursivas.map((q, i) => `
+        <div class="disc-box">
+          <h3>Discursiva ${i + 1}</h3>
+          <p><strong>Pergunta:</strong> ${q.q}</p>
+          <p><strong>Sua resposta:</strong><br>${respostasDiscursivas[i] ? respostasDiscursivas[i] : "<em>Não respondida</em>"}</p>
+          <p style="color:var(--pink);"><strong>Gabarito esperado:</strong><br>${q.gabarito}</p>
+          <label>Nota (0 a 10)</label>
+          <input class="input-nota" type="number" min="0" max="10" value="${notasDiscursivas[i]}" data-index="${i}">
+        </div>
+      `).join("")}
+      <button class="btn" onclick="finalizarArea()">Finalizar módulo</button>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+}
+
+function finalizarArea() {
+  const inputs = document.querySelectorAll(".input-nota");
+  let somaDisc = 0;
+
+  inputs.forEach(input => {
+    let valor = Number(input.value);
+    if (isNaN(valor) || valor < 0) valor = 0;
+    if (valor > 10) valor = 10;
+    somaDisc += valor;
+  });
+
+  const notaObjetiva = acertosObjetivas * 4;
+  const notaDiscursiva = somaDisc;
+  const notaFinal = notaObjetiva + notaDiscursiva;
+
+  let feedback = "";
+  if (notaFinal >= 85) feedback = "Excelente desempenho. Você está muito forte nesse módulo de Inglês.";
+  else if (notaFinal >= 60) feedback = "Bom resultado. Com mais treino, sua nota pode subir bastante.";
+  else feedback = "Você já identificou pontos de melhoria. Continue praticando e revisando.";
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue);">${areaAtual}</h2>
+      <div class="result-number">${notaFinal}/100</div>
+      <div class="result-sub">Objetivas: ${notaObjetiva}/80 • Discursivas: ${notaDiscursiva}/20</div>
+      <p class="mini" style="margin-bottom:18px;">${feedback}</p>
+      <button class="btn" onclick="iniciarArea('${areaAtual.replace(/'/g, "\\'")}')">Refazer este módulo</button>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+}
+
+mostrarMenu();
+
+
+
+</script>
+
+</body>
+</html>
