@@ -34,6 +34,7 @@ for(const src of scripts){
 }
 const norm=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9$]/g,"");
 let total=0,originais=0,adicionadas=0,revisadas=0,exemplosRevisados=0;
+const revisoesEsperadas={seg:14,mov:9,adm:15};
 const porTrilha=[];
 for(const track of base.tracks){
  const original=base.banks[track.id];
@@ -62,15 +63,15 @@ for(const track of base.tracks){
    if(i===10||i===11)exemplosRevisados++;
   }
  }
- assert.equal(reviewThis,2,"Esperadas duas revisões rastreadas por trilha: "+track.id);
+ assert.equal(reviewThis,revisoesEsperadas[track.id]??2,"Número de revisões rastreadas inconsistente: "+track.id);
  porTrilha.push({id:track.id,total:bank.length,revisadas:reviewThis,pendentes:bank.length-reviewThis});
  total+=bank.length;originais+=original.length;adicionadas+=novos.length;
 }
 assert.equal(total,1200);
 assert.equal(originais,120);
 assert.equal(adicionadas,1080);
-assert.equal(revisadas,24);
+assert.equal(revisadas,56);
 assert.equal(exemplosRevisados,24);
 console.log("AUDITORIA PEDAGÓGICA INCREMENTAL:");
 console.log(JSON.stringify({total,originais,adicionadas,revisadas,pendentes:total-revisadas,porTrilha},null,2));
-console.log("AVISO: auditoria estrutural concluída; 1.176 questões ainda requerem revisão pedagógica individual.");
+console.log("AVISO: auditoria estrutural concluída; 1.144 questões ainda requerem revisão pedagógica individual.");
