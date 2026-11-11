@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARTES Gratuito ENEM</title>
+  <style>
+    :root{
+      --bg:#05070c;
+      --card:#11141b;
+      --card2:#171b24;
+      --blue:#00f3ff;
+      --pink:#ff00e6;
+      --green:#39ff14;
+      --red:#ff003c;
+      --yellow:#ffd400;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --line:rgba(255,255,255,.08);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#000;
+      color:var(--text);
+      min-height:100vh;
+      padding:20px 12px 40px;
+      text-align:center;
+      overflow-x:hidden;
+    }
+
+    header{
+      max-width:1100px;
+      margin:0 auto 24px;
+      border:2px solid var(--blue);
+      border-radius:24px;
+      padding:22px 16px;
+      background:linear-gradient(180deg,#0c0f16,#090b11);
+      box-shadow:0 0 22px rgba(0,243,255,.22);
+    }
+
+    header h1{
+      color:var(--blue);
+      font-size:clamp(2rem,4vw,3rem);
+      text-shadow:0 0 14px rgba(0,243,255,.7);
+      font-weight:900;
+    }
+
+    header p{
+      margin-top:10px;
+      color:var(--pink);
+      font-weight:800;
+      font-size:clamp(1rem,2vw,1.3rem);
+    }
+
+    #app{
+      width:100%;
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .box{
+      width:100%;
+      max-width:100%;
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:20px 16px;
+      box-shadow:0 0 20px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+
+    .btn{
+      display:block;
+      width:100%;
+      max-width:560px;
+      margin:10px auto;
+      padding:14px 16px;
+      border:2px solid var(--blue);
+      background:transparent;
+      color:#fff;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:800;
+      font-size:1rem;
+      line-height:1.45;
+      transition:.2s;
+      white-space:normal;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    .btn:hover:not(:disabled){
+      background:var(--blue);
+      color:#000;
+      box-shadow:0 0 18px rgba(0,243,255,.35);
+    }
+
+    .btn-voltar{
+      border-color:#666;
+      color:#ddd;
+    }
+
+    .btn-voltar:hover:not(:disabled){
+      background:#333;
+      color:#fff;
+      box-shadow:none;
+    }
+
+    .btn.correct{
+      background:var(--green)!important;
+      border-color:var(--green)!important;
+      color:#000!important;
+    }
+
+    .btn.wrong{
+      background:var(--red)!important;
+      border-color:var(--red)!important;
+      color:#fff!important;
+    }
+
+    .grid-areas{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .card-area{
+      background:linear-gradient(135deg, rgba(0,243,255,.08), rgba(255,0,230,.08));
+      border:1px solid rgba(0,243,255,.16);
+      border-radius:16px;
+      padding:16px;
+      text-align:left;
+      min-width:0;
+    }
+
+    .card-area h3{
+      color:var(--blue);
+      margin-bottom:8px;
+      font-size:1.12rem;
+      line-height:1.35;
+      word-break:break-word;
+    }
+
+    .card-area p{
+      color:#ddd;
+      font-size:.95rem;
+      line-height:1.45;
+      margin-bottom:10px;
+      word-break:break-word;
+    }
+
+    .status{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+      color:var(--pink);
+      font-weight:bold;
+      text-align:left;
+    }
+
+    #question-text{
+      font-size:1.05rem;
+      line-height:1.6;
+      margin:20px 0;
+      min-height:88px;
+      text-align:left;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    .question-label{
+      display:block;
+      color:var(--yellow);
+      font-weight:bold;
+      margin-bottom:8px;
+    }
+
+    .text-base{
+      display:block;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:14px;
+      margin:10px 0 14px;
+      color:#f5f5f5;
+      font-style:italic;
+      line-height:1.65;
+    }
+
+    .options-wrap{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-bottom:16px;
+      width:100%;
+      max-width:100%;
+    }
+
+    .option-btn{
+      width:100%;
+      max-width:100%;
+      margin:0;
+      text-align:left;
+      min-height:58px;
+    }
+
+    .result-number{
+      font-size:3rem;
+      color:var(--blue);
+      margin:12px 0;
+      font-weight:900;
+    }
+
+    .result-sub{
+      font-size:1.12rem;
+      color:#ddd;
+      margin-bottom:10px;
+    }
+
+    .mini{
+      color:var(--muted);
+      font-size:.96rem;
+      line-height:1.5;
+    }
+
+    @media (max-width:700px){
+      .grid-areas{
+        grid-template-columns:1fr;
+      }
+      .box{
+        padding:16px 12px;
+      }
+      #question-text{
+        font-size:1rem;
+      }
+      .btn{
+        font-size:.96rem;
+        padding:13px 12px;
+      }
+    }
+
+
+</style>
+</head>
+<body>
+<nav style="max-width:1100px;margin:0 auto 15px;text-align:left"><a href="../index.html" style="display:inline-block;padding:12px 16px;background:#113e5e;color:#fff;border-radius:11px;text-decoration:none;font:700 15px system-ui">← Voltar ao acervo EnsinoMeu</a></nav>
+
+<header>
+  <h1>ARTES Gratuito ENEM</h1>
+  <p>10 MÓDULOS • 200 QUESTÕES • ÁUDIOS • RESPOSTAS EMBARALHADAS</p>
+</header>
+
+
+<div id="app"></div>
+
+<audio id="audio-bg" loop preload="auto" playsinline>
+  <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-correct" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-wrong" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const app = document.getElementById("app");
+const audioBg = document.getElementById("audio-bg");
+const audioCorrect = document.getElementById("audio-correct");
+const audioWrong = document.getElementById("audio-wrong");
+
+audioBg.volume = 0.06;
+audioCorrect.volume = 0.45;
+audioWrong.volume = 0.45;
+
+let audioLiberado = false;
+let areaAtual = "";
+let questoesAtuais = [];
+let indiceQuestao = 0;
+let acertosObjetivas = 0;
+let questaoRenderizadaAtual = null;
+
+document.addEventListener("click", destravarAudio, { once: true });
+document.addEventListener("touchstart", destravarAudio, { once: true });
+
+function destravarAudio() {
+  if (audioLiberado) return Promise.resolve(true);
+
+  audioBg.muted = true;
+  return audioBg.play()
+    .then(() => {
+      audioBg.pause();
+      audioBg.currentTime = 0;
+      audioBg.muted = false;
+      audioLiberado = true;
+
+      audioCorrect.play().then(() => {
+        audioCorrect.pause();
+        audioCorrect.currentTime = 0;
+      }).catch(() => {});
+
+      audioWrong.play().then(() => {
+        audioWrong.pause();
+        audioWrong.currentTime = 0;
+      }).catch(() => {});
+
+      return true;
+    })
+    .catch(() => false);
+}
+
+function tocarAudioFundo() {
+  if (!audioLiberado) return;
+  audioBg.currentTime = 0;
+  audioBg.play().catch(() => {});
+}
+
+function pararAudioFundo() {
+  audioBg.pause();
+  audioBg.currentTime = 0;
+}
+
+function tocarAcerto() {
+  audioCorrect.currentTime = 0;
+  audioCorrect.play().catch(() => {});
+}
+
+function tocarErro() {
+  audioWrong.currentTime = 0;
+  audioWrong.play().catch(() => {});
+}
+
+const areasArtes = [
+  { nome: "História da Arte", descricao: "Arte rupestre, arte antiga, medieval, renascimento e barroco." },
+  { nome: "Arte Moderna", descricao: "Rupturas estéticas, vanguardas e modernismo." },
+  { nome: "Arte Contemporânea", descricao: "Linguagens atuais, instalação, performance e novos suportes." },
+  { nome: "Movimentos Artísticos", descricao: "Cubismo, surrealismo, expressionismo, impressionismo e mais." },
+  { nome: "Artes Visuais", descricao: "Imagem, composição, cor, forma, fotografia e percepção visual." },
+  { nome: "Música", descricao: "Elementos musicais, ritmo, melodia, gêneros e leitura interpretativa." },
+  { nome: "Teatro", descricao: "Cena, personagem, dramaturgia, encenação e linguagem teatral." },
+  { nome: "Dança", descricao: "Corpo, movimento, expressão, dança clássica e popular." },
+  { nome: "Cultura Brasileira", descricao: "Semana de 22, arte brasileira, patrimônio e cultura popular." },
+  { nome: "Interpretação de Imagem", descricao: "Leitura crítica de obras, cartazes, símbolos e mensagens visuais." }
+];
+
+function criarObjetiva(area, numero, textoBase, pergunta, alternativas, correta, comentario) {
+  return {
+    tipo: "objetiva",
+    area,
+    numero,
+    base: textoBase,
+    q: pergunta,
+    o: alternativas,
+    c: correta,
+    coment: comentario
+  };
+}
+
+function gerarQuestoes(area, lista) {
+  return lista.map((item, i) =>
+    criarObjetiva(area, i + 1, item.base, item.q, item.o, item.c, item.coment)
+  );
+}
+
+function embaralharAlternativas(questao) {
+  const pares = questao.o.map((texto, idx) => ({ texto, correta: idx === questao.c }));
+  for (let i = pares.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pares[i], pares[j]] = [pares[j], pares[i]];
+  }
+  return {
+    ...questao,
+    opcoesRenderizadas: pares.map(p => p.texto),
+    corretaRenderizada: pares.findIndex(p => p.correta)
+  };
+}
+
+const bancoQuestoes = {
+  "História da Arte": gerarQuestoes("História da Arte", [
+    { base:`"As primeiras manifestações artísticas conhecidas foram registradas em cavernas e superfícies rochosas."`, q:"Esse tipo de produção é chamado de:", o:["Arte urbana","Arte rupestre","Arte digital","Arte abstrata"], c:1, coment:"Arte rupestre é a produção visual feita em paredes e rochas na pré-história." },
+    { base:`"A arte egípcia estava ligada à religião, ao poder e à vida após a morte."`, q:"Uma característica marcante da arte egípcia é:", o:["Perspectiva renascentista","Hierarquização das figuras","Uso de colagem","Improvisação cênica"], c:1, coment:"Na arte egípcia, figuras mais importantes apareciam maiores." },
+    { base:`"Na Grécia antiga, arte e ideal de beleza estavam relacionados."`, q:"A arte grega valorizava principalmente:", o:["Desproporção intencional","Equilíbrio e proporção","Ausência de forma humana","Somente temas religiosos"], c:1, coment:"Os gregos buscavam harmonia, medida e idealização do corpo." },
+    { base:`"Os romanos herdaram muitos elementos da cultura grega, mas também buscaram efeitos práticos e monumentais."`, q:"A arte romana teve forte influência da:", o:["Arte grega","Arte indígena brasileira","Arte medieval","Arte digital"], c:0, coment:"A cultura romana absorveu muito da tradição artística grega." },
+    { base:`"Durante a Idade Média, a produção artística europeia esteve muito ligada à religião cristã."`, q:"Na arte medieval predominou a influência da:", o:["Indústria","Igreja","Fotografia","Publicidade"], c:1, coment:"A Igreja era a principal patrocinadora e organizadora das imagens medievais." },
+    { base:`"O Renascimento retomou valores da Antiguidade clássica e destacou o ser humano."`, q:"Uma marca do Renascimento é:", o:["Teocentrismo absoluto","Valorização do humanismo","Negação da ciência","Ausência de perspectiva"], c:1, coment:"O humanismo renascentista colocou o ser humano em destaque." },
+    { base:`"Leonardo da Vinci foi pintor, inventor e estudioso do corpo humano."`, q:"Leonardo da Vinci pertence ao período:", o:["Barroco","Renascimento","Romantismo","Surrealismo"], c:1, coment:"Da Vinci é um dos grandes nomes do Renascimento." },
+    { base:`"Michelangelo destacou-se na pintura, escultura e arquitetura."`, q:"Uma obra associada a Michelangelo é:", o:["Guernica","Teto da Capela Sistina","Persistência da Memória","Abaporu"], c:1, coment:"Michelangelo pintou o teto da Capela Sistina." },
+    { base:`"O Barroco explorou contraste, dramaticidade e riqueza ornamental."`, q:"Uma característica do Barroco é:", o:["Simplicidade extrema","Contraste de luz e sombra","Geometrização cubista","Recusa do ornamento"], c:1, coment:"O barroco valorizava intensidade visual e emoção." },
+    { base:`"No Brasil colonial, o barroco teve grande desenvolvimento em igrejas e esculturas."`, q:"Um nome importante do Barroco brasileiro é:", o:["Aleijadinho","Tarsila do Amaral","Cândido Portinari","Anita Malfatti"], c:0, coment:"Aleijadinho é referência do barroco mineiro." },
+    { base:`"A técnica do afresco foi usada em paredes ainda úmidas."`, q:"Afresco é uma pintura feita sobre:", o:["Tela seca","Parede úmida","Madeira polida","Metal aquecido"], c:1, coment:"No afresco, a tinta é aplicada no reboco ainda fresco." },
+    { base:`"A arte bizantina ficou conhecida por mosaicos e imagens religiosas frontais."`, q:"Na arte bizantina, destacam-se:", o:["Grafites e lambe-lambes","Mosaicos e ícones religiosos","Instalações interativas","Vídeos experimentais"], c:1, coment:"O mosaico e a iconografia religiosa são marcas bizantinas." },
+    { base:`"A escultura clássica procurava representar o corpo com equilíbrio e naturalidade."`, q:"Na arte clássica, o corpo humano era representado com:", o:["Geometria cubista","Idealização e equilíbrio","Desconstrução surreal","Colagem e montagem"], c:1, coment:"A arte clássica valorizava a harmonia corporal." },
+    { base:`"Na pré-história, as imagens também podiam ter função ritual e simbólica."`, q:"Além do aspecto visual, a arte rupestre podia ter função:", o:["Ritual","Publicitária","Industrial","Cinematográfica"], c:0, coment:"Pesquisadores associam a arte rupestre a ritos e crenças." },
+    { base:`"A perspectiva foi um avanço importante na pintura renascentista."`, q:"A perspectiva linear buscava:", o:["Eliminar profundidade","Criar sensação de profundidade","Pintar só figuras religiosas","Usar apenas cores primárias"], c:1, coment:"A perspectiva organiza o espaço visual para sugerir profundidade." },
+    { base:`"A arte gótica esteve presente principalmente em catedrais."`, q:"Na arquitetura gótica, destacam-se:", o:["Arcos ogivais e vitrais","Concreto armado e vidro espelhado","Linhas baixas e horizontais","Painéis digitais"], c:0, coment:"O estilo gótico valorizava verticalidade, luz e vitrais." },
+    { base:`"O humanismo renascentista também impulsionou o estudo científico da natureza."`, q:"No Renascimento, arte e ciência:", o:["Se afastaram totalmente","Passaram a dialogar mais","Deixaram de existir","Viraram atividades opostas"], c:1, coment:"Muitos artistas estudavam anatomia, geometria e natureza." },
+    { base:`"No Egito antigo, a frontalidade e a rigidez eram frequentes nas figuras humanas."`, q:"Essas características mostram uma arte mais:", o:["Livre e espontânea","Convencional e simbólica","Fotográfica e realista","Abstrata e aleatória"], c:1, coment:"A arte egípcia seguia regras rígidas de representação." },
+    { base:`"A produção artística acompanha valores culturais de cada sociedade."`, q:"A história da arte permite compreender:", o:["Somente a técnica do desenho","Mudanças culturais e visões de mundo","Apenas a vida dos artistas","Só a decoração de templos"], c:1, coment:"As obras revelam valores, crenças e contextos históricos." },
+    { base:`"Da arte rupestre ao barroco, diferentes períodos criaram linguagens próprias."`, q:"Isso mostra que a arte:", o:["É sempre igual em todos os tempos","Muda conforme o contexto histórico","Só evolui na Europa","Depende apenas da tecnologia"], c:1, coment:"A arte se transforma conforme a sociedade e o tempo." }
+  ]),
+
+  "Arte Moderna": gerarQuestoes("Arte Moderna", [
+    { base:`"A arte moderna rompeu com várias convenções acadêmicas e buscou novas formas de expressão."`, q:"Uma marca da arte moderna é:", o:["Imitação rigorosa do passado","Busca por inovação","Rejeição de toda experimentação","Ausência de subjetividade"], c:1, coment:"A arte moderna questionou padrões e propôs novos caminhos." },
+    { base:`"O impressionismo valorizou a luz e a impressão visual do instante."`, q:"No impressionismo, o interesse estava em:", o:["Detalhe fotográfico fixo","Luz e percepção momentânea","Somente temas religiosos","Estruturas arquitetônicas barrocas"], c:1, coment:"Os impressionistas buscavam captar a luz e a sensação do momento." },
+    { base:`"Claude Monet é um nome importante do impressionismo."`, q:"Monet é associado ao:", o:["Surrealismo","Impressionismo","Cubismo","Dadaísmo"], c:1, coment:"Monet é um dos principais nomes impressionistas." },
+    { base:`"Vincent van Gogh usou cor intensa e pinceladas expressivas."`, q:"A pintura de Van Gogh se destaca por:", o:["Neutralidade cromática","Expressividade e cor intensa","Rigidez egípcia","Colagem cubista"], c:1, coment:"Van Gogh ficou conhecido pela intensidade emocional e cromática." },
+    { base:`"O expressionismo valorizou a emoção e a subjetividade."`, q:"No expressionismo, a arte tende a:", o:["Buscar objetividade absoluta","Expressar sentimentos intensos","Seguir regras clássicas rígidas","Eliminar deformações"], c:1, coment:"O expressionismo deforma e intensifica para expressar emoção." },
+    { base:`"O cubismo fragmentou formas e apresentou diferentes pontos de vista."`, q:"No cubismo, é comum encontrar:", o:["Forma única e estática","Múltiplos ângulos simultâneos","Somente paisagens naturais","Cenas teatrais realistas"], c:1, coment:"O cubismo desmonta e recompõe o objeto visualmente." },
+    { base:`"Pablo Picasso foi um dos nomes centrais do cubismo."`, q:"Picasso está ligado principalmente ao:", o:["Barroco","Cubismo","Rococó","Neoclassicismo"], c:1, coment:"Picasso desenvolveu obras fundamentais do cubismo." },
+    { base:`"O fauvismo explorou cores fortes e liberdade cromática."`, q:"No fauvismo, a cor aparece de modo:", o:["Naturalista e contido","Livre e intensa","Somente monocromático","Exclusivamente preto e branco"], c:1, coment:"Os fauvistas libertaram a cor da imitação fiel da realidade." },
+    { base:`"O futurismo exaltou velocidade, máquinas e movimento."`, q:"O futurismo valorizava:", o:["Passado medieval","Velocidade e dinamismo","Silêncio contemplativo apenas","Religiosidade bizantina"], c:1, coment:"Os futuristas celebravam a modernidade técnica." },
+    { base:`"O dadaísmo questionou a lógica tradicional da arte."`, q:"O dadaísmo pode ser entendido como um movimento de:", o:["Contestação e provocação","Imitação acadêmica","Retorno ao classicismo","Exaltação exclusiva da natureza"], c:0, coment:"O dadaísmo atacava convenções estéticas e culturais." },
+    { base:`"Marcel Duchamp apresentou objetos comuns como obras, redefinindo o conceito de arte."`, q:"Esse procedimento ficou conhecido por:", o:["Afresco","Ready-made","Mosaico","Têmpera"], c:1, coment:"Ready-made é o objeto deslocado para o campo artístico." },
+    { base:`"O surrealismo trabalhou com sonho, inconsciente e associações inesperadas."`, q:"No surrealismo, é comum encontrar:", o:["Sonhos e imagens improváveis","Somente retratos acadêmicos","Arquitetura gótica","Perspectiva medieval"], c:0, coment:"Os surrealistas exploravam o inconsciente e o imaginário." },
+    { base:`"Salvador Dalí produziu imagens oníricas e simbólicas."`, q:"Dalí é um nome do:", o:["Impressionismo","Surrealismo","Barroco","Realismo socialista"], c:1, coment:"Dalí tornou-se um dos artistas mais famosos do surrealismo." },
+    { base:`"A Semana de Arte Moderna de 1922 marcou a renovação cultural brasileira."`, q:"No Brasil, a arte moderna ganhou força com:", o:["Semana de Arte Moderna","Missão Francesa","Arte rupestre de Serra da Capivara","Barroco mineiro"], c:0, coment:"A Semana de 22 é um marco do modernismo brasileiro." },
+    { base:`"A arte moderna não foi um único estilo, mas um conjunto de rupturas."`, q:"Isso significa que a arte moderna:", o:["Teve apenas um movimento","Reuniu várias experiências inovadoras","Negou toda cor","Se restringiu ao teatro"], c:1, coment:"A modernidade artística inclui diversos movimentos e propostas." },
+    { base:`"Na modernidade, a arte passa a discutir também seu próprio fazer."`, q:"Uma característica moderna é a:", o:["Reflexão sobre linguagem","Obediência total à tradição","Proibição da abstração","Negação da autoria"], c:0, coment:"A arte moderna questiona a própria representação." },
+    { base:`"Anita Malfatti foi importante para a renovação estética no Brasil."`, q:"Anita Malfatti está ligada ao:", o:["Modernismo brasileiro","Arcadismo","Barroco colonial","Concretismo matemático"], c:0, coment:"Sua obra teve papel importante na abertura ao modernismo." },
+    { base:`"Tarsila do Amaral produziu obras fundamentais do modernismo brasileiro."`, q:"Tarsila do Amaral é autora de:", o:["Guernica","Abaporu","Mona Lisa","A Última Ceia"], c:1, coment:"Abaporu é uma das obras mais conhecidas de Tarsila." },
+    { base:`"A arte moderna ampliou os temas, técnicas e materiais da criação artística."`, q:"Isso indica uma arte mais:", o:["Experimental","Fechada a mudanças","Exclusivamente religiosa","Padronizada"], c:0, coment:"A experimentação é uma marca essencial da modernidade." },
+    { base:`"A ruptura moderna não eliminou o passado, mas passou a reinterpretá-lo criticamente."`, q:"Na arte moderna, tradição e inovação:", o:["Nunca se relacionam","Podem dialogar de forma crítica","São exatamente iguais","Foram proibidas"], c:1, coment:"Muitos artistas modernos revisitaram o passado de novas maneiras." }
+  ]),
+
+  "Arte Contemporânea": gerarQuestoes("Arte Contemporânea", [
+    { base:`"A arte contemporânea utiliza diferentes linguagens, suportes e tecnologias."`, q:"Uma característica da arte contemporânea é:", o:["Uso restrito da pintura a óleo","Pluralidade de linguagens","Rejeição de novas mídias","Obrigação de representar o real"], c:1, coment:"A contemporaneidade amplia materiais, técnicas e formatos." },
+    { base:`"Instalações artísticas ocupam o espaço e envolvem o público."`, q:"A instalação é uma linguagem que:", o:["Existe só em livros","Relaciona obra, espaço e espectador","Usa apenas tinta sobre tela","Substitui toda escultura"], c:1, coment:"Na instalação, o espaço faz parte da obra." },
+    { base:`"Performances artísticas usam o corpo e a ação como linguagem."`, q:"Na performance, o destaque recai sobre:", o:["O corpo e a ação","Somente a moldura","A reprodução fotográfica fiel","A cópia de estilos clássicos"], c:0, coment:"Performance é arte em ação, muitas vezes ao vivo." },
+    { base:`"A arte contemporânea pode abordar política, identidade, memória e meio ambiente."`, q:"Isso mostra uma arte ligada a:", o:["Temas sociais e atuais","Somente temas mitológicos","Exclusivamente decoração","Apenas técnica renascentista"], c:0, coment:"A produção contemporânea frequentemente dialoga com questões do presente." },
+    { base:`"Fotografia, vídeo e recursos digitais também podem integrar obras contemporâneas."`, q:"Na contemporaneidade, a arte:", o:["Recusa tecnologia","Pode incorporar mídias diversas","Volta só ao mosaico","Elimina a imagem"], c:1, coment:"Vídeo, fotografia e meios digitais ampliam a criação artística." },
+    { base:`"A participação do público pode alterar a experiência da obra."`, q:"Em muitas obras contemporâneas, o espectador:", o:["É passivo o tempo todo","Interage com a obra","Não importa para o resultado","Só observa à distância"], c:1, coment:"Interação e participação são comuns em propostas contemporâneas." },
+    { base:`"A arte conceitual valoriza a ideia tanto quanto ou mais que o objeto final."`, q:"Na arte conceitual, o foco principal pode estar:", o:["Na moldura apenas","Na ideia da obra","Na habilidade acadêmica clássica","No preço da tinta"], c:1, coment:"A arte conceitual desloca o centro da obra para o conceito." },
+    { base:`"Muitos artistas contemporâneos usam materiais reaproveitados."`, q:"Esse uso pode se relacionar a:", o:["Crítica ambiental e ressignificação","Obrigação religiosa","Somente falta de técnica","Imitação barroca"], c:0, coment:"A escolha de materiais pode trazer sentido ecológico ou político." },
+    { base:`"A arte urbana ganhou reconhecimento em galerias e museus, sem perder sua força pública."`, q:"O grafite pode ser entendido como:", o:["Linguagem artística urbana","Técnica medieval","Somente vandalismo","Escultura sonora"], c:0, coment:"O grafite é uma linguagem visual urbana de forte expressão contemporânea." },
+    { base:`"A contemporaneidade questiona fronteiras entre arte, vida e comunicação."`, q:"Isso significa que a arte contemporânea:", o:["Se fecha em regras fixas","Dialoga com o cotidiano","Proíbe mistura de linguagens","Recusa todo contexto social"], c:1, coment:"A arte contemporânea frequentemente se mistura ao cotidiano e à comunicação." },
+    { base:`"Uma obra contemporânea pode ser efêmera, existindo apenas por um tempo limitado."`, q:"Uma obra efêmera é aquela que:", o:["Dura pouco tempo","É feita de pedra eterna","Nunca muda","É sempre pintada em tela"], c:0, coment:"Efêmero é o que não permanece por longo tempo." },
+    { base:`"A intervenção artística modifica temporariamente um espaço público ou privado."`, q:"A intervenção se caracteriza por:", o:["Repetir um quadro clássico","Alterar o espaço com intenção artística","Ser apenas decoração doméstica","Substituir toda arquitetura"], c:1, coment:"Intervenções criam novas leituras sobre os espaços." },
+    { base:`"Na arte contemporânea, a interpretação pode ser aberta e múltipla."`, q:"Isso quer dizer que uma obra contemporânea:", o:["Tem um único sentido obrigatório","Pode gerar leituras diferentes","Não comunica nada","Só é entendida pelo artista"], c:1, coment:"A pluralidade de sentidos é frequente na arte atual." },
+    { base:`"Museus contemporâneos exibem objetos, vídeos, sons, ambientes e ações."`, q:"Essa diversidade confirma:", o:["A limitação das linguagens","A ampliação do conceito de arte","A volta ao academicismo","A exclusão do espectador"], c:1, coment:"A contemporaneidade amplia o que pode ser considerado obra." },
+    { base:`"A curadoria organiza e propõe leituras para exposições."`, q:"No campo da arte, curadoria está ligada a:", o:["Organização e seleção de obras","Fabricação de tinta","Aula de música","Restauração de ruínas"], c:0, coment:"O curador articula sentidos, recortes e montagem expositiva." },
+    { base:`"Obras contemporâneas podem provocar estranhamento no público."`, q:"Esse estranhamento pode servir para:", o:["Impedir toda reflexão","Estimular pensamento crítico","Substituir a obra por propaganda","Eliminar qualquer emoção"], c:1, coment:"Muitas obras provocam para gerar reflexão." },
+    { base:`"A arte contemporânea não depende apenas da beleza clássica."`, q:"Na contemporaneidade, a obra pode valorizar:", o:["Somente harmonia formal","Questões, experiências e conceitos","Apenas simetria grega","Só temas religiosos"], c:1, coment:"O valor da obra pode estar na experiência ou no questionamento." },
+    { base:`"O vídeo-arte utiliza recursos audiovisuais como linguagem artística."`, q:"Vídeo-arte é um exemplo de:", o:["Arte que usa mídia audiovisual","Pintura mural antiga","Escultura romana","Arte exclusivamente musical"], c:0, coment:"É uma linguagem contemporânea ligada à imagem em movimento." },
+    { base:`"A arte contemporânea pode ser transdisciplinar."`, q:"Isso significa:", o:["Mistura de áreas e linguagens","Proibição de mistura","Uso de uma técnica única","Retorno ao modelo egípcio"], c:0, coment:"A transdisciplinaridade aproxima arte, ciência, tecnologia e sociedade." },
+    { base:`"Mesmo quando causa dúvidas, a arte contemporânea convida o público a pensar."`, q:"Uma função importante da arte contemporânea é:", o:["Confirmar padrões sem questionar","Provocar reflexão","Evitar qualquer debate","Ignorar o presente"], c:1, coment:"A reflexão crítica é uma marca central de muitas produções contemporâneas." }
+  ]),
+
+  "Movimentos Artísticos": gerarQuestoes("Movimentos Artísticos", [
+    { base:`"Os movimentos artísticos surgem em contextos históricos específicos e apresentam propostas próprias."`, q:"Um movimento artístico é:", o:["Um conjunto de ideias e práticas estéticas","Uma técnica única de pintura","Só um estilo individual","Uma regra permanente"], c:0, coment:"Movimentos artísticos reúnem princípios, contextos e linguagens comuns." },
+    { base:`"O impressionismo se interessou pela luz natural e pela sensação visual."`, q:"O impressionismo buscou representar:", o:["Impressões luminosas do instante","Somente cenas religiosas","Estruturas geométricas rígidas","Sonhos do inconsciente"], c:0, coment:"A sensação visual do momento é central no impressionismo." },
+    { base:`"O expressionismo intensifica a emoção por meio de deformações e cor."`, q:"No expressionismo, predomina:", o:["Neutralidade emocional","Expressão subjetiva","Realismo fotográfico","Frieza matemática"], c:1, coment:"A subjetividade é muito forte no expressionismo." },
+    { base:`"O cubismo fragmenta e reorganiza o objeto visualmente."`, q:"Uma característica cubista é:", o:["Perspectiva única clássica","Fragmentação das formas","Uso exclusivo de dourado","Naturalismo absoluto"], c:1, coment:"O cubismo mostra vários ângulos e fragmenta a forma." },
+    { base:`"O surrealismo explora sonhos, desejos e imagens inesperadas."`, q:"O surrealismo está ligado ao:", o:["Inconsciente","Classicismo greco-romano","Arquitetura gótica","Arte rupestre"], c:0, coment:"Os surrealistas dialogam com sonho e inconsciente." },
+    { base:`"O futurismo exaltou velocidade, máquinas e dinamismo."`, q:"O futurismo valorizava a:", o:["Vida monástica","Modernidade tecnológica","Ornamentação barroca","Ritualidade medieval"], c:1, coment:"O futurismo celebrava a máquina e o movimento." },
+    { base:`"O dadaísmo criticou a lógica racional e as convenções da arte."`, q:"O dadaísmo é marcado por:", o:["Provocação e ruptura","Equilíbrio clássico","Harmonia renascentista","Reprodução fiel da natureza"], c:0, coment:"O espírito dadaísta é crítico, irônico e provocador." },
+    { base:`"O neoclassicismo retomou valores da arte clássica."`, q:"O neoclassicismo buscou inspiração na:", o:["Antiguidade clássica","Arte digital","Performance","Grafite"], c:0, coment:"O movimento retoma modelos greco-romanos." },
+    { base:`"O romantismo valorizou sentimento, imaginação e subjetividade."`, q:"No romantismo, ganham destaque:", o:["Razão fria e cálculo","Emoção e imaginação","Fragmentação geométrica","Neutralidade cromática"], c:1, coment:"Romantismo valoriza emoção e individualidade." },
+    { base:`"O realismo buscou retratar aspectos da vida social sem idealizações excessivas."`, q:"No realismo, há interesse por:", o:["Representação social mais objetiva","Sonhos surreais","Abstração pura","Ícones religiosos bizantinos"], c:0, coment:"O realismo observa criticamente a vida social." },
+    { base:`"O abstracionismo não depende de representar objetos reconhecíveis."`, q:"Na arte abstrata, a obra pode valorizar:", o:["Forma, cor e composição","Somente retrato fiel","Narrativa teatral","Perspectiva fotográfica"], c:0, coment:"O abstracionismo trabalha elementos visuais sem obrigação figurativa." },
+    { base:`"O concretismo valorizou rigor formal e geometria."`, q:"O concretismo está associado a:", o:["Estrutura geométrica","Improvisação aleatória","Narrativa mítica","Naturalismo impressionista"], c:0, coment:"O concretismo explora organização racional da forma." },
+    { base:`"O pop art utilizou imagens da cultura de massa e da publicidade."`, q:"O pop art dialoga com:", o:["Cultura popular e mídia","Somente arte sacra","Arquitetura medieval","Escultura egípcia"], c:0, coment:"O movimento usa referências do consumo e da mídia." },
+    { base:`"A op art produziu efeitos ópticos de movimento e ilusão visual."`, q:"A op art explora:", o:["Ilusões óticas","Somente retrato histórico","Escultura barroca","Narrativa literária"], c:0, coment:"A op art cria vibração visual e ilusão de movimento." },
+    { base:`"Os movimentos artísticos respondem a seu tempo."`, q:"Isso significa que eles:", o:["Ignoram o contexto histórico","Dialogam com questões de cada época","São todos iguais","Existem fora da sociedade"], c:1, coment:"Movimentos artísticos refletem e tensionam seu contexto." },
+    { base:`"Nem todo movimento substitui totalmente o anterior."`, q:"Entre movimentos artísticos, pode haver:", o:["Relações, rupturas e continuidades","Apenas cópia exata","Proibição de influência","Ausência de debate"], c:0, coment:"A história da arte envolve diálogo e tensão entre propostas." },
+    { base:`"No modernismo brasileiro, a antropofagia cultural propôs reelaborar influências."`, q:"A ideia antropofágica sugere:", o:["Copiar tudo da Europa","Assimilar criticamente influências","Negar toda cultura nacional","Voltar ao barroco colonial"], c:1, coment:"A antropofagia propõe devorar simbolicamente e recriar." },
+    { base:`"Cada movimento define também modos de ver e representar o mundo."`, q:"Por isso, estudar movimentos artísticos ajuda a compreender:", o:["Somente nomes de artistas","Visões de mundo e linguagem","Apenas preços de obras","Só técnicas de moldura"], c:1, coment:"Movimentos expressam ideias, sensibilidades e linguagens." },
+    { base:`"Uma mesma obra pode dialogar com mais de uma tendência."`, q:"Isso mostra que a classificação artística pode ser:", o:["Totalmente rígida","Mais flexível em alguns casos","Inútil sempre","Proibida"], c:1, coment:"Nem toda obra cabe de forma absoluta em uma categoria." },
+    { base:`"Os movimentos artísticos são importantes para organizar o estudo da arte, mas não esgotam o sentido das obras."`, q:"Logo, a análise de uma obra deve considerar:", o:["Só o rótulo do movimento","Contexto, linguagem e singularidade","Apenas a assinatura","Somente o material usado"], c:1, coment:"A obra precisa ser lida também em sua especificidade." }
+  ]),
+    "Artes Visuais": gerarQuestoes("Artes Visuais", [
+    { base:`"As artes visuais trabalham com imagem, forma, cor, linha, textura e composição."`, q:"Entre os elementos visuais básicos, podemos citar:", o:["Linha, cor e forma","Somente som e ritmo","Apenas fala e gesto","Exclusivamente cheiro e sabor"], c:0, coment:"Linha, forma, cor e textura são elementos visuais fundamentais." },
+    { base:`"A composição organiza visualmente os elementos de uma obra."`, q:"Composição, em artes visuais, refere-se à:", o:["Distribuição dos elementos na imagem","Temperatura da sala de exposição","Biografia do artista","Velocidade da música"], c:0, coment:"Compor é organizar as partes da imagem visualmente." },
+    { base:`"Cores quentes e frias podem criar efeitos diferentes na percepção."`, q:"Vermelho, laranja e amarelo são geralmente considerados:", o:["Cores frias","Cores quentes","Cores neutras","Cores invisíveis"], c:1, coment:"Essas cores costumam transmitir calor, energia e proximidade." },
+    { base:`"A textura pode ser real ou sugerida visualmente."`, q:"Em uma imagem, textura visual é:", o:["Sensação de superfície sugerida ao olhar","Som produzido pela obra","Nome do autor","Tipo de moldura"], c:0, coment:"Textura visual é percebida pelo olhar, mesmo sem toque." },
+    { base:`"O enquadramento influencia a leitura de fotografias e imagens."`, q:"Enquadrar significa:", o:["Selecionar o que aparece na imagem","Escolher a trilha sonora","Aumentar o peso da obra","Retirar toda iluminação"], c:0, coment:"O enquadramento define limites e foco da imagem." },
+    { base:`"Contraste é a diferença acentuada entre elementos visuais."`, q:"Em artes visuais, contraste pode ocorrer entre:", o:["Luz e sombra","Som e silêncio","Cheiro e sabor","Palco e plateia"], c:0, coment:"Contraste visual pode envolver cor, tom, forma e luz." },
+    { base:`"A fotografia também é uma linguagem artística."`, q:"Na fotografia, luz e enquadramento são:", o:["Elementos fundamentais","Detalhes sem importância","Somente recursos de cinema","Exclusivos da pintura"], c:0, coment:"Fotografia depende intensamente de luz, ângulo e enquadramento." },
+    { base:`"A linha pode sugerir movimento, direção e contorno."`, q:"Em uma obra visual, a linha pode:", o:["Organizar e conduzir o olhar","Substituir toda cor","Eliminar a forma","Servir apenas para assinatura"], c:0, coment:"Linhas orientam leitura e estruturam formas na imagem." },
+    { base:`"A forma pode ser figurativa ou abstrata."`, q:"Uma forma figurativa é aquela que:", o:["Remete a algo reconhecível","Não remete a nada visual","É invisível","É sempre geométrica"], c:0, coment:"Figurativo se relaciona a figuras reconhecíveis do mundo." },
+    { base:`"A perspectiva pode sugerir profundidade em uma superfície plana."`, q:"A perspectiva ajuda a criar:", o:["Sensação de profundidade","Som ambiente","Cheiro de tinta","Textura real tátil"], c:0, coment:"A perspectiva organiza o espaço para parecer profundo." },
+    { base:`"Na linguagem visual, o ponto também pode gerar foco e ritmo."`, q:"O ponto, em artes visuais, pode:", o:["Criar marcação visual e atenção","Servir apenas para escrita","Substituir todas as imagens","Ser usado só em mapas"], c:0, coment:"O ponto pode estruturar padrões e atrair o olhar." },
+    { base:`"Figura e fundo são noções importantes na percepção de imagens."`, q:"A relação figura-fundo envolve:", o:["O que se destaca e o que serve de base visual","Som e eco","Cor e cheiro","Apenas medida da moldura"], c:0, coment:"Figura é o destaque; fundo é o campo que a envolve." },
+    { base:`"A imagem publicitária usa recursos visuais para atrair atenção."`, q:"Em cartazes e anúncios, a escolha visual busca:", o:["Convencer e comunicar rapidamente","Esconder a mensagem","Eliminar símbolos","Ignorar o público"], c:0, coment:"A comunicação visual publicitária é planejada estrategicamente." },
+    { base:`"A simetria organiza elementos em equilíbrio visual."`, q:"Simetria está ligada a:", o:["Equilíbrio entre partes","Caos total","Somente improviso","Ausência de organização"], c:0, coment:"A simetria cria sensação de ordem e equilíbrio." },
+    { base:`"O claro-escuro produz efeitos dramáticos e volume."`, q:"Claro-escuro é o uso contrastante de:", o:["Luz e sombra","Som e voz","Texto e silêncio","Cheiro e memória"], c:0, coment:"É recurso importante para modelar formas visualmente." },
+    { base:`"A escala altera a relação de tamanho entre elementos."`, q:"Quando um objeto aparece muito maior que outro na imagem, isso envolve:", o:["Escala","Silêncio visual","Coreografia","Métrica musical"], c:0, coment:"Escala é a relação de tamanho entre os elementos." },
+    { base:`"A leitura visual depende também do repertório cultural do observador."`, q:"Isso significa que a interpretação de imagens:", o:["Pode variar conforme quem observa","É sempre única e fixa","Não depende de contexto","Só importa em museus"], c:0, coment:"O repertório do observador influencia a leitura." },
+    { base:`"Nas artes visuais, técnica e sentido costumam estar relacionados."`, q:"Escolher uma técnica específica pode:", o:["Produzir efeitos de sentido","Não mudar nada na obra","Servir apenas para economizar material","Eliminar o tema"], c:0, coment:"A técnica participa da construção de significado." },
+    { base:`"A colagem reúne materiais diversos em uma mesma composição."`, q:"Na colagem, o artista:", o:["Combina fragmentos e materiais","Pinta só paisagens","Esculpe apenas mármore","Cria música com instrumentos"], c:0, coment:"A colagem junta recortes e materiais para formar a imagem." },
+    { base:`"Observar uma imagem criticamente envolve perceber forma, tema, contexto e linguagem."`, q:"Uma leitura crítica da imagem procura:", o:["Entender como ela constrói sentido","Só decorar o nome do autor","Contar quantas cores existem","Ignorar o contexto"], c:0, coment:"Ler criticamente é analisar linguagem, mensagem e contexto." }
+  ]),
+
+  "Música": gerarQuestoes("Música", [
+    { base:`"A música organiza sons e silêncios no tempo."`, q:"Uma definição possível de música é:", o:["Organização de sons e silêncios","Somente barulho contínuo","Apenas letra escrita","Só dança sem som"], c:0, coment:"Música envolve estruturação sonora ao longo do tempo." },
+    { base:`"Ritmo é um dos elementos fundamentais da linguagem musical."`, q:"Ritmo está relacionado à:", o:["Organização temporal dos sons","Cor da capa do álbum","Biografia do cantor","Iluminação do palco"], c:0, coment:"Ritmo diz respeito à pulsação e duração dos sons." },
+    { base:`"Melodia é a sequência organizada de sons percebida como unidade."`, q:"Melodia corresponde a:", o:["Sequência de sons organizada","Volume do som apenas","Silêncio total","Textura visual"], c:0, coment:"É a linha sonora que costumamos cantarolar." },
+    { base:`"Harmonia envolve combinação simultânea de sons."`, q:"Harmonia musical refere-se a:", o:["Combinação de sons simultâneos","Somente o ritmo da bateria","Nome do artista","Dança do público"], c:0, coment:"A harmonia trata dos acordes e relações entre sons simultâneos." },
+    { base:`"A intensidade do som pode variar entre forte e fraco."`, q:"Intensidade, em música, está ligada ao:", o:["Volume sonoro","Tamanho da partitura","Tema da letra","Formato do palco"], c:0, coment:"Intensidade é a força sonora percebida." },
+    { base:`"O timbre permite distinguir vozes e instrumentos mesmo tocando a mesma nota."`, q:"Timbre é:", o:["A qualidade particular do som","A duração da música","O silêncio entre compassos","A velocidade do palco"], c:0, coment:"Timbre identifica a “cor” sonora de uma fonte." },
+    { base:`"A altura do som se relaciona ao grave e ao agudo."`, q:"Altura, em música, indica:", o:["Se o som é grave ou agudo","Se o palco é alto","Se a letra é triste","Se a música é longa"], c:0, coment:"Altura sonora é diferente de volume ou duração." },
+    { base:`"A duração distingue sons curtos e longos."`, q:"Duração, em música, está ligada a:", o:["Tempo de permanência do som","Cor da capa do disco","Tipo de plateia","Número de instrumentos"], c:0, coment:"Duração mede quanto tempo o som permanece." },
+    { base:`"Os gêneros musicais variam conforme contextos culturais e históricos."`, q:"Isso mostra que a música:", o:["Também expressa cultura","É sempre igual em todos os lugares","Não depende da sociedade","Só existe em partituras"], c:0, coment:"A música comunica identidades, valores e contextos." },
+    { base:`"A música popular brasileira reúne grande diversidade de estilos."`, q:"Entre gêneros brasileiros, podemos citar:", o:["Samba e baião","Ópera gótica e mosaico","Afresco e cubismo","Soneto e escultura"], c:0, coment:"Samba e baião são gêneros importantes da música brasileira." },
+    { base:`"O silêncio também pode ter função expressiva em uma composição."`, q:"Na música, o silêncio:", o:["Também pode fazer parte da obra","É sempre erro","Não tem nenhum valor","Só existe fora da música"], c:0, coment:"Silêncio é elemento expressivo e estrutural." },
+    { base:`"A partitura registra sons por meio de sinais e convenções."`, q:"A partitura serve para:", o:["Registrar e orientar a execução musical","Substituir totalmente a audição","Medir a altura do palco","Produzir iluminação"], c:0, coment:"A partitura representa graficamente aspectos da música." },
+    { base:`"Canções unem melodia, ritmo e, muitas vezes, letra."`, q:"Uma canção pode ser entendida como:", o:["Composição musical com possível presença de letra","Só poema sem som","Peça teatral muda","Imagem sem áudio"], c:0, coment:"Canção articula música e, frequentemente, texto verbal." },
+    { base:`"Música instrumental não depende de letra para comunicar."`, q:"Na música instrumental:", o:["A expressividade não depende de palavras","Não existe ritmo","Não há organização sonora","Não pode haver emoção"], c:0, coment:"A música pode comunicar mesmo sem texto verbal." },
+    { base:`"A repetição de padrões pode criar identidade em uma música."`, q:"Refrões e motivos melódicos ajudam a:", o:["Fixar e reconhecer a música","Eliminar o ritmo","Apagar a melodia","Tornar tudo aleatório"], c:0, coment:"A repetição contribui para unidade e memória musical." },
+    { base:`"A música pode ser utilizada em cinema, teatro, publicidade e rituais."`, q:"Isso mostra que a música tem função também:", o:["Comunicativa e contextual","Somente decorativa","Exclusivamente técnica","Apenas religiosa"], c:0, coment:"A música atua em diversos contextos sociais e expressivos." },
+    { base:`"O andamento indica a velocidade de execução."`, q:"Andamento, em música, refere-se à:", o:["Velocidade da música","Cor do instrumento","Tema da letra","Tamanho da plateia"], c:0, coment:"Andamento define se a peça é lenta, moderada ou rápida." },
+    { base:`"Ouvir criticamente envolve perceber elementos estruturais e sentidos da música."`, q:"Uma escuta crítica busca:", o:["Perceber ritmo, melodia, timbre e contexto","Só decorar o nome do cantor","Julgar pela capa do álbum","Ignorar a forma musical"], c:0, coment:"Escuta crítica analisa linguagem e contexto." },
+    { base:`"A música pode construir identidade coletiva, memória e pertencimento."`, q:"Isso significa que a música:", o:["Também possui dimensão social","É apenas entretenimento vazio","Não comunica valores","Só vale em sala de concerto"], c:0, coment:"A música participa da vida social e simbólica." },
+    { base:`"Cada cultura organiza seus sons de maneiras próprias."`, q:"Portanto, estudar música também é estudar:", o:["Cultura e sociedade","Só física do som","Somente instrumentos caros","Apenas tecnologia digital"], c:0, coment:"A música é linguagem artística e fenômeno cultural." }
+  ]),
+
+  "Teatro": gerarQuestoes("Teatro", [
+    { base:`"O teatro é uma linguagem artística baseada na ação cênica."`, q:"No teatro, a cena se constrói principalmente por meio de:", o:["Corpo, voz, espaço e ação","Somente pintura","Apenas fotografia","Exclusivamente projeção digital"], c:0, coment:"O teatro articula corpo, voz, espaço, tempo e ação." },
+    { base:`"O texto dramático pode ser encenado por atores diante de um público."`, q:"No teatro, o público:", o:["Faz parte da experiência cênica","É irrelevante para a obra","Substitui o elenco","Só lê partituras"], c:0, coment:"A relação com o público é central na linguagem teatral." },
+    { base:`"Personagem é uma construção da cena e do texto."`, q:"No teatro, personagem é:", o:["Figura representada em cena","Objeto de iluminação","Somente um figurino","Tipo de instrumento musical"], c:0, coment:"A personagem é construída pelo ator e pela dramaturgia." },
+    { base:`"Cenário, figurino e iluminação também participam da linguagem teatral."`, q:"Esses elementos contribuem para:", o:["Construção de sentido na cena","Apagar a atuação","Eliminar a narrativa","Substituir totalmente o ator"], c:0, coment:"Elementos cênicos ajudam a compor atmosfera e significado." },
+    { base:`"A dramaturgia organiza conflitos, personagens e situações."`, q:"Dramaturgia está ligada à:", o:["Estruturação do texto e da ação teatral","Afinação de instrumentos","Montagem de mosaicos","Exposição fotográfica"], c:0, coment:"É a escrita/organização dramática da ação." },
+    { base:`"O teatro pode ser trágico, cômico, épico, experimental e muitas outras formas."`, q:"Isso mostra que o teatro:", o:["É uma linguagem diversa","Tem apenas um formato fixo","Depende só de palco italiano","Só existe com texto clássico"], c:0, coment:"Há grande variedade de formas e propostas teatrais." },
+    { base:`"Na encenação, o diretor articula diferentes elementos da cena."`, q:"O diretor teatral atua na:", o:["Organização da encenação","Venda de ingressos apenas","Construção do instrumento","Produção de tintas"], c:0, coment:"A direção coordena a linguagem cênica." },
+    { base:`"Improvisação pode ser um recurso importante em processos teatrais."`, q:"Improvisar, no teatro, é:", o:["Criar em ação a partir de estímulos","Decorar cenário permanentemente","Substituir o figurino","Eliminar o corpo"], c:0, coment:"Improvisação trabalha resposta criativa em cena." },
+    { base:`"No teatro grego, tragédia e comédia eram gêneros importantes."`, q:"O teatro grego é referência para:", o:["Origem de formas dramáticas ocidentais","Música eletrônica","Arte digital","Cinema mudo"], c:0, coment:"O teatro grego marcou a tradição ocidental do drama." },
+    { base:`"O palco italiano organiza público e cena de modo frontal."`, q:"No palco italiano, geralmente o público:", o:["Fica de frente para a cena","Circula no meio dos atores o tempo todo","Fica atrás do cenário","Não enxerga o palco"], c:0, coment:"O palco italiano trabalha frontalidade entre plateia e palco." },
+    { base:`"O teatro contemporâneo pode romper com a narrativa linear."`, q:"Na cena contemporânea, o teatro pode:", o:["Experimentar novas formas narrativas","Seguir apenas modelo clássico","Eliminar o espectador","Usar só tragédias gregas"], c:0, coment:"A contemporaneidade teatral amplia formas de encenação." },
+    { base:`"Expressão corporal é essencial para a comunicação cênica."`, q:"No teatro, o corpo do ator:", o:["É instrumento de expressão","Não interfere no sentido","Serve só para figurino","É secundário diante do texto"], c:0, coment:"Corpo e gesto constroem presença e significado na cena." },
+    { base:`"A voz do ator também é recurso expressivo."`, q:"Entonação, pausa e ritmo da fala ajudam a:", o:["Construir sentidos na atuação","Apagar a personagem","Trocar o cenário","Substituir a iluminação"], c:0, coment:"A voz é componente expressivo da atuação." },
+    { base:`"Máscaras e figurinos podem transformar a presença cênica."`, q:"Esses elementos atuam como:", o:["Recursos de composição da personagem","Objetos sem função","Somente decoração de palco","Substitutos do texto"], c:0, coment:"Figurino e máscara participam da construção visual e simbólica." },
+    { base:`"O teatro pode abordar temas sociais, políticos e existenciais."`, q:"Isso mostra que o teatro também possui função:", o:["Crítica e reflexiva","Só ornamental","Exclusivamente documental","Apenas esportiva"], c:0, coment:"O teatro pode questionar e provocar reflexão." },
+    { base:`"A cenografia organiza visualmente o espaço da ação."`, q:"Cenografia é:", o:["Construção visual do espaço cênico","Treino vocal","Partitura teatral","Técnica de fotografia"], c:0, coment:"A cenografia estrutura o ambiente da encenação." },
+    { base:`"Na relação palco-plateia, diferentes montagens criam diferentes experiências."`, q:"A forma de organizar público e cena:", o:["Muda a experiência teatral","Não interfere em nada","Só importa na música","É igual em todo espetáculo"], c:0, coment:"A disposição espacial afeta percepção e participação." },
+    { base:`"O teatro é arte do encontro e da presença."`, q:"Uma característica importante do teatro é:", o:["Acontecer no aqui e agora da cena","Existir só em reprodução digital","Dispensar o público","Não depender de tempo"], c:0, coment:"A presença compartilhada é central na experiência teatral." },
+    { base:`"Mesmo quando filmado, o teatro nasce da lógica cênica."`, q:"Isso significa que o teatro se diferencia de outras artes por sua:", o:["Ação presencial e encenada","Dependência exclusiva da câmera","Ausência de corpo","Falta de espaço"], c:0, coment:"O evento teatral é cênico e relacional." },
+    { base:`"Estudar teatro é estudar linguagem, corpo, sociedade e imaginação."`, q:"Logo, o teatro pode ser compreendido como:", o:["Arte de representação e criação cênica","Somente literatura","Apenas dança sem texto","Exclusivamente música"], c:0, coment:"O teatro articula representação, encenação e experiência coletiva." }
+  ]),
+
+  "Dança": gerarQuestoes("Dança", [
+    { base:`"A dança utiliza o corpo em movimento como linguagem artística."`, q:"Na dança, o principal instrumento expressivo é:", o:["O corpo","A moldura","A tinta","A partitura"], c:0, coment:"A dança comunica por meio do corpo em movimento." },
+    { base:`"Ritmo, espaço, tempo e energia são importantes na dança."`, q:"Entre os elementos da dança, podemos citar:", o:["Movimento, espaço e ritmo","Somente cor e textura","Apenas roteiro literário","Só cenário fixo"], c:0, coment:"A linguagem da dança envolve corpo, tempo, espaço e energia." },
+    { base:`"A dança pode existir em diferentes culturas, estilos e funções sociais."`, q:"Isso mostra que a dança:", o:["É uma prática cultural diversa","Só existe no balé clássico","É sempre igual","Não comunica valores"], c:0, coment:"A dança aparece em rituais, festas, espetáculos e práticas sociais." },
+    { base:`"O balé clássico desenvolveu técnica codificada e grande controle corporal."`, q:"Uma característica do balé clássico é:", o:["Técnica formalizada","Improvisação sem treino","Ausência de postura","Rejeição total da musicalidade"], c:0, coment:"O balé clássico trabalha técnica, alinhamento e codificação." },
+    { base:`"A dança contemporânea amplia possibilidades do movimento e da criação."`, q:"Na dança contemporânea, é comum:", o:["Experimentação de movimentos","Rigidez única e fixa","Obrigação de sapatilha de ponta","Exclusão da improvisação"], c:0, coment:"A dança contemporânea abre espaço para pesquisa corporal." },
+    { base:`"Danças populares expressam identidades coletivas e tradições."`, q:"As danças populares estão ligadas a:", o:["Cultura e comunidade","Somente palcos de ópera","Laboratórios científicos","Museus arqueológicos"], c:0, coment:"Danças populares carregam memória social e cultural." },
+    { base:`"Coreografia organiza movimentos no tempo e no espaço."`, q:"Coreografia é:", o:["Composição de movimentos","Pintura de cenário","Registro fotográfico","Afinação vocal"], c:0, coment:"Coreografar é organizar sequências e relações de movimento." },
+    { base:`"Na dança, o gesto pode comunicar emoções e ideias."`, q:"O gesto na dança funciona como:", o:["Elemento expressivo","Erro técnico","Substituto da música","Objeto decorativo"], c:0, coment:"Gesto e movimento constroem sentido na linguagem corporal." },
+    { base:`"Improvisação é um recurso presente em diferentes práticas da dança."`, q:"Improvisar na dança significa:", o:["Criar movimentos em processo","Repetir mecanicamente sem pensar","Eliminar o corpo","Parar completamente"], c:0, coment:"A improvisação explora criação em tempo real." },
+    { base:`"A relação com o espaço é essencial para o movimento dançado."`, q:"Na dança, o espaço:", o:["É parte da linguagem","Não interfere","Importa só para a música","É apenas fundo decorativo"], c:0, coment:"O corpo se organiza e cria sentido em relação ao espaço." },
+    { base:`"O tempo na dança envolve duração, velocidade e pausa."`, q:"Na dança, o tempo pode ser percebido por:", o:["Ritmo e duração do movimento","Cor do figurino","Tamanho do palco apenas","Biografia do bailarino"], c:0, coment:"A temporalidade organiza o fluxo corporal." },
+    { base:`"A energia do movimento altera a qualidade expressiva da dança."`, q:"Movimentos leves, fortes ou contínuos dizem respeito à:", o:["Qualidade/energia do movimento","Altura do cenário","Quantidade de luz","Preço do ingresso"], c:0, coment:"A energia modifica a intenção e a percepção do movimento." },
+    { base:`"Danças urbanas surgem em contextos sociais específicos e reinventam o corpo na cidade."`, q:"As danças urbanas podem ser entendidas como:", o:["Expressões culturais contemporâneas","Reprodução do balé barroco","Pintura corporal egípcia","Música instrumental"], c:0, coment:"Elas expressam identidades juvenis e contextos urbanos." },
+    { base:`"A dança também pode dialogar com teatro, vídeo, performance e artes visuais."`, q:"Isso mostra o caráter:", o:["Interdisciplinar da dança","Isolado da dança","Puramente musical da dança","Exclusivamente literário"], c:0, coment:"A dança pode se integrar a outras linguagens artísticas." },
+    { base:`"Em muitas culturas, a dança tem função ritual."`, q:"Uma função possível da dança é:", o:["Ritual e simbólica","Somente comercial","Exclusivamente esportiva","Apenas decorativa"], c:0, coment:"A dança participa de rituais, celebrações e práticas sociais." },
+    { base:`"O figurino pode reforçar visualmente a proposta coreográfica."`, q:"Na dança, o figurino:", o:["Também compõe a linguagem","Não muda nada","Substitui o movimento","É irrelevante sempre"], c:0, coment:"Figurino pode ampliar sentidos da coreografia." },
+    { base:`"O público percebe a dança por meio da visualidade do corpo em ação."`, q:"Assistir à dança envolve:", o:["Leitura visual do movimento","Só ouvir a música","Apenas ler roteiro","Ignorar o espaço"], c:0, coment:"A visualidade do corpo é central na recepção da dança." },
+    { base:`"O estudo da dança envolve técnica, criação e sensibilidade."`, q:"Aprender dança não depende apenas de:", o:["Repetição mecânica","Treino, percepção e expressão","Tempo de palco vazio","Decoração"], c:1, coment:"A dança exige técnica, consciência corporal e expressividade." },
+    { base:`"A repetição pode ser usada como recurso coreográfico."`, q:"Na coreografia, a repetição pode:", o:["Criar padrão e significado","Eliminar a expressão","Impedir qualquer leitura","Substituir a música"], c:0, coment:"Repetir movimentos pode produzir ritmo, ênfase e estrutura." },
+    { base:`"Dançar é também produzir sentidos com o corpo."`, q:"Por isso, a dança pode ser compreendida como:", o:["Linguagem artística corporal","Somente exercício físico sem expressão","Apenas acompanhamento musical","Exclusivamente esporte competitivo"], c:0, coment:"A dança é arte, linguagem e expressão do corpo." }
+  ]),
+
+  "Cultura Brasileira": gerarQuestoes("Cultura Brasileira", [
+    { base:`"A cultura brasileira resulta do encontro e das tensões entre diferentes matrizes culturais."`, q:"A cultura brasileira é marcada por:", o:["Diversidade de influências","Uniformidade total","Ausência de mistura","Origem única e fechada"], c:0, coment:"A formação cultural brasileira é plural e heterogênea." },
+    { base:`"A Semana de Arte Moderna de 1922 foi um marco da renovação estética no Brasil."`, q:"A Semana de 22 está ligada ao:", o:["Modernismo brasileiro","Barroco mineiro","Arcadismo português","Expressionismo alemão"], c:0, coment:"Foi decisiva para o modernismo no Brasil." },
+    { base:`"Mário de Andrade, Oswald de Andrade, Anita Malfatti e Tarsila do Amaral são nomes centrais do modernismo."`, q:"Esses artistas e intelectuais atuaram em torno do:", o:["Modernismo brasileiro","Teatro medieval","Classicismo romano","Impressionismo francês"], c:0, coment:"Eles participaram da renovação estética e cultural modernista." },
+    { base:`"Tarsila do Amaral produziu imagens muito associadas à identidade brasileira."`, q:"Uma obra famosa de Tarsila é:", o:["Abaporu","Guernica","Noite Estrelada","Monalisa"], c:0, coment:"Abaporu é uma obra-chave do modernismo brasileiro." },
+    { base:`"A antropofagia cultural propunha devorar influências externas e recriá-las."`, q:"A proposta antropofágica defendia:", o:["Assimilar criticamente influências","Copiar fielmente a Europa","Negar toda cultura brasileira","Voltar à Idade Média"], c:0, coment:"A antropofagia reelabora influências de forma criativa." },
+    { base:`"Cândido Portinari representou trabalhadores, retirantes e temas sociais."`, q:"A obra de Portinari dialoga com:", o:["Questões sociais brasileiras","Somente abstracionismo geométrico","Apenas arte bizantina","Exclusivamente paisagem europeia"], c:0, coment:"Portinari deu visibilidade a realidades sociais do Brasil." },
+    { base:`"O patrimônio cultural inclui bens materiais e imateriais."`, q:"São exemplos de patrimônio imaterial:", o:["Festas, saberes e celebrações","Somente prédios antigos","Apenas esculturas de mármore","Somente pinturas renascentistas"], c:0, coment:"Patrimônio imaterial envolve práticas, saberes e expressões." },
+    { base:`"O samba, o maracatu, o frevo e o bumba meu boi fazem parte da cultura brasileira."`, q:"Essas manifestações mostram:", o:["Riqueza da cultura popular brasileira","Ausência de diversidade","Exclusividade da cultura erudita","Padronização cultural"], c:0, coment:"A cultura popular brasileira é diversa e potente." },
+    { base:`"A arte indígena brasileira expressa cosmologias, técnicas e identidades próprias."`, q:"Sobre a arte indígena, é correto afirmar que:", o:["Possui valor estético e cultural próprio","É apenas artesanato sem sentido","Não muda com o tempo","Imita a arte europeia"], c:0, coment:"A arte indígena tem autonomia estética, simbólica e cultural." },
+    { base:`"As matrizes africanas tiveram papel fundamental na formação cultural do Brasil."`, q:"Na cultura brasileira, a presença africana aparece em:", o:["Música, religiosidade, culinária e arte","Somente documentos oficiais","Apenas arquitetura gótica","Nenhuma manifestação"], c:0, coment:"A contribuição africana é central na formação cultural brasileira." },
+    { base:`"O frevo é uma manifestação fortemente ligada a Pernambuco."`, q:"O frevo se relaciona a:", o:["Música e dança populares","Escultura romana","Ópera barroca","Mosaico bizantino"], c:0, coment:"É expressão vibrante da cultura pernambucana." },
+    { base:`"O cordel combina oralidade, poesia impressa e cultura popular."`, q:"A literatura de cordel é importante por:", o:["Expressar narrativas e saberes populares","Substituir toda música brasileira","Ser patrimônio apenas europeu","Não possuir relação com imagem"], c:0, coment:"Cordel é forte manifestação cultural, sobretudo no Nordeste." },
+    { base:`"As festas populares articulam memória, religiosidade, arte e participação social."`, q:"Uma função das festas populares é:", o:["Reforçar vínculos e identidades culturais","Eliminar tradições","Substituir a arte","Impedir participação coletiva"], c:0, coment:"Elas fortalecem pertencimento e memória coletiva." },
+    { base:`"A cultura brasileira não é estática; ela se transforma continuamente."`, q:"Isso significa que a cultura brasileira:", o:["Se reinventa ao longo do tempo","Permanece igual para sempre","Só existe no passado","Depende apenas do governo"], c:0, coment:"Cultura é dinâmica e histórica." },
+    { base:`"A música popular brasileira reúne manifestações regionais e urbanas."`, q:"A MPB e outros gêneros brasileiros mostram:", o:["Diversidade de experiências culturais","Ausência de identidade","Predomínio exclusivo estrangeiro","Falta de criatividade"], c:0, coment:"A música brasileira é diversa e dialoga com múltiplos contextos." },
+    { base:`"Museus, arquivos e comunidades ajudam a preservar memórias culturais."`, q:"Preservar cultura significa:", o:["Cuidar de bens, saberes e memórias","Congelar a sociedade","Eliminar transformações","Guardar apenas objetos caros"], c:0, coment:"Preservar é manter vivo o patrimônio material e imaterial." },
+    { base:`"A arte brasileira também pode ser crítica e questionadora."`, q:"Na cultura brasileira, a arte pode:", o:["Debater identidade, desigualdade e memória","Servir só como enfeite","Ignorar a sociedade","Eliminar tradição e inovação"], c:0, coment:"A arte brasileira participa de debates sociais e históricos." },
+    { base:`"O barroco mineiro é importante na história da arte brasileira."`, q:"Um nome ligado ao barroco no Brasil é:", o:["Aleijadinho","Picasso","Dalí","Monet"], c:0, coment:"Aleijadinho é referência do barroco brasileiro." },
+    { base:`"A cultura brasileira envolve encontros, conflitos e trocas constantes."`, q:"Por isso, é correto dizer que ela é:", o:["Plural","Homogênea","Única","Imutável"], c:0, coment:"Pluralidade é traço fundamental da cultura brasileira." },
+    { base:`"Estudar cultura brasileira é estudar também a formação histórica do país."`, q:"Logo, cultura brasileira se relaciona com:", o:["Identidade, memória e sociedade","Somente lazer","Apenas consumo","Só arte europeia"], c:0, coment:"A cultura ajuda a compreender a sociedade brasileira em profundidade." }
+  ]),
+
+  "Interpretação de Imagem": gerarQuestoes("Interpretação de Imagem", [
+    { base:`"Interpretar uma imagem não é apenas descrever o que aparece, mas compreender como ela constrói sentido."`, q:"Interpretar uma imagem envolve:", o:["Analisar forma, contexto e mensagem","Só contar objetos presentes","Ignorar cores e composição","Ver apenas o título"], c:0, coment:"A leitura de imagens considera linguagem visual e contexto." },
+    { base:`"Cores, enquadramento, símbolos e contraste influenciam a mensagem visual."`, q:"Na leitura de uma imagem, esses elementos funcionam como:", o:["Recursos de construção de sentido","Detalhes sem importância","Erros de impressão","Apenas decoração"], c:0, coment:"Os elementos visuais participam da mensagem." },
+    { base:`"Uma fotografia de baixo para cima pode sugerir grandeza ou poder."`, q:"Esse efeito está ligado ao:", o:["Ângulo de visão","Tipo de tinta","Ritmo musical","Tempo dramático"], c:0, coment:"O ângulo altera a percepção do objeto fotografado." },
+    { base:`"Cartazes publicitários usam texto e imagem de forma integrada."`, q:"Em um cartaz, imagem e texto podem:", o:["Trabalhar juntos para persuadir","Ser independentes sempre","Anular um ao outro","Eliminar o público"], c:0, coment:"A combinação verbal e visual é estratégica na comunicação." },
+    { base:`"Símbolos visuais dependem muitas vezes de convenções culturais."`, q:"Um símbolo em imagem:", o:["Pode ter significado cultural compartilhado","É sempre universal sem contexto","Não comunica nada","Só existe em museus"], c:0, coment:"Símbolos visuais podem variar conforme o repertório cultural." },
+    { base:`"O ponto de vista de quem produz a imagem interfere no resultado final."`, q:"Isso mostra que a imagem:", o:["Também expressa escolhas","É neutra sempre","Dispensa intenção","É só cópia do real"], c:0, coment:"Toda imagem envolve seleção, recorte e intenção." },
+    { base:`"Na leitura crítica, é importante perguntar quem produziu, para quem e com qual objetivo."`, q:"Essas perguntas ajudam a compreender:", o:["Contexto e intenção da imagem","Somente a moldura","Apenas o tamanho do arquivo","Só o preço da obra"], c:0, coment:"Contexto de produção é essencial para interpretação crítica." },
+    { base:`"Imagens jornalísticas, artísticas e publicitárias podem usar recursos parecidos, mas com finalidades diferentes."`, q:"Logo, interpretar imagem exige observar também:", o:["Função comunicativa","Só as cores","Apenas o suporte físico","Somente o local da impressão"], c:0, coment:"A finalidade da imagem muda sua leitura." },
+    { base:`"Uma imagem pode reforçar estereótipos ou questioná-los."`, q:"Isso indica que a imagem possui dimensão:", o:["Social e ideológica","Somente decorativa","Apenas matemática","Exclusivamente musical"], c:0, coment:"Imagens participam de discursos sociais." },
+    { base:`"A repetição de elementos visuais pode criar ênfase."`, q:"Quando uma imagem repete formas ou cores, isso pode:", o:["Destacar uma ideia","Eliminar o sentido","Impedir leitura","Substituir o tema"], c:0, coment:"Repetição pode organizar e enfatizar a mensagem." },
+    { base:`"A escala de um objeto na imagem altera sua importância visual."`, q:"Um elemento muito maior que os outros tende a:", o:["Ganhar destaque","Desaparecer","Perder visibilidade","Não mudar nada"], c:0, coment:"Tamanho relativo influencia a hierarquia visual." },
+    { base:`"Imagens podem emocionar, informar, vender ou criticar."`, q:"Isso mostra que a imagem:", o:["Pode cumprir funções variadas","Serve só para decorar","É inútil sem texto","Só existe na pintura"], c:0, coment:"A linguagem visual tem muitas funções sociais." },
+    { base:`"Na arte, a imagem pode ser ambígua e aberta a múltiplas leituras."`, q:"Uma imagem ambígua:", o:["Permite mais de uma interpretação","Tem sentido único obrigatório","Não possui forma","Só é erro de produção"], c:0, coment:"Ambiguidade amplia possibilidades de leitura." },
+    { base:`"Linhas diagonais costumam sugerir dinamismo e movimento."`, q:"Quando uma composição usa muitas diagonais, ela pode parecer:", o:["Mais dinâmica","Mais estática","Sem direção","Sem contraste"], c:0, coment:"Diagonais tendem a ativar a sensação de movimento." },
+    { base:`"Imagens em redes sociais também constroem identidades e narrativas."`, q:"Isso indica que a leitura de imagem é importante também no:", o:["Cotidiano digital","Apenas em museus","Só em escolas de arte","Somente em cinema"], c:0, coment:"Vivemos cercados por imagens no ambiente digital." },
+    { base:`"Uma legenda pode orientar a leitura de uma fotografia."`, q:"A legenda, ao acompanhar a imagem, pode:", o:["Direcionar interpretação","Eliminar a necessidade da imagem","Substituir toda composição visual","Anular o contexto"], c:0, coment:"Texto e imagem podem trabalhar juntos no sentido." },
+    { base:`"Nem toda imagem pretende representar fielmente a realidade."`, q:"Algumas imagens buscam mais:", o:["Expressar ideias e sensações","Copiar exatamente o real","Servir só para arquivo","Evitar qualquer emoção"], c:0, coment:"A imagem pode ser expressiva, simbólica ou conceitual." },
+    { base:`"Ao interpretar uma charge, é importante reconhecer humor, ironia e crítica."`, q:"Na charge, a imagem geralmente busca:", o:["Criticar com humor e síntese visual","Só enfeitar a página","Eliminar opinião","Reproduzir paisagens clássicas"], c:0, coment:"Charge combina humor, crítica e linguagem visual." },
+    { base:`"A leitura visual crítica é uma habilidade importante na sociedade contemporânea."`, q:"Isso porque as imagens:", o:["Influenciam percepções e discursos","Não têm impacto algum","São menos importantes que palavras","Só servem para arte antiga"], c:0, coment:"As imagens participam fortemente da comunicação social." },
+    { base:`"Interpretar imagem é perceber o que se mostra e o que se omite."`, q:"Uma leitura crítica da imagem deve considerar:", o:["Escolhas visuais e ausências","Só o que é mais bonito","Apenas a assinatura","Somente o tamanho"], c:0, coment:"Toda imagem é recorte, escolha e construção de sentido." }
+  ])
+};
+function mostrarMenu() {
+  pararAudioFundo();
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue); margin-bottom:8px;">Escolha um módulo de Artes</h2>
+      <p class="mini">Cada módulo possui <strong>20 questões objetivas</strong>, com áudio e respostas embaralhadas.</p>
+      <div class="grid-areas">
+        ${areasArtes.map(area => `
+          <div class="card-area">
+            <h3>${area.nome}</h3>
+            <p>${area.descricao}</p>
+            <button class="btn" onclick="iniciarArea('${area.nome.replace(/'/g, "\\'")}')">Entrar neste módulo</button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function iniciarArea(nomeArea) {
+  await destravarAudio();
+  areaAtual = nomeArea;
+  questoesAtuais = bancoQuestoes[nomeArea] || [];
+  indiceQuestao = 0;
+  acertosObjetivas = 0;
+  questaoRenderizadaAtual = null;
+
+  if (!questoesAtuais.length) {
+    app.innerHTML = `
+      <div class="box">
+        <h2 style="color:var(--red);">Erro ao abrir o módulo</h2>
+        <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+      </div>
+    `;
+    return;
+  }
+
+  setTimeout(() => {
+    tocarAudioFundo();
+  }, 120);
+
+  carregarQuestao();
+}
+
+function montarEnunciado(questao) {
+  return `
+    <span class="question-label">Base para interpretação:</span>
+    <span class="text-base">${questao.base}</span>
+    <span class="question-label">Pergunta:</span>
+    ${questao.q}
+  `;
+}
+
+function carregarQuestao() {
+  const questao = questoesAtuais[indiceQuestao];
+  const total = questoesAtuais.length;
+  questaoRenderizadaAtual = embaralharAlternativas(questao);
+
+  let html = `
+    <div class="box">
+      <div class="status">
+        <span>${areaAtual}</span>
+        <span>Questão ${indiceQuestao + 1}/${total}</span>
+      </div>
+      <div id="question-text">${montarEnunciado(questaoRenderizadaAtual)}</div>
+      <div class="options-wrap">
+  `;
+
+  questaoRenderizadaAtual.opcoesRenderizadas.forEach((alt, idx) => {
+    html += `<button class="btn option-btn" onclick="responderObjetiva(${idx})">${alt}</button>`;
+  });
+
+  html += `
+      </div>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+
+  app.innerHTML = html;
+}
+
+function responderObjetiva(escolhida) {
+  const botoes = document.querySelectorAll(".option-btn");
+  const correta = questaoRenderizadaAtual.corretaRenderizada;
+
+  botoes.forEach((btn, idx) => {
+    btn.disabled = true;
+    if (idx === correta) btn.classList.add("correct");
+  });
+
+  if (escolhida === correta) {
+    acertosObjetivas++;
+    tocarAcerto();
+  } else {
+    botoes[escolhida].classList.add("wrong");
+    tocarErro();
+  }
+
+  setTimeout(() => {
+    indiceQuestao++;
+    if (indiceQuestao < questoesAtuais.length) {
+      carregarQuestao();
+    } else {
+      finalizarArea();
+    }
+  }, 900);
+}
+
+function finalizarArea() {
+  pararAudioFundo();
+
+  const notaFinal = acertosObjetivas * 10;
+  const totalPossivel = 200;
+  let feedback = "Você concluiu este módulo completo de Artes. Continue treinando os demais módulos para avançar no simulado Gratuito.";
+
+  if (notaFinal >= 160) feedback += " Excelente desempenho neste módulo.";
+  else if (notaFinal >= 100) feedback += " Bom resultado. Ainda dá para elevar sua pontuação.";
+  else feedback += " Este resultado mostra pontos que podem ser reforçados com mais treino.";
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue);">${areaAtual}</h2>
+      <div class="result-number">${notaFinal}/${totalPossivel}</div>
+      <div class="result-sub">Acertos: ${acertosObjetivas}/20</div>
+      <p class="mini" style="margin-bottom:18px;">${feedback}</p>
+
+      <button class="btn" onclick="iniciarArea('${areaAtual.replace(/'/g, "\\'")}')">Refazer este módulo</button>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+}
+
+mostrarMenu();
+
+
+
+</script>
+
+</body>
+</html>
