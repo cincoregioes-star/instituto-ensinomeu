@@ -58,6 +58,6 @@ assert.ok(jsEnd>jsStart);
 new Function("'use strict';"+html.slice(jsStart+inlineTag.length,jsEnd));
 const math=allExtras.adm.filter(q=>q.habilidade==="cálculo aplicado");
 assert.equal(math.length,15,"Deverão existir 15 exercícios quantitativos de Excel");
-const answers=[80,15,5,15,29,92,8,150,"=C5*$B$2",3,75,85,465,5,800];
+const answers=["80 caixas","15 pedidos por turno","5% dos pedidos","15 pedidos/hora","29 pedidos","92% dos pedidos","8 dias","150 minutos","=C5*$B$2","3 ocorrências","R$ 75,00","85% da meta","465 pedidos","5% de devoluções","800 unidades"];
 math.forEach((q,i)=>assert.equal(q.o[q.a],String(answers[i]),"Gabarito numérico inválido no cálculo "+(i+1)));
 console.log("OK Logística: 12 trilhas, 120 questões preservadas, 540 adicionadas, 660 totais; 6 trilhas completas com 5 módulos de 20.");
