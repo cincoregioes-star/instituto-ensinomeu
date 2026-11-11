@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Química Gratuito ENEM - Gabarito Max</title>
+<style>
+:root{--card:#11141b;--card2:#171b24;--blue:#00f3ff;--pink:#ff00e6;--green:#39ff14;--red:#ff003c;--yellow:#ffd400;--muted:#cfcfcf;--line:rgba(255,255,255,.08)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#000;color:#fff;min-height:100vh;padding:20px 12px 40px;text-align:center;overflow-x:hidden}
+header{max-width:1100px;margin:0 auto 24px;border:2px solid var(--blue);border-radius:24px;padding:22px 16px;background:linear-gradient(180deg,#0c0f16,#090b11);box-shadow:0 0 22px rgba(0,243,255,.22)}
+header h1{color:var(--blue);font-size:clamp(2rem,4vw,3rem);text-shadow:0 0 14px rgba(0,243,255,.7);font-weight:900}
+header p{margin-top:10px;color:var(--pink);font-weight:800;font-size:clamp(1rem,2vw,1.3rem)}
+#app{width:100%;max-width:1100px;margin:0 auto}
+.box{width:100%;background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:20px;padding:20px 16px;box-shadow:0 0 20px rgba(0,0,0,.35);overflow:hidden}
+.btn{display:block;width:100%;max-width:560px;margin:10px auto;padding:14px 16px;border:2px solid var(--blue);background:transparent;color:#fff;border-radius:12px;cursor:pointer;font-weight:800;font-size:1rem;line-height:1.45;transition:.2s;white-space:normal;word-break:break-word}
+.btn:hover:not(:disabled){background:var(--blue);color:#000;box-shadow:0 0 18px rgba(0,243,255,.35)}
+.btn-voltar{border-color:#666;color:#ddd}.btn-voltar:hover:not(:disabled){background:#333;color:#fff;box-shadow:none}
+.btn.correct{background:var(--green)!important;border-color:var(--green)!important;color:#000!important}
+.btn.wrong{background:var(--red)!important;border-color:var(--red)!important;color:#fff!important}
+.grid-areas{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.card-area{background:linear-gradient(135deg,rgba(0,243,255,.08),rgba(255,0,230,.08));border:1px solid rgba(0,243,255,.16);border-radius:16px;padding:16px;text-align:left}
+.card-area h3{color:var(--blue);margin-bottom:8px;font-size:1.12rem}
+.card-area p{color:#ddd;font-size:.95rem;line-height:1.45;margin-bottom:10px}
+.status{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:18px;color:var(--pink);font-weight:bold;text-align:left}
+#question-text{font-size:1.05rem;line-height:1.6;margin:20px 0;min-height:88px;text-align:left;word-break:break-word}
+.question-label{display:block;color:var(--yellow);font-weight:bold;margin-bottom:8px}
+.text-base{display:block;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;margin:10px 0 14px;color:#f5f5f5;font-style:italic;line-height:1.65}
+.options-wrap{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.option-btn{width:100%;max-width:100%;margin:0;text-align:left;min-height:58px}
+.result-number{font-size:3rem;color:var(--blue);margin:12px 0;font-weight:900}
+.result-sub{font-size:1.12rem;color:#ddd;margin-bottom:10px}
+.mini{color:var(--muted);font-size:.96rem;line-height:1.5}
+@media(max-width:700px){.grid-areas{grid-template-columns:1fr}.box{padding:16px 12px}#question-text{font-size:1rem}.btn{font-size:.96rem;padding:13px 12px}}
+
+.gratuito-radar-copa-box{
+  width:100%;
+  max-width:820px;
+  margin:18px auto 16px;
+  padding:16px;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(0,243,255,.10),rgba(255,212,0,.12));
+  border:1px solid rgba(255,212,0,.40);
+  box-shadow:0 0 18px rgba(255,212,0,.10);
+  text-align:center;
+}
+.gratuito-radar-copa-box h3{
+  color:#ffd400;
+  margin-bottom:8px;
+  font-size:1.12rem;
+  text-transform:uppercase;
+}
+.gratuito-radar-copa-box p{
+  color:#e5e7eb;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+.gratuito-radar-copa-box .radar-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.gratuito-radar-copa-box button,
+.gratuito-radar-copa-box a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:320px;
+  min-height:48px;
+  border-radius:999px;
+  padding:12px 14px;
+  font-weight:900;
+  text-decoration:none;
+  border:1px solid rgba(255,212,0,.65);
+}
+.gratuito-radar-copa-box button{
+  background:linear-gradient(135deg,#fff4bf,#ffd400,#f59e0b);
+  color:#06142e;
+  cursor:pointer;
+}
+.gratuito-radar-copa-box a{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+</style>
+</head>
+<body>
+<nav aria-label="Navegação EnsinoMeu" style="padding:12px 18px;background:#07172b;text-align:left"><a style="color:#fff;font-weight:700;text-decoration:none;background:#1768ac;padding:9px 13px;border-radius:9px;display:inline-block" href="../index.html">← Voltar ao acervo gratuito</a></nav>
+
+<header>
+<h1>QUÍMICA GRATUITO ENEM</h1>
+<p>10 MÓDULOS • 200 QUESTÕES • ÁUDIOS • RESPOSTAS EMBARALHADAS</p>
+</header>
+
+
+      <div id="app"></div>
+
+<audio id="audio-bg" loop preload="auto" playsinline>
+<source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+<audio id="audio-correct" preload="auto">
+<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+<audio id="audio-wrong" preload="auto">
+<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const app=document.getElementById("app");
+const audioBg=document.getElementById("audio-bg");
+const audioCorrect=document.getElementById("audio-correct");
+const audioWrong=document.getElementById("audio-wrong");
+audioBg.volume=.06;audioCorrect.volume=.45;audioWrong.volume=.45;
+
+let audioLiberado=false,areaAtual="",questoesAtuais=[],indiceQuestao=0,acertosObjetivas=0,questaoRenderizadaAtual=null;
+
+document.addEventListener("click",destravarAudio,{once:true});
+document.addEventListener("touchstart",destravarAudio,{once:true});
+
+function destravarAudio(){
+ if(audioLiberado)return Promise.resolve(true);
+ audioBg.muted=true;
+ return audioBg.play().then(()=>{
+  audioBg.pause();audioBg.currentTime=0;audioBg.muted=false;audioLiberado=true;
+  audioCorrect.play().then(()=>{audioCorrect.pause();audioCorrect.currentTime=0}).catch(()=>{});
+  audioWrong.play().then(()=>{audioWrong.pause();audioWrong.currentTime=0}).catch(()=>{});
+  return true;
+ }).catch(()=>false);
+}
+function tocarAudioFundo(){if(!audioLiberado)return;audioBg.currentTime=0;audioBg.play().catch(()=>{})}
+function pararAudioFundo(){audioBg.pause();audioBg.currentTime=0}
+function tocarAcerto(){audioCorrect.currentTime=0;audioCorrect.play().catch(()=>{})}
+function tocarErro(){audioWrong.currentTime=0;audioWrong.play().catch(()=>{})}
+
+const areasQuimica=[
+{nome:"Matéria e Propriedades",descricao:"Matéria, substâncias, misturas, estados físicos e separação."},
+{nome:"Estrutura Atômica",descricao:"Átomos, partículas, número atômico, massa e íons."},
+{nome:"Tabela Periódica",descricao:"Famílias, períodos, metais, ametais e propriedades periódicas."},
+{nome:"Ligações Químicas",descricao:"Ligações iônicas, covalentes, metálicas e polaridade."},
+{nome:"Funções Inorgânicas",descricao:"Ácidos, bases, sais, óxidos e neutralização."},
+{nome:"Reações Químicas",descricao:"Tipos de reação, balanceamento e conservação da massa."},
+{nome:"Estequiometria",descricao:"Mol, massa molar, proporções e cálculos químicos."},
+{nome:"Soluções",descricao:"Concentração, diluição, mistura e solubilidade."},
+{nome:"Química Orgânica",descricao:"Carbono, cadeias, funções orgânicas e combustíveis."},
+{nome:"Química Ambiental e ENEM",descricao:"Poluição, tratamento de água, energia, reciclagem e cotidiano."}
+];
+
+function criarObjetiva(area,numero,base,q,o,c,coment){return{tipo:"objetiva",area,numero,base,q,o,c,coment}}
+function gerarQuestoes(area,lista){return lista.map((item,i)=>criarObjetiva(area,i+1,item.base,item.q,item.o,item.c,item.coment))}
+function embaralharAlternativas(questao){
+ const pares=questao.o.map((texto,idx)=>({texto,correta:idx===questao.c}));
+ for(let i=pares.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pares[i],pares[j]]=[pares[j],pares[i]]}
+ return{...questao,opcoesRenderizadas:pares.map(p=>p.texto),corretaRenderizada:pares.findIndex(p=>p.correta)}
+}
+
+const bancoQuestoes={
+"Matéria e Propriedades":gerarQuestoes("Matéria e Propriedades",[
+{base:"Matéria é tudo aquilo que possui massa e ocupa lugar no espaço.",q:"Qual alternativa apresenta um exemplo de matéria?",o:["Luz","Som","Água","Sombra"],c:2,coment:"Água possui massa e volume."},
+{base:"Substância pura possui composição definida.",q:"Qual exemplo representa uma substância pura?",o:["Água destilada","Água do mar","Ar atmosférico","Suco natural"],c:0,coment:"Água destilada possui composição definida."},
+{base:"Mistura é formada por duas ou mais substâncias.",q:"Água com sal dissolvido é exemplo de:",o:["Substância simples","Mistura homogênea","Mistura heterogênea","Elemento químico"],c:1,coment:"Solução salina tem aspecto uniforme."},
+{base:"Misturas heterogêneas apresentam mais de uma fase visível.",q:"Água e óleo formam:",o:["Mistura homogênea","Mistura heterogênea","Substância pura","Composto molecular puro"],c:1,coment:"Água e óleo não se misturam completamente."},
+{base:"Estados físicos mais comuns: sólido, líquido e gasoso.",q:"No estado sólido, as partículas estão:",o:["Mais organizadas e próximas","Muito afastadas sempre","Sem movimento nenhum","Sem massa"],c:0,coment:"No sólido há maior organização."},
+{base:"Passagem do sólido para o líquido.",q:"Quando o gelo derrete, ocorre:",o:["Fusão","Condensação","Sublimação","Solidificação"],c:0,coment:"Gelo derretendo é fusão."},
+{base:"Passagem do líquido para o gasoso.",q:"A água fervendo passa por:",o:["Fusão","Vaporização","Condensação","Deposição"],c:1,coment:"Líquido vira vapor."},
+{base:"Passagem do gasoso para o líquido.",q:"Gotículas em tampa fria surgem por:",o:["Condensação","Fusão","Sublimação","Combustão"],c:0,coment:"Vapor vira líquido."},
+{base:"Densidade é massa dividida pelo volume.",q:"Massa 20 g e volume 10 cm³ têm densidade:",o:["1 g/cm³","2 g/cm³","10 g/cm³","20 g/cm³"],c:1,coment:"20/10=2."},
+{base:"Propriedades gerais são comuns a toda matéria.",q:"Qual é uma propriedade geral?",o:["Massa","Ponto de fusão","Densidade específica","Cor característica"],c:0,coment:"Toda matéria tem massa."},
+{base:"Propriedades específicas ajudam a identificar substâncias.",q:"Qual é uma propriedade específica?",o:["Volume","Massa","Ponto de ebulição","Extensão"],c:2,coment:"Ponto de ebulição ajuda na identificação."},
+{base:"Decantação separa componentes por densidade.",q:"Água e areia podem ser separadas por:",o:["Decantação","Destilação fracionada","Imantação","Eletrólise"],c:0,coment:"A areia sedimenta."},
+{base:"Filtração separa sólido insolúvel de líquido.",q:"Café coado é exemplo de:",o:["Filtração","Fusão","Condensação","Sublimação"],c:0,coment:"O filtro retém o pó."},
+{base:"Destilação simples separa líquido de sólido dissolvido.",q:"Para obter água destilada de água salgada, usa-se:",o:["Filtração","Destilação simples","Catação","Peneiração"],c:1,coment:"Água evapora e condensa separada do sal."},
+{base:"Peneiração separa sólidos por tamanho.",q:"Separar areia grossa de areia fina:",o:["Peneiração","Destilação","Decantação gasosa","Combustão"],c:0,coment:"A peneira separa por tamanho."},
+{base:"Catação é separação manual.",q:"Retirar pedras do feijão é:",o:["Filtração","Catação","Destilação","Evaporação"],c:1,coment:"É separação manual."},
+{base:"Imantação separa materiais atraídos por ímã.",q:"Separar limalha de ferro de areia:",o:["Imantação","Decantação","Vaporização","Dissolução fracionada"],c:0,coment:"Ferro é atraído por ímã."},
+{base:"Misturas homogêneas apresentam uma fase.",q:"Qual é mistura homogênea?",o:["Água e óleo","Granito","Álcool e água","Areia e sal seco"],c:2,coment:"Álcool e água formam mistura uniforme."},
+{base:"Misturas heterogêneas têm duas ou mais fases.",q:"Qual é mistura heterogênea?",o:["Ar filtrado","Soro fisiológico","Água mineral sem gás","Água e areia"],c:3,coment:"Água e areia têm fases distintas."},
+{base:"Fenômeno físico não altera a composição química.",q:"Qual é fenômeno físico?",o:["Queima do papel","Ferrugem","Derretimento do gelo","Digestão"],c:2,coment:"Derretimento muda estado físico."}
+]),
+
+"Estrutura Atômica":gerarQuestoes("Estrutura Atômica",[
+{base:"O átomo é formado por núcleo e eletrosfera.",q:"No núcleo estão:",o:["Prótons e nêutrons","Elétrons e fótons","Apenas elétrons","Apenas moléculas"],c:0,coment:"Núcleo contém prótons e nêutrons."},
+{base:"Prótons possuem carga positiva.",q:"A carga do próton é:",o:["Positiva","Negativa","Neutra","Variável sempre"],c:0,coment:"Prótons são positivos."},
+{base:"Elétrons possuem carga negativa.",q:"A carga do elétron é:",o:["Positiva","Negativa","Neutra","Nula sempre"],c:1,coment:"Elétrons são negativos."},
+{base:"Nêutrons não possuem carga elétrica.",q:"A carga do nêutron é:",o:["Positiva","Negativa","Neutra","Dupla"],c:2,coment:"Nêutrons são neutros."},
+{base:"Número atômico representa quantidade de prótons.",q:"Se Z=8, o átomo possui:",o:["8 prótons","8 nêutrons sempre","8 elétrons extras","8 moléculas"],c:0,coment:"Z é número de prótons."},
+{base:"Átomos neutros têm prótons e elétrons em igual quantidade.",q:"Átomo neutro com 11 prótons possui:",o:["10 elétrons","11 elétrons","12 elétrons","22 elétrons"],c:1,coment:"p=e."},
+{base:"Número de massa é prótons + nêutrons.",q:"6 prótons e 6 nêutrons têm massa:",o:["6","12","18","36"],c:1,coment:"A=6+6=12."},
+{base:"Íons possuem carga elétrica.",q:"Cátion é formado quando o átomo:",o:["Ganha elétrons","Perde elétrons","Ganha nêutrons","Perde prótons sempre"],c:1,coment:"Perder elétrons gera carga positiva."},
+{base:"Ânion possui carga negativa.",q:"Ânion é formado quando o átomo:",o:["Perde elétrons","Ganha elétrons","Perde nêutrons","Ganha prótons"],c:1,coment:"Ganhar elétrons gera carga negativa."},
+{base:"Isótopos têm mesmo número atômico e massas diferentes.",q:"Isótopos possuem mesmo número de:",o:["Prótons","Nêutrons","Massa","Moléculas"],c:0,coment:"Mesmo Z."},
+{base:"A eletrosfera é a região dos elétrons.",q:"Elétrons localizam-se na:",o:["Eletrosfera","Núcleo","Massa nuclear","Ligação metálica"],c:0,coment:"Elétrons ficam na eletrosfera."},
+{base:"Rutherford propôs núcleo pequeno e positivo.",q:"Para Rutherford, a maior parte do átomo é:",o:["Maciça","Vazia","Líquida","Sem elétrons"],c:1,coment:"Há grande espaço vazio."},
+{base:"Bohr propôs níveis de energia.",q:"No modelo de Bohr, elétrons ocupam:",o:["Níveis de energia","Misturas heterogêneas","Somente núcleo","Camadas líquidas"],c:0,coment:"Camadas/níveis."},
+{base:"Distribuição eletrônica organiza elétrons em níveis.",q:"O primeiro nível comporta até:",o:["2 elétrons","8 elétrons","18 elétrons","32 elétrons"],c:0,coment:"Camada K comporta 2."},
+{base:"O segundo nível energético comporta até 8 elétrons.",q:"A camada L comporta até:",o:["2","8","18","32"],c:1,coment:"Camada L comporta 8."},
+{base:"A massa do elétron é muito pequena.",q:"Maior parte da massa atômica está:",o:["No núcleo","Na eletrosfera","Nos fótons","No vácuo externo"],c:0,coment:"Prótons e nêutrons concentram massa."},
+{base:"Elementos químicos são definidos pelo número de prótons.",q:"Mesmo número de prótons indica mesmo:",o:["Elemento químico","Estado físico","Tipo de mistura","Ponto de fusão"],c:0,coment:"Número atômico define elemento."},
+{base:"Átomo neutro perde 1 elétron.",q:"Ele vira:",o:["Cátion +1","Ânion -1","Nêutron","Isótopo sem carga"],c:0,coment:"Perder elétron gera positivo."},
+{base:"Átomo neutro ganha 2 elétrons.",q:"Ele vira:",o:["Cátion +2","Ânion -2","Próton","Isótopo radioativo sempre"],c:1,coment:"Ganha 2 elétrons: carga -2."},
+{base:"Estrutura atômica explica propriedades da matéria.",q:"Ela ajuda a explicar:",o:["Propriedades e reações","Velocidade de carros","Sons musicais apenas","Movimento dos planetas apenas"],c:0,coment:"Átomos explicam propriedades químicas."}
+]),
+
+"Tabela Periódica":gerarQuestoes("Tabela Periódica",[
+{base:"A tabela periódica organiza os elementos químicos.",q:"A organização atual é por:",o:["Número atômico","Ponto de fusão apenas","Cor","Estado físico apenas"],c:0,coment:"Segue o número atômico."},
+{base:"Linhas horizontais da tabela.",q:"São chamadas de:",o:["Períodos","Famílias","Isótopos","Moléculas"],c:0,coment:"Períodos são linhas."},
+{base:"Colunas verticais da tabela.",q:"São chamadas de:",o:["Períodos","Famílias ou grupos","Misturas","Reações"],c:1,coment:"Famílias são colunas."},
+{base:"Elementos da mesma família têm propriedades semelhantes.",q:"Geralmente possuem mesmo número de:",o:["Elétrons de valência","Nêutrons sempre","Massa","Cor"],c:0,coment:"Valência influencia propriedades."},
+{base:"Metais conduzem eletricidade.",q:"Qual é metal?",o:["Ferro","Oxigênio","Cloro","Hélio"],c:0,coment:"Ferro é metal."},
+{base:"Ametais são maus condutores.",q:"Qual é ametal?",o:["Sódio","Ferro","Oxigênio","Cobre"],c:2,coment:"Oxigênio é ametal."},
+{base:"Gases nobres têm baixa reatividade.",q:"Qual é gás nobre?",o:["Hélio","Sódio","Cloro","Carbono"],c:0,coment:"Hélio é gás nobre."},
+{base:"Halogênios pertencem à família 17.",q:"Exemplo de halogênio:",o:["Cloro","Neônio","Sódio","Magnésio"],c:0,coment:"Cloro é halogênio."},
+{base:"Metais alcalinos pertencem à família 1.",q:"Um metal alcalino é:",o:["Sódio","Cálcio","Alumínio","Oxigênio"],c:0,coment:"Sódio é alcalino."},
+{base:"Metais alcalino-terrosos pertencem à família 2.",q:"Exemplo:",o:["Magnésio","Cloro","Argônio","Carbono"],c:0,coment:"Magnésio é alcalino-terroso."},
+{base:"Eletronegatividade é tendência de atrair elétrons.",q:"Elemento mais eletronegativo:",o:["Flúor","Sódio","Ferro","Hélio"],c:0,coment:"Flúor é o mais eletronegativo."},
+{base:"Raio atômico varia na tabela.",q:"Em geral, aumenta:",o:["De cima para baixo","Da esquerda para direita sempre","Apenas em gases nobres","Quando perde massa"],c:0,coment:"Mais camadas eletrônicas."},
+{base:"Energia de ionização remove elétron.",q:"Baixa energia de ionização facilita:",o:["Perder elétrons","Ganhar prótons","Não reagir nunca","Virar mistura"],c:0,coment:"Facilita remoção de elétron."},
+{base:"Carbono é essencial aos compostos orgânicos.",q:"Símbolo do carbono:",o:["Ca","C","Co","Cl"],c:1,coment:"Carbono é C."},
+{base:"Oxigênio possui símbolo:",q:"Qual é?",o:["Ox","O","Og","Os"],c:1,coment:"Oxigênio é O."},
+{base:"Sódio tem símbolo:",q:"Qual é?",o:["S","So","Na","Sd"],c:2,coment:"Sódio é Na."},
+{base:"Potássio tem símbolo:",q:"Qual é?",o:["P","Po","K","Pt"],c:2,coment:"Potássio é K."},
+{base:"Fe representa:",q:"Qual elemento?",o:["Flúor","Ferro","Fósforo","Frâncio"],c:1,coment:"Fe é ferro."},
+{base:"Hidrogênio é o menor número atômico.",q:"Número atômico do hidrogênio:",o:["1","2","8","10"],c:0,coment:"H tem 1 próton."},
+{base:"A tabela permite prever comportamentos.",q:"Sua utilidade principal é:",o:["Organizar e comparar elementos","Substituir reações","Eliminar átomos","Medir velocidade"],c:0,coment:"Organiza propriedades."}
+]),
+
+"Ligações Químicas":gerarQuestoes("Ligações Químicas",[
+{base:"Ligações buscam estabilidade.",q:"Regra do octeto relaciona estabilidade a:",o:["8 elétrons de valência","8 prótons sempre","8 nêutrons sempre","8 moléculas"],c:0,coment:"Octeto: 8 elétrons na valência."},
+{base:"Ligação iônica ocorre com transferência de elétrons.",q:"Geralmente ocorre entre:",o:["Metal e ametal","Dois metais","Dois gases nobres","Apenas líquidos"],c:0,coment:"Metal doa, ametal recebe."},
+{base:"Ligação covalente compartilha elétrons.",q:"Geralmente ocorre entre:",o:["Ametais","Metais apenas","Metal e metal","Íons metálicos"],c:0,coment:"Ametais compartilham."},
+{base:"Ligação metálica ocorre entre metais.",q:"Boa condução elétrica ocorre por causa dos:",o:["Elétrons livres","Nêutrons fixos","Prótons soltos","Gases nobres"],c:0,coment:"Elétrons deslocalizados conduzem."},
+{base:"NaCl é formado por sódio e cloro.",q:"Ligação predominante:",o:["Iônica","Covalente apolar","Metálica","Ponte de hidrogênio pura"],c:0,coment:"Metal + ametal."},
+{base:"Água possui ligações H-O.",q:"Na água, a ligação intramolecular é:",o:["Covalente","Metálica","Iônica pura","Nuclear"],c:0,coment:"H e O compartilham elétrons."},
+{base:"Moléculas polares têm distribuição desigual de cargas.",q:"A água é:",o:["Polar","Apolar","Metálica","Iônica cristalina"],c:0,coment:"Água é polar."},
+{base:"Moléculas apolares têm distribuição simétrica.",q:"O2 é:",o:["Polar","Apolar","Iônico","Metálico"],c:1,coment:"Átomos iguais compartilham igualmente."},
+{base:"Compostos iônicos formam retículos cristalinos.",q:"Muitos são, em temperatura ambiente:",o:["Sólidos","Gases nobres","Plasmas","Sempre líquidos"],c:0,coment:"Tendem a ser sólidos."},
+{base:"Metais são maleáveis e dúcteis.",q:"A ligação metálica explica:",o:["Maleabilidade","Baixa condução","Ausência de elétrons","Solubilidade universal"],c:0,coment:"Nuvem eletrônica permite deformação."},
+{base:"Compostos iônicos costumam ter alto ponto de fusão.",q:"Isso ocorre por:",o:["Forte atração eletrostática","Ausência de cargas","Baixa massa sempre","Falta de rede"],c:0,coment:"Íons se atraem fortemente."},
+{base:"Substâncias moleculares são formadas por:",q:"Qual alternativa?",o:["Moléculas","Íons metálicos apenas","Prótons livres","Núcleos sem elétrons"],c:0,coment:"Substâncias moleculares têm moléculas."},
+{base:"Grande diferença de eletronegatividade favorece:",q:"Qual ligação?",o:["Iônica","Metálica pura","Sem ligação","Nuclear"],c:0,coment:"Transferência de elétrons."},
+{base:"Pequena diferença de eletronegatividade favorece:",q:"Qual ligação?",o:["Covalente","Iônica","Metálica sempre","Gravitacional"],c:0,coment:"Compartilhamento."},
+{base:"CO2 possui carbono e oxigênio.",q:"No CO2 há ligações:",o:["Covalentes","Metálicas","Iônicas puras","Radioativas"],c:0,coment:"C e O são ametais."},
+{base:"MgO envolve magnésio e oxigênio.",q:"Ligação predominante:",o:["Iônica","Covalente apolar","Metálica","Ponte de hidrogênio"],c:0,coment:"Metal + ametal."},
+{base:"Semelhante dissolve semelhante.",q:"Isso indica que:",o:["Polares dissolvem polares","Metais dissolvem tudo","Apolar dissolve sempre água","Solubilidade não depende"],c:0,coment:"Interações semelhantes favorecem dissolução."},
+{base:"Água dissolve muitos compostos iônicos.",q:"Isso ocorre porque água é:",o:["Polar","Apolar","Metálica","Gasosa sempre"],c:0,coment:"Polaridade separa íons."},
+{base:"Grafite conduz eletricidade por elétrons móveis.",q:"Grafite é forma do:",o:["Carbono","Oxigênio","Sódio","Cloro"],c:0,coment:"Grafite é carbono."},
+{base:"Ligações determinam propriedades.",q:"Conhecer a ligação ajuda a prever:",o:["Propriedades físicas e químicas","Cor dos rótulos","Velocidade de carros","Altura de prédios"],c:0,coment:"Ligação influencia propriedades."}
+]),
+"Funções Inorgânicas":gerarQuestoes("Funções Inorgânicas",[
+{base:"Ácidos liberam H+ em água segundo Arrhenius.",q:"Qual substância é ácido?",o:["HCl","NaOH","NaCl","CaO"],c:0,coment:"HCl é ácido clorídrico."},
+{base:"Bases liberam OH- em água segundo Arrhenius.",q:"Qual substância é base?",o:["H2SO4","NaOH","CO2","NaCl"],c:1,coment:"NaOH libera OH-."},
+{base:"Sais podem ser formados por neutralização.",q:"NaCl é classificado como:",o:["Sal","Ácido","Base","Óxido ácido"],c:0,coment:"Cloreto de sódio é sal."},
+{base:"Óxidos são compostos binários com oxigênio.",q:"CO2 é um:",o:["Óxido","Sal","Base","Ácido sem oxigênio"],c:0,coment:"CO2 é óxido."},
+{base:"Vinagre contém um ácido orgânico.",q:"O vinagre contém principalmente:",o:["Ácido acético","Hidróxido de sódio","Cloreto de sódio","Óxido de cálcio"],c:0,coment:"Vinagre contém ácido acético."},
+{base:"Soda cáustica é NaOH.",q:"Ela é:",o:["Ácido","Base","Sal neutro","Gás nobre"],c:1,coment:"NaOH é base."},
+{base:"Indicadores mudam de cor conforme pH.",q:"Tornassol azul em ácido fica:",o:["Vermelho","Azul intenso","Verde","Incolor sempre"],c:0,coment:"Ácido torna azul vermelho."},
+{base:"pH menor que 7.",q:"Indica meio:",o:["Ácido","Básico","Neutro","Metálico"],c:0,coment:"pH<7 é ácido."},
+{base:"pH maior que 7.",q:"Indica meio:",o:["Ácido","Básico","Neutro","Salino sempre"],c:1,coment:"pH>7 é básico."},
+{base:"Água pura a 25 °C.",q:"pH aproximado:",o:["3","5","7","10"],c:2,coment:"Água pura é neutra."},
+{base:"Neutralização ocorre entre ácido e base.",q:"Geralmente produz:",o:["Sal e água","Metal e gás nobre","Apenas oxigênio","Apenas carbono"],c:0,coment:"Ácido + base = sal + água."},
+{base:"H2SO4 é ácido sulfúrico.",q:"Ele é:",o:["Ácido","Base","Sal","Óxido"],c:0,coment:"H2SO4 é ácido."},
+{base:"Ca(OH)2 é hidróxido de cálcio.",q:"Ele é:",o:["Base","Ácido","Sal","Óxido"],c:0,coment:"Possui OH-."},
+{base:"NaHCO3 é bicarbonato de sódio.",q:"É classificado como:",o:["Sal","Base forte","Ácido puro","Óxido"],c:0,coment:"É um sal."},
+{base:"CO2 em água pode formar:",q:"Qual ácido?",o:["Ácido carbônico","Soda cáustica","Cloreto de sódio","Metano"],c:0,coment:"CO2 + H2O pode formar H2CO3."},
+{base:"CaO é óxido de cálcio.",q:"CaO é:",o:["Óxido","Ácido","Sal orgânico","Base aquosa"],c:0,coment:"É óxido."},
+{base:"Chuva ácida envolve óxidos poluentes.",q:"Está associada a:",o:["Poluição atmosférica","Gases nobres","Água destilada pura","Ausência de combustão"],c:0,coment:"SOx e NOx formam ácidos."},
+{base:"Antiácidos neutralizam ácido estomacal.",q:"Eles têm caráter geralmente:",o:["Básico","Ácido forte","Neutro sem reação","Radioativo"],c:0,coment:"Neutralizam ácido."},
+{base:"Ácido forte ioniza bastante.",q:"Exemplo:",o:["HCl","CH3COOH","H2O","NaCl"],c:0,coment:"HCl é ácido forte."},
+{base:"Base forte dissocia bastante.",q:"Exemplo:",o:["NaOH","NH4OH","HCl","CO2"],c:0,coment:"NaOH é base forte."}
+]),
+
+"Reações Químicas":gerarQuestoes("Reações Químicas",[
+{base:"Reação química forma novas substâncias.",q:"Qual é reação química?",o:["Queima de papel","Derretimento do gelo","Corte de madeira","Dissolução de sal"],c:0,coment:"Queima forma novas substâncias."},
+{base:"Lei de Lavoisier.",q:"Em sistema fechado, massa total:",o:["Conserva-se","Sempre aumenta","Desaparece","Vira luz toda"],c:0,coment:"Massa se conserva."},
+{base:"Balanceamento conserva átomos.",q:"No balanceamento, ajustam-se:",o:["Coeficientes","Índices das fórmulas","Símbolos","Números atômicos"],c:0,coment:"Ajustam-se coeficientes."},
+{base:"A + B → AB.",q:"Tipo de reação:",o:["Síntese","Decomposição","Deslocamento","Combustão completa"],c:0,coment:"Forma produto mais complexo."},
+{base:"AB → A + B.",q:"Tipo de reação:",o:["Síntese","Decomposição","Neutralização","Dupla troca"],c:1,coment:"Um composto se quebra."},
+{base:"Combustão completa de hidrocarbonetos.",q:"Forma principalmente:",o:["CO2 e H2O","NaCl e H2","O2 e N2","Fe e Cu"],c:0,coment:"Combustão completa gera CO2 e água."},
+{base:"Oxidação pode envolver perda de elétrons.",q:"Quando perde elétrons, sofre:",o:["Oxidação","Redução","Fusão","Condensação"],c:0,coment:"Oxidação é perda."},
+{base:"Redução pode envolver ganho de elétrons.",q:"Quando ganha elétrons, sofre:",o:["Oxidação","Redução","Sublimação","Vaporização"],c:1,coment:"Redução é ganho."},
+{base:"Ferrugem é oxidação do ferro.",q:"Ferrugem é:",o:["Reação química","Mistura homogênea","Mudança física pura","Filtração"],c:0,coment:"Forma novo material."},
+{base:"Bolhas durante uma reação.",q:"Podem indicar:",o:["Formação de gás","Ausência de reação","Congelamento","Filtração"],c:0,coment:"Bolhas sugerem gás."},
+{base:"Precipitado indica formação de sólido.",q:"Precipitado é:",o:["Sólido insolúvel","Solvente","Catalisador","Vapor"],c:0,coment:"Sólido formado em solução."},
+{base:"Catalisador.",q:"Serve para:",o:["Aumentar velocidade da reação","Impedir qualquer reação","Virar produto final sempre","Aumentar massa"],c:0,coment:"Reduz energia de ativação."},
+{base:"Aumento da temperatura.",q:"Geralmente:",o:["Aumenta velocidade da reação","Zera a reação","Elimina colisões","Impede energia"],c:0,coment:"Partículas colidem mais."},
+{base:"Maior concentração de reagentes.",q:"Tende a:",o:["Aumentar colisões efetivas","Diminuir tudo","Eliminar produtos","Congelar sistema"],c:0,coment:"Mais partículas colidem."},
+{base:"Maior superfície de contato.",q:"Tende a:",o:["Acelerar reação","Parar reação","Eliminar massa","Evitar colisão"],c:0,coment:"Mais área exposta."},
+{base:"Na equação H2 + O2 → H2O.",q:"H2 e O2 são:",o:["Reagentes","Produtos","Catalisadores","Solventes"],c:0,coment:"Antes da seta."},
+{base:"Na equação C + O2 → CO2.",q:"CO2 é:",o:["Produto","Reagente","Íon livre","Solvente"],c:0,coment:"Depois da seta."},
+{base:"HCl + NaOH → NaCl + H2O.",q:"Essa reação é:",o:["Neutralização","Combustão","Decomposição","Fotossíntese"],c:0,coment:"Ácido + base."},
+{base:"Reações reorganizam átomos.",q:"Elas produzem:",o:["Novas substâncias","Apenas mudança de forma","Eliminação de átomos","Nada conservado"],c:0,coment:"Há transformação química."},
+{base:"Evidências de reação incluem mudança de cor, gás e precipitado.",q:"Qual é evidência de reação?",o:["Formação de gás","Troca de recipiente","Corte manual","Peneiração"],c:0,coment:"Gás pode indicar reação."}
+]),
+
+"Estequiometria":gerarQuestoes("Estequiometria",[
+{base:"Mol é unidade de quantidade de matéria.",q:"1 mol corresponde a:",o:["6,02 x 10²³ entidades","1 entidade","100 entidades","1 kg sempre"],c:0,coment:"Número de Avogadro."},
+{base:"Massa molar da água H2O.",q:"Valor aproximado:",o:["16 g/mol","18 g/mol","20 g/mol","32 g/mol"],c:1,coment:"2x1+16=18."},
+{base:"Carbono tem massa molar 12 g/mol.",q:"1 mol de carbono tem massa:",o:["6 g","12 g","18 g","24 g"],c:1,coment:"12 g."},
+{base:"Oxigênio atômico tem 16 g/mol.",q:"O2 tem massa molar:",o:["16 g/mol","18 g/mol","32 g/mol","64 g/mol"],c:2,coment:"2x16=32."},
+{base:"2H2 + O2 → 2H2O.",q:"2 mol de H2 formam:",o:["1 mol de H2O","2 mol de H2O","3 mol de H2O","4 mol de H2O"],c:1,coment:"Proporção 2:2."},
+{base:"2H2 + O2 → 2H2O.",q:"1 mol de O2 reage com:",o:["1 mol de H2","2 mol de H2","3 mol de H2","4 mol de H2"],c:1,coment:"Proporção 1:2."},
+{base:"Sistema fechado.",q:"Massa dos reagentes é igual à massa dos:",o:["Produtos","Catalisadores apenas","Solventes","Elétrons"],c:0,coment:"Massa se conserva."},
+{base:"Massa molar do CO2 é 44 g/mol.",q:"1 mol de CO2 tem massa:",o:["22 g","32 g","44 g","88 g"],c:2,coment:"12+32=44."},
+{base:"H2O = 18 g/mol.",q:"2 mol de água possuem:",o:["18 g","24 g","36 g","40 g"],c:2,coment:"2x18=36."},
+{base:"n = m/M.",q:"36 g de água equivalem a:",o:["1 mol","2 mol","3 mol","4 mol"],c:1,coment:"36/18=2."},
+{base:"N2 + 3H2 → 2NH3.",q:"1 mol de N2 forma:",o:["1 mol de NH3","2 mol de NH3","3 mol de NH3","6 mol de NH3"],c:1,coment:"Coeficiente 2."},
+{base:"N2 + 3H2 → 2NH3.",q:"3 mol de H2 formam:",o:["1 mol de NH3","2 mol de NH3","3 mol de NH3","5 mol de NH3"],c:1,coment:"Proporção 3:2."},
+{base:"Reagente limitante acaba primeiro.",q:"Ele determina:",o:["Quantidade máxima de produto","Cor da solução sempre","Massa molar","Número atômico"],c:0,coment:"Limita a produção."},
+{base:"Reagente em excesso.",q:"É aquele que:",o:["Sobra ao final","Acaba primeiro","Não participa nunca","É sempre produto"],c:0,coment:"Não é totalmente consumido."},
+{base:"2Na + Cl2 → 2NaCl.",q:"2 mol de Na formam:",o:["1 mol de NaCl","2 mol de NaCl","3 mol de NaCl","4 mol de NaCl"],c:1,coment:"Coeficiente 2."},
+{base:"NaCl tem massa molar 58,5 g/mol.",q:"1 mol de NaCl tem:",o:["23 g","35,5 g","58,5 g","117 g"],c:2,coment:"23+35,5=58,5."},
+{base:"Coeficientes indicam proporções em:",q:"Qual unidade?",o:["Mol","Cor","Densidade apenas","Temperatura apenas"],c:0,coment:"Proporções molares."},
+{base:"Antes de calcular proporções.",q:"É essencial:",o:["Balancear a equação","Alterar fórmulas","Ignorar massa","Trocar elementos"],c:0,coment:"Balanceamento vem antes."},
+{base:"CH4 = 16 g/mol.",q:"2 mol de CH4 têm:",o:["16 g","24 g","32 g","40 g"],c:2,coment:"2x16=32."},
+{base:"Estequiometria no ENEM.",q:"Exige principalmente:",o:["Equação balanceada e proporções","Chute","Cor da substância","Nome do recipiente"],c:0,coment:"Balanceamento e proporções."}
+]),
+
+"Soluções":gerarQuestoes("Soluções",[
+{base:"Solução é mistura homogênea de soluto e solvente.",q:"Na água salgada, o sal é:",o:["Soluto","Solvente","Precipitado","Catalisador"],c:0,coment:"Sal é dissolvido."},
+{base:"Na água salgada, a água é:",q:"Qual componente?",o:["Solvente","Soluto","Precipitado","Produto"],c:0,coment:"Água dissolve o sal."},
+{base:"Concentração comum é massa/volume.",q:"10 g em 2 L geram:",o:["2 g/L","5 g/L","10 g/L","20 g/L"],c:1,coment:"10/2=5."},
+{base:"Diluição adiciona solvente.",q:"A concentração:",o:["Diminui","Aumenta sempre","Fica infinita","Vira zero obrigatoriamente"],c:0,coment:"Mais solvente dilui."},
+{base:"Solução saturada contém máximo soluto dissolvido.",q:"Quando não dissolve mais soluto, está:",o:["Saturada","Insaturada","Gasosa","Metálica"],c:0,coment:"Atingiu limite."},
+{base:"Solubilidade depende da temperatura.",q:"Para muitos sólidos, aumentar temperatura:",o:["Aumenta solubilidade","Elimina soluto","Zera solvente","Impede dissolução sempre"],c:0,coment:"Muitos sólidos dissolvem melhor em quente."},
+{base:"Solução aquosa de açúcar.",q:"É mistura:",o:["Homogênea","Heterogênea","Substância simples","Elemento"],c:0,coment:"Uma fase."},
+{base:"Solução diluída.",q:"Possui:",o:["Pouco soluto","Muito soluto obrigatoriamente","Sem solvente","Duas fases sempre"],c:0,coment:"Baixa concentração."},
+{base:"Solução concentrada.",q:"Possui:",o:["Mais soluto em relação ao solvente","Nenhum soluto","Apenas solvente","Duas fases obrigatórias"],c:0,coment:"Maior concentração."},
+{base:"Molaridade.",q:"Unidade usual:",o:["mol/L","g","L/mol²","kg/m"],c:0,coment:"Mol por litro."},
+{base:"1 mol em 1 L.",q:"Molaridade:",o:["0,5 mol/L","1 mol/L","2 mol/L","10 mol/L"],c:1,coment:"1/1=1."},
+{base:"2 mol em 4 L.",q:"Concentração molar:",o:["0,5 mol/L","1 mol/L","2 mol/L","8 mol/L"],c:0,coment:"2/4=0,5."},
+{base:"Água dissolve muitas substâncias.",q:"Isso se deve à sua:",o:["Polaridade","Apolaridade","Massa nula","Ausência de ligações"],c:0,coment:"Água é polar."},
+{base:"Óleo não se mistura bem com água.",q:"Isso ocorre porque:",o:["Óleo é apolar e água é polar","Ambos são metais","Água é apolar","Óleo é iônico"],c:0,coment:"Polar e apolar não misturam bem."},
+{base:"Recuperar sal da água salgada.",q:"Pode-se usar:",o:["Evaporação","Catação","Imantação","Decantação de gases"],c:0,coment:"Água evapora e sal fica."},
+{base:"Água potável contém sais dissolvidos.",q:"Ela é geralmente:",o:["Mistura homogênea","Substância pura absoluta","Mistura heterogênea visível","Elemento químico"],c:0,coment:"Contém substâncias dissolvidas."},
+{base:"Soro fisiológico é NaCl em água.",q:"Ele é:",o:["Solução","Substância simples","Óxido","Gás nobre"],c:0,coment:"Mistura homogênea."},
+{base:"Concentração em medicamentos.",q:"Dose incorreta pode causar:",o:["Riscos à saúde","Apenas mudança de cor","Nenhum efeito","Peneiração"],c:0,coment:"Concentração correta é essencial."},
+{base:"Na diluição, quantidade de soluto permanece.",q:"O que aumenta geralmente?",o:["Quantidade de solvente","Número atômico","Massa molar","Tipo de elemento"],c:0,coment:"Adiciona-se solvente."},
+{base:"No ENEM, soluções aparecem em saúde e ambiente.",q:"É importante identificar:",o:["Soluto, solvente e concentração","Apenas a cor","Somente o rótulo","Massa do recipiente"],c:0,coment:"Esses dados orientam o cálculo."}
+]),
+"Química Orgânica":gerarQuestoes("Química Orgânica",[
+{base:"Química Orgânica estuda compostos de carbono.",q:"Elemento central:",o:["Carbono","Sódio","Cloro","Hélio"],c:0,coment:"Orgânica é baseada em carbono."},
+{base:"Carbono forma quatro ligações.",q:"Essa propriedade é:",o:["Tetravalência","Monovalência","Radioatividade","Neutralização"],c:0,coment:"Carbono é tetravalente."},
+{base:"Hidrocarbonetos têm C e H.",q:"Qual é hidrocarboneto?",o:["CH4","H2O","NaCl","NH3"],c:0,coment:"CH4 tem C e H."},
+{base:"Metano é hidrocarboneto simples.",q:"Fórmula do metano:",o:["CH4","CO2","C2H6O","NaOH"],c:0,coment:"Metano é CH4."},
+{base:"Alcanos possuem ligações simples.",q:"Um alcano apresenta:",o:["Somente ligações simples C-C","Ligação tripla sempre","Anel obrigatório","Grupo OH sempre"],c:0,coment:"Alcanos são saturados."},
+{base:"Alcenos possuem ligação dupla.",q:"Ligação característica:",o:["Simples","Dupla","Tripla","Iônica"],c:1,coment:"Alcenos têm C=C."},
+{base:"Alcinos possuem ligação tripla.",q:"Ligação característica:",o:["Simples","Dupla","Tripla","Metálica"],c:2,coment:"Alcinos têm C≡C."},
+{base:"Álcool possui hidroxila.",q:"Grupo funcional dos álcoois:",o:["-OH","-COOH","-NH2","-CHO"],c:0,coment:"Álcool tem -OH."},
+{base:"Ácidos carboxílicos possuem carboxila.",q:"Grupo funcional:",o:["-COOH","-OH","-O-","-NH2"],c:0,coment:"Carboxila é -COOH."},
+{base:"Etanol é álcool.",q:"O etanol pertence à função:",o:["Álcool","Ácido carboxílico","Éster","Amina"],c:0,coment:"Etanol tem -OH."},
+{base:"Gasolina é mistura de hidrocarbonetos.",q:"Formada principalmente por:",o:["Carbono e hidrogênio","Sódio e cloro","Ferro e oxigênio","Hélio e neônio"],c:0,coment:"Hidrocarbonetos."},
+{base:"Combustão completa de hidrocarbonetos.",q:"Forma:",o:["CO2 e H2O","NaCl e H2","O2 e H2","Fe2O3 e NaOH"],c:0,coment:"Completa gera CO2 e água."},
+{base:"Polímeros são macromoléculas.",q:"Plásticos são exemplos de:",o:["Polímeros","Gases nobres","Sais simples","Óxidos metálicos"],c:0,coment:"Muitos plásticos são polímeros."},
+{base:"Monômeros formam polímeros.",q:"Unidade repetida:",o:["Monômero","Íon sulfato","Nêutron","Solvente"],c:0,coment:"Monômero é unidade."},
+{base:"Isomeria.",q:"Isômeros possuem:",o:["Mesma fórmula molecular","Mesmo nome sempre","Mesma estrutura sempre","Mesmo ponto de ebulição obrigatório"],c:0,coment:"Mesma fórmula, estruturas diferentes."},
+{base:"Cadeia cíclica.",q:"É uma cadeia:",o:["Fechada","Aberta","Sem carbono","Iônica"],c:0,coment:"Cíclica forma anel."},
+{base:"Benzeno é aromático.",q:"Compostos aromáticos apresentam:",o:["Anel benzênico","Apenas Na+","Somente ligações iônicas","Ausência de carbono"],c:0,coment:"Aromáticos têm anel."},
+{base:"Ésteres podem ter aromas agradáveis.",q:"São comuns em:",o:["Aromas artificiais","Sal puro","Ferro metálico","Água destilada"],c:0,coment:"Muitos têm cheiro característico."},
+{base:"Aminas possuem nitrogênio.",q:"Função amina contém:",o:["Nitrogênio","Sódio","Cloro metálico","Hélio"],c:0,coment:"Aminas têm N."},
+{base:"Orgânica aparece em combustíveis, alimentos e plásticos.",q:"Tema frequente:",o:["Combustíveis e polímeros","Apenas gases nobres","Eletricidade residencial","Movimento uniforme"],c:0,coment:"Orgânica está no cotidiano."}
+]),
+
+"Química Ambiental e ENEM":gerarQuestoes("Química Ambiental e ENEM",[
+{base:"Química ambiental estuda impactos químicos.",q:"Problema ambiental relacionado:",o:["Chuva ácida","Reflexão em espelho","Som grave","MRU"],c:0,coment:"Chuva ácida envolve química."},
+{base:"CO2 intensifica efeito estufa.",q:"Aumento de CO2 contribui para:",o:["Aquecimento global","Resfriamento total","Eliminação da luz","Formação de metais"],c:0,coment:"CO2 retém calor."},
+{base:"Efeito estufa natural é necessário.",q:"O problema atual é:",o:["Intensificação pelo excesso de gases","Ausência total","Falta de oxigênio puro","Congelamento do Sol"],c:0,coment:"Excesso intensifica."},
+{base:"SO2 e NOx formam ácidos na atmosfera.",q:"Relacionam-se à:",o:["Chuva ácida","Água destilada","Fotossíntese apenas","Neutralização doméstica"],c:0,coment:"Geram ácidos."},
+{base:"Tratamento de água.",q:"Uma etapa comum é:",o:["Filtração","Combustão da água","Fusão do cloro","Radioatividade obrigatória"],c:0,coment:"Filtração remove partículas."},
+{base:"Cloração da água.",q:"Serve para:",o:["Eliminar microrganismos","Aumentar areia","Criar metais","Formar petróleo"],c:0,coment:"Cloro desinfeta."},
+{base:"Coagulação e floculação.",q:"Facilitam:",o:["Agrupamento de partículas","Criação de gases nobres","Fusão de metais","Produção de gasolina"],c:0,coment:"Partículas se agregam."},
+{base:"Reciclagem.",q:"Ajuda a:",o:["Economizar energia e matéria-prima","Aumentar lixo","Eliminar oxigênio","Produzir chuva ácida"],c:0,coment:"Reduz impactos."},
+{base:"Plásticos descartados incorretamente.",q:"Problema:",o:["Persistência no ambiente","Evaporação imediata","Ausência de carbono","Virar água pura"],c:0,coment:"Demoram a degradar."},
+{base:"Biocombustível.",q:"Exemplo:",o:["Etanol","Carvão mineral puro","Gasolina comum","Gás nobre"],c:0,coment:"Etanol é biocombustível."},
+{base:"Combustível fóssil.",q:"Exemplo:",o:["Petróleo","Etanol de cana","Hidrogênio verde","Biogás tratado"],c:0,coment:"Petróleo é fóssil."},
+{base:"Biodiesel é produzido de óleos.",q:"Está associado à função:",o:["Éster","Sal inorgânico","Gás nobre","Óxido metálico"],c:0,coment:"Biodiesel é mistura de ésteres."},
+{base:"pH da água.",q:"Água ácida tem pH:",o:["Menor que 7","Igual a 7 sempre","Maior que 14","Sem escala"],c:0,coment:"Ácido é pH<7."},
+{base:"Eutrofização.",q:"Pode causar:",o:["Proliferação de algas","Aumento eterno de oxigênio","Água destilada","Formação de ouro"],c:0,coment:"Excesso de nutrientes."},
+{base:"Pilhas descartadas incorretamente.",q:"Devem ir para:",o:["Coleta adequada","Rios","Queima em casa","Mistura com alimentos"],c:0,coment:"Coleta evita contaminação."},
+{base:"Catalisadores automotivos.",q:"Reduzem:",o:["Gases tóxicos","Água potável","Oxigênio puro","Luz solar"],c:0,coment:"Convertem poluentes."},
+{base:"Monóxido de carbono.",q:"Prejudica transporte de:",o:["Oxigênio no sangue","Sal na água","Carbono nos ossos","Cálcio na tabela"],c:0,coment:"CO se liga à hemoglobina."},
+{base:"Camada de ozônio.",q:"Filtra:",o:["Radiação UV","Som grave","Empuxo","Pressão hidrostática"],c:0,coment:"Filtra ultravioleta."},
+{base:"Sustentabilidade.",q:"Atitude adequada:",o:["Reduzir, reutilizar e reciclar","Queimar lixo","Jogar óleo no ralo","Aumentar descarte irregular"],c:0,coment:"Os 3 Rs reduzem impactos."},
+{base:"Óleo de cozinha na pia polui a água.",q:"Destino adequado:",o:["Coleta para reciclagem","Ralo da pia","Solo sem tratamento","Rio próximo"],c:0,coment:"Óleo pode ser reciclado."}
+])
+};
+
+function mostrarMenu(){
+ pararAudioFundo();
+ app.innerHTML=`
+ <div class="box">
+ <h2 style="color:var(--blue);margin-bottom:8px;">Escolha um módulo de Química</h2>
+ <p class="mini">Cada módulo possui <strong>20 questões objetivas</strong>, com áudio e respostas embaralhadas.</p>
+ <div class="grid-areas">
+ ${areasQuimica.map(area=>`
+ <div class="card-area">
+ <h3>${area.nome}</h3>
+ <p>${area.descricao}</p>
+ <button class="btn" onclick="iniciarArea('${area.nome.replace(/'/g,"\\'")}')">Entrar neste módulo</button>
+ </div>`).join("")}
+ </div></div>`;
+}
+
+async function iniciarArea(nomeArea){
+ await destravarAudio();
+ areaAtual=nomeArea;
+ questoesAtuais=bancoQuestoes[nomeArea]||[];
+ indiceQuestao=0;
+ acertosObjetivas=0;
+ questaoRenderizadaAtual=null;
+ if(!questoesAtuais.length){
+  app.innerHTML=`<div class="box"><h2 style="color:var(--red);">Erro ao abrir o módulo</h2><button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button></div>`;
+  return;
+ }
+ setTimeout(()=>{tocarAudioFundo()},120);
+ carregarQuestao();
+}
+
+function montarEnunciado(questao){
+ return `<span class="question-label">Base para resolução:</span><span class="text-base">${questao.base}</span><span class="question-label">Pergunta:</span>${questao.q}`;
+}
+
+function carregarQuestao(){
+ const questao=questoesAtuais[indiceQuestao];
+ const total=questoesAtuais.length;
+ questaoRenderizadaAtual=embaralharAlternativas(questao);
+ let html=`<div class="box"><div class="status"><span>${areaAtual}</span><span>Questão ${indiceQuestao+1}/${total}</span></div><div id="question-text">${montarEnunciado(questaoRenderizadaAtual)}</div><div class="options-wrap">`;
+ questaoRenderizadaAtual.opcoesRenderizadas.forEach((alt,idx)=>{html+=`<button class="btn option-btn" onclick="responderObjetiva(${idx})">${alt}</button>`});
+ html+=`</div><button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button></div>`;
+ app.innerHTML=html;
+}
+
+function responderObjetiva(escolhida){
+ const botoes=document.querySelectorAll(".option-btn");
+ const correta=questaoRenderizadaAtual.corretaRenderizada;
+ botoes.forEach((btn,idx)=>{btn.disabled=true;if(idx===correta)btn.classList.add("correct")});
+ if(escolhida===correta){acertosObjetivas++;tocarAcerto()}else{if(botoes[escolhida])botoes[escolhida].classList.add("wrong");tocarErro()}
+ setTimeout(()=>{indiceQuestao++;if(indiceQuestao<questoesAtuais.length){carregarQuestao()}else{finalizarArea()}},900);
+}
+
+function finalizarArea(){
+ pararAudioFundo();
+ const notaFinal=acertosObjetivas*10;
+ const totalPossivel=200;
+ let feedback="Você concluiu este módulo completo de Química. Continue treinando os demais módulos para avançar no simulado gratuito.";
+ if(notaFinal>=160)feedback+=" Excelente desempenho neste módulo.";
+ else if(notaFinal>=100)feedback+=" Bom resultado. Ainda dá para elevar sua pontuação.";
+ else feedback+=" Este resultado mostra pontos que precisam ser reforçados com mais treino.";
+ app.innerHTML=`
+ <div class="box">
+ <h2 style="color:var(--blue);">${areaAtual}</h2>
+ <div class="result-number">${notaFinal}/${totalPossivel}</div>
+ <div class="result-sub">Acertos: ${acertosObjetivas}/20</div>
+ <p class="mini" style="margin-bottom:18px;">${feedback}</p>
+ <button class="btn" onclick="iniciarArea('${areaAtual.replace(/'/g,"\\'")}')">Refazer este módulo</button>
+ <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+ </div>`;
+}
+
+mostrarMenu();
+
+const RADAR_COPA_ALBUM_URL = "https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?v=4000";
+const RADAR_COPA_QUIMICA_GRATUITO_ID = "gabarito-max-quimica-gratuito";
+
+function resgatarBonusGratuitoRadarCopa(){
+  try{
+    const url = "https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?bonus="
+      + encodeURIComponent(RADAR_COPA_QUIMICA_GRATUITO_ID)
+      + "&pacotes=10&v=4000";
+
+    alert("🎁 Bônus gratuito Química registrado: +10 pacotes. O álbum será aberto agora.");
+    window.open(url, "_blank", "noopener");
+  }catch(e){
+    alert("Não foi possível abrir o bônus agora. Tente abrir o álbum novamente.");
+  }
+}
+
+function abrirAlbumRadarCopa(){
+  window.open(RADAR_COPA_ALBUM_URL, "_blank", "noopener");
+}
+
+</script>
+</body>
+</html>

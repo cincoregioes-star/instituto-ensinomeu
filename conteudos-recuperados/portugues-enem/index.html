@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Português Gratuito ENEM</title>
+  <style>
+    :root{
+      --bg:#05070c;
+      --card:#11141b;
+      --card2:#171b24;
+      --blue:#00f3ff;
+      --pink:#ff00e6;
+      --green:#39ff14;
+      --red:#ff003c;
+      --yellow:#ffd400;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --line:rgba(255,255,255,.08);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#000;
+      color:var(--text);
+      min-height:100vh;
+      padding:20px 12px 40px;
+      text-align:center;
+    }
+
+    header{
+      max-width:1100px;
+      margin:0 auto 24px;
+      border:2px solid var(--blue);
+      border-radius:24px;
+      padding:22px 16px;
+      background:linear-gradient(180deg,#0c0f16,#090b11);
+      box-shadow:0 0 22px rgba(0,243,255,.22);
+    }
+
+    header h1{
+      color:var(--blue);
+      font-size:clamp(2rem,4vw,3rem);
+      text-shadow:0 0 14px rgba(0,243,255,.7);
+      font-weight:900;
+    }
+
+    header p{
+      margin-top:10px;
+      color:var(--pink);
+      font-weight:800;
+      font-size:clamp(1rem,2vw,1.3rem);
+    }
+
+    #app{
+      width:100%;
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .box{
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:20px 16px;
+      box-shadow:0 0 20px rgba(0,0,0,.35);
+    }
+
+    .btn{
+      display:block;
+      width:100%;
+      max-width:560px;
+      margin:10px auto;
+      padding:14px 16px;
+      border:2px solid var(--blue);
+      background:transparent;
+      color:#fff;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:800;
+      font-size:1rem;
+      transition:.2s;
+    }
+
+    .btn:hover:not(:disabled){
+      background:var(--blue);
+      color:#000;
+      box-shadow:0 0 18px rgba(0,243,255,.35);
+    }
+
+    .btn-voltar{
+      border-color:#666;
+      color:#ddd;
+    }
+
+    .btn-voltar:hover:not(:disabled){
+      background:#333;
+      color:#fff;
+      box-shadow:none;
+    }
+
+    .btn.correct{
+      background:var(--green);
+      border-color:var(--green);
+      color:#000;
+    }
+
+    .btn.wrong{
+      background:var(--red);
+      border-color:var(--red);
+      color:#fff;
+    }
+
+    .grid-areas{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .card-area{
+      background:linear-gradient(135deg, rgba(0,243,255,.08), rgba(255,0,230,.08));
+      border:1px solid rgba(0,243,255,.16);
+      border-radius:16px;
+      padding:16px;
+      text-align:left;
+    }
+
+    .card-area h3{
+      color:var(--blue);
+      margin-bottom:8px;
+      font-size:1.12rem;
+    }
+
+    .card-area p{
+      color:#ddd;
+      font-size:.95rem;
+      line-height:1.45;
+      margin-bottom:10px;
+    }
+
+    .status{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+      color:var(--pink);
+      font-weight:bold;
+    }
+
+    #question-text{
+      font-size:1.15rem;
+      line-height:1.55;
+      margin:20px 0;
+      min-height:88px;
+    }
+
+    .options-wrap{
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      gap:0;
+      margin-bottom:10px;
+    }
+
+    textarea{
+      width:100%;
+      min-height:140px;
+      background:#0c0f14;
+      border:2px solid var(--blue);
+      color:#fff;
+      border-radius:12px;
+      padding:12px;
+      font-size:1rem;
+      resize:vertical;
+      margin-bottom:14px;
+    }
+
+    .result-number{
+      font-size:3rem;
+      color:var(--blue);
+      margin:12px 0;
+      font-weight:900;
+    }
+
+    .result-sub{
+      font-size:1.12rem;
+      color:#ddd;
+      margin-bottom:10px;
+    }
+
+    .mini{
+      color:var(--muted);
+      font-size:.96rem;
+      line-height:1.5;
+    }
+
+    label{
+      display:block;
+      text-align:left;
+      margin:10px 0 6px;
+      color:var(--yellow);
+      font-weight:bold;
+    }
+
+    .input-nota{
+      width:100%;
+      padding:12px;
+      background:#101010;
+      border:2px solid var(--blue);
+      color:#fff;
+      border-radius:10px;
+      margin-bottom:12px;
+    }
+
+    .disc-box{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      padding:16px;
+      margin-bottom:16px;
+      text-align:left;
+    }
+
+    .disc-box h3{
+      color:var(--blue);
+      margin-bottom:8px;
+    }
+
+    .disc-box p{
+      margin-bottom:8px;
+      line-height:1.5;
+    }
+
+    @media (max-width:700px){
+      .grid-areas{
+        grid-template-columns:1fr;
+      }
+      #question-text{
+        font-size:1.03rem;
+      }
+    }
+  
+.gratuito-radar-copa-box{
+  width:100%;
+  max-width:820px;
+  margin:18px auto 16px;
+  padding:16px;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(0,243,255,.10),rgba(255,212,0,.12));
+  border:1px solid rgba(255,212,0,.40);
+  box-shadow:0 0 18px rgba(255,212,0,.10);
+  text-align:center;
+}
+.gratuito-radar-copa-box h3{
+  color:#ffd400;
+  margin-bottom:8px;
+  font-size:1.12rem;
+  text-transform:uppercase;
+}
+.gratuito-radar-copa-box p{
+  color:#e5e7eb;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+.gratuito-radar-copa-box .radar-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.gratuito-radar-copa-box button,
+.gratuito-radar-copa-box a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:320px;
+  min-height:48px;
+  border-radius:999px;
+  padding:12px 14px;
+  font-weight:900;
+  text-decoration:none;
+  border:1px solid rgba(255,212,0,.65);
+}
+.gratuito-radar-copa-box button{
+  background:linear-gradient(135deg,#fff4bf,#ffd400,#f59e0b);
+  color:#06142e;
+  cursor:pointer;
+}
+.gratuito-radar-copa-box a{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+</style>
+</head>
+<body>
+<nav aria-label="Navegação EnsinoMeu" style="padding:12px 18px;background:#07172b;text-align:left"><a style="color:#fff;font-weight:700;text-decoration:none;background:#1768ac;padding:9px 13px;border-radius:9px;display:inline-block" href="../index.html">← Voltar ao acervo gratuito</a></nav>
+
+<header>
+  <h1>PORTUGUÊS GRATUITO ENEM</h1>
+  <p>10 ÁREAS • 20 OBJETIVAS + 2 DISCURSIVAS POR ÁREA</p>
+</header>
+
+
+      <div id="app"></div>
+
+<audio id="audio-bg" loop preload="auto" playsinline>
+  <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-correct" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-wrong" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const app = document.getElementById("app");
+const audioBg = document.getElementById("audio-bg");
+const audioCorrect = document.getElementById("audio-correct");
+const audioWrong = document.getElementById("audio-wrong");
+
+audioBg.volume = 0.06;
+audioCorrect.volume = 0.28;
+audioWrong.volume = 0.28;
+
+let audioLiberado = false;
+let areaAtual = "";
+let questoesAtuais = [];
+let indiceQuestao = 0;
+let acertosObjetivas = 0;
+let respostasDiscursivas = ["", ""];
+let notasDiscursivas = [0, 0];
+
+document.addEventListener("click", destravarAudio, { once: true });
+document.addEventListener("touchstart", destravarAudio, { once: true });
+
+function destravarAudio() {
+  if (audioLiberado) return;
+  audioBg.muted = true;
+  audioBg.play().then(() => {
+    audioBg.pause();
+    audioBg.currentTime = 0;
+    audioBg.muted = false;
+    audioLiberado = true;
+  }).catch(() => {});
+}
+
+function tocarAudioFundo() {
+  if (!audioLiberado) return;
+  audioBg.currentTime = 0;
+  audioBg.play().catch(() => {});
+}
+
+function pararAudioFundo() {
+  audioBg.pause();
+  audioBg.currentTime = 0;
+}
+
+function tocarAcerto() {
+  audioCorrect.currentTime = 0;
+  audioCorrect.play().catch(() => {});
+}
+
+function tocarErro() {
+  audioWrong.currentTime = 0;
+  audioWrong.play().catch(() => {});
+}
+
+const areasPortugues = [
+  { nome: "Interpretação de Texto", descricao: "Compreensão, inferência, leitura crítica e análise de sentidos." },
+  { nome: "Gramática", descricao: "Classes gramaticais, sujeito, predicado e análise sintática." },
+  { nome: "Ortografia", descricao: "Escrita correta, acentuação e padrões ortográficos." },
+  { nome: "Pontuação", descricao: "Vírgula, dois pontos, travessão e efeitos de sentido." },
+  { nome: "Concordância", descricao: "Concordância verbal e nominal em estruturas cobradas." },
+  { nome: "Regência e Crase", descricao: "Regência verbal, nominal e uso correto da crase." },
+  { nome: "Figuras de Linguagem", descricao: "Metáfora, ironia, hipérbole e recursos expressivos." },
+  { nome: "Funções da Linguagem", descricao: "Referencial, emotiva, conativa, fática e outras." },
+  { nome: "Literatura", descricao: "Escolas literárias, leitura e interpretação literária." },
+  { nome: "Redação", descricao: "Tese, argumentação, coesão, coerência e intervenção." }
+];
+
+function criarObjetiva(area, numero, pergunta, alternativas, correta, comentario) {
+  return {
+    tipo: "objetiva",
+    area,
+    numero,
+    q: pergunta,
+    o: alternativas,
+    c: correta,
+    coment: comentario
+  };
+}
+
+function criarDiscursiva(area, numero, pergunta, gabarito) {
+  return {
+    tipo: "discursiva",
+    area,
+    numero,
+    q: pergunta,
+    gabarito
+  };
+}
+
+function gerarAreaBase(nomeArea, perguntasObjetivas, discursivas) {
+  const objetivas = perguntasObjetivas.map((item, i) =>
+    criarObjetiva(nomeArea, i + 1, item.q, item.o, item.c, item.coment)
+  );
+  const disc = discursivas.map((item, i) =>
+    criarDiscursiva(nomeArea, 21 + i, item.q, item.g)
+  );
+  return [...objetivas, ...disc];
+}
+
+const bancoQuestoes = {
+  "Interpretação de Texto": gerarAreaBase(
+    "Interpretação de Texto",
+    [
+      {q:"Em textos argumentativos, a tese corresponde a:",o:["o tema citado","a opinião defendida pelo autor","um exemplo isolado","o título do texto"],c:1,coment:"A tese é a ideia central defendida pelo autor."},
+      {q:"Quando o leitor deduz uma informação não explícita, ocorre:",o:["cópia","inferência","contradição","paródia"],c:1,coment:"Inferência é concluir algo a partir de pistas."},
+      {q:"A finalidade principal de um anúncio publicitário é:",o:["narrar","descrever","convencer","resumir"],c:2,coment:"O anúncio busca persuadir."},
+      {q:"Linguagem verbal utiliza:",o:["somente imagens","palavras","apenas gestos","símbolos"],c:1,coment:"A linguagem verbal usa palavras."},
+      {q:"Humor por contraste entre expectativa e realidade pode gerar:",o:["ironia","denotação","aliteração","paráfrase"],c:0,coment:"É um caso comum de ironia."},
+      {q:"Em texto informativo, a linguagem tende a ser:",o:["vaga","objetiva","musical","ambígua"],c:1,coment:"Predomina objetividade."},
+      {q:"A ideia principal do parágrafo normalmente gira em torno de:",o:["detalhe aleatório","informação central","apenas o título","imagem"],c:1,coment:"O parágrafo tem um eixo central."},
+      {q:"Concluir algo a partir de pistas textuais exige:",o:["pontuação","morfologia","interpretação","ortografia"],c:2,coment:"É habilidade interpretativa."},
+      {q:"Num texto opinativo, os argumentos servem para:",o:["enfeitar","confundir","sustentar a tese","trocar a ortografia"],c:2,coment:"Argumentos sustentam a tese."},
+      {q:"O contexto ajuda a definir:",o:["ordem alfabética","sentido das palavras","origem latina","pontuação"],c:1,coment:"O contexto define o sentido no uso."},
+      {q:"Informação implícita é aquela que:",o:["aparece literalmente","depende de interpretação","não existe","é sempre falsa"],c:1,coment:"O implícito precisa ser inferido."},
+      {q:"Em manchetes, predomina a busca por:",o:["rima","objetividade","fantasia","versificação"],c:1,coment:"Busca-se objetividade e impacto."},
+      {q:"Leitura crítica exige:",o:["aceitar tudo","identificar intenções","decorar palavras","ignorar contexto"],c:1,coment:"É preciso perceber intenção e efeito."},
+      {q:"Quando o texto usa dados e fatos para convencer, há:",o:["argumentação","narração","descrição","musicalidade"],c:0,coment:"Dados e fatos servem à argumentação."},
+      {q:"Coesão textual relaciona-se à:",o:["ligação entre partes","cor do papel","quantidade de linhas","pontuação aleatória"],c:0,coment:"Coesão liga as partes do texto."},
+      {q:"Um gráfico junto ao texto exige leitura:",o:["decorativa","multimodal","isolada","ortográfica"],c:1,coment:"Texto + gráfico pedem leitura multimodal."},
+      {q:"Intertextualidade acontece quando:",o:["texto dialoga com outro","frase não tem verbo","texto é científico","há erro"],c:0,coment:"É o diálogo entre textos."},
+      {q:"Num texto injuntivo, predomina a intenção de:",o:["narrar","dar instruções","descrever sentimentos","explicar teoria"],c:1,coment:"Texto injuntivo orienta ações."},
+      {q:"Ambiguidade prejudica quando:",o:["facilita entendimento","torna confuso","melhora objetividade","elimina sentidos"],c:1,coment:"Pode confundir o leitor."},
+      {q:"Para compreender um texto, é importante observar:",o:["só a última frase","título, contexto e finalidade","só palavras difíceis","só imagens"],c:1,coment:"Esses elementos ajudam muito."}
+    ],
+    [
+      {q:"Explique o que é inferência em um texto.",g:"É a conclusão feita a partir de pistas do texto, mesmo sem a informação estar explícita."},
+      {q:"Diga por que contexto e finalidade ajudam na interpretação textual.",g:"Porque o sentido das ideias depende da situação de uso e do objetivo do texto."}
+    ]
+  ),
+
+  "Gramática": gerarAreaBase(
+    "Gramática",
+    [
+      {q:"Na frase 'Os alunos chegaram cedo', o núcleo do sujeito é:",o:["os","alunos","chegaram","cedo"],c:1,coment:"O núcleo do sujeito é 'alunos'."},
+      {q:"Verbo indica principalmente:",o:["ação/estado/fenômeno","nome","qualidade","ligação"],c:0,coment:"Verbo expressa ação, estado ou fenômeno."},
+      {q:"Substantivo é a palavra que nomeia:",o:["ações","seres e ideias","qualidades","conjunções"],c:1,coment:"Substantivo nomeia seres e ideias."},
+      {q:"Adjetivo é a palavra que:",o:["nomeia","modifica verbo","caracteriza substantivo","liga orações"],c:2,coment:"Adjetivo caracteriza o substantivo."},
+      {q:"Pronome é a palavra que:",o:["substitui/acompanha o nome","indica ação","expressa intensidade","marca pontuação"],c:0,coment:"Pronome substitui ou acompanha o nome."},
+      {q:"Na frase 'Maria está feliz', o predicado é:",o:["Maria","está","feliz","está feliz"],c:3,coment:"Predicado é o que se declara do sujeito."},
+      {q:"Sujeito oculto ocorre quando:",o:["não existe verbo","pode ser identificado pela desinência","o verbo está no infinitivo","não há oração"],c:1,coment:"O sujeito é identificável."},
+      {q:"Objeto direto é o complemento que:",o:["vem com preposição","não exige preposição obrigatória","indica lugar","funciona como sujeito"],c:1,coment:"Completa verbo sem preposição obrigatória."},
+      {q:"Advérbio modifica:",o:["substantivo","verbo/adjetivo/outro advérbio","pronome","artigo"],c:1,coment:"Essa é sua função principal."},
+      {q:"Artigo é a palavra que:",o:["substitui nome","determina o substantivo","liga orações","indica ação"],c:1,coment:"Artigo acompanha o substantivo."},
+      {q:"Preposição estabelece ideia de:",o:["ligação entre termos","ação","nomeação","tempo verbal"],c:0,coment:"Liga palavras."},
+      {q:"Conjunção é a palavra que:",o:["nomeia","caracteriza","liga termos ou orações","substitui pronomes"],c:2,coment:"Conjunção liga."},
+      {q:"Interjeição expressa:",o:["emoção","lugar","tempo","substantivo"],c:0,coment:"Expressa emoção."},
+      {q:"Na oração 'Choveu muito ontem', o sujeito é:",o:["oculto","simples","inexistente","composto"],c:2,coment:"Fenômeno da natureza."},
+      {q:"Verbos de ligação unem sujeito a:",o:["objeto direto","predicativo","adjunto","vocativo"],c:1,coment:"Ligam sujeito ao predicativo."},
+      {q:"Na frase 'Os meninos brincaram no pátio', 'no pátio' é:",o:["objeto direto","adjunto adverbial de lugar","predicativo","aposto"],c:1,coment:"Indica lugar."},
+      {q:"O predicado nominal tem como núcleo:",o:["um nome","um verbo nocional","interjeição","conjunção"],c:0,coment:"Seu núcleo é um nome."},
+      {q:"Aposto é o termo que:",o:["explica ou especifica outro termo","liga orações","nega","substitui verbo"],c:0,coment:"Aposto explica."},
+      {q:"Vocativo serve para:",o:["explicar","chamar alguém","indicar tempo","substituir sujeito"],c:1,coment:"Vocativo chama o interlocutor."},
+      {q:"Na frase 'João, feche a porta', 'João' é:",o:["aposto","objeto","vocativo","predicativo"],c:2,coment:"É vocativo."}
+    ],
+    [
+      {q:"Explique a diferença entre sujeito e predicado.",g:"Sujeito é o termo sobre o qual se declara algo; predicado é a informação declarada sobre o sujeito."},
+      {q:"O que é objeto direto?",g:"É o complemento verbal sem preposição obrigatória."}
+    ]
+  ),
+
+  "Ortografia": gerarAreaBase(
+    "Ortografia",
+    [
+      {q:"A forma correta é:",o:["excessão","exceção","ecessão","exeção"],c:1,coment:"A grafia correta é 'exceção'."},
+      {q:"A palavra corretamente acentuada é:",o:["ideia","idéia","assembléia","heroí"],c:0,coment:"Após o acordo, 'ideia' não recebe acento."},
+      {q:"A forma correta é:",o:["paralização","paralisação","paralizassão","paralisasão"],c:1,coment:"A forma correta é 'paralisação'."},
+      {q:"A palavra com grafia correta é:",o:["atráz","atrás","atráz","atras"],c:1,coment:"A grafia correta é 'atrás'."},
+      {q:"A alternativa correta é:",o:["previlégio","privilégio","privilêgio","prevelégio"],c:1,coment:"A forma correta é 'privilégio'."},
+      {q:"A palavra corretamente escrita é:",o:["berinjela","geringela","berinjella","gerinjela"],c:0,coment:"A forma correta é 'berinjela'."},
+      {q:"A grafia correta é:",o:["beneficiente","beneficente","benificente","benefisente"],c:1,coment:"A forma correta é 'beneficente'."},
+      {q:"A forma correta é:",o:["impecilho","empencilho","impecílio","impessilho"],c:0,coment:"A forma correta é 'impecilho'."},
+      {q:"A palavra escrita corretamente é:",o:["exceção","esceção","ecseção","exsessão"],c:0,coment:"A forma correta é 'exceção'."},
+      {q:"A alternativa correta é:",o:["mendingo","mendigo","mindigo","mendiggo"],c:1,coment:"A forma correta é 'mendigo'."},
+      {q:"A palavra corretamente escrita é:",o:["sobrancelha","sombrancelha","sobranselha","sombranselha"],c:0,coment:"A forma correta é 'sobrancelha'."},
+      {q:"A grafia correta é:",o:["cabeleireiro","cabelelero","cabelereiro","cabaleireiro"],c:0,coment:"A forma correta é 'cabeleireiro'."},
+      {q:"A forma correta é:",o:["quiser","quizer","qizer","quiserr"],c:0,coment:"A forma correta é 'quiser'."},
+      {q:"A palavra corretamente grafada é:",o:["ansioso","ancioso","ansiozo","ansiozo"],c:0,coment:"A forma correta é 'ansioso'."},
+      {q:"A palavra correta é:",o:["tráz","trás","tras","traz"],c:3,coment:"O verbo é 'traz'."},
+      {q:"A grafia correta é:",o:["houver","ouver","hove","houve"],c:0,coment:"O infinitivo correto é 'houver'."},
+      {q:"A forma correta é:",o:["reivindicar","reinvindicar","reivendicar","reinvidicar"],c:0,coment:"A forma correta é 'reivindicar'."},
+      {q:"A palavra correta é:",o:["seje","seja","ceja","séja"],c:1,coment:"A forma correta é 'seja'."},
+      {q:"A palavra corretamente escrita é:",o:["mecher","mexer","mexeer","mexêr"],c:1,coment:"A forma correta é 'mexer'."},
+      {q:"A forma correta é:",o:["xícara","chícara","xicára","xicara"],c:0,coment:"A forma correta é 'xícara'."}
+    ],
+    [
+      {q:"Explique por que dominar ortografia é importante na prova.",g:"Porque evita erros de escrita, melhora a clareza e fortalece o desempenho em questões e redação."},
+      {q:"O que a ortografia representa na língua?",g:"Representa o conjunto de regras que orienta a escrita correta das palavras."}
+    ]
+  ),
+
+  "Pontuação": gerarAreaBase(
+    "Pontuação",
+    Array.from({length:20}, (_,i)=>({
+      q:[
+        "Em 'João, venha cá', a vírgula separa:",
+        "Os dois pontos podem introduzir:",
+        "A vírgula é obrigatória quando há:",
+        "O ponto final indica:",
+        "O ponto de interrogação é usado em:",
+        "O ponto de exclamação expressa:",
+        "O travessão pode ser usado para:",
+        "O ponto e vírgula costuma separar:",
+        "A vírgula entre sujeito e verbo:",
+        "Parênteses podem indicar:",
+        "Aspas podem marcar:",
+        "Em enumerações, a vírgula serve para:",
+        "Reticências geralmente indicam:",
+        "Uma oração intercalada costuma vir:",
+        "Na frase 'Se chover, ficaremos em casa', a vírgula separa:",
+        "A pontuação adequada ajuda na:",
+        "Em 'Estude muito; a prova está próxima', o ponto e vírgula liga:",
+        "O sinal adequado para pergunta é:",
+        "A frase 'Não, obrigado' traz vírgula para:",
+        "Pontuação inadequada pode provocar:"
+      ][i],
+      o:[
+        ["aposto","vocativo","objeto","adjunto"],
+        ["vocativo","enumeração ou explicação","sujeito","concordância"],
+        ["sujeito e verbo","vocativo","objeto direto","predicado"],
+        ["continuidade","encerramento de ideia","dúvida","ordem"],
+        ["ordens","perguntas","enumerações","citações"],
+        ["neutralidade","emoção/intensidade","enumeração","oposição"],
+        ["substituir verbo","indicar fala","marcar plural","acentuar sílaba"],
+        ["sílabas","orações extensas relacionadas","letras","acentos"],
+        ["é obrigatória","é proibida, salvo intercalações","é opcional","depende do gênero"],
+        ["oração principal","informação acessória","predicado nominal","regência"],
+        ["interjeição","citação ou destaque","sujeito","predicativo"],
+        ["unir sílabas","separar elementos","marcar ironia","formar sujeito"],
+        ["conclusão","suspensão de ideia","pergunta","ordem"],
+        ["sem pontuação","entre vírgulas","com dois pontos","sem verbo"],
+        ["oração subordinada deslocada","vocativo","objeto","aposto"],
+        ["ambiguidade","clareza do sentido","eliminação de verbos","flexão nominal"],
+        ["orações relacionadas","sílabas","substantivos","artigos"],
+        ["!","?",";","..."],
+        ["separar negação destacada","formar predicado","marcar sujeito","indicar crase"],
+        ["maior clareza","duplo sentido","menos leitura","mais substantivos"]
+      ][i],
+      c:[1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,0,1][i],
+      coment:"Questão de pontuação."
+    })),
+    [
+      {q:"Explique por que a pontuação interfere no sentido.",g:"Porque organiza as pausas, as relações entre ideias e evita ambiguidades."},
+      {q:"Quando a vírgula pode ser usada com oração deslocada?",g:"Quando a oração aparece fora da ordem direta e precisa ser destacada."}
+    ]
+  ),
+
+  "Concordância": gerarAreaBase(
+    "Concordância",
+    Array.from({length:20}, (_,i)=>({
+      q:[
+        "A frase correta é:",
+        "A concordância correta é:",
+        "A frase correta é:",
+        "Concordância nominal correta:",
+        "A forma correta é:",
+        "A frase correta é:",
+        "Concordância adequada:",
+        "A frase correta é:",
+        "Forma correta:",
+        "Concordância correta:",
+        "A frase correta é:",
+        "Concordância correta:",
+        "A forma adequada é:",
+        "A frase correta é:",
+        "Concordância nominal correta:",
+        "A frase correta é:",
+        "A opção correta é:",
+        "A frase correta é:",
+        "Forma correta:",
+        "Concordância correta:"
+      ][i],
+      o:[
+        ["Haviam muitos alunos","Havia muitos alunos","Houveram muitos alunos","Existia muitos alunos"],
+        ["Os menino chegaram","Os meninos chegaram","O meninos chegou","Os meninos chegou"],
+        ["Fazem dois anos","Faz dois anos","Fazem dois mês","Faz dois meses"],
+        ["Camisa e calça branca","Camisa e calça brancas","Camisa e calça branco","Camisa e calça bran"],
+        ["Segue anexas as fotos","Seguem anexas as fotos","Segue anexa as fotos","Seguem anexo as fotos"],
+        ["É proibido entrada","É proibida a entrada","É proibido a entrada","É proibidas entradas"],
+        ["Bastante alunos chegaram","Bastantes alunos chegaram","Bastante alunas chegaram","Bastante meninos chegaram"],
+        ["Menos pessoas vieram","Menas pessoas vieram","Menos pessoas veio","Menos pessoa vieram"],
+        ["Os Estados Unidos é grande","Os Estados Unidos são grandes","Os Estados Unidos é grandes","Estados Unidos é grande"],
+        ["Fui eu que fez","Fui eu que fiz","Fui eu que fizeram","Fui eu que faz"],
+        ["Mais de um aluno faltaram","Mais de um aluno faltou","Mais de um aluno faltarem","Mais de um alunos faltou"],
+        ["Tu vai","Tu vais","Tu vaiis","Tu irão"],
+        ["Precisam-se de vendedores","Precisa-se de vendedores","Precisam-se vendedores","Precisa-se vendedores"],
+        ["Vendem-se casas","Vende-se casas","Vendem-se casa","Vende-se casa boas"],
+        ["Ela ficou meio cansada","Ela ficou meia cansada","Ela ficou meios cansada","Ela ficou meio cansadas"],
+        ["Os próprios alunos resolveram","Os próprio alunos resolveram","Os próprias alunos resolveram","O próprios alunos resolveu"],
+        ["Os documentos seguem anexo","Os documentos seguem anexos","Os documentos segue anexos","Os documento seguem anexo"],
+        ["É necessário paciência","É necessária a paciência","É necessárias paciência","É necessários a paciência"],
+        ["A maioria dos alunos faltaram","A maioria dos alunos faltou","A maioria dos alunos faltarão","A maioria dos aluno faltaram"],
+        ["Nem eu nem ele fomos","Nem eu nem ele foi","Nem eu nem ele fomos nós","Nem eu nem ele iria"]
+      ][i],
+      c:[1,1,1,1,1,1,1,0,1,1,1,1,1,0,0,0,1,1,1,1][i],
+      coment:"Questão de concordância."
+    })),
+    [
+      {q:"Explique por que 'havia muitos problemas' está correto.",g:"Porque o verbo haver, com sentido de existir, é impessoal e fica no singular."},
+      {q:"O que é concordância nominal?",g:"É a relação de conformidade entre nomes e seus determinantes ou qualificadores."}
+    ]
+  ),
+
+  "Regência e Crase": gerarAreaBase(
+    "Regência e Crase",
+    Array.from({length:20}, (_,i)=>({
+      q:[
+        "A frase correta é:",
+        "Crase ocorre na fusão de:",
+        "A frase correta é:",
+        "Forma correta:",
+        "A frase correta é:",
+        "Crase antes de palavra masculina:",
+        "A frase correta é:",
+        "A frase correta é:",
+        "Forma correta:",
+        "Verbo 'gostar' rege:",
+        "A frase correta é:",
+        "A forma correta é:",
+        "A frase correta é:",
+        "A regência correta é:",
+        "A frase correta é:",
+        "Crase em locução adverbial feminina:",
+        "A frase correta é:",
+        "A regência correta é:",
+        "Forma correta:",
+        "A frase correta é:"
+      ][i],
+      o:[
+        ["Vou à escola","Vou a escola","Vou à pé","Vou à você"],
+        ["artigo com pronome","preposição a + artigo a(s)","verbo + sujeito","substantivo + adjetivo"],
+        ["Assisti o filme","Assisti ao filme","Assisti no filme","Assisti pelo filme"],
+        ["Obedeço o regulamento","Obedeço ao regulamento","Obedeço no regulamento","Obedeço para o regulamento"],
+        ["Prefiro mais café do que chá","Prefiro café a chá","Prefiro café do que chá","Prefiro café que chá"],
+        ["sempre ocorre","nunca ocorre como regra","ocorre sempre","é obrigatória"],
+        ["Cheguei à tarde","Cheguei a tarde","Cheguei à noite sem contexto","Cheguei a manhã"],
+        ["Refiro-me a ela","Refiro-me à ela","Refiro-me para ela","Refiro-me com ela"],
+        ["Entreguei o livro a professora","Entreguei o livro à professora","Entreguei o livro para à professora","Entreguei o livro à você"],
+        ["sem preposição","preposição de","preposição a","preposição em"],
+        ["Cheguei em casa cedo","Cheguei à casa cedo","Cheguei a casa cedo","Cheguei na casa cedo"],
+        ["Voltei à Bahia","Voltei a Bahia","Voltei para à Bahia","Voltei em Bahia"],
+        ["Dirigi-me àquela aluna","Dirigi-me aquela aluna","Dirigi-me a aquela aluna","Dirigi-me com aquela aluna"],
+        ["Informei-o do fato","Informei ele do fato","Informei para ele o fato","Informei no fato"],
+        ["A peça agradou o público","A peça agradou ao público","A peça agradou no público","A peça agradou com o público"],
+        ["raramente ocorre","pode ocorrer","é proibida","nunca existe"],
+        ["Fui à Roma","Fui a Roma","Fui à Paris obrigatoriamente","Fui à cidades"],
+        ["Namoro com alguém","Namoro alguém","Namoro a alguém","Namoro de alguém"],
+        ["Paguei o débito ao banco","Paguei o débito o banco","Paguei o débito para o banco","Paguei o débito no banco"],
+        ["Fiquei indiferente à situação","Fiquei indiferente a situação","Fiquei indiferente à ela","Fiquei indiferente com situação"]
+      ][i],
+      c:[0,1,1,1,1,1,0,0,1,1,2,0,0,0,1,1,1,1,0,0][i],
+      coment:"Questão de regência e crase."
+    })),
+    [
+      {q:"Explique quando ocorre crase.",g:"Ocorre quando há fusão da preposição 'a' com o artigo 'a/as' ou com pronomes que admitam essa fusão."},
+      {q:"O que é regência verbal?",g:"É a relação de dependência entre o verbo e seus complementos, com ou sem preposição."}
+    ]
+  ),
+
+  "Figuras de Linguagem": gerarAreaBase(
+    "Figuras de Linguagem",
+    Array.from({length:20}, (_,i)=>({
+      q:[
+        "Em 'Meu coração é um deserto', ocorre:",
+        "A ironia acontece quando:",
+        "'Estou morrendo de fome' é exemplo de:",
+        "Personificação é:",
+        "Em 'Li Machado de Assis', ocorre:",
+        "Antítese é a aproximação de:",
+        "Eufemismo serve para:",
+        "Pleonasmo é:",
+        "Em 'O vento cantava', há:",
+        "Comparação ocorre quando há:",
+        "Sinestesia mistura:",
+        "Aliteração é:",
+        "Catacrese ocorre quando:",
+        "Paradoxo une:",
+        "Em 'As ruas acordaram', temos:",
+        "Em 'chorou rios', há:",
+        "Antonomásia é:",
+        "Figura que suaviza a morte em 'partiu desta para melhor':",
+        "'Sua voz era doce' pode indicar:",
+        "As figuras de linguagem têm função de:"
+      ][i],
+      o:[
+        ["metáfora","eufemismo","catacrese","pleonasmo"],
+        ["dizer o oposto do pretendido","repetir sons","exagerar","comparar"],
+        ["antítese","metonímia","hipérbole","prosopopeia"],
+        ["comparar dois seres","dar características humanas a seres não humanos","suprimir termos","aproximar sons"],
+        ["metáfora","metonímia","ironia","eufemismo"],
+        ["sons repetidos","ideias opostas","partes do corpo","sinônimos"],
+        ["suavizar uma ideia","exagerar","comparar","ridicularizar"],
+        ["repetição expressiva","comparação direta","negação dupla","erro ortográfico"],
+        ["metonímia","prosopopeia","sinestesia","aliteração"],
+        ["conectivo comparativo explícito","ironia oculta","repetição exagerada","substituição"],
+        ["planos de tempo","sensações de sentidos diferentes","classes gramaticais","modos verbais"],
+        ["repetição de sons consonantais","oposição de ideias","exagero","substituição nominal"],
+        ["há uso figurado cristalizado","há oposição","há deboche","há comparação explícita"],
+        ["ideias sem relação","ideias contraditórias com sentido expressivo","sinônimos","orações"],
+        ["eufemismo","prosopopeia","metonímia","antonomásia"],
+        ["hipérbole","metáfora","sinestesia","aliteração"],
+        ["usar nome por característica marcante","repetir som vocálico","criar oposição","suprimir termo"],
+        ["ironia","eufemismo","metonímia","paradoxo"],
+        ["catacrese","sinestesia","metonímia","anáfora"],
+        ["ornamentar apenas","produzir efeitos de sentido","corrigir ortografia","marcar tempo"]
+      ][i],
+      c:[0,0,2,1,1,1,0,0,1,0,1,0,0,1,1,0,0,1,1,1][i],
+      coment:"Questão de figuras de linguagem."
+    })),
+    [
+      {q:"Explique o que é metáfora.",g:"É uma comparação implícita entre elementos, sem conectivo comparativo expresso."},
+      {q:"Para que servem as figuras de linguagem em um texto?",g:"Servem para intensificar sentidos e produzir efeitos expressivos."}
+    ]
+  ),
+
+  "Funções da Linguagem": gerarAreaBase(
+    "Funções da Linguagem",
+    Array.from({length:20}, (_,i)=>({
+      q:[
+        "A função referencial prioriza:",
+        "A função emotiva centra-se:",
+        "A função conativa busca:",
+        "A função fática verifica:",
+        "A função metalinguística ocorre quando:",
+        "A função poética valoriza:",
+        "Em manuais e textos informativos, predomina a função:",
+        "Em slogans publicitários, é comum a função:",
+        "Em 'Alô, está me ouvindo?', predomina a função:",
+        "Em um poema, costuma predominar a função:",
+        "Quando o dicionário define uma palavra, há função:",
+        "Textos científicos costumam privilegiar a função:",
+        "Diários pessoais costumam destacar a função:",
+        "A função conativa também é chamada de:",
+        "A função fática aparece muito em:",
+        "No texto literário, a função predominante nem sempre exclui:",
+        "Na frase 'Use protetor solar', predomina a função:",
+        "A função emotiva destaca marcas de:",
+        "A função poética preocupa-se com:",
+        "Quando um texto mistura informação e convencimento, pode haver:"
+      ][i],
+      o:[
+        ["informação objetiva","emoção do emissor","estética","convencimento"],
+        ["no código","no canal","no emissor","no referente"],
+        ["informar","persuadir o receptor","falar da linguagem","testar canal"],
+        ["o canal de comunicação","ortografia","pontuação","tese"],
+        ["a linguagem fala de si","texto convence","autor narra","há rima"],
+        ["o referente","a forma da mensagem","o canal","o receptor"],
+        ["poética","referencial","emotiva","fática"],
+        ["conativa","referencial","metalinguística","fática"],
+        ["poética","fática","emotiva","referencial"],
+        ["referencial","poética","conativa","fática"],
+        ["poética","conativa","metalinguística","emotiva"],
+        ["referencial","emotiva","poética","fática"],
+        ["emotiva","fática","conativa","metalinguística"],
+        ["apelativa","expressiva","poética","informativa"],
+        ["saudações e testes de contato","romances","definições gramaticais","teses científicas"],
+        ["outras funções","o sujeito","o verbo","a coesão"],
+        ["referencial","conativa","emotiva","poética"],
+        ["impessoalidade","subjetividade","objetividade extrema","neutralidade"],
+        ["efeito estético","regras gramaticais","canal aberto","definições técnicas"],
+        ["mais de uma função","erro de linguagem","ausência de sentido","somente fática"]
+      ][i],
+      c:[0,2,1,0,0,1,1,0,1,1,2,0,0,0,0,0,1,1,0,0][i],
+      coment:"Questão sobre funções da linguagem."
+    })),
+    [
+      {q:"Explique o que é função metalinguística.",g:"É a função em que a linguagem é usada para explicar a própria linguagem."},
+      {q:"Por que um anúncio costuma usar função conativa?",g:"Porque procura convencer ou influenciar o receptor."}
+    ]
+  ),
+
+  "Literatura": gerarAreaBase(
+    "Literatura",
+    Array.from({length:20}, (_,i)=>({
+      q:[
+        "O Romantismo valoriza:",
+        "O Realismo caracteriza-se por:",
+        "O Modernismo brasileiro teve marco inicial em:",
+        "O Arcadismo busca:",
+        "No Simbolismo, destaca-se:",
+        "O Naturalismo aproxima-se de visão:",
+        "A 1ª fase do Modernismo tem forte marca de:",
+        "O Parnasianismo valoriza:",
+        "A literatura pode contribuir no ENEM para:",
+        "No Barroco, é comum a presença de:",
+        "Autores e obras devem ser lidos também como:",
+        "A linguagem literária tende a ser:",
+        "No Romantismo, a natureza costuma ser:",
+        "No Realismo, o narrador pode assumir postura:",
+        "A intertextualidade literária acontece quando:",
+        "A função poética na literatura valoriza:",
+        "No ENEM, textos literários exigem:",
+        "O verso livre associa-se mais ao:",
+        "O regionalismo pode aparecer como:",
+        "Uma obra literária pode ser usada na redação como:"
+      ][i],
+      o:[
+        ["objetividade extrema","subjetividade e sentimentalismo","linguagem técnica","impessoalidade"],
+        ["idealização","análise crítica da sociedade","fantasia exagerada","linguagem medieval"],
+        ["1822","1881","1922","1964"],
+        ["simplicidade e equilíbrio","drama urbano","experimentalismo extremo","surrealismo"],
+        ["objetividade jornalística","musicalidade e subjetivismo","linguagem científica","regionalismo documental"],
+        ["cientificista e determinista","idealista","mística","épica medieval"],
+        ["conservadorismo","ruptura e experimentação","parnasianismo puro","linguagem rígida"],
+        ["conteúdo político","forma e perfeição estética","coloquialismo extremo","subjetividade emotiva"],
+        ["repertório e interpretação","memorização de datas","evitar argumentação","substituir gramática"],
+        ["contrastes e conflitos","simplicidade pastoril","objetividade científica","verso livre"],
+        ["contexto cultural e histórico","lista decorada","somente nomes","biografia apenas"],
+        ["unívoca e técnica","plurissignificativa","científica","sem figuras"],
+        ["desvalorizada","idealizada","científica","omitida"],
+        ["crítica e analítica","fantástica e mística","somente lírica","épica"],
+        ["uma obra dialoga com outra","não há tema","erro de impressão","falta narrador"],
+        ["efeito estético","somente informação","objetividade documental","resumo"],
+        ["leitura sensível e contextualizada","memorização","desprezo ao contexto","só o autor"],
+        ["Modernismo","Arcadismo","Parnasianismo","Barroco clássico"],
+        ["representação de espaços e costumes","negação de identidade","ausência de contexto","erro linguístico"],
+        ["repertório sociocultural","pontuação obrigatória","substituto da tese","título fixo"]
+      ][i],
+      c:[1,1,2,0,1,0,1,1,0,0,0,1,1,0,0,0,0,0,0,0][i],
+      coment:"Questão de literatura."
+    })),
+    [
+      {q:"Explique a importância da literatura na prova do ENEM.",g:"Ela amplia repertório, interpretação e leitura crítica, além de fortalecer argumentos."},
+      {q:"O que diferencia linguagem literária da informativa?",g:"A literária valoriza efeitos estéticos, subjetividade e múltiplos sentidos; a informativa tende à objetividade."}
+    ]
+  ),
+
+  "Redação": gerarAreaBase(
+    "Redação",
+    Array.from({length:20}, (_,i)=>({
+      q:[
+        "A redação do ENEM exige predominantemente texto:",
+        "A tese é:",
+        "Argumentos servem para:",
+        "Coesão está ligada a:",
+        "Coerência refere-se à:",
+        "A introdução deve apresentar:",
+        "A conclusão deve apresentar:",
+        "A proposta de intervenção deve ser:",
+        "O repertório sociocultural deve ser:",
+        "A linguagem da redação deve ser:",
+        "Fuga ao tema ocorre quando:",
+        "Um bom desenvolvimento apresenta:",
+        "Conectivos ajudam na:",
+        "A conclusão não deve:",
+        "Agente, ação, meio, finalidade e detalhamento compõem:",
+        "Generalizações frágeis prejudicam a redação porque:",
+        "Exemplos e dados servem para:",
+        "Parágrafos bem organizados ajudam na:",
+        "A norma-padrão é importante porque:",
+        "Uma boa tese deve ser:"
+      ][i],
+      o:[
+        ["narrativo","descritivo","dissertativo-argumentativo","injuntivo"],
+        ["tema da proposta","opinião central defendida","título","conclusão decorada"],
+        ["enfeitar","sustentar a tese","substituir a conclusão","aumentar linhas"],
+        ["ligação entre partes do texto","quantidade de parágrafos","tamanho da letra","uso de imagens"],
+        ["ortografia apenas","lógica e sentido global","quantidade de verbos","pontuação final"],
+        ["somente exemplos","tema e tese","apenas repertório","somente solução"],
+        ["narração","proposta de intervenção","poema","questionário"],
+        ["vaga","detalhada e viável","apenas crítica","sem agente"],
+        ["decorado sem relação","pertinente ao tema","sempre literário","apenas estatístico"],
+        ["coloquial extrema","formal e clara","cheia de gírias","telegráfica"],
+        ["o texto não aborda o recorte","há tese","há intervenção","há 4 parágrafos"],
+        ["argumentos organizados","frases soltas","lista de palavras","só citações"],
+        ["coerência e coesão","redução de linhas","eliminação da tese","troca de tema"],
+        ["retomar a tese","apresentar proposta","trazer ideia desconectada","fechar o raciocínio"],
+        ["proposta de intervenção","título","repertório","introdução"],
+        ["fortalecem a prova","enfraquecem a argumentação","substituem repertório","melhoram coesão"],
+        ["desviar o foco","fortalecer argumentos","trocar a tese","eliminar conclusão"],
+        ["progressão textual","fuga ao tema","ambiguidade","falta de coesão"],
+        ["é exigida na competência linguística","dispensa argumentação","substitui repertório","elimina coesão"],
+        ["genérica e vaga","clara e defensável","contraditória","decorativa"]
+      ][i],
+      c:[2,1,1,0,1,1,1,1,1,1,0,0,0,2,0,1,1,0,0,1][i],
+      coment:"Questão de redação."
+    })),
+    [
+      {q:"Explique o que é tese em uma redação.",g:"É o ponto de vista central defendido ao longo do texto."},
+      {q:"O que torna uma proposta de intervenção completa?",g:"Ela deve apresentar agente, ação, meio, finalidade e detalhamento, respeitando os direitos humanos."}
+    ]
+  )
+};
+
+function mostrarMenu() {
+  pararAudioFundo();
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue); margin-bottom:8px;">Escolha uma área de Português</h2>
+      <p class="mini">Cada área possui <strong>20 questões objetivas</strong> e <strong>2 discursivas</strong>.</p>
+      <div class="grid-areas">
+        ${areasPortugues.map(area => `
+          <div class="card-area">
+            <h3>${area.nome}</h3>
+            <p>${area.descricao}</p>
+            <button class="btn" onclick="iniciarArea('${area.nome.replace(/'/g, "\\'")}')">Entrar nesta área</button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function iniciarArea(nomeArea) {
+  await destravarAudio();
+  areaAtual = nomeArea;
+  questoesAtuais = bancoQuestoes[nomeArea] || [];
+  indiceQuestao = 0;
+  acertosObjetivas = 0;
+  respostasDiscursivas = ["", ""];
+  notasDiscursivas = [0, 0];
+
+  if (!questoesAtuais.length) {
+    app.innerHTML = `
+      <div class="box">
+        <h2 style="color:var(--red);">Erro ao abrir a área</h2>
+        <p class="mini">Essa área ficou sem questões carregadas.</p>
+        <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+      </div>
+    `;
+    return;
+  }
+
+  setTimeout(() => {
+    tocarAudioFundo();
+  }, 120);
+
+  carregarQuestao();
+}
+
+function carregarQuestao() {
+  const questao = questoesAtuais[indiceQuestao];
+  const total = questoesAtuais.length;
+
+  let html = `
+    <div class="box">
+      <div class="status">
+        <span>${areaAtual}</span>
+        <span>Questão ${indiceQuestao + 1}/${total}</span>
+      </div>
+      <div id="question-text">${questao.q}</div>
+  `;
+
+  if (questao.tipo === "objetiva") {
+    html += `<div class="options-wrap">`;
+    questao.o.forEach((alt, idx) => {
+      html += `<button class="btn option-btn" onclick="responderObjetiva(${idx})">${alt}</button>`;
+    });
+    html += `</div>`;
+  } else {
+    const discIndex = indiceQuestao - 20;
+    html += `
+      <textarea id="resposta-discursiva" placeholder="Digite sua resposta aqui...">${respostasDiscursivas[discIndex] || ""}</textarea>
+      <button class="btn" onclick="salvarDiscursivaEAvancar()">Salvar resposta e continuar</button>
+    `;
+  }
+
+  html += `<button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button></div>`;
+  app.innerHTML = html;
+}
+
+function responderObjetiva(escolhida) {
+  const questao = questoesAtuais[indiceQuestao];
+  const botoes = document.querySelectorAll(".option-btn");
+
+  botoes.forEach((btn, idx) => {
+    btn.disabled = true;
+    if (idx === questao.c) btn.classList.add("correct");
+  });
+
+  if (escolhida === questao.c) {
+    acertosObjetivas++;
+    tocarAcerto();
+  } else {
+    botoes[escolhida].classList.add("wrong");
+    tocarErro();
+  }
+
+  setTimeout(() => {
+    indiceQuestao++;
+    if (indiceQuestao < questoesAtuais.length) {
+      carregarQuestao();
+    } else {
+      mostrarAvaliacaoDiscursivas();
+    }
+  }, 900);
+}
+
+function salvarDiscursivaEAvancar() {
+  const discIndex = indiceQuestao - 20;
+  respostasDiscursivas[discIndex] = document.getElementById("resposta-discursiva").value.trim();
+  indiceQuestao++;
+
+  if (indiceQuestao < questoesAtuais.length) {
+    carregarQuestao();
+  } else {
+    mostrarAvaliacaoDiscursivas();
+  }
+}
+
+function mostrarAvaliacaoDiscursivas() {
+  pararAudioFundo();
+  const discursivas = questoesAtuais.filter(q => q.tipo === "discursiva");
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--pink); margin-bottom:10px;">Avalie suas questões discursivas</h2>
+      <p class="mini" style="margin-bottom:18px;">Dê uma nota de 0 a 10 para cada resposta com base no gabarito.</p>
+      ${discursivas.map((q, i) => `
+        <div class="disc-box">
+          <h3>Discursiva ${i + 1}</h3>
+          <p><strong>Pergunta:</strong> ${q.q}</p>
+          <p><strong>Sua resposta:</strong><br>${respostasDiscursivas[i] ? respostasDiscursivas[i] : "<em>Não respondida</em>"}</p>
+          <p style="color:var(--pink);"><strong>Gabarito esperado:</strong><br>${q.gabarito}</p>
+          <label>Nota (0 a 10)</label>
+          <input class="input-nota" type="number" min="0" max="10" value="${notasDiscursivas[i]}" data-index="${i}">
+        </div>
+      `).join("")}
+      <button class="btn" onclick="finalizarArea()">Finalizar área</button>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+}
+
+function finalizarArea() {
+  const inputs = document.querySelectorAll(".input-nota");
+  let somaDisc = 0;
+
+  inputs.forEach(input => {
+    let valor = Number(input.value);
+    if (isNaN(valor) || valor < 0) valor = 0;
+    if (valor > 10) valor = 10;
+    somaDisc += valor;
+  });
+
+  const notaObjetiva = acertosObjetivas * 4;
+  const notaDiscursiva = somaDisc;
+  const notaFinal = notaObjetiva + notaDiscursiva;
+
+  let feedback = "";
+  if (notaFinal >= 85) feedback = "Excelente desempenho. Você está muito forte nessa área de Português.";
+  else if (notaFinal >= 60) feedback = "Bom resultado. Com mais treino, sua nota pode subir bastante.";
+  else feedback = "Você já identificou pontos de melhoria. Continue praticando e revisando.";
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue);">${areaAtual}</h2>
+      <div class="result-number">${notaFinal}/100</div>
+      <div class="result-sub">Objetivas: ${notaObjetiva}/80 • Discursivas: ${notaDiscursiva}/20</div>
+      <p class="mini" style="margin-bottom:18px;">${feedback}</p>
+      <button class="btn" onclick="iniciarArea('${areaAtual.replace(/'/g, "\\'")}')">Refazer esta área</button>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+}
+
+mostrarMenu();
+
+const RADAR_COPA_ALBUM_URL = "https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?v=4000";
+const RADAR_COPA_PORTUGUES_GRATUITO_ID = "gabarito-max-portugues-gratuito";
+
+function resgatarBonusGratuitoRadarCopa(){
+  try{
+    const url = "https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?bonus="
+      + encodeURIComponent(RADAR_COPA_PORTUGUES_GRATUITO_ID)
+      + "&pacotes=10&v=4000";
+
+    alert("🎁 Bônus gratuito Português registrado: +10 pacotes. O álbum será aberto agora.");
+    window.open(url, "_blank", "noopener");
+  }catch(e){
+    alert("Não foi possível abrir o bônus agora. Tente abrir o álbum novamente.");
+  }
+}
+
+function abrirAlbumRadarCopa(){
+  window.open(RADAR_COPA_ALBUM_URL, "_blank", "noopener");
+}
+
+</script>
+
+</body>
+</html>

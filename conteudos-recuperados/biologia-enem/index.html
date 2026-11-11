@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biologia Gratuito ENEM - Gabarito Max</title>
+<style>
+:root{--card:#11141b;--card2:#171b24;--blue:#00f3ff;--pink:#ff00e6;--green:#39ff14;--red:#ff003c;--yellow:#ffd400;--muted:#cfcfcf;--line:rgba(255,255,255,.08)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#000;color:#fff;min-height:100vh;padding:20px 12px 40px;text-align:center;overflow-x:hidden}
+header{max-width:1100px;margin:0 auto 24px;border:2px solid var(--blue);border-radius:24px;padding:22px 16px;background:linear-gradient(180deg,#0c0f16,#090b11);box-shadow:0 0 22px rgba(0,243,255,.22)}
+header h1{color:var(--blue);font-size:clamp(2rem,4vw,3rem);text-shadow:0 0 14px rgba(0,243,255,.7);font-weight:900}
+header p{margin-top:10px;color:var(--pink);font-weight:800;font-size:clamp(1rem,2vw,1.3rem)}
+#app{width:100%;max-width:1100px;margin:0 auto}
+.box{width:100%;background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:20px;padding:20px 16px;box-shadow:0 0 20px rgba(0,0,0,.35);overflow:hidden}
+.btn{display:block;width:100%;max-width:560px;margin:10px auto;padding:14px 16px;border:2px solid var(--blue);background:transparent;color:#fff;border-radius:12px;cursor:pointer;font-weight:800;font-size:1rem;line-height:1.45;transition:.2s;white-space:normal;word-break:break-word}
+.btn:hover:not(:disabled){background:var(--blue);color:#000;box-shadow:0 0 18px rgba(0,243,255,.35)}
+.btn-voltar{border-color:#666;color:#ddd}.btn-voltar:hover:not(:disabled){background:#333;color:#fff;box-shadow:none}
+.btn.correct{background:var(--green)!important;border-color:var(--green)!important;color:#000!important}
+.btn.wrong{background:var(--red)!important;border-color:var(--red)!important;color:#fff!important}
+.grid-areas{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.card-area{background:linear-gradient(135deg,rgba(0,243,255,.08),rgba(255,0,230,.08));border:1px solid rgba(0,243,255,.16);border-radius:16px;padding:16px;text-align:left}
+.card-area h3{color:var(--blue);margin-bottom:8px;font-size:1.12rem}
+.card-area p{color:#ddd;font-size:.95rem;line-height:1.45;margin-bottom:10px}
+.status{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:18px;color:var(--pink);font-weight:bold;text-align:left}
+#question-text{font-size:1.05rem;line-height:1.6;margin:20px 0;min-height:88px;text-align:left;word-break:break-word}
+.question-label{display:block;color:var(--yellow);font-weight:bold;margin-bottom:8px}
+.text-base{display:block;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;margin:10px 0 14px;color:#f5f5f5;font-style:italic;line-height:1.65}
+.options-wrap{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}.option-btn{width:100%;max-width:100%;margin:0;text-align:left;min-height:58px}
+.result-number{font-size:3rem;color:var(--blue);margin:12px 0;font-weight:900}.result-sub{font-size:1.12rem;color:#ddd;margin-bottom:10px}.mini{color:var(--muted);font-size:.96rem;line-height:1.5}
+@media(max-width:700px){.grid-areas{grid-template-columns:1fr}.box{padding:16px 12px}#question-text{font-size:1rem}.btn{font-size:.96rem;padding:13px 12px}}
+
+.gratuito-radar-copa-box{
+  width:100%;
+  max-width:820px;
+  margin:18px auto 16px;
+  padding:16px;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(0,243,255,.10),rgba(255,212,0,.12));
+  border:1px solid rgba(255,212,0,.40);
+  box-shadow:0 0 18px rgba(255,212,0,.10);
+  text-align:center;
+}
+.gratuito-radar-copa-box h3{
+  color:#ffd400;
+  margin-bottom:8px;
+  font-size:1.12rem;
+  text-transform:uppercase;
+}
+.gratuito-radar-copa-box p{
+  color:#e5e7eb;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+.gratuito-radar-copa-box .radar-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.gratuito-radar-copa-box button,
+.gratuito-radar-copa-box a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:320px;
+  min-height:48px;
+  border-radius:999px;
+  padding:12px 14px;
+  font-weight:900;
+  text-decoration:none;
+  border:1px solid rgba(255,212,0,.65);
+}
+.gratuito-radar-copa-box button{
+  background:linear-gradient(135deg,#fff4bf,#ffd400,#f59e0b);
+  color:#06142e;
+  cursor:pointer;
+}
+.gratuito-radar-copa-box a{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+</style>
+</head>
+<body>
+<nav aria-label="Navegação EnsinoMeu" style="padding:12px 18px;background:#07172b;text-align:left"><a style="color:#fff;font-weight:700;text-decoration:none;background:#1768ac;padding:9px 13px;border-radius:9px;display:inline-block" href="../index.html">← Voltar ao acervo gratuito</a></nav>
+<header>
+<h1>BIOLOGIA GRATUITO ENEM</h1>
+<p>10 MÓDULOS • 200 QUESTÕES • ÁUDIOS • RESPOSTAS EMBARALHADAS</p>
+</header>
+
+
+      <div id="app"></div>
+
+<audio id="audio-bg" loop preload="auto" playsinline>
+<source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+<audio id="audio-correct" preload="auto">
+<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+<audio id="audio-wrong" preload="auto">
+<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const app=document.getElementById("app");
+const audioBg=document.getElementById("audio-bg");
+const audioCorrect=document.getElementById("audio-correct");
+const audioWrong=document.getElementById("audio-wrong");
+audioBg.volume=.06;audioCorrect.volume=.45;audioWrong.volume=.45;
+
+let audioLiberado=false,areaAtual="",questoesAtuais=[],indiceQuestao=0,acertosObjetivas=0,questaoRenderizadaAtual=null;
+
+document.addEventListener("click",destravarAudio,{once:true});
+document.addEventListener("touchstart",destravarAudio,{once:true});
+
+function destravarAudio(){
+ if(audioLiberado)return Promise.resolve(true);
+ audioBg.muted=true;
+ return audioBg.play().then(()=>{
+  audioBg.pause();audioBg.currentTime=0;audioBg.muted=false;audioLiberado=true;
+  audioCorrect.play().then(()=>{audioCorrect.pause();audioCorrect.currentTime=0}).catch(()=>{});
+  audioWrong.play().then(()=>{audioWrong.pause();audioWrong.currentTime=0}).catch(()=>{});
+  return true;
+ }).catch(()=>false);
+}
+function tocarAudioFundo(){if(!audioLiberado)return;audioBg.currentTime=0;audioBg.play().catch(()=>{})}
+function pararAudioFundo(){audioBg.pause();audioBg.currentTime=0}
+function tocarAcerto(){audioCorrect.currentTime=0;audioCorrect.play().catch(()=>{})}
+function tocarErro(){audioWrong.currentTime=0;audioWrong.play().catch(()=>{})}
+
+const areasBiologia=[
+{nome:"Citologia",descricao:"Células, organelas, membrana, metabolismo e divisão celular."},
+{nome:"Bioquímica",descricao:"Água, sais, carboidratos, lipídios, proteínas, enzimas e ácidos nucleicos."},
+{nome:"Genética",descricao:"DNA, genes, hereditariedade, cruzamentos e biotecnologia."},
+{nome:"Evolução",descricao:"Darwinismo, seleção natural, adaptação, especiação e evidências."},
+{nome:"Ecologia",descricao:"Cadeias alimentares, ciclos biogeoquímicos, relações ecológicas e impactos."},
+{nome:"Botânica",descricao:"Plantas, tecidos vegetais, fotossíntese, reprodução e transporte."},
+{nome:"Zoologia",descricao:"Grupos animais, características, reprodução e adaptações."},
+{nome:"Fisiologia Humana",descricao:"Sistemas do corpo humano, homeostase, saúde e funcionamento."},
+{nome:"Microbiologia e Saúde",descricao:"Vírus, bactérias, fungos, protozoários, doenças e prevenção."},
+{nome:"Biotecnologia e ENEM",descricao:"Vacinas, transgênicos, clonagem, DNA, ambiente e cotidiano."}
+];
+
+function criarObjetiva(area,numero,base,q,o,c,coment){return{tipo:"objetiva",area,numero,base,q,o,c,coment}}
+function gerarQuestoes(area,lista){return lista.map((item,i)=>criarObjetiva(area,i+1,item.base,item.q,item.o,item.c,item.coment))}
+function embaralharAlternativas(questao){
+ const pares=questao.o.map((texto,idx)=>({texto,correta:idx===questao.c}));
+ for(let i=pares.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pares[i],pares[j]]=[pares[j],pares[i]]}
+ return{...questao,opcoesRenderizadas:pares.map(p=>p.texto),corretaRenderizada:pares.findIndex(p=>p.correta)}
+}
+
+const bancoQuestoes={
+"Citologia":gerarQuestoes("Citologia",[
+{base:"A célula é a unidade básica estrutural e funcional dos seres vivos.",q:"A menor unidade viva capaz de realizar funções vitais é:",o:["Átomo","Célula","Tecido","Órgão"],c:1,coment:"A célula é a unidade fundamental da vida."},
+{base:"Células procariontes não possuem núcleo delimitado por membrana.",q:"Um exemplo de organismo procarionte é:",o:["Bactéria","Fungo","Planta","Animal"],c:0,coment:"Bactérias são procariontes."},
+{base:"Células eucariontes possuem núcleo organizado.",q:"Qual estrutura abriga o material genético em células eucariontes?",o:["Ribossomo","Núcleo","Lisossomo","Parede celular"],c:1,coment:"O núcleo guarda o DNA."},
+{base:"A membrana plasmática controla entrada e saída de substâncias.",q:"Essa propriedade é chamada de:",o:["Permeabilidade seletiva","Fotossíntese","Fermentação","Digestão intracelular"],c:0,coment:"A membrana seleciona o que entra e sai."},
+{base:"Mitocôndrias participam da respiração celular.",q:"A principal função das mitocôndrias é produzir:",o:["ATP","DNA extracelular","Celulose","Clorofila"],c:0,coment:"Mitocôndrias produzem ATP."},
+{base:"Ribossomos participam da produção de proteínas.",q:"A organela responsável pela síntese proteica é:",o:["Ribossomo","Mitocôndria","Lisossomo","Centríolo"],c:0,coment:"Ribossomos sintetizam proteínas."},
+{base:"Lisossomos possuem enzimas digestivas.",q:"A função principal dos lisossomos é:",o:["Digestão intracelular","Produção de glicose","Transporte de oxigênio","Fotossíntese"],c:0,coment:"Lisossomos digerem moléculas e estruturas."},
+{base:"Cloroplastos estão presentes em células vegetais.",q:"Cloroplastos realizam:",o:["Respiração anaeróbia","Fotossíntese","Síntese de lipídios apenas","Digestão extracelular"],c:1,coment:"Cloroplastos fazem fotossíntese."},
+{base:"Parede celular vegetal é rica em celulose.",q:"A parede celular confere à célula vegetal:",o:["Rigidez e proteção","Movimento por cílios","Produção de anticorpos","Digestão de proteínas"],c:0,coment:"A parede dá sustentação e proteção."},
+{base:"O citoplasma abriga organelas celulares.",q:"O citoplasma é:",o:["Região entre membrana e núcleo","Apenas DNA","Apenas parede celular","Apenas clorofila"],c:0,coment:"É a região interna onde ficam organelas."},
+{base:"Osmose é passagem de água por membrana semipermeável.",q:"Na osmose, movimenta-se principalmente:",o:["Água","Gás carbônico","Proteína","DNA"],c:0,coment:"Osmose é movimento de água."},
+{base:"Difusão simples ocorre a favor do gradiente de concentração.",q:"Na difusão, substâncias tendem a ir:",o:["Do menos concentrado para o mais concentrado","Do mais concentrado para o menos concentrado","Sempre contra o gradiente","Somente com ATP"],c:1,coment:"Difusão ocorre a favor do gradiente."},
+{base:"Transporte ativo exige gasto energético.",q:"O transporte ativo utiliza geralmente:",o:["ATP","Luz lunar","Clorofila apenas","Parede celular"],c:0,coment:"Transporte ativo consome energia."},
+{base:"Mitose é divisão celular que gera células geneticamente iguais.",q:"A mitose produz:",o:["Duas células iguais","Quatro células haploides","Gametas apenas","Células sem DNA"],c:0,coment:"Mitose gera duas células-filhas semelhantes."},
+{base:"Meiose reduz o número de cromossomos.",q:"A meiose está relacionada à formação de:",o:["Gametas","Tecidos musculares apenas","Cloroplastos","Mitocôndrias"],c:0,coment:"Meiose forma gametas."},
+{base:"O núcleo celular contém cromossomos.",q:"Cromossomos são formados principalmente por:",o:["DNA e proteínas","Lipídios apenas","Água e sais","Glicose pura"],c:0,coment:"Cromossomos têm DNA associado a proteínas."},
+{base:"O retículo endoplasmático rugoso possui ribossomos aderidos.",q:"Ele participa principalmente da síntese de:",o:["Proteínas","Água","Sais minerais","Gás oxigênio"],c:0,coment:"Ribossomos produzem proteínas."},
+{base:"Complexo golgiense modifica e empacota substâncias.",q:"Uma função do complexo golgiense é:",o:["Secreção celular","Fotossíntese","Produção de ATP","Controle genético"],c:0,coment:"Ele empacota e secreta substâncias."},
+{base:"Células animais não possuem parede celular de celulose.",q:"Uma diferença comum entre célula vegetal e animal é a presença, na vegetal, de:",o:["Parede celular","Centríolo obrigatório","Lisossomo exclusivo","Hemoglobina"],c:0,coment:"Célula vegetal possui parede celular."},
+{base:"A teoria celular afirma que os seres vivos são formados por células.",q:"Segundo essa teoria, toda célula surge de:",o:["Outra célula preexistente","Matéria sem vida sempre","Água pura","Luz solar"],c:0,coment:"Toda célula vem de outra célula."}
+]),
+
+"Bioquímica":gerarQuestoes("Bioquímica",[
+{base:"A água é a substância mais abundante nos seres vivos.",q:"Uma função da água nos organismos é:",o:["Atuar como solvente","Armazenar informação genética","Formar parede de quitina sempre","Produzir anticorpos sozinha"],c:0,coment:"A água dissolve muitas substâncias."},
+{base:"Sais minerais participam de diversas funções biológicas.",q:"O cálcio é importante para:",o:["Ossos e dentes","Fotossíntese humana","Produção de petróleo","Formação de DNA viral apenas"],c:0,coment:"Cálcio participa da formação óssea."},
+{base:"Carboidratos são importantes fontes de energia.",q:"A glicose é um:",o:["Carboidrato","Lipídio","Proteína","Ácido nucleico"],c:0,coment:"Glicose é carboidrato."},
+{base:"Lipídios podem armazenar energia.",q:"Uma função dos lipídios é:",o:["Reserva energética","Produzir DNA diretamente","Formar ribossomos exclusivamente","Transportar impulsos nervosos apenas"],c:0,coment:"Lipídios armazenam energia."},
+{base:"Proteínas são formadas por aminoácidos.",q:"A unidade básica das proteínas é:",o:["Aminoácido","Glicose","Nucleotídeo","Ácido graxo"],c:0,coment:"Proteínas são polímeros de aminoácidos."},
+{base:"Enzimas aceleram reações químicas nos seres vivos.",q:"A maioria das enzimas é:",o:["Proteína","Lipídio","Sal mineral","Carboidrato simples"],c:0,coment:"Muitas enzimas são proteínas."},
+{base:"Enzimas possuem especificidade pelo substrato.",q:"Substrato é:",o:["Molécula sobre a qual a enzima atua","Produto final sempre","Água pura","Célula sem núcleo"],c:0,coment:"Substrato é o reagente da enzima."},
+{base:"DNA e RNA são ácidos nucleicos.",q:"A função principal do DNA é:",o:["Armazenar informação genética","Produzir energia imediata","Formar gordura","Controlar osmose sozinho"],c:0,coment:"DNA contém informação hereditária."},
+{base:"Nucleotídeos formam ácidos nucleicos.",q:"A unidade básica do DNA é:",o:["Nucleotídeo","Aminoácido","Glicose","Ácido graxo"],c:0,coment:"DNA é formado por nucleotídeos."},
+{base:"ATP é molécula relacionada à energia celular.",q:"ATP é conhecido como:",o:["Moeda energética da célula","Proteína estrutural","Material genético principal","Pigmento vegetal"],c:0,coment:"ATP fornece energia para processos celulares."},
+{base:"Amido é carboidrato de reserva em vegetais.",q:"Nos animais, a reserva de carboidrato é:",o:["Glicogênio","Celulose","Quitina","Clorofila"],c:0,coment:"Animais armazenam glicose como glicogênio."},
+{base:"Celulose é componente da parede celular vegetal.",q:"A celulose é um:",o:["Carboidrato estrutural","Lipídio hormonal","Proteína motora","Ácido nucleico"],c:0,coment:"Celulose é polissacarídeo estrutural."},
+{base:"Vitaminas atuam em pequenas quantidades no metabolismo.",q:"A falta de vitamina C pode causar:",o:["Escorbuto","Diabetes tipo 1 sempre","Anemia falciforme","Daltonismo"],c:0,coment:"Deficiência de vitamina C causa escorbuto."},
+{base:"Proteínas podem ter função estrutural, enzimática e de transporte.",q:"A hemoglobina é uma proteína que transporta:",o:["Oxigênio","Glicose apenas","DNA","Lipídios no núcleo"],c:0,coment:"Hemoglobina transporta oxigênio."},
+{base:"Desnaturação proteica altera a estrutura da proteína.",q:"Um fator que pode desnaturar proteínas é:",o:["Temperatura elevada","Ausência total de água sempre","Presença de DNA","Luz visível sempre"],c:0,coment:"Calor pode desnaturar proteínas."},
+{base:"Fosfolipídios compõem membranas celulares.",q:"A membrana plasmática possui bicamada de:",o:["Fosfolipídios","Celulose","Amido","Quitina"],c:0,coment:"Membranas têm bicamada fosfolipídica."},
+{base:"Ácidos graxos fazem parte de muitos lipídios.",q:"Triglicerídeos são importantes como:",o:["Reserva energética","Informação genética","Enzimas digestivas","Anticorpos específicos"],c:0,coment:"Triglicerídeos armazenam energia."},
+{base:"RNA participa da síntese de proteínas.",q:"Um tipo de RNA que leva informação ao ribossomo é:",o:["RNA mensageiro","DNA mitocondrial","ATP","Colesterol"],c:0,coment:"RNAm leva a mensagem genética."},
+{base:"Sais minerais podem atuar na transmissão nervosa.",q:"Sódio e potássio são importantes para:",o:["Impulsos nervosos","Fotossíntese em animais","Formação de celulose humana","Produção de clorofila"],c:0,coment:"Na+ e K+ participam do potencial de ação."},
+{base:"Biomoléculas são essenciais à vida.",q:"Carboidratos, lipídios, proteínas e ácidos nucleicos são:",o:["Compostos orgânicos importantes","Gases nobres","Sais metálicos apenas","Substâncias sem carbono sempre"],c:0,coment:"São biomoléculas orgânicas."}
+]),
+
+"Genética":gerarQuestoes("Genética",[
+{base:"Gene é um segmento de DNA relacionado a uma característica.",q:"Genes são formados por:",o:["DNA","Lipídios","Amido","Sais minerais"],c:0,coment:"Genes são segmentos de DNA."},
+{base:"DNA armazena informação genética.",q:"A sigla DNA refere-se ao:",o:["Ácido desoxirribonucleico","Ácido ribonucleico","Adenosina trifosfato","Proteína nuclear"],c:0,coment:"DNA é ácido desoxirribonucleico."},
+{base:"RNA participa da expressão gênica.",q:"A sigla RNA refere-se ao:",o:["Ácido ribonucleico","Ácido desoxirribonucleico","Ribossomo nuclear ativo","Reserva natural animal"],c:0,coment:"RNA é ácido ribonucleico."},
+{base:"Cromossomos carregam genes.",q:"Humanos possuem, nas células somáticas, quantos cromossomos?",o:["23","46","44","92"],c:1,coment:"Células somáticas humanas têm 46 cromossomos."},
+{base:"Gametas humanos são haploides.",q:"Gametas humanos possuem:",o:["23 cromossomos","46 cromossomos","92 cromossomos","Nenhum cromossomo"],c:0,coment:"Gametas têm metade do número cromossômico."},
+{base:"Alelos são formas alternativas de um gene.",q:"Dois alelos iguais formam indivíduo:",o:["Homozigoto","Heterozigoto","Mutante obrigatório","Haploide sempre"],c:0,coment:"Homozigoto tem alelos iguais."},
+{base:"Alelos diferentes formam indivíduo heterozigoto.",q:"Aa é exemplo de:",o:["Homozigoto dominante","Heterozigoto","Homozigoto recessivo","Alelo nulo"],c:1,coment:"Aa tem alelos diferentes."},
+{base:"Genótipo é a constituição genética.",q:"AA, Aa e aa representam:",o:["Genótipos","Fenótipos apenas","Ecossistemas","Tecidos"],c:0,coment:"São combinações alélicas."},
+{base:"Fenótipo é característica observável.",q:"Cor dos olhos é exemplo de:",o:["Fenótipo","Alelo invisível","Cromossomo sexual apenas","Mutação letal sempre"],c:0,coment:"Fenótipo é expressão observável."},
+{base:"Mendel estudou herança em ervilhas.",q:"Mendel é conhecido como pai da:",o:["Genética","Ecologia","Citologia moderna","Botânica evolutiva apenas"],c:0,coment:"Mendel fundou bases da genética."},
+{base:"Alelos dominantes se expressam em heterozigose.",q:"Em Aa, se A é dominante, o fenótipo será:",o:["Dominante","Recessivo","Nulo","Sempre intermediário"],c:0,coment:"A domina sobre a."},
+{base:"Para característica recessiva aparecer, geralmente é necessário:",q:"Qual genótipo?",o:["aa","Aa","AA","A_ sempre dominante"],c:0,coment:"Recessivo se expressa em homozigose recessiva."},
+{base:"Cruzamento Aa x Aa.",q:"A proporção genotípica esperada é:",o:["1 AA : 2 Aa : 1 aa","3 AA : 1 aa","1 Aa : 1 aa","100% AA"],c:0,coment:"Quadro de Punnett gera 1:2:1."},
+{base:"Cruzamento Aa x aa.",q:"Probabilidade de descendente aa:",o:["0%","25%","50%","100%"],c:2,coment:"Metade Aa e metade aa."},
+{base:"Mutação é alteração no material genético.",q:"Mutação ocorre no:",o:["DNA","Citoplasma apenas","Meio externo apenas","Lipídio"],c:0,coment:"Mutação altera DNA."},
+{base:"Biotecnologia usa conhecimentos genéticos.",q:"Organismo transgênico possui:",o:["Gene de outra espécie ou modificado","Ausência total de DNA","Somente RNA","Nenhuma alteração genética"],c:0,coment:"Transgênicos recebem genes modificados/inseridos."},
+{base:"Clonagem gera indivíduos geneticamente semelhantes.",q:"Clone é:",o:["Cópia genética","Mistura heterogênea","Célula sem núcleo","Organismo sem DNA"],c:0,coment:"Clone tem material genético semelhante."},
+{base:"Teste de DNA compara sequências genéticas.",q:"Ele pode ser usado para:",o:["Identificação de parentesco","Medir pressão arterial","Produzir oxigênio","Separar água e óleo"],c:0,coment:"DNA identifica parentesco."},
+{base:"Herança ligada ao sexo envolve genes em cromossomos sexuais.",q:"Daltonismo é frequentemente associado ao cromossomo:",o:["X","Y apenas","21","Mitocondrial sempre"],c:0,coment:"Daltonismo comum é ligado ao X."},
+{base:"A genética explica transmissão de características.",q:"O estudo da hereditariedade envolve:",o:["Genes e alelos","Apenas órgãos","Somente ecossistemas","Rochas sedimentares"],c:0,coment:"Hereditariedade depende de genes."}
+]),
+"Evolução":gerarQuestoes("Evolução",[
+{base:"Evolução biológica é mudança nas populações ao longo do tempo.",q:"A evolução ocorre principalmente em:",o:["Populações","Indivíduos isolados durante a vida","Rochas","Moléculas de água"],c:0,coment:"Populações evoluem ao longo de gerações."},
+{base:"Darwin propôs a seleção natural.",q:"A seleção natural favorece indivíduos:",o:["Mais adaptados ao ambiente","Mais fortes sempre","Maiores sempre","Sem variação genética"],c:0,coment:"Aptidão depende do ambiente."},
+{base:"Variação genética é importante para evolução.",q:"Sem variação genética, a seleção natural:",o:["Tem menos material para atuar","Aumenta sempre","Cria genes do nada","Não depende do ambiente"],c:0,coment:"A seleção atua sobre variações existentes."},
+{base:"Adaptação aumenta chance de sobrevivência e reprodução.",q:"Uma adaptação é:",o:["Característica vantajosa em certo ambiente","Mudança intencional do indivíduo","Doença obrigatória","Ausência de reprodução"],c:0,coment:"Adaptações favorecem sobrevivência/reprodução."},
+{base:"Fósseis são evidências da evolução.",q:"Fósseis ajudam a:",o:["Reconstruir história da vida","Medir glicose","Produzir proteínas","Formar órgãos"],c:0,coment:"Fósseis registram organismos antigos."},
+{base:"Órgãos homólogos têm origem evolutiva comum.",q:"Eles indicam:",o:["Ancestralidade comum","Ausência de evolução","Mesma função sempre","Criação de células"],c:0,coment:"Homologia sugere ancestral comum."},
+{base:"Órgãos análogos têm função semelhante, mas origem diferente.",q:"Asas de insetos e aves são exemplo de:",o:["Analogias","Homologias obrigatórias","Vestígios","Mutação neutra"],c:0,coment:"Têm função semelhante e origens diferentes."},
+{base:"Seleção artificial é feita por humanos.",q:"Raças de cães são resultado de:",o:["Seleção artificial","Deriva continental","Fotossíntese","Osmose"],c:0,coment:"Humanos selecionaram características."},
+{base:"Deriva genética envolve mudanças aleatórias.",q:"A deriva genética é mais intensa em populações:",o:["Pequenas","Infinitas","Sem DNA","Sem reprodução"],c:0,coment:"Populações pequenas sofrem mais deriva."},
+{base:"Fluxo gênico é troca de genes entre populações.",q:"Migração pode causar:",o:["Fluxo gênico","Fotossíntese","Fusão nuclear","Digestão"],c:0,coment:"Migração leva genes entre populações."},
+{base:"Especiação é formação de novas espécies.",q:"Isolamento reprodutivo favorece:",o:["Especiação","Respiração celular","Fermentação láctica","Osmose"],c:0,coment:"Isolamento pode levar à formação de espécies."},
+{base:"Mutação gera novas variações genéticas.",q:"Mutação é importante porque:",o:["Pode criar novos alelos","Elimina todo DNA","Impede reprodução sempre","Não tem relação com evolução"],c:0,coment:"Mutação gera diversidade genética."},
+{base:"A resistência bacteriana a antibióticos é exemplo de evolução.",q:"O uso inadequado de antibióticos favorece:",o:["Bactérias resistentes","Fim das bactérias","Ausência de seleção","Mutação em humanos apenas"],c:0,coment:"Bactérias resistentes sobrevivem e se multiplicam."},
+{base:"Camuflagem pode ser adaptação.",q:"A camuflagem ajuda o organismo a:",o:["Evitar predadores ou capturar presas","Produzir DNA","Eliminar mutações","Respirar sem oxigênio"],c:0,coment:"Camuflagem aumenta chance de sobrevivência."},
+{base:"Mimetismo é semelhança com outro organismo ou ambiente.",q:"Mimetismo pode ajudar na:",o:["Defesa contra predadores","Produção de ATP apenas","Digestão de celulose","Formação de fósseis"],c:0,coment:"Mimetismo pode enganar predadores."},
+{base:"Lamarck defendia uso e desuso e herança de caracteres adquiridos.",q:"A teoria de Lamarck ficou conhecida por:",o:["Uso e desuso","Seleção natural","Genética molecular","Deriva genética moderna"],c:0,coment:"Lamarck propôs uso e desuso."},
+{base:"Darwin não conhecia os genes, mas explicou a seleção natural.",q:"A síntese moderna uniu Darwinismo com:",o:["Genética","Astrologia","Geografia física apenas","Química inorgânica"],c:0,coment:"Neodarwinismo une seleção e genética."},
+{base:"Evolução não significa progresso obrigatório.",q:"Na Biologia, evolução significa:",o:["Mudança nas populações ao longo do tempo","Melhora sempre","Transformação individual por esforço","Mudança de humor"],c:0,coment:"Evolução é mudança hereditária em populações."},
+{base:"Biodiversidade é resultado de processos evolutivos.",q:"A diversidade de espécies está relacionada a:",o:["Evolução e especiação","Apenas clima atual","Somente alimentação","Ausência de reprodução"],c:0,coment:"Evolução gera diversidade."},
+{base:"O ENEM cobra evolução em contexto de saúde e ambiente.",q:"Um exemplo frequente é:",o:["Resistência a antibióticos","Cálculo de pH","Circuito elétrico","Óptica geométrica"],c:0,coment:"Resistência microbiana é evolução em ação."}
+]),
+
+"Ecologia":gerarQuestoes("Ecologia",[
+{base:"Ecologia estuda relações entre seres vivos e ambiente.",q:"O conjunto de seres vivos de uma área é chamado de:",o:["Comunidade","População apenas","Biosfera inteira","Órgão"],c:0,coment:"Comunidade reúne populações diferentes."},
+{base:"População é grupo de indivíduos da mesma espécie em uma área.",q:"Um grupo de capivaras em um parque é:",o:["População","Comunidade","Ecossistema","Biosfera"],c:0,coment:"Mesma espécie em uma área."},
+{base:"Ecossistema inclui fatores vivos e não vivos.",q:"Água, luz e temperatura são fatores:",o:["Abióticos","Bióticos","Genéticos","Celulares"],c:0,coment:"Fatores abióticos não são vivos."},
+{base:"Produtores fazem fotossíntese.",q:"Em uma cadeia alimentar, plantas geralmente são:",o:["Produtores","Consumidores primários","Decompositores","Predadores finais"],c:0,coment:"Plantas produzem matéria orgânica."},
+{base:"Consumidores se alimentam de outros seres.",q:"Herbívoros são consumidores:",o:["Primários","Secundários","Terciários sempre","Decompositores"],c:0,coment:"Herbívoros comem produtores."},
+{base:"Decompositores reciclam matéria orgânica.",q:"Fungos e bactérias atuam como:",o:["Decompositores","Produtores","Herbívoros","Predadores de topo apenas"],c:0,coment:"Eles decompõem restos orgânicos."},
+{base:"Cadeia alimentar mostra transferência de energia.",q:"A energia entra na maioria dos ecossistemas pela:",o:["Luz solar","Respiração dos animais","Decomposição de rochas","Água pura"],c:0,coment:"Produtores captam luz solar."},
+{base:"Teia alimentar reúne várias cadeias.",q:"Uma teia alimentar é:",o:["Conjunto de cadeias interligadas","Uma célula animal","Um órgão vegetal","Um tipo de DNA"],c:0,coment:"Teias mostram relações alimentares complexas."},
+{base:"Pirâmide de energia mostra perda de energia entre níveis tróficos.",q:"Ao passar de um nível para outro, a energia disponível:",o:["Diminui","Aumenta sempre","Fica igual","Vira matéria toda"],c:0,coment:"Há perda de energia como calor."},
+{base:"Relação harmônica beneficia pelo menos um sem prejudicar o outro.",q:"Mutualismo é relação em que:",o:["Ambos se beneficiam","Ambos se prejudicam","Um mata o outro","Não há interação"],c:0,coment:"Mutualismo beneficia os dois."},
+{base:"Comensalismo beneficia uma espécie sem prejudicar a outra.",q:"No comensalismo:",o:["Uma espécie se beneficia e a outra não é prejudicada","Ambas morrem","Ambas competem","Uma sempre parasita a outra"],c:0,coment:"Uma se beneficia, outra é neutra."},
+{base:"Parasitismo prejudica o hospedeiro.",q:"Carrapato em cachorro é exemplo de:",o:["Parasitismo","Mutualismo","Comensalismo","Protocooperação"],c:0,coment:"Carrapato se beneficia e prejudica o hospedeiro."},
+{base:"Competição ocorre por recursos limitados.",q:"Duas espécies disputando alimento fazem:",o:["Competição","Mutualismo","Decomposição","Fotossíntese"],c:0,coment:"Disputa por recurso é competição."},
+{base:"Predatismo envolve captura de presa.",q:"Leão caçando zebra é:",o:["Predatismo","Parasitismo","Mutualismo","Comensalismo"],c:0,coment:"Predador mata a presa."},
+{base:"Ciclo da água envolve evaporação, condensação e precipitação.",q:"Chuva corresponde à:",o:["Precipitação","Fotossíntese","Respiração","Nitrificação"],c:0,coment:"Chuva é precipitação."},
+{base:"Ciclo do carbono envolve fotossíntese e respiração.",q:"A fotossíntese retira da atmosfera:",o:["CO2","O2","N2","H2"],c:0,coment:"Plantas absorvem CO2."},
+{base:"Eutrofização ocorre por excesso de nutrientes na água.",q:"Ela pode causar:",o:["Proliferação de algas","Aumento eterno de oxigênio","Desaparecimento de microrganismos sempre","Formação de petróleo"],c:0,coment:"Excesso de nutrientes favorece algas."},
+{base:"Desmatamento reduz habitats.",q:"Uma consequência do desmatamento é:",o:["Perda de biodiversidade","Aumento garantido de espécies","Fim do efeito estufa","Aumento de água potável sempre"],c:0,coment:"Destruir habitats reduz biodiversidade."},
+{base:"Bioacumulação ocorre quando substâncias se acumulam nos seres vivos.",q:"Poluentes persistentes podem aumentar ao longo da cadeia em um processo chamado:",o:["Magnificação trófica","Fototropismo","Fermentação","Nitrificação"],c:0,coment:"Concentração aumenta nos níveis tróficos."},
+{base:"Sustentabilidade busca equilíbrio entre sociedade e ambiente.",q:"Uma prática sustentável é:",o:["Reciclagem e consumo consciente","Descarte irregular","Queimada indiscriminada","Poluição de rios"],c:0,coment:"Reciclagem reduz impactos."}
+]),
+
+"Botânica":gerarQuestoes("Botânica",[
+{base:"Plantas são organismos eucariontes e geralmente fotossintetizantes.",q:"A organela responsável pela fotossíntese é:",o:["Cloroplasto","Mitocôndria","Lisossomo","Ribossomo"],c:0,coment:"Cloroplastos realizam fotossíntese."},
+{base:"A fotossíntese produz matéria orgânica.",q:"Na fotossíntese, plantas utilizam:",o:["CO2, água e luz","Oxigênio e glicose apenas","Nitrogênio e sal","Proteína e gordura"],c:0,coment:"CO2, água e luz são usados."},
+{base:"A clorofila é pigmento verde.",q:"Sua função é:",o:["Captar luz","Digerir proteínas","Bombear sangue","Produzir anticorpos"],c:0,coment:"Clorofila capta energia luminosa."},
+{base:"Raiz fixa a planta e absorve água e sais.",q:"A principal função da raiz é:",o:["Absorção e fixação","Fotossíntese principal","Produção de sementes apenas","Transporte de pólen"],c:0,coment:"Raiz absorve água e fixa."},
+{base:"Caule sustenta e transporta substâncias.",q:"O caule participa do:",o:["Suporte e condução","Apenas armazenamento de DNA","Digestão externa","Respiração pulmonar"],c:0,coment:"Caule sustenta e conduz seiva."},
+{base:"Folhas são locais importantes de fotossíntese.",q:"Folhas possuem muitos:",o:["Cloroplastos","Lisossomos digestivos animais","Neurônios","Glóbulos vermelhos"],c:0,coment:"Folhas têm cloroplastos."},
+{base:"Xilema transporta seiva bruta.",q:"A seiva bruta é composta principalmente por:",o:["Água e sais minerais","Glicose e hormônios apenas","Proteínas animais","Sangue"],c:0,coment:"Xilema transporta água e sais."},
+{base:"Floema transporta seiva elaborada.",q:"A seiva elaborada contém principalmente:",o:["Açúcares produzidos na fotossíntese","Água pura apenas","Sais sem carbono","Oxigênio líquido"],c:0,coment:"Floema transporta matéria orgânica."},
+{base:"Estômatos regulam trocas gasosas.",q:"Estômatos estão relacionados à:",o:["Transpiração e trocas gasosas","Produção de gametas animais","Digestão celular","Absorção pela raiz"],c:0,coment:"Estômatos controlam gases e vapor."},
+{base:"Briófitas não possuem vasos condutores verdadeiros.",q:"Musgos são exemplos de:",o:["Briófitas","Pteridófitas","Gimnospermas","Angiospermas"],c:0,coment:"Musgos são briófitas."},
+{base:"Pteridófitas possuem vasos, mas não sementes.",q:"Samambaias são:",o:["Pteridófitas","Briófitas","Gimnospermas","Fungos"],c:0,coment:"Samambaias são pteridófitas."},
+{base:"Gimnospermas possuem sementes sem frutos.",q:"Pinheiros são:",o:["Gimnospermas","Briófitas","Pteridófitas","Algas verdes"],c:0,coment:"Pinheiros têm sementes nuas."},
+{base:"Angiospermas possuem flores e frutos.",q:"Manga, feijão e milho são:",o:["Angiospermas","Gimnospermas","Briófitas","Fungos"],c:0,coment:"São plantas com flores/frutos."},
+{base:"Flor participa da reprodução das angiospermas.",q:"A flor está relacionada à:",o:["Reprodução","Digestão","Respiração pulmonar","Circulação sanguínea"],c:0,coment:"Flor é estrutura reprodutiva."},
+{base:"Fruto protege sementes e auxilia dispersão.",q:"O fruto deriva geralmente do:",o:["Ovário da flor","Caule subterrâneo","Raiz principal","Grão de pólen"],c:0,coment:"Fruto se origina do ovário."},
+{base:"Semente contém embrião vegetal.",q:"A semente é importante porque:",o:["Protege e dispersa o embrião","Elimina fotossíntese","Substitui a raiz","Produz sangue"],c:0,coment:"Semente protege o embrião."},
+{base:"Polinização é transporte de pólen.",q:"Abelhas podem atuar como:",o:["Polinizadoras","Decompositoras obrigatórias","Predadoras de plantas","Parasitas exclusivos"],c:0,coment:"Abelhas transportam pólen."},
+{base:"Transpiração vegetal libera vapor de água.",q:"Ela ocorre principalmente pelos:",o:["Estômatos","Ribossomos","Lisossomos","Núcleos"],c:0,coment:"Estômatos regulam transpiração."},
+{base:"Hormônios vegetais regulam crescimento.",q:"Auxina está relacionada a:",o:["Crescimento vegetal","Digestão animal","Produção de anticorpos","Coagulação sanguínea"],c:0,coment:"Auxinas regulam crescimento."},
+{base:"Plantas são fundamentais nos ecossistemas.",q:"Na cadeia alimentar, plantas atuam como:",o:["Produtores","Consumidores terciários","Decompositores exclusivos","Parasitas obrigatórios"],c:0,coment:"Plantas produzem matéria orgânica."}
+]),
+
+"Zoologia":gerarQuestoes("Zoologia",[
+{base:"Animais são eucariontes, multicelulares e heterotróficos.",q:"Uma característica dos animais é:",o:["Heterotrofia","Fotossíntese obrigatória","Parede de celulose","Procariontes"],c:0,coment:"Animais obtêm alimento de outros seres."},
+{base:"Poríferos são animais simples.",q:"Esponjas pertencem ao grupo dos:",o:["Poríferos","Cnidários","Anelídeos","Moluscos"],c:0,coment:"Esponjas são poríferos."},
+{base:"Cnidários possuem células urticantes.",q:"Águas-vivas pertencem aos:",o:["Cnidários","Poríferos","Equinodermos","Artrópodes"],c:0,coment:"Águas-vivas são cnidários."},
+{base:"Platelmintos são vermes achatados.",q:"Tênias são:",o:["Platelmintos","Anelídeos","Moluscos","Cordados"],c:0,coment:"Tênia é verme achatado."},
+{base:"Nematelmintos são vermes cilíndricos.",q:"Lombriga pertence aos:",o:["Nematelmintos","Cnidários","Poríferos","Equinodermos"],c:0,coment:"Lombriga é nematelminto."},
+{base:"Anelídeos possuem corpo segmentado.",q:"Minhocas são:",o:["Anelídeos","Moluscos","Artrópodes","Peixes"],c:0,coment:"Minhocas são anelídeos."},
+{base:"Moluscos têm corpo mole.",q:"Caracol e polvo são:",o:["Moluscos","Insetos","Cnidários","Mamíferos"],c:0,coment:"São moluscos."},
+{base:"Artrópodes possuem exoesqueleto e apêndices articulados.",q:"Insetos, aracnídeos e crustáceos são:",o:["Artrópodes","Moluscos","Anelídeos","Cordados"],c:0,coment:"Todos são artrópodes."},
+{base:"Equinodermos são marinhos.",q:"Estrela-do-mar é:",o:["Equinodermo","Molusco","Platelminto","Ave"],c:0,coment:"Estrela-do-mar é equinodermo."},
+{base:"Cordados possuem notocorda em alguma fase da vida.",q:"Vertebrados pertencem aos:",o:["Cordados","Poríferos","Cnidários","Protozoários"],c:0,coment:"Vertebrados são cordados."},
+{base:"Peixes respiram por brânquias.",q:"A principal estrutura respiratória dos peixes é:",o:["Brânquia","Pulmão alveolar","Traqueia","Pele seca"],c:0,coment:"Peixes respiram por brânquias."},
+{base:"Anfíbios dependem de ambientes úmidos.",q:"Sapos e rãs são:",o:["Anfíbios","Répteis","Mamíferos","Aves"],c:0,coment:"Sapos e rãs são anfíbios."},
+{base:"Répteis possuem pele seca e escamosa.",q:"Cobra e lagarto são:",o:["Répteis","Anfíbios","Peixes","Aves"],c:0,coment:"São répteis."},
+{base:"Aves possuem penas.",q:"Uma característica exclusiva das aves é:",o:["Penas","Pelos","Escamas ósseas","Brânquias"],c:0,coment:"Penas são típicas das aves."},
+{base:"Mamíferos possuem glândulas mamárias.",q:"Uma característica dos mamíferos é:",o:["Produção de leite","Penas","Brânquias na fase adulta","Exoesqueleto"],c:0,coment:"Mamíferos produzem leite."},
+{base:"Insetos possuem três pares de pernas.",q:"Quantas pernas tem um inseto adulto típico?",o:["6","8","10","12"],c:0,coment:"Insetos têm seis pernas."},
+{base:"Aracnídeos possuem quatro pares de pernas.",q:"Aranhas possuem:",o:["8 pernas","6 pernas","4 pernas","10 asas"],c:0,coment:"Aranhas têm oito pernas."},
+{base:"Metamorfose ocorre em muitos insetos e anfíbios.",q:"A transformação de girino em sapo é:",o:["Metamorfose","Fotossíntese","Mutação obrigatória","Fermentação"],c:0,coment:"Girino se transforma em adulto."},
+{base:"Animais podem ser invertebrados ou vertebrados.",q:"Animal sem coluna vertebral é:",o:["Invertebrado","Vertebrado","Mamífero obrigatório","Cordado obrigatório"],c:0,coment:"Invertebrados não têm coluna."},
+{base:"Zoologia estuda a diversidade animal.",q:"Classificar animais ajuda a entender:",o:["Parentesco e características","Apenas cor dos animais","Somente tamanho","Velocidade dos rios"],c:0,coment:"Classificação organiza relações e características."}
+]),
+"Fisiologia Humana":gerarQuestoes("Fisiologia Humana",[
+{base:"O sistema digestório transforma alimentos em nutrientes.",q:"A digestão começa na:",o:["Boca","Intestino grosso","Pulmão","Rim"],c:0,coment:"A digestão começa na boca."},
+{base:"O estômago participa da digestão.",q:"No estômago, há ação do:",o:["Suco gástrico","Bile produzida nele","Ar atmosférico","Urina"],c:0,coment:"Suco gástrico atua no estômago."},
+{base:"O intestino delgado absorve nutrientes.",q:"A maior absorção de nutrientes ocorre no:",o:["Intestino delgado","Esôfago","Boca","Traqueia"],c:0,coment:"Intestino delgado absorve nutrientes."},
+{base:"O sistema respiratório realiza trocas gasosas.",q:"As trocas de O2 e CO2 ocorrem nos:",o:["Alvéolos","Rins","Ossos","Músculos"],c:0,coment:"Alvéolos fazem trocas gasosas."},
+{base:"O sangue transporta substâncias.",q:"Hemoglobina transporta principalmente:",o:["Oxigênio","Amido","Celulose","Urina"],c:0,coment:"Hemoglobina transporta O2."},
+{base:"O coração bombeia sangue.",q:"O coração pertence ao sistema:",o:["Circulatório","Digestório","Excretor","Endócrino apenas"],c:0,coment:"Coração é órgão circulatório."},
+{base:"Artérias levam sangue para fora do coração.",q:"Vasos que saem do coração são:",o:["Artérias","Veias","Capilares linfáticos apenas","Néfrons"],c:0,coment:"Artérias saem do coração."},
+{base:"Veias levam sangue ao coração.",q:"Vasos que retornam sangue ao coração são:",o:["Veias","Artérias","Alvéolos","Neurônios"],c:0,coment:"Veias retornam ao coração."},
+{base:"Rins filtram o sangue.",q:"O sistema excretor elimina principalmente:",o:["Ureia e excesso de água","Oxigênio puro","Hemoglobina inteira","Glicogênio"],c:0,coment:"Rins excretam ureia e regulam água."},
+{base:"Néfron é unidade funcional do rim.",q:"O néfron está relacionado à formação de:",o:["Urina","Bile","Suco gástrico","Insulina"],c:0,coment:"Néfrons formam urina."},
+{base:"Sistema nervoso coordena respostas do corpo.",q:"O cérebro faz parte do sistema:",o:["Nervoso","Digestório","Respiratório","Esquelético apenas"],c:0,coment:"Cérebro é do sistema nervoso."},
+{base:"Neurônios transmitem impulsos nervosos.",q:"Células nervosas são chamadas de:",o:["Neurônios","Hemácias","Plaquetas","Osteócitos"],c:0,coment:"Neurônios conduzem impulsos."},
+{base:"Hormônios são mensageiros químicos.",q:"Insulina é produzida pelo:",o:["Pâncreas","Pulmão","Estômago","Rim"],c:0,coment:"Pâncreas produz insulina."},
+{base:"Insulina regula glicose no sangue.",q:"A insulina reduz a:",o:["Glicemia","Frequência sonora","Pressão da água","Produção de bile"],c:0,coment:"Insulina ajuda a reduzir glicose sanguínea."},
+{base:"Sistema imunológico defende o organismo.",q:"Anticorpos são produzidos por:",o:["Linfócitos","Hemácias","Plaquetas","Células ósseas apenas"],c:0,coment:"Linfócitos produzem anticorpos."},
+{base:"Vacinas estimulam memória imunológica.",q:"Vacinas ajudam a:",o:["Prevenir doenças","Curar fraturas sempre","Produzir oxigênio","Aumentar glicose"],c:0,coment:"Vacinas treinam o sistema imune."},
+{base:"Ossos dão sustentação ao corpo.",q:"O sistema esquelético participa da:",o:["Sustentação e proteção","Digestão de lipídios","Troca gasosa","Produção de bile"],c:0,coment:"Ossos sustentam e protegem."},
+{base:"Músculos permitem movimento.",q:"Contração muscular depende diretamente de:",o:["Fibras musculares","Néfrons","Alvéolos","Bile"],c:0,coment:"Fibras musculares contraem."},
+{base:"Homeostase é manutenção do equilíbrio interno.",q:"Controlar temperatura corporal é exemplo de:",o:["Homeostase","Mutação","Fotossíntese","Especiação"],c:0,coment:"Homeostase mantém equilíbrio."},
+{base:"O corpo humano funciona por integração de sistemas.",q:"Essa integração é importante para:",o:["Manter a vida e o equilíbrio interno","Eliminar todos os hormônios","Parar a circulação","Impedir a respiração"],c:0,coment:"Sistemas atuam juntos."}
+]),
+
+"Microbiologia e Saúde":gerarQuestoes("Microbiologia e Saúde",[
+{base:"Vírus são parasitas intracelulares obrigatórios.",q:"Vírus precisam de:",o:["Célula hospedeira","Solo seco apenas","Luz solar direta","Parede celular vegetal"],c:0,coment:"Vírus dependem de células."},
+{base:"Bactérias são organismos procariontes.",q:"Bactérias não possuem:",o:["Núcleo delimitado","DNA","Membrana plasmática","Ribossomos"],c:0,coment:"Procariontes não têm núcleo delimitado."},
+{base:"Antibióticos atuam contra bactérias.",q:"Antibióticos não são eficazes contra:",o:["Vírus","Bactérias sensíveis","Infecções bacterianas","Algumas pneumonias bacterianas"],c:0,coment:"Antibióticos não tratam vírus."},
+{base:"Fungos podem ser unicelulares ou multicelulares.",q:"Leveduras são:",o:["Fungos","Bactérias","Vírus","Algas"],c:0,coment:"Leveduras são fungos unicelulares."},
+{base:"Protozoários são eucariontes unicelulares.",q:"A malária é causada por:",o:["Protozoário","Vírus","Bactéria","Fungo"],c:0,coment:"Malária é causada por Plasmodium."},
+{base:"Dengue é doença viral.",q:"O vetor da dengue é:",o:["Aedes aegypti","Barbeiro","Caramujo","Pulga"],c:0,coment:"Aedes transmite dengue."},
+{base:"Doença de Chagas é transmitida pelo barbeiro.",q:"O agente causador é:",o:["Trypanosoma cruzi","Plasmodium","HIV","Candida"],c:0,coment:"Chagas é causada por T. cruzi."},
+{base:"Esquistossomose envolve caramujo como hospedeiro intermediário.",q:"A esquistossomose é causada por:",o:["Verme platelminto","Vírus","Bactéria","Fungo"],c:0,coment:"É causada por Schistosoma."},
+{base:"Tuberculose é causada por bactéria.",q:"A tuberculose afeta principalmente:",o:["Pulmões","Ossos apenas","Pele apenas","Olhos apenas"],c:0,coment:"Afeta principalmente pulmões."},
+{base:"HIV ataca o sistema imunológico.",q:"O HIV infecta principalmente:",o:["Linfócitos T CD4","Hemácias","Plaquetas","Osteócitos"],c:0,coment:"HIV ataca células CD4."},
+{base:"Vacinação previne doenças.",q:"Vacinas estimulam:",o:["Resposta imune","Produção de petróleo","Formação de ossos instantânea","Digestão de amido"],c:0,coment:"Vacinas estimulam imunidade."},
+{base:"Saneamento básico previne doenças.",q:"Tratamento de água e esgoto reduz:",o:["Doenças de veiculação hídrica","Todas as mutações","Fotossíntese","Respiração celular"],c:0,coment:"Saneamento evita contaminação."},
+{base:"Higiene das mãos reduz transmissão de microrganismos.",q:"Lavar as mãos ajuda a prevenir:",o:["Infecções","Miopia","Fraturas","Daltonismo"],c:0,coment:"Higiene reduz transmissão."},
+{base:"Resistência bacteriana é problema de saúde pública.",q:"Uso incorreto de antibióticos favorece:",o:["Bactérias resistentes","Vírus sem DNA","Plantas aquáticas","Ossos fracos"],c:0,coment:"Uso inadequado seleciona bactérias resistentes."},
+{base:"Fermentação pode ser realizada por microrganismos.",q:"Leveduras são usadas na produção de:",o:["Pão e bebidas fermentadas","Vacina de DNA sempre","Antibiótico universal","Oxigênio puro"],c:0,coment:"Leveduras fermentam açúcares."},
+{base:"Algumas bactérias são benéficas.",q:"Bactérias intestinais ajudam na:",o:["Digestão e produção de vitaminas","Formação de petróleo","Fotossíntese humana","Produção de ossos externos"],c:0,coment:"Microbiota auxilia o organismo."},
+{base:"Doenças podem ser transmitidas por água contaminada.",q:"Uma prevenção importante é:",o:["Tratamento da água","Aumentar lixo em rios","Não lavar alimentos","Ignorar saneamento"],c:0,coment:"Água tratada previne doenças."},
+{base:"Mosquitos podem transmitir doenças.",q:"Eliminar água parada ajuda a combater:",o:["Dengue","Diabetes hereditária","Anemia falciforme","Câncer genético sempre"],c:0,coment:"Aedes se reproduz em água parada."},
+{base:"Fungos podem causar micoses.",q:"Micoses são infecções causadas por:",o:["Fungos","Vírus sempre","Bactérias sempre","Vermes apenas"],c:0,coment:"Micoses são fúngicas."},
+{base:"Microbiologia tem impacto em saúde, indústria e ambiente.",q:"Um uso positivo de microrganismos é:",o:["Produção de alimentos fermentados","Aumento de esgoto sem tratamento","Transmissão intencional de doenças","Descarte irregular"],c:0,coment:"Microrganismos são úteis em fermentação."}
+]),
+
+"Biotecnologia e ENEM":gerarQuestoes("Biotecnologia e ENEM",[
+{base:"Biotecnologia usa seres vivos ou partes deles para produzir bens e serviços.",q:"Um exemplo de biotecnologia é:",o:["Produção de vacina","Queima de carvão","Erosão natural","Reflexão da luz"],c:0,coment:"Vacinas envolvem biotecnologia."},
+{base:"Transgênicos possuem genes inseridos ou modificados.",q:"Um organismo transgênico é aquele que:",o:["Recebeu gene por engenharia genética","Não possui DNA","É sempre vírus","Não se reproduz"],c:0,coment:"Transgênico tem modificação genética."},
+{base:"PCR amplifica DNA.",q:"A técnica PCR serve para:",o:["Copiar trechos de DNA","Produzir sangue","Criar órgãos inteiros sempre","Medir pressão"],c:0,coment:"PCR amplifica DNA."},
+{base:"Teste de DNA compara perfis genéticos.",q:"Ele pode ser usado em:",o:["Investigação de parentesco","Tratamento de água apenas","Medição de pH","Cálculo de velocidade"],c:0,coment:"DNA identifica parentesco."},
+{base:"Clonagem gera cópias geneticamente semelhantes.",q:"Clone é:",o:["Cópia genética","Mistura de espécies sem DNA","Célula sem núcleo","Água viva"],c:0,coment:"Clone compartilha material genético."},
+{base:"Vacinas estimulam o sistema imunológico.",q:"O objetivo principal das vacinas é:",o:["Prevenir doenças","Causar doença grave","Eliminar genes","Produzir glicose"],c:0,coment:"Vacinas previnem doenças."},
+{base:"Anticorpos reconhecem antígenos.",q:"Anticorpos são relacionados à:",o:["Defesa imunológica","Fotossíntese","Digestão de celulose","Transporte de seiva"],c:0,coment:"Anticorpos participam da defesa."},
+{base:"Terapia gênica busca tratar doenças por alteração genética.",q:"Ela atua sobre:",o:["Genes","Apenas ossos","Apenas músculos","Sais minerais"],c:0,coment:"Terapia gênica envolve genes."},
+{base:"Células-tronco podem se diferenciar em outros tipos celulares.",q:"Células-tronco têm potencial de:",o:["Diferenciação","Fotossíntese","Produção de sementes","Fermentação alcoólica sempre"],c:0,coment:"Podem originar tipos celulares."},
+{base:"Biotecnologia pode melhorar produção agrícola.",q:"Transgênicos podem ser desenvolvidos para:",o:["Resistência a pragas","Eliminar DNA da planta","Impedir reprodução sempre","Transformar planta em animal"],c:0,coment:"Podem ter resistência a pragas."},
+{base:"Bioética discute limites e consequências da biotecnologia.",q:"Bioética envolve:",o:["Reflexão ética sobre vida e tecnologia","Apenas cálculo matemático","Somente nome de espécies","Medida de temperatura"],c:0,coment:"Bioética avalia impactos éticos."},
+{base:"Fermentação é usada há muito tempo pela humanidade.",q:"Produção de pão envolve:",o:["Leveduras","Vírus da dengue","Protozoário da malária","Hemácias"],c:0,coment:"Leveduras fermentam."},
+{base:"Insulina humana pode ser produzida por bactérias modificadas.",q:"Isso é exemplo de:",o:["Engenharia genética","Seleção natural simples","Osmose","Erosão"],c:0,coment:"Bactérias podem produzir proteína humana."},
+{base:"Sequenciamento de DNA permite ler a ordem das bases.",q:"Essa técnica ajuda a:",o:["Identificar genes e mutações","Medir pressão atmosférica","Produzir clorofila","Eliminar água"],c:0,coment:"Sequenciar revela informações genéticas."},
+{base:"Biorremediação usa organismos para reduzir poluição.",q:"Na biorremediação, usam-se:",o:["Microrganismos ou plantas","Apenas metais pesados","Somente plástico queimado","Rochas vulcânicas"],c:0,coment:"Seres vivos podem degradar poluentes."},
+{base:"Vacinas de RNA usam informação genética para induzir resposta imune.",q:"Elas estimulam produção de:",o:["Proteína antigênica","Petróleo","Glicose pura","Celulose humana"],c:0,coment:"RNA orienta produção de antígeno."},
+{base:"Organismos geneticamente modificados exigem avaliação.",q:"Uma preocupação é:",o:["Impacto ambiental e segurança alimentar","Ausência total de DNA","Fim da agricultura","Eliminação de proteínas"],c:0,coment:"É preciso avaliar riscos e benefícios."},
+{base:"Biotecnologia aparece no ENEM ligada à saúde e ambiente.",q:"Um tema comum é:",o:["Vacinas e transgênicos","Óptica geométrica","Circuitos elétricos","Cálculo de juros"],c:0,coment:"São temas frequentes."},
+{base:"A edição genética permite alterar sequências de DNA.",q:"Uma tecnologia associada à edição genética é:",o:["CRISPR","Fotossíntese","Fermentação natural apenas","Decantação"],c:0,coment:"CRISPR é ferramenta de edição genética."},
+{base:"Biotecnologia pode trazer benefícios e riscos.",q:"A melhor postura é:",o:["Analisar evidências, impactos e ética","Aceitar tudo sem análise","Rejeitar toda tecnologia","Ignorar regulamentação"],c:0,coment:"Avaliação crítica é essencial."}
+])
+};
+
+function mostrarMenu(){
+ pararAudioFundo();
+ app.innerHTML=`
+ <div class="box">
+ <h2 style="color:var(--blue);margin-bottom:8px;">Escolha um módulo de Biologia</h2>
+ <p class="mini">Cada módulo possui <strong>20 questões objetivas</strong>, com áudio e respostas embaralhadas.</p>
+ <div class="grid-areas">
+ ${areasBiologia.map(area=>`
+ <div class="card-area">
+ <h3>${area.nome}</h3>
+ <p>${area.descricao}</p>
+ <button class="btn" onclick="iniciarArea('${area.nome.replace(/'/g,"\\'")}')">Entrar neste módulo</button>
+ </div>`).join("")}
+ </div></div>`;
+}
+
+async function iniciarArea(nomeArea){
+ await destravarAudio();
+ areaAtual=nomeArea;
+ questoesAtuais=bancoQuestoes[nomeArea]||[];
+ indiceQuestao=0;
+ acertosObjetivas=0;
+ questaoRenderizadaAtual=null;
+ if(!questoesAtuais.length){
+  app.innerHTML=`<div class="box"><h2 style="color:var(--red);">Erro ao abrir o módulo</h2><button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button></div>`;
+  return;
+ }
+ setTimeout(()=>{tocarAudioFundo()},120);
+ carregarQuestao();
+}
+
+function montarEnunciado(questao){
+ return `<span class="question-label">Base para resolução:</span><span class="text-base">${questao.base}</span><span class="question-label">Pergunta:</span>${questao.q}`;
+}
+
+function carregarQuestao(){
+ const questao=questoesAtuais[indiceQuestao];
+ const total=questoesAtuais.length;
+ questaoRenderizadaAtual=embaralharAlternativas(questao);
+ let html=`<div class="box"><div class="status"><span>${areaAtual}</span><span>Questão ${indiceQuestao+1}/${total}</span></div><div id="question-text">${montarEnunciado(questaoRenderizadaAtual)}</div><div class="options-wrap">`;
+ questaoRenderizadaAtual.opcoesRenderizadas.forEach((alt,idx)=>{html+=`<button class="btn option-btn" onclick="responderObjetiva(${idx})">${alt}</button>`});
+ html+=`</div><button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button></div>`;
+ app.innerHTML=html;
+}
+
+function responderObjetiva(escolhida){
+ const botoes=document.querySelectorAll(".option-btn");
+ const correta=questaoRenderizadaAtual.corretaRenderizada;
+ botoes.forEach((btn,idx)=>{btn.disabled=true;if(idx===correta)btn.classList.add("correct")});
+ if(escolhida===correta){acertosObjetivas++;tocarAcerto()}else{if(botoes[escolhida])botoes[escolhida].classList.add("wrong");tocarErro()}
+ setTimeout(()=>{indiceQuestao++;if(indiceQuestao<questoesAtuais.length){carregarQuestao()}else{finalizarArea()}},900);
+}
+
+function finalizarArea(){
+ pararAudioFundo();
+ const notaFinal=acertosObjetivas*10;
+ const totalPossivel=200;
+ let feedback="Você concluiu este módulo completo de Biologia. Continue treinando os demais módulos para avançar no simulado gratuito.";
+ if(notaFinal>=160)feedback+=" Excelente desempenho neste módulo.";
+ else if(notaFinal>=100)feedback+=" Bom resultado. Ainda dá para elevar sua pontuação.";
+ else feedback+=" Este resultado mostra pontos que precisam ser reforçados com mais treino.";
+ app.innerHTML=`
+ <div class="box">
+ <h2 style="color:var(--blue);">${areaAtual}</h2>
+ <div class="result-number">${notaFinal}/${totalPossivel}</div>
+ <div class="result-sub">Acertos: ${acertosObjetivas}/20</div>
+ <p class="mini" style="margin-bottom:18px;">${feedback}</p>
+ <button class="btn" onclick="iniciarArea('${areaAtual.replace(/'/g,"\\'")}')">Refazer este módulo</button>
+ <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+ </div>`;
+}
+
+mostrarMenu();
+
+const RADAR_COPA_ALBUM_URL = "https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?v=4000";
+const RADAR_COPA_BIOLOGIA_GRATUITO_ID = "gabarito-max-biologia-gratuito";
+
+function resgatarBonusGratuitoRadarCopa(){
+  try{
+    const url = "https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?bonus="
+      + encodeURIComponent(RADAR_COPA_BIOLOGIA_GRATUITO_ID)
+      + "&pacotes=10&v=4000";
+
+    alert("🎁 Bônus gratuito Biologia registrado: +10 pacotes. O álbum será aberto agora.");
+    window.open(url, "_blank", "noopener");
+  }catch(e){
+    alert("Não foi possível abrir o bônus agora. Tente abrir o álbum novamente.");
+  }
+}
+
+function abrirAlbumRadarCopa(){
+  window.open(RADAR_COPA_ALBUM_URL, "_blank", "noopener");
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filosofia Gratuito ENEM - Gabarito Max</title>
+<style>
+:root{--card:#11141b;--card2:#171b24;--blue:#00f3ff;--pink:#ff00e6;--green:#39ff14;--red:#ff003c;--yellow:#ffd400;--muted:#cfcfcf;--line:rgba(255,255,255,.08)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#000;color:#fff;min-height:100vh;padding:20px 12px 40px;text-align:center;overflow-x:hidden}
+header{max-width:1100px;margin:0 auto 24px;border:2px solid var(--blue);border-radius:24px;padding:22px 16px;background:linear-gradient(180deg,#0c0f16,#090b11);box-shadow:0 0 22px rgba(0,243,255,.22)}
+header h1{color:var(--blue);font-size:clamp(2rem,4vw,3rem);text-shadow:0 0 14px rgba(0,243,255,.7);font-weight:900}
+header p{margin-top:10px;color:var(--pink);font-weight:800;font-size:clamp(1rem,2vw,1.3rem)}
+#app{width:100%;max-width:1100px;margin:0 auto}
+.box{width:100%;background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:20px;padding:20px 16px;box-shadow:0 0 20px rgba(0,0,0,.35);overflow:hidden}
+.btn{display:block;width:100%;max-width:560px;margin:10px auto;padding:14px 16px;border:2px solid var(--blue);background:transparent;color:#fff;border-radius:12px;cursor:pointer;font-weight:800;font-size:1rem;line-height:1.45;transition:.2s;white-space:normal;word-break:break-word}
+.btn:hover:not(:disabled){background:var(--blue);color:#000;box-shadow:0 0 18px rgba(0,243,255,.35)}
+.btn-voltar{border-color:#666;color:#ddd}.btn-voltar:hover:not(:disabled){background:#333;color:#fff;box-shadow:none}
+.btn.correct{background:var(--green)!important;border-color:var(--green)!important;color:#000!important}
+.btn.wrong{background:var(--red)!important;border-color:var(--red)!important;color:#fff!important}
+.grid-areas{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.card-area{background:linear-gradient(135deg,rgba(0,243,255,.08),rgba(255,0,230,.08));border:1px solid rgba(0,243,255,.16);border-radius:16px;padding:16px;text-align:left}
+.card-area h3{color:var(--blue);margin-bottom:8px;font-size:1.12rem}
+.card-area p{color:#ddd;font-size:.95rem;line-height:1.45;margin-bottom:10px}
+.status{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:18px;color:var(--pink);font-weight:bold;text-align:left}
+#question-text{font-size:1.05rem;line-height:1.6;margin:20px 0;min-height:88px;text-align:left;word-break:break-word}
+.question-label{display:block;color:var(--yellow);font-weight:bold;margin-bottom:8px}
+.text-base{display:block;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;margin:10px 0 14px;color:#f5f5f5;font-style:italic;line-height:1.65}
+.options-wrap{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.option-btn{width:100%;max-width:100%;margin:0;text-align:left;min-height:58px}
+.result-number{font-size:3rem;color:var(--blue);margin:12px 0;font-weight:900}
+.result-sub{font-size:1.12rem;color:#ddd;margin-bottom:10px}
+.mini{color:var(--muted);font-size:.96rem;line-height:1.5}
+@media(max-width:700px){.grid-areas{grid-template-columns:1fr}.box{padding:16px 12px}#question-text{font-size:1rem}.btn{font-size:.96rem;padding:13px 12px}}
+
+.gratuito-radar-copa-box{
+  width:100%;
+  max-width:820px;
+  margin:18px auto 16px;
+  padding:16px;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(0,243,255,.10),rgba(255,212,0,.12));
+  border:1px solid rgba(255,212,0,.40);
+  box-shadow:0 0 18px rgba(255,212,0,.10);
+  text-align:center;
+}
+.gratuito-radar-copa-box h3{
+  color:#ffd400;
+  margin-bottom:8px;
+  font-size:1.12rem;
+  text-transform:uppercase;
+}
+.gratuito-radar-copa-box p{
+  color:#e5e7eb;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+.gratuito-radar-copa-box .radar-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.gratuito-radar-copa-box button,
+.gratuito-radar-copa-box a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:320px;
+  min-height:48px;
+  border-radius:999px;
+  padding:12px 14px;
+  font-weight:900;
+  text-decoration:none;
+  border:1px solid rgba(255,212,0,.65);
+}
+.gratuito-radar-copa-box button{
+  background:linear-gradient(135deg,#fff4bf,#ffd400,#f59e0b);
+  color:#06142e;
+  cursor:pointer;
+}
+.gratuito-radar-copa-box a{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+</style>
+</head>
+<body>
+<nav aria-label="Navegação EnsinoMeu" style="padding:12px 18px;background:#07172b;text-align:left"><a style="color:#fff;font-weight:700;text-decoration:none;background:#1768ac;padding:9px 13px;border-radius:9px;display:inline-block" href="../index.html">← Voltar ao acervo gratuito</a></nav>
+
+<header>
+<h1>FILOSOFIA GRATUITO ENEM</h1>
+<p>10 MÓDULOS • 200 QUESTÕES • ÁUDIOS • RESPOSTAS EMBARALHADAS</p>
+</header>
+
+
+      <div id="app"></div>
+
+<audio id="audio-bg" loop preload="auto" playsinline>
+<source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+<audio id="audio-correct" preload="auto">
+<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+<audio id="audio-wrong" preload="auto">
+<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const app=document.getElementById("app");
+const audioBg=document.getElementById("audio-bg");
+const audioCorrect=document.getElementById("audio-correct");
+const audioWrong=document.getElementById("audio-wrong");
+audioBg.volume=.06;audioCorrect.volume=.45;audioWrong.volume=.45;
+
+let audioLiberado=false,areaAtual="",questoesAtuais=[],indiceQuestao=0,acertosObjetivas=0,questaoRenderizadaAtual=null;
+
+document.addEventListener("click",destravarAudio,{once:true});
+document.addEventListener("touchstart",destravarAudio,{once:true});
+
+function destravarAudio(){
+ if(audioLiberado)return Promise.resolve(true);
+ audioBg.muted=true;
+ return audioBg.play().then(()=>{
+  audioBg.pause();audioBg.currentTime=0;audioBg.muted=false;audioLiberado=true;
+  audioCorrect.play().then(()=>{audioCorrect.pause();audioCorrect.currentTime=0}).catch(()=>{});
+  audioWrong.play().then(()=>{audioWrong.pause();audioWrong.currentTime=0}).catch(()=>{});
+  return true;
+ }).catch(()=>false);
+}
+function tocarAudioFundo(){if(!audioLiberado)return;audioBg.currentTime=0;audioBg.play().catch(()=>{})}
+function pararAudioFundo(){audioBg.pause();audioBg.currentTime=0}
+function tocarAcerto(){audioCorrect.currentTime=0;audioCorrect.play().catch(()=>{})}
+function tocarErro(){audioWrong.currentTime=0;audioWrong.play().catch(()=>{})}
+
+const areasFilosofia=[
+{nome:"Pré-Socráticos",descricao:"Origem da Filosofia, arché, physis, logos e primeiros pensadores."},
+{nome:"Sócrates, Platão e Aristóteles",descricao:"Ética, política, conhecimento, ideias, virtude e metafísica."},
+{nome:"Filosofia Medieval",descricao:"Patrística, Escolástica, fé, razão, Agostinho e Tomás de Aquino."},
+{nome:"Filosofia Moderna",descricao:"Racionalismo, empirismo, contratualismo, Descartes, Locke e Kant."},
+{nome:"Ética e Moral",descricao:"Valores, liberdade, responsabilidade, virtude, dever e utilitarismo."},
+{nome:"Política e Estado",descricao:"Poder, democracia, cidadania, contrato social e formas de governo."},
+{nome:"Teoria do Conhecimento",descricao:"Verdade, razão, experiência, dúvida, ciência e crítica."},
+{nome:"Filosofia Contemporânea",descricao:"Marx, Nietzsche, Freud, existencialismo, Escola de Frankfurt e linguagem."},
+{nome:"Estética e Cultura",descricao:"Arte, belo, gosto, cultura de massa, indústria cultural e interpretação."},
+{nome:"Filosofia no ENEM",descricao:"Interpretação filosófica, cidadania, tecnologia, ética, sociedade e cotidiano."}
+];
+
+function criarObjetiva(area,numero,base,q,o,c,coment){return{tipo:"objetiva",area,numero,base,q,o,c,coment}}
+function gerarQuestoes(area,lista){return lista.map((item,i)=>criarObjetiva(area,i+1,item.base,item.q,item.o,item.c,item.coment))}
+function embaralharAlternativas(questao){
+ const pares=questao.o.map((texto,idx)=>({texto,correta:idx===questao.c}));
+ for(let i=pares.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pares[i],pares[j]]=[pares[j],pares[i]]}
+ return{...questao,opcoesRenderizadas:pares.map(p=>p.texto),corretaRenderizada:pares.findIndex(p=>p.correta)}
+}
+
+const bancoQuestoes={
+"Pré-Socráticos":gerarQuestoes("Pré-Socráticos",[
+{base:"Os primeiros filósofos gregos buscaram explicar a natureza sem recorrer aos mitos.",q:"A passagem do mito ao logos representa:",o:["A busca racional por explicações","A rejeição de toda observação","A defesa exclusiva da magia","A negação da natureza"],c:0,coment:"O logos indica explicação racional."},
+{base:"Os pré-socráticos investigavam a origem e o princípio de todas as coisas.",q:"O termo arché significa:",o:["Princípio originário","Lei escrita","Cidade ideal","Alma imortal"],c:0,coment:"Arché é o princípio fundamental."},
+{base:"Tales de Mileto é considerado um dos primeiros filósofos.",q:"Para Tales, a arché era:",o:["Água","Fogo","Número","Átomo"],c:0,coment:"Tales defendia a água como princípio."},
+{base:"Anaximandro propôs um princípio indefinido para a realidade.",q:"Esse princípio foi chamado de:",o:["Ápeiron","Logos","Doxa","Eidos"],c:0,coment:"Ápeiron é o ilimitado/indeterminado."},
+{base:"Anaxímenes relacionou o princípio das coisas ao ar.",q:"Para Anaxímenes, a arché era:",o:["Ar","Terra","Fogo","Ideia"],c:0,coment:"Anaxímenes destacou o ar."},
+{base:"Heráclito valorizou a mudança constante da realidade.",q:"A frase associada a Heráclito é:",o:["Tudo flui","Conhece-te a ti mesmo","Penso, logo existo","O homem é lobo do homem"],c:0,coment:"Heráclito enfatiza o devir."},
+{base:"Parmênides defendeu a permanência do ser.",q:"Para Parmênides, o ser é:",o:["Uno e imutável","Sempre mutável","Pura opinião","Apenas matéria líquida"],c:0,coment:"Parmênides valoriza a imutabilidade do ser."},
+{base:"Heráclito e Parmênides representam posições opostas sobre a realidade.",q:"Heráclito enfatiza:",o:["Mudança","Imobilidade absoluta","Contrato social","Indústria cultural"],c:0,coment:"Heráclito defende o movimento."},
+{base:"Pitágoras relacionou a realidade aos números e à harmonia.",q:"Para os pitagóricos, a essência das coisas estava ligada:",o:["Aos números","À água apenas","Ao contrato social","Ao inconsciente"],c:0,coment:"Pitágoras destacou a matemática."},
+{base:"Demócrito e Leucipo formularam uma teoria atomista.",q:"Segundo o atomismo, a realidade é composta por:",o:["Átomos e vazio","Somente água","Ideias perfeitas","Contratos políticos"],c:0,coment:"Atomismo fala em átomos e vazio."},
+{base:"Empédocles explicou a natureza por quatro elementos.",q:"Esses elementos eram:",o:["Terra, água, ar e fogo","Água, número, ideia e átomo","Lei, alma, corpo e Estado","Mito, logos, técnica e arte"],c:0,coment:"Empédocles propôs quatro raízes."},
+{base:"Anaxágoras propôs uma inteligência ordenadora.",q:"Essa inteligência foi chamada de:",o:["Nous","Arché","Doxa","Ágora"],c:0,coment:"Nous significa inteligência/mente."},
+{base:"A physis era tema central nos primeiros filósofos.",q:"Physis refere-se:",o:["À natureza","À cidade ideal","À moral cristã","À indústria cultural"],c:0,coment:"Physis significa natureza."},
+{base:"Os pré-socráticos buscavam causas naturais para os fenômenos.",q:"Essa atitude marca:",o:["O nascimento da investigação filosófica racional","A volta total ao mito","A criação da psicanálise","O fim da matemática"],c:0,coment:"A filosofia nasce como investigação racional."},
+{base:"Os sofistas surgiram em contexto de vida pública nas cidades gregas.",q:"Eles valorizavam principalmente:",o:["Retórica e argumentação","Silêncio absoluto","Misticismo fechado","Apenas física moderna"],c:0,coment:"Sofistas ensinavam retórica."},
+{base:"Protágoras afirmou que o homem é a medida de todas as coisas.",q:"Essa frase expressa uma visão:",o:["Relativista","Dogmática absoluta","Teológica medieval","Atomista física"],c:0,coment:"Protágoras é associado ao relativismo."},
+{base:"A filosofia grega nasce em diálogo com política, debate e razão.",q:"A pólis favoreceu a filosofia porque estimulou:",o:["Discussão pública","Isolamento total","Proibição da fala","Fim da cidadania"],c:0,coment:"A vida pública estimulou o debate."},
+{base:"Mito e filosofia tentam explicar o mundo, mas por caminhos diferentes.",q:"A filosofia se diferencia do mito por buscar:",o:["Argumentação racional","Narrativa sagrada obrigatória","Autoridade sem crítica","Apenas tradição oral"],c:0,coment:"Filosofia exige razões e argumentos."},
+{base:"Os primeiros filósofos procuravam compreender a totalidade da natureza.",q:"Essa preocupação pode ser chamada de:",o:["Cosmológica","Industrial","Psicanalítica","Utilitarista"],c:0,coment:"A investigação inicial era cosmológica."},
+{base:"A filosofia pré-socrática é importante para o ENEM porque mostra o nascimento do pensamento crítico.",q:"Uma marca desse pensamento é:",o:["Questionar explicações tradicionais","Aceitar toda opinião sem crítica","Negar qualquer investigação","Substituir ciência por mito"],c:0,coment:"Filosofia questiona e argumenta."}
+]),
+
+"Sócrates, Platão e Aristóteles":gerarQuestoes("Sócrates, Platão e Aristóteles",[
+{base:"Sócrates valorizava o diálogo como caminho para o conhecimento.",q:"O método socrático ficou conhecido por:",o:["Maiêutica","Empirismo radical","Contrato social","Materialismo histórico"],c:0,coment:"Maiêutica é o método de perguntas."},
+{base:"Sócrates afirmava que uma vida sem exame não vale a pena ser vivida.",q:"Essa frase destaca:",o:["Autoconhecimento e reflexão crítica","Riqueza material","Obediência cega","Prazer imediato"],c:0,coment:"Sócrates valorizava o exame de si."},
+{base:"Sócrates dizia 'só sei que nada sei'.",q:"Essa frase expressa:",o:["Consciência da ignorância","Conhecimento absoluto","Rejeição da razão","Defesa do mito"],c:0,coment:"Reconhecer a ignorância inicia a busca."},
+{base:"Para Sócrates, virtude e conhecimento estão relacionados.",q:"Segundo ele, agir mal decorre de:",o:["Ignorância","Excesso de democracia","Conhecimento pleno","Arte imitativa"],c:0,coment:"Para Sócrates, saber o bem conduz ao bem."},
+{base:"Platão foi discípulo de Sócrates.",q:"A teoria central de Platão é a teoria:",o:["Das Ideias","Do contrato social","Da luta de classes","Do inconsciente"],c:0,coment:"Platão propôs o mundo das Ideias."},
+{base:"Platão distingue mundo sensível e mundo inteligível.",q:"O mundo sensível é:",o:["Mutável e aparente","Perfeito e eterno","O lugar das ideias puras","A razão divina"],c:0,coment:"O sensível muda e engana."},
+{base:"Para Platão, o conhecimento verdadeiro está no mundo inteligível.",q:"Esse mundo contém:",o:["Ideias perfeitas","Sombras materiais","Opiniões instáveis","Apenas prazeres"],c:0,coment:"As Ideias são perfeitas e eternas."},
+{base:"A alegoria da caverna representa a passagem da ignorância ao conhecimento.",q:"Na alegoria, sair da caverna simboliza:",o:["Buscar a verdade","Recusar o conhecimento","Aceitar aparências","Valorizar sombras"],c:0,coment:"Sair da caverna é alcançar conhecimento."},
+{base:"Platão associa política e sabedoria.",q:"Na cidade ideal, o governo deveria caber aos:",o:["Filósofos","Comerciantes mais ricos","Guerreiros mais fortes","Poetas apenas"],c:0,coment:"O filósofo conhece o bem."},
+{base:"Aristóteles foi aluno de Platão, mas criticou sua teoria das Ideias.",q:"Para Aristóteles, o conhecimento começa pela:",o:["Experiência sensível","Negação dos sentidos","Revelação mítica","Dúvida metódica cartesiana"],c:0,coment:"Aristóteles valoriza a experiência."},
+{base:"Aristóteles elaborou a teoria das quatro causas.",q:"A causa final indica:",o:["Finalidade","Matéria","Forma geométrica apenas","Origem política"],c:0,coment:"Causa final é o fim ou propósito."},
+{base:"A ética aristotélica busca a felicidade.",q:"Para Aristóteles, felicidade é:",o:["Eudaimonia","Doxa","Ápeiron","Alienação"],c:0,coment:"Eudaimonia é vida realizada."},
+{base:"Aristóteles defende a virtude como equilíbrio.",q:"A virtude está no:",o:["Meio-termo","Excesso sempre","Falta sempre","Prazer sem limite"],c:0,coment:"Virtude é equilíbrio entre extremos."},
+{base:"Para Aristóteles, o ser humano é animal político.",q:"Isso significa que o ser humano:",o:["Realiza-se na vida em comunidade","Vive melhor isolado","Dispensa leis","Não precisa de linguagem"],c:0,coment:"A pólis é natural ao ser humano."},
+{base:"Platão valorizava a razão sobre os sentidos.",q:"Para Platão, os sentidos oferecem principalmente:",o:["Opinião","Conhecimento absoluto","Ciência perfeita","Verdade imutável"],c:0,coment:"Os sentidos geram doxa."},
+{base:"Sócrates foi condenado em Atenas.",q:"Uma acusação contra ele foi:",o:["Corromper a juventude","Criar o capitalismo","Defender a indústria cultural","Descobrir o inconsciente"],c:0,coment:"Ele foi acusado de corromper jovens e negar deuses da cidade."},
+{base:"A ética socrática relaciona bem e conhecimento.",q:"O lema 'conhece-te a ti mesmo' aponta para:",o:["Autoconhecimento","Consumismo","Dominação técnica","Alienação"],c:0,coment:"Sócrates busca autoconhecimento."},
+{base:"Aristóteles classificou formas de governo.",q:"A corrupção da democracia, para Aristóteles, seria:",o:["Demagogia","Monarquia","Aristocracia","Politeia"],c:0,coment:"Demagogia é desvio da democracia."},
+{base:"Platão desconfiava da democracia ateniense.",q:"Uma crítica platônica à democracia era:",o:["O risco de governo por opinião sem conhecimento","Excesso de filósofos no poder","Ausência de cidadãos","Proibição da fala"],c:0,coment:"Platão temia governo guiado por doxa."},
+{base:"Os três filósofos são centrais no ENEM.",q:"Um tema comum entre eles é:",o:["Busca racional pela verdade e pela vida boa","Defesa da ignorância","Rejeição total da ética","Negação da política"],c:0,coment:"Eles ligam razão, ética e política."}
+]),
+
+"Filosofia Medieval":gerarQuestoes("Filosofia Medieval",[
+{base:"A Filosofia Medieval dialoga com a tradição cristã.",q:"Um tema central da filosofia medieval é a relação entre:",o:["Fé e razão","Mercado e lucro","Indústria e massa","Inconsciente e desejo"],c:0,coment:"Fé e razão são tema central."},
+{base:"A Patrística corresponde ao pensamento dos primeiros padres da Igreja.",q:"O principal nome da Patrística é:",o:["Santo Agostinho","Karl Marx","Nietzsche","Hume"],c:0,coment:"Agostinho é referência da Patrística."},
+{base:"Santo Agostinho foi influenciado por Platão.",q:"Para Agostinho, a verdade plena está em:",o:["Deus","Matéria sensível apenas","Prazer corporal","Estado moderno"],c:0,coment:"Agostinho vincula verdade a Deus."},
+{base:"Agostinho valorizou a interioridade.",q:"A busca da verdade passa pelo:",o:["Interior da alma","Consumo material","Acaso absoluto","Contrato político"],c:0,coment:"Agostinho destaca a interioridade."},
+{base:"O problema do mal foi discutido por Agostinho.",q:"Para ele, o mal é entendido como:",o:["Privação do bem","Substância criada por Deus","Força igual a Deus","Prova contra toda fé"],c:0,coment:"Mal é ausência/privação do bem."},
+{base:"A Escolástica buscou sistematizar fé e razão.",q:"O principal nome da Escolástica é:",o:["Tomás de Aquino","Heráclito","Maquiavel","Sartre"],c:0,coment:"Tomás de Aquino é escolástico."},
+{base:"Tomás de Aquino foi influenciado por Aristóteles.",q:"Ele procurou conciliar:",o:["Fé cristã e filosofia aristotélica","Ateísmo e niilismo","Mitologia e indústria","Psicanálise e marxismo"],c:0,coment:"Tomismo une fé e razão aristotélica."},
+{base:"Tomás de Aquino apresentou vias para provar a existência de Deus.",q:"Essas vias partem geralmente:",o:["Da observação do mundo","Da negação da razão","Da recusa da natureza","Do mito grego apenas"],c:0,coment:"As cinco vias partem do mundo sensível."},
+{base:"Na filosofia medieval, razão e fé podem cooperar.",q:"Essa cooperação significa que:",o:["A razão pode ajudar a compreender a fé","A fé elimina toda razão","A razão destrói toda religião","Ambas são sempre inimigas"],c:0,coment:"A razão pode servir à compreensão da fé."},
+{base:"Universais foram tema da Escolástica.",q:"O debate dos universais tratava da existência de:",o:["Conceitos gerais","Apenas moedas","Forças físicas modernas","Contratos sociais"],c:0,coment:"Debate sobre termos gerais como 'humanidade'."},
+{base:"A filosofia medieval não abandonou a razão.",q:"Ela usou a razão para discutir:",o:["Deus, alma e moral","Somente lucro","Apenas entretenimento","Somente máquinas"],c:0,coment:"Temas teológicos e morais eram racionalmente debatidos."},
+{base:"Agostinho escreveu sobre tempo e memória.",q:"Para ele, o tempo é compreendido profundamente pela:",o:["Consciência interior","Produção industrial","Retórica sofista","Seleção natural"],c:0,coment:"Agostinho associa tempo à interioridade."},
+{base:"A moral medieval tem forte ligação com Deus.",q:"Nesse contexto, a felicidade plena estaria em:",o:["Aproximar-se de Deus","Acumular prazeres","Dominar a técnica","Rejeitar toda virtude"],c:0,coment:"A beatitude está em Deus."},
+{base:"A Escolástica floresceu nas universidades medievais.",q:"Um método característico era:",o:["Disputa racional de argumentos","Proibição absoluta do debate","Experimentação genética","Cálculo financeiro"],c:0,coment:"Disputatio era método escolástico."},
+{base:"Tomás de Aquino distingue verdades da razão e da fé.",q:"Algumas verdades podem ser conhecidas pela razão, outras por:",o:["Revelação","Propaganda","Alienação","Consumo"],c:0,coment:"A revelação complementa a razão."},
+{base:"A filosofia medieval recebeu influência greco-romana.",q:"Dois autores antigos muito importantes foram:",o:["Platão e Aristóteles","Marx e Freud","Hobbes e Locke","Kant e Hegel"],c:0,coment:"Platão e Aristóteles influenciaram a Idade Média."},
+{base:"A Patrística buscava defender racionalmente a fé cristã.",q:"Essa defesa é chamada de:",o:["Apologética","Utilitarismo","Materialismo histórico","Existencialismo"],c:0,coment:"Apologética defende a fé."},
+{base:"No pensamento medieval, a verdade última é vinculada ao divino.",q:"Essa visão é chamada de:",o:["Teocentrismo","Antropocentrismo moderno","Niilismo","Liberalismo"],c:0,coment:"Teocentrismo coloca Deus no centro."},
+{base:"A transição para a modernidade enfraquece o teocentrismo.",q:"A modernidade fortalece:",o:["O antropocentrismo e a autonomia da razão","A submissão total ao mito","O fim da ciência","A negação do indivíduo"],c:0,coment:"Modernidade valoriza sujeito e razão."},
+{base:"No ENEM, Filosofia Medieval aparece ligada a fé, razão e ética.",q:"Uma associação correta é:",o:["Agostinho e interioridade","Marx e patrística","Nietzsche e escolástica","Freud e tomismo"],c:0,coment:"Agostinho destaca interioridade."}
+]),
+
+"Filosofia Moderna":gerarQuestoes("Filosofia Moderna",[
+{base:"A Filosofia Moderna valoriza o sujeito e a razão.",q:"Uma marca da modernidade filosófica é:",o:["Centralidade do sujeito","Retorno exclusivo ao mito","Fim da ciência","Negação da dúvida"],c:0,coment:"O sujeito torna-se centro da investigação."},
+{base:"Descartes buscou uma certeza indubitável.",q:"A frase famosa de Descartes é:",o:["Penso, logo existo","Tudo flui","O homem é a medida","Deus está morto"],c:0,coment:"Cogito cartesiano."},
+{base:"Descartes usou a dúvida como método.",q:"A dúvida metódica serve para:",o:["Encontrar uma certeza segura","Negar toda verdade para sempre","Defender a opinião comum","Impedir a razão"],c:0,coment:"A dúvida busca fundamento seguro."},
+{base:"O racionalismo valoriza a razão como fonte do conhecimento.",q:"Descartes é representante do:",o:["Racionalismo","Empirismo","Existencialismo","Materialismo histórico"],c:0,coment:"Descartes é racionalista."},
+{base:"O empirismo valoriza a experiência sensível.",q:"John Locke é representante do:",o:["Empirismo","Racionalismo cartesiano","Patrística","Niilismo"],c:0,coment:"Locke é empirista."},
+{base:"Locke comparou a mente humana ao nascer a uma folha em branco.",q:"Essa ideia é chamada de:",o:["Tábula rasa","Cogito","Ápeiron","Vontade de potência"],c:0,coment:"Tábula rasa indica ausência de ideias inatas."},
+{base:"Hume levou o empirismo a uma posição crítica.",q:"Para Hume, a ideia de causalidade deriva:",o:["Do hábito","De ideias inatas absolutas","Da revelação medieval","Do contrato social apenas"],c:0,coment:"Causalidade é hábito de associação."},
+{base:"Kant buscou superar racionalismo e empirismo.",q:"Para Kant, o conhecimento resulta da relação entre:",o:["Sensibilidade e entendimento","Mito e magia","Fé e propaganda","Desejo e inconsciente"],c:0,coment:"Kant une experiência e estruturas da razão."},
+{base:"Kant realizou uma revolução na teoria do conhecimento.",q:"A pergunta central kantiana era:",o:["Como é possível conhecer?","Como acumular riqueza?","Como negar a ciência?","Como eliminar a moral?"],c:0,coment:"Kant investiga condições do conhecimento."},
+{base:"Na ética kantiana, a ação moral deve seguir o dever.",q:"O princípio moral de Kant é chamado de:",o:["Imperativo categórico","Vontade de potência","Luta de classes","Maiêutica"],c:0,coment:"Imperativo categórico orienta a moral."},
+{base:"O contratualismo explica a origem do Estado por acordo.",q:"Hobbes, Locke e Rousseau são:",o:["Contratualistas","Pré-socráticos","Escolásticos","Existencialistas"],c:0,coment:"Os três discutem contrato social."},
+{base:"Hobbes descreve o estado de natureza como conflito.",q:"Para Hobbes, o homem é:",o:["Lobo do homem","Animal político aristotélico apenas","Naturalmente santo","Incapaz de desejar poder"],c:0,coment:"Hobbes vê conflito no estado natural."},
+{base:"Para Hobbes, o Estado forte garante paz e segurança.",q:"Esse Estado é simbolizado pelo:",o:["Leviatã","Ápeiron","Mundo das Ideias","Super-homem"],c:0,coment:"Leviatã representa poder soberano."},
+{base:"Locke defende direitos naturais.",q:"Entre esses direitos estão:",o:["Vida, liberdade e propriedade","Apenas prazer","Silêncio e obediência","Riqueza sem trabalho"],c:0,coment:"Locke é liberal."},
+{base:"Rousseau afirmou que o homem nasce livre, mas está acorrentado.",q:"Ele valorizou a ideia de:",o:["Vontade geral","Estado absoluto hobbesiano","Dúvida metódica","Átomo"],c:0,coment:"Rousseau destaca vontade geral."},
+{base:"Maquiavel inaugura uma análise realista da política.",q:"Em Maquiavel, a política é analisada pela:",o:["Realidade do poder","Moral religiosa exclusivamente","Imaginação mítica","Ciência genética"],c:0,coment:"Maquiavel observa como o poder funciona."},
+{base:"Francis Bacon valorizou o método experimental.",q:"Bacon é associado ao:",o:["Empirismo e método científico","Misticismo fechado","Idealismo platônico","Existencialismo"],c:0,coment:"Bacon valoriza experiência e indução."},
+{base:"A modernidade fortaleceu a ciência.",q:"Uma característica moderna é:",o:["Confiança na razão e no método","Rejeição total da observação","Retorno exclusivo ao mito","Fim da matemática"],c:0,coment:"Razão e método são centrais."},
+{base:"Iluminismo defendia autonomia da razão.",q:"O lema iluminista pode ser associado a:",o:["Ousar saber","Obedecer sem pensar","Negar a ciência","Retornar ao mito"],c:0,coment:"Sapere aude: ousa saber."},
+{base:"No ENEM, modernidade aparece em ciência, política e sujeito.",q:"Uma associação correta é:",o:["Descartes e dúvida metódica","Platão e empirismo moderno","Marx e cogito","Freud e contrato social"],c:0,coment:"Descartes usa dúvida metódica."}
+]),
+"Ética e Moral":gerarQuestoes("Ética e Moral",[
+{base:"Ética é reflexão filosófica sobre a moral.",q:"A ética busca compreender:",o:["Valores e ações humanas","Somente leis da física","Apenas cálculos matemáticos","A origem dos planetas"],c:0,coment:"Ética reflete sobre valores e condutas."},
+{base:"Moral é o conjunto de normas e costumes de um grupo.",q:"A moral está ligada a:",o:["Costumes sociais","Experimentos químicos","Movimentos dos astros","Células vegetais"],c:0,coment:"Moral envolve costumes e regras."},
+{base:"A ética socrática relaciona virtude e conhecimento.",q:"Para Sócrates, agir bem depende de:",o:["Conhecer o bem","Acumular bens","Obedecer sem refletir","Buscar prazer imediato"],c:0,coment:"Conhecimento orienta a virtude."},
+{base:"Aristóteles defendeu a ética da virtude.",q:"Para Aristóteles, a virtude é:",o:["Meio-termo entre extremos","Excesso sempre","Falta sempre","Prazer sem limite"],c:0,coment:"Virtude é equilíbrio."},
+{base:"A felicidade para Aristóteles é eudaimonia.",q:"Eudaimonia significa:",o:["Vida plena e realizada","Prazer momentâneo","Riqueza total","Fama política"],c:0,coment:"É realização humana."},
+{base:"Kant defende uma ética do dever.",q:"Para Kant, uma ação moral deve ser guiada:",o:["Pelo dever","Pelo interesse pessoal","Pelo medo apenas","Pelo prazer imediato"],c:0,coment:"Kant valoriza o dever."},
+{base:"O imperativo categórico kantiano busca universalidade.",q:"Uma ação moral deve poder ser:",o:["Universalizada","Escondida","Comprada","Imposta por desejo"],c:0,coment:"A máxima deve valer universalmente."},
+{base:"Utilitarismo avalia ações por suas consequências.",q:"Para o utilitarismo, a melhor ação é a que produz:",o:["Maior felicidade para o maior número","Maior sofrimento","Obediência cega","Ignorância coletiva"],c:0,coment:"Utilitarismo busca maximizar bem-estar."},
+{base:"Bentham e Mill são associados ao utilitarismo.",q:"O utilitarismo é uma ética:",o:["Consequencialista","Teocêntrica medieval","Racionalista cartesiana apenas","Pré-socrática"],c:0,coment:"Avalia consequências."},
+{base:"Liberdade é tema central da ética.",q:"Responsabilidade moral exige:",o:["Capacidade de escolha","Ausência total de consciência","Determinação química absoluta","Ignorância obrigatória"],c:0,coment:"Responsabilidade pressupõe liberdade."},
+{base:"Ética profissional discute condutas em profissões.",q:"Um princípio ético profissional é:",o:["Responsabilidade","Fraude","Manipulação","Corrupção"],c:0,coment:"Responsabilidade é princípio ético."},
+{base:"Bioética discute dilemas da vida e da tecnologia.",q:"Um tema de bioética é:",o:["Clonagem e células-tronco","Tabela periódica","Óptica geométrica","Juros compostos"],c:0,coment:"Bioética debate vida e tecnologia."},
+{base:"Ética ambiental discute relação entre humanos e natureza.",q:"Ela defende:",o:["Responsabilidade com o meio ambiente","Exploração sem limite","Poluição deliberada","Consumo irresponsável"],c:0,coment:"Ética ambiental defende cuidado ecológico."},
+{base:"Moral varia conforme contexto histórico e cultural.",q:"Isso mostra que normas morais podem:",o:["Mudar no tempo e entre sociedades","Ser sempre idênticas","Não depender de grupos","Ser leis físicas"],c:0,coment:"Moral pode variar historicamente."},
+{base:"Ética exige reflexão crítica sobre costumes.",q:"Questionar uma prática injusta é atitude:",o:["Ética","Irracional obrigatória","Antifilosófica","Sem importância"],c:0,coment:"Ética questiona normas."},
+{base:"Valores como justiça e solidariedade orientam ações.",q:"Esses valores pertencem ao campo da:",o:["Ética","Astronomia","Botânica","Física nuclear"],c:0,coment:"Ética trata de valores."},
+{base:"Dilemas morais envolvem conflito entre valores.",q:"Um dilema moral ocorre quando:",o:["Duas obrigações parecem entrar em conflito","Não há escolha","Tudo é matemático","Não existem consequências"],c:0,coment:"Dilemas envolvem conflito de valores."},
+{base:"A ética contemporânea discute tecnologia e sociedade.",q:"Um problema atual de ética é:",o:["Uso de dados pessoais","Divisão celular","Refração da luz","Movimento uniforme"],c:0,coment:"Privacidade de dados é tema ético."},
+{base:"A cidadania exige responsabilidade coletiva.",q:"Uma ação cidadã ética é:",o:["Respeitar direitos e deveres","Fraudar o público","Praticar discriminação","Ignorar leis justas"],c:0,coment:"Cidadania exige respeito mútuo."},
+{base:"No ENEM, ética costuma aparecer ligada à vida prática.",q:"Um tema recorrente é:",o:["Responsabilidade social","Cálculo vetorial","Massa molar","Taxonomia vegetal"],c:0,coment:"Ética no ENEM aparece em questões sociais."}
+]),
+
+"Política e Estado":gerarQuestoes("Política e Estado",[
+{base:"Política é reflexão sobre poder, governo e vida coletiva.",q:"A política trata principalmente de:",o:["Organização da vida em sociedade","Reações químicas","Divisão celular","Movimento dos planetas"],c:0,coment:"Política organiza a vida comum."},
+{base:"Aristóteles afirmou que o ser humano é animal político.",q:"Isso significa que o ser humano:",o:["Vive e se realiza em comunidade","É naturalmente isolado","Não precisa de linguagem","Rejeita toda cidade"],c:0,coment:"A pólis é espaço humano."},
+{base:"Platão propôs uma cidade ideal governada por sábios.",q:"Para Platão, deveriam governar os:",o:["Filósofos","Tiranos","Comerciantes mais ricos","Sofistas"],c:0,coment:"Filósofos conhecem o bem."},
+{base:"Maquiavel analisou o poder de forma realista.",q:"Sua obra mais conhecida é:",o:["O Príncipe","A República","O Capital","Crítica da Razão Pura"],c:0,coment:"Maquiavel escreveu O Príncipe."},
+{base:"Maquiavel separa política e moral tradicional.",q:"Para ele, o governante deve considerar:",o:["A realidade efetiva do poder","Apenas ideais abstratos","Somente dogmas religiosos","A opinião dos mitos"],c:0,coment:"Maquiavel observa a política real."},
+{base:"Hobbes defendeu um Estado forte.",q:"Para Hobbes, o Estado serve para:",o:["Evitar a guerra de todos contra todos","Eliminar toda lei","Aumentar o conflito","Impedir qualquer contrato"],c:0,coment:"O Estado garante segurança."},
+{base:"Locke defendeu direitos naturais.",q:"Locke é associado ao:",o:["Liberalismo","Absolutismo total","Niilismo","Sofismo antigo"],c:0,coment:"Locke influencia o liberalismo."},
+{base:"Rousseau valorizou a vontade geral.",q:"Para Rousseau, soberania deve pertencer ao:",o:["Povo","Monarca absoluto","Mercado financeiro","Exército estrangeiro"],c:0,coment:"Rousseau defende soberania popular."},
+{base:"Contrato social é uma teoria sobre origem legítima do poder.",q:"Contratualistas explicam o Estado por:",o:["Acordo entre indivíduos","Vontade divina apenas","Herança biológica","Acaso químico"],c:0,coment:"Contrato funda autoridade política."},
+{base:"Democracia significa participação do povo.",q:"Um princípio democrático é:",o:["Participação política","Censura total","Poder hereditário absoluto","Proibição do voto"],c:0,coment:"Democracia exige participação."},
+{base:"Cidadania envolve direitos e deveres.",q:"Um exemplo de cidadania é:",o:["Participar da vida pública","Comprar sem pensar","Ignorar leis","Praticar corrupção"],c:0,coment:"Cidadania é participação e responsabilidade."},
+{base:"Estado moderno possui soberania sobre território.",q:"Um elemento do Estado é:",o:["Território","Fotossíntese","Átomo","Mitocôndria"],c:0,coment:"Estado envolve território, povo e governo."},
+{base:"Montesquieu defendeu a separação dos poderes.",q:"Os três poderes são:",o:["Executivo, Legislativo e Judiciário","Religioso, militar e econômico","Mito, logos e ética","Arte, ciência e técnica"],c:0,coment:"Separação evita abuso de poder."},
+{base:"A separação dos poderes busca limitar o poder.",q:"Seu objetivo é evitar:",o:["Tirania","Cidadania","Participação","Fiscalização"],c:0,coment:"Limita concentração de poder."},
+{base:"Direitos humanos defendem dignidade de todos.",q:"A base dos direitos humanos é:",o:["Dignidade humana","Lucro máximo","Privilégio hereditário","Violência estatal"],c:0,coment:"Direitos humanos protegem dignidade."},
+{base:"Totalitarismo concentra poder e controla a sociedade.",q:"Uma característica totalitária é:",o:["Controle intenso da vida social","Liberdade plena de crítica","Pluralismo político","Respeito irrestrito às minorias"],c:0,coment:"Totalitarismo controla sociedade."},
+{base:"Cidadania moderna inclui direitos civis, políticos e sociais.",q:"Direito ao voto é direito:",o:["Político","Químico","Biológico","Estético apenas"],c:0,coment:"Voto é direito político."},
+{base:"Política envolve conflito e negociação.",q:"A democracia resolve conflitos por:",o:["Debate e instituições","Violência obrigatória","Silêncio forçado","Dominação natural"],c:0,coment:"Democracia exige debate institucional."},
+{base:"O poder legítimo precisa de reconhecimento social.",q:"Legitimidade política significa:",o:["Aceitação justificada do poder","Uso exclusivo da força","Ausência de leis","Proibição de participação"],c:0,coment:"Legitimidade é aceitação do poder."},
+{base:"No ENEM, política aparece ligada à cidadania.",q:"Um tema frequente é:",o:["Democracia e direitos","Cálculo de velocidade","Moléculas orgânicas","Leis da óptica"],c:0,coment:"Cidadania é tema recorrente."}
+]),
+
+"Teoria do Conhecimento":gerarQuestoes("Teoria do Conhecimento",[
+{base:"Teoria do conhecimento investiga como conhecemos.",q:"Ela também é chamada de:",o:["Epistemologia","Estética","Ontologia política","Bioética"],c:0,coment:"Epistemologia estuda o conhecimento."},
+{base:"Conhecimento filosófico busca justificativas racionais.",q:"Uma característica do conhecimento filosófico é:",o:["Argumentação crítica","Aceitação sem questionamento","Crença sem razão","Repetição automática"],c:0,coment:"Filosofia exige argumentos."},
+{base:"Opinião sem justificativa sólida era chamada pelos gregos de doxa.",q:"Doxa significa:",o:["Opinião","Ciência exata","Ideia perfeita","Método experimental"],c:0,coment:"Doxa é opinião."},
+{base:"Episteme significa conhecimento verdadeiro ou fundamentado.",q:"Para Platão, episteme está ligada:",o:["Ao mundo inteligível","Aos sentidos apenas","À opinião instável","Ao consumo"],c:0,coment:"Episteme é conhecimento verdadeiro."},
+{base:"Racionalismo valoriza a razão.",q:"Um racionalista moderno é:",o:["Descartes","Locke","Hume","Bacon apenas"],c:0,coment:"Descartes valoriza a razão."},
+{base:"Empirismo valoriza a experiência.",q:"Um empirista é:",o:["Locke","Platão","Parmênides","Agostinho apenas"],c:0,coment:"Locke é empirista."},
+{base:"Kant propôs que o conhecimento depende da experiência e de estruturas do sujeito.",q:"Para Kant, conhecimento começa com:",o:["Experiência","Mito","Fé apenas","Consumo"],c:0,coment:"Kant diz que conhecimento começa com experiência, mas não deriva todo dela."},
+{base:"Ceticismo questiona a possibilidade de conhecimento seguro.",q:"O cético tende a:",o:["Suspender o juízo","Aceitar tudo como certo","Defender dogmas absolutos","Negar toda dúvida"],c:0,coment:"Ceticismo suspende julgamento."},
+{base:"Dogmatismo afirma verdades sem crítica suficiente.",q:"Uma postura dogmática é:",o:["Aceitar sem questionar","Investigar argumentos","Duvidar metodicamente","Comparar evidências"],c:0,coment:"Dogmatismo dispensa crítica."},
+{base:"Descartes usa a dúvida para alcançar certeza.",q:"A dúvida cartesiana é:",o:["Metódica","Final e absoluta","Irracional","Anticientífica"],c:0,coment:"É método para encontrar certeza."},
+{base:"Ciência moderna depende de método e verificação.",q:"Um elemento científico é:",o:["Hipótese testável","Opinião sem base","Autoridade inquestionável","Mito fixo"],c:0,coment:"Ciência testa hipóteses."},
+{base:"Bacon criticava os ídolos que atrapalham o conhecimento.",q:"Os ídolos são:",o:["Preconceitos e erros do pensamento","Deuses gregos apenas","Provas matemáticas","Leis políticas"],c:0,coment:"Ídolos são obstáculos ao conhecimento."},
+{base:"Verdade pode ser entendida como correspondência com os fatos.",q:"Nessa visão, uma frase é verdadeira se:",o:["Corresponde à realidade","Agrada a maioria","Gera lucro","É repetida muitas vezes"],c:0,coment:"Verdade como correspondência."},
+{base:"A linguagem influencia a forma como compreendemos o mundo.",q:"O estudo filosófico da linguagem investiga:",o:["Significado e comunicação","Apenas massa corporal","Somente células","Reações químicas"],c:0,coment:"Filosofia da linguagem analisa significado."},
+{base:"Conhecimento científico é provisório e revisável.",q:"Isso significa que a ciência:",o:["Pode corrigir teorias com novas evidências","Nunca muda","É opinião qualquer","Dispensa provas"],c:0,coment:"Ciência se revisa com evidências."},
+{base:"O senso comum é conhecimento cotidiano.",q:"Uma característica do senso comum é:",o:["Ser prático e nem sempre sistemático","Ser sempre científico","Ser totalmente falso","Ser matemático sempre"],c:0,coment:"Senso comum é cotidiano e prático."},
+{base:"O conhecimento filosófico questiona fundamentos.",q:"A filosofia pergunta pelo:",o:["Porquê das crenças e valores","Preço dos objetos apenas","Funcionamento mecânico exclusivo","Consumo imediato"],c:0,coment:"Filosofia busca fundamentos."},
+{base:"Ideologia pode influenciar formas de pensar.",q:"Uma função crítica da filosofia é:",o:["Questionar ideias naturalizadas","Repetir preconceitos","Proibir debate","Eliminar reflexão"],c:0,coment:"Filosofia desnaturaliza ideias."},
+{base:"A tecnologia amplia acesso à informação, mas não garante conhecimento.",q:"Conhecimento exige:",o:["Análise crítica","Apenas copiar conteúdo","Velocidade de internet","Memorização sem sentido"],c:0,coment:"Conhecer exige reflexão e crítica."},
+{base:"No ENEM, teoria do conhecimento aparece em textos sobre ciência e verdade.",q:"Uma atitude filosófica adequada é:",o:["Questionar e justificar ideias","Aceitar boatos","Rejeitar evidências","Confundir opinião com prova"],c:0,coment:"Atitude filosófica é crítica."}
+]),
+
+"Filosofia Contemporânea":gerarQuestoes("Filosofia Contemporânea",[
+{base:"Marx analisou a sociedade capitalista.",q:"Conceito central em Marx é:",o:["Luta de classes","Mundo das Ideias","Ápeiron","Maiêutica"],c:0,coment:"Marx destaca conflito entre classes."},
+{base:"Para Marx, a infraestrutura econômica influencia a superestrutura social.",q:"Superestrutura inclui:",o:["Ideias, leis e instituições","Apenas moléculas","Somente energia","Apenas órgãos"],c:0,coment:"Superestrutura inclui cultura, política e direito."},
+{base:"Alienação em Marx envolve separação do trabalhador em relação ao produto de seu trabalho.",q:"Alienação significa:",o:["Perda de controle sobre o trabalho","Autoconhecimento pleno","Liberdade absoluta","Conhecimento das ideias"],c:0,coment:"Trabalhador não domina o produto/processo."},
+{base:"Nietzsche criticou a moral tradicional.",q:"A frase 'Deus está morto' indica:",o:["Crise dos valores tradicionais","Prova científica contra átomos","Defesa da escolástica","Retorno ao mito"],c:0,coment:"Nietzsche fala da crise de fundamentos."},
+{base:"Nietzsche propôs a transvaloração dos valores.",q:"Transvalorar significa:",o:["Reavaliar valores estabelecidos","Obedecer sem crítica","Manter toda moral tradicional","Negar a vida"],c:0,coment:"É reavaliar valores."},
+{base:"Freud criou a psicanálise.",q:"Um conceito central de Freud é:",o:["Inconsciente","Contrato social","Arché","Imperativo categórico"],c:0,coment:"Freud destaca o inconsciente."},
+{base:"Para Freud, nem toda ação humana é consciente.",q:"Isso questiona a ideia de:",o:["Sujeito totalmente racional","Inconsciente psíquico","Desejos reprimidos","Sonhos interpretáveis"],c:0,coment:"Freud descentra a razão."},
+{base:"Existencialismo discute liberdade e existência.",q:"Sartre afirmou que:",o:["A existência precede a essência","O homem nasce pronto","A essência vem antes da vida","Liberdade não existe"],c:0,coment:"Sartre defende liberdade radical."},
+{base:"Para Sartre, o ser humano está condenado à liberdade.",q:"Isso significa que ele:",o:["É responsável por suas escolhas","Não escolhe nada","É determinado por essência fixa","Não tem responsabilidade"],c:0,coment:"Liberdade traz responsabilidade."},
+{base:"Simone de Beauvoir discutiu gênero e liberdade.",q:"A frase associada a ela é:",o:["Não se nasce mulher, torna-se mulher","Penso, logo existo","Tudo flui","O homem é lobo do homem"],c:0,coment:"Beauvoir analisa construção social do gênero."},
+{base:"A Escola de Frankfurt criticou a sociedade de massa.",q:"Um conceito importante é:",o:["Indústria cultural","Ápeiron","Contrato natural","Maiêutica"],c:0,coment:"Adorno e Horkheimer falam em indústria cultural."},
+{base:"Indústria cultural transforma cultura em mercadoria.",q:"Segundo essa crítica, a cultura de massa pode:",o:["Padronizar gostos e comportamentos","Libertar automaticamente todos","Eliminar consumo","Impedir lucro"],c:0,coment:"Cultura vira produto padronizado."},
+{base:"Hannah Arendt analisou totalitarismo e ação política.",q:"Um conceito associado a Arendt é:",o:["Banalidade do mal","Mundo inteligível","Vontade geral","Arché"],c:0,coment:"Arendt analisou a banalidade do mal."},
+{base:"A banalidade do mal indica que atrocidades podem ser cometidas por pessoas comuns sem reflexão crítica.",q:"Isso alerta para:",o:["Perigo da obediência acrítica","Importância da ignorância","Fim da responsabilidade","Defesa da violência"],c:0,coment:"Arendt alerta contra falta de pensamento."},
+{base:"Foucault analisou relações entre poder e saber.",q:"Para Foucault, poder está:",o:["Espalhado nas relações sociais","Apenas no rei","Somente na economia","Ausente das instituições"],c:0,coment:"Poder circula nas relações."},
+{base:"Foucault estudou instituições disciplinares.",q:"Exemplo de instituição disciplinar:",o:["Prisões e escolas","Florestas naturais","Estrelas","Átomos"],c:0,coment:"Instituições disciplinam corpos."},
+{base:"A filosofia contemporânea critica certezas modernas.",q:"Ela frequentemente questiona:",o:["Razão, poder, sujeito e linguagem","Somente a água","Apenas geometria","A existência de plantas"],c:0,coment:"Contemporânea questiona fundamentos."},
+{base:"Wittgenstein analisou linguagem.",q:"Para ele, significado está relacionado ao:",o:["Uso da linguagem","Peso molecular","Contrato social apenas","Fotossíntese"],c:0,coment:"Significado depende do uso."},
+{base:"A fenomenologia investiga a experiência vivida.",q:"Um nome associado à fenomenologia é:",o:["Husserl","Tales","Hobbes","Bentham"],c:0,coment:"Husserl fundou a fenomenologia."},
+{base:"No ENEM, contemporânea aparece ligada a crítica social.",q:"Um tema frequente é:",o:["Alienação, mídia e poder","Cálculo de mol","Movimento uniforme","Taxonomia vegetal"],c:0,coment:"Crítica social é recorrente."}
+]),
+"Estética e Cultura":gerarQuestoes("Estética e Cultura",[
+{base:"Estética é a área da filosofia que investiga arte, belo e sensibilidade.",q:"A estética estuda:",o:["Arte e experiência do belo","Somente leis penais","Células animais","Forças mecânicas"],c:0,coment:"Estética trata de arte e sensibilidade."},
+{base:"Platão desconfiava da arte imitativa.",q:"Para Platão, a arte poderia afastar da:",o:["Verdade","Opinião","Sombra","Ignorância"],c:0,coment:"A arte seria cópia da cópia."},
+{base:"Aristóteles valorizou a arte como imitação criativa.",q:"O termo usado para imitação artística é:",o:["Mímesis","Ápeiron","Cogito","Alienação"],c:0,coment:"Mímesis é imitação/representação."},
+{base:"Na tragédia, Aristóteles fala em catarse.",q:"Catarse significa:",o:["Purificação das emoções","Contrato político","Dúvida metódica","Repressão do trabalho"],c:0,coment:"Catarse purifica emoções."},
+{base:"Kant analisou o juízo de gosto.",q:"Para Kant, o gosto estético pretende certa:",o:["Universalidade sem conceito","Utilidade econômica","Prova matemática","Obrigação legal"],c:0,coment:"O gosto busca validade comum sem conceito."},
+{base:"O belo pode ser entendido como experiência sensível e cultural.",q:"Isso significa que o julgamento estético:",o:["Pode variar conforme contexto","É sempre químico","É igual para todos sem discussão","Não envolve cultura"],c:0,coment:"Gosto pode ser influenciado culturalmente."},
+{base:"Arte pode expressar crítica social.",q:"Uma função da arte é:",o:["Questionar a realidade","Eliminar pensamento","Impedir sensibilidade","Substituir toda ciência"],c:0,coment:"Arte pode criticar a sociedade."},
+{base:"Cultura inclui valores, práticas, símbolos e modos de vida.",q:"Cultura é:",o:["Produção simbólica humana","Instinto biológico fixo apenas","Fenômeno sem sociedade","Apenas pintura"],c:0,coment:"Cultura é produção humana."},
+{base:"Etnocentrismo julga outra cultura a partir da própria.",q:"Uma atitude etnocêntrica é:",o:["Considerar sua cultura superior","Respeitar diferenças","Compreender contextos","Evitar preconceitos"],c:0,coment:"Etnocentrismo hierarquiza culturas."},
+{base:"Relativismo cultural busca compreender culturas em seus próprios contextos.",q:"Ele se opõe ao:",o:["Etnocentrismo","Diálogo","Respeito","Diversidade"],c:0,coment:"Relativismo combate julgamento etnocêntrico."},
+{base:"A indústria cultural foi criticada pela Escola de Frankfurt.",q:"Ela transforma cultura em:",o:["Mercadoria padronizada","Experiência única livre de mercado","Conhecimento puro sem lucro","Silêncio"],c:0,coment:"Cultura vira produto de consumo."},
+{base:"Cultura de massa é produzida para amplo consumo.",q:"Uma crítica à cultura de massa é:",o:["Padronização dos gostos","Aumento obrigatório da autonomia","Fim da propaganda","Ausência de mercado"],c:0,coment:"A crítica aponta padronização."},
+{base:"Walter Benjamin analisou a obra de arte na era da reprodução técnica.",q:"A reprodução técnica altera a:",o:["Aura da obra de arte","Massa atômica","Lei moral","Arché"],c:0,coment:"Benjamin fala da perda/transformação da aura."},
+{base:"A arte contemporânea muitas vezes rompe padrões tradicionais.",q:"Uma característica da arte contemporânea é:",o:["Questionamento de formas e sentidos","Imitação obrigatória da natureza","Ausência de crítica","Proibição de interpretação"],c:0,coment:"Arte contemporânea questiona padrões."},
+{base:"O gosto artístico pode ser formado socialmente.",q:"Isso mostra relação entre estética e:",o:["Cultura","Gravidade","Osmose","Estequiometria"],c:0,coment:"Gosto se liga à cultura."},
+{base:"Arte popular expressa experiências de grupos sociais.",q:"Ela deve ser compreendida como:",o:["Produção cultural legítima","Cultura inferior obrigatória","Ausência de estética","Erro social"],c:0,coment:"Arte popular é cultura legítima."},
+{base:"Patrimônio cultural preserva memória coletiva.",q:"Preservar patrimônio significa:",o:["Valorizar história e identidade","Apagar tradições","Padronizar culturas","Negar memória"],c:0,coment:"Patrimônio guarda memória."},
+{base:"A cultura digital modifica produção e circulação de arte.",q:"Uma característica da cultura digital é:",o:["Compartilhamento em rede","Fim da comunicação","Ausência de imagens","Proibição de autoria"],c:0,coment:"Cultura digital circula em redes."},
+{base:"A estética também discute o feio, o sublime e o gosto.",q:"O sublime se relaciona a experiências de:",o:["Grandeza e impacto","Cálculo simples","Rotina sem emoção","Obediência jurídica"],c:0,coment:"Sublime envolve grandeza e intensidade."},
+{base:"No ENEM, estética aparece ligada à arte, cultura e sociedade.",q:"Um tema frequente é:",o:["Indústria cultural e cultura de massa","Ligação iônica","Circuitos elétricos","Pressão hidrostática"],c:0,coment:"Indústria cultural é recorrente."}
+]),
+
+"Filosofia no ENEM":gerarQuestoes("Filosofia no ENEM",[
+{base:"O ENEM cobra Filosofia por meio de interpretação de textos e conceitos.",q:"Uma boa estratégia é:",o:["Ler contexto e identificar o conceito central","Decorar sem interpretar","Ignorar o texto-base","Responder só pelo senso comum"],c:0,coment:"Interpretação é essencial."},
+{base:"Questões filosóficas costumam relacionar autores e problemas.",q:"Ao ver Sócrates, pense em:",o:["Diálogo e autoconhecimento","Luta de classes","Indústria cultural","Inconsciente"],c:0,coment:"Sócrates usa diálogo e reflexão."},
+{base:"Ao ver Platão no ENEM, aparecem temas como caverna e ideias.",q:"A caverna representa:",o:["Ignorância e busca da verdade","Consumo de massa","Contrato social","Alienação econômica"],c:0,coment:"A caverna simboliza passagem à verdade."},
+{base:"Aristóteles aparece em ética e política.",q:"Um conceito aristotélico é:",o:["Meio-termo","Cogito","Ápeiron","Inconsciente"],c:0,coment:"Virtude é meio-termo."},
+{base:"Filosofia medieval aparece em fé e razão.",q:"Um autor medieval é:",o:["Tomás de Aquino","Nietzsche","Marx","Hume"],c:0,coment:"Tomás é medieval."},
+{base:"Filosofia moderna aparece com sujeito, razão e ciência.",q:"Descartes é associado ao:",o:["Cogito e dúvida metódica","Materialismo histórico","Indústria cultural","Vontade geral"],c:0,coment:"Descartes usa dúvida metódica."},
+{base:"Empirismo valoriza a experiência.",q:"Um autor empirista é:",o:["Locke","Platão","Agostinho","Parmênides"],c:0,coment:"Locke é empirista."},
+{base:"Kant aparece em ética e conhecimento.",q:"Na ética, Kant valoriza:",o:["Dever","Prazer imediato","Lucro máximo","Tradição sem crítica"],c:0,coment:"Kant defende ética do dever."},
+{base:"Contratualismo aparece em política.",q:"Hobbes, Locke e Rousseau discutem:",o:["Origem e legitimidade do Estado","Fotossíntese","Célula animal","Reações químicas"],c:0,coment:"Contratualismo explica o Estado."},
+{base:"Marx aparece em trabalho e sociedade.",q:"Um conceito marxista é:",o:["Alienação","Mundo das Ideias","Ápeiron","Maiêutica"],c:0,coment:"Alienação é conceito marxista."},
+{base:"Nietzsche aparece em crítica à moral.",q:"Nietzsche questiona:",o:["Valores tradicionais","Leis da ótica","Ponto de fusão","Genética mendeliana"],c:0,coment:"Nietzsche critica a moral tradicional."},
+{base:"Freud aparece como crítica ao sujeito plenamente racional.",q:"Seu conceito central é:",o:["Inconsciente","Contrato social","Arché","Eudaimonia"],c:0,coment:"Freud destaca o inconsciente."},
+{base:"Escola de Frankfurt aparece ligada à mídia e cultura.",q:"O conceito de Adorno e Horkheimer é:",o:["Indústria cultural","Imperativo categórico","Tábula rasa","Ápeiron"],c:0,coment:"Indústria cultural é frankfurtiana."},
+{base:"Hannah Arendt aparece em totalitarismo e responsabilidade.",q:"Um conceito de Arendt é:",o:["Banalidade do mal","Dúvida metódica","Vontade de potência","Mímesis"],c:0,coment:"Arendt analisa a banalidade do mal."},
+{base:"Foucault aparece em poder e instituições.",q:"Para Foucault, poder está:",o:["Nas relações sociais","Apenas no rei","Somente na natureza","Fora das instituições"],c:0,coment:"Poder circula nas relações."},
+{base:"Ética ambiental pode aparecer no ENEM.",q:"Ela discute:",o:["Responsabilidade humana com a natureza","Apenas movimento dos corpos","Somente ácidos e bases","Apenas genética"],c:0,coment:"Ética ambiental trata do cuidado com o ambiente."},
+{base:"Bioética relaciona vida, tecnologia e moral.",q:"Um tema de bioética é:",o:["Clonagem","Refração","Potência elétrica","Impulso nervoso apenas"],c:0,coment:"Clonagem é tema bioético."},
+{base:"Filosofia política aparece em cidadania.",q:"Cidadania envolve:",o:["Direitos, deveres e participação","Apenas consumo","Isolamento social","Ausência de leis"],c:0,coment:"Cidadania exige participação."},
+{base:"Interpretação filosófica exige distinguir opinião e argumento.",q:"Um argumento é:",o:["Justificativa racional de uma ideia","Qualquer boato","Repetição sem prova","Palpite sem base"],c:0,coment:"Argumento justifica racionalmente."},
+{base:"No ENEM, a resposta correta geralmente respeita o texto e o conceito filosófico.",q:"A melhor postura é:",o:["Relacionar texto, autor e conceito","Ignorar o enunciado","Escolher a opção mais longa sempre","Responder por gosto pessoal"],c:0,coment:"É preciso articular texto e conceito."}
+])
+};
+
+function mostrarMenu(){
+ pararAudioFundo();
+ app.innerHTML=`
+ <div class="box">
+ <h2 style="color:var(--blue);margin-bottom:8px;">Escolha um módulo de Filosofia</h2>
+ <p class="mini">Cada módulo possui <strong>20 questões objetivas</strong>, com áudio e respostas embaralhadas.</p>
+ <div class="grid-areas">
+ ${areasFilosofia.map(area=>`
+ <div class="card-area">
+ <h3>${area.nome}</h3>
+ <p>${area.descricao}</p>
+ <button class="btn" onclick="iniciarArea('${area.nome.replace(/'/g,"\\'")}')">Entrar neste módulo</button>
+ </div>`).join("")}
+ </div></div>`;
+}
+
+async function iniciarArea(nomeArea){
+ await destravarAudio();
+ areaAtual=nomeArea;
+ questoesAtuais=bancoQuestoes[nomeArea]||[];
+ indiceQuestao=0;
+ acertosObjetivas=0;
+ questaoRenderizadaAtual=null;
+ if(!questoesAtuais.length){
+  app.innerHTML=`<div class="box"><h2 style="color:var(--red);">Erro ao abrir o módulo</h2><button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button></div>`;
+  return;
+ }
+ setTimeout(()=>{tocarAudioFundo()},120);
+ carregarQuestao();
+}
+
+function montarEnunciado(questao){
+ return `<span class="question-label">Base para interpretação:</span><span class="text-base">${questao.base}</span><span class="question-label">Pergunta:</span>${questao.q}`;
+}
+
+function carregarQuestao(){
+ const questao=questoesAtuais[indiceQuestao];
+ const total=questoesAtuais.length;
+ questaoRenderizadaAtual=embaralharAlternativas(questao);
+ let html=`<div class="box"><div class="status"><span>${areaAtual}</span><span>Questão ${indiceQuestao+1}/${total}</span></div><div id="question-text">${montarEnunciado(questaoRenderizadaAtual)}</div><div class="options-wrap">`;
+ questaoRenderizadaAtual.opcoesRenderizadas.forEach((alt,idx)=>{html+=`<button class="btn option-btn" onclick="responderObjetiva(${idx})">${alt}</button>`});
+ html+=`</div><button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button></div>`;
+ app.innerHTML=html;
+}
+
+function responderObjetiva(escolhida){
+ const botoes=document.querySelectorAll(".option-btn");
+ const correta=questaoRenderizadaAtual.corretaRenderizada;
+ botoes.forEach((btn,idx)=>{btn.disabled=true;if(idx===correta)btn.classList.add("correct")});
+ if(escolhida===correta){acertosObjetivas++;tocarAcerto()}else{if(botoes[escolhida])botoes[escolhida].classList.add("wrong");tocarErro()}
+ setTimeout(()=>{indiceQuestao++;if(indiceQuestao<questoesAtuais.length){carregarQuestao()}else{finalizarArea()}},900);
+}
+
+function finalizarArea(){
+ pararAudioFundo();
+ const notaFinal=acertosObjetivas*10;
+ const totalPossivel=200;
+ let feedback="Você concluiu este módulo completo de Filosofia. Continue treinando os demais módulos para avançar no simulado gratuito.";
+ if(notaFinal>=160)feedback+=" Excelente desempenho neste módulo.";
+ else if(notaFinal>=100)feedback+=" Bom resultado. Ainda dá para elevar sua pontuação.";
+ else feedback+=" Este resultado mostra pontos que precisam ser reforçados com mais treino.";
+ app.innerHTML=`
+ <div class="box">
+ <h2 style="color:var(--blue);">${areaAtual}</h2>
+ <div class="result-number">${notaFinal}/${totalPossivel}</div>
+ <div class="result-sub">Acertos: ${acertosObjetivas}/20</div>
+ <p class="mini" style="margin-bottom:18px;">${feedback}</p>
+ <button class="btn" onclick="iniciarArea('${areaAtual.replace(/'/g,"\\'")}')">Refazer este módulo</button>
+ <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+ </div>`;
+}
+
+mostrarMenu();
+
+const RADAR_COPA_ALBUM_URL = "https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?v=4000";
+const RADAR_COPA_FILOSOFIA_GRATUITO_ID = "gabarito-max-filosofia-gratuito";
+
+function resgatarBonusGratuitoRadarCopa(){
+  try{
+    const url = "https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?bonus="
+      + encodeURIComponent(RADAR_COPA_FILOSOFIA_GRATUITO_ID)
+      + "&pacotes=10&v=4000";
+
+    alert("🎁 Bônus gratuito Filosofia registrado: +10 pacotes. O álbum será aberto agora.");
+    window.open(url, "_blank", "noopener");
+  }catch(e){
+    alert("Não foi possível abrir o bônus agora. Tente abrir o álbum novamente.");
+  }
+}
+
+function abrirAlbumRadarCopa(){
+  window.open(RADAR_COPA_ALBUM_URL, "_blank", "noopener");
+}
+
+</script>
+</body>
+</html>

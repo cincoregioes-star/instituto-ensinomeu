@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Física Gratuito ENEM - Gabarito Max</title>
+
+<style>
+:root{
+  --card:#11141b;
+  --card2:#171b24;
+  --blue:#00f3ff;
+  --pink:#ff00e6;
+  --green:#39ff14;
+  --red:#ff003c;
+  --yellow:#ffd400;
+  --text:#ffffff;
+  --muted:#cfcfcf;
+  --line:rgba(255,255,255,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{
+  background:#000;
+  color:var(--text);
+  min-height:100vh;
+  padding:20px 12px 40px;
+  text-align:center;
+  overflow-x:hidden;
+}
+header{
+  max-width:1100px;
+  margin:0 auto 24px;
+  border:2px solid var(--blue);
+  border-radius:24px;
+  padding:22px 16px;
+  background:linear-gradient(180deg,#0c0f16,#090b11);
+  box-shadow:0 0 22px rgba(0,243,255,.22);
+}
+header h1{
+  color:var(--blue);
+  font-size:clamp(2rem,4vw,3rem);
+  text-shadow:0 0 14px rgba(0,243,255,.7);
+  font-weight:900;
+}
+header p{
+  margin-top:10px;
+  color:var(--pink);
+  font-weight:800;
+  font-size:clamp(1rem,2vw,1.3rem);
+}
+#app{width:100%;max-width:1100px;margin:0 auto}
+.box{
+  width:100%;
+  background:linear-gradient(180deg,var(--card),var(--card2));
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:20px 16px;
+  box-shadow:0 0 20px rgba(0,0,0,.35);
+  overflow:hidden;
+}
+.btn{
+  display:block;
+  width:100%;
+  max-width:560px;
+  margin:10px auto;
+  padding:14px 16px;
+  border:2px solid var(--blue);
+  background:transparent;
+  color:#fff;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:800;
+  font-size:1rem;
+  line-height:1.45;
+  transition:.2s;
+  white-space:normal;
+  word-break:break-word;
+}
+.btn:hover:not(:disabled){
+  background:var(--blue);
+  color:#000;
+  box-shadow:0 0 18px rgba(0,243,255,.35);
+}
+.btn-voltar{border-color:#666;color:#ddd}
+.btn-voltar:hover:not(:disabled){background:#333;color:#fff;box-shadow:none}
+.btn.correct{background:var(--green)!important;border-color:var(--green)!important;color:#000!important}
+.btn.wrong{background:var(--red)!important;border-color:var(--red)!important;color:#fff!important}
+.grid-areas{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  margin-top:18px;
+}
+.card-area{
+  background:linear-gradient(135deg,rgba(0,243,255,.08),rgba(255,0,230,.08));
+  border:1px solid rgba(0,243,255,.16);
+  border-radius:16px;
+  padding:16px;
+  text-align:left;
+}
+.card-area h3{
+  color:var(--blue);
+  margin-bottom:8px;
+  font-size:1.12rem;
+}
+.card-area p{
+  color:#ddd;
+  font-size:.95rem;
+  line-height:1.45;
+  margin-bottom:10px;
+}
+.status{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+  color:var(--pink);
+  font-weight:bold;
+  text-align:left;
+}
+#question-text{
+  font-size:1.05rem;
+  line-height:1.6;
+  margin:20px 0;
+  min-height:88px;
+  text-align:left;
+  word-break:break-word;
+}
+.question-label{
+  display:block;
+  color:var(--yellow);
+  font-weight:bold;
+  margin-bottom:8px;
+}
+.text-base{
+  display:block;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  padding:14px;
+  margin:10px 0 14px;
+  color:#f5f5f5;
+  font-style:italic;
+  line-height:1.65;
+}
+.options-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-bottom:16px;
+}
+.option-btn{
+  width:100%;
+  max-width:100%;
+  margin:0;
+  text-align:left;
+  min-height:58px;
+}
+.result-number{
+  font-size:3rem;
+  color:var(--blue);
+  margin:12px 0;
+  font-weight:900;
+}
+.result-sub{
+  font-size:1.12rem;
+  color:#ddd;
+  margin-bottom:10px;
+}
+.mini{color:var(--muted);font-size:.96rem;line-height:1.5}
+@media(max-width:700px){
+  .grid-areas{grid-template-columns:1fr}
+  .box{padding:16px 12px}
+  #question-text{font-size:1rem}
+  .btn{font-size:.96rem;padding:13px 12px}
+}
+
+.gratuito-radar-copa-box{
+  width:100%;
+  max-width:820px;
+  margin:18px auto 16px;
+  padding:16px;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(0,243,255,.10),rgba(255,212,0,.12));
+  border:1px solid rgba(255,212,0,.40);
+  box-shadow:0 0 18px rgba(255,212,0,.10);
+  text-align:center;
+}
+.gratuito-radar-copa-box h3{
+  color:#ffd400;
+  margin-bottom:8px;
+  font-size:1.12rem;
+  text-transform:uppercase;
+}
+.gratuito-radar-copa-box p{
+  color:#e5e7eb;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+.gratuito-radar-copa-box .radar-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.gratuito-radar-copa-box button,
+.gratuito-radar-copa-box a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:320px;
+  min-height:48px;
+  border-radius:999px;
+  padding:12px 14px;
+  font-weight:900;
+  text-decoration:none;
+  border:1px solid rgba(255,212,0,.65);
+}
+.gratuito-radar-copa-box button{
+  background:linear-gradient(135deg,#fff4bf,#ffd400,#f59e0b);
+  color:#06142e;
+  cursor:pointer;
+}
+.gratuito-radar-copa-box a{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+</style>
+</head>
+
+<body>
+<nav aria-label="Navegação EnsinoMeu" style="padding:12px 18px;background:#07172b;text-align:left"><a style="color:#fff;font-weight:700;text-decoration:none;background:#1768ac;padding:9px 13px;border-radius:9px;display:inline-block" href="../index.html">← Voltar ao acervo gratuito</a></nav>
+
+<header>
+  <h1>FÍSICA GRATUITO ENEM</h1>
+  <p>10 MÓDULOS • 200 QUESTÕES • ÁUDIOS • RESPOSTAS EMBARALHADAS</p>
+</header>
+
+
+      <div id="app"></div>
+
+<audio id="audio-bg" loop preload="auto" playsinline>
+  <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-correct" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-wrong" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const app = document.getElementById("app");
+const audioBg = document.getElementById("audio-bg");
+const audioCorrect = document.getElementById("audio-correct");
+const audioWrong = document.getElementById("audio-wrong");
+
+audioBg.volume = 0.06;
+audioCorrect.volume = 0.45;
+audioWrong.volume = 0.45;
+
+let audioLiberado = false;
+let areaAtual = "";
+let questoesAtuais = [];
+let indiceQuestao = 0;
+let acertosObjetivas = 0;
+let questaoRenderizadaAtual = null;
+
+document.addEventListener("click", destravarAudio, { once:true });
+document.addEventListener("touchstart", destravarAudio, { once:true });
+
+function destravarAudio(){
+  if(audioLiberado) return Promise.resolve(true);
+  audioBg.muted = true;
+  return audioBg.play().then(()=>{
+    audioBg.pause();
+    audioBg.currentTime = 0;
+    audioBg.muted = false;
+    audioLiberado = true;
+
+    audioCorrect.play().then(()=>{
+      audioCorrect.pause();
+      audioCorrect.currentTime = 0;
+    }).catch(()=>{});
+
+    audioWrong.play().then(()=>{
+      audioWrong.pause();
+      audioWrong.currentTime = 0;
+    }).catch(()=>{});
+
+    return true;
+  }).catch(()=>false);
+}
+
+function tocarAudioFundo(){
+  if(!audioLiberado) return;
+  audioBg.currentTime = 0;
+  audioBg.play().catch(()=>{});
+}
+
+function pararAudioFundo(){
+  audioBg.pause();
+  audioBg.currentTime = 0;
+}
+
+function tocarAcerto(){
+  audioCorrect.currentTime = 0;
+  audioCorrect.play().catch(()=>{});
+}
+
+function tocarErro(){
+  audioWrong.currentTime = 0;
+  audioWrong.play().catch(()=>{});
+}
+
+const areasFisica = [
+  {nome:"Cinemática",descricao:"Movimento, velocidade, aceleração, MRU e MRUV."},
+  {nome:"Dinâmica",descricao:"Forças, leis de Newton, peso, atrito e resultante."},
+  {nome:"Energia e Trabalho",descricao:"Trabalho, potência, energia mecânica e conservação."},
+  {nome:"Hidrostática",descricao:"Densidade, pressão, empuxo e vasos comunicantes."},
+  {nome:"Termologia",descricao:"Temperatura, calor, dilatação e mudanças de estado."},
+  {nome:"Óptica",descricao:"Luz, espelhos, lentes, refração e formação de imagens."},
+  {nome:"Ondulatória",descricao:"Ondas, som, frequência, período e velocidade."},
+  {nome:"Eletricidade",descricao:"Carga elétrica, corrente, tensão, resistência e potência."},
+  {nome:"Magnetismo",descricao:"Campo magnético, indução e eletromagnetismo."},
+  {nome:"Física Moderna e ENEM",descricao:"Radioatividade, efeito fotoelétrico, tecnologia e contexto."}
+];
+
+function criarObjetiva(area, numero, textoBase, pergunta, alternativas, correta, comentario){
+  return {tipo:"objetiva",area,numero,base:textoBase,q:pergunta,o:alternativas,c:correta,coment:comentario};
+}
+
+function gerarQuestoes(area, lista){
+  return lista.map((item,i)=>criarObjetiva(area,i+1,item.base,item.q,item.o,item.c,item.coment));
+}
+
+function embaralharAlternativas(questao){
+  const pares = questao.o.map((texto,idx)=>({texto,correta:idx===questao.c}));
+  for(let i=pares.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [pares[i],pares[j]] = [pares[j],pares[i]];
+  }
+  return {
+    ...questao,
+    opcoesRenderizadas:pares.map(p=>p.texto),
+    corretaRenderizada:pares.findIndex(p=>p.correta)
+  };
+}
+
+const bancoQuestoes = {
+  "Cinemática": gerarQuestoes("Cinemática", [
+    {base:"Um carro percorre 120 km em 2 horas, mantendo velocidade constante.",q:"Qual é sua velocidade média?",o:["40 km/h","50 km/h","60 km/h","80 km/h"],c:2,coment:"Velocidade média = distância/tempo = 120/2 = 60 km/h."},
+    {base:"Um ciclista percorre 30 km em 3 horas.",q:"A velocidade média do ciclista é:",o:["5 km/h","10 km/h","15 km/h","30 km/h"],c:1,coment:"30/3 = 10 km/h."},
+    {base:"Um objeto se move com velocidade constante em linha reta.",q:"Esse movimento é chamado de:",o:["MRU","MRUV","Queda livre","Movimento circular"],c:0,coment:"MRU é movimento retilíneo uniforme."},
+    {base:"Em um movimento uniformemente variado, a velocidade muda com o tempo.",q:"A grandeza responsável pela variação da velocidade é:",o:["Massa","Aceleração","Peso","Temperatura"],c:1,coment:"Aceleração mede a variação da velocidade."},
+    {base:"Um carro parte do repouso e atinge 20 m/s em 5 s.",q:"Sua aceleração média é:",o:["2 m/s²","3 m/s²","4 m/s²","5 m/s²"],c:2,coment:"a = Δv/Δt = 20/5 = 4 m/s²."},
+    {base:"Um móvel tem velocidade de 10 m/s durante 8 segundos.",q:"Qual distância ele percorre em MRU?",o:["18 m","40 m","80 m","100 m"],c:2,coment:"s = v.t = 10 x 8 = 80 m."},
+    {base:"Um objeto é abandonado em queda livre, desprezando o ar.",q:"Sua velocidade:",o:["Permanece constante","Aumenta com o tempo","Diminui com o tempo","É sempre zero"],c:1,coment:"A gravidade acelera o corpo."},
+    {base:"No SI, a unidade de velocidade é:",q:"Qual alternativa apresenta a unidade correta?",o:["m/s","kg","N","J"],c:0,coment:"A unidade de velocidade no SI é metro por segundo."},
+    {base:"Um trem percorre 300 m em 10 s.",q:"Sua velocidade média é:",o:["20 m/s","25 m/s","30 m/s","35 m/s"],c:2,coment:"300/10 = 30 m/s."},
+    {base:"Um corpo muda sua posição com o passar do tempo.",q:"Isso indica que ele está em:",o:["Repouso absoluto","Movimento","Equilíbrio térmico","Condensação"],c:1,coment:"Movimento é mudança de posição no tempo."},
+    {base:"Um referencial é usado para descrever movimento ou repouso.",q:"Movimento e repouso dependem de:",o:["Temperatura","Referencial","Corpo neutro","Densidade"],c:1,coment:"Depende do referencial adotado."},
+    {base:"Um carro freia de 30 m/s para 10 m/s em 5 s.",q:"A aceleração média é:",o:["-2 m/s²","-4 m/s²","4 m/s²","8 m/s²"],c:1,coment:"a=(10-30)/5=-4 m/s²."},
+    {base:"No MRU, o gráfico posição x tempo é uma reta.",q:"Isso ocorre porque:",o:["A velocidade é constante","A massa varia","A força é sempre nula","A aceleração aumenta"],c:0,coment:"Velocidade constante gera reta no gráfico s x t."},
+    {base:"Um móvel percorre 50 m em 5 s.",q:"Sua velocidade média é:",o:["5 m/s","10 m/s","15 m/s","20 m/s"],c:1,coment:"50/5 = 10 m/s."},
+    {base:"A aceleração da gravidade na Terra é aproximadamente 10 m/s².",q:"Isso significa que, em queda livre, a velocidade aumenta cerca de:",o:["1 m/s a cada segundo","5 m/s a cada segundo","10 m/s a cada segundo","100 m/s a cada segundo"],c:2,coment:"g ≈ 10 m/s²."},
+    {base:"Um móvel em repouso tem velocidade:",q:"Qual é a velocidade de um corpo parado?",o:["0","1 m/s","10 m/s","Depende da massa"],c:0,coment:"Repouso significa velocidade nula em relação ao referencial."},
+    {base:"Um atleta corre 100 m em 10 s.",q:"Sua velocidade média é:",o:["5 m/s","10 m/s","15 m/s","20 m/s"],c:1,coment:"100/10 = 10 m/s."},
+    {base:"Um objeto em MRUV tem aceleração constante.",q:"No MRUV, a aceleração:",o:["É nula sempre","É constante","É sempre negativa","É infinita"],c:1,coment:"Movimento uniformemente variado tem aceleração constante."},
+    {base:"O deslocamento considera posição inicial e final.",q:"Se um corpo vai da posição 2 m para 10 m, seu deslocamento é:",o:["6 m","8 m","10 m","12 m"],c:1,coment:"10 - 2 = 8 m."},
+    {base:"Um corpo percorre 20 m para frente e depois 5 m para trás.",q:"Seu deslocamento resultante é:",o:["15 m","20 m","25 m","30 m"],c:0,coment:"20 - 5 = 15 m."}
+  ]),
+
+  "Dinâmica": gerarQuestoes("Dinâmica", [
+    {base:"A dinâmica estuda as causas dos movimentos.",q:"A grandeza associada à causa da aceleração é:",o:["Força","Temperatura","Volume","Densidade"],c:0,coment:"Força é capaz de alterar o estado de movimento."},
+    {base:"Pela segunda lei de Newton, F = m · a.",q:"Um corpo de 5 kg recebe aceleração de 2 m/s². A força resultante é:",o:["5 N","7 N","10 N","20 N"],c:2,coment:"F = 5 x 2 = 10 N."},
+    {base:"Um corpo permanece em repouso ou MRU se a força resultante for nula.",q:"Essa ideia corresponde à:",o:["Primeira lei de Newton","Segunda lei de Newton","Lei de Ohm","Lei de Snell"],c:0,coment:"É a lei da inércia."},
+    {base:"A ação e reação ocorrem em pares de forças.",q:"A terceira lei de Newton afirma que:",o:["Forças surgem isoladas","Toda ação tem reação de mesma intensidade e sentido oposto","A força depende da temperatura","Todo corpo cai igual sem gravidade"],c:1,coment:"Ação e reação atuam em corpos diferentes."},
+    {base:"Peso é a força gravitacional que atua sobre um corpo.",q:"Um corpo de massa 10 kg na Terra, com g=10 m/s², tem peso:",o:["10 N","50 N","100 N","1000 N"],c:2,coment:"P = m.g = 10 x 10 = 100 N."},
+    {base:"Atrito é uma força que se opõe ao movimento relativo entre superfícies.",q:"A força de atrito geralmente atua:",o:["A favor do movimento sempre","Contrária ao deslizamento","Sem contato","Só no vácuo"],c:1,coment:"Atrito se opõe ao movimento relativo."},
+    {base:"A massa mede a quantidade de matéria de um corpo.",q:"No SI, a unidade de massa é:",o:["Newton","Joule","Quilograma","Metro"],c:2,coment:"Massa é medida em kg."},
+    {base:"A força é medida em newtons.",q:"1 newton corresponde a:",o:["kg/m","kg·m/s²","m/s","J/s"],c:1,coment:"N = kg·m/s²."},
+    {base:"Quando duas forças iguais e opostas atuam no mesmo corpo, a resultante é:",q:"Qual é a resultante?",o:["Zero","O dobro","Metade","Infinita"],c:0,coment:"Forças iguais e opostas se anulam."},
+    {base:"Uma força de 30 N atua em corpo de 10 kg.",q:"A aceleração produzida é:",o:["2 m/s²","3 m/s²","4 m/s²","5 m/s²"],c:1,coment:"a = F/m = 30/10 = 3."},
+    {base:"Inércia é a tendência de um corpo manter seu estado de movimento.",q:"Um corpo com maior massa possui:",o:["Menor inércia","Maior inércia","Inércia nula","Velocidade infinita"],c:1,coment:"Maior massa implica maior inércia."},
+    {base:"Normal é a força exercida por uma superfície sobre um corpo.",q:"Em uma mesa horizontal, a normal atua:",o:["Para baixo","Para cima","Para os lados","Sempre nula"],c:1,coment:"A normal é perpendicular à superfície."},
+    {base:"Força resultante é a soma vetorial das forças.",q:"Duas forças de 10 N e 5 N no mesmo sentido geram resultante:",o:["5 N","10 N","15 N","50 N"],c:2,coment:"Somam-se: 10 + 5 = 15 N."},
+    {base:"Duas forças de 10 N e 5 N em sentidos opostos atuam no mesmo corpo.",q:"A resultante é:",o:["5 N","10 N","15 N","50 N"],c:0,coment:"Subtraem-se: 10 - 5 = 5 N."},
+    {base:"A força elástica depende da deformação de uma mola.",q:"A lei de Hooke é representada por:",o:["F = m.a","F = k.x","P = m.g","V = R.i"],c:1,coment:"Força elástica: F = kx."},
+    {base:"Um corpo apoiado sobre o solo sofre ação da gravidade.",q:"A força peso aponta:",o:["Para cima","Para baixo","Para a direita","Para a esquerda"],c:1,coment:"Peso aponta para o centro da Terra."},
+    {base:"O cinto de segurança reduz danos em freadas bruscas.",q:"Isso se relaciona ao conceito de:",o:["Inércia","Refração","Calor latente","Empuxo"],c:0,coment:"O corpo tende a continuar em movimento por inércia."},
+    {base:"Um corpo de 2 kg sofre força resultante de 12 N.",q:"Sua aceleração é:",o:["4 m/s²","5 m/s²","6 m/s²","8 m/s²"],c:2,coment:"a = 12/2 = 6 m/s²."},
+    {base:"Forças de ação e reação atuam:",q:"Segundo Newton, elas atuam em:",o:["Mesmo corpo","Corpos diferentes","Somente corpos parados","Somente líquidos"],c:1,coment:"Ação e reação atuam em corpos distintos."},
+    {base:"O equilíbrio ocorre quando a força resultante é zero.",q:"Um corpo em equilíbrio pode estar:",o:["Apenas parado","Parado ou em MRU","Sempre acelerado","Sempre caindo"],c:1,coment:"Equilíbrio admite repouso ou MRU."}
+  ]),
+
+  "Energia e Trabalho": gerarQuestoes("Energia e Trabalho", [
+    {base:"Trabalho mecânico envolve força e deslocamento.",q:"Uma força de 10 N desloca um corpo 5 m no mesmo sentido. O trabalho é:",o:["15 J","25 J","50 J","100 J"],c:2,coment:"T = F.d = 10 x 5 = 50 J."},
+    {base:"Energia cinética está associada ao movimento.",q:"Quanto maior a velocidade de um corpo, maior sua:",o:["Energia cinética","Densidade","Temperatura fixa","Carga elétrica"],c:0,coment:"Energia cinética depende da velocidade."},
+    {base:"Energia potencial gravitacional depende da altura.",q:"Um objeto elevado ganha energia:",o:["Cinética","Potencial gravitacional","Elétrica","Sonora"],c:1,coment:"Altura está relacionada à energia potencial gravitacional."},
+    {base:"Potência mede a rapidez com que o trabalho é realizado.",q:"A unidade de potência no SI é:",o:["Joule","Newton","Watt","Pascal"],c:2,coment:"Potência é medida em watts."},
+    {base:"Um motor realiza 200 J em 10 s.",q:"Qual é sua potência?",o:["10 W","20 W","30 W","40 W"],c:1,coment:"P = 200/10 = 20 W."},
+    {base:"A energia mecânica é soma da cinética com a potencial.",q:"Em ausência de perdas, a energia mecânica:",o:["É destruída","Conserva-se","Vira massa","Fica sempre zero"],c:1,coment:"Sem dissipação, conserva-se."},
+    {base:"Um corpo em movimento possui energia.",q:"A energia associada ao movimento é:",o:["Potencial","Cinética","Química apenas","Nuclear apenas"],c:1,coment:"Energia cinética é energia do movimento."},
+    {base:"Um corpo de massa m a uma altura h possui energia potencial mgh.",q:"Se a altura aumenta, a energia potencial:",o:["Diminui","Aumenta","Zera","Não depende da altura"],c:1,coment:"Ep = mgh."},
+    {base:"Energia não se cria nem se destrói, apenas se transforma.",q:"Essa frase expressa o princípio de:",o:["Conservação da energia","Refração","Dilatação","Inércia"],c:0,coment:"Energia transforma-se entre formas."},
+    {base:"Uma lâmpada transforma energia elétrica principalmente em:",q:"Qual transformação ocorre?",o:["Energia luminosa e térmica","Energia nuclear","Energia gravitacional","Energia sonora apenas"],c:0,coment:"Lâmpadas emitem luz e calor."},
+    {base:"Um chuveiro elétrico transforma energia elétrica em:",q:"Principalmente:",o:["Energia térmica","Energia cinética","Energia potencial","Energia magnética pura"],c:0,coment:"A resistência aquece a água."},
+    {base:"A unidade de energia no SI é:",q:"Qual alternativa correta?",o:["Newton","Joule","Watt","Metro"],c:1,coment:"Energia é medida em joules."},
+    {base:"Trabalho resistente ocorre quando força e deslocamento têm sentidos opostos.",q:"Nesse caso, o trabalho é:",o:["Positivo","Negativo","Sempre nulo","Infinito"],c:1,coment:"Força contrária ao movimento realiza trabalho negativo."},
+    {base:"Uma força perpendicular ao deslocamento não realiza trabalho.",q:"O trabalho de força perpendicular é:",o:["Máximo","Mínimo negativo","Zero","Dobro"],c:2,coment:"Não há componente na direção do deslocamento."},
+    {base:"Uma pessoa sobe uma escada carregando mochila.",q:"A mochila ganha energia:",o:["Potencial gravitacional","Elétrica","Sonora","Luminosa"],c:0,coment:"A altura aumenta."},
+    {base:"Energia dissipada em atrito geralmente vira:",q:"Principalmente:",o:["Calor","Massa","Luz sempre","Vácuo"],c:0,coment:"Atrito converte energia mecânica em térmica."},
+    {base:"Um carro em movimento freia até parar.",q:"Sua energia cinética:",o:["Aumenta","Diminui","Permanece igual","Vira altura"],c:1,coment:"A velocidade diminui, então Ec diminui."},
+    {base:"Um objeto no alto de uma rampa desce sem atrito.",q:"Durante a descida, energia potencial vira:",o:["Cinética","Nuclear","Elétrica pura","Química"],c:0,coment:"A energia potencial converte-se em cinética."},
+    {base:"Potência também pode ser energia dividida pelo tempo.",q:"Uma máquina mais potente realiza o mesmo trabalho em:",o:["Mais tempo","Menos tempo","Tempo infinito","Tempo nulo sempre"],c:1,coment:"Maior potência significa maior rapidez."},
+    {base:"Um equipamento consome 1000 J em 5 s.",q:"Sua potência é:",o:["100 W","150 W","200 W","250 W"],c:2,coment:"P = 1000/5 = 200 W."}
+  ]),
+
+  "Hidrostática": gerarQuestoes("Hidrostática", [
+    {base:"Densidade é a razão entre massa e volume.",q:"Um corpo de massa 100 g e volume 50 cm³ tem densidade:",o:["1 g/cm³","2 g/cm³","5 g/cm³","10 g/cm³"],c:1,coment:"d = 100/50 = 2."},
+    {base:"A pressão é força dividida pela área.",q:"No SI, a unidade de pressão é:",o:["Newton","Pascal","Joule","Watt"],c:1,coment:"Pressão é medida em pascal."},
+    {base:"Quanto maior a profundidade em um líquido, maior a pressão.",q:"A pressão hidrostática aumenta com:",o:["Altura fora da água","Profundidade","Cor do líquido","Formato do recipiente apenas"],c:1,coment:"p = dgh."},
+    {base:"O empuxo é uma força exercida pelo fluido sobre um corpo imerso.",q:"O empuxo atua geralmente para:",o:["Baixo","Cima","Lado direito","Lado esquerdo"],c:1,coment:"Empuxo é vertical para cima."},
+    {base:"Um corpo flutua quando o empuxo equilibra seu peso.",q:"Um barco flutua porque:",o:["Não tem massa","Recebe empuxo da água","Não sofre gravidade","Anula a pressão"],c:1,coment:"A água exerce empuxo sobre o barco."},
+    {base:"O princípio de Arquimedes trata do empuxo.",q:"O empuxo é igual ao peso do:",o:["Corpo inteiro sempre","Fluido deslocado","Ar acima do corpo","Recipiente"],c:1,coment:"Empuxo = peso do fluido deslocado."},
+    {base:"Vasos comunicantes contêm líquido em recipientes interligados.",q:"Em equilíbrio, o líquido fica:",o:["Em alturas diferentes sempre","No mesmo nível","Só em um lado","Sem pressão"],c:1,coment:"Mesmo líquido em equilíbrio fica no mesmo nível."},
+    {base:"Objetos mais densos que a água tendem a afundar.",q:"Se a densidade de um corpo é maior que a da água, ele tende a:",o:["Flutuar","Afundar","Evaporar","Aumentar volume"],c:1,coment:"Maior densidade favorece afundamento."},
+    {base:"Objetos menos densos que a água tendem a flutuar.",q:"Madeira geralmente flutua porque:",o:["É mais densa que água","É menos densa que água","Não tem volume","Não sofre peso"],c:1,coment:"Madeira costuma ter densidade menor que a água."},
+    {base:"Pressão depende da área de contato.",q:"Uma faca corta melhor porque:",o:["Diminui a pressão","Aumenta a área","Concentra força em pequena área","Elimina força"],c:2,coment:"Menor área aumenta pressão."},
+    {base:"Um prego afiado penetra melhor em uma superfície.",q:"Isso ocorre devido ao aumento da:",o:["Pressão","Temperatura","Densidade do ar","Massa da madeira"],c:0,coment:"Pequena área aumenta pressão."},
+    {base:"A pressão atmosférica é exercida pelo ar.",q:"Essa pressão existe porque o ar:",o:["Tem peso","Não tem massa","É sempre quente","Não ocupa espaço"],c:0,coment:"A atmosfera possui peso."},
+    {base:"O submarino controla sua flutuação alterando sua densidade média.",q:"Para afundar, ele aumenta:",o:["Seu empuxo apenas","Sua densidade média","Sua cor","Sua velocidade da luz"],c:1,coment:"Aumentar densidade média favorece afundamento."},
+    {base:"A unidade kg/m³ é usada para:",q:"Qual grandeza?",o:["Densidade","Pressão","Trabalho","Potência"],c:0,coment:"Densidade no SI é kg/m³."},
+    {base:"Um corpo desloca 2 N de água.",q:"Segundo Arquimedes, o empuxo é:",o:["1 N","2 N","4 N","8 N"],c:1,coment:"Empuxo igual ao peso do fluido deslocado."},
+    {base:"A pressão no fundo de uma piscina é maior que na superfície.",q:"Isso ocorre devido à:",o:["Profundidade","Cor da água","Largura da piscina apenas","Temperatura ambiente apenas"],c:0,coment:"Maior coluna de água aumenta pressão."},
+    {base:"Um mergulhador sente maior pressão ao descer.",q:"A pressão aumenta porque:",o:["A quantidade de água acima dele aumenta","A água desaparece","A gravidade diminui","O volume da piscina zera"],c:0,coment:"A coluna de água acima cresce."},
+    {base:"Um líquido em repouso transmite pressão em todas as direções.",q:"Esse princípio está ligado a:",o:["Pascal","Newton da gravitação","Ohm","Snell"],c:0,coment:"Princípio de Pascal."},
+    {base:"Macacos hidráulicos usam transmissão de pressão em líquidos.",q:"Eles se baseiam no princípio de:",o:["Pascal","Arquimedes apenas","Einstein","Kepler"],c:0,coment:"A pressão se transmite no fluido."},
+    {base:"Um corpo com densidade igual à do líquido fica em equilíbrio no interior.",q:"Nesse caso, ele tende a:",o:["Afundar rapidamente","Subir rapidamente","Ficar suspenso","Evaporar"],c:2,coment:"Densidades iguais geram equilíbrio."}
+  ]),
+    "Termologia": gerarQuestoes("Termologia", [
+    {base:"Temperatura mede o grau de agitação das partículas.",q:"Quanto maior a temperatura, maior é:",o:["A agitação molecular","A massa fixa","A gravidade","O volume sempre zero"],c:0,coment:"Temperatura está ligada à agitação das partículas."},
+    {base:"Calor é energia térmica em trânsito.",q:"O calor flui espontaneamente do corpo:",o:["Mais frio para o mais quente","Mais quente para o mais frio","Sem temperatura","Sem energia"],c:1,coment:"Calor passa do mais quente para o mais frio."},
+    {base:"Equilíbrio térmico ocorre quando corpos atingem mesma temperatura.",q:"Nesse estado, não há troca líquida de:",o:["Calor","Massa","Volume","Carga"],c:0,coment:"Com mesma temperatura, não há fluxo líquido de calor."},
+    {base:"A escala Celsius é muito usada no Brasil.",q:"A água congela, ao nível do mar, em:",o:["0 °C","10 °C","50 °C","100 °C"],c:0,coment:"Congelamento da água ocorre a 0 °C."},
+    {base:"A água ferve ao nível do mar em 100 °C.",q:"Esse valor corresponde ao ponto de:",o:["Fusão","Ebulição","Solidificação","Condensação apenas"],c:1,coment:"Ebulição é passagem para vapor."},
+    {base:"Dilatação térmica ocorre quando um corpo aumenta suas dimensões com aquecimento.",q:"Ao aquecer, a maioria dos sólidos:",o:["Contrai","Dilata","Some","Perde massa obrigatoriamente"],c:1,coment:"Aquecimento geralmente causa dilatação."},
+    {base:"Contração térmica ocorre no resfriamento.",q:"Ao esfriar, a maioria dos corpos:",o:["Dilata","Contrai","Ganha calor infinito","Vira luz"],c:1,coment:"Resfriamento geralmente reduz dimensões."},
+    {base:"Condução é transferência de calor por contato direto.",q:"Uma colher metálica esquenta no café por:",o:["Condução","Convecção apenas","Radiação apenas","Magnetismo"],c:0,coment:"O calor se propaga pelo metal."},
+    {base:"Convecção ocorre em fluidos com deslocamento de matéria.",q:"Correntes de ar quente subindo são exemplo de:",o:["Condução","Convecção","Refração","Indução magnética"],c:1,coment:"Fluido quente sobe e frio desce."},
+    {base:"Radiação térmica não precisa de meio material.",q:"O calor do Sol chega à Terra principalmente por:",o:["Condução","Convecção","Radiação","Atrito"],c:2,coment:"A radiação atravessa o vácuo."},
+    {base:"Calor específico indica a dificuldade de variar temperatura.",q:"A água tem alto calor específico, por isso:",o:["Aquece e esfria lentamente","Não tem temperatura","Sempre evapora","Não recebe calor"],c:0,coment:"Água muda temperatura com mais dificuldade."},
+    {base:"Mudança de estado físico envolve troca de energia.",q:"Passagem de sólido para líquido é:",o:["Fusão","Vaporização","Condensação","Sublimação"],c:0,coment:"Fusão é derretimento."},
+    {base:"Passagem de líquido para vapor é:",q:"Qual alternativa?",o:["Solidificação","Fusão","Vaporização","Condensação"],c:2,coment:"Vaporização é líquido para gás."},
+    {base:"Passagem de vapor para líquido é:",q:"Esse processo é chamado de:",o:["Condensação","Sublimação","Fusão","Ebulição"],c:0,coment:"Condensação é gás para líquido."},
+    {base:"Passagem de líquido para sólido é:",q:"Esse processo é:",o:["Fusão","Solidificação","Vaporização","Radiação"],c:1,coment:"Solidificação é congelamento."},
+    {base:"Calor latente está ligado à mudança de estado.",q:"Durante mudança de estado, a temperatura:",o:["Pode permanecer constante","Sempre dobra","Sempre zera","Não existe"],c:0,coment:"A energia é usada na mudança de fase."},
+    {base:"Um termômetro mede:",q:"Qual grandeza?",o:["Calor","Temperatura","Força","Pressão elétrica"],c:1,coment:"Termômetro mede temperatura."},
+    {base:"Agasalhos ajudam a reduzir perda de calor.",q:"Eles funcionam principalmente como:",o:["Fonte infinita de calor","Isolante térmico","Condutor perfeito","Gerador elétrico"],c:1,coment:"Agasalho dificulta troca de calor."},
+    {base:"Metais conduzem calor melhor que madeira.",q:"Por isso, uma barra metálica parece mais fria ao toque porque:",o:["Retira calor da mão mais rapidamente","Não tem temperatura","É sempre gelada","Não troca energia"],c:0,coment:"Metal conduz calor rapidamente."},
+    {base:"A garrafa térmica reduz condução, convecção e radiação.",q:"Sua função é:",o:["Acelerar trocas térmicas","Reduzir trocas de calor","Criar massa","Anular gravidade"],c:1,coment:"Ela conserva a temperatura por isolamento."}
+  ]),
+
+  "Óptica": gerarQuestoes("Óptica", [
+    {base:"A luz se propaga em linha reta em meios homogêneos.",q:"Esse princípio explica a formação de:",o:["Sombras","Corrente elétrica","Empuxo","Atrito"],c:0,coment:"Sombras surgem pela propagação retilínea da luz."},
+    {base:"Reflexão é o retorno da luz ao encontrar uma superfície.",q:"O espelho plano funciona principalmente por:",o:["Reflexão","Refração","Difração sonora","Convecção"],c:0,coment:"Espelhos refletem luz."},
+    {base:"No espelho plano, a imagem é virtual e direita.",q:"A imagem no espelho plano tem tamanho:",o:["Sempre maior","Sempre menor","Igual ao objeto","Nulo"],c:2,coment:"Imagem em espelho plano tem mesmo tamanho."},
+    {base:"Refração ocorre quando a luz muda de meio e altera sua velocidade.",q:"A refração pode causar:",o:["Desvio da luz","Eliminação da luz","Criação de massa","Aumento do peso"],c:0,coment:"Mudança de meio pode desviar a luz."},
+    {base:"A luz branca é composta por várias cores.",q:"A separação da luz branca em cores chama-se:",o:["Dispersão","Condução","Empuxo","Indução"],c:0,coment:"Prisma dispersa a luz branca."},
+    {base:"Lentes convergentes podem concentrar raios de luz.",q:"Uma lente convergente é usada em:",o:["Lupa","Barômetro","Bússola","Termômetro sem escala"],c:0,coment:"Lupas usam lentes convergentes."},
+    {base:"Lentes divergentes espalham os raios de luz.",q:"Elas são usadas para corrigir geralmente:",o:["Miopia","Febre","Pressão alta","Densidade"],c:0,coment:"Miopia é corrigida por lente divergente."},
+    {base:"A hipermetropia pode ser corrigida com lente convergente.",q:"Qual lente corrige hipermetropia?",o:["Divergente","Convergente","Plana opaca","Magnética"],c:1,coment:"Hipermetropia usa lente convergente."},
+    {base:"Espelhos côncavos podem formar imagens ampliadas.",q:"Espelhos de maquiagem costumam ser:",o:["Côncavos","Planos sempre","Convexos apenas","Opacos"],c:0,coment:"Côncavos podem ampliar."},
+    {base:"Espelhos convexos ampliam o campo de visão.",q:"Eles são usados em:",o:["Retrovisores e segurança","Termômetros","Balanças","Chuveiros"],c:0,coment:"Convexos mostram campo maior."},
+    {base:"A cor percebida de um objeto depende da luz que ele reflete.",q:"Um objeto verde reflete principalmente:",o:["Verde","Azul","Vermelho","Preto"],c:0,coment:"Vemos a cor refletida."},
+    {base:"Um objeto preto absorve grande parte da luz visível.",q:"Por isso, roupas pretas ao sol tendem a:",o:["Aquecer mais","Esfriar mais","Refletir tudo","Virar transparente"],c:0,coment:"Preto absorve mais radiação."},
+    {base:"Um objeto branco reflete grande parte da luz.",q:"Roupas brancas ao sol tendem a:",o:["Aquecer menos","Absorver tudo","Virar espelho perfeito","Anular calor"],c:0,coment:"Branco reflete mais luz."},
+    {base:"O olho humano possui uma lente natural chamada cristalino.",q:"O cristalino ajuda a:",o:["Focar imagens","Produzir som","Gerar empuxo","Medir massa"],c:0,coment:"Cristalino ajusta o foco."},
+    {base:"A imagem no olho forma-se na retina.",q:"A retina funciona como:",o:["Superfície sensível à luz","Fonte de calor","Bomba hidráulica","Ímã natural"],c:0,coment:"A retina recebe a imagem."},
+    {base:"Câmara escura é um princípio usado na fotografia.",q:"A imagem formada em uma câmara escura é geralmente:",o:["Invertida","Sempre direita","Sem luz","Maior sempre"],c:0,coment:"A propagação retilínea forma imagem invertida."},
+    {base:"Ano-luz é uma unidade relacionada à luz.",q:"Ano-luz mede:",o:["Tempo","Distância","Temperatura","Força"],c:1,coment:"Ano-luz é distância percorrida pela luz em um ano."},
+    {base:"A velocidade da luz no vácuo é aproximadamente:",q:"Qual valor?",o:["300 m/s","3.000 km/h","300.000 km/s","30 km/s"],c:2,coment:"c ≈ 300.000 km/s."},
+    {base:"A sombra ocorre quando a luz é bloqueada por um objeto opaco.",q:"Objeto opaco é aquele que:",o:["Não permite passagem de luz","Sempre emite luz","É invisível","Não possui massa"],c:0,coment:"Opaco bloqueia luz."},
+    {base:"Um material transparente permite passagem de luz.",q:"Exemplo de material transparente:",o:["Vidro limpo","Madeira","Metal","Parede"],c:0,coment:"Vidro limpo deixa luz passar."}
+  ]),
+
+  "Ondulatória": gerarQuestoes("Ondulatória", [
+    {base:"Ondas transportam energia sem transportar matéria permanentemente.",q:"Uma onda transporta principalmente:",o:["Energia","Matéria obrigatoriamente","Massa infinita","Carga fixa"],c:0,coment:"Ondas transportam energia."},
+    {base:"Frequência é o número de oscilações por segundo.",q:"A unidade de frequência é:",o:["Newton","Hertz","Joule","Pascal"],c:1,coment:"Frequência mede-se em hertz."},
+    {base:"Período é o tempo de uma oscilação completa.",q:"Se a frequência aumenta, o período:",o:["Aumenta","Diminui","Fica infinito","Some"],c:1,coment:"Frequência e período são inversos."},
+    {base:"A velocidade da onda depende de frequência e comprimento de onda.",q:"A relação correta é:",o:["v = f · λ","v = m · a","v = R · i","v = P/t"],c:0,coment:"Velocidade da onda: v = fλ."},
+    {base:"Som é uma onda mecânica.",q:"O som precisa de:",o:["Meio material","Vácuo perfeito","Luz solar","Campo magnético"],c:0,coment:"Som precisa de meio para se propagar."},
+    {base:"No vácuo, o som não se propaga.",q:"Isso ocorre porque:",o:["Não há meio material","Há muita luz","Há muita massa","A gravidade é zero"],c:0,coment:"Som é onda mecânica."},
+    {base:"Ondas eletromagnéticas podem se propagar no vácuo.",q:"Exemplo de onda eletromagnética:",o:["Luz","Som no ar","Onda em corda","Onda na água apenas"],c:0,coment:"Luz é onda eletromagnética."},
+    {base:"Amplitude está relacionada à energia da onda.",q:"No som, maior amplitude corresponde a:",o:["Som mais intenso","Som mais grave sempre","Menor energia","Menor volume sempre"],c:0,coment:"Amplitude maior indica maior intensidade."},
+    {base:"Frequência sonora está relacionada ao tom.",q:"Som de alta frequência é percebido como:",o:["Agudo","Grave","Silencioso sempre","Sem timbre"],c:0,coment:"Frequência alta gera som agudo."},
+    {base:"Som de baixa frequência é percebido como:",q:"Qual alternativa?",o:["Agudo","Grave","Luz","Calor"],c:1,coment:"Frequência baixa gera som grave."},
+    {base:"Eco é causado pela reflexão do som.",q:"O eco ocorre quando o som:",o:["Reflete e retorna ao ouvinte","Desaparece","Vira luz","Não encontra obstáculos"],c:0,coment:"Eco é reflexão sonora percebida."},
+    {base:"Refração de ondas ocorre quando elas mudam de meio.",q:"Na refração, pode mudar:",o:["Velocidade","Massa da onda","Existência do tempo","Carga da matéria"],c:0,coment:"Mudança de meio altera velocidade."},
+    {base:"Difração é a capacidade de contornar obstáculos.",q:"A difração é mais perceptível quando:",o:["A abertura tem tamanho comparável ao comprimento de onda","Não há onda","A massa é infinita","A temperatura é zero"],c:0,coment:"Difração depende da relação abertura/comprimento de onda."},
+    {base:"Interferência ocorre quando ondas se superpõem.",q:"Interferência construtiva gera:",o:["Reforço da onda","Cancelamento total sempre","Ausência de energia","Repouso absoluto"],c:0,coment:"Cristas em fase se reforçam."},
+    {base:"Interferência destrutiva pode reduzir a amplitude resultante.",q:"Ela ocorre quando ondas se encontram:",o:["Em oposição de fase","Sempre iguais em fase","Sem energia","Sem frequência"],c:0,coment:"Oposição de fase pode cancelar."},
+    {base:"O comprimento de onda é a distância entre pontos equivalentes consecutivos.",q:"Pode ser medido entre duas:",o:["Cristas consecutivas","Massas diferentes","Cargas elétricas","Temperaturas"],c:0,coment:"Crista a crista mede λ."},
+    {base:"Ondas transversais vibram perpendicularmente à direção de propagação.",q:"Uma onda em corda pode ser:",o:["Transversal","Sem direção","Somente longitudinal","Sempre luminosa"],c:0,coment:"A corda pode vibrar perpendicularmente."},
+    {base:"Ondas longitudinais vibram na mesma direção da propagação.",q:"O som no ar é:",o:["Longitudinal","Transversal luminosa","Estática","Sem frequência"],c:0,coment:"Som no ar é longitudinal."},
+    {base:"A velocidade do som no ar é cerca de 340 m/s.",q:"Comparada à luz, essa velocidade é:",o:["Muito menor","Muito maior","Igual","Infinita"],c:0,coment:"A luz é muito mais rápida."},
+    {base:"Timbre permite diferenciar fontes sonoras.",q:"O timbre diferencia:",o:["Vozes e instrumentos","Apenas volumes","Apenas alturas","Som e luz"],c:0,coment:"Timbre é a qualidade sonora característica."}
+  ]),
+
+  "Eletricidade": gerarQuestoes("Eletricidade", [
+    {base:"Carga elétrica pode ser positiva ou negativa.",q:"Cargas de mesmo sinal:",o:["Atraem-se","Repelem-se","Anulam massa","Viraram luz"],c:1,coment:"Cargas iguais se repelem."},
+    {base:"Cargas de sinais opostos interagem eletricamente.",q:"Cargas opostas:",o:["Atraem-se","Repelem-se","Não interagem","Somem"],c:0,coment:"Sinais opostos se atraem."},
+    {base:"Corrente elétrica é o movimento ordenado de cargas.",q:"A unidade de corrente elétrica é:",o:["Volt","Ampère","Ohm","Watt"],c:1,coment:"Corrente mede-se em ampères."},
+    {base:"Tensão elétrica também é chamada de diferença de potencial.",q:"A unidade de tensão é:",o:["Volt","Ampère","Ohm","Coulomb"],c:0,coment:"Tensão mede-se em volts."},
+    {base:"Resistência elétrica dificulta a passagem da corrente.",q:"A unidade de resistência é:",o:["Watt","Volt","Ohm","Joule"],c:2,coment:"Resistência mede-se em ohms."},
+    {base:"A lei de Ohm relaciona tensão, resistência e corrente.",q:"A fórmula correta é:",o:["V = R · i","F = m · a","P = m · g","Q = m · c · ΔT"],c:0,coment:"Lei de Ohm: V = R.i."},
+    {base:"Um resistor de 10 Ω é atravessado por corrente de 2 A.",q:"A tensão é:",o:["5 V","10 V","20 V","30 V"],c:2,coment:"V = 10 x 2 = 20 V."},
+    {base:"Um aparelho ligado em 220 V tem resistência de 110 Ω.",q:"A corrente é:",o:["1 A","2 A","3 A","4 A"],c:1,coment:"i = V/R = 220/110 = 2 A."},
+    {base:"Potência elétrica pode ser calculada por P = V · i.",q:"Um aparelho em 100 V com 2 A tem potência:",o:["50 W","100 W","200 W","400 W"],c:2,coment:"P = 100 x 2 = 200 W."},
+    {base:"Energia elétrica consumida depende da potência e do tempo.",q:"Um aparelho mais potente, usado pelo mesmo tempo, consome:",o:["Menos energia","Mais energia","Energia nula","Sempre igual"],c:1,coment:"Maior potência implica maior consumo."},
+    {base:"Circuito em série possui uma única trajetória para corrente.",q:"Em série, se uma lâmpada queima, as outras:",o:["Podem apagar","Ficam mais fortes sempre","Não sofrem efeito","Viraram pilha"],c:0,coment:"O circuito pode ser interrompido."},
+    {base:"Circuito em paralelo possui mais de um caminho.",q:"Em paralelo, aparelhos funcionam:",o:["Com caminhos independentes","Sempre todos apagados","Sem tensão","Sem corrente"],c:0,coment:"Cada ramo pode operar separadamente."},
+    {base:"Fusíveis e disjuntores protegem circuitos.",q:"Eles atuam quando há:",o:["Excesso de corrente","Falta de massa","Aumento de volume","Baixa gravidade"],c:0,coment:"Protegem contra sobrecorrente."},
+    {base:"Materiais condutores permitem passagem de cargas.",q:"Exemplo de bom condutor:",o:["Cobre","Borracha","Vidro seco","Plástico"],c:0,coment:"Cobre conduz bem."},
+    {base:"Isolantes dificultam passagem de corrente.",q:"Exemplo de isolante:",o:["Cobre","Alumínio","Borracha","Ferro"],c:2,coment:"Borracha é isolante."},
+    {base:"Choques elétricos podem ser perigosos.",q:"O risco aumenta com:",o:["Maior corrente pelo corpo","Menor contato sempre","Ausência de tensão","Cor do fio"],c:0,coment:"Corrente pelo corpo é perigosa."},
+    {base:"A tomada fornece diferença de potencial ao circuito.",q:"No Brasil, valores comuns de tensão residencial são:",o:["12 V e 24 V","110/127 V e 220 V","1000 V e 5000 V","1 V e 2 V"],c:1,coment:"São tensões comuns residenciais."},
+    {base:"Corrente contínua tem sentido constante.",q:"Pilhas fornecem geralmente:",o:["Corrente contínua","Somente corrente alternada","Corrente nula","Ondas sonoras"],c:0,coment:"Pilhas fornecem corrente contínua."},
+    {base:"Corrente alternada muda de sentido periodicamente.",q:"A rede elétrica residencial usa geralmente:",o:["Corrente alternada","Somente corrente contínua","Corrente gravitacional","Corrente térmica"],c:0,coment:"Tomadas usam corrente alternada."},
+    {base:"Economizar energia reduz custos e impactos ambientais.",q:"Uma atitude correta é:",o:["Apagar luzes desnecessárias","Deixar tudo ligado sempre","Usar aparelhos quebrados","Ignorar potência"],c:0,coment:"Uso consciente reduz consumo."}
+  ]),
+    "Magnetismo": gerarQuestoes("Magnetismo", [
+    {base:"Ímãs possuem polos magnéticos norte e sul.",q:"Polos iguais:",o:["Atraem-se","Repelem-se","Somem","Viraram carga elétrica"],c:1,coment:"Polos iguais se repelem."},
+    {base:"Polos magnéticos diferentes interagem entre si.",q:"Polos opostos:",o:["Atraem-se","Repelem-se","Não interagem","Anulam massa"],c:0,coment:"Norte e sul se atraem."},
+    {base:"O campo magnético é a região de influência magnética.",q:"Linhas de campo magnético representam:",o:["Direção e sentido do campo","Temperatura","Massa","Volume"],c:0,coment:"Elas indicam orientação do campo."},
+    {base:"A Terra se comporta aproximadamente como um grande ímã.",q:"A bússola funciona porque se alinha ao:",o:["Campo magnético terrestre","Campo elétrico da lâmpada","Som atmosférico","Calor do Sol"],c:0,coment:"Bússola responde ao campo magnético terrestre."},
+    {base:"Corrente elétrica pode gerar campo magnético.",q:"Essa relação é base do:",o:["Eletromagnetismo","Empuxo","Refração","Dilatação"],c:0,coment:"Corrente cria campo magnético."},
+    {base:"Eletroímãs usam corrente elétrica para produzir magnetismo.",q:"Um eletroímã pode ser ligado e desligado ao controlar:",o:["A corrente elétrica","A massa do núcleo apenas","A cor do fio","A gravidade"],c:0,coment:"Sem corrente, o campo diminui ou desaparece."},
+    {base:"Motores elétricos usam interação entre corrente e campo magnético.",q:"Motores transformam energia elétrica em:",o:["Energia mecânica","Energia nuclear","Energia gravitacional pura","Somente calor"],c:0,coment:"Motor gera movimento."},
+    {base:"Geradores elétricos usam indução eletromagnética.",q:"Geradores transformam energia mecânica em:",o:["Energia elétrica","Energia química apenas","Massa","Densidade"],c:0,coment:"Geradores produzem eletricidade."},
+    {base:"A indução eletromagnética ocorre com variação do fluxo magnético.",q:"Ela pode gerar:",o:["Corrente elétrica induzida","Água","Som sem meio","Peso nulo"],c:0,coment:"Variação magnética pode induzir corrente."},
+    {base:"Transformadores funcionam com corrente alternada.",q:"Eles podem alterar:",o:["Tensão elétrica","Massa do fio","Gravidade local","Densidade do ar"],c:0,coment:"Transformadores elevam ou reduzem tensão."},
+    {base:"Materiais ferromagnéticos são atraídos fortemente por ímãs.",q:"Exemplo de material ferromagnético:",o:["Ferro","Madeira","Vidro","Borracha"],c:0,coment:"Ferro é atraído por ímãs."},
+    {base:"Alto-falantes usam magnetismo e corrente elétrica.",q:"Eles transformam sinais elétricos em:",o:["Som","Gravidade","Empuxo","Fusão"],c:0,coment:"A vibração produz som."},
+    {base:"O campo magnético ao redor de um fio depende da corrente.",q:"Aumentando a corrente, o campo tende a:",o:["Aumentar","Diminuir sempre","Zerar obrigatoriamente","Virar calor apenas"],c:0,coment:"Maior corrente aumenta o campo."},
+    {base:"Linhas de campo magnético saem do polo norte e entram no polo sul fora do ímã.",q:"Fora do ímã, as linhas vão de:",o:["Norte para sul","Sul para norte","Centro para fora sempre","Sem direção"],c:0,coment:"Convenção externa: norte para sul."},
+    {base:"Ímãs partidos formam novos ímãs com dois polos.",q:"Ao partir um ímã, obtém-se:",o:["Polo norte isolado","Polo sul isolado","Novos ímãs com norte e sul","Material sem átomos"],c:2,coment:"Não se separam polos isolados."},
+    {base:"Campo magnético pode exercer força sobre cargas em movimento.",q:"Essa força depende de:",o:["Movimento da carga","Cor da carga","Temperatura da água","Pressão atmosférica apenas"],c:0,coment:"Carga em movimento em campo pode sofrer força magnética."},
+    {base:"O magnetismo está presente em tecnologias do cotidiano.",q:"Um exemplo de aplicação é:",o:["Motor elétrico","Termômetro de mercúrio apenas","Copo de vidro","Papel comum"],c:0,coment:"Motores dependem do eletromagnetismo."},
+    {base:"Cartões magnéticos armazenam informações em faixas magnetizadas.",q:"Essa aplicação usa propriedades:",o:["Magnéticas","Hidrostáticas","Ópticas apenas","Térmicas apenas"],c:0,coment:"Faixas magnéticas armazenam dados."},
+    {base:"Um solenoide com corrente funciona como ímã.",q:"O campo do solenoide aumenta ao:",o:["Aumentar a corrente","Retirar todas as espiras","Desligar a fonte","Usar borracha sempre"],c:0,coment:"Campo depende da corrente e do número de espiras."},
+    {base:"A geração de energia em usinas muitas vezes envolve rotação de turbinas e geradores.",q:"O fenômeno físico central nos geradores é:",o:["Indução eletromagnética","Fusão da água","Refração sonora","Atrito seco"],c:0,coment:"Geradores funcionam por indução."}
+  ]),
+
+  "Física Moderna e ENEM": gerarQuestoes("Física Moderna e ENEM", [
+    {base:"A Física Moderna surgiu para explicar fenômenos que a Física Clássica não explicava bem.",q:"Um tema da Física Moderna é:",o:["Efeito fotoelétrico","Empuxo simples","MRU apenas","Alavanca"],c:0,coment:"Efeito fotoelétrico é tema moderno."},
+    {base:"O efeito fotoelétrico ocorre quando luz remove elétrons de um material.",q:"Esse fenômeno mostra o comportamento da luz como:",o:["Partícula","Som mecânico","Fluido","Peso"],c:0,coment:"Fótons interagem com elétrons."},
+    {base:"Fóton é o quantum de luz.",q:"A energia do fóton depende da:",o:["Frequência","Massa do recipiente","Volume do ar","Densidade da água"],c:0,coment:"E = h.f."},
+    {base:"Radioatividade envolve emissões de núcleos instáveis.",q:"Um material radioativo possui núcleo:",o:["Instável","Sempre neutro e estável","Sem prótons","Sem energia"],c:0,coment:"Radioatividade vem de núcleos instáveis."},
+    {base:"Radiação alfa tem baixo poder de penetração.",q:"Ela pode ser barrada por:",o:["Papel ou pele","Parede grossa de chumbo sempre necessária","Campo gravitacional","Som"],c:0,coment:"Alfa tem baixa penetração."},
+    {base:"Radiação gama tem alto poder de penetração.",q:"Para proteção contra gama, usa-se frequentemente:",o:["Chumbo ou concreto espesso","Papel fino","Madeira fina","Água morna"],c:0,coment:"Gama é muito penetrante."},
+    {base:"Meia-vida é o tempo para metade dos núcleos radioativos decair.",q:"Após uma meia-vida, resta:",o:["100%","75%","50%","0%"],c:2,coment:"Resta metade da amostra."},
+    {base:"Energia nuclear pode ser obtida por fissão.",q:"Na fissão nuclear, ocorre:",o:["Divisão de núcleos pesados","União de gotas de água","Reflexão da luz","Som mecânico"],c:0,coment:"Fissão quebra núcleos pesados."},
+    {base:"Na fusão nuclear, núcleos leves se unem.",q:"Esse processo ocorre no:",o:["Sol","Geladeira","Bússola","Chuveiro elétrico comum"],c:0,coment:"O Sol gera energia por fusão."},
+    {base:"A relatividade mostrou que tempo e espaço dependem do referencial.",q:"Einstein está associado à teoria da:",o:["Relatividade","Hidrostática","Calorimetria simples","Lei de Hooke"],c:0,coment:"Einstein formulou a relatividade."},
+    {base:"A equação E = mc² relaciona massa e energia.",q:"Ela indica que massa pode ser convertida em:",o:["Energia","Somente volume","Pressão","Temperatura nula"],c:0,coment:"Massa e energia são equivalentes."},
+    {base:"Raios X são radiações eletromagnéticas usadas em exames.",q:"Raios X são úteis porque:",o:["Atravessam tecidos em diferentes graus","São ondas sonoras","Não transportam energia","Não interagem com matéria"],c:0,coment:"Permitem imagens internas."},
+    {base:"Radiação ionizante pode causar danos biológicos.",q:"Por isso, exames radiológicos exigem:",o:["Controle e proteção","Uso ilimitado","Ausência de cuidado","Contato direto sem limite"],c:0,coment:"É necessário proteção radiológica."},
+    {base:"Painéis solares fotovoltaicos convertem luz em eletricidade.",q:"Eles se relacionam ao:",o:["Efeito fotoelétrico/fotovoltaico","Empuxo","Atrito seco","Dilatação linear apenas"],c:0,coment:"Luz gera corrente elétrica."},
+    {base:"LEDs emitem luz por processos eletrônicos em semicondutores.",q:"LED significa dispositivo que transforma energia elétrica em:",o:["Luz","Massa","Gravidade","Pressão"],c:0,coment:"LED emite luz."},
+    {base:"A dualidade onda-partícula é conceito da Física Moderna.",q:"Ela afirma que luz e matéria podem apresentar comportamento:",o:["Ondulatório e corpuscular","Somente térmico","Somente mecânico clássico","Apenas gravitacional"],c:0,coment:"Podem ter características de onda e partícula."},
+    {base:"Tecnologias como GPS dependem de correções relativísticas.",q:"Isso mostra que a Física Moderna:",o:["Tem aplicações práticas","Não serve para tecnologia","É apenas teoria sem uso","Anula a matemática"],c:0,coment:"Relatividade é usada em sistemas de precisão."},
+    {base:"A energia de um fóton cresce com a frequência da radiação.",q:"Entre vermelho e ultravioleta, maior energia está no:",o:["Ultravioleta","Vermelho","Ambos iguais","Som"],c:0,coment:"Ultravioleta tem maior frequência."},
+    {base:"A radiação pode ser usada na medicina, indústria e pesquisa.",q:"Um uso médico da radiação é:",o:["Radioterapia","Corte com tesoura","Medida de massa com régua","Aquecimento por atrito"],c:0,coment:"Radioterapia usa radiação contra tumores."},
+    {base:"O ENEM costuma cobrar Física em situações do cotidiano.",q:"Uma boa estratégia é relacionar fórmulas com:",o:["Interpretação de contexto","Decoreba sem sentido","Ignorar unidades","Evitar leitura"],c:0,coment:"No ENEM, contexto e interpretação são fundamentais."}
+  ])
+};
+
+function mostrarMenu(){
+  pararAudioFundo();
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue);margin-bottom:8px;">Escolha um módulo de Física</h2>
+      <p class="mini">Cada módulo possui <strong>20 questões objetivas</strong>, com áudio e respostas embaralhadas.</p>
+      <div class="grid-areas">
+        ${areasFisica.map(area=>`
+          <div class="card-area">
+            <h3>${area.nome}</h3>
+            <p>${area.descricao}</p>
+            <button class="btn" onclick="iniciarArea('${area.nome.replace(/'/g,"\\'")}')">Entrar neste módulo</button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function iniciarArea(nomeArea){
+  await destravarAudio();
+  areaAtual = nomeArea;
+  questoesAtuais = bancoQuestoes[nomeArea] || [];
+  indiceQuestao = 0;
+  acertosObjetivas = 0;
+  questaoRenderizadaAtual = null;
+
+  if(!questoesAtuais.length){
+    app.innerHTML = `
+      <div class="box">
+        <h2 style="color:var(--red);">Erro ao abrir o módulo</h2>
+        <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+      </div>
+    `;
+    return;
+  }
+
+  setTimeout(()=>{tocarAudioFundo();},120);
+  carregarQuestao();
+}
+
+function montarEnunciado(questao){
+  return `
+    <span class="question-label">Base para resolução:</span>
+    <span class="text-base">${questao.base}</span>
+    <span class="question-label">Pergunta:</span>
+    ${questao.q}
+  `;
+}
+
+function carregarQuestao(){
+  const questao = questoesAtuais[indiceQuestao];
+  const total = questoesAtuais.length;
+  questaoRenderizadaAtual = embaralharAlternativas(questao);
+
+  let html = `
+    <div class="box">
+      <div class="status">
+        <span>${areaAtual}</span>
+        <span>Questão ${indiceQuestao + 1}/${total}</span>
+      </div>
+      <div id="question-text">${montarEnunciado(questaoRenderizadaAtual)}</div>
+      <div class="options-wrap">
+  `;
+
+  questaoRenderizadaAtual.opcoesRenderizadas.forEach((alt,idx)=>{
+    html += `<button class="btn option-btn" onclick="responderObjetiva(${idx})">${alt}</button>`;
+  });
+
+  html += `
+      </div>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+
+  app.innerHTML = html;
+}
+
+function responderObjetiva(escolhida){
+  const botoes = document.querySelectorAll(".option-btn");
+  const correta = questaoRenderizadaAtual.corretaRenderizada;
+
+  botoes.forEach((btn,idx)=>{
+    btn.disabled = true;
+    if(idx === correta) btn.classList.add("correct");
+  });
+
+  if(escolhida === correta){
+    acertosObjetivas++;
+    tocarAcerto();
+  }else{
+    if(botoes[escolhida]) botoes[escolhida].classList.add("wrong");
+    tocarErro();
+  }
+
+  setTimeout(()=>{
+    indiceQuestao++;
+    if(indiceQuestao < questoesAtuais.length){
+      carregarQuestao();
+    }else{
+      finalizarArea();
+    }
+  },900);
+}
+
+function finalizarArea(){
+  pararAudioFundo();
+
+  const notaFinal = acertosObjetivas * 10;
+  const totalPossivel = 200;
+  let feedback = "Você concluiu este módulo completo de Física. Continue treinando os demais módulos para avançar no simulado gratuito.";
+
+  if(notaFinal >= 160) feedback += " Excelente desempenho neste módulo.";
+  else if(notaFinal >= 100) feedback += " Bom resultado. Ainda dá para elevar sua pontuação.";
+  else feedback += " Este resultado mostra pontos que precisam ser reforçados com mais treino.";
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue);">${areaAtual}</h2>
+      <div class="result-number">${notaFinal}/${totalPossivel}</div>
+      <div class="result-sub">Acertos: ${acertosObjetivas}/20</div>
+      <p class="mini" style="margin-bottom:18px;">${feedback}</p>
+
+      <button class="btn" onclick="iniciarArea('${areaAtual.replace(/'/g,"\\'")}')">Refazer este módulo</button>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+}
+
+mostrarMenu();
+
+const RADAR_COPA_ALBUM_URL = "https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?v=4000";
+const RADAR_COPA_FISICA_GRATUITO_ID = "gabarito-max-fisica-gratuito";
+
+function resgatarBonusGratuitoRadarCopa(){
+  try{
+    const url = "https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?bonus="
+      + encodeURIComponent(RADAR_COPA_FISICA_GRATUITO_ID)
+      + "&pacotes=10&v=4000";
+
+    alert("🎁 Bônus gratuito Física registrado: +10 pacotes. O álbum será aberto agora.");
+    window.open(url, "_blank", "noopener");
+  }catch(e){
+    alert("Não foi possível abrir o bônus agora. Tente abrir o álbum novamente.");
+  }
+}
+
+function abrirAlbumRadarCopa(){
+  window.open(RADAR_COPA_ALBUM_URL, "_blank", "noopener");
+}
+
+</script>
+
+</body>
+</html>

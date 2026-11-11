@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>História Gratuito - Gabarito Max</title>
+  <style>
+    :root{
+      --bg:#05070c;
+      --card:#11141b;
+      --card2:#171b24;
+      --blue:#00f3ff;
+      --pink:#ff00e6;
+      --green:#39ff14;
+      --red:#ff003c;
+      --yellow:#ffd400;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --line:rgba(255,255,255,.08);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#000;
+      color:var(--text);
+      min-height:100vh;
+      padding:20px 12px 40px;
+      text-align:center;
+      overflow-x:hidden;
+    }
+
+    header{
+      max-width:1100px;
+      margin:0 auto 24px;
+      border:2px solid var(--blue);
+      border-radius:24px;
+      padding:22px 16px;
+      background:linear-gradient(180deg,#0c0f16,#090b11);
+      box-shadow:0 0 22px rgba(0,243,255,.22);
+    }
+
+    header h1{
+      color:var(--blue);
+      font-size:clamp(2rem,4vw,3rem);
+      text-shadow:0 0 14px rgba(0,243,255,.7);
+      font-weight:900;
+    }
+
+    header p{
+      margin-top:10px;
+      color:var(--pink);
+      font-weight:800;
+      font-size:clamp(1rem,2vw,1.3rem);
+    }
+
+    #app{
+      width:100%;
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .box{
+      width:100%;
+      max-width:100%;
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:20px 16px;
+      box-shadow:0 0 20px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+
+    .btn{
+      display:block;
+      width:100%;
+      max-width:560px;
+      margin:10px auto;
+      padding:14px 16px;
+      border:2px solid var(--blue);
+      background:transparent;
+      color:#fff;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:800;
+      font-size:1rem;
+      line-height:1.45;
+      transition:.2s;
+      white-space:normal;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    .btn:hover:not(:disabled){
+      background:var(--blue);
+      color:#000;
+      box-shadow:0 0 18px rgba(0,243,255,.35);
+    }
+
+    .btn-voltar{
+      border-color:#666;
+      color:#ddd;
+    }
+
+    .btn-voltar:hover:not(:disabled){
+      background:#333;
+      color:#fff;
+      box-shadow:none;
+    }
+
+    .btn.correct{
+      background:var(--green)!important;
+      border-color:var(--green)!important;
+      color:#000!important;
+    }
+
+    .btn.wrong{
+      background:var(--red)!important;
+      border-color:var(--red)!important;
+      color:#fff!important;
+    }
+
+    .grid-areas{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .card-area{
+      background:linear-gradient(135deg, rgba(0,243,255,.08), rgba(255,0,230,.08));
+      border:1px solid rgba(0,243,255,.16);
+      border-radius:16px;
+      padding:16px;
+      text-align:left;
+      min-width:0;
+    }
+
+    .card-area h3{
+      color:var(--blue);
+      margin-bottom:8px;
+      font-size:1.12rem;
+      line-height:1.35;
+      word-break:break-word;
+    }
+
+    .card-area p{
+      color:#ddd;
+      font-size:.95rem;
+      line-height:1.45;
+      margin-bottom:10px;
+      word-break:break-word;
+    }
+
+    .status{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+      color:var(--pink);
+      font-weight:bold;
+      text-align:left;
+    }
+
+    #question-text{
+      font-size:1.05rem;
+      line-height:1.6;
+      margin:20px 0;
+      min-height:88px;
+      text-align:left;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    .question-label{
+      display:block;
+      color:var(--yellow);
+      font-weight:bold;
+      margin-bottom:8px;
+    }
+
+    .text-base{
+      display:block;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:14px;
+      margin:10px 0 14px;
+      color:#f5f5f5;
+      font-style:italic;
+      line-height:1.65;
+    }
+
+    .options-wrap{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-bottom:16px;
+      width:100%;
+      max-width:100%;
+    }
+
+    .option-btn{
+      width:100%;
+      max-width:100%;
+      margin:0;
+      text-align:left;
+      min-height:58px;
+    }
+
+    .result-number{
+      font-size:3rem;
+      color:var(--blue);
+      margin:12px 0;
+      font-weight:900;
+    }
+
+    .result-sub{
+      font-size:1.12rem;
+      color:#ddd;
+      margin-bottom:10px;
+    }
+
+    .mini{
+      color:var(--muted);
+      font-size:.96rem;
+      line-height:1.5;
+    }
+
+    @media (max-width:700px){
+      .grid-areas{
+        grid-template-columns:1fr;
+      }
+      .box{
+        padding:16px 12px;
+      }
+      #question-text{
+        font-size:1rem;
+      }
+      .btn{
+        font-size:.96rem;
+        padding:13px 12px;
+      }
+    }
+  
+.gratuito-radar-copa-box{
+  width:100%;
+  max-width:820px;
+  margin:18px auto 16px;
+  padding:16px;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(0,243,255,.10),rgba(255,212,0,.12));
+  border:1px solid rgba(255,212,0,.40);
+  box-shadow:0 0 18px rgba(255,212,0,.10);
+  text-align:center;
+}
+.gratuito-radar-copa-box h3{
+  color:#ffd400;
+  margin-bottom:8px;
+  font-size:1.12rem;
+  text-transform:uppercase;
+}
+.gratuito-radar-copa-box p{
+  color:#e5e7eb;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+.gratuito-radar-copa-box .radar-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.gratuito-radar-copa-box button,
+.gratuito-radar-copa-box a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:320px;
+  min-height:48px;
+  border-radius:999px;
+  padding:12px 14px;
+  font-weight:900;
+  text-decoration:none;
+  border:1px solid rgba(255,212,0,.65);
+}
+.gratuito-radar-copa-box button{
+  background:linear-gradient(135deg,#fff4bf,#ffd400,#f59e0b);
+  color:#06142e;
+  cursor:pointer;
+}
+.gratuito-radar-copa-box a{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+</style>
+</head>
+<body>
+<nav aria-label="Navegação EnsinoMeu" style="padding:12px 18px;background:#07172b;text-align:left"><a style="color:#fff;font-weight:700;text-decoration:none;background:#1768ac;padding:9px 13px;border-radius:9px;display:inline-block" href="../index.html">← Voltar ao acervo gratuito</a></nav>
+
+<header>
+  <h1>HISTÓRIA GRATUITO</h1>
+  <p>10 MÓDULOS • 200 QUESTÕES • ÁUDIOS • RESPOSTAS EMBARALHADAS</p>
+</header>
+
+
+      <div id="app"></div>
+
+<audio id="audio-bg" loop preload="auto" playsinline>
+  <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-correct" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audio-wrong" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const app = document.getElementById("app");
+const audioBg = document.getElementById("audio-bg");
+const audioCorrect = document.getElementById("audio-correct");
+const audioWrong = document.getElementById("audio-wrong");
+
+audioBg.volume = 0.06;
+audioCorrect.volume = 0.45;
+audioWrong.volume = 0.45;
+
+let audioLiberado = false;
+let areaAtual = "";
+let questoesAtuais = [];
+let indiceQuestao = 0;
+let acertosObjetivas = 0;
+let questaoRenderizadaAtual = null;
+
+document.addEventListener("click", destravarAudio, { once: true });
+document.addEventListener("touchstart", destravarAudio, { once: true });
+
+function destravarAudio() {
+  if (audioLiberado) return Promise.resolve(true);
+
+  audioBg.muted = true;
+  return audioBg.play()
+    .then(() => {
+      audioBg.pause();
+      audioBg.currentTime = 0;
+      audioBg.muted = false;
+      audioLiberado = true;
+
+      audioCorrect.play().then(() => {
+        audioCorrect.pause();
+        audioCorrect.currentTime = 0;
+      }).catch(() => {});
+
+      audioWrong.play().then(() => {
+        audioWrong.pause();
+        audioWrong.currentTime = 0;
+      }).catch(() => {});
+
+      return true;
+    })
+    .catch(() => false);
+}
+
+function tocarAudioFundo() {
+  if (!audioLiberado) return;
+  audioBg.currentTime = 0;
+  audioBg.play().catch(() => {});
+}
+
+function pararAudioFundo() {
+  audioBg.pause();
+  audioBg.currentTime = 0;
+}
+
+function tocarAcerto() {
+  audioCorrect.currentTime = 0;
+  audioCorrect.play().catch(() => {});
+}
+
+function tocarErro() {
+  audioWrong.currentTime = 0;
+  audioWrong.play().catch(() => {});
+}
+
+const areas = [
+  { nome: "História Antiga", descricao: "Civilizações antigas, Grécia, Roma, Egito e Mesopotâmia." },
+  { nome: "História Medieval", descricao: "Feudalismo, Igreja, Cruzadas, Islamismo e transformações medievais." },
+  { nome: "História Moderna", descricao: "Renascimento, Reforma, Absolutismo, Mercantilismo e Expansão Marítima." },
+  { nome: "Brasil Colonial", descricao: "Colonização, economia açucareira, mineração, escravidão e movimentos coloniais." },
+  { nome: "Brasil Império", descricao: "Independência, Primeiro Reinado, Regências, Segundo Reinado e abolição." },
+  { nome: "Brasil República", descricao: "República Velha, Era Vargas, Ditadura Militar e Nova República." },
+  { nome: "História Contemporânea", descricao: "Revoluções, capitalismo, socialismo, globalização e conflitos atuais." },
+  { nome: "Guerras e Revoluções", descricao: "Guerras Mundiais, Guerra Fria, Revolução Russa, Francesa e Industrial." },
+  { nome: "África, Américas e Povos Indígenas", descricao: "Colonização, resistência, culturas africanas, americanas e indígenas." },
+  { nome: "História no ENEM", descricao: "Interpretação, cidadania, memória, patrimônio e análise crítica." }
+];
+
+function criarObjetiva(area, numero, textoBase, pergunta, alternativas, correta) {
+  return {
+    tipo: "objetiva",
+    area,
+    numero,
+    base: textoBase,
+    q: pergunta,
+    o: alternativas,
+    c: correta
+  };
+}
+
+function gerarAreaBase(nomeArea, perguntasObjetivas) {
+  return perguntasObjetivas.map((item, i) =>
+    criarObjetiva(nomeArea, i + 1, item.base, item.q, item.o, item.c)
+  );
+}
+
+function embaralharAlternativas(questao) {
+  const pares = questao.o.map((texto, idx) => ({ texto, correta: idx === questao.c }));
+  for (let i = pares.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pares[i], pares[j]] = [pares[j], pares[i]];
+  }
+  return {
+    ...questao,
+    opcoesRenderizadas: pares.map(p => p.texto),
+    corretaRenderizada: pares.findIndex(p => p.correta)
+  };
+}
+
+const bancoQuestoes = {
+  "História Antiga": gerarAreaBase(
+    "História Antiga",
+    [
+      { base:`"As primeiras civilizações se desenvolveram próximas a grandes rios, aproveitando a fertilidade das margens."`, q:"A relação entre rios e civilizações antigas está ligada principalmente à:", o:["Facilidade para agricultura e abastecimento","Ausência de organização social","Proibição do comércio","Eliminação das cidades"], c:0 },
+      { base:`"Na Mesopotâmia, povos como sumérios, acádios, babilônios e assírios desenvolveram cidades, leis e escrita."`, q:"Uma importante contribuição mesopotâmica para a História foi:", o:["A invenção da escrita cuneiforme","A criação da imprensa moderna","A Revolução Industrial","A democracia contemporânea"], c:0 },
+      { base:`"O Código de Hamurábi reunia normas jurídicas da antiga Babilônia."`, q:"Esse código ficou conhecido pela ideia de:", o:["Igualdade plena entre todos","Lei de talião","Sufrágio universal","Separação entre Igreja e Estado"], c:1 },
+      { base:`"O Egito Antigo organizou-se em torno do Rio Nilo e de forte poder centralizado."`, q:"O faraó era considerado:", o:["Apenas chefe militar sem religião","Governante com poder político e religioso","Representante eleito pelos camponeses","Líder sem autoridade"], c:1 },
+      { base:`"A mumificação egípcia estava relacionada às crenças religiosas sobre a vida após a morte."`, q:"A prática da mumificação revela:", o:["Crença na continuidade da vida após a morte","Negação da religião","Desinteresse pela alma","Rejeição aos rituais funerários"], c:0 },
+      { base:`"A pólis grega era uma cidade-Estado com governo, leis e organização própria."`, q:"Na Grécia Antiga, pólis significava:", o:["Cidade-Estado autônoma","Império centralizado mundial","Aldeia sem leis","Colônia romana"], c:0 },
+      { base:`"A democracia ateniense permitia participação direta de cidadãos, mas excluía mulheres, escravos e estrangeiros."`, q:"A democracia ateniense era:", o:["Universal e igualitária como a atual","Restrita a determinados cidadãos homens","Comandada por faraós","Baseada apenas em reis hereditários"], c:1 },
+      { base:`"Esparta valorizava a disciplina militar e a formação de guerreiros."`, q:"Uma característica de Esparta era:", o:["Militarismo e disciplina rígida","Democracia direta ampla","Ausência de exército","Valorização exclusiva do comércio marítimo"], c:0 },
+      { base:`"A cultura grega influenciou profundamente filosofia, teatro, artes, política e ciência."`, q:"Entre as contribuições gregas, destaca-se:", o:["A filosofia racional","A máquina a vapor","O feudalismo europeu","A internet"], c:0 },
+      { base:`"Roma passou por diferentes formas de governo: monarquia, república e império."`, q:"A República Romana caracterizou-se pela:", o:["Participação de instituições como Senado e magistraturas","Ausência total de leis","Governo exclusivo de faraós","Fim das guerras expansionistas"], c:0 },
+      { base:`"Os patrícios formavam a aristocracia romana, enquanto os plebeus lutaram por direitos políticos."`, q:"A luta entre patrícios e plebeus expressava:", o:["Conflitos sociais na República Romana","Fim da sociedade romana","Ausência de desigualdade","Domínio exclusivo dos escravos"], c:0 },
+      { base:`"A expansão romana aumentou riquezas, escravos e tensões internas."`, q:"Uma consequência da expansão romana foi:", o:["Aumento da escravidão e dos conflitos sociais","Fim do exército","Desaparecimento das cidades","Criação da democracia universal"], c:0 },
+      { base:`"O cristianismo surgiu no contexto do Império Romano e, inicialmente, sofreu perseguições."`, q:"A perseguição aos cristãos ocorreu porque eles:", o:["Desafiavam certas práticas religiosas e políticas romanas","Controlavam todo o império","Defendiam o culto obrigatório ao imperador","Eram aliados oficiais de Roma desde o início"], c:0 },
+      { base:`"A crise do Império Romano envolveu problemas econômicos, militares, políticos e invasões de povos germânicos."`, q:"Entre os fatores da crise romana, pode-se citar:", o:["Pressão de povos germânicos e instabilidade política","Revolução Industrial","Colonização da América","Expansão do café no Brasil"], c:0 },
+      { base:`"A escravidão esteve presente em várias sociedades antigas, assumindo diferentes formas."`, q:"Na Antiguidade, a escravidão era frequentemente associada:", o:["A guerras, dívidas e conquistas","Ao trabalho assalariado moderno","À cidadania universal","À igualdade jurídica"], c:0 },
+      { base:`"A religião politeísta marcou muitas sociedades antigas."`, q:"Politeísmo significa:", o:["Crença em vários deuses","Negação de todos os deuses","Crença em um único Deus","Separação entre política e economia"], c:0 },
+      { base:`"A escrita foi fundamental para administração, comércio, leis e memória histórica."`, q:"O surgimento da escrita permitiu:", o:["Registro de informações e organização administrativa","Fim imediato das guerras","Extinção das cidades","Igualdade social total"], c:0 },
+      { base:`"Na Grécia, os jogos olímpicos tinham ligação com práticas religiosas e valorização do corpo."`, q:"Os Jogos Olímpicos antigos estavam ligados:", o:["À cultura religiosa e esportiva grega","À Revolução Francesa","Ao cristianismo medieval","À industrialização inglesa"], c:0 },
+      { base:`"O direito romano influenciou diversos sistemas jurídicos posteriores."`, q:"Uma contribuição romana duradoura foi:", o:["O desenvolvimento do direito","A criação do absolutismo francês","A invenção da pólvora","A descoberta da América"], c:0 },
+      { base:`"O legado clássico greco-romano permaneceu presente em diferentes períodos históricos."`, q:"Esse legado inclui:", o:["Filosofia, direito, política e artes","Somente agricultura de subsistência","Apenas mitos sem influência posterior","Tecnologia digital"], c:0 }
+    ]
+  ),
+
+  "História Medieval": gerarAreaBase(
+    "História Medieval",
+    [
+      { base:`"Após a crise do Império Romano do Ocidente, a Europa passou por ruralização e formação de novas estruturas sociais."`, q:"O feudalismo formou-se nesse contexto de:", o:["Ruralização e fragmentação política","Industrialização acelerada","Globalização financeira","Democracia de massas"], c:0 },
+      { base:`"No feudalismo, a terra era a principal fonte de riqueza e poder."`, q:"A base econômica feudal era:", o:["Agrária e senhorial","Industrial e assalariada","Financeira e bancária","Digital e global"], c:0 },
+      { base:`"A sociedade feudal era hierarquizada, com pouca mobilidade social."`, q:"A ordem social medieval era frequentemente dividida em:", o:["Clero, nobreza e servos","Burguesia, proletariado e banqueiros","Patrícios e plebeus","Presidentes e ministros"], c:0 },
+      { base:`"Os servos trabalhavam nas terras senhoriais e deviam obrigações ao senhor feudal."`, q:"Uma obrigação servil era:", o:["Corveia","Voto secreto","Salário mínimo","Participação em sindicatos"], c:0 },
+      { base:`"A Igreja Católica exerceu grande influência política, cultural e social na Idade Média."`, q:"Na Europa medieval, a Igreja:", o:["Tinha forte influência sobre a sociedade","Foi totalmente afastada da política","Não possuía terras","Defendia o ateísmo estatal"], c:0 },
+      { base:`"As Cruzadas foram expedições militares e religiosas realizadas entre os séculos XI e XIII."`, q:"Um objetivo declarado das Cruzadas era:", o:["Retomar lugares considerados sagrados pelos cristãos","Criar fábricas na Inglaterra","Defender a independência americana","Implantar a democracia ateniense"], c:0 },
+      { base:`"O crescimento comercial e urbano contribuiu para mudanças na Baixa Idade Média."`, q:"A Baixa Idade Média foi marcada por:", o:["Renascimento comercial e urbano","Fim de todas as cidades","Desaparecimento do comércio","Criação da internet"], c:0 },
+      { base:`"As corporações de ofício regulavam o trabalho artesanal nas cidades medievais."`, q:"As corporações de ofício controlavam:", o:["Produção artesanal, qualidade e aprendizagem","Voto feminino","Comércio de petróleo","Eleições presidenciais"], c:0 },
+      { base:`"A burguesia surgiu ligada ao comércio e à vida urbana."`, q:"A burguesia medieval estava associada:", o:["Ao crescimento do comércio urbano","À servidão rural exclusiva","Ao clero regular","À nobreza guerreira apenas"], c:0 },
+      { base:`"A peste negra atingiu a Europa no século XIV e provocou grande mortalidade."`, q:"Uma consequência da peste negra foi:", o:["Crise demográfica e social","Crescimento imediato da população","Fim das tensões econômicas","Expansão da indústria automobilística"], c:0 },
+      { base:`"O islamismo surgiu na Península Arábica no século VII e expandiu-se rapidamente."`, q:"O fundador do islamismo foi:", o:["Maomé","Constantino","Carlos Magno","Lutero"], c:0 },
+      { base:`"A civilização islâmica teve importante papel na preservação e produção de conhecimentos."`, q:"Uma contribuição islâmica medieval foi:", o:["Desenvolvimento em matemática, medicina e filosofia","Criação da máquina a vapor","Abolição da escravidão moderna","Revolução Francesa"], c:0 },
+      { base:`"Carlos Magno expandiu o Reino Franco e foi coroado imperador no ano 800."`, q:"O Império Carolíngio esteve ligado:", o:["À tentativa de reorganização política da Europa Ocidental","À independência do Brasil","À Guerra Fria","À expansão marítima portuguesa"], c:0 },
+      { base:`"A relação de suserania e vassalagem envolvia obrigações entre nobres."`, q:"Na vassalagem, o vassalo devia ao suserano:", o:["Fidelidade e apoio militar","Salário mensal","Voto eleitoral","Serviço industrial"], c:0 },
+      { base:`"Os mosteiros medievais preservaram textos e atuaram como centros culturais."`, q:"Os monges copistas contribuíram para:", o:["Preservação de obras escritas","Criação do cinema","Fim da escrita","Industrialização europeia"], c:0 },
+      { base:`"A Inquisição foi criada para combater heresias e controlar desvios da doutrina católica."`, q:"A Inquisição estava ligada:", o:["Ao controle religioso","Ao sufrágio universal","À independência colonial","Ao socialismo científico"], c:0 },
+      { base:`"O sistema feudal era descentralizado, com poderes locais fortalecidos."`, q:"A descentralização política feudal significa:", o:["Fortalecimento dos senhores locais","Poder absoluto dos presidentes nacionais","Domínio único do parlamento moderno","Fim dos castelos"], c:0 },
+      { base:`"A cavalaria medieval possuía códigos de honra e papel militar."`, q:"Os cavaleiros estavam associados:", o:["À nobreza guerreira","Aos operários industriais","Aos escravos africanos no Brasil","Aos comerciantes marítimos apenas"], c:0 },
+      { base:`"O final da Idade Média apresentou crises e transformações que abriram caminho para a modernidade."`, q:"Entre essas transformações, destaca-se:", o:["Fortalecimento do comércio e das monarquias","Fim completo das cidades","Retorno ao nomadismo total","Extinção das universidades"], c:0 },
+      { base:`"Universidades medievais surgiram como centros de estudo ligados à teologia, direito, medicina e artes."`, q:"As universidades medievais contribuíram para:", o:["Organização do ensino e circulação de saberes","Fim do pensamento racional","Destruição dos livros","Extinção da cultura escrita"], c:0 }
+    ]
+  ),
+
+  "História Moderna": gerarAreaBase(
+    "História Moderna",
+    [
+      { base:`"O Renascimento valorizou a cultura clássica greco-romana e colocou o ser humano no centro das reflexões."`, q:"Uma característica do Renascimento foi:", o:["Humanismo","Feudalismo fechado","Teocentrismo exclusivo","Rejeição total das artes"], c:0 },
+      { base:`"O antropocentrismo renascentista valorizava o ser humano e sua capacidade racional."`, q:"Antropocentrismo significa:", o:["Centralidade do ser humano","Centralidade exclusiva de Deus","Negação da razão","Defesa do isolamento rural"], c:0 },
+      { base:`"A Reforma Protestante questionou práticas da Igreja Católica e deu origem a novas igrejas cristãs."`, q:"Um líder da Reforma Protestante foi:", o:["Martinho Lutero","Maomé","Júlio César","Robespierre"], c:0 },
+      { base:`"Lutero criticou a venda de indulgências e defendeu a salvação pela fé."`, q:"Uma crítica central de Lutero foi contra:", o:["Venda de indulgências","Fim dos impostos feudais","Abolição da escravidão africana","Expansão marítima portuguesa"], c:0 },
+      { base:`"A Contrarreforma foi a reação da Igreja Católica diante do avanço protestante."`, q:"Um instrumento da Contrarreforma foi:", o:["Concílio de Trento","Tratado de Versalhes","Plano Marshall","Conferência de Bandung"], c:0 },
+      { base:`"O absolutismo concentrou poderes nas mãos do rei, apoiado por teorias políticas e religiosas."`, q:"No absolutismo, o rei:", o:["Concentrava grande poder político","Era eleito diretamente por todos","Não tinha autoridade militar","Era subordinado aos servos"], c:0 },
+      { base:`"Luís XIV simbolizou o absolutismo francês com a frase atribuída a ele: 'O Estado sou eu'."`, q:"Essa frase expressa:", o:["Concentração do poder real","Democracia participativa","República parlamentar","Socialismo moderno"], c:0 },
+      { base:`"O mercantilismo orientava a economia dos Estados modernos europeus."`, q:"Uma prática mercantilista era:", o:["Metalismo e balança comercial favorável","Livre comércio absoluto sem intervenção","Fim dos monopólios coloniais","Desvalorização do ouro"], c:0 },
+      { base:`"A expansão marítima europeia foi motivada por interesses econômicos, religiosos e políticos."`, q:"Um objetivo da expansão marítima foi:", o:["Buscar novas rotas comerciais","Encerrar o comércio internacional","Abandonar o oceano Atlântico","Impedir o contato cultural"], c:0 },
+      { base:`"Portugal destacou-se nas navegações por sua localização, experiência marítima e centralização política."`, q:"Um fator que favoreceu Portugal foi:", o:["Posição geográfica atlântica","Ausência de navegação","Fragmentação política extrema","Proibição do comércio"], c:0 },
+      { base:`"O colonialismo moderno integrou América, África, Europa e Ásia em redes de exploração."`, q:"A colonização europeia esteve ligada:", o:["À exploração econômica e domínio territorial","À igualdade plena entre povos","Ao fim do comércio mundial","À ausência de violência"], c:0 },
+      { base:`"O sistema colonial baseava-se no pacto colonial."`, q:"Pacto colonial significava:", o:["Subordinação econômica da colônia à metrópole","Independência comercial total da colônia","Voto universal nas colônias","Fim dos monopólios"], c:0 },
+      { base:`"As monarquias nacionais se fortaleceram no início da modernidade."`, q:"Esse fortalecimento relacionou-se:", o:["À centralização do poder político","À fragmentação feudal crescente","Ao fim dos impostos","À ausência de exércitos"], c:0 },
+      { base:`"A imprensa de tipos móveis ampliou a circulação de ideias na Europa."`, q:"A imprensa contribuiu para:", o:["Difusão de livros e ideias","Proibição da leitura","Fim da Reforma","Desaparecimento das universidades"], c:0 },
+      { base:`"O Iluminismo valorizou razão, ciência, liberdade e crítica ao absolutismo."`, q:"Uma ideia iluminista foi:", o:["Crítica ao poder absoluto","Defesa do direito divino dos reis","Reforço da servidão feudal","Negação da razão"], c:0 },
+      { base:`"Montesquieu defendeu a separação dos poderes como forma de limitar abusos."`, q:"A teoria de Montesquieu propõe:", o:["Separação entre Executivo, Legislativo e Judiciário","Poder total concentrado no rei","Fim das leis","Domínio religioso absoluto"], c:0 },
+      { base:`"Rousseau discutiu contrato social e soberania popular."`, q:"Para Rousseau, a legitimidade política deveria vir:", o:["Da vontade geral do povo","Do direito divino exclusivo","Da herança nobre","Da força militar apenas"], c:0 },
+      { base:`"A ciência moderna desenvolveu métodos de observação, experimentação e cálculo."`, q:"A Revolução Científica valorizou:", o:["Observação e experimentação","Mitos como única explicação","Autoridade sem prova","Rejeição da matemática"], c:0 },
+      { base:`"Galileu Galilei defendeu ideias científicas que entraram em conflito com autoridades religiosas."`, q:"Esse conflito revela:", o:["Tensão entre ciência moderna e dogmas tradicionais","Fim da astronomia","Proibição total da razão na Europa","Ausência de debates científicos"], c:0 },
+      { base:`"A História Moderna prepara transformações políticas, econômicas e culturais que influenciaram o mundo contemporâneo."`, q:"Entre os processos modernos, destacam-se:", o:["Renascimento, Reforma, Absolutismo e Expansão Marítima","Feudalismo clássico e vassalagem apenas","Guerra Fria e internet","Ditadura militar brasileira"], c:0 }
+    ]
+  ),
+    "Brasil Colonial": gerarAreaBase(
+    "Brasil Colonial",
+    [
+      { base:`"A colonização portuguesa no Brasil esteve ligada ao sistema colonial mercantilista."`, q:"O Brasil colonial tinha sua economia organizada principalmente para:", o:["Atender aos interesses da metrópole portuguesa","Garantir autonomia econômica local","Eliminar o comércio externo","Fortalecer a indústria nacional brasileira"], c:0 },
+      { base:`"O pau-brasil foi uma das primeiras riquezas exploradas pelos portugueses na América."`, q:"A exploração do pau-brasil contou inicialmente com:", o:["Trabalho indígena por escambo","Trabalho assalariado industrial","Imigração italiana em massa","Mineração mecanizada"], c:0 },
+      { base:`"As capitanias hereditárias foram criadas como forma de ocupar e administrar o território colonial."`, q:"Uma característica das capitanias hereditárias era:", o:["Doação de faixas de terra a donatários","Eleição direta dos governadores","Fim da autoridade portuguesa","Divisão igualitária para indígenas"], c:0 },
+      { base:`"O Governo-Geral foi criado para centralizar a administração colonial após dificuldades das capitanias."`, q:"A criação do Governo-Geral buscava:", o:["Fortalecer o controle português sobre a colônia","Encerrar a colonização","Dar independência ao Brasil","Eliminar a presença da Igreja"], c:0 },
+      { base:`"A produção açucareira foi organizada em grandes propriedades rurais voltadas para exportação."`, q:"O modelo econômico do açúcar era baseado em:", o:["Latifúndio, monocultura, escravidão e exportação","Pequenas propriedades livres e policultura","Indústria urbana e trabalho assalariado","Economia sem comércio externo"], c:0 },
+      { base:`"A escravidão africana tornou-se a principal força de trabalho na produção colonial."`, q:"A escravidão no Brasil colonial esteve ligada:", o:["Ao tráfico atlântico e à produção exportadora","À igualdade social","Ao fim da exploração econômica","À ausência de resistência"], c:0 },
+      { base:`"Os povos indígenas sofreram violência, escravização, deslocamentos e imposição cultural durante a colonização."`, q:"A colonização portuguesa provocou nos povos indígenas:", o:["Perdas territoriais e impactos culturais profundos","Autonomia plena garantida desde o início","Participação igual no governo colonial","Fim imediato dos conflitos"], c:0 },
+      { base:`"As missões jesuíticas tinham função religiosa, educativa e de controle cultural."`, q:"Os jesuítas atuavam principalmente na:", o:["Catequização indígena","Industrialização da colônia","Abolição do tráfico negreiro","Criação da República"], c:0 },
+      { base:`"A União Ibérica aproximou as coroas portuguesa e espanhola entre 1580 e 1640."`, q:"Durante a União Ibérica, ocorreu no Brasil:", o:["Invasão holandesa no Nordeste","Independência do Brasil","Fim da escravidão","Proclamação da República"], c:0 },
+      { base:`"Os holandeses ocuparam parte do Nordeste açucareiro no século XVII."`, q:"A presença holandesa no Brasil relacionava-se ao interesse em:", o:["Controlar áreas produtoras de açúcar","Criar uma monarquia indígena","Explorar petróleo","Implantar fábricas automobilísticas"], c:0 },
+      { base:`"A mineração transformou a economia colonial no século XVIII."`, q:"A descoberta de ouro provocou:", o:["Interiorização da ocupação e crescimento urbano","Fim dos impostos coloniais","Desaparecimento da escravidão","Independência imediata"], c:0 },
+      { base:`"A Coroa portuguesa controlava a mineração por meio de impostos como o quinto."`, q:"O quinto correspondia:", o:["À cobrança de parte do ouro extraído","Ao salário dos mineradores","À divisão igual de terras","À libertação dos escravos"], c:0 },
+      { base:`"A derrama era uma cobrança forçada de impostos atrasados na região mineradora."`, q:"A ameaça da derrama contribuiu para:", o:["Inconfidência Mineira","Guerra de Canudos","Revolta da Vacina","Proclamação da República"], c:0 },
+      { base:`"A Inconfidência Mineira expressou insatisfação de setores da elite colonial contra impostos e controle português."`, q:"Um objetivo dos inconfidentes era:", o:["Romper com Portugal em Minas Gerais","Restaurar o feudalismo europeu","Defender a permanência da derrama","Abolir imediatamente todo o sistema colonial"], c:0 },
+      { base:`"A Conjuração Baiana teve participação popular e ideias de igualdade social."`, q:"Diferente da Inconfidência Mineira, a Conjuração Baiana teve:", o:["Maior participação de grupos populares","Apoio exclusivo da nobreza portuguesa","Defesa da escravidão como centro do movimento","Ausência de ideias iluministas"], c:0 },
+      { base:`"Os quilombos foram formas de resistência à escravidão."`, q:"O Quilombo dos Palmares representa:", o:["Resistência negra ao sistema escravista","Centro oficial do governo português","Monarquia europeia no Brasil","Movimento industrial urbano"], c:0 },
+      { base:`"A economia colonial também incluiu pecuária, drogas do sertão e produção de subsistência."`, q:"A pecuária colonial contribuiu para:", o:["Interiorização do território","Fim da mineração","Extinção do comércio","Urbanização industrial"], c:0 },
+      { base:`"As bandeiras partiram de São Paulo e avançaram pelo interior."`, q:"As bandeiras estiveram associadas:", o:["À captura de indígenas e busca por metais preciosos","À criação de universidades modernas","À abolição da escravidão","Ao voto universal"], c:0 },
+      { base:`"A sociedade colonial era marcada por desigualdades de raça, condição jurídica e riqueza."`, q:"Uma característica da sociedade colonial brasileira foi:", o:["Hierarquia social e escravidão","Igualdade plena entre todos","Ausência de elites locais","Democracia representativa ampla"], c:0 },
+      { base:`"O pacto colonial limitava a liberdade econômica da colônia."`, q:"No pacto colonial, a colônia deveria:", o:["Comercializar prioritariamente com a metrópole","Negociar livremente com qualquer país","Industrializar-se de forma independente","Impedir a exportação de produtos"], c:0 }
+    ]
+  ),
+
+  "Brasil Império": gerarAreaBase(
+    "Brasil Império",
+    [
+      { base:`"A vinda da família real portuguesa ao Brasil em 1808 alterou profundamente a colônia."`, q:"Uma medida tomada por D. João em 1808 foi:", o:["Abertura dos portos às nações amigas","Proclamação da República","Abolição da escravidão","Fechamento do comércio externo"], c:0 },
+      { base:`"A abertura dos portos rompeu parcialmente o antigo pacto colonial."`, q:"Essa medida favoreceu principalmente:", o:["O comércio com a Inglaterra","O isolamento econômico brasileiro","O retorno ao feudalismo","A extinção do comércio atlântico"], c:0 },
+      { base:`"Em 1822, D. Pedro declarou a independência do Brasil."`, q:"A independência brasileira foi marcada por:", o:["Manutenção da monarquia e de estruturas sociais tradicionais","Revolução popular radical em todo o território","Abolição imediata da escravidão","Fim das elites agrárias"], c:0 },
+      { base:`"A Constituição de 1824 organizou o Estado imperial brasileiro."`, q:"Uma característica da Constituição de 1824 foi:", o:["Criação do Poder Moderador","Implantação do parlamentarismo republicano","Voto universal feminino","Fim da monarquia"], c:0 },
+      { base:`"O Poder Moderador ampliava a autoridade do imperador."`, q:"O Poder Moderador permitia ao imperador:", o:["Interferir nos demais poderes","Ser apenas figura simbólica","Não participar da política","Ser eleito a cada quatro anos"], c:0 },
+      { base:`"A Confederação do Equador ocorreu em 1824 como reação ao autoritarismo imperial."`, q:"Esse movimento teve caráter:", o:["Republicano e autonomista","Monarquista absolutista português","Industrial trabalhista","Religioso medieval"], c:0 },
+      { base:`"O Período Regencial foi marcado por instabilidade política e revoltas provinciais."`, q:"Entre as revoltas regenciais, destaca-se:", o:["Cabanagem","Revolta da Vacina","Guerra do Contestado","Intentona Comunista"], c:0 },
+      { base:`"A Cabanagem ocorreu no Pará e teve ampla participação popular."`, q:"Uma característica da Cabanagem foi:", o:["Participação de camadas populares contra elites locais","Defesa exclusiva do absolutismo português","Movimento industrial paulista","Apoio ao fim das províncias"], c:0 },
+      { base:`"A Farroupilha ocorreu no Rio Grande do Sul e envolveu tensões políticas e econômicas."`, q:"A Revolução Farroupilha foi:", o:["Uma revolta regional de longa duração","Um movimento pela volta de Portugal","Uma guerra mundial","Uma campanha abolicionista oficial"], c:0 },
+      { base:`"O Segundo Reinado consolidou a monarquia sob D. Pedro II."`, q:"Uma base econômica importante do Segundo Reinado foi:", o:["Café","Petróleo","Indústria automobilística","Tecnologia digital"], c:0 },
+      { base:`"A expansão cafeeira fortaleceu elites do Sudeste."`, q:"O café contribuiu para:", o:["Crescimento econômico e poder político dos cafeicultores","Fim imediato da escravidão","Desaparecimento das ferrovias","Redução das exportações"], c:0 },
+      { base:`"A Lei Eusébio de Queirós, de 1850, proibiu o tráfico atlântico de escravos para o Brasil."`, q:"Essa lei representou:", o:["Pressão pelo fim do tráfico negreiro","Abolição total da escravidão","Criação da República","Fim do trabalho rural"], c:0 },
+      { base:`"A Lei do Ventre Livre foi parte do processo gradual de abolição."`, q:"A Lei do Ventre Livre determinava:", o:["Liberdade para filhos de mulheres escravizadas nascidos após a lei","Liberdade imediata para todos os escravizados","Fim da monarquia","Voto para ex-escravizados"], c:0 },
+      { base:`"A Lei dos Sexagenários libertava escravizados com mais de 60 anos, com limitações."`, q:"Essa lei é vista como:", o:["Medida gradual e limitada no processo abolicionista","Abolição radical e imediata","Reforma agrária ampla","Fim do racismo no Brasil"], c:0 },
+      { base:`"A Lei Áurea foi assinada em 1888."`, q:"A Lei Áurea determinou:", o:["A abolição legal da escravidão no Brasil","A proclamação da República","A independência do Brasil","A criação do Poder Moderador"], c:0 },
+      { base:`"A Guerra do Paraguai envolveu Brasil, Argentina, Uruguai e Paraguai."`, q:"Uma consequência da Guerra do Paraguai para o Brasil foi:", o:["Fortalecimento político do Exército","Fim da monarquia imediatamente em 1870","Abolição automática da escravidão","Criação da União Europeia"], c:0 },
+      { base:`"O movimento republicano cresceu no final do Império."`, q:"Entre os fatores da crise do Império, estava:", o:["Desgaste com militares, cafeicultores e Igreja","Apoio unânime à monarquia","Fim das pressões abolicionistas","Industrialização completa do país"], c:0 },
+      { base:`"A Questão Religiosa envolveu conflitos entre Estado imperial e Igreja."`, q:"Esse conflito enfraqueceu:", o:["A monarquia brasileira","A República recém-proclamada","O sistema feudal europeu","O domínio holandês"], c:0 },
+      { base:`"A Questão Militar expressou insatisfações do Exército com o governo imperial."`, q:"Essa questão contribuiu para:", o:["Crise e queda da monarquia","Restauração colonial","Reforço do Poder Moderador","Fim dos partidos políticos"], c:0 },
+      { base:`"Em 1889, ocorreu a Proclamação da República."`, q:"A Proclamação da República no Brasil foi realizada principalmente por:", o:["Setores militares com apoio de grupos civis republicanos","Escravizados recém-libertos em movimento nacional","Indígenas organizados em assembleia","Camponeses socialistas"], c:0 }
+    ]
+  ),
+
+  "Brasil República": gerarAreaBase(
+    "Brasil República",
+    [
+      { base:`"A República brasileira foi proclamada em 1889, encerrando o regime monárquico."`, q:"O primeiro período republicano ficou conhecido como:", o:["República Velha","Estado Novo","Nova República","Regência"], c:0 },
+      { base:`"A República da Espada foi marcada por governos militares."`, q:"Os dois primeiros presidentes do Brasil republicano foram:", o:["Deodoro da Fonseca e Floriano Peixoto","Getúlio Vargas e Juscelino Kubitschek","Lula e Fernando Henrique","D. Pedro I e D. Pedro II"], c:0 },
+      { base:`"A Política dos Governadores articulava interesses entre presidente e oligarquias estaduais."`, q:"Essa política buscava:", o:["Garantir apoio político das elites estaduais","Implantar voto universal direto e transparente","Eliminar o poder dos coronéis","Abolir a Constituição"], c:0 },
+      { base:`"O coronelismo marcou a República Velha, especialmente no interior."`, q:"O coronelismo era baseado em:", o:["Poder local, clientelismo e controle eleitoral","Participação popular plena","Igualdade social no campo","Gestão democrática comunitária"], c:0 },
+      { base:`"O voto de cabresto expressava controle político sobre eleitores."`, q:"Esse voto era caracterizado por:", o:["Pressão e manipulação eleitoral","Liberdade total de escolha","Voto secreto universal","Participação feminina ampla"], c:0 },
+      { base:`"A política do café com leite alternava forças políticas de São Paulo e Minas Gerais."`, q:"Essa política representava:", o:["Domínio das oligarquias cafeeira e mineira","Governo dos trabalhadores urbanos","Poder militar estrangeiro","Sistema parlamentar europeu"], c:0 },
+      { base:`"A Revolta da Vacina ocorreu no Rio de Janeiro em 1904."`, q:"A revolta foi motivada por:", o:["Autoritarismo sanitário e reformas urbanas excludentes","Abolição da escravidão","Independência do Brasil","Golpe militar de 1964"], c:0 },
+      { base:`"A Guerra de Canudos ocorreu no sertão da Bahia no final do século XIX."`, q:"Canudos foi liderado por:", o:["Antônio Conselheiro","Lampião","Zumbi dos Palmares","Getúlio Vargas"], c:0 },
+      { base:`"O Contestado envolveu disputa territorial, religiosidade popular e conflitos sociais."`, q:"A Guerra do Contestado ocorreu entre:", o:["Paraná e Santa Catarina","Ceará e Pernambuco","São Paulo e Minas Gerais","Bahia e Sergipe"], c:0 },
+      { base:`"O tenentismo expressou insatisfação de jovens oficiais com a República Velha."`, q:"O movimento tenentista defendia:", o:["Reformas políticas e combate às oligarquias","Retorno da monarquia","Defesa do voto de cabresto","Fim das Forças Armadas"], c:0 },
+      { base:`"A Revolução de 1930 levou Getúlio Vargas ao poder."`, q:"A Revolução de 1930 marcou:", o:["Fim da República Velha","Início do Brasil Colônia","Restauração da monarquia","Abolição da escravidão"], c:0 },
+      { base:`"A Era Vargas teve fases como Governo Provisório, Constitucional e Estado Novo."`, q:"O Estado Novo foi:", o:["Ditadura centralizadora de Vargas","Período democrático pleno","Regime parlamentarista liberal","Governo sem censura"], c:0 },
+      { base:`"Vargas criou leis trabalhistas e buscou controlar sindicatos."`, q:"A CLT está associada:", o:["À legislação trabalhista varguista","À Constituição de 1824","À abertura dos portos","À política do café com leite"], c:0 },
+      { base:`"A industrialização ganhou impulso durante a Era Vargas."`, q:"Um símbolo da industrialização varguista foi:", o:["Companhia Siderúrgica Nacional","Engenho de açúcar colonial","Tratado de Tordesilhas","Quilombo dos Palmares"], c:0 },
+      { base:`"Juscelino Kubitschek defendia o desenvolvimento acelerado."`, q:"O lema de JK era:", o:["Cinquenta anos em cinco","Ordem e castigo","Café com leite","Brasil para Portugal"], c:0 },
+      { base:`"A construção de Brasília marcou o governo JK."`, q:"Brasília representava:", o:["Interiorização do desenvolvimento e integração nacional","Retorno da capital para Salvador","Fim da industrialização","Centralização no litoral colonial"], c:0 },
+      { base:`"O golpe de 1964 instaurou uma ditadura militar no Brasil."`, q:"A Ditadura Militar foi marcada por:", o:["Autoritarismo, censura e repressão política","Voto direto livre para presidente durante todo o período","Ausência de perseguições","Poder absoluto do parlamento popular"], c:0 },
+      { base:`"O AI-5, de 1968, ampliou a repressão política."`, q:"O AI-5 permitiu:", o:["Fechamento do Congresso, censura e suspensão de direitos","Abertura política imediata","Eleições diretas livres","Fim da repressão"], c:0 },
+      { base:`"A redemocratização brasileira ocorreu de forma gradual."`, q:"Um movimento importante da redemocratização foi:", o:["Diretas Já","Revolta da Armada","Confederação do Equador","Guerra dos Farrapos"], c:0 },
+      { base:`"A Constituição de 1988 ficou conhecida como Constituição Cidadã."`, q:"Ela é chamada assim por:", o:["Ampliar direitos sociais, civis e políticos","Restaurar a monarquia","Eliminar eleições","Reduzir garantias individuais"], c:0 }
+    ]
+  ),
+
+  "História Contemporânea": gerarAreaBase(
+    "História Contemporânea",
+    [
+      { base:`"A Revolução Francesa questionou o absolutismo e os privilégios do Antigo Regime."`, q:"Um princípio associado à Revolução Francesa é:", o:["Liberdade, igualdade e fraternidade","Direito divino dos reis","Servidão obrigatória","Feudalismo hereditário"], c:0 },
+      { base:`"O Antigo Regime era marcado por sociedade estamental e privilégios."`, q:"A Revolução Francesa combateu:", o:["Privilégios da nobreza e do clero","Direitos individuais","Igualdade jurídica","Soberania popular"], c:0 },
+      { base:`"A Queda da Bastilha tornou-se símbolo da Revolução Francesa."`, q:"A Bastilha representava:", o:["O autoritarismo monárquico","A democracia popular consolidada","A liberdade de imprensa","O voto universal feminino"], c:0 },
+      { base:`"A Revolução Industrial começou na Inglaterra no século XVIII."`, q:"Um fator que favoreceu a Inglaterra foi:", o:["Disponibilidade de carvão, capitais e mercado consumidor","Ausência de comércio","Proibição de máquinas","Fim da agricultura"], c:0 },
+      { base:`"A industrialização transformou relações de trabalho e vida urbana."`, q:"Uma consequência da Revolução Industrial foi:", o:["Crescimento do proletariado urbano","Retorno ao feudalismo","Fim das cidades","Desaparecimento das fábricas"], c:0 },
+      { base:`"O liberalismo econômico defendia liberdade de mercado e menor intervenção do Estado."`, q:"Um representante do liberalismo econômico foi:", o:["Adam Smith","Karl Marx","Stálin","Robespierre"], c:0 },
+      { base:`"O socialismo surgiu como crítica às desigualdades do capitalismo industrial."`, q:"Marx e Engels defendiam:", o:["Crítica à exploração do proletariado","Manutenção dos privilégios feudais","Direito divino dos reis","Colonialismo mercantilista"], c:0 },
+      { base:`"O imperialismo do século XIX envolveu domínio europeu sobre regiões da África e Ásia."`, q:"Uma motivação imperialista foi:", o:["Busca por matérias-primas e mercados","Fim da expansão econômica","Apoio à autonomia africana plena","Proibição do comércio internacional"], c:0 },
+      { base:`"A Conferência de Berlim organizou a partilha colonial da África."`, q:"Esse processo desconsiderou principalmente:", o:["Territórios, culturas e povos africanos","Interesses industriais europeus","Projetos imperialistas","Disputas entre potências"], c:0 },
+      { base:`"A Primeira Guerra Mundial ocorreu entre 1914 e 1918."`, q:"Entre suas causas, está:", o:["Disputas imperialistas e alianças militares","Descobrimento da América","Independência do Brasil","Crise do feudalismo europeu"], c:0 },
+      { base:`"O Tratado de Versalhes impôs punições severas à Alemanha após a Primeira Guerra."`, q:"Esse tratado contribuiu para:", o:["Ressentimentos que favoreceram o nazismo","Fim definitivo dos nacionalismos","Fortalecimento imediato da paz mundial permanente","Extinção dos Estados europeus"], c:0 },
+      { base:`"A Revolução Russa de 1917 derrubou o czarismo e levou os bolcheviques ao poder."`, q:"A Revolução Russa resultou na criação:", o:["Do primeiro Estado socialista","Da monarquia absolutista francesa","Da União Europeia","Do Império Romano"], c:0 },
+      { base:`"A Crise de 1929 afetou profundamente a economia capitalista mundial."`, q:"A crise começou com:", o:["Quebra da Bolsa de Nova York","Queda da Bastilha","Início da Revolução Industrial","Fim da Guerra Fria"], c:0 },
+      { base:`"O New Deal foi uma política adotada nos Estados Unidos para enfrentar a crise econômica."`, q:"O New Deal defendia:", o:["Maior intervenção do Estado na economia","Fim de qualquer ação estatal","Retorno ao feudalismo","Abolição do trabalho assalariado"], c:0 },
+      { base:`"O fascismo e o nazismo foram regimes totalitários do século XX."`, q:"Uma característica desses regimes foi:", o:["Autoritarismo e nacionalismo extremo","Democracia direta ampla","Pluralismo político livre","Pacifismo absoluto"], c:0 },
+      { base:`"A Segunda Guerra Mundial ocorreu entre 1939 e 1945."`, q:"Um fator associado ao início da guerra foi:", o:["Expansionismo nazista","Independência das colônias americanas","Abertura dos portos brasileiros","Criação da ONU em 1945 antes da guerra"], c:0 },
+      { base:`"O Holocausto foi o genocídio promovido pelo regime nazista contra judeus e outros grupos."`, q:"O Holocausto representa:", o:["Crime de genocídio e perseguição sistemática","Processo democrático alemão","Política de igualdade racial","Programa de paz internacional"], c:0 },
+      { base:`"Após a Segunda Guerra, EUA e URSS tornaram-se superpotências rivais."`, q:"Esse período ficou conhecido como:", o:["Guerra Fria","Paz Armada medieval","Renascimento cultural","Absolutismo europeu"], c:0 },
+      { base:`"A Guerra Fria foi marcada por disputas ideológicas, tecnológicas e militares."`, q:"A disputa central envolvia:", o:["Capitalismo e socialismo","Feudalismo e escravidão antiga","Mercantilismo e colonização ibérica","Humanismo e teocentrismo"], c:0 },
+      { base:`"A globalização intensificou fluxos de capitais, mercadorias, informações e pessoas."`, q:"Uma característica da globalização é:", o:["Integração econômica e comunicacional mundial","Isolamento completo dos países","Fim da tecnologia","Desaparecimento do comércio internacional"], c:0 }
+    ]
+  ),
+    "Guerras e Revoluções": gerarAreaBase(
+    "Guerras e Revoluções",
+    [
+      { base:`"A Revolução Industrial transformou a produção, o trabalho e a organização social."`, q:"Uma mudança causada pela Revolução Industrial foi:", o:["Uso de máquinas e crescimento das fábricas","Retorno ao trabalho servil medieval","Fim das cidades industriais","Extinção do comércio"], c:0 },
+      { base:`"A Revolução Francesa marcou a crise do Antigo Regime."`, q:"A Revolução Francesa está relacionada à defesa de:", o:["Cidadania e igualdade jurídica","Direito divino dos reis","Privilégios feudais","Servidão hereditária"], c:0 },
+      { base:`"A Revolução Russa ocorreu em meio à crise do czarismo, guerra e desigualdades sociais."`, q:"Os bolcheviques defendiam:", o:["Poder aos sovietes e transformação socialista","Restauração absoluta do czar","Domínio colonial francês","Feudalismo agrário"], c:0 },
+      { base:`"A Primeira Guerra Mundial envolveu alianças militares e disputas imperialistas."`, q:"A Tríplice Entente era formada por:", o:["França, Reino Unido e Rússia","Alemanha, Itália e Japão","Brasil, Argentina e Chile","Portugal, Espanha e Holanda"], c:0 },
+      { base:`"A Primeira Guerra foi marcada por trincheiras, novas armas e grande destruição."`, q:"A guerra de trincheiras caracterizou-se por:", o:["Combates longos e posições defensivas fixas","Batalhas exclusivamente aéreas","Ausência de tecnologia militar","Conflitos sem baixas humanas"], c:0 },
+      { base:`"A Segunda Guerra Mundial teve como um dos elementos centrais o expansionismo nazifascista."`, q:"O expansionismo nazista foi liderado por:", o:["Adolf Hitler","Winston Churchill","Josef Stálin","Franklin Roosevelt"], c:0 },
+      { base:`"O ataque japonês a Pearl Harbor levou os Estados Unidos a entrarem na Segunda Guerra."`, q:"Pearl Harbor foi atacada por:", o:["Japão","Alemanha","Itália","União Soviética"], c:0 },
+      { base:`"A bomba atômica foi usada pelos Estados Unidos contra cidades japonesas em 1945."`, q:"As cidades atingidas foram:", o:["Hiroshima e Nagasaki","Tóquio e Osaka","Pequim e Xangai","Seul e Busan"], c:0 },
+      { base:`"A Guerra Fria não foi confronto direto geral entre EUA e URSS, mas teve guerras indiretas."`, q:"Um exemplo de conflito ligado à Guerra Fria foi:", o:["Guerra do Vietnã","Guerra dos Cem Anos","Guerras Médicas","Guerra do Peloponeso"], c:0 },
+      { base:`"A Revolução Cubana derrubou o regime de Fulgêncio Batista em 1959."`, q:"Um líder da Revolução Cubana foi:", o:["Fidel Castro","Napoleão Bonaparte","Benito Mussolini","D. Pedro II"], c:0 },
+      { base:`"A Revolução Chinesa levou os comunistas ao poder em 1949."`, q:"O principal líder comunista chinês foi:", o:["Mao Tsé-Tung","Chiang Kai-shek","Sun Yat-sen","Hirohito"], c:0 },
+      { base:`"A Revolução Mexicana envolveu conflitos por terra, direitos sociais e poder político."`, q:"Um nome associado à Revolução Mexicana é:", o:["Emiliano Zapata","Robespierre","Lutero","César Augusto"], c:0 },
+      { base:`"A independência das Treze Colônias deu origem aos Estados Unidos."`, q:"A independência dos EUA ocorreu no século:", o:["XVIII","XVI","XIII","XXI"], c:0 },
+      { base:`"A Declaração de Independência dos EUA apresentou ideias de liberdade e direitos."`, q:"Esse documento foi influenciado por ideias:", o:["Iluministas","Feudais","Absolutistas","Mercantilistas exclusivamente"], c:0 },
+      { base:`"As independências latino-americanas foram influenciadas pelo Iluminismo, Revolução Francesa e crise do domínio ibérico."`, q:"Um líder das independências hispano-americanas foi:", o:["Simón Bolívar","Getúlio Vargas","Zumbi dos Palmares","Carlos Magno"], c:0 },
+      { base:`"A Primavera Árabe envolveu protestos populares em países do Norte da África e Oriente Médio."`, q:"A Primavera Árabe está relacionada a:", o:["Contestação a regimes autoritários","Expansão do feudalismo","Colonização portuguesa do Brasil","Reforma Protestante"], c:0 },
+      { base:`"A Revolução Haitiana foi liderada por escravizados e resultou na independência do Haiti."`, q:"A Revolução Haitiana destacou-se por:", o:["Ser uma revolução antiescravista vitoriosa","Restaurar a escravidão colonial","Defender a monarquia francesa","Eliminar a luta por independência"], c:0 },
+      { base:`"A Guerra Civil Espanhola antecedeu a Segunda Guerra Mundial e envolveu republicanos e nacionalistas."`, q:"O general nacionalista que assumiu o poder foi:", o:["Francisco Franco","Mussolini","Lenin","Churchill"], c:0 },
+      { base:`"A Revolução Iraniana de 1979 derrubou o xá e instaurou uma república islâmica."`, q:"A Revolução Iraniana resultou em:", o:["Mudança política e fortalecimento religioso no Estado","Criação da União Europeia","Independência dos EUA","Fim da Guerra Fria"], c:0 },
+      { base:`"As revoluções transformam estruturas políticas, sociais e econômicas."`, q:"Em geral, uma revolução histórica implica:", o:["Mudança profunda em uma ordem existente","Manutenção completa do sistema anterior","Ausência de conflitos","Apenas troca de nomes sem impacto"], c:0 }
+    ]
+  ),
+
+  "África, Américas e Povos Indígenas": gerarAreaBase(
+    "África, Américas e Povos Indígenas",
+    [
+      { base:`"A África possuía diversos reinos, impérios e sociedades antes da colonização europeia."`, q:"Essa diversidade mostra que a África pré-colonial:", o:["Tinha organização política, econômica e cultural própria","Era homogênea e sem história","Não possuía comércio nem cultura","Dependia totalmente da Europa"], c:0 },
+      { base:`"O Reino do Mali foi um importante centro político, comercial e cultural africano."`, q:"Mali destacou-se pelo comércio de:", o:["Ouro e sal","Petróleo industrial","Café brasileiro","Máquinas a vapor"], c:0 },
+      { base:`"A escravidão atlântica deslocou milhões de africanos para as Américas."`, q:"Esse processo foi marcado por:", o:["Violência, exploração e desestruturação social","Migração voluntária sem coerção","Igualdade de direitos","Fim do racismo"], c:0 },
+      { base:`"A diáspora africana contribuiu profundamente para culturas americanas."`, q:"No Brasil, essa contribuição aparece em:", o:["Religiões, música, culinária, linguagem e resistência","Ausência completa de influência cultural","Apenas tecnologia industrial","Somente arquitetura europeia"], c:0 },
+      { base:`"Os povos indígenas das Américas possuíam diferentes formas de organização social."`, q:"Antes da colonização, os povos indígenas:", o:["Tinham culturas, línguas e sistemas próprios","Viviam sem qualquer organização","Eram todos iguais culturalmente","Não ocupavam territórios"], c:0 },
+      { base:`"Maias, astecas e incas desenvolveram sociedades complexas."`, q:"Os incas estavam localizados principalmente:", o:["Na região andina","No Saara","Na Península Ibérica","No vale do Nilo"], c:0 },
+      { base:`"A colonização espanhola nas Américas explorou trabalho indígena em sistemas como encomienda e mita."`, q:"Esses sistemas estavam ligados:", o:["À exploração da mão de obra indígena","Ao voto universal indígena","À democracia direta colonial","À independência imediata"], c:0 },
+      { base:`"A conquista da América envolveu guerras, doenças, alianças e imposição cultural."`, q:"Um fator que contribuiu para a conquista europeia foi:", o:["Epidemias e superioridade bélica relativa","Igualdade militar completa","Ausência de conflitos","Proteção total aos povos nativos"], c:0 },
+      { base:`"A resistência indígena ocorreu de diversas formas durante e após a colonização."`, q:"A resistência indígena incluiu:", o:["Guerras, fugas, negociações e preservação cultural","Aceitação passiva total","Ausência de mobilização","Fim das identidades indígenas"], c:0 },
+      { base:`"No Brasil, a Constituição de 1988 reconheceu direitos dos povos indígenas."`, q:"A Constituição de 1988 reconhece aos povos indígenas:", o:["Direitos originários sobre terras tradicionalmente ocupadas","Fim de suas identidades culturais","Obrigação de abandonar suas línguas","Ausência de proteção territorial"], c:0 },
+      { base:`"O colonialismo europeu na África intensificou-se no século XIX."`, q:"Esse processo ficou associado:", o:["Ao imperialismo e à partilha da África","À expansão romana antiga","À independência africana imediata","À Revolução Haitiana"], c:0 },
+      { base:`"A descolonização africana ocorreu principalmente no século XX."`, q:"A descolonização significou:", o:["Processo de independência política de países colonizados","Retorno ao feudalismo europeu","Criação do Império Romano","Abolição da agricultura"], c:0 },
+      { base:`"O apartheid foi um regime de segregação racial na África do Sul."`, q:"Um líder da luta contra o apartheid foi:", o:["Nelson Mandela","Mao Tsé-Tung","Robespierre","D. João VI"], c:0 },
+      { base:`"A colonização das Américas provocou genocídio, escravização e mudanças culturais."`, q:"Um impacto da colonização foi:", o:["Redução populacional indígena e perda de territórios","Fortalecimento pleno das autonomias indígenas","Ausência de doenças","Fim da exploração econômica"], c:0 },
+      { base:`"Os quilombos foram espaços de resistência negra à escravidão."`, q:"No Brasil, o maior símbolo quilombola é:", o:["Palmares","Canudos","Contestado","Vila Rica"], c:0 },
+      { base:`"Zumbi dos Palmares tornou-se símbolo da resistência negra."`, q:"Zumbi está associado:", o:["Ao Quilombo dos Palmares","À Independência dos EUA","À Revolução Francesa","Ao Império Romano"], c:0 },
+      { base:`"A cultura afro-brasileira é resultado de processos de resistência, criação e preservação histórica."`, q:"Valorizar essa cultura significa:", o:["Reconhecer a importância histórica da população negra","Apagar a escravidão da memória","Negar o racismo","Reduzir a história à Europa"], c:0 },
+      { base:`"A história indígena não se limita ao passado colonial; povos indígenas seguem presentes e atuantes."`, q:"No presente, os povos indígenas lutam por:", o:["Território, direitos e preservação cultural","Fim de sua existência política","Submissão colonial","Eliminação de suas línguas"], c:0 },
+      { base:`"A Lei 10.639/2003 tornou obrigatório o ensino de História e Cultura Afro-Brasileira."`, q:"Essa lei busca:", o:["Valorizar a contribuição africana e afro-brasileira","Excluir a história africana","Substituir todo o currículo por história europeia","Negar o racismo histórico"], c:0 },
+      { base:`"A Lei 11.645/2008 ampliou essa obrigatoriedade incluindo História e Cultura Indígena."`, q:"Essa lei reforça:", o:["O reconhecimento da presença indígena na formação do Brasil","A ausência indígena na história nacional","A exclusão das escolas públicas","O fim dos direitos culturais"], c:0 }
+    ]
+  ),
+
+  "História no ENEM": gerarAreaBase(
+    "História no ENEM",
+    [
+      { base:`"O ENEM costuma cobrar História por meio de interpretação de textos, imagens, charges, mapas e documentos."`, q:"Uma habilidade importante para História no ENEM é:", o:["Interpretar fontes históricas criticamente","Decorar datas sem contexto apenas","Ignorar o texto-base","Responder sem analisar alternativas"], c:0 },
+      { base:`"Fontes históricas podem ser escritas, orais, visuais, materiais ou digitais."`, q:"Uma fotografia antiga pode ser considerada:", o:["Fonte histórica visual","Fonte sem valor histórico","Apenas decoração","Prova matemática"], c:0 },
+      { base:`"A memória coletiva é construída por grupos sociais e pode envolver disputas de narrativas."`, q:"Memória histórica está relacionada:", o:["À forma como sociedades lembram e interpretam o passado","Apenas à opinião individual sem contexto","Ao esquecimento obrigatório","À neutralidade absoluta"], c:0 },
+      { base:`"Patrimônio histórico pode incluir bens materiais e imateriais."`, q:"Um exemplo de patrimônio imaterial é:", o:["Festa popular tradicional","Prédio tombado apenas","Ponte de concreto","Documento oficial"], c:0 },
+      { base:`"Cidadania envolve participação social, direitos e deveres."`, q:"No ENEM, cidadania costuma aparecer ligada a:", o:["Direitos, participação política e inclusão social","Autoritarismo e exclusão","Apenas consumo privado","Fim da vida pública"], c:0 },
+      { base:`"A escravidão deixou marcas profundas na sociedade brasileira."`, q:"Uma consequência histórica da escravidão no Brasil é:", o:["Desigualdade racial estrutural","Igualdade plena desde 1888","Ausência de racismo","Distribuição imediata de terras"], c:0 },
+      { base:`"O trabalho no Brasil passou por transformações históricas, da escravidão ao trabalho livre."`, q:"A passagem para o trabalho livre ocorreu:", o:["De forma desigual e sem inclusão plena dos libertos","Com reforma agrária imediata","Sem conflitos sociais","Com igualdade salarial automática"], c:0 },
+      { base:`"Movimentos sociais lutam por direitos e reconhecimento."`, q:"Um exemplo de movimento social histórico é:", o:["Movimento abolicionista","Pacto colonial","Mercantilismo europeu","Absolutismo francês"], c:0 },
+      { base:`"Charges políticas são fontes que combinam humor, crítica e contexto histórico."`, q:"Para interpretar uma charge, deve-se observar:", o:["Contexto, personagens, símbolos e crítica social","Apenas o desenho sem legenda","Somente a cor do fundo","Nenhum elemento textual"], c:0 },
+      { base:`"Mapas históricos ajudam a compreender disputas territoriais, rotas e transformações políticas."`, q:"Um mapa histórico pode revelar:", o:["Mudanças de fronteiras e ocupações territoriais","Apenas clima do presente","Notas escolares","Preferências pessoais"], c:0 },
+      { base:`"O ENEM valoriza relações entre passado e presente."`, q:"Relacionar passado e presente permite:", o:["Compreender permanências e mudanças históricas","Apagar conflitos sociais","Decorar nomes sem análise","Evitar interpretação"], c:0 },
+      { base:`"A História não é neutra: envolve seleção, interpretação e análise de fontes."`, q:"O trabalho do historiador consiste em:", o:["Analisar criticamente fontes e contextos","Inventar fatos sem base","Repetir boatos","Ignorar documentos"], c:0 },
+      { base:`"Direitos humanos são frequentemente cobrados em temas históricos e sociais."`, q:"A defesa dos direitos humanos envolve:", o:["Proteção da dignidade e igualdade de direitos","Privilégios para poucos","Negação da cidadania","Exclusão política"], c:0 },
+      { base:`"A ditadura militar brasileira é tema recorrente por envolver autoritarismo, censura e resistência."`, q:"Estudar esse período ajuda a compreender:", o:["A importância da democracia e das liberdades civis","A defesa da censura permanente","A ausência de conflitos políticos","A neutralidade da repressão"], c:0 },
+      { base:`"A industrialização brasileira ocorreu de forma desigual e concentrada."`, q:"Um efeito dessa industrialização foi:", o:["Crescimento urbano e desigualdades regionais","Distribuição igual da riqueza","Fim das migrações internas","Extinção das cidades"], c:0 },
+      { base:`"Migrações internas fazem parte da formação histórica do Brasil."`, q:"Um exemplo é:", o:["Migração nordestina para centros urbanos do Sudeste","Viagens espaciais coloniais","Deslocamento romano para Brasília","Êxodo de vikings para o Brasil"], c:0 },
+      { base:`"O ENEM costuma valorizar diversidade cultural e respeito às diferenças."`, q:"Essa abordagem combate:", o:["Preconceitos e visões únicas da história","Pluralidade cultural","Reconhecimento de identidades","Inclusão social"], c:0 },
+      { base:`"A história ambiental analisa relações entre sociedades e natureza."`, q:"Um tema de história ambiental é:", o:["Impactos da exploração econômica sobre o meio ambiente","Somente batalhas militares","Apenas biografias de reis","Exclusivamente datas políticas"], c:0 },
+      { base:`"A análise de documentos históricos exige atenção à autoria, época e intenção."`, q:"Ao ler um documento histórico, é importante perguntar:", o:["Quem produziu, quando e com qual objetivo","Quantas letras há no texto","Se o papel é novo","Se a fonte tem cor bonita"], c:0 },
+      { base:`"História no ENEM exige compreensão crítica de processos sociais."`, q:"A melhor estratégia de estudo é:", o:["Treinar interpretação, contexto e comparação de processos","Decorar listas sem entender","Ignorar fontes visuais","Estudar apenas nomes de reis"], c:0 }
+    ]
+  )
+};
+
+function mostrarMenu() {
+  pararAudioFundo();
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue); margin-bottom:8px;">Escolha um módulo de História</h2>
+      <p class="mini">Versão gratuito completa com <strong>10 módulos</strong> e <strong>200 questões</strong>.</p>
+
+      <div class="grid-areas">
+        ${areas.map(area => `
+          <div class="card-area">
+            <h3>${area.nome}</h3>
+            <p>${area.descricao}</p>
+            <button class="btn" onclick="iniciarArea('${area.nome.replace(/'/g, "\\'")}')">
+              Entrar neste módulo
+            </button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function iniciarArea(nomeArea) {
+  await destravarAudio();
+  areaAtual = nomeArea;
+  questoesAtuais = bancoQuestoes[nomeArea] || [];
+  indiceQuestao = 0;
+  acertosObjetivas = 0;
+  questaoRenderizadaAtual = null;
+
+  if (!questoesAtuais.length) {
+    app.innerHTML = `
+      <div class="box">
+        <h2 style="color:var(--red);">Erro ao abrir o módulo</h2>
+        <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+      </div>
+    `;
+    return;
+  }
+
+  setTimeout(() => {
+    tocarAudioFundo();
+  }, 120);
+
+  carregarQuestao();
+}
+
+function montarEnunciado(questao) {
+  return `
+    <span class="question-label">Base para interpretação:</span>
+    <span class="text-base">${questao.base}</span>
+    <span class="question-label">Pergunta:</span>
+    ${questao.q}
+  `;
+}
+
+function carregarQuestao() {
+  const questao = questoesAtuais[indiceQuestao];
+  const total = questoesAtuais.length;
+  questaoRenderizadaAtual = embaralharAlternativas(questao);
+
+  let html = `
+    <div class="box">
+      <div class="status">
+        <span>${areaAtual}</span>
+        <span>Questão ${indiceQuestao + 1}/${total}</span>
+      </div>
+      <div id="question-text">${montarEnunciado(questaoRenderizadaAtual)}</div>
+      <div class="options-wrap">
+  `;
+
+  questaoRenderizadaAtual.opcoesRenderizadas.forEach((alt, idx) => {
+    html += `<button class="btn option-btn" onclick="responderObjetiva(${idx})">${alt}</button>`;
+  });
+
+  html += `
+      </div>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+
+  app.innerHTML = html;
+}
+
+function responderObjetiva(escolhida) {
+  const botoes = document.querySelectorAll(".option-btn");
+  const correta = questaoRenderizadaAtual.corretaRenderizada;
+
+  botoes.forEach((btn, idx) => {
+    btn.disabled = true;
+    if (idx === correta) btn.classList.add("correct");
+  });
+
+  if (escolhida === correta) {
+    acertosObjetivas++;
+    tocarAcerto();
+  } else {
+    botoes[escolhida].classList.add("wrong");
+    tocarErro();
+  }
+
+  setTimeout(() => {
+    indiceQuestao++;
+    if (indiceQuestao < questoesAtuais.length) {
+      carregarQuestao();
+    } else {
+      finalizarArea();
+    }
+  }, 900);
+}
+
+function finalizarArea() {
+  pararAudioFundo();
+
+  const notaFinal = acertosObjetivas * 10;
+  const totalPossivel = questoesAtuais.length * 10;
+
+  let feedback = "Módulo concluído. Continue treinando os outros módulos para completar as 200 questões de História.";
+
+  if (notaFinal >= 160) feedback = "Excelente desempenho! Você demonstrou domínio forte neste módulo.";
+  else if (notaFinal >= 120) feedback = "Bom desempenho! Continue revisando para fortalecer os pontos fracos.";
+  else if (notaFinal >= 80) feedback = "Resultado intermediário. Refaça o módulo e revise os temas com mais atenção.";
+  else feedback = "Atenção: este módulo mostrou dificuldades importantes. Refaça e revise os conteúdos.";
+
+  app.innerHTML = `
+    <div class="box">
+      <h2 style="color:var(--blue);">${areaAtual}</h2>
+      <div class="result-number">${notaFinal}/${totalPossivel}</div>
+      <div class="result-sub">Acertos: ${acertosObjetivas}/${questoesAtuais.length}</div>
+      <p class="mini" style="margin-bottom:18px;">${feedback}</p>
+
+      <button class="btn" onclick="iniciarArea('${areaAtual.replace(/'/g, "\\'")}')">Refazer este módulo</button>
+      <button class="btn btn-voltar" onclick="mostrarMenu()">Voltar ao menu</button>
+    </div>
+  `;
+}
+
+mostrarMenu();
+
+const RADAR_COPA_ALBUM_URL = "https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?v=4000";
+const RADAR_COPA_HISTORIA_GRATUITO_ID = "gabarito-max-historia-gratuito";
+
+function resgatarBonusGratuitoRadarCopa(){
+  try{
+    const url = "https://dev-orient-social.github.io/radar-copa-2026-com-album/album/index.html?bonus="
+      + encodeURIComponent(RADAR_COPA_HISTORIA_GRATUITO_ID)
+      + "&pacotes=10&v=4000";
+
+    alert("🎁 Bônus gratuito História registrado: +10 pacotes. O álbum será aberto agora.");
+    window.open(url, "_blank", "noopener");
+  }catch(e){
+    alert("Não foi possível abrir o bônus agora. Tente abrir o álbum novamente.");
+  }
+}
+
+function abrirAlbumRadarCopa(){
+  window.open(RADAR_COPA_ALBUM_URL, "_blank", "noopener");
+}
+
+</script>
+
+</body>
+</html>
