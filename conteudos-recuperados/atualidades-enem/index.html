@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atualidades ENEM — Gratuita | Gabarito Max</title>
+<style>
+:root{--card:#11141b;--card2:#171b24;--blue:#00f3ff;--pink:#ff00e6;--green:#39ff14;--red:#ff003c;--yellow:#ffd400;--muted:#cfcfcf;--line:rgba(255,255,255,.08)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#000;color:#fff;min-height:100vh;padding:14px 10px 40px;text-align:center;overflow-x:hidden}
+header{width:100%;max-width:1100px;margin:0 auto 20px;border:2px solid var(--blue);border-radius:22px;padding:18px 12px;background:linear-gradient(180deg,#0c0f16,#090b11);box-shadow:0 0 18px rgba(0,243,255,.25);overflow:hidden}
+header h1{color:var(--blue);font-size:clamp(1.8rem,6vw,3rem);line-height:1.1;text-shadow:0 0 14px rgba(0,243,255,.7);font-weight:900}
+header p{margin-top:10px;color:var(--pink);font-weight:800;font-size:clamp(.9rem,3.5vw,1.2rem);line-height:1.35}
+#app{width:100%;max-width:1100px;margin:0 auto;overflow:hidden}
+.box{width:100%;max-width:1100px;margin:18px auto;background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);padding:16px 12px;border-radius:20px;overflow:hidden;box-shadow:0 0 20px rgba(0,0,0,.35)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:15px}
+.card{background:linear-gradient(135deg,rgba(0,243,255,.08),rgba(255,0,230,.08));border:1px solid rgba(0,243,255,.18);border-radius:16px;padding:15px;text-align:left;overflow:hidden}
+.card h3{color:var(--blue);font-size:1.05rem;margin-bottom:8px;line-height:1.3}
+.card p{color:#ddd;font-size:.93rem;line-height:1.45;margin-bottom:10px}
+.btn{display:block;width:100%;max-width:100%;margin:10px auto;padding:14px 12px;border:2px solid var(--blue);background:transparent;color:#fff;border-radius:12px;cursor:pointer;font-weight:800;font-size:.98rem;white-space:normal;word-break:break-word;overflow-wrap:anywhere;line-height:1.45;transition:.2s;text-align:center}
+.btn:hover:not(:disabled){background:var(--blue);color:#000;box-shadow:0 0 18px rgba(0,243,255,.35)}
+.btn-menu{border-color:#666;color:#ddd}
+.btn-menu:hover:not(:disabled){background:#333;color:#fff;box-shadow:none}
+.btn-next{border-color:var(--pink);background:linear-gradient(135deg,rgba(255,0,230,.18),rgba(0,243,255,.08))}
+.btn-next:hover:not(:disabled){background:var(--pink);color:#000}
+.correct{background:var(--green)!important;border-color:var(--green)!important;color:#000!important}
+.wrong{background:var(--red)!important;border-color:var(--red)!important;color:#fff!important}
+.status{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px;color:var(--pink);font-weight:800;text-align:left;font-size:.95rem}
+.enunciado{text-align:left;font-size:1.02rem;line-height:1.6;margin:15px 0;word-break:break-word;overflow-wrap:anywhere}
+.base{display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:12px;margin:8px 0 12px;color:#f2f2f2;font-style:italic;line-height:1.55}
+.label{display:block;color:var(--yellow);font-weight:900;margin-bottom:7px}
+.comment{display:none;margin-top:12px;padding:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;text-align:left;line-height:1.55;color:#eee}
+.result-number{font-size:2.6rem;color:var(--blue);font-weight:900;margin:10px 0}
+.mini{color:var(--muted);font-size:.95rem;line-height:1.5}
+.badge{display:inline-block;margin:4px;padding:7px 10px;border-radius:999px;border:1px solid rgba(0,243,255,.25);color:#ddd;font-size:.82rem;font-weight:800}
+@media(max-width:700px){body{padding:10px 8px 35px}.grid{grid-template-columns:1fr}.box{padding:14px 10px}.btn{font-size:.95rem;padding:13px 10px}.enunciado{font-size:.98rem}.status{font-size:.88rem}}
+
+.premium-radar-copa-box{
+  width:100%;
+  max-width:820px;
+  margin:18px auto 16px;
+  padding:16px;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(0,243,255,.10),rgba(255,212,0,.12));
+  border:1px solid rgba(255,212,0,.40);
+  box-shadow:0 0 18px rgba(255,212,0,.10);
+  text-align:center;
+}
+.premium-radar-copa-box h3{
+  color:#ffd400;
+  margin-bottom:8px;
+  font-size:1.12rem;
+  text-transform:uppercase;
+}
+.premium-radar-copa-box p{
+  color:#e5e7eb;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+.premium-radar-copa-box .radar-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.premium-radar-copa-box button,
+.premium-radar-copa-box a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:320px;
+  min-height:48px;
+  border-radius:999px;
+  padding:12px 14px;
+  font-weight:900;
+  text-decoration:none;
+  border:1px solid rgba(255,212,0,.65);
+}
+.premium-radar-copa-box button{
+  background:linear-gradient(135deg,#fff4bf,#ffd400,#f59e0b);
+  color:#06142e;
+  cursor:pointer;
+}
+.premium-radar-copa-box a{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+</style>
+<style id="ensinomeu-portal-acesso">.ensinomeu-voltar{position:fixed!important;left:12px!important;bottom:12px!important;z-index:2147483000!important;background:#063a32!important;color:white!important;border:1px solid #67e8c6!important;border-radius:999px!important;padding:10px 16px!important;font:700 13px/1.25 system-ui,sans-serif!important;text-decoration:none!important;box-shadow:0 5px 30px #000a!important;opacity:.94!important}.ensinomeu-voltar:focus,.ensinomeu-voltar:hover{background:#075a48!important;opacity:1!important}</style>
+</head>
+<body>
+<a class="ensinomeu-voltar" href="../index.html" aria-label="Voltar à biblioteca gratuita">← Biblioteca gratuita</a>
+
+<header>
+<h1>ATUALIDADES ENEM — GRATUITA</h1>
+<p>10 MÓDULOS • 200 QUESTÕES</p>
+</header>
+
+
+<div id="app"></div>
+
+<audio id="bg" loop preload="auto" playsinline>
+<source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+<audio id="acertoAudio" preload="auto" playsinline>
+<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+<audio id="erroAudio" preload="auto" playsinline>
+<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const app=document.getElementById("app");
+const bg=document.getElementById("bg");
+const acertoAudio=document.getElementById("acertoAudio");
+const erroAudio=document.getElementById("erroAudio");
+
+bg.volume=0.025;
+acertoAudio.volume=0.55;
+erroAudio.volume=0.55;
+
+let moduloAtual="";
+let questoes=[];
+let index=0;
+let acertos=0;
+let questaoAtual=null;
+let travado=false;
+
+const descricoes={
+"Brasil e Política":"Instituições, democracia, poderes, eleições e cidadania.",
+"Economia e Trabalho":"Inflação, juros, emprego, renda, tecnologia e mercado.",
+"Meio Ambiente e Clima":"Aquecimento global, Amazônia, energia, água e sustentabilidade.",
+"Tecnologia e Sociedade":"Inteligência artificial, redes sociais, dados, privacidade e inovação.",
+"Saúde Pública":"SUS, vacinação, epidemias, saúde mental e prevenção.",
+"Educação e Juventude":"Escola, ENEM, evasão, inclusão, cultura digital e formação.",
+"Direitos Humanos e Cidadania":"Igualdade, diversidade, violência, inclusão e políticas sociais.",
+"Geopolítica Mundial":"Conflitos, organismos internacionais, migração e relações globais.",
+"Cultura, Mídia e Informação":"Fake news, imprensa, cultura brasileira, consumo e comportamento.",
+"Atualidades ENEM Integrado":"Questões interdisciplinares no estilo ENEM."
+};
+
+function tocarBg(){bg.currentTime=0;bg.play().catch(()=>{})}
+function pararBg(){bg.pause();bg.currentTime=0}
+function tocarAcerto(){acertoAudio.currentTime=0;acertoAudio.play().catch(()=>{})}
+function tocarErro(){erroAudio.currentTime=0;erroAudio.play().catch(()=>{})}
+
+function embaralharArray(arr){
+ const novo=[...arr];
+ for(let i=novo.length-1;i>0;i--){
+  const j=Math.floor(Math.random()*(i+1));
+  [novo[i],novo[j]]=[novo[j],novo[i]];
+ }
+ return novo;
+}
+function escaparTexto(txt){
+ return String(txt).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+function menu(){
+ pararBg();
+ const nomes=Object.keys(banco);
+ app.innerHTML=`
+ <div class="box">
+ <h2 style="color:var(--blue);margin-bottom:8px;">Escolha um módulo</h2>
+ <p class="mini">Cada módulo possui <strong>20 questões</strong>, comentário explicativo e alternativas embaralhadas.</p>
+ <div style="margin:12px 0;">
+ <span class="badge">10 módulos</span>
+ <span class="badge">200 questões</span>
+ <span class="badge">Atualidades ENEM</span>
+ </div>
+ <div class="grid">
+ ${nomes.map(m=>`
+ <div class="card">
+ <h3>${m}</h3>
+ <p>${descricoes[m]||"Treino de atualidades."}</p>
+ <button class="btn" onclick="iniciarModulo('${m}')">Entrar neste módulo</button>
+ </div>`).join("")}
+ </div>
+ </div>`;
+}
+function iniciarModulo(nome){
+ moduloAtual=nome;
+ questoes=[...(banco[nome]||[])];
+ index=0;
+ acertos=0;
+ travado=false;
+ if(!questoes.length){
+  app.innerHTML=`<div class="box"><h2 style="color:var(--red);">Módulo vazio</h2><button class="btn btn-menu" onclick="menu()">Retornar ao menu</button></div>`;
+  return;
+ }
+ tocarBg();
+ carregar();
+}
+function prepararQuestao(q){
+ const opcoes=q.o.map((txt,i)=>({txt,correta:i===q.c}));
+ const embaralhadas=embaralharArray(opcoes);
+ return{...q,opcoes:embaralhadas,correta:embaralhadas.findIndex(o=>o.correta)};
+}
+function carregar(){
+ travado=false;
+ const q=questoes[index];
+ questaoAtual=prepararQuestao(q);
+ app.innerHTML=`
+ <div class="box">
+ <div class="status">
+ <span>${moduloAtual}</span>
+ <span>Questão ${index+1}/20</span>
+ </div>
+ <div class="enunciado">
+ <span class="label">Base para resolução:</span>
+ <span class="base">${escaparTexto(questaoAtual.base||"Leia a pergunta e escolha a alternativa correta.")}</span>
+ <span class="label">Pergunta:</span>
+ ${escaparTexto(questaoAtual.q)}
+ </div>
+ ${questaoAtual.opcoes.map((o,i)=>`
+ <button class="btn opcao" onclick="responder(${i})">${escaparTexto(o.txt)}</button>
+ `).join("")}
+ <div id="comentario" class="comment"></div>
+ <button id="btnProxima" class="btn btn-next" style="display:none" onclick="proxima()">Próxima pergunta</button>
+ <button class="btn btn-menu" onclick="menu()">Retornar ao menu</button>
+ </div>`;
+}
+function responder(escolha){
+ if(travado)return;
+ travado=true;
+ const botoes=document.querySelectorAll(".opcao");
+ const comentario=document.getElementById("comentario");
+ const btnProxima=document.getElementById("btnProxima");
+ const correta=questaoAtual.correta;
+
+ botoes.forEach((b,i)=>{
+  b.disabled=true;
+  if(i===correta)b.classList.add("correct");
+  if(i===escolha && escolha!==correta)b.classList.add("wrong");
+ });
+
+ if(escolha===correta){
+  acertos++;
+  tocarAcerto();
+  comentario.innerHTML=`<strong style="color:var(--green);">Resposta correta.</strong><br>${escaparTexto(questaoAtual.coment)}`;
+ }else{
+  tocarErro();
+  comentario.innerHTML=`<strong style="color:var(--red);">Resposta incorreta.</strong><br>${escaparTexto(questaoAtual.coment)}`;
+ }
+ comentario.style.display="block";
+ btnProxima.style.display="block";
+}
+function proxima(){
+ index++;
+ if(index<questoes.length)carregar();
+ else finalizar();
+}
+function finalizar(){
+ pararBg();
+ const perc=Math.round((acertos/questoes.length)*100);
+ let nivel="Precisa reforçar";
+ if(acertos>=17)nivel="Excelente";
+ else if(acertos>=13)nivel="Bom desempenho";
+ else if(acertos>=8)nivel="Atenção";
+
+ app.innerHTML=`
+ <div class="box">
+ <h2 style="color:var(--blue);">${moduloAtual}</h2>
+ <div class="result-number">${acertos}/20</div>
+ <p class="mini">${perc}% de aproveitamento • ${nivel}</p>
+ <div style="text-align:left;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px;margin:15px 0;">
+ <strong style="color:var(--yellow);">Diagnóstico:</strong><br>
+ ${acertos>=13?"Bom desempenho neste módulo. Continue treinando os demais temas para fortalecer sua visão de atualidades.":"Refaça este módulo e revise os comentários. Atualidades exige leitura crítica e conexão entre temas."}
+ </div>
+ <button class="btn" onclick="iniciarModulo('${moduloAtual}')">Refazer este módulo</button>
+ <button class="btn btn-menu" onclick="menu()">Retornar ao menu</button>
+ </div>`;
+}
+
+const banco={
+
+"Brasil e Política":[
+{base:"A democracia brasileira se organiza por meio de instituições e regras constitucionais.",q:"Qual elemento é essencial para o funcionamento democrático?",o:["Participação cidadã","Censura permanente","Fim das eleições","Poder único"],c:0,coment:"Democracia exige participação, eleições, instituições e respeito às leis."},
+{base:"A Constituição Federal organiza direitos, deveres e funcionamento do Estado.",q:"A Constituição é importante porque:",o:["Define regras do país","Substitui eleições","Elimina direitos","Serve apenas como símbolo"],c:0,coment:"A Constituição é a principal lei do país."},
+{base:"O Brasil possui três Poderes independentes e harmônicos.",q:"Quais são os três Poderes?",o:["Executivo, Legislativo e Judiciário","Federal, Estadual e Municipal","Polícia, Exército e Marinha","Imprensa, Governo e Mercado"],c:0,coment:"A divisão de Poderes evita concentração de autoridade."},
+{base:"O Poder Legislativo cria leis e fiscaliza o Executivo.",q:"No Brasil, o Legislativo federal é formado por:",o:["Câmara dos Deputados e Senado","Prefeituras e escolas","Tribunais e ministérios","Governadores e secretários"],c:0,coment:"O Congresso Nacional é composto por Câmara e Senado."},
+{base:"O Poder Executivo administra políticas públicas.",q:"No município, o chefe do Executivo é:",o:["Prefeito","Senador","Vereador","Juiz"],c:0,coment:"O prefeito administra o município."},
+{base:"O Judiciário interpreta leis e julga conflitos.",q:"A principal função do Judiciário é:",o:["Julgar conforme a lei","Criar impostos municipais","Organizar campanhas eleitorais","Administrar escolas"],c:0,coment:"O Judiciário atua na solução de conflitos e proteção de direitos."},
+{base:"Eleições permitem renovação de representantes.",q:"O voto é um instrumento de:",o:["Participação política","Censura social","Controle privado","Exclusão cidadã"],c:0,coment:"O voto permite que a população escolha representantes."},
+{base:"Políticas públicas são ações do Estado para resolver problemas sociais.",q:"Qual é exemplo de política pública?",o:["Programa de vacinação","Venda informal sem regra","Opinião pessoal","Propaganda privada apenas"],c:0,coment:"Vacinação pública é ação estatal voltada à saúde coletiva."},
+{base:"A cidadania envolve direitos e deveres.",q:"Exercer cidadania significa:",o:["Participar da vida social e política","Ignorar problemas coletivos","Descumprir leis","Recusar direitos"],c:0,coment:"Cidadania envolve participação, direitos e responsabilidade social."},
+{base:"A transparência pública ajuda a combater abusos.",q:"A transparência é importante porque:",o:["Permite fiscalização social","Impede acesso a dados","Enfraquece controle social","Elimina participação"],c:0,coment:"Transparência permite que cidadãos acompanhem ações públicas."},
+{base:"A liberdade de imprensa é relevante em democracias.",q:"A imprensa livre contribui para:",o:["Fiscalizar o poder","Ocultar informações","Censurar cidadãos","Substituir eleições"],c:0,coment:"A imprensa ajuda a informar e fiscalizar autoridades."},
+{base:"A desinformação pode prejudicar decisões políticas.",q:"Fake news em eleições podem:",o:["Manipular opiniões","Melhorar o debate sempre","Garantir neutralidade","Eliminar polarização"],c:0,coment:"Desinformação compromete escolhas conscientes."},
+{base:"Polarização ocorre quando grupos se afastam em posições extremas.",q:"Um risco da polarização é:",o:["Reduzir diálogo democrático","Aumentar consenso sempre","Eliminar conflitos","Fortalecer escuta"],c:0,coment:"Polarização pode dificultar diálogo e negociação."},
+{base:"Controle social é a participação da sociedade na fiscalização pública.",q:"Um instrumento de controle social é:",o:["Acompanhamento de gastos públicos","Desinteresse político","Censura eleitoral","Fim da transparência"],c:0,coment:"A sociedade pode fiscalizar o uso de recursos públicos."},
+{base:"O pacto federativo divide responsabilidades entre União, Estados e Municípios.",q:"Essa divisão busca:",o:["Organizar competências administrativas","Concentrar tudo no governo federal","Eliminar municípios","Impedir políticas locais"],c:0,coment:"Cada ente federativo possui responsabilidades próprias."},
+{base:"Os municípios cuidam de serviços próximos da população.",q:"Qual área costuma envolver gestão municipal?",o:["Saúde básica e transporte local","Relações diplomáticas","Defesa nacional","Emissão de moeda"],c:0,coment:"Municípios atuam diretamente em serviços locais."},
+{base:"A participação popular pode ocorrer além do voto.",q:"Um exemplo é:",o:["Conselhos municipais","Censura privada","Boatos eleitorais","Compra de votos"],c:0,coment:"Conselhos e audiências públicas ampliam participação."},
+{base:"Corrupção prejudica serviços públicos e confiança institucional.",q:"Uma consequência da corrupção é:",o:["Desvio de recursos sociais","Melhora automática da gestão","Aumento de direitos","Fim da desigualdade"],c:0,coment:"Corrupção reduz recursos disponíveis para políticas públicas."},
+{base:"A educação política ajuda o cidadão a compreender instituições.",q:"Educação política contribui para:",o:["Voto mais consciente","Manipulação permanente","Apatia social","Desinformação"],c:0,coment:"Cidadãos informados participam melhor da democracia."},
+{base:"O Estado Democrático de Direito limita abusos de poder.",q:"Esse princípio significa que:",o:["Todos devem obedecer à lei","Somente cidadãos obedecem à lei","Autoridades estão acima da lei","Leis não importam"],c:0,coment:"No Estado de Direito, governantes e cidadãos estão submetidos à lei."}
+],
+
+"Economia e Trabalho":[
+{base:"Inflação é o aumento generalizado dos preços.",q:"Quando a inflação cresce, o poder de compra tende a:",o:["Diminuir","Aumentar sempre","Ficar infinito","Não ser afetado nunca"],c:0,coment:"Com preços maiores, o dinheiro compra menos."},
+{base:"Juros influenciam crédito, consumo e investimentos.",q:"Taxas de juros mais altas tendem a:",o:["Encarecer empréstimos","Baratear todo crédito","Eliminar inflação imediatamente","Aumentar salário automaticamente"],c:0,coment:"Juros altos tornam o crédito mais caro."},
+{base:"Desemprego é falta de trabalho para quem procura ocupação.",q:"Uma consequência social do desemprego é:",o:["Redução de renda familiar","Aumento garantido de consumo","Fim da pobreza","Mais estabilidade imediata"],c:0,coment:"Sem emprego, a renda das famílias diminui."},
+{base:"Trabalho informal não possui todas as garantias trabalhistas.",q:"Um risco da informalidade é:",o:["Menor proteção social","Mais direitos garantidos sempre","Aposentadoria automática","Estabilidade plena"],c:0,coment:"Informalidade reduz acesso a direitos e proteção."},
+{base:"A tecnologia transforma o mercado de trabalho.",q:"Automação pode gerar:",o:["Mudança nas profissões","Fim de toda qualificação","Desaparecimento da economia","Proibição de inovação"],c:0,coment:"Automação muda tarefas e exige novas habilidades."},
+{base:"A qualificação profissional ajuda na empregabilidade.",q:"Qualificação significa:",o:["Desenvolver competências","Recusar estudo","Eliminar tecnologia","Evitar adaptação"],c:0,coment:"Qualificação prepara o trabalhador para novas demandas."},
+{base:"Empreendedorismo pode gerar renda, mas envolve riscos.",q:"Um desafio do empreendedor é:",o:["Planejamento financeiro","Ausência total de concorrência","Lucro garantido","Imposto inexistente"],c:0,coment:"Empreender exige gestão, planejamento e adaptação."},
+{base:"Desigualdade de renda afeta oportunidades sociais.",q:"Uma consequência da desigualdade é:",o:["Acesso desigual a serviços","Igualdade automática","Fim da pobreza","Melhor distribuição sempre"],c:0,coment:"Desigualdade limita acesso a educação, saúde e renda."},
+{base:"O consumo consciente considera impacto social e ambiental.",q:"Consumir conscientemente significa:",o:["Avaliar necessidade e impacto","Comprar sem critério","Desperdiçar recursos","Ignorar origem dos produtos"],c:0,coment:"Consumo consciente evita desperdício e considera consequências."},
+{base:"PIB mede a produção de bens e serviços.",q:"O PIB indica principalmente:",o:["Atividade econômica","Felicidade individual","Qualidade da internet","Número de eleitores"],c:0,coment:"PIB é indicador de produção econômica."},
+{base:"Economia global conecta países por comércio e investimentos.",q:"Globalização econômica gera:",o:["Interdependência entre países","Isolamento absoluto","Fim do comércio","Moeda única obrigatória"],c:0,coment:"Países dependem uns dos outros em cadeias globais."},
+{base:"Crises econômicas impactam emprego e renda.",q:"Durante uma crise, é comum ocorrer:",o:["Queda no consumo","Aumento garantido de empregos","Fim da inflação sempre","Renda infinita"],c:0,coment:"Crises reduzem atividade econômica e consumo."},
+{base:"O salário mínimo influencia renda de trabalhadores.",q:"Uma função do salário mínimo é:",o:["Garantir piso de remuneração","Eliminar todos os impostos","Substituir aposentadoria","Definir preço de produtos"],c:0,coment:"Ele estabelece remuneração mínima legal."},
+{base:"A economia digital cresceu com aplicativos e plataformas.",q:"Um debate sobre trabalho por aplicativo envolve:",o:["Direitos e proteção do trabalhador","Fim do transporte","Ausência de renda","Proibição de tecnologia"],c:0,coment:"O debate envolve flexibilidade, renda e direitos."},
+{base:"Educação financeira ajuda a lidar com orçamento.",q:"Ela é importante para:",o:["Planejar gastos e evitar dívidas","Aumentar consumo sem limite","Ignorar juros","Eliminar renda"],c:0,coment:"Planejamento financeiro reduz endividamento."},
+{base:"Endividamento familiar cresce quando despesas superam renda.",q:"Uma causa do endividamento é:",o:["Uso excessivo de crédito","Planejamento cuidadoso","Poupança constante","Renda estável sempre"],c:0,coment:"Crédito sem controle pode gerar dívidas."},
+{base:"Setores econômicos incluem primário, secundário e terciário.",q:"O setor terciário está ligado a:",o:["Serviços e comércio","Agricultura apenas","Indústria apenas","Mineração apenas"],c:0,coment:"Comércio e serviços pertencem ao setor terciário."},
+{base:"Tributos financiam políticas públicas.",q:"Impostos são usados para:",o:["Financiar serviços públicos","Eliminar orçamento","Substituir cidadania","Impedir educação"],c:0,coment:"Tributos sustentam áreas como saúde, educação e infraestrutura."},
+{base:"A produtividade relaciona produção e recursos usados.",q:"Aumentar produtividade significa:",o:["Produzir melhor com recursos disponíveis","Trabalhar sem qualificação","Reduzir toda tecnologia","Eliminar planejamento"],c:0,coment:"Produtividade envolve eficiência."},
+{base:"Sustentabilidade econômica busca desenvolvimento com responsabilidade.",q:"Economia sustentável procura equilibrar:",o:["Crescimento, sociedade e ambiente","Lucro e desperdício","Consumo e poluição","Renda e exclusão"],c:0,coment:"O desenvolvimento sustentável integra economia, sociedade e ambiente."}
+],
+
+"Meio Ambiente e Clima":[
+{base:"A mudança climática está associada ao aumento de gases de efeito estufa.",q:"Um gás ligado ao aquecimento global é:",o:["Dióxido de carbono","Oxigênio puro","Hélio","Nitrogênio sólido"],c:0,coment:"CO2 é um dos principais gases de efeito estufa."},
+{base:"Desmatamento reduz biodiversidade e afeta o clima.",q:"Uma consequência do desmatamento é:",o:["Perda de habitats","Aumento garantido de chuvas","Fim da erosão","Mais biodiversidade sempre"],c:0,coment:"Desmatamento destrói habitats e ameaça espécies."},
+{base:"A Amazônia influencia o regime de chuvas.",q:"A floresta contribui para:",o:["Ciclo da água","Produção de petróleo","Aumento do deserto automaticamente","Fim dos rios"],c:0,coment:"A evapotranspiração ajuda na formação de chuvas."},
+{base:"Queimadas liberam poluentes e carbono.",q:"Um impacto das queimadas é:",o:["Piora da qualidade do ar","Purificação imediata do ar","Fim do efeito estufa","Aumento de nascentes"],c:0,coment:"Fumaça e partículas prejudicam saúde e clima."},
+{base:"Sustentabilidade busca atender o presente sem comprometer o futuro.",q:"Sustentabilidade envolve:",o:["Uso responsável dos recursos","Exploração sem limite","Desperdício permanente","Poluição inevitável"],c:0,coment:"Sustentabilidade exige responsabilidade ambiental e social."},
+{base:"Energias renováveis reduzem dependência de combustíveis fósseis.",q:"Qual é fonte renovável?",o:["Solar","Carvão mineral","Petróleo","Gás natural fóssil"],c:0,coment:"Energia solar é renovável."},
+{base:"Crise hídrica ocorre quando há escassez de água.",q:"Uma medida para enfrentar crise hídrica é:",o:["Uso racional da água","Desperdício doméstico","Poluição de rios","Desmatamento de nascentes"],c:0,coment:"Economia e gestão adequada ajudam no abastecimento."},
+{base:"Saneamento básico influencia saúde e ambiente.",q:"A falta de saneamento pode causar:",o:["Doenças de veiculação hídrica","Fim da poluição","Mais qualidade de vida sempre","Aumento de água limpa"],c:0,coment:"Esgoto sem tratamento contamina água e causa doenças."},
+{base:"Reciclagem reduz descarte inadequado.",q:"Reciclar contribui para:",o:["Reduzir resíduos","Aumentar lixões","Destruir matéria-prima","Impedir reutilização"],c:0,coment:"Reciclagem reaproveita materiais e reduz lixo."},
+{base:"Lixo eletrônico contém metais e componentes tóxicos.",q:"O descarte correto do lixo eletrônico é importante para:",o:["Evitar contaminação ambiental","Aumentar poluição","Misturar com alimentos","Queimar em casa"],c:0,coment:"Ele deve ir para pontos adequados de coleta."},
+{base:"O acordo climático internacional busca reduzir emissões.",q:"Acordos climáticos têm como objetivo:",o:["Cooperação contra aquecimento global","Aumentar emissões","Eliminar florestas","Impedir ciência"],c:0,coment:"A cooperação internacional é necessária para enfrentar o clima."},
+{base:"Eventos extremos incluem secas, enchentes e ondas de calor.",q:"Mudanças climáticas podem intensificar:",o:["Eventos climáticos extremos","Estabilidade total do clima","Fim das secas","Ausência de chuvas"],c:0,coment:"O aquecimento global aumenta riscos de extremos."},
+{base:"Urbanização sem planejamento pode causar enchentes.",q:"Um fator que agrava enchentes urbanas é:",o:["Impermeabilização do solo","Mais áreas verdes","Drenagem adequada","Preservação de rios"],c:0,coment:"Asfalto e concreto reduzem infiltração."},
+{base:"Educação ambiental promove consciência ecológica.",q:"Educação ambiental busca:",o:["Mudar práticas e preservar recursos","Estimular desperdício","Ignorar poluição","Aumentar desmatamento"],c:0,coment:"Ela ajuda a formar hábitos sustentáveis."},
+{base:"Agricultura sustentável reduz impactos ambientais.",q:"Uma prática sustentável é:",o:["Uso racional do solo","Queimada indiscriminada","Desmatamento ilegal","Contaminação de rios"],c:0,coment:"Boas práticas conservam solo e água."},
+{base:"A biodiversidade garante equilíbrio ecológico.",q:"Perder biodiversidade pode:",o:["Desequilibrar ecossistemas","Melhorar todos os habitats","Eliminar doenças sempre","Aumentar espécies automaticamente"],c:0,coment:"A perda de espécies fragiliza ecossistemas."},
+{base:"Unidades de conservação protegem áreas naturais.",q:"Elas servem para:",o:["Preservar biodiversidade","Estimular ocupação ilegal","Eliminar florestas","Aumentar garimpo"],c:0,coment:"Áreas protegidas ajudam a conservar ecossistemas."},
+{base:"Poluição plástica afeta rios e oceanos.",q:"Um problema do plástico é:",o:["Demora para se decompor","Evaporação imediata","Ausência de impacto","Virar água limpa"],c:0,coment:"Plásticos podem permanecer por muito tempo no ambiente."},
+{base:"Justiça climática discute impactos desiguais da crise ambiental.",q:"Ela mostra que:",o:["Grupos vulneráveis sofrem mais","Todos sofrem igual sempre","A crise não afeta pobres","Ambiente não tem relação social"],c:0,coment:"Populações vulneráveis tendem a sofrer mais com eventos extremos."},
+{base:"Transição energética busca fontes mais limpas.",q:"Seu objetivo é:",o:["Reduzir emissões e poluição","Aumentar carvão","Eliminar energia renovável","Expandir desperdício"],c:0,coment:"A transição energética substitui fontes poluentes por alternativas limpas."}
+],
+"Tecnologia e Sociedade":[
+{base:"A inteligência artificial já influencia educação, trabalho e comunicação.",q:"Um desafio social da inteligência artificial é:",o:["Uso ético e responsável","Fim total da tecnologia","Proibição de todo algoritmo","Ausência de impacto"],c:0,coment:"A IA exige ética, transparência e responsabilidade no uso."},
+{base:"Algoritmos organizam conteúdos em plataformas digitais.",q:"Um risco dos algoritmos é:",o:["Criar bolhas de informação","Eliminar desinformação sempre","Garantir neutralidade absoluta","Impedir todo acesso"],c:0,coment:"Algoritmos podem reforçar preferências e limitar diversidade de informação."},
+{base:"Privacidade digital envolve proteção de dados pessoais.",q:"Proteger dados é importante para:",o:["Evitar abusos e golpes","Aumentar vazamentos","Eliminar direitos","Impedir cidadania"],c:0,coment:"Dados pessoais podem ser usados de forma indevida."},
+{base:"Redes sociais ampliam comunicação, mas também geram riscos.",q:"Um problema associado às redes sociais é:",o:["Desinformação viral","Fim da comunicação","Ausência de opinião","Redução total de conflitos"],c:0,coment:"Conteúdos falsos podem se espalhar rapidamente."},
+{base:"Inclusão digital significa acesso e capacidade de uso das tecnologias.",q:"Inclusão digital envolve:",o:["Acesso à internet e habilidades digitais","Apenas ter televisão","Excluir idosos","Impedir escola online"],c:0,coment:"Inclusão digital exige acesso, dispositivos e aprendizagem."},
+{base:"Cibersegurança protege sistemas e informações.",q:"Um cuidado de segurança digital é:",o:["Usar senhas fortes","Compartilhar senhas","Clicar em links suspeitos","Ignorar atualizações"],c:0,coment:"Senhas fortes ajudam a proteger contas."},
+{base:"A tecnologia muda formas de aprender.",q:"Na educação, tecnologia pode:",o:["Ampliar acesso a conteúdos","Substituir todo professor sempre","Eliminar estudo","Impedir pesquisa"],c:0,coment:"Tecnologia pode apoiar ensino, mas não resolve tudo sozinha."},
+{base:"O excesso de telas gera debates sobre saúde e comportamento.",q:"Um risco do uso excessivo de telas é:",o:["Prejuízo ao sono e concentração","Melhora automática da saúde","Fim da ansiedade sempre","Aumento garantido de aprendizagem"],c:0,coment:"Uso excessivo pode afetar sono, foco e bem-estar."},
+{base:"A economia digital cria novas formas de trabalho.",q:"Um efeito da tecnologia no trabalho é:",o:["Surgimento de novas profissões","Fim de toda qualificação","Ausência de mudanças","Eliminação de serviços"],c:0,coment:"Novas áreas surgem com transformação digital."},
+{base:"Desigualdade digital afeta oportunidades.",q:"Quem não tem acesso à internet pode ter dificuldade em:",o:["Estudar e acessar serviços","Respirar","Andar","Dormir"],c:0,coment:"Muitos serviços dependem de conexão e habilidades digitais."},
+{base:"A Lei Geral de Proteção de Dados regula uso de informações pessoais no Brasil.",q:"A LGPD busca proteger:",o:["Dados pessoais","Desmatamento","Trânsito urbano","Produção agrícola"],c:0,coment:"A LGPD trata de privacidade e tratamento de dados pessoais."},
+{base:"Deepfakes usam tecnologia para criar imagens ou vozes falsas.",q:"Um risco dos deepfakes é:",o:["Manipulação de informação","Aumento de transparência sempre","Fim da fraude","Garantia de verdade"],c:0,coment:"Deepfakes podem ser usados para enganar pessoas."},
+{base:"Tecnologia pode ampliar participação social.",q:"Um exemplo é:",o:["Serviços públicos digitais","Censura automática","Exclusão de dados","Fim da informação"],c:0,coment:"Serviços digitais podem facilitar acesso, se forem inclusivos."},
+{base:"A automação substitui algumas tarefas humanas.",q:"Um efeito da automação é:",o:["Necessidade de requalificação","Fim de todo trabalho","Proibição de máquinas","Ausência de impacto"],c:0,coment:"Trabalhadores precisam se adaptar a novas funções."},
+{base:"A ética digital orienta comportamento responsável online.",q:"É atitude ética na internet:",o:["Respeitar privacidade e checar informações","Espalhar boatos","Vazar dados","Praticar discurso de ódio"],c:0,coment:"Responsabilidade digital envolve respeito e verificação."},
+{base:"A tecnologia assistiva ajuda pessoas com deficiência.",q:"Um exemplo de tecnologia assistiva é:",o:["Leitor de tela","Fake news","Spam","Vírus"],c:0,coment:"Leitores de tela ampliam acessibilidade digital."},
+{base:"A exclusão digital pode afetar idosos.",q:"Uma solução é:",o:["Cursos de alfabetização digital","Bloquear acesso","Eliminar atendimento presencial","Ignorar dificuldades"],c:0,coment:"Formação digital ajuda inclusão de idosos."},
+{base:"A inovação tecnológica precisa considerar impactos sociais.",q:"Inovar com responsabilidade significa:",o:["Avaliar consequências sociais","Buscar lucro sem limite","Ignorar desigualdades","Eliminar transparência"],c:0,coment:"Tecnologia deve servir à sociedade de forma responsável."},
+{base:"O uso de dados públicos pode melhorar políticas sociais.",q:"Dados podem ajudar governos a:",o:["Planejar políticas públicas","Eliminar direitos","Substituir cidadãos","Criar boatos"],c:0,coment:"Dados bem usados ajudam diagnóstico e planejamento."},
+{base:"A cultura digital transforma relações sociais.",q:"Uma característica da cultura digital é:",o:["Comunicação rápida em rede","Isolamento tecnológico total","Fim da informação","Ausência de interação"],c:0,coment:"A cultura digital é marcada por conectividade e circulação de informações."}
+],
+
+"Saúde Pública":[
+{base:"O SUS é o sistema público de saúde brasileiro.",q:"Um princípio do SUS é:",o:["Universalidade","Exclusão social","Atendimento apenas privado","Acesso por renda"],c:0,coment:"Universalidade significa atendimento para todos."},
+{base:"Vacinação é estratégia coletiva de prevenção.",q:"Vacinas ajudam a:",o:["Prevenir doenças","Causar epidemias sempre","Eliminar higiene","Substituir saneamento"],c:0,coment:"Vacinas reduzem risco de doenças e surtos."},
+{base:"Epidemias exigem vigilância e prevenção.",q:"Uma medida contra epidemias é:",o:["Monitoramento de casos","Negar dados","Eliminar campanhas","Reduzir atendimento"],c:0,coment:"Monitoramento ajuda a controlar surtos."},
+{base:"Saúde mental tornou-se tema central entre jovens.",q:"Um fator que pode afetar saúde mental é:",o:["Pressão social e excesso de cobrança","Acesso a apoio psicológico","Sono adequado","Atividade física equilibrada"],c:0,coment:"Pressão intensa pode contribuir para sofrimento mental."},
+{base:"Saneamento básico influencia a saúde coletiva.",q:"Falta de saneamento pode causar:",o:["Doenças transmitidas pela água","Fim de doenças","Mais água limpa","Aumento de vacinação"],c:0,coment:"Esgoto e água contaminada favorecem doenças."},
+{base:"Atenção básica é porta de entrada do SUS.",q:"Postos de saúde atuam principalmente em:",o:["Prevenção e acompanhamento","Apenas cirurgias complexas","Emissão de moeda","Fiscalização eleitoral"],c:0,coment:"A atenção básica acompanha famílias e previne doenças."},
+{base:"Campanhas de saúde informam a população.",q:"Campanhas públicas podem:",o:["Estimular prevenção","Aumentar desinformação","Eliminar atendimento","Substituir médicos sempre"],c:0,coment:"Informação adequada ajuda prevenção."},
+{base:"Obesidade envolve fatores alimentares, sociais e econômicos.",q:"Uma política de prevenção é:",o:["Educação alimentar","Estímulo ao ultraprocessado","Fim da atividade física","Desinformação"],c:0,coment:"Educação alimentar ajuda escolhas saudáveis."},
+{base:"Doenças crônicas exigem acompanhamento contínuo.",q:"Exemplo de doença crônica é:",o:["Diabetes","Resfriado comum de dois dias","Corte superficial","Dor passageira"],c:0,coment:"Diabetes exige cuidado permanente."},
+{base:"A saúde pública depende de profissionais, estrutura e financiamento.",q:"Um desafio do SUS é:",o:["Garantir atendimento com qualidade","Impedir acesso universal","Reduzir vacinação","Eliminar prevenção"],c:0,coment:"O SUS precisa de investimento e gestão para funcionar bem."},
+{base:"Saúde preventiva evita agravamento de problemas.",q:"Prevenção significa:",o:["Agir antes da doença ou agravamento","Tratar apenas quando piora","Ignorar sintomas","Recusar informação"],c:0,coment:"Prevenir reduz riscos e custos sociais."},
+{base:"Desinformação em saúde pode causar riscos.",q:"Fake news sobre vacinas podem:",o:["Reduzir adesão à vacinação","Melhorar prevenção sempre","Aumentar confiança científica","Eliminar doenças"],c:0,coment:"Boatos podem afastar pessoas da vacinação."},
+{base:"A saúde da população também depende do ambiente.",q:"Poluição do ar pode causar:",o:["Problemas respiratórios","Melhora pulmonar","Fim de alergias","Aumento de oxigênio puro"],c:0,coment:"Poluentes prejudicam o sistema respiratório."},
+{base:"Alimentação saudável é fator de prevenção.",q:"Uma alimentação equilibrada ajuda a:",o:["Reduzir riscos de doenças","Aumentar doenças sempre","Substituir sono","Eliminar vacinação"],c:0,coment:"Boa alimentação contribui para saúde geral."},
+{base:"Atividade física regular beneficia corpo e mente.",q:"Ela pode ajudar na:",o:["Prevenção de doenças","Redução de saúde","Piora obrigatória do sono","Exclusão social"],c:0,coment:"Exercícios ajudam saúde física e mental."},
+{base:"Acesso desigual à saúde afeta populações vulneráveis.",q:"Equidade no SUS significa:",o:["Tratar desigualmente os desiguais conforme necessidade","Atender apenas quem paga","Negar atendimento","Dar menos a quem precisa mais"],c:0,coment:"Equidade busca reduzir desigualdades no acesso."},
+{base:"O envelhecimento populacional aumenta demandas de saúde.",q:"Uma necessidade associada ao envelhecimento é:",o:["Cuidado contínuo e prevenção","Fim da atenção básica","Exclusão de idosos","Menos serviços de saúde"],c:0,coment:"Idosos podem demandar acompanhamento frequente."},
+{base:"Saúde pública envolve também vacinação infantil.",q:"Baixa cobertura vacinal pode causar:",o:["Retorno de doenças controladas","Fim de surtos","Mais imunização coletiva","Desaparecimento de vírus"],c:0,coment:"Quando menos pessoas se vacinam, doenças podem voltar."},
+{base:"Saúde mental deve ser tratada sem preconceito.",q:"Combater estigma em saúde mental significa:",o:["Estimular busca por ajuda","Ridicularizar sofrimento","Ignorar sintomas","Culpar pacientes"],c:0,coment:"Menos estigma favorece acolhimento e tratamento."},
+{base:"Políticas de saúde precisam de dados confiáveis.",q:"Dados epidemiológicos servem para:",o:["Planejar ações de saúde","Criar boatos","Impedir prevenção","Eliminar hospitais"],c:0,coment:"Dados ajudam identificar riscos e planejar políticas."}
+],
+
+"Educação e Juventude":[
+{base:"A educação é direito social previsto na Constituição.",q:"A educação é importante porque:",o:["Amplia oportunidades e cidadania","Elimina toda desigualdade sozinha","Substitui saúde","Impede trabalho"],c:0,coment:"Educação contribui para cidadania, renda e participação social."},
+{base:"Evasão escolar é abandono da escola.",q:"Uma causa da evasão escolar pode ser:",o:["Pobreza e necessidade de trabalhar","Excesso de acesso cultural","Merenda suficiente sempre","Transporte garantido"],c:0,coment:"Fatores sociais e econômicos influenciam a permanência escolar."},
+{base:"Tecnologia pode apoiar aprendizagem.",q:"Um desafio do ensino digital é:",o:["Desigualdade de acesso","Acesso universal garantido","Fim da escola","Ausência de internet"],c:0,coment:"Nem todos têm internet, equipamentos ou ambiente adequado."},
+{base:"O ENEM avalia competências e habilidades.",q:"O ENEM também funciona como:",o:["Porta de acesso ao ensino superior","Documento de identidade","Carteira de trabalho","Registro eleitoral"],c:0,coment:"O ENEM é usado em programas de acesso ao ensino superior."},
+{base:"A juventude enfrenta desafios de formação e trabalho.",q:"Um desafio dos jovens é:",o:["Inserção no mercado de trabalho","Aposentadoria imediata","Fim da educação","Ausência de tecnologia"],c:0,coment:"Jovens enfrentam exigências de qualificação e experiência."},
+{base:"Bullying afeta convivência escolar.",q:"Uma consequência do bullying é:",o:["Prejuízo emocional e escolar","Melhora da autoestima sempre","Aumento da inclusão","Fortalecimento da aprendizagem"],c:0,coment:"Bullying pode causar sofrimento e queda no desempenho."},
+{base:"Educação inclusiva busca atender todos os estudantes.",q:"Ela exige:",o:["Acessibilidade e respeito às diferenças","Exclusão de alunos","Separação obrigatória","Fim de apoio pedagógico"],c:0,coment:"Inclusão depende de acessibilidade, apoio e respeito."},
+{base:"Formação técnica pode aproximar escola e trabalho.",q:"Educação profissional contribui para:",o:["Qualificação para o mercado","Redução de oportunidades","Fim do emprego","Desvalorização do estudo"],c:0,coment:"Cursos técnicos desenvolvem competências profissionais."},
+{base:"A leitura fortalece interpretação e escrita.",q:"Hábito de leitura ajuda em:",o:["Compreensão e argumentação","Desinformação","Redução de vocabulário","Fuga ao tema"],c:0,coment:"Leitura amplia repertório e vocabulário."},
+{base:"A escola também forma para cidadania.",q:"Educação cidadã envolve:",o:["Direitos, deveres e participação social","Memorização sem reflexão","Exclusão política","Censura de debate"],c:0,coment:"A escola pode formar cidadãos críticos."},
+{base:"Saúde mental estudantil é tema relevante.",q:"Uma ação escolar positiva é:",o:["Acolhimento e orientação","Ignorar sofrimento","Aumentar humilhação","Negar diálogo"],c:0,coment:"Acolhimento ajuda estudantes em sofrimento."},
+{base:"Desigualdade educacional afeta desempenho.",q:"Um fator de desigualdade é:",o:["Diferença de infraestrutura escolar","Merenda universal plena","Acesso igual a tecnologia","Transporte sempre garantido"],c:0,coment:"Infraestrutura desigual impacta aprendizagem."},
+{base:"Tempo integral pode ampliar oportunidades formativas.",q:"Escola em tempo integral pode oferecer:",o:["Mais atividades pedagógicas e culturais","Menos aprendizagem","Ausência de professores","Fim da convivência"],c:0,coment:"Tempo ampliado pode diversificar experiências."},
+{base:"A alfabetização é base da trajetória escolar.",q:"Dificuldades de alfabetização podem afetar:",o:["Aprendizagem futura","Apenas educação física","Somente recreio","Nada"],c:0,coment:"Alfabetização frágil compromete as etapas seguintes."},
+{base:"A cultura digital faz parte da vida dos jovens.",q:"A escola deve lidar com tecnologia de modo:",o:["Crítico e educativo","Proibitivo sem reflexão","Desinformado","Indiferente"],c:0,coment:"Uso crítico ajuda aprendizagem e cidadania digital."},
+{base:"A permanência escolar depende de condições sociais.",q:"Uma política de permanência é:",o:["Bolsa, transporte e alimentação escolar","Aumento da evasão","Fim da merenda","Redução de professores"],c:0,coment:"Apoio social ajuda alunos a permanecerem na escola."},
+{base:"Educação antirracista combate discriminação.",q:"Ela busca:",o:["Valorizar diversidade e igualdade","Reforçar preconceitos","Ignorar história","Excluir culturas"],c:0,coment:"Educação antirracista promove respeito e justiça."},
+{base:"A participação estudantil fortalece a escola.",q:"Um exemplo é:",o:["Grêmio estudantil","Censura de alunos","Fim do diálogo","Ausência de representação"],c:0,coment:"Grêmios permitem participação dos estudantes."},
+{base:"Professores são centrais na qualidade da educação.",q:"Valorizar professores envolve:",o:["Formação, carreira e condições de trabalho","Redução de salários","Ausência de formação","Sobrecarga permanente"],c:0,coment:"Qualidade educacional depende também de valorização docente."},
+{base:"Avaliações educacionais ajudam a diagnosticar aprendizagem.",q:"Elas devem servir para:",o:["Orientar melhorias","Punir sem análise","Ignorar escolas","Eliminar políticas"],c:0,coment:"Avaliações devem apoiar políticas e práticas pedagógicas."}
+],
+
+"Direitos Humanos e Cidadania":[
+{base:"Direitos humanos são direitos básicos de todas as pessoas.",q:"Eles se baseiam na ideia de:",o:["Dignidade humana","Exclusão social","Violência legítima","Desigualdade obrigatória"],c:0,coment:"A dignidade humana é princípio central dos direitos humanos."},
+{base:"Cidadania envolve direitos civis, políticos e sociais.",q:"Exercer cidadania significa:",o:["Participar e respeitar direitos","Ignorar leis","Excluir grupos","Recusar participação"],c:0,coment:"Cidadania une direitos, deveres e participação social."},
+{base:"Racismo estrutural ocorre quando desigualdades raciais se reproduzem nas instituições.",q:"Combater racismo exige:",o:["Políticas públicas e mudança cultural","Negar desigualdades","Reforçar estereótipos","Eliminar debate"],c:0,coment:"O enfrentamento exige ação institucional e social."},
+{base:"Violência contra a mulher é problema social e de direitos humanos.",q:"Uma medida de combate é:",o:["Proteção, denúncia e educação","Culpar vítimas","Silenciar casos","Reduzir apoio"],c:0,coment:"É preciso prevenir, acolher e responsabilizar agressores."},
+{base:"Inclusão de pessoas com deficiência exige acessibilidade.",q:"Acessibilidade significa:",o:["Garantir condições de participação","Criar barreiras","Excluir pessoas","Impedir autonomia"],c:0,coment:"Acessibilidade permite participação social."},
+{base:"A população idosa possui direitos específicos.",q:"Um desafio ligado aos idosos é:",o:["Garantir cuidado e inclusão","Excluir da vida social","Negar saúde","Reduzir proteção"],c:0,coment:"Envelhecimento exige políticas de cuidado e inclusão."},
+{base:"Crianças e adolescentes têm prioridade na proteção social.",q:"O ECA trata de direitos de:",o:["Crianças e adolescentes","Empresas","Animais silvestres","Partidos políticos"],c:0,coment:"O Estatuto da Criança e do Adolescente protege esse grupo."},
+{base:"Pessoas em situação de rua enfrentam vulnerabilidade social.",q:"Uma política adequada é:",o:["Acolhimento, moradia e assistência","Expulsão sem apoio","Invisibilidade social","Criminalização da pobreza"],c:0,coment:"A resposta deve garantir direitos e proteção social."},
+{base:"A liberdade religiosa é direito constitucional.",q:"Ela garante:",o:["Respeito às diferentes crenças","Obrigação de uma religião","Perseguição religiosa","Censura de cultos"],c:0,coment:"Liberdade religiosa protege diversidade de crenças."},
+{base:"Discurso de ódio ameaça direitos e convivência democrática.",q:"Ele deve ser combatido porque:",o:["Estimula violência e discriminação","Garante liberdade absoluta sem responsabilidade","Melhora diálogo","Elimina preconceitos"],c:0,coment:"Discurso de ódio viola direitos e pode gerar violência."},
+{base:"A desigualdade social limita acesso a direitos.",q:"Um efeito da desigualdade é:",o:["Oportunidades desiguais","Igualdade plena","Fim da pobreza","Acesso universal automático"],c:0,coment:"Desigualdade afeta educação, saúde, renda e moradia."},
+{base:"Segurança pública deve respeitar direitos.",q:"Uma política de segurança democrática busca:",o:["Prevenir violência com respeito à lei","Usar violência indiscriminada","Ignorar investigação","Excluir comunidades"],c:0,coment:"Segurança deve combinar prevenção, investigação e direitos."},
+{base:"Moradia é direito social.",q:"Déficit habitacional significa:",o:["Falta de moradia adequada","Excesso de moradias vazias apenas","Fim da pobreza urbana","Pleno acesso habitacional"],c:0,coment:"Déficit habitacional revela carência de moradia digna."},
+{base:"Mobilidade urbana afeta cidadania.",q:"Transporte público de qualidade permite:",o:["Acesso a trabalho, escola e serviços","Exclusão social","Aumento de isolamento","Fim da circulação"],c:0,coment:"Mobilidade garante acesso à cidade."},
+{base:"A igualdade de gênero busca direitos equivalentes.",q:"Ela combate:",o:["Discriminação e desigualdade","Educação","Participação feminina","Direitos sociais"],c:0,coment:"Igualdade de gênero enfrenta desigualdades históricas."},
+{base:"Migração envolve deslocamento de pessoas.",q:"Migrantes e refugiados precisam de:",o:["Acolhimento e proteção de direitos","Xenofobia","Exclusão total","Ausência de documentos sempre"],c:0,coment:"Direitos humanos também protegem migrantes."},
+{base:"A cultura é direito e expressão de identidade.",q:"Valorizar cultura popular significa:",o:["Reconhecer diversidade cultural","Apagar tradições","Impedir manifestações","Uniformizar identidades"],c:0,coment:"Cultura popular expressa memória e pertencimento."},
+{base:"A participação social fortalece políticas públicas.",q:"Conselhos e audiências públicas permitem:",o:["Controle e participação cidadã","Censura social","Fim da democracia","Exclusão política"],c:0,coment:"Esses espaços ampliam a voz da sociedade."},
+{base:"Combater preconceitos exige educação e políticas públicas.",q:"Preconceito é problema porque:",o:["Produz exclusão e desigualdade","Garante igualdade","Fortalece direitos","Amplia oportunidades"],c:0,coment:"Preconceito limita direitos e participação social."},
+{base:"A cidadania digital também exige responsabilidade.",q:"Cidadania digital envolve:",o:["Respeito, segurança e participação online","Ataques virtuais","Vazamento de dados","Desinformação intencional"],c:0,coment:"O ambiente digital também exige ética e respeito."}
+],
+"Geopolítica Mundial":[
+{base:"Geopolítica estuda relações de poder entre países e territórios.",q:"Um tema central da geopolítica é:",o:["Disputa por poder e influência","Receita culinária","Gramática normativa","Esporte amador"],c:0,coment:"Geopolítica analisa interesses, conflitos, alianças e disputas internacionais."},
+{base:"Organismos internacionais buscam cooperação entre países.",q:"A ONU tem como uma de suas funções:",o:["Promover cooperação e paz","Controlar todas as eleições nacionais","Substituir governos locais","Criar moeda única mundial obrigatória"],c:0,coment:"A ONU atua em temas como paz, direitos humanos e cooperação internacional."},
+{base:"Conflitos armados geram impactos humanitários.",q:"Uma consequência de guerras é:",o:["Deslocamento de populações","Aumento automático da paz","Fim da pobreza","Redução total de refugiados"],c:0,coment:"Guerras podem gerar refugiados, destruição e crises humanitárias."},
+{base:"Refugiados fogem por perseguição, guerra ou grave ameaça.",q:"A proteção a refugiados está ligada a:",o:["Direitos humanos","Turismo comercial","Consumo de luxo","Publicidade digital"],c:0,coment:"Refugiados precisam de acolhimento e proteção internacional."},
+{base:"A globalização intensificou fluxos de mercadorias, pessoas e informações.",q:"Um efeito da globalização é:",o:["Maior interdependência entre países","Isolamento total das economias","Fim do comércio exterior","Ausência de cultura digital"],c:0,coment:"Países se tornam mais conectados econômica e culturalmente."},
+{base:"Blocos econômicos aproximam países por interesses comerciais.",q:"O Mercosul é exemplo de:",o:["Bloco econômico","Organização esportiva","Moeda digital","Tribunal ambiental mundial"],c:0,coment:"O Mercosul reúne países sul-americanos para cooperação econômica e política."},
+{base:"Migração internacional pode ocorrer por fatores econômicos, políticos ou ambientais.",q:"Um fator que impulsiona migração é:",o:["Busca por segurança e trabalho","Excesso de oportunidades locais sempre","Ausência de conflitos","Fim das desigualdades"],c:0,coment:"Pessoas migram por necessidade, oportunidade ou proteção."},
+{base:"Crises energéticas afetam economias e relações internacionais.",q:"A dependência de combustíveis fósseis pode gerar:",o:["Vulnerabilidade econômica e geopolítica","Independência total","Fim das disputas energéticas","Energia gratuita universal"],c:0,coment:"Energia é tema estratégico nas relações internacionais."},
+{base:"A soberania nacional é o poder de um Estado sobre seu território.",q:"Soberania significa:",o:["Autonomia política sobre o território","Submissão total a empresas","Fim das fronteiras sempre","Ausência de leis"],c:0,coment:"Soberania envolve autoridade do Estado sobre seu território e população."},
+{base:"Sanções internacionais são medidas de pressão política ou econômica.",q:"Sanções podem buscar:",o:["Pressionar mudanças de comportamento de governos","Aumentar livre comércio sempre","Eliminar diplomacia","Impedir qualquer negociação"],c:0,coment:"Sanções são usadas como instrumento político em conflitos internacionais."},
+{base:"A diplomacia busca resolver conflitos por diálogo.",q:"Diplomacia é importante porque:",o:["Evita ou reduz conflitos","Substitui todos os direitos","Impede negociação","Aumenta guerras obrigatoriamente"],c:0,coment:"A diplomacia é ferramenta de negociação entre países."},
+{base:"A multipolaridade indica distribuição de poder entre vários centros.",q:"Um mundo multipolar possui:",o:["Vários polos de influência","Um único país dominante sempre","Ausência de potências","Fim de alianças"],c:0,coment:"Multipolaridade envolve diferentes potências disputando influência."},
+{base:"Disputas comerciais podem afetar preços e produção.",q:"Uma guerra comercial envolve:",o:["Tarifas e barreiras entre países","Apenas competições esportivas","Fim do comércio","Ausência de política"],c:0,coment:"Guerras comerciais usam tarifas, restrições e pressões econômicas."},
+{base:"A crise climática também é tema geopolítico.",q:"Por que o clima envolve geopolítica?",o:["Porque exige cooperação e afeta países de forma desigual","Porque não afeta governos","Porque elimina fronteiras legais","Porque impede acordos"],c:0,coment:"Mudanças climáticas exigem ação internacional e geram disputas por recursos."},
+{base:"Água pode ser recurso estratégico.",q:"A escassez de água pode gerar:",o:["Conflitos e disputas por recursos","Fim de tensões","Abundância universal","Ausência de migração"],c:0,coment:"Recursos naturais são fatores de tensão geopolítica."},
+{base:"A segurança alimentar depende de produção, comércio e clima.",q:"Crises internacionais podem afetar:",o:["Preço e acesso a alimentos","Somente entretenimento","Apenas turismo","Nada na economia"],c:0,coment:"Conflitos e clima podem alterar cadeias de alimentos."},
+{base:"A internet também virou espaço de disputa internacional.",q:"Ciberataques entre países afetam:",o:["Segurança digital e infraestrutura","Apenas jogos online","Somente esportes","A culinária local"],c:0,coment:"Ataques cibernéticos podem atingir serviços, dados e sistemas estratégicos."},
+{base:"Ajuda humanitária busca atender populações em crise.",q:"Ela é necessária em casos de:",o:["Guerras, desastres e fome","Festas esportivas apenas","Campanhas de marketing","Consumo de luxo"],c:0,coment:"Ajuda humanitária fornece alimentos, abrigo, saúde e proteção."},
+{base:"A corrida tecnológica influencia o poder global.",q:"Tecnologia é estratégica porque:",o:["Gera poder econômico, militar e científico","Não interfere na economia","Elimina disputas","Substitui direitos humanos"],c:0,coment:"Países disputam liderança em áreas como IA, chips e energia."},
+{base:"A integração regional pode fortalecer países.",q:"Cooperação regional ajuda a:",o:["Negociar interesses comuns","Eliminar soberania automaticamente","Impedir comércio","Aumentar isolamento"],c:0,coment:"Países vizinhos podem cooperar em comércio, infraestrutura e políticas comuns."}
+],
+
+"Cultura, Mídia e Informação":[
+{base:"A mídia influencia a forma como a sociedade interpreta acontecimentos.",q:"O papel social da imprensa é:",o:["Informar e fiscalizar","Criar boatos obrigatoriamente","Substituir escolas","Impedir debates"],c:0,coment:"A imprensa informa a população e fiscaliza o poder público."},
+{base:"Fake news são informações falsas apresentadas como verdadeiras.",q:"Um risco das fake news é:",o:["Manipular decisões sociais","Aumentar pensamento crítico sempre","Eliminar conflitos","Garantir ciência"],c:0,coment:"Fake news prejudicam decisões políticas, sanitárias e sociais."},
+{base:"Checagem de fatos ajuda a combater desinformação.",q:"Uma atitude correta diante de notícia duvidosa é:",o:["Verificar fonte e contexto","Compartilhar rapidamente","Acreditar pelo título","Ignorar data"],c:0,coment:"Verificar fonte, data e contexto reduz desinformação."},
+{base:"A cultura brasileira é marcada por diversidade regional.",q:"Valorizar cultura regional significa:",o:["Reconhecer diferentes identidades","Padronizar todas as tradições","Apagar manifestações populares","Impedir festas locais"],c:0,coment:"A diversidade cultural fortalece identidade e memória social."},
+{base:"A internet acelerou a circulação de informações.",q:"Um desafio desse cenário é:",o:["Filtrar informações confiáveis","Eliminar comunicação","Impedir acesso ao conhecimento","Acabar com jornalismo"],c:0,coment:"A velocidade da informação exige leitura crítica."},
+{base:"O consumo cultural mudou com plataformas digitais.",q:"Streaming é exemplo de:",o:["Distribuição digital de conteúdo","Agricultura familiar","Sistema eleitoral","Transporte coletivo"],c:0,coment:"Streaming distribui filmes, músicas e vídeos pela internet."},
+{base:"Influenciadores digitais impactam consumo e opinião.",q:"Um cuidado com influenciadores é:",o:["Identificar publicidade e interesses comerciais","Aceitar tudo como verdade","Ignorar fontes","Rejeitar pensamento crítico"],c:0,coment:"Conteúdos podem envolver propaganda e interesses comerciais."},
+{base:"Cultura de massa alcança grandes públicos.",q:"Ela é caracterizada por:",o:["Ampla circulação de produtos culturais","Produção sem público","Ausência de mídia","Fim do entretenimento"],c:0,coment:"Cultura de massa circula por meios como TV, rádio, internet e cinema."},
+{base:"Patrimônio cultural pode ser material ou imaterial.",q:"Um exemplo de patrimônio imaterial é:",o:["Saberes e festas tradicionais","Prédio histórico apenas","Ponte de concreto","Documento de identidade"],c:0,coment:"Patrimônio imaterial inclui práticas, festas, saberes e expressões."},
+{base:"A democratização da cultura envolve acesso.",q:"Democratizar cultura significa:",o:["Ampliar acesso a bens culturais","Restringir museus","Excluir periferias","Cobrar caro sempre"],c:0,coment:"Cultura deve ser acessível a diferentes grupos sociais."},
+{base:"A liberdade de expressão é direito fundamental.",q:"Ela deve ser exercida com:",o:["Responsabilidade e respeito a direitos","Discurso de ódio","Difamação","Violência"],c:0,coment:"Liberdade de expressão não autoriza violar direitos de outras pessoas."},
+{base:"A publicidade influencia hábitos de consumo.",q:"Um risco da publicidade abusiva é:",o:["Estimular consumo sem reflexão","Aumentar consumo consciente sempre","Eliminar desejo de compra","Impedir mercado"],c:0,coment:"Publicidade pode induzir consumo excessivo."},
+{base:"A cultura digital permite produção de conteúdo por muitos usuários.",q:"Isso gera:",o:["Mais participação e também mais desinformação possível","Fim da criação cultural","Silêncio social","Ausência de opinião"],c:0,coment:"A internet democratiza vozes, mas também amplia riscos informacionais."},
+{base:"Memes são linguagem comum na cultura digital.",q:"Memes podem funcionar como:",o:["Expressão de humor e crítica social","Apenas erro gramatical","Documento oficial","Lei federal"],c:0,coment:"Memes podem comunicar crítica, humor e opinião."},
+{base:"A leitura crítica da mídia é habilidade cidadã.",q:"Ler criticamente significa:",o:["Analisar fonte, intenção e contexto","Acreditar em tudo","Compartilhar sem ler","Ignorar autoria"],c:0,coment:"Leitura crítica protege contra manipulação."},
+{base:"O jornalismo profissional segue critérios de apuração.",q:"Apuração jornalística envolve:",o:["Verificação de informações","Criação de boatos","Opinião sem fonte","Manipulação intencional"],c:0,coment:"Apurar é checar dados, fontes e contexto."},
+{base:"A cultura também movimenta a economia.",q:"Economia criativa envolve:",o:["Produção cultural, arte, design e mídia","Apenas mineração","Somente agricultura","Exclusivamente transporte"],c:0,coment:"Economia criativa gera renda por atividades culturais e criativas."},
+{base:"A representatividade na mídia influencia autoestima e inclusão.",q:"Representatividade significa:",o:["Presença diversa de grupos sociais","Exclusão de minorias","Padronização de identidades","Ausência de diversidade"],c:0,coment:"Representatividade permite que diferentes grupos sejam vistos e respeitados."},
+{base:"Bibliotecas, museus e centros culturais ampliam acesso ao conhecimento.",q:"Esses espaços contribuem para:",o:["Formação cultural e cidadã","Desinformação","Exclusão escolar","Censura privada"],c:0,coment:"Equipamentos culturais fortalecem educação e cidadania."},
+{base:"A desinformação pode afetar saúde, política e convivência social.",q:"Combater desinformação exige:",o:["Educação midiática e checagem","Censura de todo debate","Compartilhamento impulsivo","Fim da imprensa"],c:0,coment:"Educação midiática ajuda a identificar manipulações."}
+],
+
+"Atualidades ENEM Integrado":[
+{base:"O ENEM costuma relacionar temas sociais, ciência, política e cidadania.",q:"Uma boa leitura de atualidades exige:",o:["Conectar fatos a problemas sociais","Decorar manchetes sem análise","Ignorar contexto","Focar apenas em opinião pessoal"],c:0,coment:"Atualidades no ENEM exigem interpretação e conexão entre áreas."},
+{base:"A crise climática aparece ligada a economia, saúde e desigualdade.",q:"Um tema interdisciplinar é:",o:["Mudança climática e justiça social","Gramática isolada","Tabuada pura","Ortografia sem contexto"],c:0,coment:"Clima se conecta a desigualdade, saúde, economia e geopolítica."},
+{base:"A tecnologia digital impacta trabalho, educação e informação.",q:"Um problema associado ao mundo digital é:",o:["Desigualdade de acesso e desinformação","Fim da comunicação","Ausência de dados","Eliminação da escola"],c:0,coment:"A tecnologia cria oportunidades, mas também desigualdades e riscos."},
+{base:"Saúde pública depende de ciência, informação e políticas sociais.",q:"Fake news em saúde podem:",o:["Prejudicar campanhas de prevenção","Melhorar vacinação sempre","Aumentar confiança científica","Eliminar doenças"],c:0,coment:"Desinformação pode reduzir adesão a vacinas e tratamentos."},
+{base:"Economia e meio ambiente se relacionam no desenvolvimento sustentável.",q:"Desenvolvimento sustentável busca:",o:["Equilibrar crescimento, sociedade e ambiente","Explorar sem limite","Ignorar recursos naturais","Aumentar poluição"],c:0,coment:"Sustentabilidade integra economia, justiça social e preservação."},
+{base:"A democracia depende de informação confiável e participação.",q:"Desinformação política pode:",o:["Manipular escolhas eleitorais","Aumentar transparência sempre","Eliminar polarização","Garantir voto consciente"],c:0,coment:"Informação falsa afeta decisões políticas."},
+{base:"A educação é chave para enfrentar desigualdades.",q:"Uma política educacional importante é:",o:["Garantir acesso e permanência escolar","Reduzir escola pública","Eliminar professores","Impedir inclusão"],c:0,coment:"Acesso e permanência são fundamentais para reduzir desigualdades."},
+{base:"A urbanização influencia ambiente e qualidade de vida.",q:"Um problema urbano comum é:",o:["Mobilidade precária e enchentes","Excesso de florestas urbanas","Ausência total de trânsito","Fim das periferias"],c:0,coment:"Cidades enfrentam desafios de transporte, moradia e drenagem."},
+{base:"Direitos humanos aparecem em temas de inclusão e violência.",q:"Uma proposta coerente para reduzir violência é:",o:["Prevenção, educação e proteção social","Aumento de preconceito","Exclusão de grupos vulneráveis","Desinformação"],c:0,coment:"Políticas de prevenção e inclusão enfrentam causas da violência."},
+{base:"Trabalho por aplicativo é tema ligado à economia digital.",q:"Um debate central é:",o:["Flexibilidade, renda e direitos trabalhistas","Fim de todos os serviços","Ausência de tecnologia","Proibição de transporte"],c:0,coment:"O tema envolve novas relações de trabalho e proteção social."},
+{base:"A segurança alimentar depende de renda, produção e distribuição.",q:"Insegurança alimentar significa:",o:["Dificuldade de acesso regular a alimentos","Excesso de renda","Alimentação garantida a todos","Fim da pobreza"],c:0,coment:"Insegurança alimentar é falta de acesso regular e adequado a comida."},
+{base:"A cultura pode ser instrumento de inclusão social.",q:"Democratizar cultura significa:",o:["Ampliar acesso a bens culturais","Restringir eventos","Apagar memória social","Excluir periferias"],c:0,coment:"Acesso à cultura é parte da cidadania."},
+{base:"Geopolítica afeta preços de energia e alimentos.",q:"Conflitos internacionais podem causar:",o:["Alta de preços e crises de abastecimento","Redução automática de preços","Fim da inflação","Independência total"],c:0,coment:"Guerras e tensões afetam cadeias produtivas globais."},
+{base:"A alfabetização digital é importante para participação social.",q:"Ela ajuda pessoas a:",o:["Usar serviços e avaliar informações online","Evitar toda tecnologia","Espalhar boatos","Ignorar direitos"],c:0,coment:"Competências digitais ampliam participação e autonomia."},
+{base:"A desigualdade racial pode aparecer em renda, educação e segurança.",q:"Combater desigualdade racial exige:",o:["Políticas públicas e educação antirracista","Negar o problema","Reforçar estereótipos","Eliminar dados"],c:0,coment:"O enfrentamento exige ações sociais, educacionais e institucionais."},
+{base:"A saúde mental dos jovens se relaciona à escola, família e redes sociais.",q:"Uma ação adequada é:",o:["Acolhimento e acesso a apoio psicológico","Culpar o jovem","Ignorar sinais","Aumentar pressão sem suporte"],c:0,coment:"Acolhimento e suporte reduzem sofrimento."},
+{base:"A transição energética busca reduzir emissões.",q:"Ela se relaciona a:",o:["Fontes renováveis e inovação","Aumento de carvão","Fim da energia solar","Desperdício de recursos"],c:0,coment:"Transição energética envolve fontes limpas e novas tecnologias."},
+{base:"A cidadania digital exige ética e segurança.",q:"Uma prática adequada é:",o:["Checar informações antes de compartilhar","Vazar dados","Atacar pessoas","Espalhar boatos"],c:0,coment:"Checagem reduz desinformação e danos sociais."},
+{base:"O saneamento básico conecta saúde, ambiente e dignidade.",q:"Sua ausência pode gerar:",o:["Doenças e contaminação ambiental","Melhora automática da saúde","Água limpa universal","Fim de desigualdades"],c:0,coment:"Saneamento é essencial para saúde pública e qualidade de vida."},
+{base:"O ENEM valoriza leitura crítica da realidade.",q:"Para resolver atualidades, o aluno deve:",o:["Relacionar fatos, causas e consequências","Decorar frases sem contexto","Ignorar a sociedade","Responder por impulso"],c:0,coment:"Atualidades exigem análise crítica, não apenas memorização."}
+]
+
+};
+
+menu();
+
+
+</script>
+</body>
+</html>
