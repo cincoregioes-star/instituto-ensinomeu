@@ -3,8 +3,8 @@
   "referencia": "2026-11-11",
   "aviso": "Pistas lexicais são heurísticas. Não provam erro ou invalidade da questão.",
   "totalQuestoes": 1200,
-  "questoesRevisadasComMarcador": 24,
-  "pendentesRevisaoIndividual": 1176,
+  "questoesRevisadasComMarcador": 56,
+  "pendentesRevisaoIndividual": 1144,
   "limiarDiferenca": 0.18,
   "totalSinalizadas": 120,
   "itens": [
@@ -28,7 +28,10 @@
       "pistaLexical": 0.424,
       "pergunta": "Controle de cobertura de estoque: O controle tem saldo de unidades e média de consumo por dia. Qual evidência comprova diretamente a execução correta desse controle?",
       "respostaAtual": "saldo, consumo e dias de cobertura conferidos",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "est",
@@ -72,7 +75,10 @@
       "pistaLexical": 0.359,
       "pergunta": "Situação profissional — produtividade: O gestor conhece pedidos concluídos e horas efetivas trabalhadas. Qual é a decisão mais adequada para essa situação?",
       "respostaAtual": "dividir pedidos por horas efetivas usando unidade pedidos por hora",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "pak",
@@ -116,7 +122,10 @@
       "pistaLexical": 0.354,
       "pergunta": "Situação profissional — ocorrências: Registros de avaria aparecem sem SKU, data ou responsável. Qual é a decisão mais adequada para essa situação?",
       "respostaAtual": "padronizar identificador, item, data, situação e responsável",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "adm",
@@ -127,7 +136,10 @@
       "pistaLexical": 0.354,
       "pergunta": "Controle de produtividade: O gestor conhece pedidos concluídos e horas efetivas trabalhadas. Qual evidência comprova diretamente a execução correta desse controle?",
       "respostaAtual": "relatório com pedidos, horas efetivas e resultado conferidos",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "inv",
@@ -171,7 +183,10 @@
       "pistaLexical": 0.333,
       "pergunta": "Auditoria de equipamento com defeito: Uma paleteira apresenta freio defeituoso na inspeção pré-uso. Qual evidência confirma mais diretamente o controle correto da situação?",
       "respostaAtual": "checklist de defeito e bloqueio do equipamento",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "seg",
@@ -182,7 +197,10 @@
       "pistaLexical": 0.333,
       "pergunta": "Auditoria de recipiente de resíduos: Resíduos cortantes aparecem misturados a papel em recipiente comum. Qual evidência confirma mais diretamente o controle correto da situação?",
       "respostaAtual": "verificação do recipiente e destino correto dos resíduos",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "seg",
@@ -193,7 +211,10 @@
       "pistaLexical": 0.325,
       "pergunta": "Identificação de desvio em ergonomia de levantamento: Um trabalhador tenta elevar sozinho uma caixa que impede a visão do trajeto. Qual comportamento caracteriza a falha principal a evitar?",
       "respostaAtual": "transportar a caixa sozinho com visão obstruída",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "srt",
@@ -259,7 +280,10 @@
       "pistaLexical": 0.298,
       "pergunta": "Auditoria de piso molhado: Água de infiltração acumulou na passagem entre corredores. Qual evidência confirma mais diretamente o controle correto da situação?",
       "respostaAtual": "registro da correção da infiltração e liberação do piso",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "pak",
@@ -292,7 +316,10 @@
       "pistaLexical": 0.283,
       "pergunta": "Auditoria de proteção coletiva: Uma borda de doca tem passagem de pessoas sem isolamento efetivo. Qual evidência confirma mais diretamente o controle correto da situação?",
       "respostaAtual": "vistoria da barreira e do isolamento de acesso à borda",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "adm",
@@ -303,7 +330,10 @@
       "pistaLexical": 0.281,
       "pergunta": "Controle de tabela dinâmica: A diretoria quer um resumo de pedidos por setor e mês. Qual evidência comprova diretamente a execução correta desse controle?",
       "respostaAtual": "tabela dinâmica reconciliada com a base de pedidos",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "ops",
@@ -358,7 +388,10 @@
       "pistaLexical": 0.258,
       "pergunta": "Situação profissional — referência absoluta: Uma taxa fixa em B2 deve ser aplicada a custos em linhas diferentes. Qual é a decisão mais adequada para essa situação?",
       "respostaAtual": "utilizar referência absoluta para B2 e referência relativa para cada custo",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "mov",
@@ -369,7 +402,10 @@
       "pistaLexical": 0.258,
       "pergunta": "Auditoria de piso escorregadio: Foi identificado derramamento de óleo na rota de paleteiras. Qual registro confirma o controle adequado desse caso?",
       "respostaAtual": "registro da interdição e da liberação da rota corrigida",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "pak",
@@ -402,7 +438,10 @@
       "pistaLexical": 0.258,
       "pergunta": "Auditoria de comunicação de risco: Uma equipe externa fará manutenção junto à rota habitual de separação. Qual evidência confirma mais diretamente o controle correto da situação?",
       "respostaAtual": "registro de comunicação e isolamento de área de manutenção",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "sel",
@@ -457,7 +496,10 @@
       "pistaLexical": 0.25,
       "pergunta": "Situação profissional — cobertura de estoque: O controle tem saldo de unidades e média de consumo por dia. Qual é a decisão mais adequada para essa situação?",
       "respostaAtual": "dividir saldo pelo consumo médio diário na mesma unidade",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "inv",
@@ -512,7 +554,10 @@
       "pistaLexical": 0.239,
       "pergunta": "Situação profissional — validação de dados: Operadores digitam diferentes variações para status de um pedido. Qual é a decisão mais adequada para essa situação?",
       "respostaAtual": "usar validação de dados com lista padronizada de estados permitidos",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "est",
@@ -545,7 +590,10 @@
       "pistaLexical": 0.239,
       "pergunta": "Identificação de desvio em organização 5s: Ferramentas e materiais sem uso ocupam a área demarcada de passagem. Qual comportamento caracteriza a falha principal a evitar?",
       "respostaAtual": "transformar passagem demarcada em depósito permanente",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "adm",
@@ -556,7 +604,10 @@
       "pistaLexical": 0.236,
       "pergunta": "Controle de soma: Uma planilha reúne a quantidade recebida em cinco linhas contíguas. Qual evidência comprova diretamente a execução correta desse controle?",
       "respostaAtual": "fórmula SOMA reconciliada com a quantidade nos registros originais",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "adm",
@@ -567,7 +618,10 @@
       "pistaLexical": 0.236,
       "pergunta": "Controle de ordenação: A planilha possui colunas relacionadas de pedido, cliente e prazo. Qual evidência comprova diretamente a execução correta desse controle?",
       "respostaAtual": "checagem de que cada prazo continua vinculado ao pedido correto",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "mov",
@@ -578,7 +632,10 @@
       "pistaLexical": 0.236,
       "pergunta": "Situação de centro de carga: Um volume longo desloca o centro de gravidade para além do previsto no equipamento. Qual providência atende de forma específica ao problema?",
       "respostaAtual": "consultar limites de carga e adequar equipamento e posicionamento",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "ops",
@@ -677,7 +734,10 @@
       "pistaLexical": 0.231,
       "pergunta": "Identificação de desvio em trava de proteção: Uma proteção de máquina foi removida e o operador pretende religar o equipamento. Qual comportamento caracteriza a falha principal a evitar?",
       "respostaAtual": "ligar a máquina sem proteção para recuperar produção",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "pck",
@@ -732,7 +792,10 @@
       "pistaLexical": 0.226,
       "pergunta": "Situação profissional — proteção coletiva: Uma borda de doca tem passagem de pessoas sem isolamento efetivo. Qual medida atende especificamente ao risco ou problema apresentado?",
       "respostaAtual": "restabelecer proteção coletiva e sinalização antes de liberar a área",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "seg",
@@ -743,7 +806,10 @@
       "pistaLexical": 0.226,
       "pergunta": "Situação profissional — empilhamento instável: Uma pilha de caixas apresenta deformação e inclinação progressiva. Qual medida atende especificamente ao risco ou problema apresentado?",
       "respostaAtual": "isolar a pilha e readequar o empilhamento por método seguro",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "srt",
@@ -831,7 +897,10 @@
       "pistaLexical": 0.218,
       "pergunta": "Auditoria de equipe de manutenção: Um equipamento bloqueado para manutenção foi encontrado com chave disponível. Qual registro confirma o controle adequado desse caso?",
       "respostaAtual": "registro de manutenção concluída e liberação pela área competente",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "ops",
@@ -897,7 +966,10 @@
       "pistaLexical": 0.218,
       "pergunta": "Identificação de desvio em recipiente de resíduos: Resíduos cortantes aparecem misturados a papel em recipiente comum. Qual comportamento caracteriza a falha principal a evitar?",
       "respostaAtual": "recolher resíduos cortantes à mão sem avaliar proteção e acondicionamento",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "srt",
@@ -963,7 +1035,10 @@
       "pistaLexical": 0.213,
       "pergunta": "Situação profissional — indicador sla: A equipe quer medir percentual de pedidos fechados dentro do prazo. Qual é a decisão mais adequada para essa situação?",
       "respostaAtual": "dividir pedidos no prazo pelo total elegível no mesmo período",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "est",
@@ -985,7 +1060,10 @@
       "pistaLexical": 0.211,
       "pergunta": "Auditoria de bateria descarregada: Um equipamento elétrico indica energia insuficiente durante transporte interno. Qual registro confirma o controle adequado desse caso?",
       "respostaAtual": "registro da condição da bateria e retirada planejada da operação",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "pak",
@@ -1040,7 +1118,10 @@
       "pistaLexical": 0.211,
       "pergunta": "Identificação de desvio em sinalização deteriorada: A placa que identifica fluxo de empilhadeiras está ilegível. Qual comportamento caracteriza a falha principal a evitar?",
       "respostaAtual": "deixar a placa ilegível por considerar a equipe experiente",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "trp",
@@ -1084,7 +1165,10 @@
       "pistaLexical": 0.21,
       "pergunta": "Análise de falha em cobertura de estoque: O controle tem saldo de unidades e média de consumo por dia. Qual conduta caracteriza o erro mais diretamente relacionado ao caso?",
       "respostaAtual": "multiplicar saldo por consumo e nomear o resultado dias de cobertura",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "pak",
@@ -1117,7 +1201,10 @@
       "pistaLexical": 0.204,
       "pergunta": "Prevenção de falhas em palete danificado: A base de madeira de um palete apresenta tábuas soltas e pregos expostos. Qual comportamento deve ser evitado por representar o desvio principal?",
       "respostaAtual": "elevar o palete danificado para evitar demora na operação",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "mov",
@@ -1128,7 +1215,10 @@
       "pistaLexical": 0.204,
       "pergunta": "Prevenção de falhas em ponto cego: Uma curva em corredor de estocagem impede avistar o tráfego transversal. Qual comportamento deve ser evitado por representar o desvio principal?",
       "respostaAtual": "fazer a curva sem verificar o tráfego que vem de outra direção",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "pck",
@@ -1205,7 +1295,10 @@
       "pistaLexical": 0.202,
       "pergunta": "Prevenção de falhas em piso escorregadio: Foi identificado derramamento de óleo na rota de paleteiras. Qual comportamento deve ser evitado por representar o desvio principal?",
       "respostaAtual": "manter o tráfego sobre o óleo porque a rota alternativa é maior",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "trp",
@@ -1227,7 +1320,10 @@
       "pistaLexical": 0.195,
       "pergunta": "Análise de falha em controle de versão: Há três arquivos diferentes chamados relatorio-final.xlsx. Qual conduta caracteriza o erro mais diretamente relacionado ao caso?",
       "respostaAtual": "usar qualquer arquivo anexado como se fosse a versão final",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Revisão do conteúdo concluída; pode voltar a ser sinalizado pela heurística lexical sem indicar necessariamente problema."
     },
     {
       "trilha": "pak",
@@ -1328,5 +1424,9 @@
       "respostaAtual": "declarar sucesso operacional usando apenas entregas no prazo",
       "status": "pendente-de-revisao-humana"
     }
-  ]
+  ],
+  "totalItensNaLista": 120,
+  "totalRevisadasNaFila": 32,
+  "totalPendentesNaFila": 88,
+  "atualizacao": "2026-11-11"
 }
