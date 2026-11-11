@@ -56,6 +56,11 @@ jobs:
         run: |
           node --check voltar-global.js
           node tests/auditoria-voltar.mjs
+      - name: Verificar integridade e gabaritos da Logística
+        run: |
+          node --check tests/auditoria-logistica.mjs
+          node --check conteudos-recuperados/logistica/logistica-complementar.js
+          node tests/auditoria-logistica.mjs
       - name: Instalar dependência do teste visual
         run: npm install --no-save --no-package-lock playwright@1.55.1
       - name: Testar site no navegador Chromium
