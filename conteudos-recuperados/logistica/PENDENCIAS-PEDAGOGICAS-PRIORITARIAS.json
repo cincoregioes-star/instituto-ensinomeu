@@ -3,8 +3,8 @@
   "referencia": "2026-11-11",
   "aviso": "Pistas lexicais são heurísticas. Não provam erro ou invalidade da questão.",
   "totalQuestoes": 1200,
-  "questoesRevisadasComMarcador": 56,
-  "pendentesRevisaoIndividual": 1144,
+  "questoesRevisadasComMarcador": 84,
+  "pendentesRevisaoIndividual": 1116,
   "limiarDiferenca": 0.18,
   "totalSinalizadas": 120,
   "itens": [
@@ -17,7 +17,10 @@
       "pistaLexical": 0.471,
       "pergunta": "Controle de passagem de turno: Existem pedidos urgentes abertos e uma doca interditada no fim do turno. Qual evidência comprova diretamente a execução correta desse controle?",
       "respostaAtual": "relatório de turno com status dos pedidos e da doca interditada",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "adm",
@@ -42,7 +45,10 @@
       "pistaLexical": 0.422,
       "pergunta": "Para auditar o procedimento de rotação fifo, diante do caso \"Há dois lotes liberados do mesmo item, com datas de entrada diferentes e sem controle especial de validade.\", qual evidência é a mais específica?",
       "respostaAtual": "datas de entrada e sequência de saída dos lotes liberados",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "rec",
@@ -53,7 +59,10 @@
       "pistaLexical": 0.405,
       "pergunta": "Situação profissional (Troca de SKU): Uma embalagem traz produto semelhante ao solicitado, mas código SKU diferente. Qual ação resolve diretamente essa necessidade?",
       "respostaAtual": "ler o código e tratar a troca como divergência de produto",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "srt",
@@ -150,7 +159,10 @@
       "pistaLexical": 0.354,
       "pergunta": "Auditoria de transferência pendente: Um palete saiu de reserva, mas a confirmação de chegada à área de picking não foi concluída. Qual evidência confirma mais diretamente o controle correto da situação?",
       "respostaAtual": "histórico da transferência com origem, destino e confirmação pendente",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "pak",
@@ -236,7 +248,10 @@
       "pistaLexical": 0.306,
       "pergunta": "No controle de unidades de medida, diante de \"O fornecedor entrega caixas com doze unidades, mas o pedido interno solicita unidades avulsas.\", qual erro caracteriza o desvio principal a evitar?",
       "respostaAtual": "registrar doze caixas como doze unidades sem converter o fator",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "pck",
@@ -269,7 +284,10 @@
       "pistaLexical": 0.298,
       "pergunta": "Auditoria de saldo negativo: O sistema apresenta saldo negativo de SKU após fechamento do turno. Qual evidência confirma mais diretamente o controle correto da situação?",
       "respostaAtual": "registro das movimentações que geraram saldo negativo",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "seg",
@@ -305,7 +323,10 @@
       "pistaLexical": 0.283,
       "pergunta": "Auditoria de endereço duplicado: Um mesmo palete aparece registrado em dois endereços do WMS. Qual evidência confirma mais diretamente o controle correto da situação?",
       "respostaAtual": "conciliação dos dois endereços e histórico de correção",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "seg",
@@ -355,7 +376,10 @@
       "pistaLexical": 0.27,
       "pergunta": "Auditoria de rastreabilidade de serial: Um dispositivo com número de série específico não consta na posição esperada. Qual evidência confirma mais diretamente o controle correto da situação?",
       "respostaAtual": "histórico de eventos do número de série pesquisado",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "pck",
@@ -452,7 +476,10 @@
       "pistaLexical": 0.258,
       "pergunta": "Situação profissional — quase acidente: Um palete caiu perto de pessoas sem provocar ferimentos. Qual é a decisão mais adequada para essa situação?",
       "respostaAtual": "registrar o quase acidente e investigar causas preventivamente",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "sel",
@@ -463,7 +490,10 @@
       "pistaLexical": 0.258,
       "pergunta": "Controle de escuta ativa: Uma colaboradora relata obstrução constante em rota de pedestres. Qual evidência comprova diretamente a execução correta desse controle?",
       "respostaAtual": "registro do alerta e evidência da rota liberada",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "srt",
@@ -510,7 +540,10 @@
       "pistaLexical": 0.248,
       "pergunta": "Auditoria de acuracidade: A área quer medir quantos SKUs conferidos estão sem divergência física e sistêmica. Qual evidência confirma mais diretamente o controle correto da situação?",
       "respostaAtual": "relatório com SKUs conferidos, conformes e divergentes",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "trp",
@@ -543,7 +576,10 @@
       "pistaLexical": 0.246,
       "pergunta": "Para auditar o procedimento de controle por lote, diante do caso \"O documento informa um lote, mas a etiqueta recebida apresenta outro.\", qual evidência é a mais específica?",
       "respostaAtual": "fotografia ou leitura do lote vinculada ao documento de recebimento",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "adm",
@@ -568,7 +604,10 @@
       "pistaLexical": 0.239,
       "pergunta": "Para auditar o procedimento de etiqueta de endereço, diante do caso \"A etiqueta de localização está ilegível e dois níveis de estrutura parecem semelhantes.\", qual evidência é a mais específica?",
       "respostaAtual": "etiqueta substituída e localização confirmada no sistema",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "pak",
@@ -679,7 +718,10 @@
       "pistaLexical": 0.231,
       "pergunta": "No controle de validade vencida, diante de \"Durante a separação, um operador encontra uma unidade com prazo de validade expirado.\", qual erro caracteriza o desvio principal a evitar?",
       "respostaAtual": "devolver a unidade vencida à posição liberada para uso",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "ops",
@@ -723,7 +765,10 @@
       "pistaLexical": 0.231,
       "pergunta": "No controle de conferência cega, diante de \"O conferente é instruído a contar volumes sem consultar a quantidade esperada.\", qual erro caracteriza o desvio principal a evitar?",
       "respostaAtual": "copiar a quantidade da nota em vez de contar o que chegou",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "seg",
@@ -759,7 +804,10 @@
       "pistaLexical": 0.226,
       "pergunta": "Para auditar o procedimento de validade vencida, diante do caso \"Durante a separação, um operador encontra uma unidade com prazo de validade expirado.\", qual evidência é a mais específica?",
       "respostaAtual": "registro de bloqueio da unidade com lote, validade e localização",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "pak",
@@ -886,7 +934,10 @@
       "pistaLexical": 0.218,
       "pergunta": "Identificação de desvio em saldo negativo: O sistema apresenta saldo negativo de SKU após fechamento do turno. Qual comportamento caracteriza a falha principal a evitar?",
       "respostaAtual": "inventar entrada de estoque para ocultar o saldo negativo",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "mov",
@@ -955,7 +1006,10 @@
       "pistaLexical": 0.218,
       "pergunta": "No controle de palete instável, diante de \"Um palete chega inclinado, com filme rompido e risco de tombamento.\", qual erro caracteriza o desvio principal a evitar?",
       "respostaAtual": "movimentar o palete instável às pressas sem avaliar riscos",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "seg",
@@ -1013,7 +1067,10 @@
       "pistaLexical": 0.217,
       "pergunta": "Identificação de desvio em lote divergente: O endereço contém unidades de dois lotes com datas distintas de fabricação. Qual comportamento caracteriza a falha principal a evitar?",
       "respostaAtual": "somar tudo sem manter identificação do lote",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "rec",
@@ -1024,7 +1081,10 @@
       "pistaLexical": 0.217,
       "pergunta": "No controle de recebimento parcial planejado, diante de \"Um pedido será entregue em duas viagens e apenas a primeira chegou.\", qual erro caracteriza o desvio principal a evitar?",
       "respostaAtual": "dar baixa integral no pedido na primeira entrega",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "adm",
@@ -1049,7 +1109,10 @@
       "pistaLexical": 0.211,
       "pergunta": "No controle de estoque reservado, diante de \"Há quarenta unidades físicas, mas trinta estão comprometidas com pedidos.\", qual erro caracteriza o desvio principal a evitar?",
       "respostaAtual": "prometer quarenta unidades como se nenhuma estivesse reservada",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "mov",
@@ -1107,7 +1170,10 @@
       "pistaLexical": 0.211,
       "pergunta": "No controle de sobra de mercadorias, diante de \"O veículo entrega cinco unidades adicionais sem previsão no pedido.\", qual erro caracteriza o desvio principal a evitar?",
       "respostaAtual": "incluir a sobra no saldo vendável sem pedido nem autorização",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "seg",
@@ -1190,7 +1256,10 @@
       "pistaLexical": 0.204,
       "pergunta": "Identificação de desvio em contagem cega: O contador consegue visualizar o saldo teórico antes de contar a posição. Qual comportamento caracteriza a falha principal a evitar?",
       "respostaAtual": "copiar o saldo esperado para evitar apontar divergência",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "mov",
@@ -1240,7 +1309,10 @@
       "pistaLexical": 0.204,
       "pergunta": "No controle de agendamento de doca, diante de \"Três caminhões chegam para o mesmo horário e apenas uma doca está disponível.\", qual erro caracteriza o desvio principal a evitar?",
       "respostaAtual": "iniciar três descargas simultâneas na mesma doca sem controle",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "sel",
@@ -1251,7 +1323,10 @@
       "pistaLexical": 0.204,
       "pergunta": "Análise de falha em pressão por prazo: Um atraso gera sugestão de pular etapa obrigatória de conferência. Qual conduta caracteriza o erro mais diretamente relacionado ao caso?",
       "respostaAtual": "omitir conferência obrigatória apenas para encurtar o tempo",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "sel",
@@ -1262,7 +1337,10 @@
       "pistaLexical": 0.204,
       "pergunta": "Análise de falha em cobertura de equipe: Duas ausências deixam um posto crítico sem profissionais suficientes. Qual conduta caracteriza o erro mais diretamente relacionado ao caso?",
       "respostaAtual": "preencher posto crítico com pessoa sem qualificação para a função",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "trp",
@@ -1284,7 +1362,10 @@
       "pistaLexical": 0.202,
       "pergunta": "Para auditar o procedimento de limite de carga, diante do caso \"Uma estrutura de armazenagem possui capacidade máxima indicada e recebe nova carga.\", qual evidência é a mais específica?",
       "respostaAtual": "conferência documentada do peso da carga contra o limite do endereço",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "mov",
@@ -1378,7 +1459,10 @@
       "pistaLexical": 0.189,
       "pergunta": "Situação profissional (Contagem cega): Um inventariante recebeu uma posição para contar e pode visualizar o saldo teórico do sistema. Qual ação resolve diretamente essa necessidade?",
       "respostaAtual": "realizar a contagem sem indução pelo saldo teórico, conforme método cego",
-      "status": "pendente-de-revisao-humana"
+      "status": "revisado-individualmente",
+      "dataRevisao": "2026-11-11",
+      "criterioAplicado": "distratores no mesmo cenário e justificativa contextual",
+      "observacao": "Questão revisada individualmente; heurística lexical não equivale a erro pedagógico comprovado."
     },
     {
       "trilha": "pck",
@@ -1426,7 +1510,7 @@
     }
   ],
   "totalItensNaLista": 120,
-  "totalRevisadasNaFila": 32,
-  "totalPendentesNaFila": 88,
+  "totalRevisadasNaFila": 60,
+  "totalPendentesNaFila": 60,
   "atualizacao": "2026-11-11"
 }
