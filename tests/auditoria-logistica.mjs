@@ -22,7 +22,7 @@ const completeIds=["est","rec","pck","ops","sel","adm"];
 assert.equal(base.tracks.length,12,"Trilhas incorretas");
 assert.deepEqual(Object.keys(allExtras).sort(),completeIds.slice().sort(),"Bancos completos incorretos");
 let initial=0,total=0,newCount=0;
-const normalize=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");
+const normalize=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9$]/g,"");
 for(const track of base.tracks){
  const original=base.banks[track.id],added=allExtras[track.id]||[];
  assert.equal(original?.length,10,"O banco original foi alterado: "+track.id);
