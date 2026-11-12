@@ -64,3 +64,9 @@ body.em-home>.top .mobile-links a:last-child{background:linear-gradient(125deg,#
 @media(max-width:600px){.em-sitebar-inner{width:calc(100% - 22px);min-height:69px}.em-identity{gap:8px;flex:1 1 auto;min-width:0}.em-identity img{width:45px;height:45px;flex-basis:45px}.em-identity-text{font-size:12px;letter-spacing:0}.em-identity-text small{font-size:8px;letter-spacing:0}.em-apoie{padding:35px 17px}.em-apoie-inner{grid-template-columns:1fr}.em-apoie-badge{width:55px;height:55px;font-size:25px}body.em-home>.top .brand small{font-size:7.7px!important}body.em-home>.top .brand img{width:44px!important;height:44px!important}}
 @media(prefers-reduced-motion:reduce){.em-sitebar *,.em-tab *{transition:none!important}}
 @media print{.em-sitebar,.em-apoie,body.em-home>.top .em-submenu{display:none!important}}
+
+/* Telas centralizadas de acesso: preserva os formulários sem apertar o cabeçalho. */
+body.em-auth-page{display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;padding:0!important;min-height:100vh}
+body.em-auth-page>.em-sitebar{width:100%;flex:0 0 auto}
+body.em-auth-page>:not(.em-sitebar){flex:0 1 auto;margin:clamp(25px,6vh,66px) auto!important;width:min(970px,calc(100% - 28px));max-width:calc(100% - 28px)}
+body.em-auth-page>main{max-width:700px}
