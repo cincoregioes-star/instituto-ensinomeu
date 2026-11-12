@@ -32,14 +32,17 @@
       children:[['8º ano • Simulados','simulados/8ano.html'],['9º ano • Simulados','simulados/9ano.html']]},
     {label:'IA e Tecnologia',icon:'chip',href:'ensino-ia.html',id:'ai'},
     {label:'Cidadania e Inclusão',icon:'people',href:'cidadania.html',id:'citizenship'},
-    {label:'Cursos Gratuitos',icon:'graduate',href:'catalogo-gratuito.html',id:'courses'},
+    {label:'Cursos e Carreiras',icon:'graduate',href:'catalogo-gratuito.html',id:'courses',
+      children:[['Explorar cursos gratuitos','catalogo-gratuito.html'],['Descobrir qual profissão estudar','orientador-profissoes.html'],['Montar currículo e treinar entrevista','carreira-entrevistas.html']]},
     {label:'Material Didático',icon:'layers',href:'index.html#ebooks',id:'material'},
-    {label:'Apoie o Instituto',icon:'heart',href:'index.html#apoie-o-instituto',id:'support'}
+    {label:'Apoie o Instituto',icon:'heart',href:'apoio-parcerias.html',id:'support',
+      children:[['Patrocínio e parcerias','apoio-parcerias.html'],['Dúvidas, críticas e sugestões','central-atendimento.html']]}
   ];
   function currentID(){
     if (home) return 'home';
     if (path.startsWith('simulados/')) return 'games';
-    if (path.startsWith('conteudos-recuperados/') || path === 'catalogo-gratuito.html') return 'courses';
+    if (path.startsWith('conteudos-recuperados/') || path === 'catalogo-gratuito.html' || path === 'orientador-profissoes.html' || path === 'carreira-entrevistas.html') return 'courses';
+    if (path === 'apoio-parcerias.html' || path === 'central-atendimento.html') return 'support';
     if (path === 'cidadania.html') return 'citizenship';
     if (path.startsWith('ensino-ia') || path.startsWith('apostila-ia') || path === 'ia-tutoria.html') return 'ai';
     if (path === 'apostilas.html') return 'material';
@@ -89,11 +92,17 @@
     document.title='Instituto EnsinoMeu | Educação Gratuita, BNCC e Qualificação Profissional';
     var description=document.querySelector('meta[name="description"]');
     if(description)description.content='Instituto EnsinoMeu: educação gratuita, reforço escolar BNCC, videoaulas, apostilas, simulados gamers, IA e cursos de qualificação profissional.';
+    if(!document.getElementById('ensino-trilhas-carreira')){
+      var orient=document.createElement('section');
+      orient.className='em-home-careers';orient.id='ensino-trilhas-carreira';
+      orient.innerHTML='<div class="em-home-careers-inner"><span class="em-home-careers-kicker">NOVAS FERRAMENTAS GRATUITAS</span><h2>Orientação para estudar e conquistar oportunidades</h2><p>Não sabe por onde começar? Escolha um caminho com orientações práticas, exercícios e recursos já publicados.</p><div class="em-home-careers-grid"><a href="orientador-profissoes.html"><span>🧭</span><strong>Qual profissão combina comigo?</strong><small>10 perguntas e sugestões de cursos</small><b>Começar orientação →</b></a><a href="carreira-entrevistas.html"><span>💼</span><strong>Currículo e Entrevista</strong><small>Monte seu currículo e pratique 10 situações</small><b>Preparar meu emprego →</b></a><a href="central-atendimento.html"><span>🤝</span><strong>Fale com o Instituto</strong><small>Dúvidas, críticas, elogios e sugestões</small><b>Obter orientação →</b></a></div></div>';
+      var foot=document.querySelector('footer');if(foot)foot.before(orient);else document.body.appendChild(orient);
+    }
     if(!document.getElementById('apoie-o-instituto')){
       var section=document.createElement('section');
       section.id='apoie-o-instituto';section.className='em-apoie';
       section.setAttribute('aria-labelledby','em-support-heading');
-      section.innerHTML='<div class="em-apoie-inner"><span class="em-apoie-badge" aria-hidden="true">♥</span><div><h2 id="em-support-heading">Apoie o Instituto EnsinoMeu</h2><p>Estamos preparando uma campanha de financiamento e buscando parcerias para ampliar o acesso gratuito a aulas, apostilas, simulados e cursos. Nosso compromisso é manter o conteúdo educacional acessível, sem mensalidades.</p><small>Campanha de apoio em preparação • Contribuições serão voluntárias.</small></div></div>';
+      section.innerHTML='<div class="em-apoie-inner"><span class="em-apoie-badge" aria-hidden="true">♥</span><div><h2 id="em-support-heading">Apoie o Instituto EnsinoMeu</h2><p>Estamos preparando uma campanha de financiamento e buscando parcerias para ampliar o acesso gratuito a aulas, apostilas, simulados e cursos. Nosso compromisso é manter o conteúdo educacional acessível, sem mensalidades.</p><small>Campanha de apoio em preparação • Contribuições serão voluntárias.</small><p style="margin-top:14px"><a class="em-support-link" href="apoio-parcerias.html">Conheça as possibilidades de patrocínio e parceria →</a></p></div></div>';
       var footer=document.querySelector('footer');
       if(footer)footer.before(section);else document.body.appendChild(section);
     }
@@ -118,5 +127,30 @@
     bar.querySelectorAll('.em-dropdown-links a').forEach(function(a){a.addEventListener('click',function(){dropdown.open=false;});});
     document.addEventListener('keydown',function(event){if(event.key==='Escape')dropdown.open=false;});
   }
+  // Agente de orientação visível em todas as páginas, sem interromper cursos ou provas.
+  function addGuide(){
+    if(document.querySelector('.em-guide'))return;
+    var host=document.createElement('aside');
+    host.className='em-guide';host.setAttribute('aria-label','Assistente de orientação do Instituto EnsinoMeu');
+    var text=path.startsWith('simulados/')?'Precisa de ajuda com o simulado?':
+      path.includes('carreira')||path.includes('profissoes')?'Precisa de orientação profissional?':
+      path.startsWith('conteudos-recuperados/')?'Quer descobrir outra área para estudar?':
+      'Não sabe por onde começar?';
+    host.innerHTML='<button type="button" class="em-guide-toggle" aria-expanded="false" aria-controls="em-guide-menu">🧭 <span>Agente de Orientação</span></button>'+
+      '<div class="em-guide-panel" id="em-guide-menu" hidden><strong>Como podemos orientar?</strong><p>'+text+'</p>'+
+      '<a href="'+u('orientador-profissoes.html')+'">🎓 Descobrir qual profissão estudar</a>'+
+      '<a href="'+u('carreira-entrevistas.html')+'">💼 Criar currículo e treinar entrevista</a>'+
+      '<a href="'+u('catalogo-gratuito.html')+'">📚 Encontrar cursos e materiais</a>'+
+      '<a href="'+u('central-atendimento.html')+'">🤝 Dúvidas, sugestões e atendimento</a>'+
+      '<a href="'+u('apoio-parcerias.html')+'">♥ Parcerias e patrocínio</a></div>';
+    document.body.appendChild(host);
+    var button=host.querySelector('button'),panel=host.querySelector('.em-guide-panel');
+    button.addEventListener('click',function(){
+      var willOpen=panel.hidden;panel.hidden=!willOpen;button.setAttribute('aria-expanded',String(willOpen));
+    });
+    document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!panel.hidden){panel.hidden=true;button.setAttribute('aria-expanded','false');button.focus();}});
+    document.addEventListener('click',function(ev){if(!host.contains(ev.target)&&!panel.hidden){panel.hidden=true;button.setAttribute('aria-expanded','false');}});
+  }
   if(!home || !updateHomepage())insertSharedHeader();
+  addGuide();
 })();
