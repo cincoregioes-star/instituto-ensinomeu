@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#062c50"><meta name="description" content="Área gratuita de currículo e entrevista de emprego do Instituto EnsinoMeu. Crie um currículo e pratique 10 perguntas com exemplos e feedback.">
+<title>Currículo e Entrevista de Emprego | Instituto EnsinoMeu</title>
+<link rel="icon" href="assets/favicon.png" type="image/png"><link rel="stylesheet" href="carreiras-v1.css?v=1">
+<style>
+@media print{
+ @page{size:A4;margin:17mm}
+ body *{visibility:hidden!important}
+ #cv-preview,#cv-preview *{visibility:visible!important}
+ #cv-preview{position:absolute!important;left:0!important;top:0!important;width:100%!important;min-height:0!important;padding:0!important;border:0!important;border-radius:0!important;background:#fff!important;box-shadow:none!important}
+ #cv-preview h2{font-size:23px!important}
+ #cv-preview h3{font-size:13px!important}
+ #cv-preview p,#cv-preview div{font-size:11.5pt!important;color:#111!important}
+}
+</style>
+</head><body>
+<section class="car-hero"><div class="car-container">
+<span class="car-eyebrow">Instituto EnsinoMeu • Preparação para o mercado de trabalho</span>
+<h1>Seu próximo passo começa com <em>um currículo bem feito e confiança na entrevista.</em></h1>
+<p>Oficina gratuita para quem está em busca do primeiro emprego, retornando ao mercado ou mudando de profissão. Prepare seu documento e pratique respostas com orientação educativa.</p>
+<div class="car-hero-links"><a class="car-btn gold" href="#meu-curriculo">Criar meu currículo</a><a class="car-btn ghost" href="#treino-entrevista">Treinar entrevista</a><a class="car-btn ghost" href="orientador-profissoes.html">Escolher uma profissão</a></div>
+</div></section>
+<main class="car-main" id="conteudo"><div class="car-container">
+<div class="car-grid">
+<article class="car-card"><div class="car-card-icon" aria-hidden="true">📄</div><h2>Currículo profissional</h2><p>Modelo simples, organizado e compatível com impressão em papel ou PDF.</p></article>
+<article class="car-card"><div class="car-card-icon" aria-hidden="true">🎙️</div><h2>Simulador com 10 perguntas</h2><p>Escolha como responderia, receba feedback e veja exemplos claros.</p></article>
+<article class="car-card"><div class="car-card-icon" aria-hidden="true">🤝</div><h2>Primeiro emprego</h2><p>Aprenda a apresentar estudos, projetos e atividades reais, mesmo sem experiência formal.</p></article>
+</div>
+<section id="meu-curriculo" class="car-section" aria-labelledby="cv-title">
+<h2 class="car-section-title" id="cv-title">Construtor de currículo — gratuito</h2>
+<p class="car-notice"><strong>Privacidade:</strong> seus dados são preenchidos apenas no navegador, não são enviados ao Instituto nem salvos em nosso servidor. Para guardar o currículo, baixe o texto ou use a opção imprimir/salvar em PDF. Evite CPF, RG, endereço completo, foto e dados sensíveis desnecessários.</p>
+<div class="car-two">
+<div class="car-card"><form id="cv-form" class="car-form" autocomplete="off" aria-label="Informações para currículo">
+<div class="car-field"><label for="nome">Nome para o currículo</label><input id="nome" name="nome" type="text" autocomplete="off" placeholder="Seu nome completo" maxlength="100"></div>
+<div class="car-field"><label for="cidade">Cidade e estado</label><input id="cidade" name="cidade" type="text" placeholder="Ex.: Beberibe, CE" maxlength="80"></div>
+<div class="car-field"><label for="contato">Telefone profissional (opcional)</label><input id="contato" name="contato" type="tel" placeholder="(XX) XXXXX-XXXX" maxlength="30"></div>
+<div class="car-field"><label for="email">E-mail profissional (opcional)</label><input id="email" name="email" type="email" placeholder="voce@exemplo.com" maxlength="120"></div>
+<div class="car-field"><label for="area">Cargo ou área pretendida</label><input id="area" name="area" type="text" placeholder="Ex.: Auxiliar Administrativo" maxlength="110"></div>
+<div class="car-field"><label for="objetivo">Objetivo profissional</label><textarea id="objetivo" name="objetivo" maxlength="500" placeholder="Ex.: Busco oportunidade inicial na área administrativa para aplicar organização, comunicação e aprender rotinas do setor."></textarea></div>
+<div class="car-field"><label for="formacao">Formação escolar</label><textarea id="formacao" name="formacao" maxlength="650" placeholder="Ex.: Ensino Médio completo — Escola ... — 2026."></textarea></div>
+<div class="car-field"><label for="experiencia">Experiências, projetos e atividades</label><textarea id="experiencia" name="experiencia" maxlength="1300" placeholder="Ex.: Experiência em atendimento, voluntariado, projeto escolar ou tarefas que desenvolvem habilidades úteis. Não invente experiências."></textarea></div>
+<div class="car-field"><label for="habilidades">Habilidades</label><textarea id="habilidades" name="habilidades" maxlength="550" placeholder="Ex.: informática, Excel básico, organização, comunicação, trabalho em equipe."></textarea></div>
+<div class="car-field"><label for="cursos">Cursos e formações complementares</label><textarea id="cursos" name="cursos" maxlength="750" placeholder="Informe curso, instituição e ano, somente se realizado."></textarea></div>
+</form>
+<div class="car-actions" style="margin-top:17px"><button id="cv-print" type="button" class="car-btn gold">Imprimir / Salvar como PDF</button><button id="cv-txt" type="button" class="car-btn blue">Baixar currículo em TXT</button></div>
+<p class="car-privacy">A exportação para PDF usa o recurso de impressão do seu navegador. Não existe envio automático para recrutadores.</p></div>
+<div><div class="car-cv" id="cv-preview" aria-label="Prévia de currículo">
+<h2 id="cv-nome">SEU NOME COMPLETO</h2><p id="cv-contato">Cidade • Telefone • E-mail</p>
+<h3>Área pretendida</h3><div id="cv-area">Área de interesse</div>
+<h3>Objetivo profissional</h3><div id="cv-objetivo"></div>
+<h3>Formação</h3><div id="cv-formacao"></div>
+<h3>Experiências e projetos</h3><div id="cv-experiencia"></div>
+<h3>Habilidades</h3><div id="cv-habilidades"></div>
+<h3>Cursos complementares</h3><div id="cv-cursos"></div>
+</div>
+<div class="car-notice"><strong>Primeiro emprego:</strong> um currículo verdadeiro e objetivo costuma ser mais útil do que um documento cheio de informações irrelevantes. Use exemplos reais e ajuste o objetivo para a vaga escolhida.</div>
+</div></div></section>
+<section class="car-section car-panel" id="treino-entrevista" aria-labelledby="treino-title">
+<div class="car-panel-head"><h2 id="treino-title">Agente Preparador de Entrevistas</h2><p>Pratique 10 situações comuns. Escolha entre três formas de responder, leia a explicação e compare com um exemplo profissional.</p></div>
+<div class="car-panel-body" id="interview-quiz">
+<div class="car-progress-label"><span>Treinamento guiado</span><span id="interview-count">Pergunta 1 de 10</span></div><div class="car-progress-track"><div id="interview-progress" class="car-progress-fill"></div></div>
+<h3 id="interview-question" class="car-question" style="margin-top:24px">Carregando situação...</h3>
+<p class="car-help">Escolha a resposta que considera mais adequada para uma entrevista de emprego.</p><div id="interview-options" class="car-choices" role="group" aria-label="Opções de resposta"></div>
+<div id="interview-feedback" class="car-choice-feedback" aria-live="polite" hidden></div>
+<div class="car-toolbar"><button id="interview-back" class="car-btn light" type="button" disabled>← Voltar</button><button id="interview-next" class="car-btn" type="button" disabled>Próxima pergunta →</button></div></div>
+<div class="car-panel-body" id="interview-result" hidden aria-live="polite"><h3 class="car-question">Treino concluído!</h3>
+<p id="interview-score" style="font-size:20px;font-weight:850"></p><p id="interview-summary"></p>
+<div class="car-actions"><button id="interview-again" type="button" class="car-btn gold">Praticar novamente</button><a class="car-btn blue" href="orientador-profissoes.html">Conhecer cursos e profissões</a></div>
+<h3>Revisão dos 10 temas</h3><div id="interview-review"></div></div>
+</section>
+<section class="car-section"><h2 class="car-section-title">Guia rápido de boas práticas</h2>
+<div class="car-grid"><article class="car-card"><h3>Antes da entrevista</h3><p>Pesquise a empresa, entenda a vaga, prepare exemplos reais e confira data, local ou link da conversa.</p></article><article class="car-card"><h3>Durante a conversa</h3><p>Ouça a pergunta, responda com clareza, mantenha respeito, peça esclarecimentos se necessário e não invente informações.</p></article><article class="car-card"><h3>Depois da entrevista</h3><p>Registre aprendizados, confira os canais oficiais do processo e continue aprimorando suas habilidades.</p></article></div></section>
+<div class="car-sponsor-cta"><div><h2>Mais pessoas preparadas para novas oportunidades</h2><p>Conheça as possibilidades de parceria para manter esta formação gratuita.</p></div><a href="apoio-parcerias.html" class="car-btn gold">Apoiar o EnsinoMeu</a></div>
+</div></main>
+<footer class="car-footer"><div class="car-container">Instituto EnsinoMeu • Oficina educativa sem garantia de contratação • <a href="central-atendimento.html">Enviar dúvida ou sugestão</a></div></footer>
+<script src="carreira-entrevistas.js?v=1" defer></script>
+<script src="voltar-global.js?v=20261112" defer></script>
+</body></html>
