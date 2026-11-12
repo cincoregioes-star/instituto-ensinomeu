@@ -98,11 +98,20 @@
       orient.innerHTML='<div class="em-home-careers-inner"><span class="em-home-careers-kicker">NOVAS FERRAMENTAS GRATUITAS</span><h2>Orientação para estudar e conquistar oportunidades</h2><p>Não sabe por onde começar? Escolha um caminho com orientações práticas, exercícios e recursos já publicados.</p><div class="em-home-careers-grid"><a href="orientador-profissoes.html"><span>🧭</span><strong>Qual profissão combina comigo?</strong><small>10 perguntas e sugestões de cursos</small><b>Começar orientação →</b></a><a href="carreira-entrevistas.html"><span>💼</span><strong>Currículo e Entrevista</strong><small>Monte seu currículo e pratique 10 situações</small><b>Preparar meu emprego →</b></a><a href="central-atendimento.html"><span>🤝</span><strong>Fale com o Instituto</strong><small>Dúvidas, críticas, elogios e sugestões</small><b>Obter orientação →</b></a></div></div>';
       var foot=document.querySelector('footer');if(foot)foot.before(orient);else document.body.appendChild(orient);
     }
+    var heroActions=document.querySelector('.hero .actions');
+    if(heroActions&&!heroActions.querySelector('.em-hero-donate')){
+      var donate=document.createElement('a');
+      donate.className='btn btn-gold em-hero-donate';
+      donate.href=u('apoio-parcerias.html#contribuicoes');
+      donate.textContent='♥ Apoie a educação gratuita';
+      donate.setAttribute('aria-label','Contribuir voluntariamente para o Instituto EnsinoMeu');
+      heroActions.appendChild(donate);
+    }
     if(!document.getElementById('apoie-o-instituto')){
       var section=document.createElement('section');
       section.id='apoie-o-instituto';section.className='em-apoie';
       section.setAttribute('aria-labelledby','em-support-heading');
-      section.innerHTML='<div class="em-apoie-inner"><span class="em-apoie-badge" aria-hidden="true">♥</span><div><h2 id="em-support-heading">Apoie o Instituto EnsinoMeu</h2><p>Estamos preparando uma campanha de financiamento e buscando parcerias para ampliar o acesso gratuito a aulas, apostilas, simulados e cursos. Nosso compromisso é manter o conteúdo educacional acessível, sem mensalidades.</p><small>Campanha de apoio em preparação • Contribuições serão voluntárias.</small><p style="margin-top:14px"><a class="em-support-link" href="apoio-parcerias.html">Conheça as possibilidades de patrocínio e parceria →</a></p></div></div>';
+      section.innerHTML='<div class="em-apoie-inner"><span class="em-apoie-badge" aria-hidden="true">♥</span><div><h2 id="em-support-heading">Apoie o Instituto EnsinoMeu</h2><p>O Instituto oferece aulas, materiais, simulados e orientações gratuitos. Contribuições voluntárias ajudam a buscar recursos para manutenção, acessibilidade e expansão do projeto. Nenhum estudante precisa contribuir para acessar conteúdos gratuitos.</p><small>Contribuição opcional • Link de cobrança do Nubank vinculado à conta pessoal do responsável pelo projeto.</small><p style="margin-top:14px"><a class="em-support-link" href="apoio-parcerias.html#contribuicoes">♥ Contribuir com qualquer valor →</a> <a class="em-support-link" href="apoio-parcerias.html">Conhecer patrocínio e parcerias →</a></p></div></div>';
       var footer=document.querySelector('footer');
       if(footer)footer.before(section);else document.body.appendChild(section);
     }
