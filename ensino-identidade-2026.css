@@ -70,3 +70,32 @@ body.em-auth-page{display:flex!important;flex-direction:column!important;align-i
 body.em-auth-page>.em-sitebar{width:100%;flex:0 0 auto}
 body.em-auth-page>:not(.em-sitebar){flex:0 1 auto;margin:clamp(25px,6vh,66px) auto!important;width:min(970px,calc(100% - 28px));max-width:calc(100% - 28px)}
 body.em-auth-page>main{max-width:700px}
+
+/* Instituto EnsinoMeu — novos percursos de orientação e agente de ajuda, versão 2026.11 */
+.em-home-careers{padding:clamp(40px,5vw,72px) 18px;background:linear-gradient(150deg,#edf8fc,#f2f8f1);color:#0d3149}
+.em-home-careers-inner{width:min(1180px,100%);margin:0 auto}
+.em-home-careers-kicker{display:block;color:#0b785f;font:900 12px/1.3 Inter,"Segoe UI",sans-serif;letter-spacing:.12em;margin-bottom:10px}
+.em-home-careers h2{font:900 clamp(27px,3.8vw,42px)/1.2 Inter,"Segoe UI",sans-serif!important;color:#07344e!important;max-width:760px;margin:0 0 12px;letter-spacing:-.026em}
+.em-home-careers p{font:500 16px/1.6 Inter,"Segoe UI",sans-serif;max-width:810px;color:#3b5b6d;margin:0 0 27px}
+.em-home-careers-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.em-home-careers-grid a{display:flex;flex-direction:column;gap:9px;min-height:245px;padding:24px;background:white;border:1px solid #cde3eb;border-top:5px solid #0c7f65;border-radius:18px;color:#143b53!important;text-decoration:none!important;box-shadow:0 11px 28px #073c5215;transition:transform .17s,box-shadow .17s}
+.em-home-careers-grid a:nth-child(2){border-top-color:#eebd33}.em-home-careers-grid a:nth-child(3){border-top-color:#0e6595}
+.em-home-careers-grid a:hover{transform:translateY(-4px);box-shadow:0 17px 35px #073c5224}
+.em-home-careers-grid a>span{font-size:30px;line-height:1.2}
+.em-home-careers-grid strong{font-size:20px;line-height:1.3}
+.em-home-careers-grid small{font-size:14px;line-height:1.5;color:#5d7181}
+.em-home-careers-grid b{display:block;margin-top:auto;color:#067354;font-size:14px}
+.em-support-link{display:inline-flex!important;margin-top:6px;padding:10px 15px;background:#f9c63b;border-radius:11px;font-weight:900;color:#0d3049!important;text-decoration:none!important}
+.em-guide{position:fixed;right:max(13px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));z-index:13000;font-family:Inter,"Segoe UI",sans-serif;color:#153a55}
+.em-guide-toggle{display:flex;align-items:center;justify-content:center;gap:8px;min-height:49px;max-width:232px;padding:11px 16px;color:#082b45!important;border:2px solid #ffe18f!important;border-radius:100px!important;background:linear-gradient(110deg,#ffdf6d,#f3bd28)!important;font:900 13px/1.2 Inter,"Segoe UI",sans-serif!important;box-shadow:0 10px 24px #0017275c;cursor:pointer;transition:transform .16s}
+.em-guide-toggle:hover{transform:translateY(-2px)}
+.em-guide-panel{position:absolute;right:0;bottom:calc(100% + 11px);width:min(345px,calc(100vw - 26px));max-height:min(70vh,510px);overflow-y:auto;border-radius:17px;border:1px solid #5596ba;background:#073654;box-shadow:0 20px 50px #021929ab;padding:18px;color:#fff}
+.em-guide-panel[hidden]{display:none!important}
+.em-guide-panel>strong{display:block;font-size:17px;line-height:1.3;color:#fff}
+.em-guide-panel p{font-size:13px;margin:5px 0 13px;color:#e2f2f8}
+.em-guide-panel a{display:block;text-decoration:none!important;color:#f5fbff!important;border:1px solid #ffffff27;background:#ffffff12;border-radius:10px;padding:11px 12px;margin:7px 0;font:800 13px/1.35 Inter,"Segoe UI",sans-serif}
+.em-guide-panel a:hover,.em-guide-panel a:focus-visible{background:#165b78}
+@media(max-width:850px){.em-home-careers-grid{grid-template-columns:1fr}.em-home-careers-grid a{min-height:140px}}
+@media(max-width:660px){.em-guide{right:10px;bottom:max(10px,env(safe-area-inset-bottom))}.em-guide-toggle{font-size:12px!important;min-height:44px;padding:9px 12px;max-width:190px}.em-guide-panel{bottom:calc(100% + 8px)}.em-home-careers{padding:34px 15px}.em-home-careers-grid a{padding:19px}}
+@media(prefers-reduced-motion:reduce){.em-guide-toggle,.em-home-careers-grid a{transition:none!important}}
+@media print{.em-guide,.em-home-careers{display:none!important}}
