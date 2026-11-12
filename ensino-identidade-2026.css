@@ -99,3 +99,14 @@ body.em-auth-page>main{max-width:700px}
 @media(max-width:660px){.em-guide{right:10px;bottom:max(10px,env(safe-area-inset-bottom))}.em-guide-toggle{font-size:12px!important;min-height:44px;padding:9px 12px;max-width:190px}.em-guide-panel{bottom:calc(100% + 8px)}.em-home-careers{padding:34px 15px}.em-home-careers-grid a{padding:19px}}
 @media(prefers-reduced-motion:reduce){.em-guide-toggle,.em-home-careers-grid a{transition:none!important}}
 @media print{.em-guide,.em-home-careers{display:none!important}}
+
+/* Área institucional - responsável pela plataforma */
+.em-prof-about{background:#f4f8fb;padding:clamp(38px,5vw,63px) 17px;border-top:1px solid #d7e8ee}
+.em-prof-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:155px 1fr;align-items:center;gap:24px;border:1px solid #d7e5ed;border-left:5px solid #eec43f;border-radius:20px;background:#fff;padding:24px;box-shadow:0 12px 31px #123b5313}
+.em-prof-inner>img{border-radius:50%;width:155px;height:155px;object-fit:cover;border:5px solid #f0c951}
+.em-prof-kicker{display:block;letter-spacing:.09em;color:#08745b;font:900 12px/1.4 Inter,"Segoe UI",sans-serif}
+.em-prof-about h2{font:900 clamp(24px,3vw,32px)/1.25 Inter,"Segoe UI",sans-serif!important;color:#0b3651!important;margin:7px 0 8px}
+.em-prof-about p{font-size:15px;line-height:1.7;color:#3e5c6a;margin:0 0 12px}
+.em-prof-about a{display:inline-block;font:900 14px/1.4 Inter,"Segoe UI",sans-serif;color:#087257!important;text-decoration:underline!important}
+@media(max-width:650px){.em-prof-inner{grid-template-columns:1fr;text-align:center;padding:22px 16px;gap:14px}.em-prof-inner>img{margin:auto;width:125px;height:125px}}
+@media print{.em-prof-about{display:none!important}}

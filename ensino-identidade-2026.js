@@ -36,13 +36,13 @@
       children:[['Explorar cursos gratuitos','catalogo-gratuito.html'],['Descobrir qual profissão estudar','orientador-profissoes.html'],['Montar currículo e treinar entrevista','carreira-entrevistas.html'],['Agentes educativos por área','agentes-educacionais.html']]},
     {label:'Material Didático',icon:'layers',href:'index.html#ebooks',id:'material'},
     {label:'Apoie o Instituto',icon:'heart',href:'apoio-parcerias.html',id:'support',
-      children:[['Patrocínio e parcerias','apoio-parcerias.html'],['Dúvidas, críticas e sugestões','central-atendimento.html']]}
+      children:[['Patrocínio e parcerias','apoio-parcerias.html'],['Quem somos e responsável','professor-carlos-tavares.html'],['Dúvidas, críticas e sugestões','central-atendimento.html']]}
   ];
   function currentID(){
     if (home) return 'home';
     if (path.startsWith('simulados/')) return 'games';
     if (path.startsWith('conteudos-recuperados/') || path === 'catalogo-gratuito.html' || path === 'orientador-profissoes.html' || path === 'carreira-entrevistas.html' || path === 'agentes-educacionais.html') return 'courses';
-    if (path === 'apoio-parcerias.html' || path === 'central-atendimento.html') return 'support';
+    if (path === 'apoio-parcerias.html' || path === 'central-atendimento.html' || path === 'professor-carlos-tavares.html') return 'support';
     if (path === 'cidadania.html') return 'citizenship';
     if (path.startsWith('ensino-ia') || path.startsWith('apostila-ia') || path === 'ia-tutoria.html') return 'ai';
     if (path === 'apostilas.html') return 'material';
@@ -92,6 +92,12 @@
     document.title='Instituto EnsinoMeu | Educação Gratuita, BNCC e Qualificação Profissional';
     var description=document.querySelector('meta[name="description"]');
     if(description)description.content='Instituto EnsinoMeu: educação gratuita, reforço escolar BNCC, videoaulas, apostilas, simulados gamers, IA e cursos de qualificação profissional.';
+    if(!document.getElementById('em-quem-somos')){
+      var quem=document.createElement('section');
+      quem.id='em-quem-somos';quem.className='em-prof-about';
+      quem.innerHTML='<div class="em-prof-inner"><img src="https://raw.githubusercontent.com/cincoregioes-star/base-sintropia/main/assets/carlos-tavares.jpg" width="155" height="155" alt="Professor Carlos Tavares, idealizador do Instituto EnsinoMeu" loading="lazy"><div><span class="em-prof-kicker">QUEM SOMOS • IDEALIZAÇÃO E RESPONSABILIDADE</span><h2>Professor Carlos Tavares</h2><p>Licenciado em Geografia, desenvolvedor de plataformas digitais educacionais e responsável pelo Instituto EnsinoMeu. Formação multidisciplinar com cinco especializações, incluindo duas em andamento. Conheça o portfólio de projetos e os compromissos com a educação gratuita.</p><a href="professor-carlos-tavares.html">Ver formação acadêmica e portfólio →</a></div></div>';
+      var footerProf=document.querySelector('footer');if(footerProf)footerProf.before(quem);else document.body.appendChild(quem);
+    }
     if(!document.getElementById('ensino-trilhas-carreira')){
       var orient=document.createElement('section');
       orient.className='em-home-careers';orient.id='ensino-trilhas-carreira';
@@ -111,7 +117,7 @@
       var section=document.createElement('section');
       section.id='apoie-o-instituto';section.className='em-apoie';
       section.setAttribute('aria-labelledby','em-support-heading');
-      section.innerHTML='<div class="em-apoie-inner"><span class="em-apoie-badge" aria-hidden="true">♥</span><div><h2 id="em-support-heading">Apoie o Instituto EnsinoMeu</h2><p>O Instituto oferece aulas, materiais, simulados e orientações gratuitos. Contribuições voluntárias ajudam a buscar recursos para manutenção, acessibilidade e expansão do projeto. Nenhum estudante precisa contribuir para acessar conteúdos gratuitos.</p><small>Contribuição opcional • Link de cobrança do Nubank vinculado à conta pessoal do responsável pelo projeto.</small><p style="margin-top:14px"><a class="em-support-link" href="apoio-parcerias.html#contribuicoes">♥ Contribuir com qualquer valor →</a> <a class="em-support-link" href="apoio-parcerias.html">Conhecer patrocínio e parcerias →</a></p></div></div>';
+      section.innerHTML='<div class="em-apoie-inner"><span class="em-apoie-badge" aria-hidden="true">♥</span><div><h2 id="em-support-heading">Apoie o Instituto EnsinoMeu</h2><p>O Instituto oferece aulas, materiais, simulados e orientações gratuitos. Contribuições voluntárias ajudam a buscar recursos para manutenção, acessibilidade e expansão do projeto. Nenhum estudante precisa contribuir para acessar conteúdos gratuitos.</p><small>Contribuição opcional • Link de cobrança do Nubank vinculado à conta pessoal do responsável, Professor Carlos Tavares.</small><p style="margin-top:14px"><a class="em-support-link" href="apoio-parcerias.html#contribuicoes">♥ Contribuir com qualquer valor →</a> <a class="em-support-link" href="apoio-parcerias.html">Conhecer patrocínio e parcerias →</a></p></div></div>';
       var footer=document.querySelector('footer');
       if(footer)footer.before(section);else document.body.appendChild(section);
     }
@@ -152,7 +158,8 @@
       '<a href="'+u('carreira-entrevistas.html')+'">💼 Criar currículo e treinar entrevista</a>'+
       '<a href="'+u('catalogo-gratuito.html')+'">📚 Encontrar cursos e materiais</a>'+
       '<a href="'+u('central-atendimento.html')+'">🤝 Dúvidas, sugestões e atendimento</a>'+
-      '<a href="'+u('apoio-parcerias.html')+'">♥ Parcerias e patrocínio</a></div>';
+      '<a href="'+u('apoio-parcerias.html')+'">♥ Parcerias e patrocínio</a>'+ 
+      '<a href="'+u('professor-carlos-tavares.html')+'">👤 Conheça o idealizador</a></div>';
     document.body.appendChild(host);
     var button=host.querySelector('button'),panel=host.querySelector('.em-guide-panel');
     button.addEventListener('click',function(){
