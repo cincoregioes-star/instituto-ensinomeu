@@ -6,6 +6,21 @@
   if (document.getElementById('ensino-voltar-global')) return;
   // Resolve o caminho pelo próprio script: funciona no GitHub Pages e no ambiente de testes.
   const scriptURL = document.currentScript?.src || location.href;
+  // Carrega a identidade institucional em todas as paginas que utilizam esta navegacao global.
+  if (!document.querySelector('#em-identidade-css')) {
+    const css = document.createElement('link');
+    css.id = 'em-identidade-css';
+    css.rel = 'stylesheet';
+    css.href = new URL('ensino-identidade-2026.css?v=20261112', scriptURL).href;
+    document.head.appendChild(css);
+  }
+  if (!document.querySelector('#em-identidade-js')) {
+    const js = document.createElement('script');
+    js.id = 'em-identidade-js';
+    js.src = new URL('ensino-identidade-2026.js?v=20261112', scriptURL).href;
+    js.defer = true;
+    document.body.appendChild(js);
+  }
   const base = new URL('.',scriptURL).pathname;
   const pathname = location.pathname;
   if (!pathname.startsWith(base)) return;
