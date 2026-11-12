@@ -38,6 +38,26 @@
 .responsavel-publico a{font-weight:900}
 @media(max-width:570px){.responsavel-publico{grid-template-columns:1fr;text-align:center}.responsavel-publico img{margin:auto}}
 </style>
+<style>
+/* Plano financeiro inicial — valores de planejamento, nunca recebimentos presumidos */
+.apoio-meta{background:#fff;border:1px solid #d8e6eb;border-radius:20px;margin:25px 0 35px;padding:clamp(19px,3vw,31px);box-shadow:0 10px 26px #092d4311}
+.apoio-meta .apoio-tipo{display:inline-flex;align-items:center;padding:6px 11px;border-radius:90px;background:#e3f5ec;color:#07654e;font-weight:900;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.apoio-meta h2{color:#113c53;font-size:clamp(23px,3vw,34px);line-height:1.2;margin:13px 0 8px}
+.apoio-meta .apoio-number{font-size:clamp(34px,5vw,48px);font-weight:950;color:#0a7055;letter-spacing:-.04em;margin:6px 0}
+.apoio-meta .apoio-note{color:#4c6574;font-size:14px;line-height:1.6}
+.apoio-budget{width:100%;border-collapse:collapse;background:#f8fbfc;margin:20px 0 12px}
+.apoio-budget th,.apoio-budget td{border-bottom:1px solid #dbe9ee;padding:11px 12px;text-align:left;font-size:14px;vertical-align:top}
+.apoio-budget th{color:#0e3e56;background:#eaf3f7}
+.apoio-budget td:last-child,.apoio-budget th:last-child{text-align:right;white-space:nowrap;font-weight:800}
+.apoio-budget tfoot td{font-weight:950;background:#e8f7ee;color:#08634c}
+.apoio-steps{display:flex;flex-wrap:wrap;gap:10px;margin:17px 0}
+.apoio-steps span{background:#f0f7f9;color:#1b5266;border:1px solid #c5dde5;border-radius:90px;padding:7px 12px;font-size:12px;font-weight:850}
+.apoio-subsection{margin-top:23px;border-top:1px solid #d6e8ec;padding-top:17px}
+.apoio-subsection h3{font-size:20px;margin:0 0 10px;color:#143f55}
+.apoio-subsection p{font-size:14px;color:#486575;margin:7px 0}
+.apoio-alert{background:#fff8e5;border:1px solid #e6ce7c;padding:14px 16px;border-radius:12px;color:#55482d;font-size:13px;line-height:1.6;margin-top:15px}
+@media(max-width:600px){.apoio-meta{padding:17px}.apoio-budget th,.apoio-budget td{font-size:12px;padding:11px 7px}}
+</style>
 </head><body>
 <section class="car-hero"><div class="car-container">
 <span class="car-eyebrow">Instituto EnsinoMeu • Proposta de impacto educacional</span>
@@ -58,7 +78,7 @@
 <div class="don-head">
  <span class="don-eyebrow">Contribuições voluntárias • Apoio individual</span>
  <h2 id="don-titulo">Ajude a manter e ampliar a educação gratuita.</h2>
- <p>Quem desejar pode contribuir com qualquer quantia para apoiar a manutenção e o desenvolvimento do projeto educacional Instituto EnsinoMeu. O acesso aos conteúdos gratuitos não depende de doação.</p>
+ <p>Quem desejar pode contribuir com qualquer quantia para apoiar a manutenção e o desenvolvimento do projeto educacional Instituto EnsinoMeu. O acesso aos conteúdos gratuitos não depende de doação. <a href="#meta-de-apoio" style="font-weight:900;color:#064f51">Consulte a meta de R$ 2.000 e o orçamento previsto.</a></p>
 </div>
 <div class="don-grid">
  <a class="don-qr" href="https://nubank.com.br/cobrar/r2nn0/6af5c713-c133-4a88-a73d-f53afc15188d" target="_blank" rel="noopener noreferrer" title="Abrir página oficial de cobrança do Nubank">
@@ -77,6 +97,34 @@
    <p>Finalidade pretendida: apoio à produção de conteúdos educacionais, manutenção técnica, recursos de acessibilidade e ampliação das oportunidades gratuitas. O recebimento é feito na <strong>conta pessoal indicada pelo responsável pelo projeto</strong>.</p>
  </div>
 </div>
+
+<section class="apoio-meta" id="meta-de-apoio" aria-labelledby="apoio-meta-titulo">
+  <span class="apoio-tipo">Plano inicial de captação • Contribuição voluntária</span>
+  <h2 id="apoio-meta-titulo">Uma meta concreta para ampliar o acesso à educação</h2>
+  <div class="apoio-number">R$ 2.000,00</div>
+  <p class="apoio-note"><strong>Meta inicial proposta.</strong> Os valores abaixo representam uma previsão de aplicação para a primeira fase de melhorias do Instituto EnsinoMeu. Não são despesas já realizadas, contratos fechados ou arrecadação comprovada. Cada apoio é opcional; os cursos gratuitos não dependem de pagamento.</p>
+  <div class="apoio-steps"><span>📚 Educação básica</span><span>🎙️ Videoaulas</span><span>♿ Acessibilidade</span><span>💼 Profissões</span></div>
+  <table class="apoio-budget" aria-label="Orçamento estimado da campanha de contribuição voluntária">
+    <thead><tr><th scope="col">Aplicação pretendida</th><th scope="col">Valor previsto</th></tr></thead>
+    <tbody>
+      <tr><td>Revisão e produção de apostilas e simulados</td><td>R$ 600,00</td></tr>
+      <tr><td>Narração, edição e legendagem de videoaulas</td><td>R$ 500,00</td></tr>
+      <tr><td>Acessibilidade e melhorias para uso em celular</td><td>R$ 400,00</td></tr>
+      <tr><td>Materiais de formação profissional e empregabilidade</td><td>R$ 300,00</td></tr>
+      <tr><td>Manutenção técnica e ferramentas essenciais</td><td>R$ 200,00</td></tr>
+    </tbody>
+    <tfoot><tr><td>Total estimado</td><td>R$ 2.000,00</td></tr></tfoot>
+  </table>
+  <p class="apoio-note">Os valores poderão ser ajustados conforme cotações e necessidades reais. Eventuais ajustes deverão ser comunicados e justificados na prestação de contas. A contribuição não gera certificado, contratação ou benefício fiscal anunciado.</p>
+  <div class="apoio-subsection" id="prestacao-de-contas">
+    <h3>Como será feita a prestação de contas?</h3>
+    <p>O responsável prevê atualizações mensais nesta página, após a conferência das movimentações vinculadas ao projeto, informando: total recebido no período, despesas efetivas por categoria, comprovantes pertinentes com dados sensíveis ocultados e saldo disponível.</p>
+    <p><strong>Situação da prestação de contas:</strong> ainda não existe relatório financeiro publicado nesta página. Nenhum número de arrecadação ou gasto está sendo presumido; os primeiros totais dependerão de conferência dos recebimentos e pagamentos pelo responsável.</p>
+    <p>As contribuições são direcionadas à conta pessoal informada pelo titular, <strong>Professor Carlos Tavares</strong>, e não a uma conta institucional identificada por CNPJ nesta página.</p>
+    <div class="apoio-alert"><strong>Transparência e privacidade:</strong> não haverá divulgação pública de nomes de doadores, CPF, comprovantes bancários integrais ou detalhes pessoais. Para solicitar esclarecimentos sobre a aplicação dos recursos: <a href="mailto:professorsrcarlos@gmail.com?subject=Transpar%C3%AAncia%20da%20campanha%20EnsinoMeu">professorsrcarlos@gmail.com</a>.</div>
+  </div>
+</section>
+
 <div class="don-legal"><strong>Transparência:</strong> trata-se de uma contribuição voluntária a um projeto educacional, não uma compra, matrícula, assinatura ou doação com benefício fiscal anunciado. O site não confirma nem acompanha pagamentos automaticamente. Confira o nome do titular e o valor no aplicativo bancário antes de concluir.</div>
 </section>
 
