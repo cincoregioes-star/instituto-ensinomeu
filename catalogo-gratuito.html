@@ -28,7 +28,11 @@ main{padding:30px 0 55px}.note{padding:15px 20px;border-left:4px solid #0b765f;b
 .item[hidden],.catalog-section[hidden]{display:none}footer{background:#082e49;color:#e2eef7;padding:26px 0}footer a{color:#fff}
 @media(max-width:700px){.nav{gap:8px}.nav>a:not(.brand){font-size:12px}.hero{padding:35px 0}.item{min-height:0}}
 </style>
-</head>
+<style>
+.carreiras-no-catalogo{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;background:linear-gradient(105deg,#063e63,#087a64);color:#fff;border-radius:19px;padding:clamp(18px,3vw,29px);margin:23px 0;box-shadow:0 13px 28px #073d5124}
+.carreiras-no-catalogo strong{font-size:22px}.carreiras-no-catalogo p{color:#e1f7f4;margin:7px 0 0;max-width:660px}
+.carreiras-links{display:flex;gap:9px;flex-wrap:wrap}.carreiras-links a{display:inline-block;padding:11px 15px;border-radius:10px;background:#fac73e;color:#073049;text-decoration:none;font-size:13px;font-weight:900}.carreiras-links a:last-child{background:#fff;color:#0d4667}
+</style></head>
 <body>
 <a class="skip" href="#conteudo">Ir ao conteúdo</a>
 <header class="header"><div class="wrap nav">
@@ -42,6 +46,10 @@ main{padding:30px 0 55px}.note{padding:15px 20px;border-left:4px solid #0b765f;b
 <main id="conteudo" class="wrap">
 <div class="note"><b>Transparência:</b> os materiais disponíveis aqui incluem PDFs introdutórios e versões de prática já publicadas. Recursos completos anteriormente comercializados estão passando por inventário e migração; nenhum botão conduz a um checkout. Cursos livres e revisões não equivalem a diploma técnico ou habilitação profissional.</div>
 <p class="note"><b>Novidade:</b> <a href="conteudos-recuperados/">Acesse 38 materiais completos e gratuitos: 17 simulados ENEM, 12 áreas de Data Center, 12 cursos Brasil Forte e Data &amp; AI Interview Pro.</a></p>
+<section aria-label="Orientação para profissões e entrevistas" class="carreiras-no-catalogo">
+  <div><strong>🧭 Não sabe qual profissão estudar?</strong><p>Responda a 10 perguntas sobre seus interesses. Conheça cursos gratuitos e prepare seu currículo para o mercado de trabalho.</p></div>
+  <div class="carreiras-links"><a href="orientador-profissoes.html">Descobrir minha área →</a><a href="carreira-entrevistas.html">Currículo e entrevista →</a></div>
+</section>
 <label for="pesquisa"><b>Pesquise um curso, disciplina ou concurso</b></label>
 <input class="search" id="pesquisa" type="search" placeholder="Ex.: Excel, Redação, SUAS, INSS..." autocomplete="off">
 <nav class="sections" aria-label="Categorias"><a href="#cursos">Cursos livres</a><a href="#enem">ENEM e diagnóstico</a><a href="#concursos">Concursos</a><a href="#outros">Outros simulados</a></nav>
