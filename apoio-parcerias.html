@@ -11,6 +11,25 @@
 <meta property="og:description" content="Conheça oportunidades de apoiar a educação gratuita e a inclusão digital.">
 <meta property="og:url" content="https://cincoregioes-star.github.io/instituto-ensinomeu/apoio-parcerias.html">
 <meta property="og:image" content="https://cincoregioes-star.github.io/instituto-ensinomeu/assets/brasao.png">
+<style>
+.don-area{background:linear-gradient(145deg,#fffdf4,#f6fafc);border:2px solid #f0d777;border-radius:24px;overflow:hidden;box-shadow:0 15px 35px #092d4316}
+.don-head{padding:24px 26px 20px;background:#f9f0c6;border-bottom:1px solid #efdc87}
+.don-eyebrow{color:#6d5505;font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.don-head h2{font-size:clamp(25px,3.2vw,37px);line-height:1.2;color:#15374c;margin:6px 0 10px}
+.don-head p{max-width:850px;color:#435d67;margin:0}
+.don-grid{display:grid;grid-template-columns:minmax(190px,285px) 1fr;align-items:start;gap:25px;padding:25px}
+.don-qr{display:block;padding:15px;background:#fff;border-radius:17px;border:1px solid #e2d9a4;box-shadow:0 6px 21px #032f4712;text-align:center;text-decoration:none;color:#11394c}
+.don-qr img{display:block;width:100%;max-width:260px;height:auto;aspect-ratio:1/1;image-rendering:pixelated;margin:0 auto}
+.don-qr small{font-size:12px;font-weight:750}
+.don-flex{display:flex;gap:12px;flex-wrap:wrap;margin:17px 0}
+.don-info strong{color:#0c4d44}.don-info p{color:#395c69;line-height:1.6;margin:10px 0}
+.don-info .don-value{font-size:23px;line-height:1.3;font-weight:900;color:#075843;margin-bottom:10px}
+.don-hint{font-size:13px;background:#eff6f9;border-left:4px solid #0b7191;padding:11px 13px;border-radius:9px}
+.don-legal{border-top:1px solid #e5dca9;padding:15px 25px;background:#fcf6de;font-size:13px;color:#544b37;line-height:1.6}
+.don-status{min-height:1.5em;font-size:13px;font-weight:750;color:#065e51}
+@media(max-width:690px){.don-grid{grid-template-columns:1fr;padding:17px}.don-head{padding:20px}.don-qr{max-width:300px;width:100%;margin:auto}.don-legal{padding:14px 18px}.don-flex .car-btn{flex:1}}
+@media print{.don-qr{max-width:350px;margin:auto}.don-flex{display:none!important}}
+</style>
 </head><body>
 <section class="car-hero"><div class="car-container">
 <span class="car-eyebrow">Instituto EnsinoMeu • Proposta de impacto educacional</span>
@@ -18,9 +37,37 @@
 <p>O Instituto EnsinoMeu reúne recursos de aprendizagem escolar e formação profissional livre. Buscamos patrocinadores, apoiadores e parcerias para ampliar o acesso, produzir conteúdos e fortalecer a acessibilidade digital.</p>
 <div class="car-hero-links">
 <a class="car-btn gold" href="mailto:professorsrcarlos@gmail.com?subject=Proposta%20de%20Parceria%20-%20Instituto%20EnsinoMeu&body=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20uma%20parceria%20com%20o%20Instituto%20EnsinoMeu.%0A%0AOrganiza%C3%A7%C3%A3o%3A%0ATipo%20de%20apoio%3A%0AContato%3A">Quero conversar sobre parceria</a>
+<a class="car-btn gold" href="#contribuicoes">♥ Contribuir voluntariamente</a>
 <a class="car-btn ghost" href="catalogo-gratuito.html">Conhecer materiais publicados</a>
 </div></div></section>
 <main class="car-main"><div class="car-container">
+
+<section class="car-section don-area" id="contribuicoes" aria-labelledby="don-titulo" style="margin-top:0;margin-bottom:38px">
+<div class="don-head">
+ <span class="don-eyebrow">Contribuições voluntárias • Apoio individual</span>
+ <h2 id="don-titulo">Ajude a manter e ampliar a educação gratuita.</h2>
+ <p>Quem desejar pode contribuir com qualquer quantia para apoiar a manutenção e o desenvolvimento do projeto educacional Instituto EnsinoMeu. O acesso aos conteúdos gratuitos não depende de doação.</p>
+</div>
+<div class="don-grid">
+ <a class="don-qr" href="https://nubank.com.br/cobrar/r2nn0/6af5c713-c133-4a88-a73d-f53afc15188d" target="_blank" rel="noopener noreferrer" title="Abrir página oficial de cobrança do Nubank">
+   <img src="assets/qr-contribuicao-nubank.svg" width="300" height="300" loading="eager" alt="QR Code do link de contribuição Nubank; ao escanear, abrirá a página de cobrança para escolher o valor">
+   <small>Leia o QR Code com a câmera do celular</small>
+ </a>
+ <div class="don-info">
+   <div class="don-value">Você escolhe o valor</div>
+   <p>O link foi gerado sem valor definido (R$ 0,00 na mensagem de compartilhamento). Na página do Nubank, escolha quanto deseja contribuir e confira os dados do recebedor antes de confirmar.</p>
+   <div class="don-flex">
+     <a class="car-btn gold" href="https://nubank.com.br/cobrar/r2nn0/6af5c713-c133-4a88-a73d-f53afc15188d" target="_blank" rel="noopener noreferrer" id="abrir-contribuicao">Contribuir pelo Nubank ↗</a>
+     <button class="car-btn blue" type="button" id="copiar-contribuicao">Copiar link de contribuição</button>
+   </div>
+   <p class="don-status" id="estado-copia-contribuicao" role="status" aria-live="polite"></p>
+   <p class="don-hint"><strong>Importante:</strong> este QR Code abre a <strong>página de cobrança do Nubank</strong>; não é um QR Code Pix interoperável para leitura direta dentro do aplicativo de outro banco. Abra a página para consultar as opções de pagamento oferecidas pelo Nubank. O botão copia o <strong>link</strong>, não um código Pix Copia e Cola.</p>
+   <p>Finalidade pretendida: apoio à produção de conteúdos educacionais, manutenção técnica, recursos de acessibilidade e ampliação das oportunidades gratuitas. O recebimento é feito na <strong>conta pessoal indicada pelo responsável pelo projeto</strong>.</p>
+ </div>
+</div>
+<div class="don-legal"><strong>Transparência:</strong> trata-se de uma contribuição voluntária a um projeto educacional, não uma compra, matrícula, assinatura ou doação com benefício fiscal anunciado. O site não confirma nem acompanha pagamentos automaticamente. Confira o nome do titular e o valor no aplicativo bancário antes de concluir.</div>
+</section>
+
 <section aria-labelledby="porque"><h2 id="porque" class="car-section-title">Por que apoiar este projeto?</h2>
 <div class="car-grid">
 <article class="car-card"><span class="car-card-icon" aria-hidden="true">📚</span><h3>Educação Básica</h3><p>Materiais de reforço, conteúdos relacionados à BNCC, videoaulas e simulados digitais para estudantes.</p><a href="planos.html">Conhecer as séries →</a></article>
@@ -59,5 +106,22 @@
 </div></section>
 </div></main>
 <footer class="car-footer"><div class="car-container">Instituto EnsinoMeu • Educação gratuita e formação livre • <a href="index.html">Página inicial</a> • <a href="privacidade.html">Privacidade</a></div></footer>
+<script>
+(function(){
+  "use strict";
+  var copy=document.getElementById('copiar-contribuicao');
+  var status=document.getElementById('estado-copia-contribuicao');
+  var link=document.getElementById('abrir-contribuicao').href;
+  copy.addEventListener('click',async function(){
+    try{
+      if(!navigator.clipboard || !window.isSecureContext)throw new Error('Clipboard indisponível');
+      await navigator.clipboard.writeText(link);
+      status.textContent='Link de contribuição copiado. Abra ou compartilhe o link para continuar.';
+    }catch(err){
+      status.textContent='Não foi possível copiar automaticamente. Abra o link de contribuição pelo botão ao lado e use a opção de compartilhar do navegador.';
+    }
+  });
+})();
+</script>
 <script src="voltar-global.js?v=20261112" defer></script>
 </body></html>
