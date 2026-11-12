@@ -17,7 +17,7 @@
   if (!document.querySelector('#em-identidade-js')) {
     const js = document.createElement('script');
     js.id = 'em-identidade-js';
-    js.src = new URL('ensino-identidade-2026.js?v=20261112', scriptURL).href;
+    js.src = new URL('ensino-identidade-2026.js?v=20261112-meta-inicial', scriptURL).href;
     js.defer = true;
     document.body.appendChild(js);
   }
