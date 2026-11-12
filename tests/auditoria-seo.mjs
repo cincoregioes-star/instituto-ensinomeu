@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const read=p=>readFileSync(p,'utf8');
 const base='https://cincoregioes-star.github.io/instituto-ensinomeu/';
-const pages=['index.html','planos.html','privacidade.html','matematica-9ano.html','geografia-9ano.html','historia-9ano.html','portugues-9ano.html','ciencias-9ano.html','ensino-ia.html','apostila-ia.html'];
+const pages=['index.html','planos.html','privacidade.html','matematica-9ano.html','geografia-9ano.html','historia-9ano.html','portugues-9ano.html','ciencias-9ano.html','ensino-ia.html','apostila-ia.html','orientador-profissoes.html','carreira-entrevistas.html','agentes-educacionais.html','central-atendimento.html','apoio-parcerias.html','catalogo-gratuito.html'];
 const protectedPages=['login.html','cadastro.html','painel.html','admin.html','apostilas.html','trilha.html','prova.html','ia-tutoria.html'];
 const sitemap=read('sitemap.xml');
 for(const file of pages){
@@ -26,6 +26,6 @@ const structured=JSON.parse(m[1]);assert.equal(structured['@context'],'https://s
 assert.ok(structured['@graph'].some(x=>x['@type']==='EducationalOrganization'&&x.url===base));
 assert.ok(structured['@graph'].some(x=>x['@type']==='WebSite'&&x.url===base));
 const links=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>x[1]);
-assert.equal(links.length,pages.length,'Sitemap deve incluir apenas páginas públicas enumeradas');
+assert.equal(links.length,pages.length,'Sitemap deve incluir todas as páginas públicas enumeradas');
 assert.equal(new Set(links).size,links.length,'URLs duplicadas');
 console.log('Auditoria SEO V8 aprovada.');
