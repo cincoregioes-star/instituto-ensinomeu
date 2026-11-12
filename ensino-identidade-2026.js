@@ -33,7 +33,7 @@
     {label:'IA e Tecnologia',icon:'chip',href:'ensino-ia.html',id:'ai'},
     {label:'Cidadania e Inclusão',icon:'people',href:'cidadania.html',id:'citizenship'},
     {label:'Cursos e Carreiras',icon:'graduate',href:'catalogo-gratuito.html',id:'courses',
-      children:[['Explorar cursos gratuitos','catalogo-gratuito.html'],['Descobrir qual profissão estudar','orientador-profissoes.html'],['Montar currículo e treinar entrevista','carreira-entrevistas.html']]},
+      children:[['Explorar cursos gratuitos','catalogo-gratuito.html'],['Descobrir qual profissão estudar','orientador-profissoes.html'],['Montar currículo e treinar entrevista','carreira-entrevistas.html'],['Agentes educativos por área','agentes-educacionais.html']]},
     {label:'Material Didático',icon:'layers',href:'index.html#ebooks',id:'material'},
     {label:'Apoie o Instituto',icon:'heart',href:'apoio-parcerias.html',id:'support',
       children:[['Patrocínio e parcerias','apoio-parcerias.html'],['Dúvidas, críticas e sugestões','central-atendimento.html']]}
@@ -41,7 +41,7 @@
   function currentID(){
     if (home) return 'home';
     if (path.startsWith('simulados/')) return 'games';
-    if (path.startsWith('conteudos-recuperados/') || path === 'catalogo-gratuito.html' || path === 'orientador-profissoes.html' || path === 'carreira-entrevistas.html') return 'courses';
+    if (path.startsWith('conteudos-recuperados/') || path === 'catalogo-gratuito.html' || path === 'orientador-profissoes.html' || path === 'carreira-entrevistas.html' || path === 'agentes-educacionais.html') return 'courses';
     if (path === 'apoio-parcerias.html' || path === 'central-atendimento.html') return 'support';
     if (path === 'cidadania.html') return 'citizenship';
     if (path.startsWith('ensino-ia') || path.startsWith('apostila-ia') || path === 'ia-tutoria.html') return 'ai';
@@ -138,7 +138,8 @@
       'Não sabe por onde começar?';
     host.innerHTML='<button type="button" class="em-guide-toggle" aria-expanded="false" aria-controls="em-guide-menu">🧭 <span>Agente de Orientação</span></button>'+
       '<div class="em-guide-panel" id="em-guide-menu" hidden><strong>Como podemos orientar?</strong><p>'+text+'</p>'+
-      '<a href="'+u('orientador-profissoes.html')+'">🎓 Descobrir qual profissão estudar</a>'+
+      '<a href="'+u('orientador-profissoes.html')+'">🎓 Descobrir qual profissão estudar</a>'+ 
+      '<a href="'+u('agentes-educacionais.html')+'">📘 Conversar com agentes educativos guiados</a>'+
       '<a href="'+u('carreira-entrevistas.html')+'">💼 Criar currículo e treinar entrevista</a>'+
       '<a href="'+u('catalogo-gratuito.html')+'">📚 Encontrar cursos e materiais</a>'+
       '<a href="'+u('central-atendimento.html')+'">🤝 Dúvidas, sugestões e atendimento</a>'+
