@@ -1,0 +1,1661 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071321">
+  <meta name="description" content="Simulado gratuito Gabarito Data Center — Manutenção e Confiabilidade, com 120 questões em 6 módulos.">
+  <title>Gabarito Data Center | Gratuito — Manutenção e Confiabilidade</title>
+  <style>
+    :root {
+      --navy-950:#030b14; --navy-900:#071321; --navy-850:#0a1b2d; --navy-800:#0d2439;
+      --cyan:#18d6ff; --cyan-soft:#86eaff; --lime:#b9ff39; --amber:#ffbd2e;
+      --red:#ff5f72; --green:#4df0a7; --white:#f7fbff; --muted:#9eb4c7;
+      --line:rgba(134,234,255,.17); --panel:rgba(10,27,45,.84); --shadow:0 24px 70px rgba(0,0,0,.34);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--white);background:
+      radial-gradient(circle at 12% 0%,rgba(24,214,255,.16),transparent 27rem),
+      radial-gradient(circle at 92% 14%,rgba(185,255,57,.09),transparent 24rem),
+      linear-gradient(145deg,var(--navy-950),var(--navy-900) 45%,#061a28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:
+      linear-gradient(rgba(134,234,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(134,234,255,.12) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 75%)}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    a{color:var(--cyan-soft)}
+    .shell{width:min(1180px,calc(100% - 32px));margin:0 auto;position:relative;z-index:1}
+    .topbar{padding:22px 0 8px}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:13px;color:var(--white);text-decoration:none}
+    .brand-mark{width:56px;height:56px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(145deg,rgba(24,214,255,.23),rgba(185,255,57,.10));border:1px solid var(--line);box-shadow:0 0 35px rgba(24,214,255,.14)}
+    .brand-mark svg{width:39px;height:39px}
+    .brand-copy strong{display:block;font-size:clamp(1rem,2.2vw,1.28rem);letter-spacing:.08em}
+    .brand-copy span{display:block;color:var(--cyan-soft);font-size:.72rem;letter-spacing:.22em;margin-top:3px}
+    .sound-panel{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(3,11,20,.56);backdrop-filter:blur(12px)}
+    .sound-btn{border:0;background:transparent;color:var(--white);display:flex;align-items:center;gap:7px;padding:5px 6px}
+    .sound-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 13px var(--green)}
+    .sound-btn.off .sound-dot{background:var(--red);box-shadow:0 0 13px var(--red)}
+    .volume{width:85px;accent-color:var(--cyan)}
+    main{padding:34px 0 60px}
+    .view[hidden]{display:none!important}
+    .hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:24px;align-items:stretch;margin-bottom:28px}
+    .hero-copy,.hero-side,.panel,.module-card,.question-card,.result-card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(13,36,57,.91),rgba(7,19,33,.82));box-shadow:var(--shadow);border-radius:var(--radius);backdrop-filter:blur(15px)}
+    .hero-copy{padding:clamp(28px,5vw,54px);position:relative;overflow:hidden}
+    .hero-copy::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-110px;top:-120px;border:42px solid rgba(24,214,255,.06);box-shadow:0 0 90px rgba(24,214,255,.12)}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--lime);font-weight:800;letter-spacing:.13em;font-size:.74rem;text-transform:uppercase;margin:0 0 16px}
+    .eyebrow::before{content:"";width:26px;height:2px;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(2.15rem,6vw,4.8rem);line-height:.96;letter-spacing:-.055em;margin-bottom:20px;max-width:760px}
+    h1 span{display:block;color:var(--cyan)}
+    .lead{color:#ccdae6;line-height:1.72;font-size:clamp(1rem,2vw,1.13rem);max-width:720px;margin-bottom:24px}
+    .chips{display:flex;flex-wrap:wrap;gap:9px}
+    .chip{padding:9px 12px;border-radius:999px;background:rgba(24,214,255,.08);border:1px solid rgba(24,214,255,.23);font-size:.82rem;color:#d9f8ff}
+    .hero-side{padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+    .score-label{color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.13em}
+    .score-value{font-size:clamp(3rem,8vw,5.4rem);line-height:1;font-weight:900;color:var(--lime);letter-spacing:-.07em;margin:9px 0}
+    .progress-track{height:11px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+    .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--lime));border-radius:inherit;transition:width .4s ease}
+    .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .stat{padding:14px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.35)}
+    .stat b{display:block;font-size:1.25rem;color:var(--cyan-soft)}
+    .stat span{color:var(--muted);font-size:.76rem}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:42px 0 18px}
+    .section-head h2{font-size:clamp(1.55rem,3vw,2.35rem);margin:0;letter-spacing:-.035em}
+    .section-head p{color:var(--muted);margin:0;max-width:510px;line-height:1.6;text-align:right}
+    .module-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+    .module-card{padding:23px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+    .module-card:hover{transform:translateY(-4px);border-color:rgba(24,214,255,.42)}
+    .module-number{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,rgba(24,214,255,.23),rgba(24,214,255,.07));color:var(--cyan);font-weight:900;margin-bottom:18px;border:1px solid rgba(24,214,255,.25)}
+    .module-card h3{font-size:1.15rem;margin-bottom:9px}
+    .module-card p{color:var(--muted);font-size:.88rem;line-height:1.55;min-height:68px}
+    .module-meta{display:flex;justify-content:space-between;gap:10px;color:#c5d8e7;font-size:.78rem;margin:17px 0 13px}
+    .mini-track{height:7px;background:rgba(255,255,255,.07);border-radius:999px;overflow:hidden;margin-bottom:17px}
+    .mini-track span{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--lime));border-radius:inherit}
+    .btn{border:0;border-radius:13px;padding:13px 18px;font-weight:850;letter-spacing:.01em;transition:transform .18s,filter .18s,background .18s;display:inline-flex;justify-content:center;align-items:center;gap:8px;text-decoration:none}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+    .btn-primary{background:linear-gradient(95deg,var(--cyan),#55e4ff 46%,var(--lime));color:#03101a;box-shadow:0 12px 35px rgba(24,214,255,.18)}
+    .btn-secondary{background:rgba(24,214,255,.09);color:var(--white);border:1px solid rgba(24,214,255,.25)}
+    .btn-danger{background:rgba(255,95,114,.10);color:#ffc4cb;border:1px solid rgba(255,95,114,.27)}
+    .btn-block{width:100%}
+    .full-card{margin-top:19px;padding:25px;display:flex;align-items:center;justify-content:space-between;gap:25px;border:1px solid rgba(185,255,57,.24);border-radius:var(--radius);background:linear-gradient(110deg,rgba(185,255,57,.10),rgba(24,214,255,.08),rgba(7,19,33,.88));box-shadow:var(--shadow)}
+    .full-card h3{margin-bottom:7px;font-size:1.34rem}
+    .full-card p{margin:0;color:var(--muted);line-height:1.55}
+    .notice{margin-top:20px;padding:18px 20px;border-radius:17px;border:1px solid rgba(255,189,46,.24);background:rgba(255,189,46,.07);color:#ffe5ab;line-height:1.6;font-size:.89rem}
+    .refs{margin-top:20px;padding:0;border:1px solid var(--line);border-radius:17px;background:rgba(7,19,33,.6)}
+    .refs summary{cursor:pointer;padding:18px 20px;font-weight:800;color:#dff9ff}
+    .refs div{padding:0 20px 18px;color:var(--muted);line-height:1.7;font-size:.87rem}
+    .quiz-top{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:18px}
+    .crumb{color:var(--cyan-soft);font-size:.85rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+    .timer{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(3,11,20,.62);font-variant-numeric:tabular-nums}
+    .timer.warn{color:var(--amber);border-color:rgba(255,189,46,.38)}
+    .timer.danger{color:#ffc1c9;border-color:rgba(255,95,114,.5);animation:pulse 1s infinite}
+    @keyframes pulse{50%{box-shadow:0 0 24px rgba(255,95,114,.18)}}
+    .quiz-progress{margin-bottom:18px}
+    .quiz-progress-row{display:flex;justify-content:space-between;color:var(--muted);font-size:.82rem;margin-bottom:8px}
+    .question-card{padding:clamp(24px,5vw,43px)}
+    .question-kicker{display:flex;align-items:center;gap:9px;color:var(--lime);font-size:.77rem;text-transform:uppercase;letter-spacing:.12em;font-weight:850;margin-bottom:15px}
+    .question-card h2{font-size:clamp(1.28rem,3vw,1.85rem);line-height:1.35;letter-spacing:-.025em;margin-bottom:26px}
+    .options{display:grid;gap:11px}
+    .option{width:100%;text-align:left;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.44);color:var(--white);padding:15px 17px;display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:center;line-height:1.48;transition:border-color .18s,background .18s,transform .18s}
+    .option:hover:not(:disabled){border-color:rgba(24,214,255,.45);background:rgba(24,214,255,.09);transform:translateX(3px)}
+    .option:disabled{cursor:default}
+    .letter{width:35px;height:35px;display:grid;place-items:center;border-radius:10px;background:rgba(24,214,255,.09);border:1px solid rgba(24,214,255,.17);color:var(--cyan-soft);font-weight:900}
+    .option.correct{border-color:rgba(77,240,167,.65);background:rgba(77,240,167,.10)}
+    .option.correct .letter{background:var(--green);border-color:var(--green);color:#03150e}
+    .option.wrong{border-color:rgba(255,95,114,.62);background:rgba(255,95,114,.10)}
+    .option.wrong .letter{background:var(--red);border-color:var(--red);color:white}
+    .feedback{margin-top:20px;padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(3,11,20,.48);line-height:1.62}
+    .feedback.good{border-color:rgba(77,240,167,.35)}
+    .feedback.bad{border-color:rgba(255,95,114,.34)}
+    .feedback strong{display:block;margin-bottom:5px}
+    .feedback p{margin:0;color:#c7d7e3}
+    .quiz-actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:19px}
+    .result-card{padding:clamp(26px,5vw,48px);text-align:center}
+    .result-badge{display:inline-block;padding:8px 12px;border:1px solid rgba(185,255,57,.28);border-radius:999px;color:var(--lime);font-size:.75rem;letter-spacing:.12em;font-weight:900;text-transform:uppercase}
+    .result-card h1{font-size:clamp(2rem,5vw,3.6rem);margin:19px auto 10px;max-width:800px}
+    .result-card>p{color:var(--muted);line-height:1.65}
+    .score-ring{--score:0;width:190px;height:190px;margin:28px auto;display:grid;place-items:center;border-radius:50%;background:conic-gradient(var(--lime) calc(var(--score)*1%),rgba(255,255,255,.08) 0);position:relative}
+    .score-ring::before{content:"";position:absolute;inset:14px;border-radius:50%;background:var(--navy-900);border:1px solid var(--line)}
+    .score-ring div{position:relative;z-index:1}
+    .score-ring b{display:block;font-size:3.25rem;line-height:1;color:var(--white)}
+    .score-ring span{color:var(--muted);font-size:.8rem}
+    .result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:680px;margin:0 auto 26px}
+    .result-stat{padding:18px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.35)}
+    .result-stat b{display:block;font-size:1.45rem;color:var(--cyan-soft)}
+    .result-stat span{font-size:.77rem;color:var(--muted)}
+    .result-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+    .review{margin-top:24px;text-align:left}
+    .review h2{margin-bottom:14px}
+    .review-item{padding:18px;margin-bottom:10px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.36)}
+    .review-item strong{display:block;margin-bottom:8px;line-height:1.45}
+    .review-item p{margin:5px 0;color:var(--muted);line-height:1.55;font-size:.9rem}
+    .review-item .answer-correct{color:var(--green)}
+    .review-item .answer-wrong{color:#ffb6bf}
+    footer{padding:28px 0 42px;border-top:1px solid var(--line);color:var(--muted);font-size:.83rem;line-height:1.6}
+    .footer-inner{display:flex;justify-content:space-between;gap:25px}
+    .footer-inner p{margin:0}
+    .footer-inner div:last-child{text-align:right}
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.module-grid{grid-template-columns:repeat(2,1fr)}.hero-side{min-height:280px}}
+    @media(max-width:640px){.shell{width:min(100% - 22px,1180px)}.topbar-inner{align-items:flex-start}.brand-mark{width:47px;height:47px}.brand-copy strong{font-size:.92rem}.brand-copy span{font-size:.61rem}.volume{display:none}.sound-panel{padding:7px 8px}.sound-btn .sound-text{display:none}.hero-copy,.hero-side,.question-card,.result-card{border-radius:18px}.hero-copy{padding:27px 22px}.module-grid{grid-template-columns:1fr}.section-head{display:block}.section-head p{text-align:left;margin-top:8px}.full-card{align-items:flex-start;flex-direction:column}.quiz-top{align-items:flex-start}.timer{padding:8px 11px}.quiz-actions{align-items:stretch;flex-direction:column-reverse}.quiz-actions .btn{width:100%}.result-stats{grid-template-columns:1fr}.footer-inner{display:block}.footer-inner div:last-child{text-align:left;margin-top:12px}.option{grid-template-columns:34px 1fr;padding:13px}.letter{width:32px;height:32px}}
+    @media print{body{background:white;color:#111}.topbar,#homeView,#quizView,footer,.result-actions,.sound-panel{display:none!important}.result-card{box-shadow:none;border:1px solid #bbb;background:white}.result-card h1,.score-ring b{color:#111}.score-ring::before{background:white}.review-item{background:white;color:#111}.review-item p{color:#333}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#" id="brandHome" aria-label="Voltar ao início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="7" y="5" width="34" height="38" rx="7" stroke="#18d6ff" stroke-width="2"/><path d="M13 14h22M13 23h22M13 32h22" stroke="#86eaff" stroke-width="2"/><circle cx="16" cy="14" r="2" fill="#b9ff39"/><circle cx="16" cy="23" r="2" fill="#b9ff39"/><circle cx="16" cy="32" r="2" fill="#ffbd2e"/><path d="M29 11v6m0 3v6m0 3v6" stroke="#18d6ff" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-copy"><strong>GABARITO DATA CENTER</strong><span>ACESSO GRATUITO</span></span>
+      </a>
+      <div class="sound-panel" aria-label="Controles de áudio">
+        <button class="sound-btn" id="soundToggle" type="button" aria-pressed="true"><span class="sound-dot"></span><span class="sound-text">Som ligado</span></button>
+        <label class="sr-only" for="volumeControl">Volume</label>
+        <input class="volume" id="volumeControl" type="range" min="0" max="1" value="0.35" step="0.05">
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div role="note" style="margin:12px 0 26px;padding:16px 20px;border:1px solid rgba(185,255,57,.36);border-radius:14px;background:#102a32;color:#e9fbf1;line-height:1.6"><a href="../../catalogo-gratuito.html" style="font-weight:800;color:#b9ff39;text-decoration:underline">← Voltar ao catálogo gratuito do Instituto EnsinoMeu</a><p style="margin:9px 0 0">Acesso 100% gratuito. Material de estudo em revisão pedagógica e técnica. As questões não representam certificação profissional nem habilitação para intervenções.</p></div>
+
+    <section class="view" id="homeView">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Formação profissional 2026</p>
+          <h1>Manutenção e <span>Confiabilidade</span></h1>
+          <p class="lead">Treinamento premium para estratégias de manutenção, ordens de serviço, causa raiz, confiabilidade, procedimentos e mudanças.</p>
+          <div class="chips"><span class="chip">6 módulos</span><span class="chip">120 questões</span><span class="chip">Explicações imediatas</span><span class="chip">Progresso salvo</span><span class="chip">Áudio inteligente</span></div>
+        </div>
+        <aside class="hero-side" aria-label="Seu progresso">
+          <div><div class="score-label">Progresso geral</div><div class="score-value" id="overallPercent">0%</div><div class="progress-track"><div class="progress-fill" id="overallBar"></div></div></div>
+          <div class="hero-stats"><div class="stat"><b id="completedModules">0/6</b><span>módulos concluídos</span></div><div class="stat"><b id="bestAverage">—</b><span>média dos melhores</span></div></div>
+        </aside>
+      </div>
+
+      <div class="section-head"><div><p class="eyebrow">Trilha gratuita</p><h2>Escolha um módulo</h2></div><p>Cada módulo tem 20 questões objetivas, correção comentada e resultado proporcional correto de 0 a 100%.</p></div>
+      <div class="module-grid" id="moduleGrid"></div>
+      <div class="full-card panel"><div><h3>Simulado completo de consolidação</h3><p>Reúna as 120 questões dos seis módulos em uma única sessão. Recomendado após concluir toda a trilha.</p></div><button class="btn btn-primary" id="startFull" type="button">Iniciar 120 questões</button></div>
+      <div class="notice"><strong>Orientação de segurança:</strong> este material é educacional. Em atividades reais, siga sempre os procedimentos locais, a análise de risco, as permissões de trabalho e as orientações de profissionais autorizados. O simulado não substitui treinamento obrigatório nem habilitação técnica.</div>
+      <details class="refs"><summary>Referências gerais e transparência</summary><div>Conteúdo autoral baseado em práticas de gestão de ativos, confiabilidade, manutenção planejada, análise de falhas e operação de missão crítica.</div></details>
+    </section>
+
+    <section class="view" id="quizView" hidden>
+      <div class="quiz-top"><div><div class="crumb" id="quizModule">Módulo</div><h1 id="quizTitle" style="font-size:clamp(1.65rem,4vw,2.7rem);margin:8px 0 0">Simulado</h1></div><div class="timer" id="timerBox" title="Tempo por questão"><span aria-hidden="true">◷</span><b id="timerText">01:00</b></div></div>
+      <div class="quiz-progress"><div class="quiz-progress-row"><span id="questionCounter">Questão 1 de 20</span><span id="liveScore">0 acertos</span></div><div class="progress-track"><div class="progress-fill" id="quizBar"></div></div></div>
+      <article class="question-card">
+        <div class="question-kicker" id="questionModuleLabel">Conhecimento aplicado</div>
+        <h2 id="questionText"></h2>
+        <div class="options" id="optionsList"></div>
+        <div class="feedback" id="feedbackBox" hidden aria-live="polite"><strong id="feedbackTitle"></strong><p id="feedbackText"></p></div>
+      </article>
+      <div class="quiz-actions"><button class="btn btn-danger" id="exitQuiz" type="button">Sair do simulado</button><button class="btn btn-primary" id="nextQuestion" type="button" hidden>Próxima questão</button></div>
+    </section>
+
+    <section class="view" id="resultView" hidden>
+      <article class="result-card">
+        <span class="result-badge">Resultado concluído</span>
+        <h1 id="resultTitle">Seu desempenho</h1>
+        <p id="resultMessage"></p>
+        <div class="score-ring" id="scoreRing"><div><b id="resultPercent">0%</b><span>aproveitamento</span></div></div>
+        <div class="result-stats"><div class="result-stat"><b id="resultCorrect">0</b><span>acertos</span></div><div class="result-stat"><b id="resultWrong">0</b><span>erros / não respondidas</span></div><div class="result-stat"><b id="resultTime">00:00</b><span>tempo total</span></div></div>
+        <div class="result-actions"><button class="btn btn-primary" id="retryQuiz" type="button">Refazer simulado</button><button class="btn btn-secondary" id="printResult" type="button">Imprimir resultado</button><button class="btn btn-secondary" id="returnHome" type="button">Voltar aos módulos</button></div>
+        <div class="review" id="reviewBlock"><h2>Revisão dos pontos de atenção</h2><div id="reviewList"></div></div>
+      </article>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-inner"><div><p><strong>GABARITO DATA CENTER</strong> — preparação independente para candidatos.</p><p>Sem promessa de contratação e sem vínculo com TikTok, ByteDance, Omnia ou operadores de data center.</p></div><div><p>Equipe técnica e dúvidas</p><p><a href="mailto:cincoregioes@gmail.com">cincoregioes@gmail.com</a></p></div></div></footer>
+
+  <audio id="backgroundAudio" loop preload="metadata" src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3"></audio>
+  <audio id="correctAudio" preload="metadata" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3"></audio>
+  <audio id="wrongAudio" preload="metadata" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3"></audio>
+
+  <script>
+    "use strict";
+    const MODULES = [
+      {
+            "id": "estrategias-manutencao",
+            "title": "Estratégias de Manutenção",
+            "description": "Corretiva, preventiva, preditiva, baseada em condição, criticidade e ciclo de vida.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente manutenção corretiva?",
+                        "o": [
+                              "intervenção realizada após uma falha ou perda de função",
+                              "atividade planejada por tempo, uso ou recomendação para reduzir probabilidade de falha",
+                              "ação disparada pelo estado observado do ativo em vez de calendário fixo",
+                              "período aprovado para executar trabalho com impacto e condições controlados"
+                        ],
+                        "a": 0,
+                        "e": "manutenção corretiva: intervenção realizada após uma falha ou perda de função Na prática, restaura o ativo e registra causa, dano, peças, tempo e impacto do evento"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de manutenção corretiva em estratégias de manutenção?",
+                        "o": [
+                              "restaura o ativo e registra causa, dano, peças, tempo e impacto do evento",
+                              "executa inspeções e substituições antes da perda funcional dentro de uma periodicidade justificada",
+                              "evita intervir cedo demais e atua quando indicadores atingem critérios técnicos",
+                              "coordena equipes, carga, comunicação, redundância e retorno ao serviço"
+                        ],
+                        "a": 0,
+                        "e": "manutenção corretiva: intervenção realizada após uma falha ou perda de função Na prática, restaura o ativo e registra causa, dano, peças, tempo e impacto do evento"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente manutenção preventiva?",
+                        "o": [
+                              "atividade planejada por tempo, uso ou recomendação para reduzir probabilidade de falha",
+                              "uso de tendências e técnicas de diagnóstico para estimar degradação e momento de intervenção",
+                              "método que relaciona funções, falhas, consequências e tarefas eficazes",
+                              "conjunto de trabalhos identificados e ainda não concluídos"
+                        ],
+                        "a": 0,
+                        "e": "manutenção preventiva: atividade planejada por tempo, uso ou recomendação para reduzir probabilidade de falha Na prática, executa inspeções e substituições antes da perda funcional dentro de uma periodicidade justificada"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de manutenção preventiva em estratégias de manutenção?",
+                        "o": [
+                              "executa inspeções e substituições antes da perda funcional dentro de uma periodicidade justificada",
+                              "transforma vibração, termografia, óleo ou desempenho em decisão planejada",
+                              "seleciona política de manutenção coerente com risco e importância do sistema",
+                              "permite enxergar risco acumulado, prioridade, capacidade da equipe e envelhecimento das ordens"
+                        ],
+                        "a": 0,
+                        "e": "manutenção preventiva: atividade planejada por tempo, uso ou recomendação para reduzir probabilidade de falha Na prática, executa inspeções e substituições antes da perda funcional dentro de uma periodicidade justificada"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente manutenção preditiva?",
+                        "o": [
+                              "uso de tendências e técnicas de diagnóstico para estimar degradação e momento de intervenção",
+                              "ação disparada pelo estado observado do ativo em vez de calendário fixo",
+                              "classificação pela consequência de sua falha para segurança, serviço, ambiente e custo",
+                              "facilidade e rapidez para restaurar um ativo com recursos e procedimentos disponíveis"
+                        ],
+                        "a": 0,
+                        "e": "manutenção preditiva: uso de tendências e técnicas de diagnóstico para estimar degradação e momento de intervenção Na prática, transforma vibração, termografia, óleo ou desempenho em decisão planejada"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de manutenção preditiva em estratégias de manutenção?",
+                        "o": [
+                              "transforma vibração, termografia, óleo ou desempenho em decisão planejada",
+                              "evita intervir cedo demais e atua quando indicadores atingem critérios técnicos",
+                              "prioriza recursos, sobressalentes, monitoramento e planos de contingência",
+                              "orienta acesso, modularidade, ferramentas, documentação e estoque desde o projeto"
+                        ],
+                        "a": 0,
+                        "e": "manutenção preditiva: uso de tendências e técnicas de diagnóstico para estimar degradação e momento de intervenção Na prática, transforma vibração, termografia, óleo ou desempenho em decisão planejada"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente manutenção baseada em condição?",
+                        "o": [
+                              "ação disparada pelo estado observado do ativo em vez de calendário fixo",
+                              "método que relaciona funções, falhas, consequências e tarefas eficazes",
+                              "período aprovado para executar trabalho com impacto e condições controlados",
+                              "soma de aquisição, energia, operação, manutenção, falhas e descarte ao longo do uso"
+                        ],
+                        "a": 0,
+                        "e": "manutenção baseada em condição: ação disparada pelo estado observado do ativo em vez de calendário fixo Na prática, evita intervir cedo demais e atua quando indicadores atingem critérios técnicos"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de manutenção baseada em condição em estratégias de manutenção?",
+                        "o": [
+                              "evita intervir cedo demais e atua quando indicadores atingem critérios técnicos",
+                              "seleciona política de manutenção coerente com risco e importância do sistema",
+                              "coordena equipes, carga, comunicação, redundância e retorno ao serviço",
+                              "compara soluções pela sustentabilidade econômica e risco, não apenas pelo menor preço inicial"
+                        ],
+                        "a": 0,
+                        "e": "manutenção baseada em condição: ação disparada pelo estado observado do ativo em vez de calendário fixo Na prática, evita intervir cedo demais e atua quando indicadores atingem critérios técnicos"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente manutenção centrada em confiabilidade?",
+                        "o": [
+                              "método que relaciona funções, falhas, consequências e tarefas eficazes",
+                              "classificação pela consequência de sua falha para segurança, serviço, ambiente e custo",
+                              "conjunto de trabalhos identificados e ainda não concluídos",
+                              "intervenção realizada após uma falha ou perda de função"
+                        ],
+                        "a": 0,
+                        "e": "manutenção centrada em confiabilidade: método que relaciona funções, falhas, consequências e tarefas eficazes Na prática, seleciona política de manutenção coerente com risco e importância do sistema"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de manutenção centrada em confiabilidade em estratégias de manutenção?",
+                        "o": [
+                              "seleciona política de manutenção coerente com risco e importância do sistema",
+                              "prioriza recursos, sobressalentes, monitoramento e planos de contingência",
+                              "permite enxergar risco acumulado, prioridade, capacidade da equipe e envelhecimento das ordens",
+                              "restaura o ativo e registra causa, dano, peças, tempo e impacto do evento"
+                        ],
+                        "a": 0,
+                        "e": "manutenção centrada em confiabilidade: método que relaciona funções, falhas, consequências e tarefas eficazes Na prática, seleciona política de manutenção coerente com risco e importância do sistema"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente criticidade do ativo?",
+                        "o": [
+                              "classificação pela consequência de sua falha para segurança, serviço, ambiente e custo",
+                              "período aprovado para executar trabalho com impacto e condições controlados",
+                              "facilidade e rapidez para restaurar um ativo com recursos e procedimentos disponíveis",
+                              "atividade planejada por tempo, uso ou recomendação para reduzir probabilidade de falha"
+                        ],
+                        "a": 0,
+                        "e": "criticidade do ativo: classificação pela consequência de sua falha para segurança, serviço, ambiente e custo Na prática, prioriza recursos, sobressalentes, monitoramento e planos de contingência"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de criticidade do ativo em estratégias de manutenção?",
+                        "o": [
+                              "prioriza recursos, sobressalentes, monitoramento e planos de contingência",
+                              "coordena equipes, carga, comunicação, redundância e retorno ao serviço",
+                              "orienta acesso, modularidade, ferramentas, documentação e estoque desde o projeto",
+                              "executa inspeções e substituições antes da perda funcional dentro de uma periodicidade justificada"
+                        ],
+                        "a": 0,
+                        "e": "criticidade do ativo: classificação pela consequência de sua falha para segurança, serviço, ambiente e custo Na prática, prioriza recursos, sobressalentes, monitoramento e planos de contingência"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente janela de manutenção?",
+                        "o": [
+                              "período aprovado para executar trabalho com impacto e condições controlados",
+                              "conjunto de trabalhos identificados e ainda não concluídos",
+                              "soma de aquisição, energia, operação, manutenção, falhas e descarte ao longo do uso",
+                              "uso de tendências e técnicas de diagnóstico para estimar degradação e momento de intervenção"
+                        ],
+                        "a": 0,
+                        "e": "janela de manutenção: período aprovado para executar trabalho com impacto e condições controlados Na prática, coordena equipes, carga, comunicação, redundância e retorno ao serviço"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de janela de manutenção em estratégias de manutenção?",
+                        "o": [
+                              "coordena equipes, carga, comunicação, redundância e retorno ao serviço",
+                              "permite enxergar risco acumulado, prioridade, capacidade da equipe e envelhecimento das ordens",
+                              "compara soluções pela sustentabilidade econômica e risco, não apenas pelo menor preço inicial",
+                              "transforma vibração, termografia, óleo ou desempenho em decisão planejada"
+                        ],
+                        "a": 0,
+                        "e": "janela de manutenção: período aprovado para executar trabalho com impacto e condições controlados Na prática, coordena equipes, carga, comunicação, redundância e retorno ao serviço"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente backlog de manutenção?",
+                        "o": [
+                              "conjunto de trabalhos identificados e ainda não concluídos",
+                              "facilidade e rapidez para restaurar um ativo com recursos e procedimentos disponíveis",
+                              "intervenção realizada após uma falha ou perda de função",
+                              "ação disparada pelo estado observado do ativo em vez de calendário fixo"
+                        ],
+                        "a": 0,
+                        "e": "backlog de manutenção: conjunto de trabalhos identificados e ainda não concluídos Na prática, permite enxergar risco acumulado, prioridade, capacidade da equipe e envelhecimento das ordens"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de backlog de manutenção em estratégias de manutenção?",
+                        "o": [
+                              "permite enxergar risco acumulado, prioridade, capacidade da equipe e envelhecimento das ordens",
+                              "orienta acesso, modularidade, ferramentas, documentação e estoque desde o projeto",
+                              "restaura o ativo e registra causa, dano, peças, tempo e impacto do evento",
+                              "evita intervir cedo demais e atua quando indicadores atingem critérios técnicos"
+                        ],
+                        "a": 0,
+                        "e": "backlog de manutenção: conjunto de trabalhos identificados e ainda não concluídos Na prática, permite enxergar risco acumulado, prioridade, capacidade da equipe e envelhecimento das ordens"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente mantenabilidade?",
+                        "o": [
+                              "facilidade e rapidez para restaurar um ativo com recursos e procedimentos disponíveis",
+                              "soma de aquisição, energia, operação, manutenção, falhas e descarte ao longo do uso",
+                              "atividade planejada por tempo, uso ou recomendação para reduzir probabilidade de falha",
+                              "método que relaciona funções, falhas, consequências e tarefas eficazes"
+                        ],
+                        "a": 0,
+                        "e": "mantenabilidade: facilidade e rapidez para restaurar um ativo com recursos e procedimentos disponíveis Na prática, orienta acesso, modularidade, ferramentas, documentação e estoque desde o projeto"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de mantenabilidade em estratégias de manutenção?",
+                        "o": [
+                              "orienta acesso, modularidade, ferramentas, documentação e estoque desde o projeto",
+                              "compara soluções pela sustentabilidade econômica e risco, não apenas pelo menor preço inicial",
+                              "executa inspeções e substituições antes da perda funcional dentro de uma periodicidade justificada",
+                              "seleciona política de manutenção coerente com risco e importância do sistema"
+                        ],
+                        "a": 0,
+                        "e": "mantenabilidade: facilidade e rapidez para restaurar um ativo com recursos e procedimentos disponíveis Na prática, orienta acesso, modularidade, ferramentas, documentação e estoque desde o projeto"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente custo do ciclo de vida?",
+                        "o": [
+                              "soma de aquisição, energia, operação, manutenção, falhas e descarte ao longo do uso",
+                              "intervenção realizada após uma falha ou perda de função",
+                              "uso de tendências e técnicas de diagnóstico para estimar degradação e momento de intervenção",
+                              "classificação pela consequência de sua falha para segurança, serviço, ambiente e custo"
+                        ],
+                        "a": 0,
+                        "e": "custo do ciclo de vida: soma de aquisição, energia, operação, manutenção, falhas e descarte ao longo do uso Na prática, compara soluções pela sustentabilidade econômica e risco, não apenas pelo menor preço inicial"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de custo do ciclo de vida em estratégias de manutenção?",
+                        "o": [
+                              "compara soluções pela sustentabilidade econômica e risco, não apenas pelo menor preço inicial",
+                              "restaura o ativo e registra causa, dano, peças, tempo e impacto do evento",
+                              "transforma vibração, termografia, óleo ou desempenho em decisão planejada",
+                              "prioriza recursos, sobressalentes, monitoramento e planos de contingência"
+                        ],
+                        "a": 0,
+                        "e": "custo do ciclo de vida: soma de aquisição, energia, operação, manutenção, falhas e descarte ao longo do uso Na prática, compara soluções pela sustentabilidade econômica e risco, não apenas pelo menor preço inicial"
+                  }
+            ]
+      },
+      {
+            "id": "planejamento-os",
+            "title": "Planejamento e Ordens de Serviço",
+            "description": "Escopo, prioridade, recursos, riscos, programação, execução, evidências e encerramento.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente ordem de serviço?",
+                        "o": [
+                              "registro controlado que autoriza, descreve e acompanha um trabalho de manutenção",
+                              "limites claros do que será feito e do que fica fora da atividade",
+                              "plano detalhado de etapas, mão de obra, ferramentas, peças, permissões e tempos",
+                              "autorização formal baseada no risco e nas condições do local"
+                        ],
+                        "a": 0,
+                        "e": "ordem de serviço: registro controlado que autoriza, descreve e acompanha um trabalho de manutenção Na prática, reúne ativo, escopo, prioridade, responsáveis, recursos, horários, resultados e evidências"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de ordem de serviço em planejamento e ordens de serviço?",
+                        "o": [
+                              "reúne ativo, escopo, prioridade, responsáveis, recursos, horários, resultados e evidências",
+                              "evita expansão improvisada e garante que riscos e recursos correspondam à intervenção real",
+                              "prepara a execução para reduzir espera, erro e exposição",
+                              "confirma controles, isolamentos, participantes e validade antes de iniciar"
+                        ],
+                        "a": 0,
+                        "e": "ordem de serviço: registro controlado que autoriza, descreve e acompanha um trabalho de manutenção Na prática, reúne ativo, escopo, prioridade, responsáveis, recursos, horários, resultados e evidências"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente escopo do trabalho?",
+                        "o": [
+                              "limites claros do que será feito e do que fica fora da atividade",
+                              "classificação baseada em criticidade, risco, impacto e urgência",
+                              "alocação de trabalhos prontos em horários e equipes disponíveis",
+                              "registro de horas, etapas, materiais, medições e desvios ocorridos"
+                        ],
+                        "a": 0,
+                        "e": "escopo do trabalho: limites claros do que será feito e do que fica fora da atividade Na prática, evita expansão improvisada e garante que riscos e recursos correspondam à intervenção real"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de escopo do trabalho em planejamento e ordens de serviço?",
+                        "o": [
+                              "evita expansão improvisada e garante que riscos e recursos correspondam à intervenção real",
+                              "organiza a fila sem confundir pedido antigo com trabalho mais crítico",
+                              "equilibra urgências, capacidade, janelas e restrições operacionais",
+                              "alimenta histórico, custos, planejamento futuro e análise de confiabilidade"
+                        ],
+                        "a": 0,
+                        "e": "escopo do trabalho: limites claros do que será feito e do que fica fora da atividade Na prática, evita expansão improvisada e garante que riscos e recursos correspondam à intervenção real"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente prioridade da ordem?",
+                        "o": [
+                              "classificação baseada em criticidade, risco, impacto e urgência",
+                              "plano detalhado de etapas, mão de obra, ferramentas, peças, permissões e tempos",
+                              "separação prévia das peças e consumíveis necessários à ordem",
+                              "verificação de que o ativo cumpre a função e os critérios de retorno"
+                        ],
+                        "a": 0,
+                        "e": "prioridade da ordem: classificação baseada em criticidade, risco, impacto e urgência Na prática, organiza a fila sem confundir pedido antigo com trabalho mais crítico"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de prioridade da ordem em planejamento e ordens de serviço?",
+                        "o": [
+                              "organiza a fila sem confundir pedido antigo com trabalho mais crítico",
+                              "prepara a execução para reduzir espera, erro e exposição",
+                              "evita iniciar serviço crítico sem todos os itens compatíveis e disponíveis",
+                              "impede encerrar a ordem apenas porque a montagem física terminou"
+                        ],
+                        "a": 0,
+                        "e": "prioridade da ordem: classificação baseada em criticidade, risco, impacto e urgência Na prática, organiza a fila sem confundir pedido antigo com trabalho mais crítico"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente job plan?",
+                        "o": [
+                              "plano detalhado de etapas, mão de obra, ferramentas, peças, permissões e tempos",
+                              "alocação de trabalhos prontos em horários e equipes disponíveis",
+                              "autorização formal baseada no risco e nas condições do local",
+                              "revisão final da ordem com causa, solução, evidências e pendências"
+                        ],
+                        "a": 0,
+                        "e": "job plan: plano detalhado de etapas, mão de obra, ferramentas, peças, permissões e tempos Na prática, prepara a execução para reduzir espera, erro e exposição"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de job plan em planejamento e ordens de serviço?",
+                        "o": [
+                              "prepara a execução para reduzir espera, erro e exposição",
+                              "equilibra urgências, capacidade, janelas e restrições operacionais",
+                              "confirma controles, isolamentos, participantes e validade antes de iniciar",
+                              "mantém histórico utilizável e gera novas ações quando a correção foi temporária"
+                        ],
+                        "a": 0,
+                        "e": "job plan: plano detalhado de etapas, mão de obra, ferramentas, peças, permissões e tempos Na prática, prepara a execução para reduzir espera, erro e exposição"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente programação semanal?",
+                        "o": [
+                              "alocação de trabalhos prontos em horários e equipes disponíveis",
+                              "separação prévia das peças e consumíveis necessários à ordem",
+                              "registro de horas, etapas, materiais, medições e desvios ocorridos",
+                              "registro controlado que autoriza, descreve e acompanha um trabalho de manutenção"
+                        ],
+                        "a": 0,
+                        "e": "programação semanal: alocação de trabalhos prontos em horários e equipes disponíveis Na prática, equilibra urgências, capacidade, janelas e restrições operacionais"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de programação semanal em planejamento e ordens de serviço?",
+                        "o": [
+                              "equilibra urgências, capacidade, janelas e restrições operacionais",
+                              "evita iniciar serviço crítico sem todos os itens compatíveis e disponíveis",
+                              "alimenta histórico, custos, planejamento futuro e análise de confiabilidade",
+                              "reúne ativo, escopo, prioridade, responsáveis, recursos, horários, resultados e evidências"
+                        ],
+                        "a": 0,
+                        "e": "programação semanal: alocação de trabalhos prontos em horários e equipes disponíveis Na prática, equilibra urgências, capacidade, janelas e restrições operacionais"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente reserva de material?",
+                        "o": [
+                              "separação prévia das peças e consumíveis necessários à ordem",
+                              "autorização formal baseada no risco e nas condições do local",
+                              "verificação de que o ativo cumpre a função e os critérios de retorno",
+                              "limites claros do que será feito e do que fica fora da atividade"
+                        ],
+                        "a": 0,
+                        "e": "reserva de material: separação prévia das peças e consumíveis necessários à ordem Na prática, evita iniciar serviço crítico sem todos os itens compatíveis e disponíveis"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de reserva de material em planejamento e ordens de serviço?",
+                        "o": [
+                              "evita iniciar serviço crítico sem todos os itens compatíveis e disponíveis",
+                              "confirma controles, isolamentos, participantes e validade antes de iniciar",
+                              "impede encerrar a ordem apenas porque a montagem física terminou",
+                              "evita expansão improvisada e garante que riscos e recursos correspondam à intervenção real"
+                        ],
+                        "a": 0,
+                        "e": "reserva de material: separação prévia das peças e consumíveis necessários à ordem Na prática, evita iniciar serviço crítico sem todos os itens compatíveis e disponíveis"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente permissão de trabalho?",
+                        "o": [
+                              "autorização formal baseada no risco e nas condições do local",
+                              "registro de horas, etapas, materiais, medições e desvios ocorridos",
+                              "revisão final da ordem com causa, solução, evidências e pendências",
+                              "classificação baseada em criticidade, risco, impacto e urgência"
+                        ],
+                        "a": 0,
+                        "e": "permissão de trabalho: autorização formal baseada no risco e nas condições do local Na prática, confirma controles, isolamentos, participantes e validade antes de iniciar"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de permissão de trabalho em planejamento e ordens de serviço?",
+                        "o": [
+                              "confirma controles, isolamentos, participantes e validade antes de iniciar",
+                              "alimenta histórico, custos, planejamento futuro e análise de confiabilidade",
+                              "mantém histórico utilizável e gera novas ações quando a correção foi temporária",
+                              "organiza a fila sem confundir pedido antigo com trabalho mais crítico"
+                        ],
+                        "a": 0,
+                        "e": "permissão de trabalho: autorização formal baseada no risco e nas condições do local Na prática, confirma controles, isolamentos, participantes e validade antes de iniciar"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente apontamento de execução?",
+                        "o": [
+                              "registro de horas, etapas, materiais, medições e desvios ocorridos",
+                              "verificação de que o ativo cumpre a função e os critérios de retorno",
+                              "registro controlado que autoriza, descreve e acompanha um trabalho de manutenção",
+                              "plano detalhado de etapas, mão de obra, ferramentas, peças, permissões e tempos"
+                        ],
+                        "a": 0,
+                        "e": "apontamento de execução: registro de horas, etapas, materiais, medições e desvios ocorridos Na prática, alimenta histórico, custos, planejamento futuro e análise de confiabilidade"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de apontamento de execução em planejamento e ordens de serviço?",
+                        "o": [
+                              "alimenta histórico, custos, planejamento futuro e análise de confiabilidade",
+                              "impede encerrar a ordem apenas porque a montagem física terminou",
+                              "reúne ativo, escopo, prioridade, responsáveis, recursos, horários, resultados e evidências",
+                              "prepara a execução para reduzir espera, erro e exposição"
+                        ],
+                        "a": 0,
+                        "e": "apontamento de execução: registro de horas, etapas, materiais, medições e desvios ocorridos Na prática, alimenta histórico, custos, planejamento futuro e análise de confiabilidade"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente teste funcional pós-serviço?",
+                        "o": [
+                              "verificação de que o ativo cumpre a função e os critérios de retorno",
+                              "revisão final da ordem com causa, solução, evidências e pendências",
+                              "limites claros do que será feito e do que fica fora da atividade",
+                              "alocação de trabalhos prontos em horários e equipes disponíveis"
+                        ],
+                        "a": 0,
+                        "e": "teste funcional pós-serviço: verificação de que o ativo cumpre a função e os critérios de retorno Na prática, impede encerrar a ordem apenas porque a montagem física terminou"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de teste funcional pós-serviço em planejamento e ordens de serviço?",
+                        "o": [
+                              "impede encerrar a ordem apenas porque a montagem física terminou",
+                              "mantém histórico utilizável e gera novas ações quando a correção foi temporária",
+                              "evita expansão improvisada e garante que riscos e recursos correspondam à intervenção real",
+                              "equilibra urgências, capacidade, janelas e restrições operacionais"
+                        ],
+                        "a": 0,
+                        "e": "teste funcional pós-serviço: verificação de que o ativo cumpre a função e os critérios de retorno Na prática, impede encerrar a ordem apenas porque a montagem física terminou"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente encerramento técnico?",
+                        "o": [
+                              "revisão final da ordem com causa, solução, evidências e pendências",
+                              "registro controlado que autoriza, descreve e acompanha um trabalho de manutenção",
+                              "classificação baseada em criticidade, risco, impacto e urgência",
+                              "separação prévia das peças e consumíveis necessários à ordem"
+                        ],
+                        "a": 0,
+                        "e": "encerramento técnico: revisão final da ordem com causa, solução, evidências e pendências Na prática, mantém histórico utilizável e gera novas ações quando a correção foi temporária"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de encerramento técnico em planejamento e ordens de serviço?",
+                        "o": [
+                              "mantém histórico utilizável e gera novas ações quando a correção foi temporária",
+                              "reúne ativo, escopo, prioridade, responsáveis, recursos, horários, resultados e evidências",
+                              "organiza a fila sem confundir pedido antigo com trabalho mais crítico",
+                              "evita iniciar serviço crítico sem todos os itens compatíveis e disponíveis"
+                        ],
+                        "a": 0,
+                        "e": "encerramento técnico: revisão final da ordem com causa, solução, evidências e pendências Na prática, mantém histórico utilizável e gera novas ações quando a correção foi temporária"
+                  }
+            ]
+      },
+      {
+            "id": "causa-raiz",
+            "title": "Análise de Causa Raiz",
+            "description": "Problema, evidência, causa, fatores contribuintes, métodos e ações eficazes.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente sintoma?",
+                        "o": [
+                              "manifestação observável de uma condição ou falha",
+                              "evento ou condição diretamente anterior ao efeito observado",
+                              "condição que aumentou probabilidade ou consequência sem ser suficiente sozinha",
+                              "modelo lógico que relaciona combinações de eventos a um resultado indesejado"
+                        ],
+                        "a": 0,
+                        "e": "sintoma: manifestação observável de uma condição ou falha Na prática, inicia a investigação sem ser confundido automaticamente com a causa fundamental"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de sintoma em análise de causa raiz?",
+                        "o": [
+                              "inicia a investigação sem ser confundido automaticamente com a causa fundamental",
+                              "explica o mecanismo próximo, mas pode depender de fatores mais profundos",
+                              "amplia a análise para processo, ambiente, projeto, treinamento e supervisão",
+                              "avalia caminhos AND e OR e identifica pontos onde controles podem interromper a falha"
+                        ],
+                        "a": 0,
+                        "e": "sintoma: manifestação observável de uma condição ou falha Na prática, inicia a investigação sem ser confundido automaticamente com a causa fundamental"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente causa imediata?",
+                        "o": [
+                              "evento ou condição diretamente anterior ao efeito observado",
+                              "fator controlável cuja correção reduz de modo relevante a recorrência",
+                              "técnica iterativa de perguntar por que para aprofundar a cadeia causal",
+                              "dado que sustenta ou refuta uma relação entre condição e efeito"
+                        ],
+                        "a": 0,
+                        "e": "causa imediata: evento ou condição diretamente anterior ao efeito observado Na prática, explica o mecanismo próximo, mas pode depender de fatores mais profundos"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de causa imediata em análise de causa raiz?",
+                        "o": [
+                              "explica o mecanismo próximo, mas pode depender de fatores mais profundos",
+                              "direciona ação além da simples troca do componente que falhou",
+                              "organiza raciocínio simples quando cada resposta é sustentada por evidência",
+                              "separa conclusão técnica de coincidência temporal ou opinião"
+                        ],
+                        "a": 0,
+                        "e": "causa imediata: evento ou condição diretamente anterior ao efeito observado Na prática, explica o mecanismo próximo, mas pode depender de fatores mais profundos"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente causa raiz?",
+                        "o": [
+                              "fator controlável cuja correção reduz de modo relevante a recorrência",
+                              "condição que aumentou probabilidade ou consequência sem ser suficiente sozinha",
+                              "estrutura que agrupa hipóteses por categorias para investigação",
+                              "medida que elimina ou controla causa identificada de uma não conformidade"
+                        ],
+                        "a": 0,
+                        "e": "causa raiz: fator controlável cuja correção reduz de modo relevante a recorrência Na prática, direciona ação além da simples troca do componente que falhou"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de causa raiz em análise de causa raiz?",
+                        "o": [
+                              "direciona ação além da simples troca do componente que falhou",
+                              "amplia a análise para processo, ambiente, projeto, treinamento e supervisão",
+                              "evita concentrar a análise na primeira explicação disponível",
+                              "reduz recorrência e precisa de responsável, prazo e verificação"
+                        ],
+                        "a": 0,
+                        "e": "causa raiz: fator controlável cuja correção reduz de modo relevante a recorrência Na prática, direciona ação além da simples troca do componente que falhou"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente fator contribuinte?",
+                        "o": [
+                              "condição que aumentou probabilidade ou consequência sem ser suficiente sozinha",
+                              "técnica iterativa de perguntar por que para aprofundar a cadeia causal",
+                              "modelo lógico que relaciona combinações de eventos a um resultado indesejado",
+                              "avaliação posterior para confirmar que a ação produziu o resultado esperado"
+                        ],
+                        "a": 0,
+                        "e": "fator contribuinte: condição que aumentou probabilidade ou consequência sem ser suficiente sozinha Na prática, amplia a análise para processo, ambiente, projeto, treinamento e supervisão"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de fator contribuinte em análise de causa raiz?",
+                        "o": [
+                              "amplia a análise para processo, ambiente, projeto, treinamento e supervisão",
+                              "organiza raciocínio simples quando cada resposta é sustentada por evidência",
+                              "avalia caminhos AND e OR e identifica pontos onde controles podem interromper a falha",
+                              "impede fechar a causa raiz apenas com a instalação da solução"
+                        ],
+                        "a": 0,
+                        "e": "fator contribuinte: condição que aumentou probabilidade ou consequência sem ser suficiente sozinha Na prática, amplia a análise para processo, ambiente, projeto, treinamento e supervisão"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente cinco porquês?",
+                        "o": [
+                              "técnica iterativa de perguntar por que para aprofundar a cadeia causal",
+                              "estrutura que agrupa hipóteses por categorias para investigação",
+                              "dado que sustenta ou refuta uma relação entre condição e efeito",
+                              "manifestação observável de uma condição ou falha"
+                        ],
+                        "a": 0,
+                        "e": "cinco porquês: técnica iterativa de perguntar por que para aprofundar a cadeia causal Na prática, organiza raciocínio simples quando cada resposta é sustentada por evidência"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de cinco porquês em análise de causa raiz?",
+                        "o": [
+                              "organiza raciocínio simples quando cada resposta é sustentada por evidência",
+                              "evita concentrar a análise na primeira explicação disponível",
+                              "separa conclusão técnica de coincidência temporal ou opinião",
+                              "inicia a investigação sem ser confundido automaticamente com a causa fundamental"
+                        ],
+                        "a": 0,
+                        "e": "cinco porquês: técnica iterativa de perguntar por que para aprofundar a cadeia causal Na prática, organiza raciocínio simples quando cada resposta é sustentada por evidência"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente diagrama de causa e efeito?",
+                        "o": [
+                              "estrutura que agrupa hipóteses por categorias para investigação",
+                              "modelo lógico que relaciona combinações de eventos a um resultado indesejado",
+                              "medida que elimina ou controla causa identificada de uma não conformidade",
+                              "evento ou condição diretamente anterior ao efeito observado"
+                        ],
+                        "a": 0,
+                        "e": "diagrama de causa e efeito: estrutura que agrupa hipóteses por categorias para investigação Na prática, evita concentrar a análise na primeira explicação disponível"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de diagrama de causa e efeito em análise de causa raiz?",
+                        "o": [
+                              "evita concentrar a análise na primeira explicação disponível",
+                              "avalia caminhos AND e OR e identifica pontos onde controles podem interromper a falha",
+                              "reduz recorrência e precisa de responsável, prazo e verificação",
+                              "explica o mecanismo próximo, mas pode depender de fatores mais profundos"
+                        ],
+                        "a": 0,
+                        "e": "diagrama de causa e efeito: estrutura que agrupa hipóteses por categorias para investigação Na prática, evita concentrar a análise na primeira explicação disponível"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente árvore de falhas?",
+                        "o": [
+                              "modelo lógico que relaciona combinações de eventos a um resultado indesejado",
+                              "dado que sustenta ou refuta uma relação entre condição e efeito",
+                              "avaliação posterior para confirmar que a ação produziu o resultado esperado",
+                              "fator controlável cuja correção reduz de modo relevante a recorrência"
+                        ],
+                        "a": 0,
+                        "e": "árvore de falhas: modelo lógico que relaciona combinações de eventos a um resultado indesejado Na prática, avalia caminhos AND e OR e identifica pontos onde controles podem interromper a falha"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de árvore de falhas em análise de causa raiz?",
+                        "o": [
+                              "avalia caminhos AND e OR e identifica pontos onde controles podem interromper a falha",
+                              "separa conclusão técnica de coincidência temporal ou opinião",
+                              "impede fechar a causa raiz apenas com a instalação da solução",
+                              "direciona ação além da simples troca do componente que falhou"
+                        ],
+                        "a": 0,
+                        "e": "árvore de falhas: modelo lógico que relaciona combinações de eventos a um resultado indesejado Na prática, avalia caminhos AND e OR e identifica pontos onde controles podem interromper a falha"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente evidência causal?",
+                        "o": [
+                              "dado que sustenta ou refuta uma relação entre condição e efeito",
+                              "medida que elimina ou controla causa identificada de uma não conformidade",
+                              "manifestação observável de uma condição ou falha",
+                              "condição que aumentou probabilidade ou consequência sem ser suficiente sozinha"
+                        ],
+                        "a": 0,
+                        "e": "evidência causal: dado que sustenta ou refuta uma relação entre condição e efeito Na prática, separa conclusão técnica de coincidência temporal ou opinião"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de evidência causal em análise de causa raiz?",
+                        "o": [
+                              "separa conclusão técnica de coincidência temporal ou opinião",
+                              "reduz recorrência e precisa de responsável, prazo e verificação",
+                              "inicia a investigação sem ser confundido automaticamente com a causa fundamental",
+                              "amplia a análise para processo, ambiente, projeto, treinamento e supervisão"
+                        ],
+                        "a": 0,
+                        "e": "evidência causal: dado que sustenta ou refuta uma relação entre condição e efeito Na prática, separa conclusão técnica de coincidência temporal ou opinião"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente ação corretiva?",
+                        "o": [
+                              "medida que elimina ou controla causa identificada de uma não conformidade",
+                              "avaliação posterior para confirmar que a ação produziu o resultado esperado",
+                              "evento ou condição diretamente anterior ao efeito observado",
+                              "técnica iterativa de perguntar por que para aprofundar a cadeia causal"
+                        ],
+                        "a": 0,
+                        "e": "ação corretiva: medida que elimina ou controla causa identificada de uma não conformidade Na prática, reduz recorrência e precisa de responsável, prazo e verificação"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de ação corretiva em análise de causa raiz?",
+                        "o": [
+                              "reduz recorrência e precisa de responsável, prazo e verificação",
+                              "impede fechar a causa raiz apenas com a instalação da solução",
+                              "explica o mecanismo próximo, mas pode depender de fatores mais profundos",
+                              "organiza raciocínio simples quando cada resposta é sustentada por evidência"
+                        ],
+                        "a": 0,
+                        "e": "ação corretiva: medida que elimina ou controla causa identificada de uma não conformidade Na prática, reduz recorrência e precisa de responsável, prazo e verificação"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente verificação de eficácia?",
+                        "o": [
+                              "avaliação posterior para confirmar que a ação produziu o resultado esperado",
+                              "manifestação observável de uma condição ou falha",
+                              "fator controlável cuja correção reduz de modo relevante a recorrência",
+                              "estrutura que agrupa hipóteses por categorias para investigação"
+                        ],
+                        "a": 0,
+                        "e": "verificação de eficácia: avaliação posterior para confirmar que a ação produziu o resultado esperado Na prática, impede fechar a causa raiz apenas com a instalação da solução"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de verificação de eficácia em análise de causa raiz?",
+                        "o": [
+                              "impede fechar a causa raiz apenas com a instalação da solução",
+                              "inicia a investigação sem ser confundido automaticamente com a causa fundamental",
+                              "direciona ação além da simples troca do componente que falhou",
+                              "evita concentrar a análise na primeira explicação disponível"
+                        ],
+                        "a": 0,
+                        "e": "verificação de eficácia: avaliação posterior para confirmar que a ação produziu o resultado esperado Na prática, impede fechar a causa raiz apenas com a instalação da solução"
+                  }
+            ]
+      },
+      {
+            "id": "confiabilidade-disponibilidade",
+            "title": "Confiabilidade e Disponibilidade",
+            "description": "Falhas, reparos, MTBF, MTTR, disponibilidade, redundância e risco.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente confiabilidade?",
+                        "o": [
+                              "probabilidade de um item cumprir a função sem falhar por tempo e condições definidos",
+                              "proporção ou probabilidade de a função estar utilizável quando requerida",
+                              "tempo médio até falha de itens ou missões não tratados como reparáveis no cálculo",
+                              "existência de componente ou caminho alternativo capaz de manter a função"
+                        ],
+                        "a": 0,
+                        "e": "confiabilidade: probabilidade de um item cumprir a função sem falhar por tempo e condições definidos Na prática, compara desempenho quando missão, ambiente e critério de falha estão claros"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de confiabilidade em confiabilidade e disponibilidade?",
+                        "o": [
+                              "compara desempenho quando missão, ambiente e critério de falha estão claros",
+                              "combina frequência de falhas, reparo, suporte e condições do acordo",
+                              "apoia estimativa de vida e comparação quando o modelo é apropriado",
+                              "reduz impacto de falha somente quando capacidade, independência e testes são adequados"
+                        ],
+                        "a": 0,
+                        "e": "confiabilidade: probabilidade de um item cumprir a função sem falhar por tempo e condições definidos Na prática, compara desempenho quando missão, ambiente e critério de falha estão claros"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente disponibilidade?",
+                        "o": [
+                              "proporção ou probabilidade de a função estar utilizável quando requerida",
+                              "tempo médio entre falhas reparáveis dentro de uma população e método definidos",
+                              "tempo médio de reparo, restauração ou resolução segundo definição explícita",
+                              "elemento cuja perda interrompe a função sem alternativa efetiva"
+                        ],
+                        "a": 0,
+                        "e": "disponibilidade: proporção ou probabilidade de a função estar utilizável quando requerida Na prática, combina frequência de falhas, reparo, suporte e condições do acordo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de disponibilidade em confiabilidade e disponibilidade?",
+                        "o": [
+                              "combina frequência de falhas, reparo, suporte e condições do acordo",
+                              "acompanha tendência sem ser tratado como prazo garantido para cada ativo",
+                              "mede capacidade de recuperação quando marcos e exclusões são consistentes",
+                              "orienta redesenho, sobressalente, monitoramento ou contingência"
+                        ],
+                        "a": 0,
+                        "e": "disponibilidade: proporção ou probabilidade de a função estar utilizável quando requerida Na prática, combina frequência de falhas, reparo, suporte e condições do acordo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente MTBF?",
+                        "o": [
+                              "tempo médio entre falhas reparáveis dentro de uma população e método definidos",
+                              "tempo médio até falha de itens ou missões não tratados como reparáveis no cálculo",
+                              "frequência de falhas por unidade de tempo, uso ou população",
+                              "modelo de taxa de falha com regiões inicial, aleatória e de desgaste"
+                        ],
+                        "a": 0,
+                        "e": "MTBF: tempo médio entre falhas reparáveis dentro de uma população e método definidos Na prática, acompanha tendência sem ser tratado como prazo garantido para cada ativo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de MTBF em confiabilidade e disponibilidade?",
+                        "o": [
+                              "acompanha tendência sem ser tratado como prazo garantido para cada ativo",
+                              "apoia estimativa de vida e comparação quando o modelo é apropriado",
+                              "revela mudanças de desempenho e subsidia estoque e manutenção",
+                              "ajuda a discutir estratégias ao longo do ciclo de vida sem presumir que todo ativo segue a curva"
+                        ],
+                        "a": 0,
+                        "e": "MTBF: tempo médio entre falhas reparáveis dentro de uma população e método definidos Na prática, acompanha tendência sem ser tratado como prazo garantido para cada ativo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente MTTF?",
+                        "o": [
+                              "tempo médio até falha de itens ou missões não tratados como reparáveis no cálculo",
+                              "tempo médio de reparo, restauração ou resolução segundo definição explícita",
+                              "existência de componente ou caminho alternativo capaz de manter a função",
+                              "análise de modos de falha, efeitos, causas e controles"
+                        ],
+                        "a": 0,
+                        "e": "MTTF: tempo médio até falha de itens ou missões não tratados como reparáveis no cálculo Na prática, apoia estimativa de vida e comparação quando o modelo é apropriado"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de MTTF em confiabilidade e disponibilidade?",
+                        "o": [
+                              "apoia estimativa de vida e comparação quando o modelo é apropriado",
+                              "mede capacidade de recuperação quando marcos e exclusões são consistentes",
+                              "reduz impacto de falha somente quando capacidade, independência e testes são adequados",
+                              "prioriza riscos e ações preventivas antes de o modo de falha ocorrer"
+                        ],
+                        "a": 0,
+                        "e": "MTTF: tempo médio até falha de itens ou missões não tratados como reparáveis no cálculo Na prática, apoia estimativa de vida e comparação quando o modelo é apropriado"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente MTTR?",
+                        "o": [
+                              "tempo médio de reparo, restauração ou resolução segundo definição explícita",
+                              "frequência de falhas por unidade de tempo, uso ou população",
+                              "elemento cuja perda interrompe a função sem alternativa efetiva",
+                              "probabilidade de um item cumprir a função sem falhar por tempo e condições definidos"
+                        ],
+                        "a": 0,
+                        "e": "MTTR: tempo médio de reparo, restauração ou resolução segundo definição explícita Na prática, mede capacidade de recuperação quando marcos e exclusões são consistentes"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de MTTR em confiabilidade e disponibilidade?",
+                        "o": [
+                              "mede capacidade de recuperação quando marcos e exclusões são consistentes",
+                              "revela mudanças de desempenho e subsidia estoque e manutenção",
+                              "orienta redesenho, sobressalente, monitoramento ou contingência",
+                              "compara desempenho quando missão, ambiente e critério de falha estão claros"
+                        ],
+                        "a": 0,
+                        "e": "MTTR: tempo médio de reparo, restauração ou resolução segundo definição explícita Na prática, mede capacidade de recuperação quando marcos e exclusões são consistentes"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente taxa de falha?",
+                        "o": [
+                              "frequência de falhas por unidade de tempo, uso ou população",
+                              "existência de componente ou caminho alternativo capaz de manter a função",
+                              "modelo de taxa de falha com regiões inicial, aleatória e de desgaste",
+                              "proporção ou probabilidade de a função estar utilizável quando requerida"
+                        ],
+                        "a": 0,
+                        "e": "taxa de falha: frequência de falhas por unidade de tempo, uso ou população Na prática, revela mudanças de desempenho e subsidia estoque e manutenção"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de taxa de falha em confiabilidade e disponibilidade?",
+                        "o": [
+                              "revela mudanças de desempenho e subsidia estoque e manutenção",
+                              "reduz impacto de falha somente quando capacidade, independência e testes são adequados",
+                              "ajuda a discutir estratégias ao longo do ciclo de vida sem presumir que todo ativo segue a curva",
+                              "combina frequência de falhas, reparo, suporte e condições do acordo"
+                        ],
+                        "a": 0,
+                        "e": "taxa de falha: frequência de falhas por unidade de tempo, uso ou população Na prática, revela mudanças de desempenho e subsidia estoque e manutenção"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente redundância?",
+                        "o": [
+                              "existência de componente ou caminho alternativo capaz de manter a função",
+                              "elemento cuja perda interrompe a função sem alternativa efetiva",
+                              "análise de modos de falha, efeitos, causas e controles",
+                              "tempo médio entre falhas reparáveis dentro de uma população e método definidos"
+                        ],
+                        "a": 0,
+                        "e": "redundância: existência de componente ou caminho alternativo capaz de manter a função Na prática, reduz impacto de falha somente quando capacidade, independência e testes são adequados"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de redundância em confiabilidade e disponibilidade?",
+                        "o": [
+                              "reduz impacto de falha somente quando capacidade, independência e testes são adequados",
+                              "orienta redesenho, sobressalente, monitoramento ou contingência",
+                              "prioriza riscos e ações preventivas antes de o modo de falha ocorrer",
+                              "acompanha tendência sem ser tratado como prazo garantido para cada ativo"
+                        ],
+                        "a": 0,
+                        "e": "redundância: existência de componente ou caminho alternativo capaz de manter a função Na prática, reduz impacto de falha somente quando capacidade, independência e testes são adequados"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente ponto único de falha?",
+                        "o": [
+                              "elemento cuja perda interrompe a função sem alternativa efetiva",
+                              "modelo de taxa de falha com regiões inicial, aleatória e de desgaste",
+                              "probabilidade de um item cumprir a função sem falhar por tempo e condições definidos",
+                              "tempo médio até falha de itens ou missões não tratados como reparáveis no cálculo"
+                        ],
+                        "a": 0,
+                        "e": "ponto único de falha: elemento cuja perda interrompe a função sem alternativa efetiva Na prática, orienta redesenho, sobressalente, monitoramento ou contingência"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de ponto único de falha em confiabilidade e disponibilidade?",
+                        "o": [
+                              "orienta redesenho, sobressalente, monitoramento ou contingência",
+                              "ajuda a discutir estratégias ao longo do ciclo de vida sem presumir que todo ativo segue a curva",
+                              "compara desempenho quando missão, ambiente e critério de falha estão claros",
+                              "apoia estimativa de vida e comparação quando o modelo é apropriado"
+                        ],
+                        "a": 0,
+                        "e": "ponto único de falha: elemento cuja perda interrompe a função sem alternativa efetiva Na prática, orienta redesenho, sobressalente, monitoramento ou contingência"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente curva da banheira?",
+                        "o": [
+                              "modelo de taxa de falha com regiões inicial, aleatória e de desgaste",
+                              "análise de modos de falha, efeitos, causas e controles",
+                              "proporção ou probabilidade de a função estar utilizável quando requerida",
+                              "tempo médio de reparo, restauração ou resolução segundo definição explícita"
+                        ],
+                        "a": 0,
+                        "e": "curva da banheira: modelo de taxa de falha com regiões inicial, aleatória e de desgaste Na prática, ajuda a discutir estratégias ao longo do ciclo de vida sem presumir que todo ativo segue a curva"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de curva da banheira em confiabilidade e disponibilidade?",
+                        "o": [
+                              "ajuda a discutir estratégias ao longo do ciclo de vida sem presumir que todo ativo segue a curva",
+                              "prioriza riscos e ações preventivas antes de o modo de falha ocorrer",
+                              "combina frequência de falhas, reparo, suporte e condições do acordo",
+                              "mede capacidade de recuperação quando marcos e exclusões são consistentes"
+                        ],
+                        "a": 0,
+                        "e": "curva da banheira: modelo de taxa de falha com regiões inicial, aleatória e de desgaste Na prática, ajuda a discutir estratégias ao longo do ciclo de vida sem presumir que todo ativo segue a curva"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente FMEA?",
+                        "o": [
+                              "análise de modos de falha, efeitos, causas e controles",
+                              "probabilidade de um item cumprir a função sem falhar por tempo e condições definidos",
+                              "tempo médio entre falhas reparáveis dentro de uma população e método definidos",
+                              "frequência de falhas por unidade de tempo, uso ou população"
+                        ],
+                        "a": 0,
+                        "e": "FMEA: análise de modos de falha, efeitos, causas e controles Na prática, prioriza riscos e ações preventivas antes de o modo de falha ocorrer"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de FMEA em confiabilidade e disponibilidade?",
+                        "o": [
+                              "prioriza riscos e ações preventivas antes de o modo de falha ocorrer",
+                              "compara desempenho quando missão, ambiente e critério de falha estão claros",
+                              "acompanha tendência sem ser tratado como prazo garantido para cada ativo",
+                              "revela mudanças de desempenho e subsidia estoque e manutenção"
+                        ],
+                        "a": 0,
+                        "e": "FMEA: análise de modos de falha, efeitos, causas e controles Na prática, prioriza riscos e ações preventivas antes de o modo de falha ocorrer"
+                  }
+            ]
+      },
+      {
+            "id": "mop-sop-eop",
+            "title": "MOP, SOP e EOP",
+            "description": "Procedimentos, mudanças, pré-condições, validação, rollback e disciplina operacional.",
+            "questions": [
+                  {
+                        "q": "Em uma operação estruturada, para que serve um SOP?",
+                        "o": [
+                              "Descrever uma rotina operacional padronizada",
+                              "Registrar apenas falhas de fornecedores",
+                              "Autorizar qualquer mudança emergencial",
+                              "Substituir o treinamento prático"
+                        ],
+                        "a": 0,
+                        "e": "SOP é um procedimento operacional padrão para atividades recorrentes. A nomenclatura pode variar, mas o objetivo é executar de modo consistente, seguro e rastreável."
+                  },
+                  {
+                        "q": "Qual é o propósito típico de um MOP?",
+                        "o": [
+                              "Definir o método detalhado para executar uma atividade planejada ou mudança",
+                              "Listar somente telefones de emergência",
+                              "Controlar a folha de pagamento",
+                              "Eliminar a necessidade de aprovação"
+                        ],
+                        "a": 0,
+                        "e": "Um Method of Procedure descreve etapas, responsabilidades, pré-requisitos, riscos, validações e retorno para uma intervenção planejada."
+                  },
+                  {
+                        "q": "Quando um EOP é utilizado?",
+                        "o": [
+                              "Em resposta a condição anormal ou emergência prevista",
+                              "Apenas para reuniões administrativas",
+                              "Para compras sem relação com operação",
+                              "Somente após o encerramento do incidente"
+                        ],
+                        "a": 0,
+                        "e": "Emergency Operating Procedures orientam respostas a cenários anormais ou emergenciais. Devem ser conhecidos, acessíveis, treinados e adaptados às condições reais."
+                  },
+                  {
+                        "q": "Antes de executar uma mudança em sistema crítico, qual conjunto é mais adequado?",
+                        "o": [
+                              "Escopo, risco, aprovações, pré-condições, comunicação, validação e plano de retorno",
+                              "Somente nome do técnico",
+                              "Apenas data e preço do equipamento",
+                              "Nenhuma documentação se a tarefa parecer simples"
+                        ],
+                        "a": 0,
+                        "e": "Uma mudança controlada precisa esclarecer o que será feito, riscos, autorizações, estado inicial, critérios de sucesso, comunicação, validações e como retornar com segurança."
+                  },
+                  {
+                        "q": "O que é um plano de retorno ou rollback?",
+                        "o": [
+                              "Uma justificativa para ignorar falhas",
+                              "Uma estratégia previamente definida para restaurar o estado seguro se a mudança não funcionar",
+                              "Um relatório de ponto eletrônico",
+                              "Uma cópia do contrato do fornecedor"
+                        ],
+                        "a": 1,
+                        "e": "Rollback define gatilhos, passos, recursos e responsabilidades para voltar a um estado conhecido e seguro quando os critérios da mudança não são atendidos."
+                  },
+                  {
+                        "q": "Qual é o benefício de uma revisão por segundo profissional antes de uma intervenção crítica?",
+                        "o": [
+                              "Transferir toda responsabilidade ao revisor",
+                              "Detectar ambiguidades, riscos, sequência incorreta e alvo errado antes da execução",
+                              "Eliminar a necessidade de capacitação",
+                              "Tornar o procedimento secreto"
+                        ],
+                        "a": 1,
+                        "e": "A revisão independente ajuda a identificar erros latentes e confirmar escopo, passos e controles. Responsabilidades continuam definidas no processo."
+                  },
+                  {
+                        "q": "Uma janela de manutenção aprovada significa que:",
+                        "o": [
+                              "Todo risco foi eliminado",
+                              "A atividade pode seguir sem comunicação",
+                              "Existe período autorizado, mas controles, validações e condições de parada continuam necessários",
+                              "Qualquer outro trabalho pode ser feito ao mesmo tempo"
+                        ],
+                        "a": 2,
+                        "e": "A janela organiza impacto e autorização. Ela não remove riscos nem substitui avaliação do estado real, coordenação, critérios de interrupção e testes pós-atividade."
+                  },
+                  {
+                        "q": "Por que trabalhos simultâneos em caminhos redundantes exigem atenção especial?",
+                        "o": [
+                              "Porque podem reduzir ou eliminar a proteção que a redundância deveria oferecer",
+                              "Porque sempre melhoram a disponibilidade",
+                              "Porque não precisam de aprovação",
+                              "Porque o segundo caminho nunca é utilizado"
+                        ],
+                        "a": 0,
+                        "e": "Intervenções concorrentes podem criar falhas de modo comum ou deixar a carga sem alternativa. Coordenação e análise de dependências são essenciais."
+                  },
+                  {
+                        "q": "O que uma passagem de turno de qualidade deve incluir?",
+                        "o": [
+                              "Somente cumprimentos entre equipes",
+                              "Estado dos sistemas, alarmes, trabalhos em andamento, riscos, pendências e responsáveis",
+                              "Apenas a previsão do tempo",
+                              "Senhas pessoais dos operadores"
+                        ],
+                        "a": 1,
+                        "e": "O handoff deve permitir continuidade situacional: o próximo turno precisa entender condições atuais, alterações, eventos, riscos, tarefas e pontos de escalonamento."
+                  },
+                  {
+                        "q": "Qual é uma característica essencial de um registro operacional útil?",
+                        "o": [
+                              "Ser genérico e sem horário",
+                              "Conter fatos verificáveis, horários, ações, resultados e identificação responsável",
+                              "Ser apagado ao fim de cada turno",
+                              "Registrar apenas eventos bem-sucedidos"
+                        ],
+                        "a": 1,
+                        "e": "Registros objetivos e cronológicos apoiam coordenação, auditoria e investigação. Devem distinguir observações, decisões e resultados sem esconder desvios."
+                  },
+                  {
+                        "q": "Um operador identifica uma melhoria e quer alterar imediatamente um limite de alarme. Qual é a conduta correta?",
+                        "o": [
+                              "Alterar sem registro para ganhar tempo",
+                              "Seguir o processo de mudança, avaliar impacto e obter autorização antes da alteração",
+                              "Desativar todos os alarmes relacionados",
+                              "Pedir a senha de outro profissional"
+                        ],
+                        "a": 1,
+                        "e": "Mesmo mudanças bem-intencionadas podem ocultar condições ou gerar falsos eventos. Limites precisam de base técnica, controle de mudança e rastreabilidade."
+                  },
+                  {
+                        "q": "Antes de retirar um componente redundante para manutenção, deve-se primeiro:",
+                        "o": [
+                              "Confirmar que o caminho restante está disponível, capaz e sem condição conflitante",
+                              "Desligar também o caminho alternativo",
+                              "Ignorar alarmes anteriores",
+                              "Considerar redundância como garantia absoluta"
+                        ],
+                        "a": 0,
+                        "e": "É preciso validar o estado e a capacidade do caminho que sustentará a carga, além de checar trabalhos, alarmes e dependências que possam comprometer a resiliência."
+                  },
+                  {
+                        "q": "Qual é o objetivo da manutenção preventiva?",
+                        "o": [
+                              "Intervir somente depois da falha",
+                              "Reduzir probabilidade de falha e degradação por inspeções e ações planejadas",
+                              "Garantir que nenhum componente falhará",
+                              "Substituir toda manutenção corretiva"
+                        ],
+                        "a": 1,
+                        "e": "A manutenção preventiva atua antes da falha com base em tempo, uso, condição e recomendações. Ela reduz riscos, mas não oferece garantia absoluta."
+                  },
+                  {
+                        "q": "Após uma intervenção, o que caracteriza uma validação adequada?",
+                        "o": [
+                              "Apenas confirmar que não houve fumaça",
+                              "Verificar critérios de sucesso, alarmes, telemetria, redundância e função afetada",
+                              "Encerrar o chamado antes de qualquer teste",
+                              "Esperar o próximo turno descobrir problemas"
+                        ],
+                        "a": 1,
+                        "e": "A validação deve confirmar não apenas que a tarefa terminou, mas que o serviço e os suportes retornaram ao estado esperado e observável."
+                  },
+                  {
+                        "q": "Por que a sincronização de horário entre sistemas é importante?",
+                        "o": [
+                              "Para aumentar a temperatura da sala",
+                              "Para correlacionar eventos, logs e ações em uma linha do tempo confiável",
+                              "Para dispensar identificação de ativos",
+                              "Para reduzir o número de racks"
+                        ],
+                        "a": 1,
+                        "e": "Relógios consistentes permitem correlacionar alarmes, mudanças e registros de diferentes fontes, facilitando resposta e análise posterior."
+                  },
+                  {
+                        "q": "Qual prática de organização reduz riscos operacionais no ambiente técnico?",
+                        "o": [
+                              "Manter embalagens em corredores para uso futuro",
+                              "Remover materiais desnecessários, controlar ferramentas e manter rotas e painéis acessíveis",
+                              "Apoiar objetos sobre equipamentos energizados",
+                              "Deixar portas de racks abertas sem necessidade"
+                        ],
+                        "a": 1,
+                        "e": "Boa organização evita obstruções, contaminação, tropeços, entradas de ar bloqueadas e ferramentas esquecidas, além de preservar acessos necessários."
+                  },
+                  {
+                        "q": "Um recurso se aproxima do limite de capacidade, mas ainda não há falha. O melhor curso é:",
+                        "o": [
+                              "Aguardar a indisponibilidade",
+                              "Analisar tendência, margem, redundância e demanda, abrindo ação antes do esgotamento",
+                              "Ocultar o dado para evitar alarmes",
+                              "Aumentar o limite sem estudo"
+                        ],
+                        "a": 1,
+                        "e": "A gestão de capacidade é preventiva. Tendências e margens permitem planejar expansão ou redistribuição antes que desempenho ou resiliência sejam afetados."
+                  },
+                  {
+                        "q": "Que evidência é mais útil ao comprovar uma etapa de procedimento?",
+                        "o": [
+                              "Uma lembrança informal no fim da semana",
+                              "Leitura ou teste registrado, com horário, ativo e resultado conforme a política",
+                              "Um comentário sem identificação",
+                              "Uma fotografia em área proibida"
+                        ],
+                        "a": 1,
+                        "e": "Evidência deve ser verificável, autorizada e associada ao passo executado. O formato pode ser leitura, captura do sistema, checklist ou teste, conforme regras locais."
+                  },
+                  {
+                        "q": "Durante uma atividade planejada, surge uma condição diferente da prevista. O operador deve:",
+                        "o": [
+                              "Improvisar até concluir",
+                              "Pausar em estado seguro, avaliar a condição e escalar conforme os critérios do procedimento",
+                              "Apagar o registro da mudança",
+                              "Pedir que outra equipe assuma sem contexto"
+                        ],
+                        "a": 1,
+                        "e": "Desvios invalidam premissas do plano. Parar com segurança e reavaliar evita que uma sequência planejada seja aplicada a um cenário para o qual não foi analisada."
+                  },
+                  {
+                        "q": "Qual comunicação é mais adequada durante uma mudança crítica?",
+                        "o": [
+                              "Atualizações objetivas em marcos definidos, informando estado, desvios e próximos passos",
+                              "Mensagens apenas depois do encerramento",
+                              "Rumores sem confirmação para ganhar rapidez",
+                              "Uso de canais pessoais não autorizados"
+                        ],
+                        "a": 0,
+                        "e": "Comunicação clara e cadenciada mantém envolvidos conscientes do risco e do andamento, usando canais e destinatários definidos no plano."
+                  }
+            ]
+      },
+      {
+            "id": "mudancas-licoes",
+            "title": "Mudanças e Lições Aprendidas",
+            "description": "Coordenação, linha do tempo, recuperação, causa, ações e melhoria contínua.",
+            "questions": [
+                  {
+                        "q": "Em qualquer incidente técnico, qual prioridade vem antes da continuidade do serviço?",
+                        "o": [
+                              "A segurança das pessoas",
+                              "A aparência do painel de monitoramento",
+                              "O prazo do relatório mensal",
+                              "A preservação de uma mudança não essencial"
+                        ],
+                        "a": 0,
+                        "e": "Nenhum objetivo de disponibilidade justifica expor pessoas a perigo. A resposta deve proteger vidas, controlar riscos e então estabilizar e recuperar o serviço."
+                  },
+                  {
+                        "q": "Na triagem inicial de um incidente, o que deve ser determinado?",
+                        "o": [
+                              "Somente quem estava no turno",
+                              "O que ocorreu, quando, quais ativos e serviços foram afetados e se a condição continua ativa",
+                              "A causa raiz definitiva antes de qualquer ação",
+                              "O custo de todos os equipamentos do prédio"
+                        ],
+                        "a": 1,
+                        "e": "A triagem delimita evento, tempo, escopo, impacto e estado atual. A causa raiz normalmente requer análise posterior e não deve atrasar ações urgentes de proteção."
+                  },
+                  {
+                        "q": "Qual é a função principal de um coordenador ou comandante de incidente?",
+                        "o": [
+                              "Executar sozinho todas as tarefas técnicas",
+                              "Definir prioridades, coordenar frentes, manter visão geral e garantir comunicação e decisões",
+                              "Substituir todas as equipes especializadas",
+                              "Ocultar informações até o encerramento"
+                        ],
+                        "a": 1,
+                        "e": "Uma liderança clara evita decisões conflitantes, distribui responsabilidades e mantém foco em segurança, impacto, recuperação e comunicação."
+                  },
+                  {
+                        "q": "Qual atualização de status é mais útil aos envolvidos?",
+                        "o": [
+                              "Estamos vendo aqui",
+                              "Às 14h20, perda do caminho A; carga estável no caminho B; equipe elétrica validando causa; próxima atualização às 14h35",
+                              "Provavelmente alguém errou",
+                              "Sem novidades, não perguntem"
+                        ],
+                        "a": 1,
+                        "e": "Uma boa atualização traz horário, fatos, impacto, estado atual, ação em curso, riscos relevantes e o momento do próximo comunicado, sem especulação."
+                  },
+                  {
+                        "q": "Como diferenciar fato de hipótese durante a resposta?",
+                        "o": [
+                              "Apresentar ambos como certeza",
+                              "Rotular claramente o que foi observado e o que ainda está em investigação",
+                              "Evitar registrar medições",
+                              "Escolher a hipótese mais popular"
+                        ],
+                        "a": 1,
+                        "e": "Separar evidência de interpretação reduz decisões baseadas em suposição e preserva a qualidade da linha do tempo e da análise."
+                  },
+                  {
+                        "q": "Por que manter uma linha do tempo do incidente?",
+                        "o": [
+                              "Para aumentar o volume do relatório",
+                              "Para registrar eventos, decisões, ações e resultados em ordem, apoiando coordenação e aprendizado",
+                              "Para substituir todos os logs técnicos",
+                              "Para atribuir culpa rapidamente"
+                        ],
+                        "a": 1,
+                        "e": "Uma cronologia confiável ajuda o turno atual, a passagem de responsabilidade e a revisão posterior. Deve usar horários consistentes e fontes identificáveis."
+                  },
+                  {
+                        "q": "Qual é a diferença entre estabilizar e eliminar a causa raiz?",
+                        "o": [
+                              "Não há diferença",
+                              "Estabilizar reduz o impacto imediato; eliminar a causa trata o mecanismo fundamental e pode exigir trabalho posterior",
+                              "A causa raiz sempre é resolvida antes da contenção",
+                              "Estabilização serve apenas para relatórios"
+                        ],
+                        "a": 1,
+                        "e": "A resposta pode usar medidas temporárias para recuperar segurança ou serviço. A correção definitiva é planejada quando há compreensão e controles suficientes."
+                  },
+                  {
+                        "q": "Ao comunicar impacto, o operador deve:",
+                        "o": [
+                              "Usar métricas observáveis e indicar limites do que se sabe",
+                              "Aumentar números para obter atenção",
+                              "Informar que não há impacto sem verificar",
+                              "Divulgar dados sensíveis em canal público"
+                        ],
+                        "a": 0,
+                        "e": "Impacto deve ser objetivo, baseado em evidências e compartilhado no canal e com o público apropriados, deixando explícitas incertezas ainda abertas."
+                  },
+                  {
+                        "q": "Que informação torna o escalonamento a um fornecedor mais eficaz?",
+                        "o": [
+                              "Apenas a frase equipamento com problema",
+                              "Modelo e identificação, sintomas, horários, alarmes, testes autorizados já feitos, impacto e contato responsável",
+                              "Credenciais administrativas por mensagem aberta",
+                              "Uma opinião sem evidência"
+                        ],
+                        "a": 1,
+                        "e": "Contexto técnico estruturado reduz retrabalho e acelera diagnóstico. Dados sensíveis e acessos devem seguir os canais seguros definidos."
+                  },
+                  {
+                        "q": "Durante a troca de responsável por um incidente, o handoff deve incluir:",
+                        "o": [
+                              "Estado atual, impacto, ações realizadas, resultados, riscos, tarefas abertas e próximos contatos",
+                              "Somente o número do chamado",
+                              "Apenas a hipótese de causa",
+                              "Nenhuma informação para não influenciar a nova equipe"
+                        ],
+                        "a": 0,
+                        "e": "A transferência explícita evita perda de contexto e confirma quem assumiu cada ação e a coordenação."
+                  },
+                  {
+                        "q": "Para que serve uma ponte de incidente ou canal dedicado?",
+                        "o": [
+                              "Centralizar coordenação e comunicação dos participantes autorizados",
+                              "Substituir o ticket e todos os registros",
+                              "Permitir conversas paralelas sem controle",
+                              "Divulgar o evento publicamente"
+                        ],
+                        "a": 0,
+                        "e": "Um canal dedicado concentra informação operacional e decisões. O registro oficial ainda deve ser mantido nos sistemas definidos."
+                  },
+                  {
+                        "q": "Antes de declarar recuperação, deve-se verificar:",
+                        "o": [
+                              "Apenas se o alarme sumiu",
+                              "Função do serviço, estabilidade, alarmes, redundância, monitoramento e possíveis efeitos residuais",
+                              "Se todos saíram da ponte",
+                              "Se o relatório final já está formatado"
+                        ],
+                        "a": 1,
+                        "e": "Ausência de alarme não garante recuperação completa. Critérios de retorno devem confirmar serviço, infraestrutura e capacidade de observar recorrência."
+                  },
+                  {
+                        "q": "Durante um incidente, por que preservar logs e evidências?",
+                        "o": [
+                              "Para apoiar diagnóstico, auditoria e análise da causa sem alterar a história dos eventos",
+                              "Para ocupar espaço de armazenamento",
+                              "Para divulgar dados pessoais",
+                              "Para evitar qualquer recuperação"
+                        ],
+                        "a": 0,
+                        "e": "Evidências íntegras permitem reconstruir a ocorrência. A coleta deve seguir autorização, segurança da informação e cadeia de custódia quando aplicável."
+                  },
+                  {
+                        "q": "Quando uma pausa ou congelamento de mudanças pode ser útil?",
+                        "o": [
+                              "Quando mudanças não essenciais podem aumentar instabilidade ou confundir o diagnóstico",
+                              "Em todos os dias do ano, sem exceção",
+                              "Para impedir ações emergenciais autorizadas",
+                              "Para apagar alterações recentes"
+                        ],
+                        "a": 0,
+                        "e": "Durante incidentes relevantes, restringir mudanças paralelas reduz variáveis e risco. Exceções necessárias à recuperação devem ser controladas e documentadas."
+                  },
+                  {
+                        "q": "Qual é o foco de uma revisão pós-incidente eficaz?",
+                        "o": [
+                              "Encontrar uma pessoa para culpar",
+                              "Entender o que ocorreu, fatores contribuintes, resposta, controles e melhorias verificáveis",
+                              "Recontar o evento sem ações",
+                              "Evitar participação das equipes envolvidas"
+                        ],
+                        "a": 1,
+                        "e": "A revisão orientada a aprendizado analisa sistema, processo e decisões, gerando ações concretas para reduzir recorrência e melhorar detecção e resposta."
+                  },
+                  {
+                        "q": "Um disjuntor abriu após sobrecarga. Nesse exemplo, a abertura do disjuntor pode ser:",
+                        "o": [
+                              "A causa raiz obrigatória",
+                              "Um mecanismo de proteção ou evento visível; a razão da sobrecarga ainda precisa ser investigada",
+                              "Prova de falha no controle de acesso",
+                              "Evidência de que não houve impacto"
+                        ],
+                        "a": 1,
+                        "e": "O primeiro evento observado nem sempre é a causa fundamental. A investigação busca a cadeia causal e condições que permitiram a sobrecarga."
+                  },
+                  {
+                        "q": "Como deve ser registrada uma ação corretiva pós-incidente?",
+                        "o": [
+                              "Com descrição vaga e sem prazo",
+                              "Com responsável, prazo, prioridade, critério de conclusão e evidência de verificação",
+                              "Somente em mensagem pessoal",
+                              "Sem relação com a causa identificada"
+                        ],
+                        "a": 1,
+                        "e": "Ações precisam ser específicas e acompanháveis. Fechar exige verificar implementação e, quando possível, eficácia."
+                  },
+                  {
+                        "q": "Qual medida ajuda a detectar recorrência após a recuperação?",
+                        "o": [
+                              "Remover a telemetria do ativo",
+                              "Manter monitoramento reforçado por período definido e critérios claros de estabilidade",
+                              "Ignorar alarmes semelhantes",
+                              "Encerrar todos os chamados relacionados"
+                        ],
+                        "a": 1,
+                        "e": "Uma janela de observação confirma que a condição permanece estável e permite reagir rapidamente a sinais de repetição."
+                  },
+                  {
+                        "q": "Como definir a frequência de atualizações durante um incidente?",
+                        "o": [
+                              "De forma compatível com severidade, público e ritmo das mudanças, anunciando o próximo horário",
+                              "Somente quando alguém reclamar",
+                              "A cada segundo, independentemente do evento",
+                              "Nunca durante a investigação"
+                        ],
+                        "a": 0,
+                        "e": "Cadência previsível reduz incerteza. Eventos críticos pedem comunicação mais frequente, mas sem retirar das equipes a capacidade de responder."
+                  },
+                  {
+                        "q": "Qual linguagem deve ser evitada em comunicação operacional?",
+                        "o": [
+                              "Fatos com horário",
+                              "Acusações, certezas sem evidência e termos ambíguos",
+                              "Impacto confirmado",
+                              "Próximos passos com responsáveis"
+                        ],
+                        "a": 1,
+                        "e": "Comunicação precisa ser objetiva, respeitosa e verificável. Culpa e especulação prejudicam confiança, coordenação e aprendizado."
+                  }
+            ]
+      }
+];
+
+    const STORAGE_KEY = "gdc-premium-manutencao-confiabilidade-v1";
+    const LETTERS = ["A","B","C","D"];
+    const state = {session:[],index:0,answers:[],remaining:60,timer:null,startedAt:0,mode:"module",moduleId:null,sound:true,volume:.35,lastConfig:null};
+    const el = id => document.getElementById(id);
+    const views = {home:el("homeView"),quiz:el("quizView"),result:el("resultView")};
+    const audio = {background:el("backgroundAudio"),correct:el("correctAudio"),wrong:el("wrongAudio")};
+
+    function safeLoad(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||{modules:{},full:null}}catch{return {modules:{},full:null}}}
+    function safeSave(data){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}catch{/* modo privado ou armazenamento indisponível */}}
+    function showView(name){Object.entries(views).forEach(([key,node])=>node.hidden=key!==name);window.scrollTo({top:0,behavior:"smooth"})}
+    function formatTime(seconds){const min=Math.floor(seconds/60);const sec=seconds%60;return `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`}
+    function shuffle(items){const copy=[...items];for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]]}return copy}
+    function randomizeQuestion(question,moduleTitle){const options=shuffle(question.o.map((text,index)=>({text,correct:index===question.a})));return {...question,moduleTitle,o:options.map(item=>item.text),a:options.findIndex(item=>item.correct)}}
+    function setAudioVolumes(){audio.background.volume=state.volume*.42;audio.correct.volume=state.volume;audio.wrong.volume=state.volume}
+    function startBackground(){if(!state.sound)return;audio.background.play().catch(()=>{})}
+    function stopBackground(){audio.background.pause()}
+    function playEffect(kind){if(!state.sound)return;const sound=audio[kind];sound.currentTime=0;sound.play().catch(()=>{})}
+    function toggleSound(){state.sound=!state.sound;const button=el("soundToggle");button.classList.toggle("off",!state.sound);button.setAttribute("aria-pressed",String(state.sound));button.querySelector(".sound-text").textContent=state.sound?"Som ligado":"Som desligado";if(state.sound&&views.quiz.hidden===false)startBackground();else stopBackground()}
+
+    function renderHome(){
+      const progress=safeLoad();
+      const grid=el("moduleGrid");grid.textContent="";
+      let completed=0,totalBest=0;
+      MODULES.forEach((module,index)=>{
+        const saved=progress.modules[module.id];const best=saved?.best||0;if(saved){completed++;totalBest+=best}
+        const card=document.createElement("article");card.className="module-card";
+        const number=document.createElement("div");number.className="module-number";number.textContent=String(index+1).padStart(2,"0");
+        const title=document.createElement("h3");title.textContent=module.title;
+        const desc=document.createElement("p");desc.textContent=module.description;
+        const meta=document.createElement("div");meta.className="module-meta";meta.innerHTML=`<span>20 questões</span><span>${saved?`Melhor: ${best}%`:"Não iniciado"}</span>`;
+        const track=document.createElement("div");track.className="mini-track";const fill=document.createElement("span");fill.style.width=`${best}%`;track.appendChild(fill);
+        const button=document.createElement("button");button.type="button";button.className="btn btn-secondary btn-block";button.textContent=saved?"Refazer módulo":"Iniciar módulo";button.addEventListener("click",()=>startModule(module.id));
+        card.append(number,title,desc,meta,track,button);grid.appendChild(card);
+      });
+      const percent=Math.round((completed/MODULES.length)*100);
+      el("overallPercent").textContent=`${percent}%`;el("overallBar").style.width=`${percent}%`;el("completedModules").textContent=`${completed}/${MODULES.length}`;el("bestAverage").textContent=completed?`${Math.round(totalBest/completed)}%`:"—";
+      showView("home");
+    }
+
+    function startModule(moduleId){const module=MODULES.find(item=>item.id===moduleId);state.lastConfig={type:"module",id:moduleId};beginSession(shuffle(module.questions.map(q=>randomizeQuestion(q,module.title))),"module",moduleId,module.title)}
+    function startFull(){state.lastConfig={type:"full"};const questions=MODULES.flatMap(module=>module.questions.map(q=>randomizeQuestion(q,module.title)));beginSession(shuffle(questions),"full",null,"Simulado completo")}
+    function beginSession(questions,mode,moduleId,title){clearInterval(state.timer);state.session=questions;state.index=0;state.answers=[];state.mode=mode;state.moduleId=moduleId;state.startedAt=Date.now();el("quizModule").textContent=mode==="full"?"Consolidação • 6 módulos":"Simulado gratuito • módulo";el("quizTitle").textContent=title;showView("quiz");startBackground();renderQuestion()}
+
+    function renderQuestion(){
+      clearInterval(state.timer);state.remaining=60;
+      const current=state.session[state.index];const total=state.session.length;
+      el("questionCounter").textContent=`Questão ${state.index+1} de ${total}`;el("liveScore").textContent=`${state.answers.filter(a=>a.correct).length} acertos`;el("quizBar").style.width=`${(state.index/total)*100}%`;el("questionModuleLabel").textContent=current.moduleTitle;el("questionText").textContent=current.q;
+      el("feedbackBox").hidden=true;el("nextQuestion").hidden=true;
+      const list=el("optionsList");list.textContent="";
+      current.o.forEach((option,index)=>{const button=document.createElement("button");button.className="option";button.type="button";const letter=document.createElement("span");letter.className="letter";letter.textContent=LETTERS[index];const text=document.createElement("span");text.textContent=option;button.append(letter,text);button.addEventListener("click",()=>answerQuestion(index,false));list.appendChild(button)});
+      updateTimer();state.timer=setInterval(()=>{state.remaining--;updateTimer();if(state.remaining<=0){clearInterval(state.timer);answerQuestion(-1,true)}},1000);
+    }
+
+    function updateTimer(){const box=el("timerBox");el("timerText").textContent=formatTime(Math.max(0,state.remaining));box.classList.toggle("warn",state.remaining<=20&&state.remaining>10);box.classList.toggle("danger",state.remaining<=10)}
+    function answerQuestion(selected,timedOut){
+      clearInterval(state.timer);const current=state.session[state.index];const buttons=[...el("optionsList").querySelectorAll(".option")];if(buttons.some(button=>button.disabled))return;
+      const correct=selected===current.a;buttons.forEach((button,index)=>{button.disabled=true;if(index===current.a)button.classList.add("correct");else if(index===selected)button.classList.add("wrong")});
+      state.answers.push({question:current,selected,correct,timedOut});
+      const box=el("feedbackBox");box.hidden=false;box.className=`feedback ${correct?"good":"bad"}`;el("feedbackTitle").textContent=correct?"Resposta correta!":timedOut?"Tempo esgotado.":"Resposta incorreta.";el("feedbackText").textContent=current.e;playEffect(correct?"correct":"wrong");el("liveScore").textContent=`${state.answers.filter(a=>a.correct).length} acertos`;const next=el("nextQuestion");next.hidden=false;next.textContent=state.index===state.session.length-1?"Ver resultado":"Próxima questão";
+    }
+
+    function goNext(){if(state.answers.length<=state.index)return;if(state.index<state.session.length-1){state.index++;renderQuestion()}else{finishSession()}}
+    function finishSession(){
+      clearInterval(state.timer);stopBackground();const elapsed=Math.max(1,Math.round((Date.now()-state.startedAt)/1000));const correct=state.answers.filter(item=>item.correct).length;const total=state.session.length;const percent=Math.round((correct/total)*100);const progress=safeLoad();
+      if(state.mode==="module"){const old=progress.modules[state.moduleId]||{best:0,attempts:0};progress.modules[state.moduleId]={best:Math.max(old.best,percent),last:percent,attempts:old.attempts+1,completedAt:new Date().toISOString()}}else{const old=progress.full||{best:0,attempts:0};progress.full={best:Math.max(old.best,percent),last:percent,attempts:old.attempts+1,completedAt:new Date().toISOString()}}
+      safeSave(progress);const title=state.mode==="module"?MODULES.find(m=>m.id===state.moduleId).title:"Simulado completo";el("resultTitle").textContent=title;el("resultMessage").textContent=performanceMessage(percent);el("resultPercent").textContent=`${percent}%`;el("scoreRing").style.setProperty("--score",percent);el("resultCorrect").textContent=`${correct}/${total}`;el("resultWrong").textContent=String(total-correct);el("resultTime").textContent=formatTime(elapsed);renderReview();showView("result")
+    }
+    function performanceMessage(score){if(score>=90)return"Excelente domínio. Você demonstrou consistência para reconhecer riscos, prioridades e boas práticas operacionais.";if(score>=75)return"Bom desempenho. Revise os pontos de atenção abaixo para transformar conhecimento em resposta mais consistente.";if(score>=60)return"Base em desenvolvimento. Reforce os temas em que houve erro antes de avançar para o simulado completo.";return"Este resultado é um diagnóstico, não uma sentença. Refaça o módulo após revisar as explicações e os procedimentos fundamentais."}
+    function renderReview(){const list=el("reviewList");list.textContent="";const misses=state.answers.filter(item=>!item.correct);el("reviewBlock").hidden=misses.length===0;if(!misses.length)return;misses.forEach((item,index)=>{const card=document.createElement("article");card.className="review-item";const title=document.createElement("strong");title.textContent=`${index+1}. ${item.question.q}`;const chosen=document.createElement("p");chosen.className="answer-wrong";chosen.textContent=item.timedOut?"Sua resposta: tempo esgotado":`Sua resposta: ${item.question.o[item.selected]}`;const right=document.createElement("p");right.className="answer-correct";right.textContent=`Resposta correta: ${item.question.o[item.question.a]}`;const why=document.createElement("p");why.textContent=item.question.e;card.append(title,chosen,right,why);list.appendChild(card)})}
+    function exitQuiz(){if(state.answers.length&&state.answers.length<state.session.length&&!confirm("Sair agora? O resultado desta tentativa não será salvo."))return;clearInterval(state.timer);stopBackground();renderHome()}
+    function retry(){if(state.lastConfig?.type==="full")startFull();else if(state.lastConfig?.id)startModule(state.lastConfig.id)}
+
+    el("soundToggle").addEventListener("click",toggleSound);el("volumeControl").addEventListener("input",event=>{state.volume=Number(event.target.value);setAudioVolumes()});el("brandHome").addEventListener("click",event=>{event.preventDefault();if(!views.quiz.hidden)exitQuiz();else renderHome()});el("startFull").addEventListener("click",startFull);el("nextQuestion").addEventListener("click",goNext);el("exitQuiz").addEventListener("click",exitQuiz);el("returnHome").addEventListener("click",renderHome);el("retryQuiz").addEventListener("click",retry);el("printResult").addEventListener("click",()=>window.print());
+    setAudioVolumes();renderHome();
+  </script>
+</body>
+</html>

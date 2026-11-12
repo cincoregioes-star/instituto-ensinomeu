@@ -1,0 +1,1434 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071321">
+  <meta name="description" content="Simulado gratuito Gabarito Data Center — Logística e Almoxarifado Técnico, com 100 questões em 5 módulos.">
+  <title>Gabarito Data Center | Gratuito — Logística e Almoxarifado Técnico</title>
+  <style>
+    :root {
+      --navy-950:#030b14; --navy-900:#071321; --navy-850:#0a1b2d; --navy-800:#0d2439;
+      --cyan:#18d6ff; --cyan-soft:#86eaff; --lime:#b9ff39; --amber:#ffbd2e;
+      --red:#ff5f72; --green:#4df0a7; --white:#f7fbff; --muted:#9eb4c7;
+      --line:rgba(134,234,255,.17); --panel:rgba(10,27,45,.84); --shadow:0 24px 70px rgba(0,0,0,.34);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--white);background:
+      radial-gradient(circle at 12% 0%,rgba(24,214,255,.16),transparent 27rem),
+      radial-gradient(circle at 92% 14%,rgba(185,255,57,.09),transparent 24rem),
+      linear-gradient(145deg,var(--navy-950),var(--navy-900) 45%,#061a28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:
+      linear-gradient(rgba(134,234,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(134,234,255,.12) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 75%)}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    a{color:var(--cyan-soft)}
+    .shell{width:min(1180px,calc(100% - 32px));margin:0 auto;position:relative;z-index:1}
+    .topbar{padding:22px 0 8px}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:13px;color:var(--white);text-decoration:none}
+    .brand-mark{width:56px;height:56px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(145deg,rgba(24,214,255,.23),rgba(185,255,57,.10));border:1px solid var(--line);box-shadow:0 0 35px rgba(24,214,255,.14)}
+    .brand-mark svg{width:39px;height:39px}
+    .brand-copy strong{display:block;font-size:clamp(1rem,2.2vw,1.28rem);letter-spacing:.08em}
+    .brand-copy span{display:block;color:var(--cyan-soft);font-size:.72rem;letter-spacing:.22em;margin-top:3px}
+    .sound-panel{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(3,11,20,.56);backdrop-filter:blur(12px)}
+    .sound-btn{border:0;background:transparent;color:var(--white);display:flex;align-items:center;gap:7px;padding:5px 6px}
+    .sound-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 13px var(--green)}
+    .sound-btn.off .sound-dot{background:var(--red);box-shadow:0 0 13px var(--red)}
+    .volume{width:85px;accent-color:var(--cyan)}
+    main{padding:34px 0 60px}
+    .view[hidden]{display:none!important}
+    .hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:24px;align-items:stretch;margin-bottom:28px}
+    .hero-copy,.hero-side,.panel,.module-card,.question-card,.result-card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(13,36,57,.91),rgba(7,19,33,.82));box-shadow:var(--shadow);border-radius:var(--radius);backdrop-filter:blur(15px)}
+    .hero-copy{padding:clamp(28px,5vw,54px);position:relative;overflow:hidden}
+    .hero-copy::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-110px;top:-120px;border:42px solid rgba(24,214,255,.06);box-shadow:0 0 90px rgba(24,214,255,.12)}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--lime);font-weight:800;letter-spacing:.13em;font-size:.74rem;text-transform:uppercase;margin:0 0 16px}
+    .eyebrow::before{content:"";width:26px;height:2px;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(2.15rem,6vw,4.8rem);line-height:.96;letter-spacing:-.055em;margin-bottom:20px;max-width:760px}
+    h1 span{display:block;color:var(--cyan)}
+    .lead{color:#ccdae6;line-height:1.72;font-size:clamp(1rem,2vw,1.13rem);max-width:720px;margin-bottom:24px}
+    .chips{display:flex;flex-wrap:wrap;gap:9px}
+    .chip{padding:9px 12px;border-radius:999px;background:rgba(24,214,255,.08);border:1px solid rgba(24,214,255,.23);font-size:.82rem;color:#d9f8ff}
+    .hero-side{padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+    .score-label{color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.13em}
+    .score-value{font-size:clamp(3rem,8vw,5.4rem);line-height:1;font-weight:900;color:var(--lime);letter-spacing:-.07em;margin:9px 0}
+    .progress-track{height:11px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+    .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--lime));border-radius:inherit;transition:width .4s ease}
+    .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .stat{padding:14px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.35)}
+    .stat b{display:block;font-size:1.25rem;color:var(--cyan-soft)}
+    .stat span{color:var(--muted);font-size:.76rem}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:42px 0 18px}
+    .section-head h2{font-size:clamp(1.55rem,3vw,2.35rem);margin:0;letter-spacing:-.035em}
+    .section-head p{color:var(--muted);margin:0;max-width:510px;line-height:1.6;text-align:right}
+    .module-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+    .module-card{padding:23px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+    .module-card:hover{transform:translateY(-4px);border-color:rgba(24,214,255,.42)}
+    .module-number{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,rgba(24,214,255,.23),rgba(24,214,255,.07));color:var(--cyan);font-weight:900;margin-bottom:18px;border:1px solid rgba(24,214,255,.25)}
+    .module-card h3{font-size:1.15rem;margin-bottom:9px}
+    .module-card p{color:var(--muted);font-size:.88rem;line-height:1.55;min-height:68px}
+    .module-meta{display:flex;justify-content:space-between;gap:10px;color:#c5d8e7;font-size:.78rem;margin:17px 0 13px}
+    .mini-track{height:7px;background:rgba(255,255,255,.07);border-radius:999px;overflow:hidden;margin-bottom:17px}
+    .mini-track span{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--lime));border-radius:inherit}
+    .btn{border:0;border-radius:13px;padding:13px 18px;font-weight:850;letter-spacing:.01em;transition:transform .18s,filter .18s,background .18s;display:inline-flex;justify-content:center;align-items:center;gap:8px;text-decoration:none}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+    .btn-primary{background:linear-gradient(95deg,var(--cyan),#55e4ff 46%,var(--lime));color:#03101a;box-shadow:0 12px 35px rgba(24,214,255,.18)}
+    .btn-secondary{background:rgba(24,214,255,.09);color:var(--white);border:1px solid rgba(24,214,255,.25)}
+    .btn-danger{background:rgba(255,95,114,.10);color:#ffc4cb;border:1px solid rgba(255,95,114,.27)}
+    .btn-block{width:100%}
+    .full-card{margin-top:19px;padding:25px;display:flex;align-items:center;justify-content:space-between;gap:25px;border:1px solid rgba(185,255,57,.24);border-radius:var(--radius);background:linear-gradient(110deg,rgba(185,255,57,.10),rgba(24,214,255,.08),rgba(7,19,33,.88));box-shadow:var(--shadow)}
+    .full-card h3{margin-bottom:7px;font-size:1.34rem}
+    .full-card p{margin:0;color:var(--muted);line-height:1.55}
+    .notice{margin-top:20px;padding:18px 20px;border-radius:17px;border:1px solid rgba(255,189,46,.24);background:rgba(255,189,46,.07);color:#ffe5ab;line-height:1.6;font-size:.89rem}
+    .refs{margin-top:20px;padding:0;border:1px solid var(--line);border-radius:17px;background:rgba(7,19,33,.6)}
+    .refs summary{cursor:pointer;padding:18px 20px;font-weight:800;color:#dff9ff}
+    .refs div{padding:0 20px 18px;color:var(--muted);line-height:1.7;font-size:.87rem}
+    .quiz-top{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:18px}
+    .crumb{color:var(--cyan-soft);font-size:.85rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+    .timer{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(3,11,20,.62);font-variant-numeric:tabular-nums}
+    .timer.warn{color:var(--amber);border-color:rgba(255,189,46,.38)}
+    .timer.danger{color:#ffc1c9;border-color:rgba(255,95,114,.5);animation:pulse 1s infinite}
+    @keyframes pulse{50%{box-shadow:0 0 24px rgba(255,95,114,.18)}}
+    .quiz-progress{margin-bottom:18px}
+    .quiz-progress-row{display:flex;justify-content:space-between;color:var(--muted);font-size:.82rem;margin-bottom:8px}
+    .question-card{padding:clamp(24px,5vw,43px)}
+    .question-kicker{display:flex;align-items:center;gap:9px;color:var(--lime);font-size:.77rem;text-transform:uppercase;letter-spacing:.12em;font-weight:850;margin-bottom:15px}
+    .question-card h2{font-size:clamp(1.28rem,3vw,1.85rem);line-height:1.35;letter-spacing:-.025em;margin-bottom:26px}
+    .options{display:grid;gap:11px}
+    .option{width:100%;text-align:left;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.44);color:var(--white);padding:15px 17px;display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:center;line-height:1.48;transition:border-color .18s,background .18s,transform .18s}
+    .option:hover:not(:disabled){border-color:rgba(24,214,255,.45);background:rgba(24,214,255,.09);transform:translateX(3px)}
+    .option:disabled{cursor:default}
+    .letter{width:35px;height:35px;display:grid;place-items:center;border-radius:10px;background:rgba(24,214,255,.09);border:1px solid rgba(24,214,255,.17);color:var(--cyan-soft);font-weight:900}
+    .option.correct{border-color:rgba(77,240,167,.65);background:rgba(77,240,167,.10)}
+    .option.correct .letter{background:var(--green);border-color:var(--green);color:#03150e}
+    .option.wrong{border-color:rgba(255,95,114,.62);background:rgba(255,95,114,.10)}
+    .option.wrong .letter{background:var(--red);border-color:var(--red);color:white}
+    .feedback{margin-top:20px;padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(3,11,20,.48);line-height:1.62}
+    .feedback.good{border-color:rgba(77,240,167,.35)}
+    .feedback.bad{border-color:rgba(255,95,114,.34)}
+    .feedback strong{display:block;margin-bottom:5px}
+    .feedback p{margin:0;color:#c7d7e3}
+    .quiz-actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:19px}
+    .result-card{padding:clamp(26px,5vw,48px);text-align:center}
+    .result-badge{display:inline-block;padding:8px 12px;border:1px solid rgba(185,255,57,.28);border-radius:999px;color:var(--lime);font-size:.75rem;letter-spacing:.12em;font-weight:900;text-transform:uppercase}
+    .result-card h1{font-size:clamp(2rem,5vw,3.6rem);margin:19px auto 10px;max-width:800px}
+    .result-card>p{color:var(--muted);line-height:1.65}
+    .score-ring{--score:0;width:190px;height:190px;margin:28px auto;display:grid;place-items:center;border-radius:50%;background:conic-gradient(var(--lime) calc(var(--score)*1%),rgba(255,255,255,.08) 0);position:relative}
+    .score-ring::before{content:"";position:absolute;inset:14px;border-radius:50%;background:var(--navy-900);border:1px solid var(--line)}
+    .score-ring div{position:relative;z-index:1}
+    .score-ring b{display:block;font-size:3.25rem;line-height:1;color:var(--white)}
+    .score-ring span{color:var(--muted);font-size:.8rem}
+    .result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:680px;margin:0 auto 26px}
+    .result-stat{padding:18px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.35)}
+    .result-stat b{display:block;font-size:1.45rem;color:var(--cyan-soft)}
+    .result-stat span{font-size:.77rem;color:var(--muted)}
+    .result-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+    .review{margin-top:24px;text-align:left}
+    .review h2{margin-bottom:14px}
+    .review-item{padding:18px;margin-bottom:10px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.36)}
+    .review-item strong{display:block;margin-bottom:8px;line-height:1.45}
+    .review-item p{margin:5px 0;color:var(--muted);line-height:1.55;font-size:.9rem}
+    .review-item .answer-correct{color:var(--green)}
+    .review-item .answer-wrong{color:#ffb6bf}
+    footer{padding:28px 0 42px;border-top:1px solid var(--line);color:var(--muted);font-size:.83rem;line-height:1.6}
+    .footer-inner{display:flex;justify-content:space-between;gap:25px}
+    .footer-inner p{margin:0}
+    .footer-inner div:last-child{text-align:right}
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.module-grid{grid-template-columns:repeat(2,1fr)}.hero-side{min-height:280px}}
+    @media(max-width:640px){.shell{width:min(100% - 22px,1180px)}.topbar-inner{align-items:flex-start}.brand-mark{width:47px;height:47px}.brand-copy strong{font-size:.92rem}.brand-copy span{font-size:.61rem}.volume{display:none}.sound-panel{padding:7px 8px}.sound-btn .sound-text{display:none}.hero-copy,.hero-side,.question-card,.result-card{border-radius:18px}.hero-copy{padding:27px 22px}.module-grid{grid-template-columns:1fr}.section-head{display:block}.section-head p{text-align:left;margin-top:8px}.full-card{align-items:flex-start;flex-direction:column}.quiz-top{align-items:flex-start}.timer{padding:8px 11px}.quiz-actions{align-items:stretch;flex-direction:column-reverse}.quiz-actions .btn{width:100%}.result-stats{grid-template-columns:1fr}.footer-inner{display:block}.footer-inner div:last-child{text-align:left;margin-top:12px}.option{grid-template-columns:34px 1fr;padding:13px}.letter{width:32px;height:32px}}
+    @media print{body{background:white;color:#111}.topbar,#homeView,#quizView,footer,.result-actions,.sound-panel{display:none!important}.result-card{box-shadow:none;border:1px solid #bbb;background:white}.result-card h1,.score-ring b{color:#111}.score-ring::before{background:white}.review-item{background:white;color:#111}.review-item p{color:#333}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#" id="brandHome" aria-label="Voltar ao início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="7" y="5" width="34" height="38" rx="7" stroke="#18d6ff" stroke-width="2"/><path d="M13 14h22M13 23h22M13 32h22" stroke="#86eaff" stroke-width="2"/><circle cx="16" cy="14" r="2" fill="#b9ff39"/><circle cx="16" cy="23" r="2" fill="#b9ff39"/><circle cx="16" cy="32" r="2" fill="#ffbd2e"/><path d="M29 11v6m0 3v6m0 3v6" stroke="#18d6ff" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-copy"><strong>GABARITO DATA CENTER</strong><span>ACESSO GRATUITO</span></span>
+      </a>
+      <div class="sound-panel" aria-label="Controles de áudio">
+        <button class="sound-btn" id="soundToggle" type="button" aria-pressed="true"><span class="sound-dot"></span><span class="sound-text">Som ligado</span></button>
+        <label class="sr-only" for="volumeControl">Volume</label>
+        <input class="volume" id="volumeControl" type="range" min="0" max="1" value="0.35" step="0.05">
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div role="note" style="margin:12px 0 26px;padding:16px 20px;border:1px solid rgba(185,255,57,.36);border-radius:14px;background:#102a32;color:#e9fbf1;line-height:1.6"><a href="../../catalogo-gratuito.html" style="font-weight:800;color:#b9ff39;text-decoration:underline">← Voltar ao catálogo gratuito do Instituto EnsinoMeu</a><p style="margin:9px 0 0">Acesso 100% gratuito. Material de estudo em revisão pedagógica e técnica. As questões não representam certificação profissional nem habilitação para intervenções.</p></div>
+
+    <section class="view" id="homeView">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Formação profissional 2026</p>
+          <h1>Logística e <span>Almoxarifado</span></h1>
+          <p class="lead">Treinamento premium para rotinas de estoque, inventário, peças críticas, recebimento, movimentação, segurança e documentação.</p>
+          <div class="chips"><span class="chip">5 módulos</span><span class="chip">100 questões</span><span class="chip">Explicações imediatas</span><span class="chip">Progresso salvo</span><span class="chip">Áudio inteligente</span></div>
+        </div>
+        <aside class="hero-side" aria-label="Seu progresso">
+          <div><div class="score-label">Progresso geral</div><div class="score-value" id="overallPercent">0%</div><div class="progress-track"><div class="progress-fill" id="overallBar"></div></div></div>
+          <div class="hero-stats"><div class="stat"><b id="completedModules">0/6</b><span>módulos concluídos</span></div><div class="stat"><b id="bestAverage">—</b><span>média dos melhores</span></div></div>
+        </aside>
+      </div>
+
+      <div class="section-head"><div><p class="eyebrow">Trilha gratuita</p><h2>Escolha um módulo</h2></div><p>Cada módulo tem 20 questões objetivas, correção comentada e resultado proporcional correto de 0 a 100%.</p></div>
+      <div class="module-grid" id="moduleGrid"></div>
+      <div class="full-card panel"><div><h3>Simulado completo de consolidação</h3><p>Reúna as 100 questões dos cinco módulos em uma única sessão. Recomendado após concluir toda a trilha.</p></div><button class="btn btn-primary" id="startFull" type="button">Iniciar 100 questões</button></div>
+      <div class="notice"><strong>Orientação de segurança:</strong> este material é educacional. Em atividades reais, siga sempre os procedimentos locais, a análise de risco, as permissões de trabalho e as orientações de profissionais autorizados. O simulado não substitui treinamento obrigatório nem habilitação técnica.</div>
+      <details class="refs"><summary>Referências gerais e transparência</summary><div>Conteúdo autoral de preparação baseado em princípios de logística, rastreabilidade, gestão de estoques, preservação de materiais e segurança operacional.</div></details>
+    </section>
+
+    <section class="view" id="quizView" hidden>
+      <div class="quiz-top"><div><div class="crumb" id="quizModule">Módulo</div><h1 id="quizTitle" style="font-size:clamp(1.65rem,4vw,2.7rem);margin:8px 0 0">Simulado</h1></div><div class="timer" id="timerBox" title="Tempo por questão"><span aria-hidden="true">◷</span><b id="timerText">01:00</b></div></div>
+      <div class="quiz-progress"><div class="quiz-progress-row"><span id="questionCounter">Questão 1 de 20</span><span id="liveScore">0 acertos</span></div><div class="progress-track"><div class="progress-fill" id="quizBar"></div></div></div>
+      <article class="question-card">
+        <div class="question-kicker" id="questionModuleLabel">Conhecimento aplicado</div>
+        <h2 id="questionText"></h2>
+        <div class="options" id="optionsList"></div>
+        <div class="feedback" id="feedbackBox" hidden aria-live="polite"><strong id="feedbackTitle"></strong><p id="feedbackText"></p></div>
+      </article>
+      <div class="quiz-actions"><button class="btn btn-danger" id="exitQuiz" type="button">Sair do simulado</button><button class="btn btn-primary" id="nextQuestion" type="button" hidden>Próxima questão</button></div>
+    </section>
+
+    <section class="view" id="resultView" hidden>
+      <article class="result-card">
+        <span class="result-badge">Resultado concluído</span>
+        <h1 id="resultTitle">Seu desempenho</h1>
+        <p id="resultMessage"></p>
+        <div class="score-ring" id="scoreRing"><div><b id="resultPercent">0%</b><span>aproveitamento</span></div></div>
+        <div class="result-stats"><div class="result-stat"><b id="resultCorrect">0</b><span>acertos</span></div><div class="result-stat"><b id="resultWrong">0</b><span>erros / não respondidas</span></div><div class="result-stat"><b id="resultTime">00:00</b><span>tempo total</span></div></div>
+        <div class="result-actions"><button class="btn btn-primary" id="retryQuiz" type="button">Refazer simulado</button><button class="btn btn-secondary" id="printResult" type="button">Imprimir resultado</button><button class="btn btn-secondary" id="returnHome" type="button">Voltar aos módulos</button></div>
+        <div class="review" id="reviewBlock"><h2>Revisão dos pontos de atenção</h2><div id="reviewList"></div></div>
+      </article>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-inner"><div><p><strong>GABARITO DATA CENTER</strong> — preparação independente para candidatos.</p><p>Sem promessa de contratação e sem vínculo com TikTok, ByteDance, Omnia ou operadores de data center.</p></div><div><p>Equipe técnica e dúvidas</p><p><a href="mailto:cincoregioes@gmail.com">cincoregioes@gmail.com</a></p></div></div></footer>
+
+  <audio id="backgroundAudio" loop preload="metadata" src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3"></audio>
+  <audio id="correctAudio" preload="metadata" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3"></audio>
+  <audio id="wrongAudio" preload="metadata" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3"></audio>
+
+  <script>
+    "use strict";
+    const MODULES = [
+      {
+            "id": "rotinas-almoxarifado",
+            "title": "Rotinas de Almoxarifado",
+            "description": "Endereçamento, organização, separação, quarentena, contagem e controle de acesso.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente endereçamento de estoque?",
+                        "o": [
+                              "sistema que identifica corredor, estante, nível e posição de cada item",
+                              "prática de utilização, organização, limpeza, padronização e disciplina",
+                              "regra de usar primeiro o item que vence primeiro",
+                              "área e estado controlados para itens não liberados, suspeitos ou não conformes"
+                        ],
+                        "a": 0,
+                        "e": "endereçamento de estoque: sistema que identifica corredor, estante, nível e posição de cada item Na prática, reduz tempo de procura e impede guardar material em localização não registrada"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de endereçamento de estoque em rotinas de almoxarifado?",
+                        "o": [
+                              "reduz tempo de procura e impede guardar material em localização não registrada",
+                              "mantém o almoxarifado seguro, visual e livre de materiais sem finalidade",
+                              "protege materiais com validade independentemente da ordem de recebimento",
+                              "impede uso acidental antes de inspeção e decisão formal"
+                        ],
+                        "a": 0,
+                        "e": "endereçamento de estoque: sistema que identifica corredor, estante, nível e posição de cada item Na prática, reduz tempo de procura e impede guardar material em localização não registrada"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente 5S?",
+                        "o": [
+                              "prática de utilização, organização, limpeza, padronização e disciplina",
+                              "regra de usar primeiro o item que entrou primeiro",
+                              "separação de itens conforme uma requisição ou ordem",
+                              "contagem periódica de grupos de itens ao longo do ano"
+                        ],
+                        "a": 0,
+                        "e": "5S: prática de utilização, organização, limpeza, padronização e disciplina Na prática, mantém o almoxarifado seguro, visual e livre de materiais sem finalidade"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de 5S em rotinas de almoxarifado?",
+                        "o": [
+                              "mantém o almoxarifado seguro, visual e livre de materiais sem finalidade",
+                              "reduz envelhecimento quando data de validade não é o principal critério",
+                              "garante quantidade, código, lote e destino corretos antes da entrega",
+                              "detecta divergências cedo sem depender somente do inventário geral"
+                        ],
+                        "a": 0,
+                        "e": "5S: prática de utilização, organização, limpeza, padronização e disciplina Na prática, mantém o almoxarifado seguro, visual e livre de materiais sem finalidade"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente FIFO?",
+                        "o": [
+                              "regra de usar primeiro o item que entrou primeiro",
+                              "regra de usar primeiro o item que vence primeiro",
+                              "agrupamento prévio de peças e consumíveis de uma atividade",
+                              "área temporária identificada para materiais em recebimento, separação ou expedição"
+                        ],
+                        "a": 0,
+                        "e": "FIFO: regra de usar primeiro o item que entrou primeiro Na prática, reduz envelhecimento quando data de validade não é o principal critério"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de FIFO em rotinas de almoxarifado?",
+                        "o": [
+                              "reduz envelhecimento quando data de validade não é o principal critério",
+                              "protege materiais com validade independentemente da ordem de recebimento",
+                              "evita iniciar manutenção sem todos os materiais planejados",
+                              "evita misturar itens em trânsito com estoque disponível"
+                        ],
+                        "a": 0,
+                        "e": "FIFO: regra de usar primeiro o item que entrou primeiro Na prática, reduz envelhecimento quando data de validade não é o principal critério"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente FEFO?",
+                        "o": [
+                              "regra de usar primeiro o item que vence primeiro",
+                              "separação de itens conforme uma requisição ou ordem",
+                              "área e estado controlados para itens não liberados, suspeitos ou não conformes",
+                              "limitação e registro de quem entra e movimenta materiais"
+                        ],
+                        "a": 0,
+                        "e": "FEFO: regra de usar primeiro o item que vence primeiro Na prática, protege materiais com validade independentemente da ordem de recebimento"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de FEFO em rotinas de almoxarifado?",
+                        "o": [
+                              "protege materiais com validade independentemente da ordem de recebimento",
+                              "garante quantidade, código, lote e destino corretos antes da entrega",
+                              "impede uso acidental antes de inspeção e decisão formal",
+                              "protege peças críticas, mantém rastreabilidade e reduz perdas"
+                        ],
+                        "a": 0,
+                        "e": "FEFO: regra de usar primeiro o item que vence primeiro Na prática, protege materiais com validade independentemente da ordem de recebimento"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente picking?",
+                        "o": [
+                              "separação de itens conforme uma requisição ou ordem",
+                              "agrupamento prévio de peças e consumíveis de uma atividade",
+                              "contagem periódica de grupos de itens ao longo do ano",
+                              "sistema que identifica corredor, estante, nível e posição de cada item"
+                        ],
+                        "a": 0,
+                        "e": "picking: separação de itens conforme uma requisição ou ordem Na prática, garante quantidade, código, lote e destino corretos antes da entrega"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de picking em rotinas de almoxarifado?",
+                        "o": [
+                              "garante quantidade, código, lote e destino corretos antes da entrega",
+                              "evita iniciar manutenção sem todos os materiais planejados",
+                              "detecta divergências cedo sem depender somente do inventário geral",
+                              "reduz tempo de procura e impede guardar material em localização não registrada"
+                        ],
+                        "a": 0,
+                        "e": "picking: separação de itens conforme uma requisição ou ordem Na prática, garante quantidade, código, lote e destino corretos antes da entrega"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente kitting?",
+                        "o": [
+                              "agrupamento prévio de peças e consumíveis de uma atividade",
+                              "área e estado controlados para itens não liberados, suspeitos ou não conformes",
+                              "área temporária identificada para materiais em recebimento, separação ou expedição",
+                              "prática de utilização, organização, limpeza, padronização e disciplina"
+                        ],
+                        "a": 0,
+                        "e": "kitting: agrupamento prévio de peças e consumíveis de uma atividade Na prática, evita iniciar manutenção sem todos os materiais planejados"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de kitting em rotinas de almoxarifado?",
+                        "o": [
+                              "evita iniciar manutenção sem todos os materiais planejados",
+                              "impede uso acidental antes de inspeção e decisão formal",
+                              "evita misturar itens em trânsito com estoque disponível",
+                              "mantém o almoxarifado seguro, visual e livre de materiais sem finalidade"
+                        ],
+                        "a": 0,
+                        "e": "kitting: agrupamento prévio de peças e consumíveis de uma atividade Na prática, evita iniciar manutenção sem todos os materiais planejados"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente quarentena?",
+                        "o": [
+                              "área e estado controlados para itens não liberados, suspeitos ou não conformes",
+                              "contagem periódica de grupos de itens ao longo do ano",
+                              "limitação e registro de quem entra e movimenta materiais",
+                              "regra de usar primeiro o item que entrou primeiro"
+                        ],
+                        "a": 0,
+                        "e": "quarentena: área e estado controlados para itens não liberados, suspeitos ou não conformes Na prática, impede uso acidental antes de inspeção e decisão formal"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de quarentena em rotinas de almoxarifado?",
+                        "o": [
+                              "impede uso acidental antes de inspeção e decisão formal",
+                              "detecta divergências cedo sem depender somente do inventário geral",
+                              "protege peças críticas, mantém rastreabilidade e reduz perdas",
+                              "reduz envelhecimento quando data de validade não é o principal critério"
+                        ],
+                        "a": 0,
+                        "e": "quarentena: área e estado controlados para itens não liberados, suspeitos ou não conformes Na prática, impede uso acidental antes de inspeção e decisão formal"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente inventário rotativo?",
+                        "o": [
+                              "contagem periódica de grupos de itens ao longo do ano",
+                              "área temporária identificada para materiais em recebimento, separação ou expedição",
+                              "sistema que identifica corredor, estante, nível e posição de cada item",
+                              "regra de usar primeiro o item que vence primeiro"
+                        ],
+                        "a": 0,
+                        "e": "inventário rotativo: contagem periódica de grupos de itens ao longo do ano Na prática, detecta divergências cedo sem depender somente do inventário geral"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de inventário rotativo em rotinas de almoxarifado?",
+                        "o": [
+                              "detecta divergências cedo sem depender somente do inventário geral",
+                              "evita misturar itens em trânsito com estoque disponível",
+                              "reduz tempo de procura e impede guardar material em localização não registrada",
+                              "protege materiais com validade independentemente da ordem de recebimento"
+                        ],
+                        "a": 0,
+                        "e": "inventário rotativo: contagem periódica de grupos de itens ao longo do ano Na prática, detecta divergências cedo sem depender somente do inventário geral"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente zona de staging?",
+                        "o": [
+                              "área temporária identificada para materiais em recebimento, separação ou expedição",
+                              "limitação e registro de quem entra e movimenta materiais",
+                              "prática de utilização, organização, limpeza, padronização e disciplina",
+                              "separação de itens conforme uma requisição ou ordem"
+                        ],
+                        "a": 0,
+                        "e": "zona de staging: área temporária identificada para materiais em recebimento, separação ou expedição Na prática, evita misturar itens em trânsito com estoque disponível"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de zona de staging em rotinas de almoxarifado?",
+                        "o": [
+                              "evita misturar itens em trânsito com estoque disponível",
+                              "protege peças críticas, mantém rastreabilidade e reduz perdas",
+                              "mantém o almoxarifado seguro, visual e livre de materiais sem finalidade",
+                              "garante quantidade, código, lote e destino corretos antes da entrega"
+                        ],
+                        "a": 0,
+                        "e": "zona de staging: área temporária identificada para materiais em recebimento, separação ou expedição Na prática, evita misturar itens em trânsito com estoque disponível"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente controle de acesso ao estoque?",
+                        "o": [
+                              "limitação e registro de quem entra e movimenta materiais",
+                              "sistema que identifica corredor, estante, nível e posição de cada item",
+                              "regra de usar primeiro o item que entrou primeiro",
+                              "agrupamento prévio de peças e consumíveis de uma atividade"
+                        ],
+                        "a": 0,
+                        "e": "controle de acesso ao estoque: limitação e registro de quem entra e movimenta materiais Na prática, protege peças críticas, mantém rastreabilidade e reduz perdas"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de controle de acesso ao estoque em rotinas de almoxarifado?",
+                        "o": [
+                              "protege peças críticas, mantém rastreabilidade e reduz perdas",
+                              "reduz tempo de procura e impede guardar material em localização não registrada",
+                              "reduz envelhecimento quando data de validade não é o principal critério",
+                              "evita iniciar manutenção sem todos os materiais planejados"
+                        ],
+                        "a": 0,
+                        "e": "controle de acesso ao estoque: limitação e registro de quem entra e movimenta materiais Na prática, protege peças críticas, mantém rastreabilidade e reduz perdas"
+                  }
+            ]
+      },
+      {
+            "id": "inventario-rastreabilidade",
+            "title": "Inventário e Rastreabilidade",
+            "description": "Códigos, séries, lotes, registros, reconciliação e acuracidade.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente SKU?",
+                        "o": [
+                              "código único de uma unidade de manutenção de estoque",
+                              "identificador individual atribuído a uma unidade específica",
+                              "representação óptica de um identificador lido por scanner",
+                              "comparação entre saldo físico e sistema seguida de investigação das diferenças"
+                        ],
+                        "a": 0,
+                        "e": "SKU: código único de uma unidade de manutenção de estoque Na prática, diferencia itens por modelo, característica ou embalagem para controle de saldo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de SKU em inventário e rastreabilidade?",
+                        "o": [
+                              "diferencia itens por modelo, característica ou embalagem para controle de saldo",
+                              "acompanha garantia, instalação, histórico e destino daquele equipamento",
+                              "reduz digitação e acelera recebimento, contagem e baixa quando ligado ao cadastro correto",
+                              "corrige o registro sem esconder perda, erro de unidade ou movimentação não lançada"
+                        ],
+                        "a": 0,
+                        "e": "SKU: código único de uma unidade de manutenção de estoque Na prática, diferencia itens por modelo, característica ou embalagem para controle de saldo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente número de série?",
+                        "o": [
+                              "identificador individual atribuído a uma unidade específica",
+                              "grupo de itens produzido ou recebido sob condições comuns",
+                              "identificação por radiofrequência com etiquetas e leitores compatíveis",
+                              "grau de correspondência entre quantidade, identidade e localização física e registradas"
+                        ],
+                        "a": 0,
+                        "e": "número de série: identificador individual atribuído a uma unidade específica Na prática, acompanha garantia, instalação, histórico e destino daquele equipamento"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de número de série em inventário e rastreabilidade?",
+                        "o": [
+                              "acompanha garantia, instalação, histórico e destino daquele equipamento",
+                              "permite rastrear validade, qualidade e recolhimento de todas as unidades relacionadas",
+                              "automatiza leitura sem contato visual direto dentro do alcance e controle definidos",
+                              "mede confiança do estoque para atender manutenção e planejamento"
+                        ],
+                        "a": 0,
+                        "e": "número de série: identificador individual atribuído a uma unidade específica Na prática, acompanha garantia, instalação, histórico e destino daquele equipamento"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente lote?",
+                        "o": [
+                              "grupo de itens produzido ou recebido sob condições comuns",
+                              "representação óptica de um identificador lido por scanner",
+                              "registro de entrada, saída, transferência ou ajuste com origem e responsável",
+                              "vínculo de uma quantidade disponível a uma ordem ou necessidade aprovada"
+                        ],
+                        "a": 0,
+                        "e": "lote: grupo de itens produzido ou recebido sob condições comuns Na prática, permite rastrear validade, qualidade e recolhimento de todas as unidades relacionadas"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de lote em inventário e rastreabilidade?",
+                        "o": [
+                              "permite rastrear validade, qualidade e recolhimento de todas as unidades relacionadas",
+                              "reduz digitação e acelera recebimento, contagem e baixa quando ligado ao cadastro correto",
+                              "mantém o saldo ligado a um evento real e auditável",
+                              "evita que peça crítica planejada seja consumida por outra atividade"
+                        ],
+                        "a": 0,
+                        "e": "lote: grupo de itens produzido ou recebido sob condições comuns Na prática, permite rastrear validade, qualidade e recolhimento de todas as unidades relacionadas"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente código de barras?",
+                        "o": [
+                              "representação óptica de um identificador lido por scanner",
+                              "identificação por radiofrequência com etiquetas e leitores compatíveis",
+                              "comparação entre saldo físico e sistema seguida de investigação das diferenças",
+                              "histórico imutável ou controlado de alterações no cadastro e saldo"
+                        ],
+                        "a": 0,
+                        "e": "código de barras: representação óptica de um identificador lido por scanner Na prática, reduz digitação e acelera recebimento, contagem e baixa quando ligado ao cadastro correto"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de código de barras em inventário e rastreabilidade?",
+                        "o": [
+                              "reduz digitação e acelera recebimento, contagem e baixa quando ligado ao cadastro correto",
+                              "automatiza leitura sem contato visual direto dentro do alcance e controle definidos",
+                              "corrige o registro sem esconder perda, erro de unidade ou movimentação não lançada",
+                              "mostra quem alterou, quando, por qual motivo e com qual documento"
+                        ],
+                        "a": 0,
+                        "e": "código de barras: representação óptica de um identificador lido por scanner Na prática, reduz digitação e acelera recebimento, contagem e baixa quando ligado ao cadastro correto"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente RFID?",
+                        "o": [
+                              "identificação por radiofrequência com etiquetas e leitores compatíveis",
+                              "registro de entrada, saída, transferência ou ajuste com origem e responsável",
+                              "grau de correspondência entre quantidade, identidade e localização física e registradas",
+                              "código único de uma unidade de manutenção de estoque"
+                        ],
+                        "a": 0,
+                        "e": "RFID: identificação por radiofrequência com etiquetas e leitores compatíveis Na prática, automatiza leitura sem contato visual direto dentro do alcance e controle definidos"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de RFID em inventário e rastreabilidade?",
+                        "o": [
+                              "automatiza leitura sem contato visual direto dentro do alcance e controle definidos",
+                              "mantém o saldo ligado a um evento real e auditável",
+                              "mede confiança do estoque para atender manutenção e planejamento",
+                              "diferencia itens por modelo, característica ou embalagem para controle de saldo"
+                        ],
+                        "a": 0,
+                        "e": "RFID: identificação por radiofrequência com etiquetas e leitores compatíveis Na prática, automatiza leitura sem contato visual direto dentro do alcance e controle definidos"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente movimentação de estoque?",
+                        "o": [
+                              "registro de entrada, saída, transferência ou ajuste com origem e responsável",
+                              "comparação entre saldo físico e sistema seguida de investigação das diferenças",
+                              "vínculo de uma quantidade disponível a uma ordem ou necessidade aprovada",
+                              "identificador individual atribuído a uma unidade específica"
+                        ],
+                        "a": 0,
+                        "e": "movimentação de estoque: registro de entrada, saída, transferência ou ajuste com origem e responsável Na prática, mantém o saldo ligado a um evento real e auditável"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de movimentação de estoque em inventário e rastreabilidade?",
+                        "o": [
+                              "mantém o saldo ligado a um evento real e auditável",
+                              "corrige o registro sem esconder perda, erro de unidade ou movimentação não lançada",
+                              "evita que peça crítica planejada seja consumida por outra atividade",
+                              "acompanha garantia, instalação, histórico e destino daquele equipamento"
+                        ],
+                        "a": 0,
+                        "e": "movimentação de estoque: registro de entrada, saída, transferência ou ajuste com origem e responsável Na prática, mantém o saldo ligado a um evento real e auditável"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente reconciliação?",
+                        "o": [
+                              "comparação entre saldo físico e sistema seguida de investigação das diferenças",
+                              "grau de correspondência entre quantidade, identidade e localização física e registradas",
+                              "histórico imutável ou controlado de alterações no cadastro e saldo",
+                              "grupo de itens produzido ou recebido sob condições comuns"
+                        ],
+                        "a": 0,
+                        "e": "reconciliação: comparação entre saldo físico e sistema seguida de investigação das diferenças Na prática, corrige o registro sem esconder perda, erro de unidade ou movimentação não lançada"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de reconciliação em inventário e rastreabilidade?",
+                        "o": [
+                              "corrige o registro sem esconder perda, erro de unidade ou movimentação não lançada",
+                              "mede confiança do estoque para atender manutenção e planejamento",
+                              "mostra quem alterou, quando, por qual motivo e com qual documento",
+                              "permite rastrear validade, qualidade e recolhimento de todas as unidades relacionadas"
+                        ],
+                        "a": 0,
+                        "e": "reconciliação: comparação entre saldo físico e sistema seguida de investigação das diferenças Na prática, corrige o registro sem esconder perda, erro de unidade ou movimentação não lançada"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente acuracidade de inventário?",
+                        "o": [
+                              "grau de correspondência entre quantidade, identidade e localização física e registradas",
+                              "vínculo de uma quantidade disponível a uma ordem ou necessidade aprovada",
+                              "código único de uma unidade de manutenção de estoque",
+                              "representação óptica de um identificador lido por scanner"
+                        ],
+                        "a": 0,
+                        "e": "acuracidade de inventário: grau de correspondência entre quantidade, identidade e localização física e registradas Na prática, mede confiança do estoque para atender manutenção e planejamento"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de acuracidade de inventário em inventário e rastreabilidade?",
+                        "o": [
+                              "mede confiança do estoque para atender manutenção e planejamento",
+                              "evita que peça crítica planejada seja consumida por outra atividade",
+                              "diferencia itens por modelo, característica ou embalagem para controle de saldo",
+                              "reduz digitação e acelera recebimento, contagem e baixa quando ligado ao cadastro correto"
+                        ],
+                        "a": 0,
+                        "e": "acuracidade de inventário: grau de correspondência entre quantidade, identidade e localização física e registradas Na prática, mede confiança do estoque para atender manutenção e planejamento"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente reserva de material?",
+                        "o": [
+                              "vínculo de uma quantidade disponível a uma ordem ou necessidade aprovada",
+                              "histórico imutável ou controlado de alterações no cadastro e saldo",
+                              "identificador individual atribuído a uma unidade específica",
+                              "identificação por radiofrequência com etiquetas e leitores compatíveis"
+                        ],
+                        "a": 0,
+                        "e": "reserva de material: vínculo de uma quantidade disponível a uma ordem ou necessidade aprovada Na prática, evita que peça crítica planejada seja consumida por outra atividade"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de reserva de material em inventário e rastreabilidade?",
+                        "o": [
+                              "evita que peça crítica planejada seja consumida por outra atividade",
+                              "mostra quem alterou, quando, por qual motivo e com qual documento",
+                              "acompanha garantia, instalação, histórico e destino daquele equipamento",
+                              "automatiza leitura sem contato visual direto dentro do alcance e controle definidos"
+                        ],
+                        "a": 0,
+                        "e": "reserva de material: vínculo de uma quantidade disponível a uma ordem ou necessidade aprovada Na prática, evita que peça crítica planejada seja consumida por outra atividade"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente trilha de auditoria?",
+                        "o": [
+                              "histórico imutável ou controlado de alterações no cadastro e saldo",
+                              "código único de uma unidade de manutenção de estoque",
+                              "grupo de itens produzido ou recebido sob condições comuns",
+                              "registro de entrada, saída, transferência ou ajuste com origem e responsável"
+                        ],
+                        "a": 0,
+                        "e": "trilha de auditoria: histórico imutável ou controlado de alterações no cadastro e saldo Na prática, mostra quem alterou, quando, por qual motivo e com qual documento"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de trilha de auditoria em inventário e rastreabilidade?",
+                        "o": [
+                              "mostra quem alterou, quando, por qual motivo e com qual documento",
+                              "diferencia itens por modelo, característica ou embalagem para controle de saldo",
+                              "permite rastrear validade, qualidade e recolhimento de todas as unidades relacionadas",
+                              "mantém o saldo ligado a um evento real e auditável"
+                        ],
+                        "a": 0,
+                        "e": "trilha de auditoria: histórico imutável ou controlado de alterações no cadastro e saldo Na prática, mostra quem alterou, quando, por qual motivo e com qual documento"
+                  }
+            ]
+      },
+      {
+            "id": "pecas-criticas",
+            "title": "Peças e Materiais Críticos",
+            "description": "Criticidade, lead time, reparáveis, validade, preservação e níveis de estoque.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente sobressalente crítico?",
+                        "o": [
+                              "peça cuja falta pode prolongar impacto relevante ou impedir recuperação",
+                              "tempo total entre identificar necessidade e ter o item disponível e liberado",
+                              "componente que pode retornar ao estoque após diagnóstico e reparo aprovados",
+                              "medidas de embalagem, ambiente, posição, proteção e inspeção durante armazenamento"
+                        ],
+                        "a": 0,
+                        "e": "sobressalente crítico: peça cuja falta pode prolongar impacto relevante ou impedir recuperação Na prática, recebe prioridade de estoque conforme consequência, consumo, reparabilidade e prazo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de sobressalente crítico em peças e materiais críticos?",
+                        "o": [
+                              "recebe prioridade de estoque conforme consequência, consumo, reparabilidade e prazo",
+                              "define quanta antecedência e proteção de estoque são necessárias",
+                              "exige fluxo de retirada, oficina, teste, garantia e condição claramente registrada",
+                              "evita corrosão, descarga, deformação, contaminação e perda de garantia"
+                        ],
+                        "a": 0,
+                        "e": "sobressalente crítico: peça cuja falta pode prolongar impacto relevante ou impedir recuperação Na prática, recebe prioridade de estoque conforme consequência, consumo, reparabilidade e prazo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente lead time de reposição?",
+                        "o": [
+                              "tempo total entre identificar necessidade e ter o item disponível e liberado",
+                              "probabilidade ou meta de atender uma demanda de material sem falta",
+                              "unidade reparável mantida para troca rápida e retorno posterior da peça removida",
+                              "limite que dispara reposição considerando consumo, lead time e segurança"
+                        ],
+                        "a": 0,
+                        "e": "lead time de reposição: tempo total entre identificar necessidade e ter o item disponível e liberado Na prática, define quanta antecedência e proteção de estoque são necessárias"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de lead time de reposição em peças e materiais críticos?",
+                        "o": [
+                              "define quanta antecedência e proteção de estoque são necessárias",
+                              "equilibra disponibilidade operacional com capital e risco de obsolescência",
+                              "reduz tempo de indisponibilidade quando há pool e rastreabilidade individual",
+                              "reduz risco de ruptura sem ser escolhido apenas por hábito"
+                        ],
+                        "a": 0,
+                        "e": "lead time de reposição: tempo total entre identificar necessidade e ter o item disponível e liberado Na prática, define quanta antecedência e proteção de estoque são necessárias"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente nível de serviço de peças?",
+                        "o": [
+                              "probabilidade ou meta de atender uma demanda de material sem falta",
+                              "componente que pode retornar ao estoque após diagnóstico e reparo aprovados",
+                              "período em que o material permanece utilizável nas condições de armazenamento definidas",
+                              "retirada controlada de peça de outro equipamento para restaurar um ativo prioritário"
+                        ],
+                        "a": 0,
+                        "e": "nível de serviço de peças: probabilidade ou meta de atender uma demanda de material sem falta Na prática, equilibra disponibilidade operacional com capital e risco de obsolescência"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de nível de serviço de peças em peças e materiais críticos?",
+                        "o": [
+                              "equilibra disponibilidade operacional com capital e risco de obsolescência",
+                              "exige fluxo de retirada, oficina, teste, garantia e condição claramente registrada",
+                              "orienta validade, inspeção, rotação e descarte antes de uso",
+                              "só deve ocorrer com autorização, registro e plano para recompor o equipamento doador"
+                        ],
+                        "a": 0,
+                        "e": "nível de serviço de peças: probabilidade ou meta de atender uma demanda de material sem falta Na prática, equilibra disponibilidade operacional com capital e risco de obsolescência"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente item reparável?",
+                        "o": [
+                              "componente que pode retornar ao estoque após diagnóstico e reparo aprovados",
+                              "unidade reparável mantida para troca rápida e retorno posterior da peça removida",
+                              "medidas de embalagem, ambiente, posição, proteção e inspeção durante armazenamento",
+                              "material pertencente ao fornecedor mantido no local até consumo ou condição contratual"
+                        ],
+                        "a": 0,
+                        "e": "item reparável: componente que pode retornar ao estoque após diagnóstico e reparo aprovados Na prática, exige fluxo de retirada, oficina, teste, garantia e condição claramente registrada"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de item reparável em peças e materiais críticos?",
+                        "o": [
+                              "exige fluxo de retirada, oficina, teste, garantia e condição claramente registrada",
+                              "reduz tempo de indisponibilidade quando há pool e rastreabilidade individual",
+                              "evita corrosão, descarga, deformação, contaminação e perda de garantia",
+                              "melhora disponibilidade quando propriedade, contagem, cobrança e responsabilidade estão claras"
+                        ],
+                        "a": 0,
+                        "e": "item reparável: componente que pode retornar ao estoque após diagnóstico e reparo aprovados Na prática, exige fluxo de retirada, oficina, teste, garantia e condição claramente registrada"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente rotável?",
+                        "o": [
+                              "unidade reparável mantida para troca rápida e retorno posterior da peça removida",
+                              "período em que o material permanece utilizável nas condições de armazenamento definidas",
+                              "limite que dispara reposição considerando consumo, lead time e segurança",
+                              "peça cuja falta pode prolongar impacto relevante ou impedir recuperação"
+                        ],
+                        "a": 0,
+                        "e": "rotável: unidade reparável mantida para troca rápida e retorno posterior da peça removida Na prática, reduz tempo de indisponibilidade quando há pool e rastreabilidade individual"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de rotável em peças e materiais críticos?",
+                        "o": [
+                              "reduz tempo de indisponibilidade quando há pool e rastreabilidade individual",
+                              "orienta validade, inspeção, rotação e descarte antes de uso",
+                              "reduz risco de ruptura sem ser escolhido apenas por hábito",
+                              "recebe prioridade de estoque conforme consequência, consumo, reparabilidade e prazo"
+                        ],
+                        "a": 0,
+                        "e": "rotável: unidade reparável mantida para troca rápida e retorno posterior da peça removida Na prática, reduz tempo de indisponibilidade quando há pool e rastreabilidade individual"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente shelf life?",
+                        "o": [
+                              "período em que o material permanece utilizável nas condições de armazenamento definidas",
+                              "medidas de embalagem, ambiente, posição, proteção e inspeção durante armazenamento",
+                              "retirada controlada de peça de outro equipamento para restaurar um ativo prioritário",
+                              "tempo total entre identificar necessidade e ter o item disponível e liberado"
+                        ],
+                        "a": 0,
+                        "e": "shelf life: período em que o material permanece utilizável nas condições de armazenamento definidas Na prática, orienta validade, inspeção, rotação e descarte antes de uso"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de shelf life em peças e materiais críticos?",
+                        "o": [
+                              "orienta validade, inspeção, rotação e descarte antes de uso",
+                              "evita corrosão, descarga, deformação, contaminação e perda de garantia",
+                              "só deve ocorrer com autorização, registro e plano para recompor o equipamento doador",
+                              "define quanta antecedência e proteção de estoque são necessárias"
+                        ],
+                        "a": 0,
+                        "e": "shelf life: período em que o material permanece utilizável nas condições de armazenamento definidas Na prática, orienta validade, inspeção, rotação e descarte antes de uso"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente preservação de estoque?",
+                        "o": [
+                              "medidas de embalagem, ambiente, posição, proteção e inspeção durante armazenamento",
+                              "limite que dispara reposição considerando consumo, lead time e segurança",
+                              "material pertencente ao fornecedor mantido no local até consumo ou condição contratual",
+                              "probabilidade ou meta de atender uma demanda de material sem falta"
+                        ],
+                        "a": 0,
+                        "e": "preservação de estoque: medidas de embalagem, ambiente, posição, proteção e inspeção durante armazenamento Na prática, evita corrosão, descarga, deformação, contaminação e perda de garantia"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de preservação de estoque em peças e materiais críticos?",
+                        "o": [
+                              "evita corrosão, descarga, deformação, contaminação e perda de garantia",
+                              "reduz risco de ruptura sem ser escolhido apenas por hábito",
+                              "melhora disponibilidade quando propriedade, contagem, cobrança e responsabilidade estão claras",
+                              "equilibra disponibilidade operacional com capital e risco de obsolescência"
+                        ],
+                        "a": 0,
+                        "e": "preservação de estoque: medidas de embalagem, ambiente, posição, proteção e inspeção durante armazenamento Na prática, evita corrosão, descarga, deformação, contaminação e perda de garantia"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente estoque mínimo?",
+                        "o": [
+                              "limite que dispara reposição considerando consumo, lead time e segurança",
+                              "retirada controlada de peça de outro equipamento para restaurar um ativo prioritário",
+                              "peça cuja falta pode prolongar impacto relevante ou impedir recuperação",
+                              "componente que pode retornar ao estoque após diagnóstico e reparo aprovados"
+                        ],
+                        "a": 0,
+                        "e": "estoque mínimo: limite que dispara reposição considerando consumo, lead time e segurança Na prática, reduz risco de ruptura sem ser escolhido apenas por hábito"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de estoque mínimo em peças e materiais críticos?",
+                        "o": [
+                              "reduz risco de ruptura sem ser escolhido apenas por hábito",
+                              "só deve ocorrer com autorização, registro e plano para recompor o equipamento doador",
+                              "recebe prioridade de estoque conforme consequência, consumo, reparabilidade e prazo",
+                              "exige fluxo de retirada, oficina, teste, garantia e condição claramente registrada"
+                        ],
+                        "a": 0,
+                        "e": "estoque mínimo: limite que dispara reposição considerando consumo, lead time e segurança Na prática, reduz risco de ruptura sem ser escolhido apenas por hábito"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente canibalização?",
+                        "o": [
+                              "retirada controlada de peça de outro equipamento para restaurar um ativo prioritário",
+                              "material pertencente ao fornecedor mantido no local até consumo ou condição contratual",
+                              "tempo total entre identificar necessidade e ter o item disponível e liberado",
+                              "unidade reparável mantida para troca rápida e retorno posterior da peça removida"
+                        ],
+                        "a": 0,
+                        "e": "canibalização: retirada controlada de peça de outro equipamento para restaurar um ativo prioritário Na prática, só deve ocorrer com autorização, registro e plano para recompor o equipamento doador"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de canibalização em peças e materiais críticos?",
+                        "o": [
+                              "só deve ocorrer com autorização, registro e plano para recompor o equipamento doador",
+                              "melhora disponibilidade quando propriedade, contagem, cobrança e responsabilidade estão claras",
+                              "define quanta antecedência e proteção de estoque são necessárias",
+                              "reduz tempo de indisponibilidade quando há pool e rastreabilidade individual"
+                        ],
+                        "a": 0,
+                        "e": "canibalização: retirada controlada de peça de outro equipamento para restaurar um ativo prioritário Na prática, só deve ocorrer com autorização, registro e plano para recompor o equipamento doador"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente estoque consignado?",
+                        "o": [
+                              "material pertencente ao fornecedor mantido no local até consumo ou condição contratual",
+                              "peça cuja falta pode prolongar impacto relevante ou impedir recuperação",
+                              "probabilidade ou meta de atender uma demanda de material sem falta",
+                              "período em que o material permanece utilizável nas condições de armazenamento definidas"
+                        ],
+                        "a": 0,
+                        "e": "estoque consignado: material pertencente ao fornecedor mantido no local até consumo ou condição contratual Na prática, melhora disponibilidade quando propriedade, contagem, cobrança e responsabilidade estão claras"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de estoque consignado em peças e materiais críticos?",
+                        "o": [
+                              "melhora disponibilidade quando propriedade, contagem, cobrança e responsabilidade estão claras",
+                              "recebe prioridade de estoque conforme consequência, consumo, reparabilidade e prazo",
+                              "equilibra disponibilidade operacional com capital e risco de obsolescência",
+                              "orienta validade, inspeção, rotação e descarte antes de uso"
+                        ],
+                        "a": 0,
+                        "e": "estoque consignado: material pertencente ao fornecedor mantido no local até consumo ou condição contratual Na prática, melhora disponibilidade quando propriedade, contagem, cobrança e responsabilidade estão claras"
+                  }
+            ]
+      },
+      {
+            "id": "recebimento-movimentacao",
+            "title": "Recebimento e Movimentação",
+            "description": "Documentos, inspeção, danos, ESD, içamento, staging e expedição.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente pedido de compra?",
+                        "o": [
+                              "documento que formaliza item, quantidade, condição, preço e entrega aprovados",
+                              "relação de volumes e conteúdos enviada com a carga",
+                              "documentação imediata de dano, embalagem, fotos autorizadas e ressalvas",
+                              "planejamento de carga, centro de gravidade, capacidade, acessórios, rota e responsáveis"
+                        ],
+                        "a": 0,
+                        "e": "pedido de compra: documento que formaliza item, quantidade, condição, preço e entrega aprovados Na prática, serve de referência para conferir se o recebimento corresponde ao contratado"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de pedido de compra em recebimento e movimentação?",
+                        "o": [
+                              "serve de referência para conferir se o recebimento corresponde ao contratado",
+                              "apoia conferência física sem substituir nota, pedido e inspeção técnica",
+                              "preserva evidência para quarentena, transportadora, seguro e fornecedor",
+                              "controla movimentação de equipamentos pesados sem improvisação"
+                        ],
+                        "a": 0,
+                        "e": "pedido de compra: documento que formaliza item, quantidade, condição, preço e entrega aprovados Na prática, serve de referência para conferir se o recebimento corresponde ao contratado"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente packing list?",
+                        "o": [
+                              "relação de volumes e conteúdos enviada com a carga",
+                              "verificação de identidade, quantidade, condição e requisitos antes da liberação",
+                              "registro contínuo de quem recebeu, guardou, transferiu e entregou um item sensível",
+                              "limite seguro de empilhadeira, paleteira, talha ou carrinho"
+                        ],
+                        "a": 0,
+                        "e": "packing list: relação de volumes e conteúdos enviada com a carga Na prática, apoia conferência física sem substituir nota, pedido e inspeção técnica"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de packing list em recebimento e movimentação?",
+                        "o": [
+                              "apoia conferência física sem substituir nota, pedido e inspeção técnica",
+                              "impede colocar em estoque item errado, danificado ou sem documentação",
+                              "mantém integridade e responsabilidade desde a origem até o destino",
+                              "impede sobrecarga e considera configuração, alcance, piso e centro de gravidade"
+                        ],
+                        "a": 0,
+                        "e": "packing list: relação de volumes e conteúdos enviada com a carga Na prática, apoia conferência física sem substituir nota, pedido e inspeção técnica"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente inspeção de recebimento?",
+                        "o": [
+                              "verificação de identidade, quantidade, condição e requisitos antes da liberação",
+                              "documentação imediata de dano, embalagem, fotos autorizadas e ressalvas",
+                              "controles contra descarga eletrostática em componentes eletrônicos sensíveis",
+                              "área controlada onde o item aguarda conferência ou movimentação final"
+                        ],
+                        "a": 0,
+                        "e": "inspeção de recebimento: verificação de identidade, quantidade, condição e requisitos antes da liberação Na prática, impede colocar em estoque item errado, danificado ou sem documentação"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de inspeção de recebimento em recebimento e movimentação?",
+                        "o": [
+                              "impede colocar em estoque item errado, danificado ou sem documentação",
+                              "preserva evidência para quarentena, transportadora, seguro e fornecedor",
+                              "evita dano latente por embalagem, bancada, aterramento e manuseio inadequados",
+                              "mantém volumes identificados e separados sem bloquear rotas"
+                        ],
+                        "a": 0,
+                        "e": "inspeção de recebimento: verificação de identidade, quantidade, condição e requisitos antes da liberação Na prática, impede colocar em estoque item errado, danificado ou sem documentação"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente registro de avaria?",
+                        "o": [
+                              "documentação imediata de dano, embalagem, fotos autorizadas e ressalvas",
+                              "registro contínuo de quem recebeu, guardou, transferiu e entregou um item sensível",
+                              "planejamento de carga, centro de gravidade, capacidade, acessórios, rota e responsáveis",
+                              "registro de destinatário, item, quantidade, horário e condição"
+                        ],
+                        "a": 0,
+                        "e": "registro de avaria: documentação imediata de dano, embalagem, fotos autorizadas e ressalvas Na prática, preserva evidência para quarentena, transportadora, seguro e fornecedor"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de registro de avaria em recebimento e movimentação?",
+                        "o": [
+                              "preserva evidência para quarentena, transportadora, seguro e fornecedor",
+                              "mantém integridade e responsabilidade desde a origem até o destino",
+                              "controla movimentação de equipamentos pesados sem improvisação",
+                              "fecha a transferência de responsabilidade e atualiza o destino do ativo"
+                        ],
+                        "a": 0,
+                        "e": "registro de avaria: documentação imediata de dano, embalagem, fotos autorizadas e ressalvas Na prática, preserva evidência para quarentena, transportadora, seguro e fornecedor"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente cadeia de custódia?",
+                        "o": [
+                              "registro contínuo de quem recebeu, guardou, transferiu e entregou um item sensível",
+                              "controles contra descarga eletrostática em componentes eletrônicos sensíveis",
+                              "limite seguro de empilhadeira, paleteira, talha ou carrinho",
+                              "documento que formaliza item, quantidade, condição, preço e entrega aprovados"
+                        ],
+                        "a": 0,
+                        "e": "cadeia de custódia: registro contínuo de quem recebeu, guardou, transferiu e entregou um item sensível Na prática, mantém integridade e responsabilidade desde a origem até o destino"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de cadeia de custódia em recebimento e movimentação?",
+                        "o": [
+                              "mantém integridade e responsabilidade desde a origem até o destino",
+                              "evita dano latente por embalagem, bancada, aterramento e manuseio inadequados",
+                              "impede sobrecarga e considera configuração, alcance, piso e centro de gravidade",
+                              "serve de referência para conferir se o recebimento corresponde ao contratado"
+                        ],
+                        "a": 0,
+                        "e": "cadeia de custódia: registro contínuo de quem recebeu, guardou, transferiu e entregou um item sensível Na prática, mantém integridade e responsabilidade desde a origem até o destino"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente proteção ESD?",
+                        "o": [
+                              "controles contra descarga eletrostática em componentes eletrônicos sensíveis",
+                              "planejamento de carga, centro de gravidade, capacidade, acessórios, rota e responsáveis",
+                              "área controlada onde o item aguarda conferência ou movimentação final",
+                              "relação de volumes e conteúdos enviada com a carga"
+                        ],
+                        "a": 0,
+                        "e": "proteção ESD: controles contra descarga eletrostática em componentes eletrônicos sensíveis Na prática, evita dano latente por embalagem, bancada, aterramento e manuseio inadequados"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de proteção ESD em recebimento e movimentação?",
+                        "o": [
+                              "evita dano latente por embalagem, bancada, aterramento e manuseio inadequados",
+                              "controla movimentação de equipamentos pesados sem improvisação",
+                              "mantém volumes identificados e separados sem bloquear rotas",
+                              "apoia conferência física sem substituir nota, pedido e inspeção técnica"
+                        ],
+                        "a": 0,
+                        "e": "proteção ESD: controles contra descarga eletrostática em componentes eletrônicos sensíveis Na prática, evita dano latente por embalagem, bancada, aterramento e manuseio inadequados"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente plano de içamento?",
+                        "o": [
+                              "planejamento de carga, centro de gravidade, capacidade, acessórios, rota e responsáveis",
+                              "limite seguro de empilhadeira, paleteira, talha ou carrinho",
+                              "registro de destinatário, item, quantidade, horário e condição",
+                              "verificação de identidade, quantidade, condição e requisitos antes da liberação"
+                        ],
+                        "a": 0,
+                        "e": "plano de içamento: planejamento de carga, centro de gravidade, capacidade, acessórios, rota e responsáveis Na prática, controla movimentação de equipamentos pesados sem improvisação"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de plano de içamento em recebimento e movimentação?",
+                        "o": [
+                              "controla movimentação de equipamentos pesados sem improvisação",
+                              "impede sobrecarga e considera configuração, alcance, piso e centro de gravidade",
+                              "fecha a transferência de responsabilidade e atualiza o destino do ativo",
+                              "impede colocar em estoque item errado, danificado ou sem documentação"
+                        ],
+                        "a": 0,
+                        "e": "plano de içamento: planejamento de carga, centro de gravidade, capacidade, acessórios, rota e responsáveis Na prática, controla movimentação de equipamentos pesados sem improvisação"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente capacidade do equipamento de movimentação?",
+                        "o": [
+                              "limite seguro de empilhadeira, paleteira, talha ou carrinho",
+                              "área controlada onde o item aguarda conferência ou movimentação final",
+                              "documento que formaliza item, quantidade, condição, preço e entrega aprovados",
+                              "documentação imediata de dano, embalagem, fotos autorizadas e ressalvas"
+                        ],
+                        "a": 0,
+                        "e": "capacidade do equipamento de movimentação: limite seguro de empilhadeira, paleteira, talha ou carrinho Na prática, impede sobrecarga e considera configuração, alcance, piso e centro de gravidade"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de capacidade do equipamento de movimentação em recebimento e movimentação?",
+                        "o": [
+                              "impede sobrecarga e considera configuração, alcance, piso e centro de gravidade",
+                              "mantém volumes identificados e separados sem bloquear rotas",
+                              "serve de referência para conferir se o recebimento corresponde ao contratado",
+                              "preserva evidência para quarentena, transportadora, seguro e fornecedor"
+                        ],
+                        "a": 0,
+                        "e": "capacidade do equipamento de movimentação: limite seguro de empilhadeira, paleteira, talha ou carrinho Na prática, impede sobrecarga e considera configuração, alcance, piso e centro de gravidade"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente staging de entrega?",
+                        "o": [
+                              "área controlada onde o item aguarda conferência ou movimentação final",
+                              "registro de destinatário, item, quantidade, horário e condição",
+                              "relação de volumes e conteúdos enviada com a carga",
+                              "registro contínuo de quem recebeu, guardou, transferiu e entregou um item sensível"
+                        ],
+                        "a": 0,
+                        "e": "staging de entrega: área controlada onde o item aguarda conferência ou movimentação final Na prática, mantém volumes identificados e separados sem bloquear rotas"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de staging de entrega em recebimento e movimentação?",
+                        "o": [
+                              "mantém volumes identificados e separados sem bloquear rotas",
+                              "fecha a transferência de responsabilidade e atualiza o destino do ativo",
+                              "apoia conferência física sem substituir nota, pedido e inspeção técnica",
+                              "mantém integridade e responsabilidade desde a origem até o destino"
+                        ],
+                        "a": 0,
+                        "e": "staging de entrega: área controlada onde o item aguarda conferência ou movimentação final Na prática, mantém volumes identificados e separados sem bloquear rotas"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente comprovante de entrega?",
+                        "o": [
+                              "registro de destinatário, item, quantidade, horário e condição",
+                              "documento que formaliza item, quantidade, condição, preço e entrega aprovados",
+                              "verificação de identidade, quantidade, condição e requisitos antes da liberação",
+                              "controles contra descarga eletrostática em componentes eletrônicos sensíveis"
+                        ],
+                        "a": 0,
+                        "e": "comprovante de entrega: registro de destinatário, item, quantidade, horário e condição Na prática, fecha a transferência de responsabilidade e atualiza o destino do ativo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de comprovante de entrega em recebimento e movimentação?",
+                        "o": [
+                              "fecha a transferência de responsabilidade e atualiza o destino do ativo",
+                              "serve de referência para conferir se o recebimento corresponde ao contratado",
+                              "impede colocar em estoque item errado, danificado ou sem documentação",
+                              "evita dano latente por embalagem, bancada, aterramento e manuseio inadequados"
+                        ],
+                        "a": 0,
+                        "e": "comprovante de entrega: registro de destinatário, item, quantidade, horário e condição Na prática, fecha a transferência de responsabilidade e atualiza o destino do ativo"
+                  }
+            ]
+      },
+      {
+            "id": "seguranca-documentacao",
+            "title": "Segurança e Documentação",
+            "description": "Produtos perigosos, ergonomia, cargas, rotas, incêndio, resíduos e devoluções.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente FDS?",
+                        "o": [
+                              "ficha com perigos, composição, primeiros socorros, combate, manuseio e armazenamento de produto químico",
+                              "armazenamento separado de materiais que podem reagir perigosamente",
+                              "ponto resultante da distribuição de massa da carga",
+                              "classificação, segregação, acondicionamento, registro e destinação autorizada"
+                        ],
+                        "a": 0,
+                        "e": "FDS: ficha com perigos, composição, primeiros socorros, combate, manuseio e armazenamento de produto químico Na prática, orienta controles e resposta antes de receber ou utilizar a substância"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de FDS em segurança e documentação?",
+                        "o": [
+                              "orienta controles e resposta antes de receber ou utilizar a substância",
+                              "evita contato entre produtos incompatíveis durante vazamento ou incêndio",
+                              "orienta apoio, garfos, amarração e estabilidade durante transporte",
+                              "evita mistura, exposição ambiental e descarte irregular de materiais técnicos"
+                        ],
+                        "a": 0,
+                        "e": "FDS: ficha com perigos, composição, primeiros socorros, combate, manuseio e armazenamento de produto químico Na prática, orienta controles e resposta antes de receber ou utilizar a substância"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente segregação de incompatíveis?",
+                        "o": [
+                              "armazenamento separado de materiais que podem reagir perigosamente",
+                              "adaptação de peso, altura, frequência e método à capacidade humana",
+                              "rota livre com largura e sinalização adequadas",
+                              "autorização e processo de devolução de material ao fornecedor ou fabricante"
+                        ],
+                        "a": 0,
+                        "e": "segregação de incompatíveis: armazenamento separado de materiais que podem reagir perigosamente Na prática, evita contato entre produtos incompatíveis durante vazamento ou incêndio"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de segregação de incompatíveis em segurança e documentação?",
+                        "o": [
+                              "evita contato entre produtos incompatíveis durante vazamento ou incêndio",
+                              "reduz lesões usando auxílio mecânico e trabalho em equipe quando necessário",
+                              "permite circulação, evacuação, combate a incêndio e movimentação segura",
+                              "mantém identidade, defeito, garantia, transporte e crédito rastreados"
+                        ],
+                        "a": 0,
+                        "e": "segregação de incompatíveis: armazenamento separado de materiais que podem reagir perigosamente Na prática, evita contato entre produtos incompatíveis durante vazamento ou incêndio"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente ergonomia de movimentação?",
+                        "o": [
+                              "adaptação de peso, altura, frequência e método à capacidade humana",
+                              "ponto resultante da distribuição de massa da carga",
+                              "potencial energético dos materiais combustíveis presentes em uma área",
+                              "registro formal de movimentação entre estoques, áreas ou responsáveis"
+                        ],
+                        "a": 0,
+                        "e": "ergonomia de movimentação: adaptação de peso, altura, frequência e método à capacidade humana Na prática, reduz lesões usando auxílio mecânico e trabalho em equipe quando necessário"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de ergonomia de movimentação em segurança e documentação?",
+                        "o": [
+                              "reduz lesões usando auxílio mecânico e trabalho em equipe quando necessário",
+                              "orienta apoio, garfos, amarração e estabilidade durante transporte",
+                              "orienta limites de armazenamento, separação e sistemas de proteção",
+                              "mantém saldo e custódia coerentes com o local físico"
+                        ],
+                        "a": 0,
+                        "e": "ergonomia de movimentação: adaptação de peso, altura, frequência e método à capacidade humana Na prática, reduz lesões usando auxílio mecânico e trabalho em equipe quando necessário"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente centro de gravidade?",
+                        "o": [
+                              "ponto resultante da distribuição de massa da carga",
+                              "rota livre com largura e sinalização adequadas",
+                              "classificação, segregação, acondicionamento, registro e destinação autorizada",
+                              "procedimentos para fogo, derramamento, acidente e evacuação"
+                        ],
+                        "a": 0,
+                        "e": "centro de gravidade: ponto resultante da distribuição de massa da carga Na prática, orienta apoio, garfos, amarração e estabilidade durante transporte"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de centro de gravidade em segurança e documentação?",
+                        "o": [
+                              "orienta apoio, garfos, amarração e estabilidade durante transporte",
+                              "permite circulação, evacuação, combate a incêndio e movimentação segura",
+                              "evita mistura, exposição ambiental e descarte irregular de materiais técnicos",
+                              "define contatos, isolamento, recursos e ações compatíveis com os materiais presentes"
+                        ],
+                        "a": 0,
+                        "e": "centro de gravidade: ponto resultante da distribuição de massa da carga Na prática, orienta apoio, garfos, amarração e estabilidade durante transporte"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente corredor desobstruído?",
+                        "o": [
+                              "rota livre com largura e sinalização adequadas",
+                              "potencial energético dos materiais combustíveis presentes em uma área",
+                              "autorização e processo de devolução de material ao fornecedor ou fabricante",
+                              "ficha com perigos, composição, primeiros socorros, combate, manuseio e armazenamento de produto químico"
+                        ],
+                        "a": 0,
+                        "e": "corredor desobstruído: rota livre com largura e sinalização adequadas Na prática, permite circulação, evacuação, combate a incêndio e movimentação segura"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de corredor desobstruído em segurança e documentação?",
+                        "o": [
+                              "permite circulação, evacuação, combate a incêndio e movimentação segura",
+                              "orienta limites de armazenamento, separação e sistemas de proteção",
+                              "mantém identidade, defeito, garantia, transporte e crédito rastreados",
+                              "orienta controles e resposta antes de receber ou utilizar a substância"
+                        ],
+                        "a": 0,
+                        "e": "corredor desobstruído: rota livre com largura e sinalização adequadas Na prática, permite circulação, evacuação, combate a incêndio e movimentação segura"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente carga de incêndio?",
+                        "o": [
+                              "potencial energético dos materiais combustíveis presentes em uma área",
+                              "classificação, segregação, acondicionamento, registro e destinação autorizada",
+                              "registro formal de movimentação entre estoques, áreas ou responsáveis",
+                              "armazenamento separado de materiais que podem reagir perigosamente"
+                        ],
+                        "a": 0,
+                        "e": "carga de incêndio: potencial energético dos materiais combustíveis presentes em uma área Na prática, orienta limites de armazenamento, separação e sistemas de proteção"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de carga de incêndio em segurança e documentação?",
+                        "o": [
+                              "orienta limites de armazenamento, separação e sistemas de proteção",
+                              "evita mistura, exposição ambiental e descarte irregular de materiais técnicos",
+                              "mantém saldo e custódia coerentes com o local físico",
+                              "evita contato entre produtos incompatíveis durante vazamento ou incêndio"
+                        ],
+                        "a": 0,
+                        "e": "carga de incêndio: potencial energético dos materiais combustíveis presentes em uma área Na prática, orienta limites de armazenamento, separação e sistemas de proteção"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente gestão de resíduos?",
+                        "o": [
+                              "classificação, segregação, acondicionamento, registro e destinação autorizada",
+                              "autorização e processo de devolução de material ao fornecedor ou fabricante",
+                              "procedimentos para fogo, derramamento, acidente e evacuação",
+                              "adaptação de peso, altura, frequência e método à capacidade humana"
+                        ],
+                        "a": 0,
+                        "e": "gestão de resíduos: classificação, segregação, acondicionamento, registro e destinação autorizada Na prática, evita mistura, exposição ambiental e descarte irregular de materiais técnicos"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de gestão de resíduos em segurança e documentação?",
+                        "o": [
+                              "evita mistura, exposição ambiental e descarte irregular de materiais técnicos",
+                              "mantém identidade, defeito, garantia, transporte e crédito rastreados",
+                              "define contatos, isolamento, recursos e ações compatíveis com os materiais presentes",
+                              "reduz lesões usando auxílio mecânico e trabalho em equipe quando necessário"
+                        ],
+                        "a": 0,
+                        "e": "gestão de resíduos: classificação, segregação, acondicionamento, registro e destinação autorizada Na prática, evita mistura, exposição ambiental e descarte irregular de materiais técnicos"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente RMA?",
+                        "o": [
+                              "autorização e processo de devolução de material ao fornecedor ou fabricante",
+                              "registro formal de movimentação entre estoques, áreas ou responsáveis",
+                              "ficha com perigos, composição, primeiros socorros, combate, manuseio e armazenamento de produto químico",
+                              "ponto resultante da distribuição de massa da carga"
+                        ],
+                        "a": 0,
+                        "e": "RMA: autorização e processo de devolução de material ao fornecedor ou fabricante Na prática, mantém identidade, defeito, garantia, transporte e crédito rastreados"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de RMA em segurança e documentação?",
+                        "o": [
+                              "mantém identidade, defeito, garantia, transporte e crédito rastreados",
+                              "mantém saldo e custódia coerentes com o local físico",
+                              "orienta controles e resposta antes de receber ou utilizar a substância",
+                              "orienta apoio, garfos, amarração e estabilidade durante transporte"
+                        ],
+                        "a": 0,
+                        "e": "RMA: autorização e processo de devolução de material ao fornecedor ou fabricante Na prática, mantém identidade, defeito, garantia, transporte e crédito rastreados"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente documento de transferência?",
+                        "o": [
+                              "registro formal de movimentação entre estoques, áreas ou responsáveis",
+                              "procedimentos para fogo, derramamento, acidente e evacuação",
+                              "armazenamento separado de materiais que podem reagir perigosamente",
+                              "rota livre com largura e sinalização adequadas"
+                        ],
+                        "a": 0,
+                        "e": "documento de transferência: registro formal de movimentação entre estoques, áreas ou responsáveis Na prática, mantém saldo e custódia coerentes com o local físico"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de documento de transferência em segurança e documentação?",
+                        "o": [
+                              "mantém saldo e custódia coerentes com o local físico",
+                              "define contatos, isolamento, recursos e ações compatíveis com os materiais presentes",
+                              "evita contato entre produtos incompatíveis durante vazamento ou incêndio",
+                              "permite circulação, evacuação, combate a incêndio e movimentação segura"
+                        ],
+                        "a": 0,
+                        "e": "documento de transferência: registro formal de movimentação entre estoques, áreas ou responsáveis Na prática, mantém saldo e custódia coerentes com o local físico"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente plano de emergência do almoxarifado?",
+                        "o": [
+                              "procedimentos para fogo, derramamento, acidente e evacuação",
+                              "ficha com perigos, composição, primeiros socorros, combate, manuseio e armazenamento de produto químico",
+                              "adaptação de peso, altura, frequência e método à capacidade humana",
+                              "potencial energético dos materiais combustíveis presentes em uma área"
+                        ],
+                        "a": 0,
+                        "e": "plano de emergência do almoxarifado: procedimentos para fogo, derramamento, acidente e evacuação Na prática, define contatos, isolamento, recursos e ações compatíveis com os materiais presentes"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de plano de emergência do almoxarifado em segurança e documentação?",
+                        "o": [
+                              "define contatos, isolamento, recursos e ações compatíveis com os materiais presentes",
+                              "orienta controles e resposta antes de receber ou utilizar a substância",
+                              "reduz lesões usando auxílio mecânico e trabalho em equipe quando necessário",
+                              "orienta limites de armazenamento, separação e sistemas de proteção"
+                        ],
+                        "a": 0,
+                        "e": "plano de emergência do almoxarifado: procedimentos para fogo, derramamento, acidente e evacuação Na prática, define contatos, isolamento, recursos e ações compatíveis com os materiais presentes"
+                  }
+            ]
+      }
+];
+
+    const STORAGE_KEY = "gdc-premium-logistica-almoxarifado-v1";
+    const LETTERS = ["A","B","C","D"];
+    const state = {session:[],index:0,answers:[],remaining:60,timer:null,startedAt:0,mode:"module",moduleId:null,sound:true,volume:.35,lastConfig:null};
+    const el = id => document.getElementById(id);
+    const views = {home:el("homeView"),quiz:el("quizView"),result:el("resultView")};
+    const audio = {background:el("backgroundAudio"),correct:el("correctAudio"),wrong:el("wrongAudio")};
+
+    function safeLoad(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||{modules:{},full:null}}catch{return {modules:{},full:null}}}
+    function safeSave(data){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}catch{/* modo privado ou armazenamento indisponível */}}
+    function showView(name){Object.entries(views).forEach(([key,node])=>node.hidden=key!==name);window.scrollTo({top:0,behavior:"smooth"})}
+    function formatTime(seconds){const min=Math.floor(seconds/60);const sec=seconds%60;return `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`}
+    function shuffle(items){const copy=[...items];for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]]}return copy}
+    function randomizeQuestion(question,moduleTitle){const options=shuffle(question.o.map((text,index)=>({text,correct:index===question.a})));return {...question,moduleTitle,o:options.map(item=>item.text),a:options.findIndex(item=>item.correct)}}
+    function setAudioVolumes(){audio.background.volume=state.volume*.42;audio.correct.volume=state.volume;audio.wrong.volume=state.volume}
+    function startBackground(){if(!state.sound)return;audio.background.play().catch(()=>{})}
+    function stopBackground(){audio.background.pause()}
+    function playEffect(kind){if(!state.sound)return;const sound=audio[kind];sound.currentTime=0;sound.play().catch(()=>{})}
+    function toggleSound(){state.sound=!state.sound;const button=el("soundToggle");button.classList.toggle("off",!state.sound);button.setAttribute("aria-pressed",String(state.sound));button.querySelector(".sound-text").textContent=state.sound?"Som ligado":"Som desligado";if(state.sound&&views.quiz.hidden===false)startBackground();else stopBackground()}
+
+    function renderHome(){
+      const progress=safeLoad();
+      const grid=el("moduleGrid");grid.textContent="";
+      let completed=0,totalBest=0;
+      MODULES.forEach((module,index)=>{
+        const saved=progress.modules[module.id];const best=saved?.best||0;if(saved){completed++;totalBest+=best}
+        const card=document.createElement("article");card.className="module-card";
+        const number=document.createElement("div");number.className="module-number";number.textContent=String(index+1).padStart(2,"0");
+        const title=document.createElement("h3");title.textContent=module.title;
+        const desc=document.createElement("p");desc.textContent=module.description;
+        const meta=document.createElement("div");meta.className="module-meta";meta.innerHTML=`<span>20 questões</span><span>${saved?`Melhor: ${best}%`:"Não iniciado"}</span>`;
+        const track=document.createElement("div");track.className="mini-track";const fill=document.createElement("span");fill.style.width=`${best}%`;track.appendChild(fill);
+        const button=document.createElement("button");button.type="button";button.className="btn btn-secondary btn-block";button.textContent=saved?"Refazer módulo":"Iniciar módulo";button.addEventListener("click",()=>startModule(module.id));
+        card.append(number,title,desc,meta,track,button);grid.appendChild(card);
+      });
+      const percent=Math.round((completed/MODULES.length)*100);
+      el("overallPercent").textContent=`${percent}%`;el("overallBar").style.width=`${percent}%`;el("completedModules").textContent=`${completed}/${MODULES.length}`;el("bestAverage").textContent=completed?`${Math.round(totalBest/completed)}%`:"—";
+      showView("home");
+    }
+
+    function startModule(moduleId){const module=MODULES.find(item=>item.id===moduleId);state.lastConfig={type:"module",id:moduleId};beginSession(shuffle(module.questions.map(q=>randomizeQuestion(q,module.title))),"module",moduleId,module.title)}
+    function startFull(){state.lastConfig={type:"full"};const questions=MODULES.flatMap(module=>module.questions.map(q=>randomizeQuestion(q,module.title)));beginSession(shuffle(questions),"full",null,"Simulado completo")}
+    function beginSession(questions,mode,moduleId,title){clearInterval(state.timer);state.session=questions;state.index=0;state.answers=[];state.mode=mode;state.moduleId=moduleId;state.startedAt=Date.now();el("quizModule").textContent=mode==="full"?"Consolidação • 5 módulos":"Simulado gratuito • módulo";el("quizTitle").textContent=title;showView("quiz");startBackground();renderQuestion()}
+
+    function renderQuestion(){
+      clearInterval(state.timer);state.remaining=60;
+      const current=state.session[state.index];const total=state.session.length;
+      el("questionCounter").textContent=`Questão ${state.index+1} de ${total}`;el("liveScore").textContent=`${state.answers.filter(a=>a.correct).length} acertos`;el("quizBar").style.width=`${(state.index/total)*100}%`;el("questionModuleLabel").textContent=current.moduleTitle;el("questionText").textContent=current.q;
+      el("feedbackBox").hidden=true;el("nextQuestion").hidden=true;
+      const list=el("optionsList");list.textContent="";
+      current.o.forEach((option,index)=>{const button=document.createElement("button");button.className="option";button.type="button";const letter=document.createElement("span");letter.className="letter";letter.textContent=LETTERS[index];const text=document.createElement("span");text.textContent=option;button.append(letter,text);button.addEventListener("click",()=>answerQuestion(index,false));list.appendChild(button)});
+      updateTimer();state.timer=setInterval(()=>{state.remaining--;updateTimer();if(state.remaining<=0){clearInterval(state.timer);answerQuestion(-1,true)}},1000);
+    }
+
+    function updateTimer(){const box=el("timerBox");el("timerText").textContent=formatTime(Math.max(0,state.remaining));box.classList.toggle("warn",state.remaining<=20&&state.remaining>10);box.classList.toggle("danger",state.remaining<=10)}
+    function answerQuestion(selected,timedOut){
+      clearInterval(state.timer);const current=state.session[state.index];const buttons=[...el("optionsList").querySelectorAll(".option")];if(buttons.some(button=>button.disabled))return;
+      const correct=selected===current.a;buttons.forEach((button,index)=>{button.disabled=true;if(index===current.a)button.classList.add("correct");else if(index===selected)button.classList.add("wrong")});
+      state.answers.push({question:current,selected,correct,timedOut});
+      const box=el("feedbackBox");box.hidden=false;box.className=`feedback ${correct?"good":"bad"}`;el("feedbackTitle").textContent=correct?"Resposta correta!":timedOut?"Tempo esgotado.":"Resposta incorreta.";el("feedbackText").textContent=current.e;playEffect(correct?"correct":"wrong");el("liveScore").textContent=`${state.answers.filter(a=>a.correct).length} acertos`;const next=el("nextQuestion");next.hidden=false;next.textContent=state.index===state.session.length-1?"Ver resultado":"Próxima questão";
+    }
+
+    function goNext(){if(state.answers.length<=state.index)return;if(state.index<state.session.length-1){state.index++;renderQuestion()}else{finishSession()}}
+    function finishSession(){
+      clearInterval(state.timer);stopBackground();const elapsed=Math.max(1,Math.round((Date.now()-state.startedAt)/1000));const correct=state.answers.filter(item=>item.correct).length;const total=state.session.length;const percent=Math.round((correct/total)*100);const progress=safeLoad();
+      if(state.mode==="module"){const old=progress.modules[state.moduleId]||{best:0,attempts:0};progress.modules[state.moduleId]={best:Math.max(old.best,percent),last:percent,attempts:old.attempts+1,completedAt:new Date().toISOString()}}else{const old=progress.full||{best:0,attempts:0};progress.full={best:Math.max(old.best,percent),last:percent,attempts:old.attempts+1,completedAt:new Date().toISOString()}}
+      safeSave(progress);const title=state.mode==="module"?MODULES.find(m=>m.id===state.moduleId).title:"Simulado completo";el("resultTitle").textContent=title;el("resultMessage").textContent=performanceMessage(percent);el("resultPercent").textContent=`${percent}%`;el("scoreRing").style.setProperty("--score",percent);el("resultCorrect").textContent=`${correct}/${total}`;el("resultWrong").textContent=String(total-correct);el("resultTime").textContent=formatTime(elapsed);renderReview();showView("result")
+    }
+    function performanceMessage(score){if(score>=90)return"Excelente domínio. Você demonstrou consistência para reconhecer riscos, prioridades e boas práticas operacionais.";if(score>=75)return"Bom desempenho. Revise os pontos de atenção abaixo para transformar conhecimento em resposta mais consistente.";if(score>=60)return"Base em desenvolvimento. Reforce os temas em que houve erro antes de avançar para o simulado completo.";return"Este resultado é um diagnóstico, não uma sentença. Refaça o módulo após revisar as explicações e os procedimentos fundamentais."}
+    function renderReview(){const list=el("reviewList");list.textContent="";const misses=state.answers.filter(item=>!item.correct);el("reviewBlock").hidden=misses.length===0;if(!misses.length)return;misses.forEach((item,index)=>{const card=document.createElement("article");card.className="review-item";const title=document.createElement("strong");title.textContent=`${index+1}. ${item.question.q}`;const chosen=document.createElement("p");chosen.className="answer-wrong";chosen.textContent=item.timedOut?"Sua resposta: tempo esgotado":`Sua resposta: ${item.question.o[item.selected]}`;const right=document.createElement("p");right.className="answer-correct";right.textContent=`Resposta correta: ${item.question.o[item.question.a]}`;const why=document.createElement("p");why.textContent=item.question.e;card.append(title,chosen,right,why);list.appendChild(card)})}
+    function exitQuiz(){if(state.answers.length&&state.answers.length<state.session.length&&!confirm("Sair agora? O resultado desta tentativa não será salvo."))return;clearInterval(state.timer);stopBackground();renderHome()}
+    function retry(){if(state.lastConfig?.type==="full")startFull();else if(state.lastConfig?.id)startModule(state.lastConfig.id)}
+
+    el("soundToggle").addEventListener("click",toggleSound);el("volumeControl").addEventListener("input",event=>{state.volume=Number(event.target.value);setAudioVolumes()});el("brandHome").addEventListener("click",event=>{event.preventDefault();if(!views.quiz.hidden)exitQuiz();else renderHome()});el("startFull").addEventListener("click",startFull);el("nextQuestion").addEventListener("click",goNext);el("exitQuiz").addEventListener("click",exitQuiz);el("returnHome").addEventListener("click",renderHome);el("retryQuiz").addEventListener("click",retry);el("printResult").addEventListener("click",()=>window.print());
+    setAudioVolumes();renderHome();
+  </script>
+</body>
+</html>

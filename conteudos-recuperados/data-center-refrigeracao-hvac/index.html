@@ -1,0 +1,1888 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071321">
+  <meta name="description" content="Simulado gratuito Gabarito Data Center — Refrigeração e HVAC, com 140 questões em 7 módulos.">
+  <title>Gabarito Data Center | Gratuito — Refrigeração e HVAC</title>
+  <style>
+    :root {
+      --navy-950:#030b14; --navy-900:#071321; --navy-850:#0a1b2d; --navy-800:#0d2439;
+      --cyan:#18d6ff; --cyan-soft:#86eaff; --lime:#b9ff39; --amber:#ffbd2e;
+      --red:#ff5f72; --green:#4df0a7; --white:#f7fbff; --muted:#9eb4c7;
+      --line:rgba(134,234,255,.17); --panel:rgba(10,27,45,.84); --shadow:0 24px 70px rgba(0,0,0,.34);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--white);background:
+      radial-gradient(circle at 12% 0%,rgba(24,214,255,.16),transparent 27rem),
+      radial-gradient(circle at 92% 14%,rgba(185,255,57,.09),transparent 24rem),
+      linear-gradient(145deg,var(--navy-950),var(--navy-900) 45%,#061a28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:
+      linear-gradient(rgba(134,234,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(134,234,255,.12) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 75%)}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    a{color:var(--cyan-soft)}
+    .shell{width:min(1180px,calc(100% - 32px));margin:0 auto;position:relative;z-index:1}
+    .topbar{padding:22px 0 8px}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:13px;color:var(--white);text-decoration:none}
+    .brand-mark{width:56px;height:56px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(145deg,rgba(24,214,255,.23),rgba(185,255,57,.10));border:1px solid var(--line);box-shadow:0 0 35px rgba(24,214,255,.14)}
+    .brand-mark svg{width:39px;height:39px}
+    .brand-copy strong{display:block;font-size:clamp(1rem,2.2vw,1.28rem);letter-spacing:.08em}
+    .brand-copy span{display:block;color:var(--cyan-soft);font-size:.72rem;letter-spacing:.22em;margin-top:3px}
+    .sound-panel{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(3,11,20,.56);backdrop-filter:blur(12px)}
+    .sound-btn{border:0;background:transparent;color:var(--white);display:flex;align-items:center;gap:7px;padding:5px 6px}
+    .sound-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 13px var(--green)}
+    .sound-btn.off .sound-dot{background:var(--red);box-shadow:0 0 13px var(--red)}
+    .volume{width:85px;accent-color:var(--cyan)}
+    main{padding:34px 0 60px}
+    .view[hidden]{display:none!important}
+    .hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:24px;align-items:stretch;margin-bottom:28px}
+    .hero-copy,.hero-side,.panel,.module-card,.question-card,.result-card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(13,36,57,.91),rgba(7,19,33,.82));box-shadow:var(--shadow);border-radius:var(--radius);backdrop-filter:blur(15px)}
+    .hero-copy{padding:clamp(28px,5vw,54px);position:relative;overflow:hidden}
+    .hero-copy::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-110px;top:-120px;border:42px solid rgba(24,214,255,.06);box-shadow:0 0 90px rgba(24,214,255,.12)}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--lime);font-weight:800;letter-spacing:.13em;font-size:.74rem;text-transform:uppercase;margin:0 0 16px}
+    .eyebrow::before{content:"";width:26px;height:2px;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(2.15rem,6vw,4.8rem);line-height:.96;letter-spacing:-.055em;margin-bottom:20px;max-width:760px}
+    h1 span{display:block;color:var(--cyan)}
+    .lead{color:#ccdae6;line-height:1.72;font-size:clamp(1rem,2vw,1.13rem);max-width:720px;margin-bottom:24px}
+    .chips{display:flex;flex-wrap:wrap;gap:9px}
+    .chip{padding:9px 12px;border-radius:999px;background:rgba(24,214,255,.08);border:1px solid rgba(24,214,255,.23);font-size:.82rem;color:#d9f8ff}
+    .hero-side{padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+    .score-label{color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.13em}
+    .score-value{font-size:clamp(3rem,8vw,5.4rem);line-height:1;font-weight:900;color:var(--lime);letter-spacing:-.07em;margin:9px 0}
+    .progress-track{height:11px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+    .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--lime));border-radius:inherit;transition:width .4s ease}
+    .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .stat{padding:14px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.35)}
+    .stat b{display:block;font-size:1.25rem;color:var(--cyan-soft)}
+    .stat span{color:var(--muted);font-size:.76rem}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:42px 0 18px}
+    .section-head h2{font-size:clamp(1.55rem,3vw,2.35rem);margin:0;letter-spacing:-.035em}
+    .section-head p{color:var(--muted);margin:0;max-width:510px;line-height:1.6;text-align:right}
+    .module-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+    .module-card{padding:23px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+    .module-card:hover{transform:translateY(-4px);border-color:rgba(24,214,255,.42)}
+    .module-number{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,rgba(24,214,255,.23),rgba(24,214,255,.07));color:var(--cyan);font-weight:900;margin-bottom:18px;border:1px solid rgba(24,214,255,.25)}
+    .module-card h3{font-size:1.15rem;margin-bottom:9px}
+    .module-card p{color:var(--muted);font-size:.88rem;line-height:1.55;min-height:68px}
+    .module-meta{display:flex;justify-content:space-between;gap:10px;color:#c5d8e7;font-size:.78rem;margin:17px 0 13px}
+    .mini-track{height:7px;background:rgba(255,255,255,.07);border-radius:999px;overflow:hidden;margin-bottom:17px}
+    .mini-track span{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--lime));border-radius:inherit}
+    .btn{border:0;border-radius:13px;padding:13px 18px;font-weight:850;letter-spacing:.01em;transition:transform .18s,filter .18s,background .18s;display:inline-flex;justify-content:center;align-items:center;gap:8px;text-decoration:none}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+    .btn-primary{background:linear-gradient(95deg,var(--cyan),#55e4ff 46%,var(--lime));color:#03101a;box-shadow:0 12px 35px rgba(24,214,255,.18)}
+    .btn-secondary{background:rgba(24,214,255,.09);color:var(--white);border:1px solid rgba(24,214,255,.25)}
+    .btn-danger{background:rgba(255,95,114,.10);color:#ffc4cb;border:1px solid rgba(255,95,114,.27)}
+    .btn-block{width:100%}
+    .full-card{margin-top:19px;padding:25px;display:flex;align-items:center;justify-content:space-between;gap:25px;border:1px solid rgba(185,255,57,.24);border-radius:var(--radius);background:linear-gradient(110deg,rgba(185,255,57,.10),rgba(24,214,255,.08),rgba(7,19,33,.88));box-shadow:var(--shadow)}
+    .full-card h3{margin-bottom:7px;font-size:1.34rem}
+    .full-card p{margin:0;color:var(--muted);line-height:1.55}
+    .notice{margin-top:20px;padding:18px 20px;border-radius:17px;border:1px solid rgba(255,189,46,.24);background:rgba(255,189,46,.07);color:#ffe5ab;line-height:1.6;font-size:.89rem}
+    .refs{margin-top:20px;padding:0;border:1px solid var(--line);border-radius:17px;background:rgba(7,19,33,.6)}
+    .refs summary{cursor:pointer;padding:18px 20px;font-weight:800;color:#dff9ff}
+    .refs div{padding:0 20px 18px;color:var(--muted);line-height:1.7;font-size:.87rem}
+    .quiz-top{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:18px}
+    .crumb{color:var(--cyan-soft);font-size:.85rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+    .timer{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(3,11,20,.62);font-variant-numeric:tabular-nums}
+    .timer.warn{color:var(--amber);border-color:rgba(255,189,46,.38)}
+    .timer.danger{color:#ffc1c9;border-color:rgba(255,95,114,.5);animation:pulse 1s infinite}
+    @keyframes pulse{50%{box-shadow:0 0 24px rgba(255,95,114,.18)}}
+    .quiz-progress{margin-bottom:18px}
+    .quiz-progress-row{display:flex;justify-content:space-between;color:var(--muted);font-size:.82rem;margin-bottom:8px}
+    .question-card{padding:clamp(24px,5vw,43px)}
+    .question-kicker{display:flex;align-items:center;gap:9px;color:var(--lime);font-size:.77rem;text-transform:uppercase;letter-spacing:.12em;font-weight:850;margin-bottom:15px}
+    .question-card h2{font-size:clamp(1.28rem,3vw,1.85rem);line-height:1.35;letter-spacing:-.025em;margin-bottom:26px}
+    .options{display:grid;gap:11px}
+    .option{width:100%;text-align:left;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.44);color:var(--white);padding:15px 17px;display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:center;line-height:1.48;transition:border-color .18s,background .18s,transform .18s}
+    .option:hover:not(:disabled){border-color:rgba(24,214,255,.45);background:rgba(24,214,255,.09);transform:translateX(3px)}
+    .option:disabled{cursor:default}
+    .letter{width:35px;height:35px;display:grid;place-items:center;border-radius:10px;background:rgba(24,214,255,.09);border:1px solid rgba(24,214,255,.17);color:var(--cyan-soft);font-weight:900}
+    .option.correct{border-color:rgba(77,240,167,.65);background:rgba(77,240,167,.10)}
+    .option.correct .letter{background:var(--green);border-color:var(--green);color:#03150e}
+    .option.wrong{border-color:rgba(255,95,114,.62);background:rgba(255,95,114,.10)}
+    .option.wrong .letter{background:var(--red);border-color:var(--red);color:white}
+    .feedback{margin-top:20px;padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(3,11,20,.48);line-height:1.62}
+    .feedback.good{border-color:rgba(77,240,167,.35)}
+    .feedback.bad{border-color:rgba(255,95,114,.34)}
+    .feedback strong{display:block;margin-bottom:5px}
+    .feedback p{margin:0;color:#c7d7e3}
+    .quiz-actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:19px}
+    .result-card{padding:clamp(26px,5vw,48px);text-align:center}
+    .result-badge{display:inline-block;padding:8px 12px;border:1px solid rgba(185,255,57,.28);border-radius:999px;color:var(--lime);font-size:.75rem;letter-spacing:.12em;font-weight:900;text-transform:uppercase}
+    .result-card h1{font-size:clamp(2rem,5vw,3.6rem);margin:19px auto 10px;max-width:800px}
+    .result-card>p{color:var(--muted);line-height:1.65}
+    .score-ring{--score:0;width:190px;height:190px;margin:28px auto;display:grid;place-items:center;border-radius:50%;background:conic-gradient(var(--lime) calc(var(--score)*1%),rgba(255,255,255,.08) 0);position:relative}
+    .score-ring::before{content:"";position:absolute;inset:14px;border-radius:50%;background:var(--navy-900);border:1px solid var(--line)}
+    .score-ring div{position:relative;z-index:1}
+    .score-ring b{display:block;font-size:3.25rem;line-height:1;color:var(--white)}
+    .score-ring span{color:var(--muted);font-size:.8rem}
+    .result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:680px;margin:0 auto 26px}
+    .result-stat{padding:18px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.35)}
+    .result-stat b{display:block;font-size:1.45rem;color:var(--cyan-soft)}
+    .result-stat span{font-size:.77rem;color:var(--muted)}
+    .result-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+    .review{margin-top:24px;text-align:left}
+    .review h2{margin-bottom:14px}
+    .review-item{padding:18px;margin-bottom:10px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.36)}
+    .review-item strong{display:block;margin-bottom:8px;line-height:1.45}
+    .review-item p{margin:5px 0;color:var(--muted);line-height:1.55;font-size:.9rem}
+    .review-item .answer-correct{color:var(--green)}
+    .review-item .answer-wrong{color:#ffb6bf}
+    footer{padding:28px 0 42px;border-top:1px solid var(--line);color:var(--muted);font-size:.83rem;line-height:1.6}
+    .footer-inner{display:flex;justify-content:space-between;gap:25px}
+    .footer-inner p{margin:0}
+    .footer-inner div:last-child{text-align:right}
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.module-grid{grid-template-columns:repeat(2,1fr)}.hero-side{min-height:280px}}
+    @media(max-width:640px){.shell{width:min(100% - 22px,1180px)}.topbar-inner{align-items:flex-start}.brand-mark{width:47px;height:47px}.brand-copy strong{font-size:.92rem}.brand-copy span{font-size:.61rem}.volume{display:none}.sound-panel{padding:7px 8px}.sound-btn .sound-text{display:none}.hero-copy,.hero-side,.question-card,.result-card{border-radius:18px}.hero-copy{padding:27px 22px}.module-grid{grid-template-columns:1fr}.section-head{display:block}.section-head p{text-align:left;margin-top:8px}.full-card{align-items:flex-start;flex-direction:column}.quiz-top{align-items:flex-start}.timer{padding:8px 11px}.quiz-actions{align-items:stretch;flex-direction:column-reverse}.quiz-actions .btn{width:100%}.result-stats{grid-template-columns:1fr}.footer-inner{display:block}.footer-inner div:last-child{text-align:left;margin-top:12px}.option{grid-template-columns:34px 1fr;padding:13px}.letter{width:32px;height:32px}}
+    @media print{body{background:white;color:#111}.topbar,#homeView,#quizView,footer,.result-actions,.sound-panel{display:none!important}.result-card{box-shadow:none;border:1px solid #bbb;background:white}.result-card h1,.score-ring b{color:#111}.score-ring::before{background:white}.review-item{background:white;color:#111}.review-item p{color:#333}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#" id="brandHome" aria-label="Voltar ao início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="7" y="5" width="34" height="38" rx="7" stroke="#18d6ff" stroke-width="2"/><path d="M13 14h22M13 23h22M13 32h22" stroke="#86eaff" stroke-width="2"/><circle cx="16" cy="14" r="2" fill="#b9ff39"/><circle cx="16" cy="23" r="2" fill="#b9ff39"/><circle cx="16" cy="32" r="2" fill="#ffbd2e"/><path d="M29 11v6m0 3v6m0 3v6" stroke="#18d6ff" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-copy"><strong>GABARITO DATA CENTER</strong><span>ACESSO GRATUITO</span></span>
+      </a>
+      <div class="sound-panel" aria-label="Controles de áudio">
+        <button class="sound-btn" id="soundToggle" type="button" aria-pressed="true"><span class="sound-dot"></span><span class="sound-text">Som ligado</span></button>
+        <label class="sr-only" for="volumeControl">Volume</label>
+        <input class="volume" id="volumeControl" type="range" min="0" max="1" value="0.35" step="0.05">
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div role="note" style="margin:12px 0 26px;padding:16px 20px;border:1px solid rgba(185,255,57,.36);border-radius:14px;background:#102a32;color:#e9fbf1;line-height:1.6"><a href="../../catalogo-gratuito.html" style="font-weight:800;color:#b9ff39;text-decoration:underline">← Voltar ao catálogo gratuito do Instituto EnsinoMeu</a><p style="margin:9px 0 0">Acesso 100% gratuito. Material de estudo em revisão pedagógica e técnica. As questões não representam certificação profissional nem habilitação para intervenções.</p></div>
+
+    <section class="view" id="homeView">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Formação profissional 2026</p>
+          <h1>Refrigeração e <span>HVAC</span></h1>
+          <p class="lead">Treinamento digital gratuito para revisar termodinâmica, climatização de precisão, chillers, fluxo de ar, qualidade ambiental, eficiência e contingência térmica.</p>
+          <div class="chips"><span class="chip">7 módulos</span><span class="chip">140 questões</span><span class="chip">Explicações imediatas</span><span class="chip">Progresso salvo</span><span class="chip">Áudio inteligente</span></div>
+        </div>
+        <aside class="hero-side" aria-label="Seu progresso">
+          <div><div class="score-label">Progresso geral</div><div class="score-value" id="overallPercent">0%</div><div class="progress-track"><div class="progress-fill" id="overallBar"></div></div></div>
+          <div class="hero-stats"><div class="stat"><b id="completedModules">0/6</b><span>módulos concluídos</span></div><div class="stat"><b id="bestAverage">—</b><span>média dos melhores</span></div></div>
+        </aside>
+      </div>
+
+      <div class="section-head"><div><p class="eyebrow">Trilha gratuita</p><h2>Escolha um módulo</h2></div><p>Cada módulo tem 20 questões objetivas, correção comentada e resultado proporcional correto de 0 a 100%.</p></div>
+      <div class="module-grid" id="moduleGrid"></div>
+      <div class="full-card panel"><div><h3>Simulado completo de consolidação</h3><p>Reúna as 140 questões dos sete módulos em uma única sessão. Recomendado após concluir toda a trilha.</p></div><button class="btn btn-primary" id="startFull" type="button">Iniciar 140 questões</button></div>
+      <div class="notice"><strong>Orientação de segurança:</strong> este material é educacional. Em atividades reais, siga sempre os procedimentos locais, a análise de risco, as permissões de trabalho e as orientações de profissionais autorizados. O simulado não substitui treinamento obrigatório nem habilitação técnica.</div>
+      <details class="refs"><summary>Referências gerais e transparência</summary><div>Conteúdo autoral de preparação baseado em referências públicas e práticas de climatização crítica, incluindo ISO/IEC 22237-4, orientações do ENERGY STAR para fluxo de ar e conceitos técnicos da ASHRAE TC 9.9. Não reproduz prova oficial ou material proprietário.</div></details>
+    </section>
+
+    <section class="view" id="quizView" hidden>
+      <div class="quiz-top"><div><div class="crumb" id="quizModule">Módulo</div><h1 id="quizTitle" style="font-size:clamp(1.65rem,4vw,2.7rem);margin:8px 0 0">Simulado</h1></div><div class="timer" id="timerBox" title="Tempo por questão"><span aria-hidden="true">◷</span><b id="timerText">01:00</b></div></div>
+      <div class="quiz-progress"><div class="quiz-progress-row"><span id="questionCounter">Questão 1 de 20</span><span id="liveScore">0 acertos</span></div><div class="progress-track"><div class="progress-fill" id="quizBar"></div></div></div>
+      <article class="question-card">
+        <div class="question-kicker" id="questionModuleLabel">Conhecimento aplicado</div>
+        <h2 id="questionText"></h2>
+        <div class="options" id="optionsList"></div>
+        <div class="feedback" id="feedbackBox" hidden aria-live="polite"><strong id="feedbackTitle"></strong><p id="feedbackText"></p></div>
+      </article>
+      <div class="quiz-actions"><button class="btn btn-danger" id="exitQuiz" type="button">Sair do simulado</button><button class="btn btn-primary" id="nextQuestion" type="button" hidden>Próxima questão</button></div>
+    </section>
+
+    <section class="view" id="resultView" hidden>
+      <article class="result-card">
+        <span class="result-badge">Resultado concluído</span>
+        <h1 id="resultTitle">Seu desempenho</h1>
+        <p id="resultMessage"></p>
+        <div class="score-ring" id="scoreRing"><div><b id="resultPercent">0%</b><span>aproveitamento</span></div></div>
+        <div class="result-stats"><div class="result-stat"><b id="resultCorrect">0</b><span>acertos</span></div><div class="result-stat"><b id="resultWrong">0</b><span>erros / não respondidas</span></div><div class="result-stat"><b id="resultTime">00:00</b><span>tempo total</span></div></div>
+        <div class="result-actions"><button class="btn btn-primary" id="retryQuiz" type="button">Refazer simulado</button><button class="btn btn-secondary" id="printResult" type="button">Imprimir resultado</button><button class="btn btn-secondary" id="returnHome" type="button">Voltar aos módulos</button></div>
+        <div class="review" id="reviewBlock"><h2>Revisão dos pontos de atenção</h2><div id="reviewList"></div></div>
+      </article>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-inner"><div><p><strong>GABARITO DATA CENTER</strong> — preparação independente para candidatos.</p><p>Sem promessa de contratação e sem vínculo com TikTok, ByteDance, Omnia ou operadores de data center.</p></div><div><p>Equipe técnica e dúvidas</p><p><a href="mailto:cincoregioes@gmail.com">cincoregioes@gmail.com</a></p></div></div></footer>
+
+  <audio id="backgroundAudio" loop preload="metadata" src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3"></audio>
+  <audio id="correctAudio" preload="metadata" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3"></audio>
+  <audio id="wrongAudio" preload="metadata" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3"></audio>
+
+  <script>
+    "use strict";
+    const MODULES = [
+      {
+            "id": "termodinamica",
+            "title": "Termodinâmica Aplicada",
+            "description": "Calor, temperatura, mudanças de fase, ciclo frigorífico, propriedades do ar e carga térmica.",
+            "questions": [
+                  {
+                        "q": "Qual é a diferença entre calor e temperatura?",
+                        "o": [
+                              "Calor é energia em transferência por diferença de temperatura; temperatura indica o estado térmico",
+                              "São exatamente a mesma grandeza",
+                              "Temperatura é medida em watts",
+                              "Calor existe somente em líquidos"
+                        ],
+                        "a": 0,
+                        "e": "A temperatura orienta o sentido espontâneo da transferência de calor, mas não representa sozinha a quantidade de energia transferida."
+                  },
+                  {
+                        "q": "O que é calor sensível?",
+                        "o": [
+                              "Energia que altera a temperatura sem mudança de fase",
+                              "Energia usada exclusivamente para evaporar água",
+                              "Calor que não pode ser medido",
+                              "Potência elétrica do compressor"
+                        ],
+                        "a": 0,
+                        "e": "Em resfriamento de data center, grande parte da carga de TI é sensível porque aparece como aumento da temperatura do ar."
+                  },
+                  {
+                        "q": "O que é calor latente?",
+                        "o": [
+                              "Energia associada a mudança de fase, como condensação ou evaporação, sem variar a temperatura durante a transição ideal",
+                              "Energia que apenas aumenta a temperatura",
+                              "Perda elétrica no cabo",
+                              "Variação de pressão do ventilador"
+                        ],
+                        "a": 0,
+                        "e": "Controle de umidade envolve carga latente. Remover vapor por condensação exige energia além do resfriamento sensível."
+                  },
+                  {
+                        "q": "Qual mecanismo transfere calor através de um sólido por interação interna?",
+                        "o": [
+                              "Condução",
+                              "Convecção",
+                              "Evaporação",
+                              "Filtragem"
+                        ],
+                        "a": 0,
+                        "e": "Condução ocorre em paredes, tubos, aletas e contatos. Material, espessura e diferença de temperatura influenciam o fluxo."
+                  },
+                  {
+                        "q": "O que caracteriza convecção?",
+                        "o": [
+                              "Transferência entre uma superfície e um fluido em movimento natural ou forçado",
+                              "Transferência somente por ondas eletromagnéticas",
+                              "Mudança de fase sem fluido",
+                              "Medição de umidade"
+                        ],
+                        "a": 0,
+                        "e": "Ventiladores aumentam convecção ao mover ar sobre serpentinas e equipamentos."
+                  },
+                  {
+                        "q": "Qual é o papel da radiação térmica?",
+                        "o": [
+                              "Transferir energia por ondas eletromagnéticas, sem exigir contato material direto",
+                              "Mover ar por dutos",
+                              "Condensar refrigerante",
+                              "Aumentar a umidade relativa"
+                        ],
+                        "a": 0,
+                        "e": "Em salas de dados, condução e convecção costumam dominar, mas superfícies também trocam radiação."
+                  },
+                  {
+                        "q": "No evaporador de um sistema frigorífico, o refrigerante normalmente:",
+                        "o": [
+                              "Absorve calor ao evaporar em baixa pressão",
+                              "Rejeita calor ao condensar",
+                              "Aumenta a pressão sem trabalho",
+                              "Filtra partículas do ar"
+                        ],
+                        "a": 0,
+                        "e": "O evaporador recebe calor do ar ou da água. O controle garante evaporação e retorno seguro ao compressor."
+                  },
+                  {
+                        "q": "No condensador, o refrigerante normalmente:",
+                        "o": [
+                              "Rejeita calor ao meio externo e condensa em pressão mais alta",
+                              "Absorve calor da sala e evapora",
+                              "Reduz pressão sem rejeitar energia",
+                              "Mistura-se à água de consumo"
+                        ],
+                        "a": 0,
+                        "e": "O condensador precisa rejeitar o calor removido mais o trabalho do compressor."
+                  },
+                  {
+                        "q": "Qual é a função do compressor no ciclo de compressão de vapor?",
+                        "o": [
+                              "Elevar a pressão e promover a circulação do refrigerante",
+                              "Reduzir a pressão por estrangulamento",
+                              "Filtrar o ar do corredor frio",
+                              "Medir a temperatura de entrada do rack"
+                        ],
+                        "a": 0,
+                        "e": "O compressor recebe vapor de baixa pressão e fornece trabalho para que o ciclo transfira calor a uma fonte mais quente."
+                  },
+                  {
+                        "q": "Qual é a função do dispositivo de expansão?",
+                        "o": [
+                              "Reduzir a pressão e controlar o fluxo de refrigerante para o evaporador",
+                              "Comprimir vapor",
+                              "Rejeitar calor no condensador",
+                              "Aumentar a umidade da sala"
+                        ],
+                        "a": 0,
+                        "e": "A expansão cria condição de baixa pressão para evaporação. Válvulas eletrônicas ou termostáticas modulam conforme o sistema."
+                  },
+                  {
+                        "q": "O que é superaquecimento na saída do evaporador?",
+                        "o": [
+                              "Diferença entre a temperatura do vapor e a temperatura de saturação na mesma pressão",
+                              "Temperatura abaixo do ponto de congelamento da água",
+                              "Pressão do ar no piso elevado",
+                              "Umidade relativa acima de 100%"
+                        ],
+                        "a": 0,
+                        "e": "Superheat adequado ajuda a evitar líquido no compressor, mas valores excessivos podem indicar alimentação insuficiente ou baixa troca térmica."
+                  },
+                  {
+                        "q": "O que é sub-resfriamento do líquido na saída do condensador?",
+                        "o": [
+                              "Temperatura do líquido abaixo da saturação correspondente à pressão medida",
+                              "Vapor acima da saturação",
+                              "Ar abaixo do ponto de orvalho",
+                              "Aquecimento do corredor frio"
+                        ],
+                        "a": 0,
+                        "e": "Subcooling ajuda a garantir líquido ao dispositivo de expansão. Diagnóstico depende da arquitetura e dados do fabricante."
+                  },
+                  {
+                        "q": "O que a temperatura de bulbo seco representa?",
+                        "o": [
+                              "A temperatura comum do ar medida sem efeito intencional de evaporação",
+                              "A quantidade exata de vapor de água",
+                              "O ponto de condensação",
+                              "A pressão do refrigerante"
+                        ],
+                        "a": 0,
+                        "e": "Bulbo seco é uma das propriedades usadas na análise psicrométrica com umidade, ponto de orvalho e entalpia."
+                  },
+                  {
+                        "q": "O que é ponto de orvalho?",
+                        "o": [
+                              "A temperatura em que o ar, resfriado a pressão aproximadamente constante, começa a condensar vapor",
+                              "A temperatura máxima do rack",
+                              "A diferença entre ida e retorno de água",
+                              "A pressão mínima do compressor"
+                        ],
+                        "a": 0,
+                        "e": "Superfícies abaixo do ponto de orvalho podem formar condensação, mesmo quando a temperatura ambiente parece normal."
+                  },
+                  {
+                        "q": "O que significa umidade relativa?",
+                        "o": [
+                              "A relação entre o vapor presente e o máximo possível na mesma temperatura, expressa em percentual",
+                              "A massa total de ar seco",
+                              "A temperatura de condensação",
+                              "A potência latente do chiller"
+                        ],
+                        "a": 0,
+                        "e": "A umidade relativa muda quando a temperatura muda, mesmo sem adicionar ou remover vapor; por isso ponto de orvalho dá contexto adicional."
+                  },
+                  {
+                        "q": "O que é entalpia do ar úmido em análise psicrométrica?",
+                        "o": [
+                              "Uma medida do conteúdo energético que reúne parcelas sensível e latente por massa de ar seco",
+                              "Somente a temperatura do ar",
+                              "A resistência do filtro",
+                              "A velocidade do ventilador"
+                        ],
+                        "a": 0,
+                        "e": "Entalpia ajuda a comparar condições de ar e calcular capacidade total de resfriamento e economização."
+                  },
+                  {
+                        "q": "O que expressa a razão de calor sensível de uma carga?",
+                        "o": [
+                              "A fração da carga total atribuída ao calor sensível",
+                              "A relação entre tensão e corrente",
+                              "O número de chillers em reserva",
+                              "A pressão do piso elevado"
+                        ],
+                        "a": 0,
+                        "e": "Data centers geralmente têm alta fração sensível, mas pessoas, infiltração e umidificação introduzem carga latente."
+                  },
+                  {
+                        "q": "Uma tonelada de refrigeração é uma unidade de:",
+                        "o": [
+                              "Capacidade térmica, não de massa do equipamento",
+                              "Peso do chiller",
+                              "Consumo de água por hora",
+                              "Pressão de sucção"
+                        ],
+                        "a": 0,
+                        "e": "A unidade pode ser convertida em kW térmicos. Potência térmica removida não é igual ao consumo elétrico do equipamento."
+                  },
+                  {
+                        "q": "Quais parcelas entram na carga térmica de uma sala de dados?",
+                        "o": [
+                              "TI, perdas elétricas, pessoas, iluminação, envoltória, infiltração e outras fontes presentes",
+                              "Somente a temperatura externa",
+                              "Apenas os servidores",
+                              "Somente a potência do chiller"
+                        ],
+                        "a": 0,
+                        "e": "Quase toda energia elétrica consumida dentro da sala termina como calor, mas limites de análise e simultaneidade precisam ser definidos."
+                  },
+                  {
+                        "q": "Por que comparar temperatura de insuflamento e retorno?",
+                        "o": [
+                              "A diferença, junto ao fluxo de ar, ajuda a estimar calor transportado e revelar mistura ou fluxo inadequado",
+                              "Porque a diferença mede umidade diretamente",
+                              "Para substituir sensores nos racks",
+                              "Para calcular tensão elétrica"
+                        ],
+                        "a": 0,
+                        "e": "Delta T isolado não basta: vazão, posição dos sensores e carga precisam ser considerados."
+                  }
+            ]
+      },
+      {
+            "id": "climatizacao-precisao",
+            "title": "Climatização de Precisão",
+            "description": "Controle contínuo, sensores, ventiladores, filtros, condensado, redundância e manutenção.",
+            "questions": [
+                  {
+                        "q": "O que diferencia climatização de precisão de conforto em conceito geral?",
+                        "o": [
+                              "Projeto para cargas sensíveis elevadas, operação contínua, controle e disponibilidade compatíveis com ambiente técnico",
+                              "Uso exclusivo de ar muito frio",
+                              "Ausência de ventiladores",
+                              "Funcionamento somente em horário comercial"
+                        ],
+                        "a": 0,
+                        "e": "Equipamentos de precisão são selecionados para perfil térmico e operacional do data center, não apenas conforto humano."
+                  },
+                  {
+                        "q": "Por que operação contínua influencia o projeto de HVAC do data center?",
+                        "o": [
+                              "Exige confiabilidade, manutenção planejada, redundância e capacidade em todos os períodos previstos",
+                              "Elimina necessidade de manutenção",
+                              "Permite usar qualquer equipamento residencial",
+                              "Torna alarmes desnecessários"
+                        ],
+                        "a": 0,
+                        "e": "Carga de TI pode permanecer ativa 24x7. Fontes, controles, bombas e rejeição de calor precisam acompanhar essa disponibilidade."
+                  },
+                  {
+                        "q": "Qual é a vantagem de controlar pela temperatura de entrada dos equipamentos de TI?",
+                        "o": [
+                              "Ela representa a condição efetivamente recebida pela carga, onde os limites do fabricante se aplicam",
+                              "A temperatura de retorno é sempre igual em todos os racks",
+                              "Elimina sensores ambientais",
+                              "Garante eficiência máxima sozinha"
+                        ],
+                        "a": 0,
+                        "e": "Sensores de entrada, especialmente em posições críticas do rack, ajudam a evitar super-resfriamento baseado apenas no retorno quente."
+                  },
+                  {
+                        "q": "Onde sensores de temperatura de rack devem ser posicionados?",
+                        "o": [
+                              "Em pontos representativos das entradas de ar e alturas relevantes, conforme o plano de monitoramento",
+                              "Somente junto à saída quente",
+                              "Dentro do condensador",
+                              "Ao lado de qualquer porta externa"
+                        ],
+                        "a": 0,
+                        "e": "Posição determina o que é medido. Vários pontos podem revelar gradientes verticais e hot spots."
+                  },
+                  {
+                        "q": "Qual é o benefício de ventiladores com velocidade variável?",
+                        "o": [
+                              "Ajustar vazão à demanda, reduzindo energia e melhorando controle quando corretamente coordenados",
+                              "Fornecer sempre vazão máxima",
+                              "Eliminar filtros",
+                              "Substituir o chiller"
+                        ],
+                        "a": 0,
+                        "e": "A redução de rotação pode economizar muito, mas precisa preservar vazão mínima, pressão e estabilidade da sala."
+                  },
+                  {
+                        "q": "O que caracteriza um ventilador EC?",
+                        "o": [
+                              "Motor eletronicamente comutado com controle eficiente de velocidade",
+                              "Motor movido somente por água gelada",
+                              "Ventilador sem alimentação elétrica",
+                              "Compressor de velocidade fixa"
+                        ],
+                        "a": 0,
+                        "e": "Ventiladores EC são comuns em unidades modernas e permitem modulação e monitoramento mais precisos."
+                  },
+                  {
+                        "q": "Por que filtros precisam de inspeção e monitoramento?",
+                        "o": [
+                              "Sujeira aumenta perda de pressão, reduz vazão e pode contaminar o ambiente",
+                              "Filtro sujo aumenta capacidade",
+                              "Filtros não afetam ventiladores",
+                              "Troca pode ser feita sem procedimento"
+                        ],
+                        "a": 0,
+                        "e": "Diferencial de pressão, tempo e condição orientam a troca. Classe e instalação devem corresponder ao projeto."
+                  },
+                  {
+                        "q": "Qual é a função do dreno de condensado?",
+                        "o": [
+                              "Remover água formada na serpentina sem vazamento, retorno de odor ou transbordamento",
+                              "Adicionar umidade ao corredor quente",
+                              "Resfriar o compressor",
+                              "Alimentar o chiller"
+                        ],
+                        "a": 0,
+                        "e": "Entupimento, sifão inadequado ou bomba de dreno falha podem causar água em área técnica."
+                  },
+                  {
+                        "q": "Quando ocorre desumidificação em uma serpentina?",
+                        "o": [
+                              "Quando sua superfície fica abaixo do ponto de orvalho do ar e o vapor condensa",
+                              "Sempre que o ventilador reduz rotação",
+                              "Quando o ar aquece sem remoção de vapor",
+                              "Somente em clima seco"
+                        ],
+                        "a": 0,
+                        "e": "Desumidificação pode ser intencional ou consequência do resfriamento. Reaquecimento e setpoints precisam evitar desperdício simultâneo."
+                  },
+                  {
+                        "q": "Para que serve a umidificação?",
+                        "o": [
+                              "Adicionar vapor ou água tratada ao ar quando a condição fica abaixo do limite definido",
+                              "Reduzir a temperatura do refrigerante",
+                              "Aumentar a pressão do piso",
+                              "Substituir a filtragem"
+                        ],
+                        "a": 0,
+                        "e": "O método deve controlar qualidade da água, higiene, distribuição e consumo de energia."
+                  },
+                  {
+                        "q": "O que é controle simultâneo conflitante?",
+                        "o": [
+                              "Uma unidade resfria ou desumidifica enquanto outra aquece ou umidifica, desperdiçando energia",
+                              "Dois ventiladores giram na mesma direção",
+                              "Dois sensores mostram o mesmo valor",
+                              "Uma unidade opera em redundância"
+                        ],
+                        "a": 0,
+                        "e": "Setpoints, deadbands, sensores e sequenciamento precisam impedir unidades de combaterem entre si."
+                  },
+                  {
+                        "q": "Por que integrar unidades ao BMS ou DCIM?",
+                        "o": [
+                              "Para centralizar estados, alarmes, tendências, comandos autorizados e análise de capacidade",
+                              "Para substituir controles locais de segurança",
+                              "Para permitir acesso sem autenticação",
+                              "Para eliminar sensores próprios"
+                        ],
+                        "a": 0,
+                        "e": "A integração precisa mapear pontos corretamente e não deve contornar proteções do equipamento."
+                  },
+                  {
+                        "q": "Como interpretar N+1 em climatização?",
+                        "o": [
+                              "Capacidade necessária N mais uma unidade adicional, considerando condição real, distribuição e componentes compartilhados",
+                              "Uma unidade para toda a sala",
+                              "Duas unidades sem cálculo",
+                              "Capacidade ilimitada"
+                        ],
+                        "a": 0,
+                        "e": "A reserva só funciona se o sistema de água, energia, controles e fluxo de ar também suportar a contingência."
+                  },
+                  {
+                        "q": "O que é short cycling de compressor?",
+                        "o": [
+                              "Partidas e paradas frequentes em intervalos curtos, que podem indicar controle ou dimensionamento inadequado",
+                              "Operação longa em carga estável",
+                              "Velocidade variável normal",
+                              "Ciclo de limpeza do filtro"
+                        ],
+                        "a": 0,
+                        "e": "Ciclagem excessiva aumenta desgaste e pode resultar de baixa carga, setpoints estreitos, sensores ou falhas."
+                  },
+                  {
+                        "q": "Antes de retirar uma unidade de precisão para manutenção, deve-se:",
+                        "o": [
+                              "Confirmar capacidade e saúde das restantes, carga, clima, redundância e plano de retorno",
+                              "Desligar todas as unidades próximas",
+                              "Ignorar alarmes ativos",
+                              "Aumentar setpoints sem aprovação"
+                        ],
+                        "a": 0,
+                        "e": "O estado de manutenção reduz margem. Trabalhos simultâneos e picos de carga precisam ser controlados."
+                  },
+                  {
+                        "q": "Por que setpoints e deadbands devem ser coordenados entre unidades?",
+                        "o": [
+                              "Para obter resposta estável e evitar caça, conflito e consumo desnecessário",
+                              "Para manter todas as unidades em potência máxima",
+                              "Para eliminar o monitoramento",
+                              "Para tornar sensores iguais"
+                        ],
+                        "a": 0,
+                        "e": "Controle coordenado considera local dos sensores, prioridade, estágios e limites dos equipamentos de TI."
+                  },
+                  {
+                        "q": "Um alarme de alta pressão do refrigerante pode estar relacionado a:",
+                        "o": [
+                              "Problema na rejeição de calor, fluxo, sujeira, temperatura externa ou controle, exigindo diagnóstico",
+                              "Baixa temperatura de condensação por definição",
+                              "Falha de DNS",
+                              "Excesso de vazão de ar no rack somente"
+                        ],
+                        "a": 0,
+                        "e": "Não se deve apenas rearmar; pressões e condições de condensador precisam ser verificadas por técnico qualificado."
+                  },
+                  {
+                        "q": "Por que obstruções na descarga ou sucção da unidade são críticas?",
+                        "o": [
+                              "Reduzem fluxo de ar, capacidade e estabilidade e podem criar recirculação",
+                              "Aumentam automaticamente a eficiência",
+                              "Não afetam ventiladores",
+                              "Eliminam o delta T"
+                        ],
+                        "a": 0,
+                        "e": "Espaços livres, painéis e filtros devem seguir o projeto e permanecer desobstruídos."
+                  },
+                  {
+                        "q": "Quando refrigeração in-row pode ser vantajosa?",
+                        "o": [
+                              "Quando aproximar a remoção de calor da carga reduz caminhos de ar e atende densidade e layout específicos",
+                              "Em qualquer sala sem análise",
+                              "Para substituir toda contenção",
+                              "Somente quando não há energia elétrica"
+                        ],
+                        "a": 0,
+                        "e": "In-row pode melhorar controle em alta densidade, mas requer água ou refrigerante, redundância, manutenção e detecção de vazamento."
+                  },
+                  {
+                        "q": "O que deve orientar a escolha entre ar e refrigeração líquida para cargas densas?",
+                        "o": [
+                              "Densidade, compatibilidade do equipamento, arquitetura, risco de fluido, eficiência, manutenção e disponibilidade",
+                              "Somente o preço inicial",
+                              "A preferência do operador",
+                              "A cor do rack"
+                        ],
+                        "a": 0,
+                        "e": "Soluções líquidas removem calor próximo ao componente, mas adicionam CDUs, conexões, qualidade do fluido e novos controles."
+                  }
+            ]
+      },
+      {
+            "id": "crac-crah-chillers",
+            "title": "CRAC, CRAH e Chillers",
+            "description": "Expansão direta, água gelada, componentes do ciclo, torres, bombas, economizadores e refrigeração líquida.",
+            "questions": [
+                  {
+                        "q": "Qual é uma distinção comum entre CRAC e CRAH?",
+                        "o": [
+                              "CRAC costuma incluir circuito de expansão direta; CRAH usa normalmente serpentina de água gelada",
+                              "CRAH sempre possui compressor interno",
+                              "CRAC não movimenta ar",
+                              "São termos legalmente idênticos em qualquer fabricante"
+                        ],
+                        "a": 0,
+                        "e": "A nomenclatura comercial pode variar. O operador deve confirmar o diagrama e as fontes reais de resfriamento."
+                  },
+                  {
+                        "q": "Qual é a função de um chiller?",
+                        "o": [
+                              "Retirar calor de um circuito de água e rejeitá-lo por um sistema de condensação",
+                              "Insuflar diretamente ar em qualquer rack",
+                              "Gerar energia elétrica",
+                              "Filtrar logs do BMS"
+                        ],
+                        "a": 0,
+                        "e": "Chillers podem ser resfriados a ar ou a água e usar diferentes compressores e controles."
+                  },
+                  {
+                        "q": "Em sistema de água gelada, qual é o papel da bomba?",
+                        "o": [
+                              "Fornecer vazão e pressão para transportar água entre chiller, tubulação e serpentinas",
+                              "Comprimir refrigerante dentro de todo CRAH",
+                              "Reduzir umidade sem serpentinas",
+                              "Gerar ar comprimido"
+                        ],
+                        "a": 0,
+                        "e": "Vazão inadequada reduz capacidade e pode acionar proteções. Bombas, válvulas e diferencial de pressão formam o circuito."
+                  },
+                  {
+                        "q": "Qual é a função de uma torre de resfriamento?",
+                        "o": [
+                              "Rejeitar calor da água do condensador para o ambiente, principalmente por evaporação",
+                              "Resfriar diretamente servidores com água potável",
+                              "Substituir o evaporador do chiller",
+                              "Armazenar combustível"
+                        ],
+                        "a": 0,
+                        "e": "Torres exigem tratamento de água, ventiladores, bombas, controle microbiológico e avaliação climática."
+                  },
+                  {
+                        "q": "Para que serve uma válvula de controle em serpentina de água gelada?",
+                        "o": [
+                              "Modular vazão para ajustar a capacidade à demanda",
+                              "Aumentar a pressão do refrigerante",
+                              "Filtrar o ar",
+                              "Desligar o gerador"
+                        ],
+                        "a": 0,
+                        "e": "Válvulas e atuadores precisam de faixa, autoridade e feedback adequados para evitar instabilidade e baixo delta T."
+                  },
+                  {
+                        "q": "Qual é a função de um vaso de expansão em circuito fechado?",
+                        "o": [
+                              "Acomodar variação de volume do fluido e manter pressão dentro do projeto",
+                              "Separar corredores quente e frio",
+                              "Armazenar refrigerante líquido do compressor",
+                              "Medir a umidade relativa"
+                        ],
+                        "a": 0,
+                        "e": "Pré-carga, conexão e pressão do vaso influenciam estabilidade e proteção contra cavitação."
+                  },
+                  {
+                        "q": "O que pode causar cavitação em uma bomba?",
+                        "o": [
+                              "Pressão insuficiente na sucção, gerando bolhas e dano quando colapsam",
+                              "Excesso de filtragem do ar",
+                              "Temperatura baixa do rack",
+                              "Alta tensão elétrica apenas"
+                        ],
+                        "a": 0,
+                        "e": "Ruído, vibração e perda de vazão podem acompanhar cavitação. Projeto hidráulico e condições de sucção devem ser avaliados."
+                  },
+                  {
+                        "q": "Qual componente rejeita ao ambiente o calor do ciclo frigorífico?",
+                        "o": [
+                              "Condensador",
+                              "Evaporador",
+                              "Dispositivo de expansão",
+                              "Filtro de ar"
+                        ],
+                        "a": 0,
+                        "e": "Em sistemas a água, o condensador transfere calor para a água e a torre o rejeita depois; em sistemas a ar, ventiladores movem ar externo."
+                  },
+                  {
+                        "q": "Qual componente absorve calor do ar ou da água que se deseja resfriar?",
+                        "o": [
+                              "Evaporador",
+                              "Condensador",
+                              "Compressor",
+                              "Reservatório de combustível"
+                        ],
+                        "a": 0,
+                        "e": "O refrigerante evapora no trocador ao receber calor, dentro de pressão e superaquecimento controlados."
+                  },
+                  {
+                        "q": "Por que vazamento de refrigerante requer resposta especializada?",
+                        "o": [
+                              "Pode reduzir capacidade, danificar o sistema, afetar segurança e ambiente e exigir detecção e reparo regulamentados",
+                              "Porque refrigerante é sempre inofensivo",
+                              "Apenas por perda financeira",
+                              "Porque aumenta a umidade do ar por definição"
+                        ],
+                        "a": 0,
+                        "e": "Não se deve procurar vazamento com método improvisado. Tipo de fluido, ventilação e exposição definem o risco."
+                  },
+                  {
+                        "q": "O que é economização pelo lado da água?",
+                        "o": [
+                              "Usar condições externas para resfriar água parcial ou totalmente com menor uso do compressor",
+                              "Aumentar permanentemente a temperatura da sala",
+                              "Desligar bombas",
+                              "Misturar água do condensador e água de TI sem trocador"
+                        ],
+                        "a": 0,
+                        "e": "A arquitetura pode usar torre e trocador. Limites climáticos, qualidade da água e controles são essenciais."
+                  },
+                  {
+                        "q": "O que é economização pelo lado do ar?",
+                        "o": [
+                              "Usar ar externo adequado para atender parte ou toda a carga de resfriamento",
+                              "Reutilizar somente o ar quente da sala",
+                              "Parar todos os ventiladores",
+                              "Injetar ar externo sem filtragem ou controle"
+                        ],
+                        "a": 0,
+                        "e": "Temperatura, umidade, partículas, gases e pressão precisam estar dentro dos critérios do ambiente."
+                  },
+                  {
+                        "q": "Qual é a função de um trocador de calor?",
+                        "o": [
+                              "Transferir energia entre fluidos separados por uma superfície",
+                              "Misturar obrigatoriamente os fluidos",
+                              "Gerar frio sem rejeitar calor",
+                              "Substituir qualquer bomba"
+                        ],
+                        "a": 0,
+                        "e": "Placas, tubos ou serpentinas permitem separar circuitos e suas pressões, fluidos e qualidades."
+                  },
+                  {
+                        "q": "Para que serve glicol em certos circuitos?",
+                        "o": [
+                              "Reduzir risco de congelamento e ajustar propriedades do fluido, com impacto em capacidade e bombeamento",
+                              "Aumentar sempre a troca térmica",
+                              "Substituir tratamento de água",
+                              "Eliminar vazamentos"
+                        ],
+                        "a": 0,
+                        "e": "Concentração incorreta altera viscosidade, transferência de calor e proteção. Deve seguir projeto e análise do fluido."
+                  },
+                  {
+                        "q": "Por que tratamento de água é importante em chillers e torres?",
+                        "o": [
+                              "Controla corrosão, incrustação, sólidos e riscos microbiológicos",
+                              "Aumenta a frequência elétrica",
+                              "Substitui filtros de ar",
+                              "Elimina necessidade de inspeção"
+                        ],
+                        "a": 0,
+                        "e": "Qualidade da água influencia eficiência, confiabilidade e segurança. Programa químico e purgas precisam ser monitorados."
+                  },
+                  {
+                        "q": "Qual é a função de uma CDU em refrigeração líquida?",
+                        "o": [
+                              "Controlar e separar circuitos de fluido, pressão, temperatura e vazão entre instalação e equipamentos",
+                              "Distribuir energia aos racks",
+                              "Gerar endereços IP",
+                              "Substituir o chiller em qualquer projeto"
+                        ],
+                        "a": 0,
+                        "e": "Cooling Distribution Units podem incluir trocador, bombas, filtros, controles e detecção de vazamentos."
+                  },
+                  {
+                        "q": "Como um rear-door heat exchanger remove calor?",
+                        "o": [
+                              "Usa um trocador na traseira do rack para captar calor do ar de exaustão",
+                              "Insufla ar externo sem tratamento",
+                              "Converte calor em energia elétrica diretamente",
+                              "Substitui ventiladores dos servidores"
+                        ],
+                        "a": 0,
+                        "e": "A porta traseira pode ser passiva ou ativa e depende de água, conexões, peso, acesso e controle de condensação."
+                  },
+                  {
+                        "q": "Qual é a vantagem potencial do resfriamento próximo à fonte de calor?",
+                        "o": [
+                              "Reduzir mistura e caminho de transporte e atender maior densidade com controle localizado",
+                              "Eliminar qualquer risco de vazamento",
+                              "Dispensar redundância",
+                              "Manter o restante da sala sem monitoramento"
+                        ],
+                        "a": 0,
+                        "e": "In-row, rear-door e direct-to-chip exigem integração com a infraestrutura de rejeição de calor."
+                  },
+                  {
+                        "q": "Por que verificar fluxo antes de condenar um chiller por baixa capacidade?",
+                        "o": [
+                              "Baixa vazão, válvula fechada, ar ou sujeira podem limitar a troca mesmo com o chiller disponível",
+                              "Porque fluxo não afeta capacidade",
+                              "Para evitar medir temperaturas",
+                              "Porque compressores não usam controles"
+                        ],
+                        "a": 0,
+                        "e": "Diagnóstico compara temperaturas, pressões, vazão, carga e estados de bombas e válvulas."
+                  },
+                  {
+                        "q": "O que uma arquitetura redundante de chillers precisa incluir além da máquina?",
+                        "o": [
+                              "Bombas, torres ou condensadores, energia, controles, tubulações e válvulas compatíveis com o cenário de falha",
+                              "Somente outro compressor em estoque",
+                              "Dois nomes diferentes no BMS",
+                              "Uma unidade desligada sem teste"
+                        ],
+                        "a": 0,
+                        "e": "A capacidade alternativa deve chegar efetivamente às serpentinas e rejeitar calor sob as condições de projeto."
+                  }
+            ]
+      },
+      {
+            "id": "fluxo-ar-corredores",
+            "title": "Fluxo de Ar e Corredores",
+            "description": "Separação térmica, contenção, pressão, vazão, recirculação, bypass e densidade por rack.",
+            "questions": [
+                  {
+                        "q": "Qual é o objetivo do arranjo corredor frio e corredor quente?",
+                        "o": [
+                              "Alinhar entradas de ar dos racks entre si e exaustões entre si para reduzir mistura",
+                              "Misturar insuflamento e retorno",
+                              "Colocar todas as frentes na mesma direção",
+                              "Eliminar ventiladores"
+                        ],
+                        "a": 0,
+                        "e": "A organização cria caminhos previsíveis e facilita contenção e retorno do ar aquecido."
+                  },
+                  {
+                        "q": "Qual é a finalidade da contenção de corredor?",
+                        "o": [
+                              "Reduzir mistura entre ar frio de suprimento e ar quente de retorno",
+                              "Aumentar vazamento de ar",
+                              "Substituir detecção de incêndio",
+                              "Eliminar a necessidade de portas"
+                        ],
+                        "a": 0,
+                        "e": "A contenção pode ser fria ou quente. Deve integrar-se a segurança, iluminação, pressão e resposta a falhas."
+                  },
+                  {
+                        "q": "Para que servem blanking panels em espaços vazios do rack?",
+                        "o": [
+                              "Evitar recirculação do ar quente através das posições sem equipamento",
+                              "Aumentar a potência elétrica",
+                              "Fechar a exaustão dos servidores",
+                              "Substituir portas do rack"
+                        ],
+                        "a": 0,
+                        "e": "Sem painéis cegos, ar de exaustão pode retornar à entrada, principalmente em racks parcialmente ocupados."
+                  },
+                  {
+                        "q": "Qual é a função de escovas ou grommets nas passagens de cabos?",
+                        "o": [
+                              "Reduzir fuga de ar por aberturas mantendo passagem organizada",
+                              "Aumentar partículas",
+                              "Bloquear qualquer manutenção",
+                              "Conduzir eletricidade ao piso"
+                        ],
+                        "a": 0,
+                        "e": "Vãos não vedados podem desperdiçar pressão e entregar ar frio onde não há carga."
+                  },
+                  {
+                        "q": "Em piso elevado usado como plenum, por que a pressão precisa ser controlada?",
+                        "o": [
+                              "Para distribuir vazão de forma previsível às placas e evitar regiões subalimentadas",
+                              "Para manter a sala sempre pressurizada ao máximo",
+                              "Para substituir balanceamento",
+                              "Porque pressão não influencia fluxo"
+                        ],
+                        "a": 0,
+                        "e": "Cabos, vazamentos e obstáculos alteram resistência. Medições ajudam a ajustar placas e ventiladores."
+                  },
+                  {
+                        "q": "O que é bypass de ar frio?",
+                        "o": [
+                              "Ar tratado que retorna à unidade sem atravessar os equipamentos de TI",
+                              "Ar quente que entra novamente no rack",
+                              "Vazamento de refrigerante",
+                              "Falha do compressor"
+                        ],
+                        "a": 0,
+                        "e": "Bypass desperdiça capacidade do ventilador e pode produzir retorno artificialmente frio, levando a controle ineficiente."
+                  },
+                  {
+                        "q": "O que é recirculação de ar quente?",
+                        "o": [
+                              "Ar de exaustão que volta às entradas dos equipamentos, elevando sua temperatura",
+                              "Ar frio que retorna direto à unidade",
+                              "Troca de ar externo",
+                              "Operação do economizador"
+                        ],
+                        "a": 0,
+                        "e": "Frestas, falta de contenção, baixa vazão ou pressão inadequada podem causar recirculação e hot spots."
+                  },
+                  {
+                        "q": "O que significa curto-circuito de fluxo de ar em climatização?",
+                        "o": [
+                              "O suprimento retorna à unidade pelo caminho mais fácil sem remover calor útil da carga",
+                              "Curto elétrico no ventilador",
+                              "Mistura de água e refrigerante",
+                              "Abertura de disjuntor"
+                        ],
+                        "a": 0,
+                        "e": "Separação física e balanceamento ajudam a direcionar o ar através das cargas."
+                  },
+                  {
+                        "q": "Como os racks devem ser orientados em um layout de corredores?",
+                        "o": [
+                              "Frente com frente no corredor frio e traseira com traseira no corredor quente",
+                              "Todas as frentes para a parede",
+                              "Alternados sem padrão",
+                              "Conforme a ordem de instalação, sem considerar fluxo"
+                        ],
+                        "a": 0,
+                        "e": "Equipamentos com fluxo não convencional precisam de dutos ou tratamento específico para preservar o padrão."
+                  },
+                  {
+                        "q": "Por que cabos em excesso podem prejudicar a refrigeração?",
+                        "o": [
+                              "Podem obstruir entradas, saídas e plenums, aumentar resistência e criar recirculação",
+                              "Porque sempre produzem calor maior que servidores",
+                              "Porque reduzem a umidade a zero",
+                              "Porque substituem painéis cegos"
+                        ],
+                        "a": 0,
+                        "e": "Gestão de cabos protege fluxo de ar e manutenção, mas deve respeitar raio, conectividade e segurança."
+                  },
+                  {
+                        "q": "Como deve ser definida a quantidade e abertura de placas perfuradas?",
+                        "o": [
+                              "Pela carga, pressão, vazão e balanceamento medidos, não apenas pela quantidade de racks",
+                              "Usando o máximo em toda a sala",
+                              "Colocando placas no corredor quente",
+                              "Por preferência estética"
+                        ],
+                        "a": 0,
+                        "e": "Excesso de placas reduz pressão e pode privar áreas densas; falta cria insuficiência local."
+                  },
+                  {
+                        "q": "O que um delta T muito baixo entre suprimento e retorno pode sugerir?",
+                        "o": [
+                              "Mistura ou bypass de ar, excesso de vazão ou baixa carga, entre outras hipóteses",
+                              "Capacidade térmica máxima garantida",
+                              "Ausência de ventiladores",
+                              "Umidade sempre alta"
+                        ],
+                        "a": 0,
+                        "e": "Delta T deve ser avaliado junto a vazão, carga, sensores e condição das unidades."
+                  },
+                  {
+                        "q": "Por que reduzir velocidade de ventiladores sem medir é arriscado?",
+                        "o": [
+                              "Pode economizar energia, mas também reduzir fluxo abaixo do necessário e criar hot spots",
+                              "Porque ventiladores não consomem energia",
+                              "Porque sempre aumenta capacidade",
+                              "Porque elimina alarmes"
+                        ],
+                        "a": 0,
+                        "e": "Controle variável precisa responder a pressão, temperatura de entrada e demanda, com limites mínimos."
+                  },
+                  {
+                        "q": "Como tratar racks de alta densidade?",
+                        "o": [
+                              "Avaliar capacidade e distribuição local, contenção e soluções próximas à carga quando necessário",
+                              "Apenas baixar o setpoint da sala inteira",
+                              "Remover painéis cegos",
+                              "Direcionar ar quente para os racks vizinhos"
+                        ],
+                        "a": 0,
+                        "e": "A média da sala pode parecer normal enquanto um rack denso recebe fluxo insuficiente."
+                  },
+                  {
+                        "q": "Qual é a vantagem de retorno de ar quente pelo teto ou duto?",
+                        "o": [
+                              "Conduzir o ar de exaustão diretamente às unidades e reduzir mistura na sala",
+                              "Resfriar o corredor frio com ar de retorno",
+                              "Eliminar filtros",
+                              "Aumentar infiltração externa"
+                        ],
+                        "a": 0,
+                        "e": "O retorno precisa ser dimensionado, vedado e compatível com segurança contra incêndio."
+                  },
+                  {
+                        "q": "Por que portas de contenção não devem ficar abertas sem necessidade?",
+                        "o": [
+                              "A abertura altera pressão e mistura ar frio e quente, reduzindo desempenho",
+                              "Porque aumenta a tensão elétrica",
+                              "Porque impede acesso ao rack",
+                              "Somente por segurança física"
+                        ],
+                        "a": 0,
+                        "e": "Fechamento automático e disciplina operacional ajudam a manter a condição projetada."
+                  },
+                  {
+                        "q": "O que é balanceamento de fluxo de ar?",
+                        "o": [
+                              "Ajustar suprimento e retorno para entregar vazão conforme a distribuição real de carga",
+                              "Manter todos os ventiladores em 100%",
+                              "Igualar temperatura externa e interna",
+                              "Fechar todos os dampers"
+                        ],
+                        "a": 0,
+                        "e": "O balanceamento usa medições de pressão, vazão e temperatura e deve ser revisado após mudanças de layout."
+                  },
+                  {
+                        "q": "Para que pode servir uma análise CFD?",
+                        "o": [
+                              "Simular padrões de ar e temperatura para apoiar projeto e mudanças, validada por medições",
+                              "Substituir qualquer sensor físico",
+                              "Garantir resultado sem dados de entrada",
+                              "Controlar diretamente o chiller"
+                        ],
+                        "a": 0,
+                        "e": "Computational Fluid Dynamics depende de geometria, carga e condições de contorno corretas. É modelo, não prova isolada."
+                  },
+                  {
+                        "q": "Qual leitura revela melhor risco térmico para o servidor?",
+                        "o": [
+                              "Temperatura na entrada do equipamento em diferentes alturas e posições relevantes",
+                              "Apenas temperatura de retorno da unidade",
+                              "Somente temperatura externa",
+                              "Média de toda a sala sem localização"
+                        ],
+                        "a": 0,
+                        "e": "Medição na entrada identifica o ar realmente recebido e gradientes que a média esconde."
+                  },
+                  {
+                        "q": "Após instalar novos racks, o comissionamento térmico deve verificar:",
+                        "o": [
+                              "Fluxo, temperaturas de entrada, pressão, contenção, alarmes e resposta à perda de unidade",
+                              "Somente se os racks ligam",
+                              "Apenas a aparência das portas",
+                              "Se o setpoint permaneceu igual"
+                        ],
+                        "a": 0,
+                        "e": "Mudanças de carga e obstruções podem alterar toda a distribuição; testes confirmam capacidade normal e de contingência."
+                  }
+            ]
+      },
+      {
+            "id": "umidade-ambiente",
+            "title": "Umidade e Qualidade Ambiental",
+            "description": "Ponto de orvalho, condensação, partículas, pressão, água, vibração, corrosão e obras.",
+            "questions": [
+                  {
+                        "q": "Por que a umidade relativa precisa ser interpretada junto com a temperatura?",
+                        "o": [
+                              "Porque ela muda com a temperatura mesmo sem alterar a quantidade de vapor",
+                              "Porque mede apenas partículas",
+                              "Porque é igual ao ponto de orvalho",
+                              "Porque não afeta nenhum material"
+                        ],
+                        "a": 0,
+                        "e": "Ponto de orvalho ou umidade absoluta ajudam a entender a quantidade real de vapor e o risco de condensação."
+                  },
+                  {
+                        "q": "Qual risco pode acompanhar umidade muito baixa em certas condições?",
+                        "o": [
+                              "Maior potencial de eletricidade estática e ressecamento de materiais, conforme ambiente e controles",
+                              "Condensação imediata em toda superfície",
+                              "Aumento obrigatório da temperatura",
+                              "Inundação do piso"
+                        ],
+                        "a": 0,
+                        "e": "O risco depende de materiais, aterramento, pessoas e classe dos equipamentos; não se deve umidificar sem controle."
+                  },
+                  {
+                        "q": "Qual risco acompanha umidade ou ponto de orvalho elevados?",
+                        "o": [
+                              "Condensação em superfícies frias, corrosão e problemas de isolação ou mídia",
+                              "Eliminação de partículas",
+                              "Redução automática do PUE",
+                              "Aumento garantido da capacidade"
+                        ],
+                        "a": 0,
+                        "e": "É essencial comparar ponto de orvalho com temperaturas de tubulações, serpentinas e superfícies."
+                  },
+                  {
+                        "q": "Quando ocorre condensação em uma superfície?",
+                        "o": [
+                              "Quando sua temperatura fica abaixo do ponto de orvalho do ar ao redor",
+                              "Sempre que a umidade relativa é menor que 50%",
+                              "Somente quando chove fora",
+                              "Quando o ventilador está em alta velocidade"
+                        ],
+                        "a": 0,
+                        "e": "Isolamento, barreira de vapor e controle do ponto de orvalho evitam água em tubulações e equipamentos."
+                  },
+                  {
+                        "q": "Como deve ser controlada a umidificação?",
+                        "o": [
+                              "Por setpoints, deadband, qualidade da água, distribuição e intertravamentos para evitar excesso",
+                              "Ligada continuamente",
+                              "Sem sensor de umidade",
+                              "Com água não tratada em qualquer sistema"
+                        ],
+                        "a": 0,
+                        "e": "Umidificação inadequada pode gerar minerais, microrganismos, condensação e consumo elevado."
+                  },
+                  {
+                        "q": "Por que sensores de umidade precisam de calibração e posição adequada?",
+                        "o": [
+                              "Deriva ou localização ruim pode induzir controle incorreto e conflitos entre unidades",
+                              "Porque sensores nunca envelhecem",
+                              "Para aumentar a vazão de ar",
+                              "Somente por estética documental"
+                        ],
+                        "a": 0,
+                        "e": "Comparação com referência e tendências detecta desvios. Sensores não devem ficar em jatos ou zonas não representativas."
+                  },
+                  {
+                        "q": "Qual é o impacto de partículas em equipamentos de TI?",
+                        "o": [
+                              "Podem obstruir fluxo, contaminar contatos e contribuir para falhas, dependendo de composição e concentração",
+                              "Sempre melhoram a troca térmica",
+                              "Não entram em racks",
+                              "Substituem umidade"
+                        ],
+                        "a": 0,
+                        "e": "Filtragem, limpeza, pressão e controle de obras reduzem a entrada e deposição."
+                  },
+                  {
+                        "q": "Qual é a função de filtros no controle ambiental?",
+                        "o": [
+                              "Remover partículas do fluxo de ar dentro da eficiência e perda de pressão previstas",
+                              "Remover todo vapor de água",
+                              "Regular tensão elétrica",
+                              "Eliminar gases sem meio específico"
+                        ],
+                        "a": 0,
+                        "e": "Classe de filtro, vedação, carregamento e troca precisam estar alinhados à unidade e ao risco."
+                  },
+                  {
+                        "q": "Por que controlar pressão relativa entre salas?",
+                        "o": [
+                              "Para direcionar infiltração e reduzir entrada de contaminantes conforme o zoneamento",
+                              "Para aumentar temperatura do rack",
+                              "Para substituir controle de acesso",
+                              "Porque pressão não afeta portas"
+                        ],
+                        "a": 0,
+                        "e": "Pressão excessiva ou negativa pode dificultar portas e alterar contenção; o objetivo deve estar definido no projeto."
+                  },
+                  {
+                        "q": "Qual cuidado se aplica à água de sistemas HVAC dentro da área de TI?",
+                        "o": [
+                              "Detecção de vazamento, contenção, válvulas, drenagem, materiais e resposta compatíveis com o risco",
+                              "Tubulações podem passar sem identificação",
+                              "Vazamentos são inofensivos se a água for gelada",
+                              "Drenos não precisam de manutenção"
+                        ],
+                        "a": 0,
+                        "e": "Água próxima a energia e equipamentos exige prevenção e detecção precoce, com rotas e pontos de isolamento conhecidos."
+                  },
+                  {
+                        "q": "Para que serve um cabo ou sensor de detecção de água?",
+                        "o": [
+                              "Identificar presença de líquido em áreas monitoradas e gerar localização ou alarme conforme o sistema",
+                              "Medir temperatura do ar",
+                              "Desligar qualquer circuito sem lógica",
+                              "Substituir inspeções físicas"
+                        ],
+                        "a": 0,
+                        "e": "O sensor precisa ser testado, posicionado nos caminhos prováveis e integrado a uma resposta clara."
+                  },
+                  {
+                        "q": "Por que vibração deve ser monitorada em alguns ambientes?",
+                        "o": [
+                              "Pode indicar falha mecânica e afetar equipamentos sensíveis ou estruturas",
+                              "Porque aumenta umidade relativa",
+                              "Porque substitui ruído",
+                              "Somente para conforto humano"
+                        ],
+                        "a": 0,
+                        "e": "Bombas, ventiladores e compressores geram vibração; isoladores, alinhamento e tendência ajudam a controlar."
+                  },
+                  {
+                        "q": "Como fumaça e detecção precoce se relacionam ao HVAC?",
+                        "o": [
+                              "O movimento do ar influencia transporte e detecção; controles de incêndio podem alterar ventilação e contenção",
+                              "HVAC elimina necessidade de detectores",
+                              "Fumaça nunca passa por filtros",
+                              "Ventiladores devem permanecer sempre ligados em incêndio"
+                        ],
+                        "a": 0,
+                        "e": "A sequência de incêndio é definida pelo projeto e precisa ser testada com os demais sistemas."
+                  },
+                  {
+                        "q": "Por que contaminantes gasosos podem ser relevantes?",
+                        "o": [
+                              "Alguns ambientes e compostos aceleram corrosão de contatos e placas",
+                              "Porque gases sempre resfriam equipamentos",
+                              "Somente por odor",
+                              "Porque substituem partículas"
+                        ],
+                        "a": 0,
+                        "e": "Localização, ar externo, produtos químicos e materiais de obra devem ser avaliados quando há evidência de corrosão."
+                  },
+                  {
+                        "q": "Quais sinais podem sugerir corrosão ambiental?",
+                        "o": [
+                              "Descoloração, depósitos, falhas de contato e resultados de monitoramento específicos",
+                              "Somente alta utilização de CPU",
+                              "Redução do consumo de água",
+                              "Baixa velocidade de rede"
+                        ],
+                        "a": 0,
+                        "e": "A confirmação exige inspeção e análise; limpeza ou controle químico improvisado pode causar mais dano."
+                  },
+                  {
+                        "q": "Como obras próximas devem ser controladas?",
+                        "o": [
+                              "Com barreiras, pressão, limpeza, rotas, proteção de detectores e monitoramento de partículas conforme o plano",
+                              "Mantendo portas abertas",
+                              "Desligando todos os filtros",
+                              "Permitindo corte dentro da sala ativa sem contenção"
+                        ],
+                        "a": 0,
+                        "e": "Poeira de construção pode ser condutiva ou corrosiva. Mudanças de ar e alarmes de incêndio também precisam ser coordenados."
+                  },
+                  {
+                        "q": "Qual é o valor da boa organização na sala técnica?",
+                        "o": [
+                              "Evita obstruções, poeira, materiais combustíveis e bloqueio de fluxos e drenagens",
+                              "Aumenta a carga térmica",
+                              "Substitui filtros",
+                              "Permite armazenar caixas sobre unidades"
+                        ],
+                        "a": 0,
+                        "e": "Housekeeping é controle de confiabilidade e segurança e deve incluir áreas ocultas e plenums."
+                  },
+                  {
+                        "q": "Como definir a faixa ambiental permitida?",
+                        "o": [
+                              "Pelos requisitos dos equipamentos instalados, projeto, risco, normas e estratégia operacional",
+                              "Usando um valor universal para qualquer hardware",
+                              "Pela preferência do turno",
+                              "Pelo menor setpoint possível"
+                        ],
+                        "a": 0,
+                        "e": "Classes e fabricantes podem diferir. Operar próximo a limites exige sensores, resposta e avaliação de confiabilidade."
+                  },
+                  {
+                        "q": "Por que tendências ambientais são melhores que uma única leitura?",
+                        "o": [
+                              "Revelam deriva, sazonalidade, resposta à carga e eventos intermitentes",
+                              "Eliminam necessidade de alarmes",
+                              "Garantem causa raiz",
+                              "Permitem ignorar calibração"
+                        ],
+                        "a": 0,
+                        "e": "Histórico precisa de sensores confiáveis, horários sincronizados e contexto de mudanças."
+                  },
+                  {
+                        "q": "Uma unidade umidifica enquanto outra desumidifica. Isso indica possível:",
+                        "o": [
+                              "Conflito de sensores, setpoints ou controle que desperdiça energia e desestabiliza o ambiente",
+                              "Operação ideal obrigatória",
+                              "Falha de DNS",
+                              "Capacidade extra de refrigeração"
+                        ],
+                        "a": 0,
+                        "e": "A equipe deve comparar leituras, calibração, zonas e deadbands antes de ajustar qualquer setpoint."
+                  }
+            ]
+      },
+      {
+            "id": "eficiencia-pue",
+            "title": "Eficiência e PUE",
+            "description": "Medição, PUE, setpoints, velocidade variável, economização, delta T, capacidade e melhoria contínua.",
+            "questions": [
+                  {
+                        "q": "Como é calculado o PUE?",
+                        "o": [
+                              "Energia total do data center dividida pela energia dos equipamentos de TI, com limites consistentes",
+                              "Energia de TI dividida pela energia total",
+                              "Potência do chiller dividida pelo número de racks",
+                              "Temperatura dividida pela umidade"
+                        ],
+                        "a": 0,
+                        "e": "O indicador mostra a sobrecarga energética da infraestrutura, mas depende de fronteira, período e qualidade da medição."
+                  },
+                  {
+                        "q": "Mantidas condições comparáveis, PUE mais próximo de 1 sugere:",
+                        "o": [
+                              "Menor energia adicional de suporte em relação à carga de TI",
+                              "Maior desperdício obrigatório",
+                              "Ausência de qualquer sistema de refrigeração",
+                              "Maior temperatura em todos os racks"
+                        ],
+                        "a": 0,
+                        "e": "PUE não mede sozinho confiabilidade nem eficiência do software e deve ser analisado com clima, ocupação e carga."
+                  },
+                  {
+                        "q": "Por que medir separadamente a energia do HVAC?",
+                        "o": [
+                              "Para identificar sua participação, tendências e oportunidades sem depender apenas do PUE agregado",
+                              "Para eliminar medidores da TI",
+                              "Para definir umidade relativa",
+                              "Somente para cobrança do fornecedor"
+                        ],
+                        "a": 0,
+                        "e": "Submedição de chillers, bombas, ventiladores e unidades mostra onde a energia é usada e se a melhoria teve efeito."
+                  },
+                  {
+                        "q": "Qual é o risco de baixar setpoints para resolver qualquer hot spot?",
+                        "o": [
+                              "Super-resfriar toda a sala sem corrigir falta local de fluxo ou recirculação",
+                              "Aumentar sempre a eficiência",
+                              "Eliminar a necessidade de contenção",
+                              "Reduzir automaticamente a carga térmica de TI"
+                        ],
+                        "a": 0,
+                        "e": "O diagnóstico deve atuar na distribuição de ar e capacidade local antes de aumentar consumo global."
+                  },
+                  {
+                        "q": "Por que elevar setpoints dentro dos limites aprovados pode economizar energia?",
+                        "o": [
+                              "Reduz o esforço de refrigeração e amplia oportunidades de economização, se as entradas de TI permanecerem seguras",
+                              "Porque aumenta a carga dos compressores",
+                              "Porque elimina sensores",
+                              "Porque resfria o ar externo"
+                        ],
+                        "a": 0,
+                        "e": "Mudanças exigem avaliação de hardware, redundância, umidade e contingência, com implantação gradual e monitorada."
+                  },
+                  {
+                        "q": "Como velocidade variável contribui para eficiência?",
+                        "o": [
+                              "Ajusta ventiladores e bombas à demanda em vez de operar sempre no máximo",
+                              "Mantém todos os motores em rotação fixa",
+                              "Elimina perda de pressão",
+                              "Substitui balanceamento hidráulico"
+                        ],
+                        "a": 0,
+                        "e": "A estratégia precisa de sensores e limites para evitar falta de fluxo ou instabilidade."
+                  },
+                  {
+                        "q": "O que a contenção melhora energeticamente?",
+                        "o": [
+                              "Reduz mistura, permitindo temperaturas de retorno mais altas e entrega de ar mais direcionada",
+                              "Aumenta bypass",
+                              "Substitui todo o chiller",
+                              "Elimina calor dos servidores"
+                        ],
+                        "a": 0,
+                        "e": "Benefícios dependem de vedação, layout, controle e integração com incêndio."
+                  },
+                  {
+                        "q": "O que é free cooling ou economização?",
+                        "o": [
+                              "Uso de condições externas favoráveis para reduzir ou evitar trabalho de compressores",
+                              "Resfriamento sem qualquer consumo",
+                              "Abertura indiscriminada de portas",
+                              "Operação apenas com baterias"
+                        ],
+                        "a": 0,
+                        "e": "Pode usar ar ou água. Contaminantes, umidade, congelamento e disponibilidade precisam ser controlados."
+                  },
+                  {
+                        "q": "Por que aumentar a temperatura de água gelada pode melhorar eficiência em certos sistemas?",
+                        "o": [
+                              "Pode elevar a eficiência do chiller e ampliar economização, se a capacidade das serpentinas continuar suficiente",
+                              "Porque sempre aumenta capacidade das CRAHs",
+                              "Porque reduz o fluxo a zero",
+                              "Porque elimina bombas"
+                        ],
+                        "a": 0,
+                        "e": "A decisão considera carga, umidade, válvulas, delta T e condição de contingência."
+                  },
+                  {
+                        "q": "O que é reset de setpoint?",
+                        "o": [
+                              "Ajuste automático e limitado do alvo conforme demanda e condições, em vez de valor fixo permanente",
+                              "Reinicialização diária do chiller",
+                              "Desligamento de alarmes",
+                              "Troca manual de sensores"
+                        ],
+                        "a": 0,
+                        "e": "Reset bem projetado usa variável representativa e evita oscilações entre unidades."
+                  },
+                  {
+                        "q": "O que o COP de um equipamento frigorífico relaciona?",
+                        "o": [
+                              "Capacidade térmica útil com a potência de entrada, nas condições declaradas",
+                              "Energia de TI com área do prédio",
+                              "Umidade com temperatura",
+                              "Vazão com número de operadores"
+                        ],
+                        "a": 0,
+                        "e": "COP varia com carga e temperaturas de evaporação e condensação; valores de catálogo precisam de contexto."
+                  },
+                  {
+                        "q": "Por que eficiência em carga parcial é importante?",
+                        "o": [
+                              "Equipamentos passam grande parte do tempo abaixo da carga máxima e controles determinam seu consumo real",
+                              "Porque data centers operam sempre em 100%",
+                              "Porque carga parcial elimina bombas",
+                              "Somente para equipamentos desligados"
+                        ],
+                        "a": 0,
+                        "e": "Seleção de estágios, inversores e quantidade de unidades ativas influencia o desempenho anual."
+                  },
+                  {
+                        "q": "O que é síndrome de baixo delta T em água gelada?",
+                        "o": [
+                              "Retorno menos quente que o esperado, exigindo mais vazão e limitando capacidade do sistema",
+                              "Água de retorno muito quente por definição",
+                              "Congelamento obrigatório",
+                              "Falha elétrica da UPS"
+                        ],
+                        "a": 0,
+                        "e": "Pode resultar de válvulas, serpentinas, bypass, excesso de fluxo ou controle inadequado."
+                  },
+                  {
+                        "q": "Como otimizar bombas sem comprometer o sistema?",
+                        "o": [
+                              "Ajustar rotação e sequenciamento pela demanda e pressão necessária, preservando vazões mínimas",
+                              "Fechar todas as válvulas",
+                              "Operar sempre no máximo",
+                              "Remover sensores de pressão"
+                        ],
+                        "a": 0,
+                        "e": "Curvas de bomba, autoridade de válvulas e ponto crítico precisam ser considerados."
+                  },
+                  {
+                        "q": "Por que excesso de capacidade instalada pode reduzir eficiência em operação?",
+                        "o": [
+                              "Unidades podem trabalhar em faixa ineficiente, ciclar ou manter perdas fixas desnecessárias",
+                              "Porque capacidade extra sempre consome zero",
+                              "Porque reduz redundância",
+                              "Porque aumenta o delta T automaticamente"
+                        ],
+                        "a": 0,
+                        "e": "Sequenciamento deve preservar reserva e colocar unidades ativas em faixa eficiente sem criar ponto único."
+                  },
+                  {
+                        "q": "Como estabelecer baseline energético confiável?",
+                        "o": [
+                              "Usar período, carga de TI, clima, ocupação e fronteiras documentados antes da mudança",
+                              "Comparar apenas um dia frio com um dia quente",
+                              "Ignorar crescimento da TI",
+                              "Usar estimativas sem medidores"
+                        ],
+                        "a": 0,
+                        "e": "Normalização permite separar efeito da melhoria de mudanças externas."
+                  },
+                  {
+                        "q": "Por que normalizar consumo pelo clima?",
+                        "o": [
+                              "Temperatura e umidade externas alteram a carga e a oportunidade de economização",
+                              "Porque clima define a potência dos servidores",
+                              "Para ocultar aumento de consumo",
+                              "Somente para escolher gráficos"
+                        ],
+                        "a": 0,
+                        "e": "Graus-hora, entalpia ou modelos podem apoiar comparação entre períodos diferentes."
+                  },
+                  {
+                        "q": "Quando o reaproveitamento de calor pode ser considerado?",
+                        "o": [
+                              "Quando existe uso próximo e compatível, temperatura útil, viabilidade econômica e segurança",
+                              "Sempre, sem consumidor de calor",
+                              "Para devolver ar quente ao corredor frio",
+                              "Como substituto obrigatório do chiller"
+                        ],
+                        "a": 0,
+                        "e": "Calor de data center é geralmente de baixa temperatura e precisa de infraestrutura e demanda adequadas."
+                  },
+                  {
+                        "q": "Por que vazamentos de refrigerante afetam sustentabilidade além da eficiência?",
+                        "o": [
+                              "Muitos fluidos têm impacto climático e a perda também reduz desempenho e confiabilidade",
+                              "Porque refrigerante não possui impacto ambiental",
+                              "Somente pelo custo da recarga",
+                              "Porque sempre aumenta o COP"
+                        ],
+                        "a": 0,
+                        "e": "Detecção, reparo, registro e escolha de fluido seguem regulamentação e estratégia de ciclo de vida."
+                  },
+                  {
+                        "q": "Qual é a melhor forma de sustentar ganhos de eficiência?",
+                        "o": [
+                              "Medir continuamente, documentar controles, treinar equipes e revisar resultados e limites",
+                              "Fazer uma mudança e remover sensores",
+                              "Manter todos os setpoints secretos",
+                              "Otimizar sem considerar contingência"
+                        ],
+                        "a": 0,
+                        "e": "Eficiência precisa coexistir com disponibilidade e condições dos equipamentos, com rollback para mudanças."
+                  }
+            ]
+      },
+      {
+            "id": "alarmes-contingencia",
+            "title": "Alarmes e Contingência Térmica",
+            "description": "Hot spots, perda de unidades, chiller, bombas, vazamentos, sensores, fogo e recuperação térmica.",
+            "questions": [
+                  {
+                        "q": "Um rack apresenta temperatura de entrada alta e os vizinhos estão normais. Qual é a primeira análise?",
+                        "o": [
+                              "Validar sensor, fluxo, obstruções, recirculação, carga e mudanças locais",
+                              "Reduzir o setpoint de toda a sala",
+                              "Desligar todos os chillers",
+                              "Ignorar por ser apenas um rack"
+                        ],
+                        "a": 0,
+                        "e": "Hot spot localizado costuma exigir correção de distribuição antes de aumentar capacidade global."
+                  },
+                  {
+                        "q": "Uma CRAH N+1 falha. O que deve ser confirmado imediatamente?",
+                        "o": [
+                              "Temperaturas de entrada, capacidade e estado das restantes, fluxo, alarmes e trabalhos conflitantes",
+                              "Somente o nome da unidade",
+                              "Que a reserva existe no desenho",
+                              "Aumentar todos os limites de alarme"
+                        ],
+                        "a": 0,
+                        "e": "A condição real pode diferir do projeto. Carga, válvulas, bombas e energia determinam se a reserva assumiu."
+                  },
+                  {
+                        "q": "Um chiller desarma durante alta carga. Qual é a prioridade?",
+                        "o": [
+                              "Estabilizar com capacidade disponível, verificar chillers, bombas e alarmes, controlar carga térmica e escalar",
+                              "Rearmar repetidamente",
+                              "Desligar o BMS",
+                              "Abrir portas externas"
+                        ],
+                        "a": 0,
+                        "e": "A causa do trip precisa ser preservada. O tempo térmico disponível deve orientar escalonamento e eventual redução controlada de carga."
+                  },
+                  {
+                        "q": "Uma bomba de água gelada falha. Qual risco surge?",
+                        "o": [
+                              "Perda de vazão e capacidade nas serpentinas, mesmo que o chiller permaneça ligado",
+                              "Aumento automático de vazão",
+                              "Redução da temperatura sem limite",
+                              "Somente perda de umidade"
+                        ],
+                        "a": 0,
+                        "e": "Verificar bomba reserva, válvulas, diferencial de pressão e resposta das unidades."
+                  },
+                  {
+                        "q": "Um alarme de vazamento ocorre sob uma unidade in-row. O que fazer?",
+                        "o": [
+                              "Controlar acesso, confirmar por meios seguros, acionar isolamento previsto e proteger energia e TI",
+                              "Tocar o líquido",
+                              "Desativar o sensor",
+                              "Aguardar transbordar"
+                        ],
+                        "a": 0,
+                        "e": "Resposta deve considerar fluido, pressão, válvulas, drenagem e proximidade de circuitos energizados."
+                  },
+                  {
+                        "q": "Umidade aumenta rapidamente enquanto a temperatura cai. Qual risco merece atenção?",
+                        "o": [
+                              "Elevação da umidade relativa e aproximação do ponto de orvalho de superfícies frias",
+                              "Eletricidade estática por ar muito seco",
+                              "Aumento de frequência elétrica",
+                              "Perda de DNS"
+                        ],
+                        "a": 0,
+                        "e": "Temperatura e vapor precisam ser analisados juntos para evitar condensação."
+                  },
+                  {
+                        "q": "Um alarme de baixa umidade aparece em apenas um sensor. Qual conduta é adequada?",
+                        "o": [
+                              "Comparar sensores, localização e calibração antes de alterar umidificação",
+                              "Ligar todos os umidificadores no máximo",
+                              "Ignorar permanentemente",
+                              "Baixar ainda mais a temperatura"
+                        ],
+                        "a": 0,
+                        "e": "Uma leitura isolada pode ser real ou defeito. Ação excessiva pode criar alta umidade e conflito."
+                  },
+                  {
+                        "q": "Há condensação em uma tubulação acima dos racks. Qual é a prioridade?",
+                        "o": [
+                              "Proteger equipamentos, controlar o risco, interromper a fonte por procedimento e corrigir isolamento e ponto de orvalho",
+                              "Secar enquanto permanece gotejando",
+                              "Aumentar a umidade",
+                              "Abrir painéis elétricos próximos"
+                        ],
+                        "a": 0,
+                        "e": "Condensação indica superfície abaixo do ponto de orvalho ou barreira de vapor comprometida."
+                  },
+                  {
+                        "q": "Um sensor crítico falha e mostra valor fixo. O sistema deve:",
+                        "o": [
+                              "Detectar a falha, usar fonte alternativa validada e manter controle em modo seguro até substituição",
+                              "Continuar confiando no valor",
+                              "Desativar todos os alarmes",
+                              "Ajustar setpoint ao valor travado"
+                        ],
+                        "a": 0,
+                        "e": "Qualidade do sensor faz parte do controle. Comparação, plausibilidade e redundância evitam comandos incorretos."
+                  },
+                  {
+                        "q": "O BMS perde comunicação com todas as unidades. Isso significa que:",
+                        "o": [
+                              "Há perda de visibilidade; controles locais podem continuar, mas precisam ser verificados por meios autorizados",
+                              "Todas as unidades desligaram obrigatoriamente",
+                              "O ambiente está normal",
+                              "Os alarmes locais deixam de existir"
+                        ],
+                        "a": 0,
+                        "e": "A própria rede e o servidor BMS devem ser monitorados, com contingência de observação e comunicação."
+                  },
+                  {
+                        "q": "Uma perda elétrica desliga a refrigeração enquanto a TI permanece em UPS. O que ocorre?",
+                        "o": [
+                              "A temperatura tende a subir rapidamente e o tempo térmico precisa ser coordenado com restauração elétrica ou redução de carga",
+                              "A UPS resfria automaticamente a sala",
+                              "A carga térmica desaparece",
+                              "A umidade se torna zero"
+                        ],
+                        "a": 0,
+                        "e": "Refrigeração deve estar nas cargas de emergência definidas. A sequência de retorno precisa evitar sobrecarga do gerador."
+                  },
+                  {
+                        "q": "O que é thermal ride-through?",
+                        "o": [
+                              "Tempo e capacidade do ambiente suportar perda temporária de refrigeração sem ultrapassar limites",
+                              "Autonomia elétrica da UPS",
+                              "Tempo de partida do DNS",
+                              "Vida útil do filtro"
+                        ],
+                        "a": 0,
+                        "e": "Depende de carga, volume, inércia, contenção e limites dos equipamentos; testes e modelos devem ser conservadores."
+                  },
+                  {
+                        "q": "Portas de contenção ficaram abertas durante manutenção. Qual ação é correta?",
+                        "o": [
+                              "Fechá-las quando seguro, avaliar impacto térmico e reforçar controle de acesso e procedimento",
+                              "Reduzir setpoint permanentemente",
+                              "Remover toda a contenção",
+                              "Desativar sensores"
+                        ],
+                        "a": 0,
+                        "e": "Aberturas alteram pressão e mistura. Manutenções precisam prever passagem e fechamento."
+                  },
+                  {
+                        "q": "Um ventilador de uma unidade falha. O que deve ser avaliado?",
+                        "o": [
+                              "Vazão restante, capacidade, distribuição, alarmes, redundância e risco de sobrecarga dos demais",
+                              "Somente ruído",
+                              "Aumentar frequência elétrica",
+                              "Ignorar se o compressor funciona"
+                        ],
+                        "a": 0,
+                        "e": "Capacidade térmica depende de mover ar através da serpentina; unidades podem reduzir operação para se proteger."
+                  },
+                  {
+                        "q": "O compressor desarma por alta pressão. Antes de rearmar deve-se:",
+                        "o": [
+                              "Verificar rejeição de calor, condensador, ventiladores ou água, sujeira, válvulas e condições externas",
+                              "Aumentar o setpoint do alarme",
+                              "Bloquear a proteção",
+                              "Desligar todos os sensores"
+                        ],
+                        "a": 0,
+                        "e": "Rearme sem corrigir causa pode repetir o trip ou danificar o equipamento."
+                  },
+                  {
+                        "q": "Uma serpentina começa a congelar. Qual hipótese é coerente?",
+                        "o": [
+                              "Baixo fluxo de ar, baixa vazão de água, controle ou refrigerante inadequado podem reduzir excessivamente a temperatura da superfície",
+                              "Excesso de temperatura de entrada",
+                              "Alta carga de TI sempre",
+                              "Falha de inventário"
+                        ],
+                        "a": 0,
+                        "e": "Gelo bloqueia mais o fluxo e pode gerar água ao derreter. A unidade deve seguir proteção e diagnóstico técnico."
+                  },
+                  {
+                        "q": "A temperatura de água gelada sobe em todo o circuito. O que investigar?",
+                        "o": [
+                              "Carga, chillers ativos, vazão, bypass, condensação, setpoints e capacidade de rejeição",
+                              "Somente filtros de ar dos racks",
+                              "Endereços IP",
+                              "Iluminação da sala"
+                        ],
+                        "a": 0,
+                        "e": "Problema central afeta várias CRAHs. O diagnóstico separa produção insuficiente de distribuição inadequada."
+                  },
+                  {
+                        "q": "Em modo de incêndio, o HVAC deve:",
+                        "o": [
+                              "Seguir a sequência projetada e intertravada com detecção e supressão, não uma regra improvisada",
+                              "Permanecer sempre ligado",
+                              "Desligar sempre todos os ventiladores sem projeto",
+                              "Abrir portas de contenção manualmente"
+                        ],
+                        "a": 0,
+                        "e": "A estratégia depende de zonas, fumaça, agente e códigos. Testes integrados confirmam a lógica."
+                  },
+                  {
+                        "q": "Hot spots aumentam mesmo com todas as unidades em capacidade. O que fazer?",
+                        "o": [
+                              "Escalar risco de capacidade, verificar distribuição e contingência e planejar redução ou redistribuição controlada de carga",
+                              "Baixar alarmes para esconder condição",
+                              "Desligar sensores superiores",
+                              "Continuar adicionando racks"
+                        ],
+                        "a": 0,
+                        "e": "Quando não há margem, qualquer falha pode ultrapassar limites. Capacidade térmica e fluxo precisam de ação imediata."
+                  },
+                  {
+                        "q": "Após recuperar a refrigeração, antes de encerrar o incidente deve-se:",
+                        "o": [
+                              "Confirmar entradas de TI, umidade, fluxo, unidades, redundância e estabilidade e registrar causa e ações",
+                              "Considerar resolvido ao ligar um chiller",
+                              "Parar o monitoramento",
+                              "Reabrir todas as portas"
+                        ],
+                        "a": 0,
+                        "e": "A massa térmica e controles podem levar tempo para estabilizar. Soluções temporárias e recorrência precisam ser acompanhadas."
+                  }
+            ]
+      }
+];
+
+    const STORAGE_KEY = "gdc-premium-refrigeracao-hvac-v1";
+    const LETTERS = ["A","B","C","D"];
+    const state = {session:[],index:0,answers:[],remaining:60,timer:null,startedAt:0,mode:"module",moduleId:null,sound:true,volume:.35,lastConfig:null};
+    const el = id => document.getElementById(id);
+    const views = {home:el("homeView"),quiz:el("quizView"),result:el("resultView")};
+    const audio = {background:el("backgroundAudio"),correct:el("correctAudio"),wrong:el("wrongAudio")};
+
+    function safeLoad(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||{modules:{},full:null}}catch{return {modules:{},full:null}}}
+    function safeSave(data){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}catch{/* modo privado ou armazenamento indisponível */}}
+    function showView(name){Object.entries(views).forEach(([key,node])=>node.hidden=key!==name);window.scrollTo({top:0,behavior:"smooth"})}
+    function formatTime(seconds){const min=Math.floor(seconds/60);const sec=seconds%60;return `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`}
+    function shuffle(items){const copy=[...items];for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]]}return copy}
+    function randomizeQuestion(question,moduleTitle){const options=shuffle(question.o.map((text,index)=>({text,correct:index===question.a})));return {...question,moduleTitle,o:options.map(item=>item.text),a:options.findIndex(item=>item.correct)}}
+    function setAudioVolumes(){audio.background.volume=state.volume*.42;audio.correct.volume=state.volume;audio.wrong.volume=state.volume}
+    function startBackground(){if(!state.sound)return;audio.background.play().catch(()=>{})}
+    function stopBackground(){audio.background.pause()}
+    function playEffect(kind){if(!state.sound)return;const sound=audio[kind];sound.currentTime=0;sound.play().catch(()=>{})}
+    function toggleSound(){state.sound=!state.sound;const button=el("soundToggle");button.classList.toggle("off",!state.sound);button.setAttribute("aria-pressed",String(state.sound));button.querySelector(".sound-text").textContent=state.sound?"Som ligado":"Som desligado";if(state.sound&&views.quiz.hidden===false)startBackground();else stopBackground()}
+
+    function renderHome(){
+      const progress=safeLoad();
+      const grid=el("moduleGrid");grid.textContent="";
+      let completed=0,totalBest=0;
+      MODULES.forEach((module,index)=>{
+        const saved=progress.modules[module.id];const best=saved?.best||0;if(saved){completed++;totalBest+=best}
+        const card=document.createElement("article");card.className="module-card";
+        const number=document.createElement("div");number.className="module-number";number.textContent=String(index+1).padStart(2,"0");
+        const title=document.createElement("h3");title.textContent=module.title;
+        const desc=document.createElement("p");desc.textContent=module.description;
+        const meta=document.createElement("div");meta.className="module-meta";meta.innerHTML=`<span>20 questões</span><span>${saved?`Melhor: ${best}%`:"Não iniciado"}</span>`;
+        const track=document.createElement("div");track.className="mini-track";const fill=document.createElement("span");fill.style.width=`${best}%`;track.appendChild(fill);
+        const button=document.createElement("button");button.type="button";button.className="btn btn-secondary btn-block";button.textContent=saved?"Refazer módulo":"Iniciar módulo";button.addEventListener("click",()=>startModule(module.id));
+        card.append(number,title,desc,meta,track,button);grid.appendChild(card);
+      });
+      const percent=Math.round((completed/MODULES.length)*100);
+      el("overallPercent").textContent=`${percent}%`;el("overallBar").style.width=`${percent}%`;el("completedModules").textContent=`${completed}/${MODULES.length}`;el("bestAverage").textContent=completed?`${Math.round(totalBest/completed)}%`:"—";
+      showView("home");
+    }
+
+    function startModule(moduleId){const module=MODULES.find(item=>item.id===moduleId);state.lastConfig={type:"module",id:moduleId};beginSession(shuffle(module.questions.map(q=>randomizeQuestion(q,module.title))),"module",moduleId,module.title)}
+    function startFull(){state.lastConfig={type:"full"};const questions=MODULES.flatMap(module=>module.questions.map(q=>randomizeQuestion(q,module.title)));beginSession(shuffle(questions),"full",null,"Simulado completo")}
+    function beginSession(questions,mode,moduleId,title){clearInterval(state.timer);state.session=questions;state.index=0;state.answers=[];state.mode=mode;state.moduleId=moduleId;state.startedAt=Date.now();el("quizModule").textContent=mode==="full"?"Consolidação • 7 módulos":"Simulado gratuito • módulo";el("quizTitle").textContent=title;showView("quiz");startBackground();renderQuestion()}
+
+    function renderQuestion(){
+      clearInterval(state.timer);state.remaining=60;
+      const current=state.session[state.index];const total=state.session.length;
+      el("questionCounter").textContent=`Questão ${state.index+1} de ${total}`;el("liveScore").textContent=`${state.answers.filter(a=>a.correct).length} acertos`;el("quizBar").style.width=`${(state.index/total)*100}%`;el("questionModuleLabel").textContent=current.moduleTitle;el("questionText").textContent=current.q;
+      el("feedbackBox").hidden=true;el("nextQuestion").hidden=true;
+      const list=el("optionsList");list.textContent="";
+      current.o.forEach((option,index)=>{const button=document.createElement("button");button.className="option";button.type="button";const letter=document.createElement("span");letter.className="letter";letter.textContent=LETTERS[index];const text=document.createElement("span");text.textContent=option;button.append(letter,text);button.addEventListener("click",()=>answerQuestion(index,false));list.appendChild(button)});
+      updateTimer();state.timer=setInterval(()=>{state.remaining--;updateTimer();if(state.remaining<=0){clearInterval(state.timer);answerQuestion(-1,true)}},1000);
+    }
+
+    function updateTimer(){const box=el("timerBox");el("timerText").textContent=formatTime(Math.max(0,state.remaining));box.classList.toggle("warn",state.remaining<=20&&state.remaining>10);box.classList.toggle("danger",state.remaining<=10)}
+    function answerQuestion(selected,timedOut){
+      clearInterval(state.timer);const current=state.session[state.index];const buttons=[...el("optionsList").querySelectorAll(".option")];if(buttons.some(button=>button.disabled))return;
+      const correct=selected===current.a;buttons.forEach((button,index)=>{button.disabled=true;if(index===current.a)button.classList.add("correct");else if(index===selected)button.classList.add("wrong")});
+      state.answers.push({question:current,selected,correct,timedOut});
+      const box=el("feedbackBox");box.hidden=false;box.className=`feedback ${correct?"good":"bad"}`;el("feedbackTitle").textContent=correct?"Resposta correta!":timedOut?"Tempo esgotado.":"Resposta incorreta.";el("feedbackText").textContent=current.e;playEffect(correct?"correct":"wrong");el("liveScore").textContent=`${state.answers.filter(a=>a.correct).length} acertos`;const next=el("nextQuestion");next.hidden=false;next.textContent=state.index===state.session.length-1?"Ver resultado":"Próxima questão";
+    }
+
+    function goNext(){if(state.answers.length<=state.index)return;if(state.index<state.session.length-1){state.index++;renderQuestion()}else{finishSession()}}
+    function finishSession(){
+      clearInterval(state.timer);stopBackground();const elapsed=Math.max(1,Math.round((Date.now()-state.startedAt)/1000));const correct=state.answers.filter(item=>item.correct).length;const total=state.session.length;const percent=Math.round((correct/total)*100);const progress=safeLoad();
+      if(state.mode==="module"){const old=progress.modules[state.moduleId]||{best:0,attempts:0};progress.modules[state.moduleId]={best:Math.max(old.best,percent),last:percent,attempts:old.attempts+1,completedAt:new Date().toISOString()}}else{const old=progress.full||{best:0,attempts:0};progress.full={best:Math.max(old.best,percent),last:percent,attempts:old.attempts+1,completedAt:new Date().toISOString()}}
+      safeSave(progress);const title=state.mode==="module"?MODULES.find(m=>m.id===state.moduleId).title:"Simulado completo";el("resultTitle").textContent=title;el("resultMessage").textContent=performanceMessage(percent);el("resultPercent").textContent=`${percent}%`;el("scoreRing").style.setProperty("--score",percent);el("resultCorrect").textContent=`${correct}/${total}`;el("resultWrong").textContent=String(total-correct);el("resultTime").textContent=formatTime(elapsed);renderReview();showView("result")
+    }
+    function performanceMessage(score){if(score>=90)return"Excelente domínio. Você demonstrou consistência para reconhecer riscos, prioridades e boas práticas operacionais.";if(score>=75)return"Bom desempenho. Revise os pontos de atenção abaixo para transformar conhecimento em resposta mais consistente.";if(score>=60)return"Base em desenvolvimento. Reforce os temas em que houve erro antes de avançar para o simulado completo.";return"Este resultado é um diagnóstico, não uma sentença. Refaça o módulo após revisar as explicações e os procedimentos fundamentais."}
+    function renderReview(){const list=el("reviewList");list.textContent="";const misses=state.answers.filter(item=>!item.correct);el("reviewBlock").hidden=misses.length===0;if(!misses.length)return;misses.forEach((item,index)=>{const card=document.createElement("article");card.className="review-item";const title=document.createElement("strong");title.textContent=`${index+1}. ${item.question.q}`;const chosen=document.createElement("p");chosen.className="answer-wrong";chosen.textContent=item.timedOut?"Sua resposta: tempo esgotado":`Sua resposta: ${item.question.o[item.selected]}`;const right=document.createElement("p");right.className="answer-correct";right.textContent=`Resposta correta: ${item.question.o[item.question.a]}`;const why=document.createElement("p");why.textContent=item.question.e;card.append(title,chosen,right,why);list.appendChild(card)})}
+    function exitQuiz(){if(state.answers.length&&state.answers.length<state.session.length&&!confirm("Sair agora? O resultado desta tentativa não será salvo."))return;clearInterval(state.timer);stopBackground();renderHome()}
+    function retry(){if(state.lastConfig?.type==="full")startFull();else if(state.lastConfig?.id)startModule(state.lastConfig.id)}
+
+    el("soundToggle").addEventListener("click",toggleSound);el("volumeControl").addEventListener("input",event=>{state.volume=Number(event.target.value);setAudioVolumes()});el("brandHome").addEventListener("click",event=>{event.preventDefault();if(!views.quiz.hidden)exitQuiz();else renderHome()});el("startFull").addEventListener("click",startFull);el("nextQuestion").addEventListener("click",goNext);el("exitQuiz").addEventListener("click",exitQuiz);el("returnHome").addEventListener("click",renderHome);el("retryQuiz").addEventListener("click",retry);el("printResult").addEventListener("click",()=>window.print());
+    setAudioVolumes();renderHome();
+  </script>
+</body>
+</html>

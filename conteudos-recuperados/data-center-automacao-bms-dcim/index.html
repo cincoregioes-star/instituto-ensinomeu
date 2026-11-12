@@ -1,0 +1,1888 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071321">
+  <meta name="description" content="Simulado gratuito Gabarito Data Center — Automação, BMS e DCIM, com 140 questões em 7 módulos.">
+  <title>Gabarito Data Center | Gratuito — Automação, BMS e DCIM</title>
+  <style>
+    :root {
+      --navy-950:#030b14; --navy-900:#071321; --navy-850:#0a1b2d; --navy-800:#0d2439;
+      --cyan:#18d6ff; --cyan-soft:#86eaff; --lime:#b9ff39; --amber:#ffbd2e;
+      --red:#ff5f72; --green:#4df0a7; --white:#f7fbff; --muted:#9eb4c7;
+      --line:rgba(134,234,255,.17); --panel:rgba(10,27,45,.84); --shadow:0 24px 70px rgba(0,0,0,.34);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--white);background:
+      radial-gradient(circle at 12% 0%,rgba(24,214,255,.16),transparent 27rem),
+      radial-gradient(circle at 92% 14%,rgba(185,255,57,.09),transparent 24rem),
+      linear-gradient(145deg,var(--navy-950),var(--navy-900) 45%,#061a28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:
+      linear-gradient(rgba(134,234,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(134,234,255,.12) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 75%)}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    a{color:var(--cyan-soft)}
+    .shell{width:min(1180px,calc(100% - 32px));margin:0 auto;position:relative;z-index:1}
+    .topbar{padding:22px 0 8px}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:13px;color:var(--white);text-decoration:none}
+    .brand-mark{width:56px;height:56px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(145deg,rgba(24,214,255,.23),rgba(185,255,57,.10));border:1px solid var(--line);box-shadow:0 0 35px rgba(24,214,255,.14)}
+    .brand-mark svg{width:39px;height:39px}
+    .brand-copy strong{display:block;font-size:clamp(1rem,2.2vw,1.28rem);letter-spacing:.08em}
+    .brand-copy span{display:block;color:var(--cyan-soft);font-size:.72rem;letter-spacing:.22em;margin-top:3px}
+    .sound-panel{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(3,11,20,.56);backdrop-filter:blur(12px)}
+    .sound-btn{border:0;background:transparent;color:var(--white);display:flex;align-items:center;gap:7px;padding:5px 6px}
+    .sound-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 13px var(--green)}
+    .sound-btn.off .sound-dot{background:var(--red);box-shadow:0 0 13px var(--red)}
+    .volume{width:85px;accent-color:var(--cyan)}
+    main{padding:34px 0 60px}
+    .view[hidden]{display:none!important}
+    .hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:24px;align-items:stretch;margin-bottom:28px}
+    .hero-copy,.hero-side,.panel,.module-card,.question-card,.result-card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(13,36,57,.91),rgba(7,19,33,.82));box-shadow:var(--shadow);border-radius:var(--radius);backdrop-filter:blur(15px)}
+    .hero-copy{padding:clamp(28px,5vw,54px);position:relative;overflow:hidden}
+    .hero-copy::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-110px;top:-120px;border:42px solid rgba(24,214,255,.06);box-shadow:0 0 90px rgba(24,214,255,.12)}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--lime);font-weight:800;letter-spacing:.13em;font-size:.74rem;text-transform:uppercase;margin:0 0 16px}
+    .eyebrow::before{content:"";width:26px;height:2px;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(2.15rem,6vw,4.8rem);line-height:.96;letter-spacing:-.055em;margin-bottom:20px;max-width:760px}
+    h1 span{display:block;color:var(--cyan)}
+    .lead{color:#ccdae6;line-height:1.72;font-size:clamp(1rem,2vw,1.13rem);max-width:720px;margin-bottom:24px}
+    .chips{display:flex;flex-wrap:wrap;gap:9px}
+    .chip{padding:9px 12px;border-radius:999px;background:rgba(24,214,255,.08);border:1px solid rgba(24,214,255,.23);font-size:.82rem;color:#d9f8ff}
+    .hero-side{padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+    .score-label{color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.13em}
+    .score-value{font-size:clamp(3rem,8vw,5.4rem);line-height:1;font-weight:900;color:var(--lime);letter-spacing:-.07em;margin:9px 0}
+    .progress-track{height:11px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+    .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--lime));border-radius:inherit;transition:width .4s ease}
+    .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .stat{padding:14px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.35)}
+    .stat b{display:block;font-size:1.25rem;color:var(--cyan-soft)}
+    .stat span{color:var(--muted);font-size:.76rem}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:42px 0 18px}
+    .section-head h2{font-size:clamp(1.55rem,3vw,2.35rem);margin:0;letter-spacing:-.035em}
+    .section-head p{color:var(--muted);margin:0;max-width:510px;line-height:1.6;text-align:right}
+    .module-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+    .module-card{padding:23px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+    .module-card:hover{transform:translateY(-4px);border-color:rgba(24,214,255,.42)}
+    .module-number{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,rgba(24,214,255,.23),rgba(24,214,255,.07));color:var(--cyan);font-weight:900;margin-bottom:18px;border:1px solid rgba(24,214,255,.25)}
+    .module-card h3{font-size:1.15rem;margin-bottom:9px}
+    .module-card p{color:var(--muted);font-size:.88rem;line-height:1.55;min-height:68px}
+    .module-meta{display:flex;justify-content:space-between;gap:10px;color:#c5d8e7;font-size:.78rem;margin:17px 0 13px}
+    .mini-track{height:7px;background:rgba(255,255,255,.07);border-radius:999px;overflow:hidden;margin-bottom:17px}
+    .mini-track span{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--lime));border-radius:inherit}
+    .btn{border:0;border-radius:13px;padding:13px 18px;font-weight:850;letter-spacing:.01em;transition:transform .18s,filter .18s,background .18s;display:inline-flex;justify-content:center;align-items:center;gap:8px;text-decoration:none}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+    .btn-primary{background:linear-gradient(95deg,var(--cyan),#55e4ff 46%,var(--lime));color:#03101a;box-shadow:0 12px 35px rgba(24,214,255,.18)}
+    .btn-secondary{background:rgba(24,214,255,.09);color:var(--white);border:1px solid rgba(24,214,255,.25)}
+    .btn-danger{background:rgba(255,95,114,.10);color:#ffc4cb;border:1px solid rgba(255,95,114,.27)}
+    .btn-block{width:100%}
+    .full-card{margin-top:19px;padding:25px;display:flex;align-items:center;justify-content:space-between;gap:25px;border:1px solid rgba(185,255,57,.24);border-radius:var(--radius);background:linear-gradient(110deg,rgba(185,255,57,.10),rgba(24,214,255,.08),rgba(7,19,33,.88));box-shadow:var(--shadow)}
+    .full-card h3{margin-bottom:7px;font-size:1.34rem}
+    .full-card p{margin:0;color:var(--muted);line-height:1.55}
+    .notice{margin-top:20px;padding:18px 20px;border-radius:17px;border:1px solid rgba(255,189,46,.24);background:rgba(255,189,46,.07);color:#ffe5ab;line-height:1.6;font-size:.89rem}
+    .refs{margin-top:20px;padding:0;border:1px solid var(--line);border-radius:17px;background:rgba(7,19,33,.6)}
+    .refs summary{cursor:pointer;padding:18px 20px;font-weight:800;color:#dff9ff}
+    .refs div{padding:0 20px 18px;color:var(--muted);line-height:1.7;font-size:.87rem}
+    .quiz-top{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:18px}
+    .crumb{color:var(--cyan-soft);font-size:.85rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+    .timer{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(3,11,20,.62);font-variant-numeric:tabular-nums}
+    .timer.warn{color:var(--amber);border-color:rgba(255,189,46,.38)}
+    .timer.danger{color:#ffc1c9;border-color:rgba(255,95,114,.5);animation:pulse 1s infinite}
+    @keyframes pulse{50%{box-shadow:0 0 24px rgba(255,95,114,.18)}}
+    .quiz-progress{margin-bottom:18px}
+    .quiz-progress-row{display:flex;justify-content:space-between;color:var(--muted);font-size:.82rem;margin-bottom:8px}
+    .question-card{padding:clamp(24px,5vw,43px)}
+    .question-kicker{display:flex;align-items:center;gap:9px;color:var(--lime);font-size:.77rem;text-transform:uppercase;letter-spacing:.12em;font-weight:850;margin-bottom:15px}
+    .question-card h2{font-size:clamp(1.28rem,3vw,1.85rem);line-height:1.35;letter-spacing:-.025em;margin-bottom:26px}
+    .options{display:grid;gap:11px}
+    .option{width:100%;text-align:left;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.44);color:var(--white);padding:15px 17px;display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:center;line-height:1.48;transition:border-color .18s,background .18s,transform .18s}
+    .option:hover:not(:disabled){border-color:rgba(24,214,255,.45);background:rgba(24,214,255,.09);transform:translateX(3px)}
+    .option:disabled{cursor:default}
+    .letter{width:35px;height:35px;display:grid;place-items:center;border-radius:10px;background:rgba(24,214,255,.09);border:1px solid rgba(24,214,255,.17);color:var(--cyan-soft);font-weight:900}
+    .option.correct{border-color:rgba(77,240,167,.65);background:rgba(77,240,167,.10)}
+    .option.correct .letter{background:var(--green);border-color:var(--green);color:#03150e}
+    .option.wrong{border-color:rgba(255,95,114,.62);background:rgba(255,95,114,.10)}
+    .option.wrong .letter{background:var(--red);border-color:var(--red);color:white}
+    .feedback{margin-top:20px;padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(3,11,20,.48);line-height:1.62}
+    .feedback.good{border-color:rgba(77,240,167,.35)}
+    .feedback.bad{border-color:rgba(255,95,114,.34)}
+    .feedback strong{display:block;margin-bottom:5px}
+    .feedback p{margin:0;color:#c7d7e3}
+    .quiz-actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:19px}
+    .result-card{padding:clamp(26px,5vw,48px);text-align:center}
+    .result-badge{display:inline-block;padding:8px 12px;border:1px solid rgba(185,255,57,.28);border-radius:999px;color:var(--lime);font-size:.75rem;letter-spacing:.12em;font-weight:900;text-transform:uppercase}
+    .result-card h1{font-size:clamp(2rem,5vw,3.6rem);margin:19px auto 10px;max-width:800px}
+    .result-card>p{color:var(--muted);line-height:1.65}
+    .score-ring{--score:0;width:190px;height:190px;margin:28px auto;display:grid;place-items:center;border-radius:50%;background:conic-gradient(var(--lime) calc(var(--score)*1%),rgba(255,255,255,.08) 0);position:relative}
+    .score-ring::before{content:"";position:absolute;inset:14px;border-radius:50%;background:var(--navy-900);border:1px solid var(--line)}
+    .score-ring div{position:relative;z-index:1}
+    .score-ring b{display:block;font-size:3.25rem;line-height:1;color:var(--white)}
+    .score-ring span{color:var(--muted);font-size:.8rem}
+    .result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:680px;margin:0 auto 26px}
+    .result-stat{padding:18px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.35)}
+    .result-stat b{display:block;font-size:1.45rem;color:var(--cyan-soft)}
+    .result-stat span{font-size:.77rem;color:var(--muted)}
+    .result-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+    .review{margin-top:24px;text-align:left}
+    .review h2{margin-bottom:14px}
+    .review-item{padding:18px;margin-bottom:10px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.36)}
+    .review-item strong{display:block;margin-bottom:8px;line-height:1.45}
+    .review-item p{margin:5px 0;color:var(--muted);line-height:1.55;font-size:.9rem}
+    .review-item .answer-correct{color:var(--green)}
+    .review-item .answer-wrong{color:#ffb6bf}
+    footer{padding:28px 0 42px;border-top:1px solid var(--line);color:var(--muted);font-size:.83rem;line-height:1.6}
+    .footer-inner{display:flex;justify-content:space-between;gap:25px}
+    .footer-inner p{margin:0}
+    .footer-inner div:last-child{text-align:right}
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.module-grid{grid-template-columns:repeat(2,1fr)}.hero-side{min-height:280px}}
+    @media(max-width:640px){.shell{width:min(100% - 22px,1180px)}.topbar-inner{align-items:flex-start}.brand-mark{width:47px;height:47px}.brand-copy strong{font-size:.92rem}.brand-copy span{font-size:.61rem}.volume{display:none}.sound-panel{padding:7px 8px}.sound-btn .sound-text{display:none}.hero-copy,.hero-side,.question-card,.result-card{border-radius:18px}.hero-copy{padding:27px 22px}.module-grid{grid-template-columns:1fr}.section-head{display:block}.section-head p{text-align:left;margin-top:8px}.full-card{align-items:flex-start;flex-direction:column}.quiz-top{align-items:flex-start}.timer{padding:8px 11px}.quiz-actions{align-items:stretch;flex-direction:column-reverse}.quiz-actions .btn{width:100%}.result-stats{grid-template-columns:1fr}.footer-inner{display:block}.footer-inner div:last-child{text-align:left;margin-top:12px}.option{grid-template-columns:34px 1fr;padding:13px}.letter{width:32px;height:32px}}
+    @media print{body{background:white;color:#111}.topbar,#homeView,#quizView,footer,.result-actions,.sound-panel{display:none!important}.result-card{box-shadow:none;border:1px solid #bbb;background:white}.result-card h1,.score-ring b{color:#111}.score-ring::before{background:white}.review-item{background:white;color:#111}.review-item p{color:#333}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#" id="brandHome" aria-label="Voltar ao início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="7" y="5" width="34" height="38" rx="7" stroke="#18d6ff" stroke-width="2"/><path d="M13 14h22M13 23h22M13 32h22" stroke="#86eaff" stroke-width="2"/><circle cx="16" cy="14" r="2" fill="#b9ff39"/><circle cx="16" cy="23" r="2" fill="#b9ff39"/><circle cx="16" cy="32" r="2" fill="#ffbd2e"/><path d="M29 11v6m0 3v6m0 3v6" stroke="#18d6ff" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-copy"><strong>GABARITO DATA CENTER</strong><span>ACESSO GRATUITO</span></span>
+      </a>
+      <div class="sound-panel" aria-label="Controles de áudio">
+        <button class="sound-btn" id="soundToggle" type="button" aria-pressed="true"><span class="sound-dot"></span><span class="sound-text">Som ligado</span></button>
+        <label class="sr-only" for="volumeControl">Volume</label>
+        <input class="volume" id="volumeControl" type="range" min="0" max="1" value="0.35" step="0.05">
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div role="note" style="margin:12px 0 26px;padding:16px 20px;border:1px solid rgba(185,255,57,.36);border-radius:14px;background:#102a32;color:#e9fbf1;line-height:1.6"><a href="../../catalogo-gratuito.html" style="font-weight:800;color:#b9ff39;text-decoration:underline">← Voltar ao catálogo gratuito do Instituto EnsinoMeu</a><p style="margin:9px 0 0">Acesso 100% gratuito. Material de estudo em revisão pedagógica e técnica. As questões não representam certificação profissional nem habilitação para intervenções.</p></div>
+
+    <section class="view" id="homeView">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Formação profissional 2026</p>
+          <h1>Automação, BMS e <span>DCIM</span></h1>
+          <p class="lead">Treinamento premium para instrumentação, controle, supervisórios, gestão de capacidade, protocolos, alarmes e diagnóstico integrado.</p>
+          <div class="chips"><span class="chip">7 módulos</span><span class="chip">140 questões</span><span class="chip">Explicações imediatas</span><span class="chip">Progresso salvo</span><span class="chip">Áudio inteligente</span></div>
+        </div>
+        <aside class="hero-side" aria-label="Seu progresso">
+          <div><div class="score-label">Progresso geral</div><div class="score-value" id="overallPercent">0%</div><div class="progress-track"><div class="progress-fill" id="overallBar"></div></div></div>
+          <div class="hero-stats"><div class="stat"><b id="completedModules">0/6</b><span>módulos concluídos</span></div><div class="stat"><b id="bestAverage">—</b><span>média dos melhores</span></div></div>
+        </aside>
+      </div>
+
+      <div class="section-head"><div><p class="eyebrow">Trilha gratuita</p><h2>Escolha um módulo</h2></div><p>Cada módulo tem 20 questões objetivas, correção comentada e resultado proporcional correto de 0 a 100%.</p></div>
+      <div class="module-grid" id="moduleGrid"></div>
+      <div class="full-card panel"><div><h3>Simulado completo de consolidação</h3><p>Reúna as 140 questões dos sete módulos em uma única sessão. Recomendado após concluir toda a trilha.</p></div><button class="btn btn-primary" id="startFull" type="button">Iniciar 140 questões</button></div>
+      <div class="notice"><strong>Orientação de segurança:</strong> este material é educacional. Em atividades reais, siga sempre os procedimentos locais, a análise de risco, as permissões de trabalho e as orientações de profissionais autorizados. O simulado não substitui treinamento obrigatório nem habilitação técnica.</div>
+      <details class="refs"><summary>Referências gerais e transparência</summary><div>Conteúdo autoral baseado em princípios de automação, gerenciamento de rede, observabilidade e operação de infraestrutura crítica. Não reproduz prova oficial ou material proprietário.</div></details>
+    </section>
+
+    <section class="view" id="quizView" hidden>
+      <div class="quiz-top"><div><div class="crumb" id="quizModule">Módulo</div><h1 id="quizTitle" style="font-size:clamp(1.65rem,4vw,2.7rem);margin:8px 0 0">Simulado</h1></div><div class="timer" id="timerBox" title="Tempo por questão"><span aria-hidden="true">◷</span><b id="timerText">01:00</b></div></div>
+      <div class="quiz-progress"><div class="quiz-progress-row"><span id="questionCounter">Questão 1 de 20</span><span id="liveScore">0 acertos</span></div><div class="progress-track"><div class="progress-fill" id="quizBar"></div></div></div>
+      <article class="question-card">
+        <div class="question-kicker" id="questionModuleLabel">Conhecimento aplicado</div>
+        <h2 id="questionText"></h2>
+        <div class="options" id="optionsList"></div>
+        <div class="feedback" id="feedbackBox" hidden aria-live="polite"><strong id="feedbackTitle"></strong><p id="feedbackText"></p></div>
+      </article>
+      <div class="quiz-actions"><button class="btn btn-danger" id="exitQuiz" type="button">Sair do simulado</button><button class="btn btn-primary" id="nextQuestion" type="button" hidden>Próxima questão</button></div>
+    </section>
+
+    <section class="view" id="resultView" hidden>
+      <article class="result-card">
+        <span class="result-badge">Resultado concluído</span>
+        <h1 id="resultTitle">Seu desempenho</h1>
+        <p id="resultMessage"></p>
+        <div class="score-ring" id="scoreRing"><div><b id="resultPercent">0%</b><span>aproveitamento</span></div></div>
+        <div class="result-stats"><div class="result-stat"><b id="resultCorrect">0</b><span>acertos</span></div><div class="result-stat"><b id="resultWrong">0</b><span>erros / não respondidas</span></div><div class="result-stat"><b id="resultTime">00:00</b><span>tempo total</span></div></div>
+        <div class="result-actions"><button class="btn btn-primary" id="retryQuiz" type="button">Refazer simulado</button><button class="btn btn-secondary" id="printResult" type="button">Imprimir resultado</button><button class="btn btn-secondary" id="returnHome" type="button">Voltar aos módulos</button></div>
+        <div class="review" id="reviewBlock"><h2>Revisão dos pontos de atenção</h2><div id="reviewList"></div></div>
+      </article>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-inner"><div><p><strong>GABARITO DATA CENTER</strong> — preparação independente para candidatos.</p><p>Sem promessa de contratação e sem vínculo com TikTok, ByteDance, Omnia ou operadores de data center.</p></div><div><p>Equipe técnica e dúvidas</p><p><a href="mailto:cincoregioes@gmail.com">cincoregioes@gmail.com</a></p></div></div></footer>
+
+  <audio id="backgroundAudio" loop preload="metadata" src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3"></audio>
+  <audio id="correctAudio" preload="metadata" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3"></audio>
+  <audio id="wrongAudio" preload="metadata" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3"></audio>
+
+  <script>
+    "use strict";
+    const MODULES = [
+      {
+            "id": "instrumentacao-sensores",
+            "title": "Instrumentação e Sensores",
+            "description": "Medição, sinais, calibração, temperatura, pressão e confiabilidade dos pontos.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente sensor?",
+                        "o": [
+                              "elemento que detecta uma grandeza física e produz uma resposta relacionada",
+                              "dispositivo que converte uma forma de energia ou grandeza em outra",
+                              "proximidade entre o valor indicado e o valor de referência",
+                              "comparação documentada com referência rastreável e ajuste quando aplicável"
+                        ],
+                        "a": 0,
+                        "e": "sensor: elemento que detecta uma grandeza física e produz uma resposta relacionada Na prática, fornece ao controle uma representação mensurável de temperatura, pressão, nível, vazão ou outra variável"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de sensor em instrumentação e sensores?",
+                        "o": [
+                              "fornece ao controle uma representação mensurável de temperatura, pressão, nível, vazão ou outra variável",
+                              "transforma o fenômeno medido em sinal utilizável por instrumentos e controladores",
+                              "determina quanto a leitura pode representar corretamente a grandeza real",
+                              "confirma erro, deriva e confiança do ponto antes de usá-lo em alarmes e controle"
+                        ],
+                        "a": 0,
+                        "e": "sensor: elemento que detecta uma grandeza física e produz uma resposta relacionada Na prática, fornece ao controle uma representação mensurável de temperatura, pressão, nível, vazão ou outra variável"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente transdutor?",
+                        "o": [
+                              "dispositivo que converte uma forma de energia ou grandeza em outra",
+                              "equipamento que condiciona e envia o valor medido em um padrão de sinal",
+                              "capacidade de repetir resultados próximos nas mesmas condições",
+                              "padrão analógico em corrente cujo zero vivo ajuda a detectar circuito aberto"
+                        ],
+                        "a": 0,
+                        "e": "transdutor: dispositivo que converte uma forma de energia ou grandeza em outra Na prática, transforma o fenômeno medido em sinal utilizável por instrumentos e controladores"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de transdutor em instrumentação e sensores?",
+                        "o": [
+                              "transforma o fenômeno medido em sinal utilizável por instrumentos e controladores",
+                              "leva a medição do campo até o sistema de controle com faixa e diagnóstico definidos",
+                              "ajuda a distinguir dispersão da medição de um erro sistemático de calibração",
+                              "transporta medições de campo com boa imunidade a quedas de tensão em distâncias usuais"
+                        ],
+                        "a": 0,
+                        "e": "transdutor: dispositivo que converte uma forma de energia ou grandeza em outra Na prática, transforma o fenômeno medido em sinal utilizável por instrumentos e controladores"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente transmissor?",
+                        "o": [
+                              "equipamento que condiciona e envia o valor medido em um padrão de sinal",
+                              "proximidade entre o valor indicado e o valor de referência",
+                              "limites inferior e superior de medição e a diferença entre eles",
+                              "sensor resistivo cuja resistência varia de modo conhecido com a temperatura"
+                        ],
+                        "a": 0,
+                        "e": "transmissor: equipamento que condiciona e envia o valor medido em um padrão de sinal Na prática, leva a medição do campo até o sistema de controle com faixa e diagnóstico definidos"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de transmissor em instrumentação e sensores?",
+                        "o": [
+                              "leva a medição do campo até o sistema de controle com faixa e diagnóstico definidos",
+                              "determina quanto a leitura pode representar corretamente a grandeza real",
+                              "garantem que o instrumento trabalhe dentro da capacidade adequada ao processo",
+                              "mede temperatura com estabilidade quando ligação, corrente e compensação são corretas"
+                        ],
+                        "a": 0,
+                        "e": "transmissor: equipamento que condiciona e envia o valor medido em um padrão de sinal Na prática, leva a medição do campo até o sistema de controle com faixa e diagnóstico definidos"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente exatidão?",
+                        "o": [
+                              "proximidade entre o valor indicado e o valor de referência",
+                              "capacidade de repetir resultados próximos nas mesmas condições",
+                              "comparação documentada com referência rastreável e ajuste quando aplicável",
+                              "diferença de pressão entre dois pontos"
+                        ],
+                        "a": 0,
+                        "e": "exatidão: proximidade entre o valor indicado e o valor de referência Na prática, determina quanto a leitura pode representar corretamente a grandeza real"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de exatidão em instrumentação e sensores?",
+                        "o": [
+                              "determina quanto a leitura pode representar corretamente a grandeza real",
+                              "ajuda a distinguir dispersão da medição de um erro sistemático de calibração",
+                              "confirma erro, deriva e confiança do ponto antes de usá-lo em alarmes e controle",
+                              "monitora filtros, fluxo em salas, serpentinas e condição de bombas ou ventiladores"
+                        ],
+                        "a": 0,
+                        "e": "exatidão: proximidade entre o valor indicado e o valor de referência Na prática, determina quanto a leitura pode representar corretamente a grandeza real"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente precisão?",
+                        "o": [
+                              "capacidade de repetir resultados próximos nas mesmas condições",
+                              "limites inferior e superior de medição e a diferença entre eles",
+                              "padrão analógico em corrente cujo zero vivo ajuda a detectar circuito aberto",
+                              "elemento que detecta uma grandeza física e produz uma resposta relacionada"
+                        ],
+                        "a": 0,
+                        "e": "precisão: capacidade de repetir resultados próximos nas mesmas condições Na prática, ajuda a distinguir dispersão da medição de um erro sistemático de calibração"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de precisão em instrumentação e sensores?",
+                        "o": [
+                              "ajuda a distinguir dispersão da medição de um erro sistemático de calibração",
+                              "garantem que o instrumento trabalhe dentro da capacidade adequada ao processo",
+                              "transporta medições de campo com boa imunidade a quedas de tensão em distâncias usuais",
+                              "fornece ao controle uma representação mensurável de temperatura, pressão, nível, vazão ou outra variável"
+                        ],
+                        "a": 0,
+                        "e": "precisão: capacidade de repetir resultados próximos nas mesmas condições Na prática, ajuda a distinguir dispersão da medição de um erro sistemático de calibração"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente faixa e span?",
+                        "o": [
+                              "limites inferior e superior de medição e a diferença entre eles",
+                              "comparação documentada com referência rastreável e ajuste quando aplicável",
+                              "sensor resistivo cuja resistência varia de modo conhecido com a temperatura",
+                              "dispositivo que converte uma forma de energia ou grandeza em outra"
+                        ],
+                        "a": 0,
+                        "e": "faixa e span: limites inferior e superior de medição e a diferença entre eles Na prática, garantem que o instrumento trabalhe dentro da capacidade adequada ao processo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de faixa e span em instrumentação e sensores?",
+                        "o": [
+                              "garantem que o instrumento trabalhe dentro da capacidade adequada ao processo",
+                              "confirma erro, deriva e confiança do ponto antes de usá-lo em alarmes e controle",
+                              "mede temperatura com estabilidade quando ligação, corrente e compensação são corretas",
+                              "transforma o fenômeno medido em sinal utilizável por instrumentos e controladores"
+                        ],
+                        "a": 0,
+                        "e": "faixa e span: limites inferior e superior de medição e a diferença entre eles Na prática, garantem que o instrumento trabalhe dentro da capacidade adequada ao processo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente calibração?",
+                        "o": [
+                              "comparação documentada com referência rastreável e ajuste quando aplicável",
+                              "padrão analógico em corrente cujo zero vivo ajuda a detectar circuito aberto",
+                              "diferença de pressão entre dois pontos",
+                              "equipamento que condiciona e envia o valor medido em um padrão de sinal"
+                        ],
+                        "a": 0,
+                        "e": "calibração: comparação documentada com referência rastreável e ajuste quando aplicável Na prática, confirma erro, deriva e confiança do ponto antes de usá-lo em alarmes e controle"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de calibração em instrumentação e sensores?",
+                        "o": [
+                              "confirma erro, deriva e confiança do ponto antes de usá-lo em alarmes e controle",
+                              "transporta medições de campo com boa imunidade a quedas de tensão em distâncias usuais",
+                              "monitora filtros, fluxo em salas, serpentinas e condição de bombas ou ventiladores",
+                              "leva a medição do campo até o sistema de controle com faixa e diagnóstico definidos"
+                        ],
+                        "a": 0,
+                        "e": "calibração: comparação documentada com referência rastreável e ajuste quando aplicável Na prática, confirma erro, deriva e confiança do ponto antes de usá-lo em alarmes e controle"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente sinal 4–20 mA?",
+                        "o": [
+                              "padrão analógico em corrente cujo zero vivo ajuda a detectar circuito aberto",
+                              "sensor resistivo cuja resistência varia de modo conhecido com a temperatura",
+                              "elemento que detecta uma grandeza física e produz uma resposta relacionada",
+                              "proximidade entre o valor indicado e o valor de referência"
+                        ],
+                        "a": 0,
+                        "e": "sinal 4–20 mA: padrão analógico em corrente cujo zero vivo ajuda a detectar circuito aberto Na prática, transporta medições de campo com boa imunidade a quedas de tensão em distâncias usuais"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de sinal 4–20 mA em instrumentação e sensores?",
+                        "o": [
+                              "transporta medições de campo com boa imunidade a quedas de tensão em distâncias usuais",
+                              "mede temperatura com estabilidade quando ligação, corrente e compensação são corretas",
+                              "fornece ao controle uma representação mensurável de temperatura, pressão, nível, vazão ou outra variável",
+                              "determina quanto a leitura pode representar corretamente a grandeza real"
+                        ],
+                        "a": 0,
+                        "e": "sinal 4–20 mA: padrão analógico em corrente cujo zero vivo ajuda a detectar circuito aberto Na prática, transporta medições de campo com boa imunidade a quedas de tensão em distâncias usuais"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente RTD?",
+                        "o": [
+                              "sensor resistivo cuja resistência varia de modo conhecido com a temperatura",
+                              "diferença de pressão entre dois pontos",
+                              "dispositivo que converte uma forma de energia ou grandeza em outra",
+                              "capacidade de repetir resultados próximos nas mesmas condições"
+                        ],
+                        "a": 0,
+                        "e": "RTD: sensor resistivo cuja resistência varia de modo conhecido com a temperatura Na prática, mede temperatura com estabilidade quando ligação, corrente e compensação são corretas"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de RTD em instrumentação e sensores?",
+                        "o": [
+                              "mede temperatura com estabilidade quando ligação, corrente e compensação são corretas",
+                              "monitora filtros, fluxo em salas, serpentinas e condição de bombas ou ventiladores",
+                              "transforma o fenômeno medido em sinal utilizável por instrumentos e controladores",
+                              "ajuda a distinguir dispersão da medição de um erro sistemático de calibração"
+                        ],
+                        "a": 0,
+                        "e": "RTD: sensor resistivo cuja resistência varia de modo conhecido com a temperatura Na prática, mede temperatura com estabilidade quando ligação, corrente e compensação são corretas"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente pressão diferencial?",
+                        "o": [
+                              "diferença de pressão entre dois pontos",
+                              "elemento que detecta uma grandeza física e produz uma resposta relacionada",
+                              "equipamento que condiciona e envia o valor medido em um padrão de sinal",
+                              "limites inferior e superior de medição e a diferença entre eles"
+                        ],
+                        "a": 0,
+                        "e": "pressão diferencial: diferença de pressão entre dois pontos Na prática, monitora filtros, fluxo em salas, serpentinas e condição de bombas ou ventiladores"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de pressão diferencial em instrumentação e sensores?",
+                        "o": [
+                              "monitora filtros, fluxo em salas, serpentinas e condição de bombas ou ventiladores",
+                              "fornece ao controle uma representação mensurável de temperatura, pressão, nível, vazão ou outra variável",
+                              "leva a medição do campo até o sistema de controle com faixa e diagnóstico definidos",
+                              "garantem que o instrumento trabalhe dentro da capacidade adequada ao processo"
+                        ],
+                        "a": 0,
+                        "e": "pressão diferencial: diferença de pressão entre dois pontos Na prática, monitora filtros, fluxo em salas, serpentinas e condição de bombas ou ventiladores"
+                  }
+            ]
+      },
+      {
+            "id": "clp-logica",
+            "title": "CLP e Lógica de Controle",
+            "description": "Ciclo de varredura, entradas, saídas, intertravamentos, PID, modos e falhas seguras.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente ciclo de varredura?",
+                        "o": [
+                              "sequência em que o CLP lê entradas, executa lógica e atualiza saídas",
+                              "sinal discreto com estados definidos, como aberto e fechado",
+                              "linguagem gráfica inspirada em circuitos de relés",
+                              "algoritmo que combina ações proporcional, integral e derivativa sobre o erro"
+                        ],
+                        "a": 0,
+                        "e": "ciclo de varredura: sequência em que o CLP lê entradas, executa lógica e atualiza saídas Na prática, explica atrasos e a ordem de resposta do controlador diante de mudanças de campo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de ciclo de varredura em clp e lógica de controle?",
+                        "o": [
+                              "explica atrasos e a ordem de resposta do controlador diante de mudanças de campo",
+                              "representa contatos, permissivos e estados de equipamentos na lógica",
+                              "documenta sequências e permissivos de automação de modo legível para manutenção",
+                              "modula uma variável para manter temperatura, pressão ou vazão próxima ao setpoint"
+                        ],
+                        "a": 0,
+                        "e": "ciclo de varredura: sequência em que o CLP lê entradas, executa lógica e atualiza saídas Na prática, explica atrasos e a ordem de resposta do controlador diante de mudanças de campo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente entrada digital?",
+                        "o": [
+                              "sinal discreto com estados definidos, como aberto e fechado",
+                              "comando variável enviado a um atuador em uma faixa contínua",
+                              "condição lógica ou física que impede estado ou sequência perigosa",
+                              "diferença entre pontos de atuação e retorno de uma decisão"
+                        ],
+                        "a": 0,
+                        "e": "entrada digital: sinal discreto com estados definidos, como aberto e fechado Na prática, representa contatos, permissivos e estados de equipamentos na lógica"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de entrada digital em clp e lógica de controle?",
+                        "o": [
+                              "representa contatos, permissivos e estados de equipamentos na lógica",
+                              "modula válvulas, inversores e outros dispositivos proporcionalmente à demanda",
+                              "bloqueia comandos incompatíveis, como fechar fontes sem sincronismo",
+                              "evita comutação rápida quando a variável oscila próxima do limite"
+                        ],
+                        "a": 0,
+                        "e": "entrada digital: sinal discreto com estados definidos, como aberto e fechado Na prática, representa contatos, permissivos e estados de equipamentos na lógica"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente saída analógica?",
+                        "o": [
+                              "comando variável enviado a um atuador em uma faixa contínua",
+                              "linguagem gráfica inspirada em circuitos de relés",
+                              "filosofia que leva o sistema a condição previsível e menos perigosa diante de falha",
+                              "estados que transferem o comando entre operador e lógica de controle"
+                        ],
+                        "a": 0,
+                        "e": "saída analógica: comando variável enviado a um atuador em uma faixa contínua Na prática, modula válvulas, inversores e outros dispositivos proporcionalmente à demanda"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de saída analógica em clp e lógica de controle?",
+                        "o": [
+                              "modula válvulas, inversores e outros dispositivos proporcionalmente à demanda",
+                              "documenta sequências e permissivos de automação de modo legível para manutenção",
+                              "define como saídas e equipamentos reagem à perda de sinal, energia ou controlador",
+                              "permitem manutenção controlada sem perder indicação clara de quem possui autoridade"
+                        ],
+                        "a": 0,
+                        "e": "saída analógica: comando variável enviado a um atuador em uma faixa contínua Na prática, modula válvulas, inversores e outros dispositivos proporcionalmente à demanda"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente lógica ladder?",
+                        "o": [
+                              "linguagem gráfica inspirada em circuitos de relés",
+                              "condição lógica ou física que impede estado ou sequência perigosa",
+                              "algoritmo que combina ações proporcional, integral e derivativa sobre o erro",
+                              "mecanismo que detecta travamento ou falta de execução do controlador"
+                        ],
+                        "a": 0,
+                        "e": "lógica ladder: linguagem gráfica inspirada em circuitos de relés Na prática, documenta sequências e permissivos de automação de modo legível para manutenção"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de lógica ladder em clp e lógica de controle?",
+                        "o": [
+                              "documenta sequências e permissivos de automação de modo legível para manutenção",
+                              "bloqueia comandos incompatíveis, como fechar fontes sem sincronismo",
+                              "modula uma variável para manter temperatura, pressão ou vazão próxima ao setpoint",
+                              "gera alarme ou ação segura quando a lógica deixa de operar dentro do tempo esperado"
+                        ],
+                        "a": 0,
+                        "e": "lógica ladder: linguagem gráfica inspirada em circuitos de relés Na prática, documenta sequências e permissivos de automação de modo legível para manutenção"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente intertravamento?",
+                        "o": [
+                              "condição lógica ou física que impede estado ou sequência perigosa",
+                              "filosofia que leva o sistema a condição previsível e menos perigosa diante de falha",
+                              "diferença entre pontos de atuação e retorno de uma decisão",
+                              "sequência em que o CLP lê entradas, executa lógica e atualiza saídas"
+                        ],
+                        "a": 0,
+                        "e": "intertravamento: condição lógica ou física que impede estado ou sequência perigosa Na prática, bloqueia comandos incompatíveis, como fechar fontes sem sincronismo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de intertravamento em clp e lógica de controle?",
+                        "o": [
+                              "bloqueia comandos incompatíveis, como fechar fontes sem sincronismo",
+                              "define como saídas e equipamentos reagem à perda de sinal, energia ou controlador",
+                              "evita comutação rápida quando a variável oscila próxima do limite",
+                              "explica atrasos e a ordem de resposta do controlador diante de mudanças de campo"
+                        ],
+                        "a": 0,
+                        "e": "intertravamento: condição lógica ou física que impede estado ou sequência perigosa Na prática, bloqueia comandos incompatíveis, como fechar fontes sem sincronismo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente fail-safe?",
+                        "o": [
+                              "filosofia que leva o sistema a condição previsível e menos perigosa diante de falha",
+                              "algoritmo que combina ações proporcional, integral e derivativa sobre o erro",
+                              "estados que transferem o comando entre operador e lógica de controle",
+                              "sinal discreto com estados definidos, como aberto e fechado"
+                        ],
+                        "a": 0,
+                        "e": "fail-safe: filosofia que leva o sistema a condição previsível e menos perigosa diante de falha Na prática, define como saídas e equipamentos reagem à perda de sinal, energia ou controlador"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de fail-safe em clp e lógica de controle?",
+                        "o": [
+                              "define como saídas e equipamentos reagem à perda de sinal, energia ou controlador",
+                              "modula uma variável para manter temperatura, pressão ou vazão próxima ao setpoint",
+                              "permitem manutenção controlada sem perder indicação clara de quem possui autoridade",
+                              "representa contatos, permissivos e estados de equipamentos na lógica"
+                        ],
+                        "a": 0,
+                        "e": "fail-safe: filosofia que leva o sistema a condição previsível e menos perigosa diante de falha Na prática, define como saídas e equipamentos reagem à perda de sinal, energia ou controlador"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente controle PID?",
+                        "o": [
+                              "algoritmo que combina ações proporcional, integral e derivativa sobre o erro",
+                              "diferença entre pontos de atuação e retorno de uma decisão",
+                              "mecanismo que detecta travamento ou falta de execução do controlador",
+                              "comando variável enviado a um atuador em uma faixa contínua"
+                        ],
+                        "a": 0,
+                        "e": "controle PID: algoritmo que combina ações proporcional, integral e derivativa sobre o erro Na prática, modula uma variável para manter temperatura, pressão ou vazão próxima ao setpoint"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de controle PID em clp e lógica de controle?",
+                        "o": [
+                              "modula uma variável para manter temperatura, pressão ou vazão próxima ao setpoint",
+                              "evita comutação rápida quando a variável oscila próxima do limite",
+                              "gera alarme ou ação segura quando a lógica deixa de operar dentro do tempo esperado",
+                              "modula válvulas, inversores e outros dispositivos proporcionalmente à demanda"
+                        ],
+                        "a": 0,
+                        "e": "controle PID: algoritmo que combina ações proporcional, integral e derivativa sobre o erro Na prática, modula uma variável para manter temperatura, pressão ou vazão próxima ao setpoint"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente histerese?",
+                        "o": [
+                              "diferença entre pontos de atuação e retorno de uma decisão",
+                              "estados que transferem o comando entre operador e lógica de controle",
+                              "sequência em que o CLP lê entradas, executa lógica e atualiza saídas",
+                              "linguagem gráfica inspirada em circuitos de relés"
+                        ],
+                        "a": 0,
+                        "e": "histerese: diferença entre pontos de atuação e retorno de uma decisão Na prática, evita comutação rápida quando a variável oscila próxima do limite"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de histerese em clp e lógica de controle?",
+                        "o": [
+                              "evita comutação rápida quando a variável oscila próxima do limite",
+                              "permitem manutenção controlada sem perder indicação clara de quem possui autoridade",
+                              "explica atrasos e a ordem de resposta do controlador diante de mudanças de campo",
+                              "documenta sequências e permissivos de automação de modo legível para manutenção"
+                        ],
+                        "a": 0,
+                        "e": "histerese: diferença entre pontos de atuação e retorno de uma decisão Na prática, evita comutação rápida quando a variável oscila próxima do limite"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente modo manual e automático?",
+                        "o": [
+                              "estados que transferem o comando entre operador e lógica de controle",
+                              "mecanismo que detecta travamento ou falta de execução do controlador",
+                              "sinal discreto com estados definidos, como aberto e fechado",
+                              "condição lógica ou física que impede estado ou sequência perigosa"
+                        ],
+                        "a": 0,
+                        "e": "modo manual e automático: estados que transferem o comando entre operador e lógica de controle Na prática, permitem manutenção controlada sem perder indicação clara de quem possui autoridade"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de modo manual e automático em clp e lógica de controle?",
+                        "o": [
+                              "permitem manutenção controlada sem perder indicação clara de quem possui autoridade",
+                              "gera alarme ou ação segura quando a lógica deixa de operar dentro do tempo esperado",
+                              "representa contatos, permissivos e estados de equipamentos na lógica",
+                              "bloqueia comandos incompatíveis, como fechar fontes sem sincronismo"
+                        ],
+                        "a": 0,
+                        "e": "modo manual e automático: estados que transferem o comando entre operador e lógica de controle Na prática, permitem manutenção controlada sem perder indicação clara de quem possui autoridade"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente watchdog?",
+                        "o": [
+                              "mecanismo que detecta travamento ou falta de execução do controlador",
+                              "sequência em que o CLP lê entradas, executa lógica e atualiza saídas",
+                              "comando variável enviado a um atuador em uma faixa contínua",
+                              "filosofia que leva o sistema a condição previsível e menos perigosa diante de falha"
+                        ],
+                        "a": 0,
+                        "e": "watchdog: mecanismo que detecta travamento ou falta de execução do controlador Na prática, gera alarme ou ação segura quando a lógica deixa de operar dentro do tempo esperado"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de watchdog em clp e lógica de controle?",
+                        "o": [
+                              "gera alarme ou ação segura quando a lógica deixa de operar dentro do tempo esperado",
+                              "explica atrasos e a ordem de resposta do controlador diante de mudanças de campo",
+                              "modula válvulas, inversores e outros dispositivos proporcionalmente à demanda",
+                              "define como saídas e equipamentos reagem à perda de sinal, energia ou controlador"
+                        ],
+                        "a": 0,
+                        "e": "watchdog: mecanismo que detecta travamento ou falta de execução do controlador Na prática, gera alarme ou ação segura quando a lógica deixa de operar dentro do tempo esperado"
+                  }
+            ]
+      },
+      {
+            "id": "bms-supervisorios",
+            "title": "BMS e Supervisórios",
+            "description": "Supervisão, pontos, alarmes, tendências, comandos, históricos e rastreabilidade.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente BMS?",
+                        "o": [
+                              "plataforma de supervisão e controle dos sistemas prediais e de infraestrutura",
+                              "associação correta entre variável de campo, endereço, unidade e nome no supervisório",
+                              "processo de definir prioridade, acionabilidade, reconhecimento, supressão e revisão",
+                              "limitação de visualização e comando conforme função e necessidade"
+                        ],
+                        "a": 0,
+                        "e": "BMS: plataforma de supervisão e controle dos sistemas prediais e de infraestrutura Na prática, centraliza estados, comandos autorizados, alarmes e tendências de energia e climatização"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de BMS em bms e supervisórios?",
+                        "o": [
+                              "centraliza estados, comandos autorizados, alarmes e tendências de energia e climatização",
+                              "evita que um gráfico ou alarme represente o equipamento ou a grandeza errados",
+                              "reduz fadiga e garante que eventos críticos cheguem ao responsável certo",
+                              "impede alterações não autorizadas e preserva segregação de responsabilidades"
+                        ],
+                        "a": 0,
+                        "e": "BMS: plataforma de supervisão e controle dos sistemas prediais e de infraestrutura Na prática, centraliza estados, comandos autorizados, alarmes e tendências de energia e climatização"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente mapeamento de pontos?",
+                        "o": [
+                              "associação correta entre variável de campo, endereço, unidade e nome no supervisório",
+                              "tela que representa processo, equipamentos, fluxos e estados relevantes",
+                              "série temporal armazenada de uma variável ou estado",
+                              "substituição temporária do comando normal por valor ou estado forçado"
+                        ],
+                        "a": 0,
+                        "e": "mapeamento de pontos: associação correta entre variável de campo, endereço, unidade e nome no supervisório Na prática, evita que um gráfico ou alarme represente o equipamento ou a grandeza errados"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de mapeamento de pontos em bms e supervisórios?",
+                        "o": [
+                              "evita que um gráfico ou alarme represente o equipamento ou a grandeza errados",
+                              "oferece visão situacional sem substituir detalhes, diagramas e procedimentos",
+                              "permite identificar deriva, ciclos, capacidade, causa provável e resposta a mudanças",
+                              "apoia testes e contingências somente com autorização, prazo, indicação e remoção controlada"
+                        ],
+                        "a": 0,
+                        "e": "mapeamento de pontos: associação correta entre variável de campo, endereço, unidade e nome no supervisório Na prática, evita que um gráfico ou alarme represente o equipamento ou a grandeza errados"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente gráfico sinóptico?",
+                        "o": [
+                              "tela que representa processo, equipamentos, fluxos e estados relevantes",
+                              "processo de definir prioridade, acionabilidade, reconhecimento, supressão e revisão",
+                              "programação de horários e condições de operação",
+                              "repositório otimizado para armazenar dados temporais de processo"
+                        ],
+                        "a": 0,
+                        "e": "gráfico sinóptico: tela que representa processo, equipamentos, fluxos e estados relevantes Na prática, oferece visão situacional sem substituir detalhes, diagramas e procedimentos"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de gráfico sinóptico em bms e supervisórios?",
+                        "o": [
+                              "oferece visão situacional sem substituir detalhes, diagramas e procedimentos",
+                              "reduz fadiga e garante que eventos críticos cheguem ao responsável certo",
+                              "automatiza rotinas permitidas sem manter equipamentos fora do horário ou estado necessário",
+                              "preserva medições e eventos para análise operacional, capacidade e investigação"
+                        ],
+                        "a": 0,
+                        "e": "gráfico sinóptico: tela que representa processo, equipamentos, fluxos e estados relevantes Na prática, oferece visão situacional sem substituir detalhes, diagramas e procedimentos"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente gestão de alarmes?",
+                        "o": [
+                              "processo de definir prioridade, acionabilidade, reconhecimento, supressão e revisão",
+                              "série temporal armazenada de uma variável ou estado",
+                              "limitação de visualização e comando conforme função e necessidade",
+                              "registro de quem alterou o quê, quando e com qual resultado"
+                        ],
+                        "a": 0,
+                        "e": "gestão de alarmes: processo de definir prioridade, acionabilidade, reconhecimento, supressão e revisão Na prática, reduz fadiga e garante que eventos críticos cheguem ao responsável certo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de gestão de alarmes em bms e supervisórios?",
+                        "o": [
+                              "reduz fadiga e garante que eventos críticos cheguem ao responsável certo",
+                              "permite identificar deriva, ciclos, capacidade, causa provável e resposta a mudanças",
+                              "impede alterações não autorizadas e preserva segregação de responsabilidades",
+                              "sustenta responsabilização, investigação e controle de mudanças no supervisório"
+                        ],
+                        "a": 0,
+                        "e": "gestão de alarmes: processo de definir prioridade, acionabilidade, reconhecimento, supressão e revisão Na prática, reduz fadiga e garante que eventos críticos cheguem ao responsável certo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente tendência histórica?",
+                        "o": [
+                              "série temporal armazenada de uma variável ou estado",
+                              "programação de horários e condições de operação",
+                              "substituição temporária do comando normal por valor ou estado forçado",
+                              "plataforma de supervisão e controle dos sistemas prediais e de infraestrutura"
+                        ],
+                        "a": 0,
+                        "e": "tendência histórica: série temporal armazenada de uma variável ou estado Na prática, permite identificar deriva, ciclos, capacidade, causa provável e resposta a mudanças"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de tendência histórica em bms e supervisórios?",
+                        "o": [
+                              "permite identificar deriva, ciclos, capacidade, causa provável e resposta a mudanças",
+                              "automatiza rotinas permitidas sem manter equipamentos fora do horário ou estado necessário",
+                              "apoia testes e contingências somente com autorização, prazo, indicação e remoção controlada",
+                              "centraliza estados, comandos autorizados, alarmes e tendências de energia e climatização"
+                        ],
+                        "a": 0,
+                        "e": "tendência histórica: série temporal armazenada de uma variável ou estado Na prática, permite identificar deriva, ciclos, capacidade, causa provável e resposta a mudanças"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente agendamento?",
+                        "o": [
+                              "programação de horários e condições de operação",
+                              "limitação de visualização e comando conforme função e necessidade",
+                              "repositório otimizado para armazenar dados temporais de processo",
+                              "associação correta entre variável de campo, endereço, unidade e nome no supervisório"
+                        ],
+                        "a": 0,
+                        "e": "agendamento: programação de horários e condições de operação Na prática, automatiza rotinas permitidas sem manter equipamentos fora do horário ou estado necessário"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de agendamento em bms e supervisórios?",
+                        "o": [
+                              "automatiza rotinas permitidas sem manter equipamentos fora do horário ou estado necessário",
+                              "impede alterações não autorizadas e preserva segregação de responsabilidades",
+                              "preserva medições e eventos para análise operacional, capacidade e investigação",
+                              "evita que um gráfico ou alarme represente o equipamento ou a grandeza errados"
+                        ],
+                        "a": 0,
+                        "e": "agendamento: programação de horários e condições de operação Na prática, automatiza rotinas permitidas sem manter equipamentos fora do horário ou estado necessário"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente controle de acesso por perfil?",
+                        "o": [
+                              "limitação de visualização e comando conforme função e necessidade",
+                              "substituição temporária do comando normal por valor ou estado forçado",
+                              "registro de quem alterou o quê, quando e com qual resultado",
+                              "tela que representa processo, equipamentos, fluxos e estados relevantes"
+                        ],
+                        "a": 0,
+                        "e": "controle de acesso por perfil: limitação de visualização e comando conforme função e necessidade Na prática, impede alterações não autorizadas e preserva segregação de responsabilidades"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de controle de acesso por perfil em bms e supervisórios?",
+                        "o": [
+                              "impede alterações não autorizadas e preserva segregação de responsabilidades",
+                              "apoia testes e contingências somente com autorização, prazo, indicação e remoção controlada",
+                              "sustenta responsabilização, investigação e controle de mudanças no supervisório",
+                              "oferece visão situacional sem substituir detalhes, diagramas e procedimentos"
+                        ],
+                        "a": 0,
+                        "e": "controle de acesso por perfil: limitação de visualização e comando conforme função e necessidade Na prática, impede alterações não autorizadas e preserva segregação de responsabilidades"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente override?",
+                        "o": [
+                              "substituição temporária do comando normal por valor ou estado forçado",
+                              "repositório otimizado para armazenar dados temporais de processo",
+                              "plataforma de supervisão e controle dos sistemas prediais e de infraestrutura",
+                              "processo de definir prioridade, acionabilidade, reconhecimento, supressão e revisão"
+                        ],
+                        "a": 0,
+                        "e": "override: substituição temporária do comando normal por valor ou estado forçado Na prática, apoia testes e contingências somente com autorização, prazo, indicação e remoção controlada"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de override em bms e supervisórios?",
+                        "o": [
+                              "apoia testes e contingências somente com autorização, prazo, indicação e remoção controlada",
+                              "preserva medições e eventos para análise operacional, capacidade e investigação",
+                              "centraliza estados, comandos autorizados, alarmes e tendências de energia e climatização",
+                              "reduz fadiga e garante que eventos críticos cheguem ao responsável certo"
+                        ],
+                        "a": 0,
+                        "e": "override: substituição temporária do comando normal por valor ou estado forçado Na prática, apoia testes e contingências somente com autorização, prazo, indicação e remoção controlada"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente historiador?",
+                        "o": [
+                              "repositório otimizado para armazenar dados temporais de processo",
+                              "registro de quem alterou o quê, quando e com qual resultado",
+                              "associação correta entre variável de campo, endereço, unidade e nome no supervisório",
+                              "série temporal armazenada de uma variável ou estado"
+                        ],
+                        "a": 0,
+                        "e": "historiador: repositório otimizado para armazenar dados temporais de processo Na prática, preserva medições e eventos para análise operacional, capacidade e investigação"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de historiador em bms e supervisórios?",
+                        "o": [
+                              "preserva medições e eventos para análise operacional, capacidade e investigação",
+                              "sustenta responsabilização, investigação e controle de mudanças no supervisório",
+                              "evita que um gráfico ou alarme represente o equipamento ou a grandeza errados",
+                              "permite identificar deriva, ciclos, capacidade, causa provável e resposta a mudanças"
+                        ],
+                        "a": 0,
+                        "e": "historiador: repositório otimizado para armazenar dados temporais de processo Na prática, preserva medições e eventos para análise operacional, capacidade e investigação"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente trilha de auditoria?",
+                        "o": [
+                              "registro de quem alterou o quê, quando e com qual resultado",
+                              "plataforma de supervisão e controle dos sistemas prediais e de infraestrutura",
+                              "tela que representa processo, equipamentos, fluxos e estados relevantes",
+                              "programação de horários e condições de operação"
+                        ],
+                        "a": 0,
+                        "e": "trilha de auditoria: registro de quem alterou o quê, quando e com qual resultado Na prática, sustenta responsabilização, investigação e controle de mudanças no supervisório"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de trilha de auditoria em bms e supervisórios?",
+                        "o": [
+                              "sustenta responsabilização, investigação e controle de mudanças no supervisório",
+                              "centraliza estados, comandos autorizados, alarmes e tendências de energia e climatização",
+                              "oferece visão situacional sem substituir detalhes, diagramas e procedimentos",
+                              "automatiza rotinas permitidas sem manter equipamentos fora do horário ou estado necessário"
+                        ],
+                        "a": 0,
+                        "e": "trilha de auditoria: registro de quem alterou o quê, quando e com qual resultado Na prática, sustenta responsabilização, investigação e controle de mudanças no supervisório"
+                  }
+            ]
+      },
+      {
+            "id": "dcim-capacidade",
+            "title": "DCIM e Capacidade",
+            "description": "Inventário, espaço, energia, refrigeração, cenários, dados e planejamento.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente DCIM?",
+                        "o": [
+                              "sistema que integra informações de ativos, capacidade e infraestrutura do data center",
+                              "representação das posições ocupadas e livres em unidades de rack",
+                              "margem de remoção e distribuição de calor no local da carga",
+                              "grau de completude, exatidão, atualidade e consistência das informações"
+                        ],
+                        "a": 0,
+                        "e": "DCIM: sistema que integra informações de ativos, capacidade e infraestrutura do data center Na prática, relaciona espaço, energia, refrigeração, conectividade e mudanças para apoiar decisões"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de DCIM em dcim e capacidade?",
+                        "o": [
+                              "relaciona espaço, energia, refrigeração, conectividade e mudanças para apoiar decisões",
+                              "planeja instalação, peso, energia, portas e fluxo de ar antes da mudança física",
+                              "confirma se o novo equipamento receberá fluxo e refrigeração também no cenário de falha",
+                              "impede decisões de capacidade baseadas em inventário ou relações desatualizadas"
+                        ],
+                        "a": 0,
+                        "e": "DCIM: sistema que integra informações de ativos, capacidade e infraestrutura do data center Na prática, relaciona espaço, energia, refrigeração, conectividade e mudanças para apoiar decisões"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente elevação de rack?",
+                        "o": [
+                              "representação das posições ocupadas e livres em unidades de rack",
+                              "margem utilizável do caminho elétrico considerando limites e contingência",
+                              "área, posições, peso e acessos realmente disponíveis",
+                              "troca controlada de telemetria e contexto entre supervisão predial e gestão de capacidade"
+                        ],
+                        "a": 0,
+                        "e": "elevação de rack: representação das posições ocupadas e livres em unidades de rack Na prática, planeja instalação, peso, energia, portas e fluxo de ar antes da mudança física"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de elevação de rack em dcim e capacidade?",
+                        "o": [
+                              "planeja instalação, peso, energia, portas e fluxo de ar antes da mudança física",
+                              "evita instalar carga que retire redundância ou exceda circuitos, PDUs ou UPSs",
+                              "distingue um U vazio de uma localização apta a receber determinado equipamento",
+                              "associa alarmes e medições físicas aos ativos e serviços afetados"
+                        ],
+                        "a": 0,
+                        "e": "elevação de rack: representação das posições ocupadas e livres em unidades de rack Na prática, planeja instalação, peso, energia, portas e fluxo de ar antes da mudança física"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente capacidade de energia?",
+                        "o": [
+                              "margem utilizável do caminho elétrico considerando limites e contingência",
+                              "margem de remoção e distribuição de calor no local da carga",
+                              "simulação do efeito de uma mudança antes de executá-la",
+                              "valor de atenção ou ação antes do limite técnico absoluto"
+                        ],
+                        "a": 0,
+                        "e": "capacidade de energia: margem utilizável do caminho elétrico considerando limites e contingência Na prática, evita instalar carga que retire redundância ou exceda circuitos, PDUs ou UPSs"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de capacidade de energia em dcim e capacidade?",
+                        "o": [
+                              "evita instalar carga que retire redundância ou exceda circuitos, PDUs ou UPSs",
+                              "confirma se o novo equipamento receberá fluxo e refrigeração também no cenário de falha",
+                              "compara cenários de instalação, falha e crescimento sem alterar a produção",
+                              "cria tempo para expansão ou redistribuição sem operar continuamente sem margem"
+                        ],
+                        "a": 0,
+                        "e": "capacidade de energia: margem utilizável do caminho elétrico considerando limites e contingência Na prática, evita instalar carga que retire redundância ou exceda circuitos, PDUs ou UPSs"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente capacidade térmica?",
+                        "o": [
+                              "margem de remoção e distribuição de calor no local da carga",
+                              "área, posições, peso e acessos realmente disponíveis",
+                              "grau de completude, exatidão, atualidade e consistência das informações",
+                              "comparação periódica entre sistema e instalação real"
+                        ],
+                        "a": 0,
+                        "e": "capacidade térmica: margem de remoção e distribuição de calor no local da carga Na prática, confirma se o novo equipamento receberá fluxo e refrigeração também no cenário de falha"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de capacidade térmica em dcim e capacidade?",
+                        "o": [
+                              "confirma se o novo equipamento receberá fluxo e refrigeração também no cenário de falha",
+                              "distingue um U vazio de uma localização apta a receber determinado equipamento",
+                              "impede decisões de capacidade baseadas em inventário ou relações desatualizadas",
+                              "detecta ativos, cabos ou circuitos movidos sem atualização e restaura confiança no inventário"
+                        ],
+                        "a": 0,
+                        "e": "capacidade térmica: margem de remoção e distribuição de calor no local da carga Na prática, confirma se o novo equipamento receberá fluxo e refrigeração também no cenário de falha"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente capacidade de espaço?",
+                        "o": [
+                              "área, posições, peso e acessos realmente disponíveis",
+                              "simulação do efeito de uma mudança antes de executá-la",
+                              "troca controlada de telemetria e contexto entre supervisão predial e gestão de capacidade",
+                              "sistema que integra informações de ativos, capacidade e infraestrutura do data center"
+                        ],
+                        "a": 0,
+                        "e": "capacidade de espaço: área, posições, peso e acessos realmente disponíveis Na prática, distingue um U vazio de uma localização apta a receber determinado equipamento"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de capacidade de espaço em dcim e capacidade?",
+                        "o": [
+                              "distingue um U vazio de uma localização apta a receber determinado equipamento",
+                              "compara cenários de instalação, falha e crescimento sem alterar a produção",
+                              "associa alarmes e medições físicas aos ativos e serviços afetados",
+                              "relaciona espaço, energia, refrigeração, conectividade e mudanças para apoiar decisões"
+                        ],
+                        "a": 0,
+                        "e": "capacidade de espaço: área, posições, peso e acessos realmente disponíveis Na prática, distingue um U vazio de uma localização apta a receber determinado equipamento"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente planejamento what-if?",
+                        "o": [
+                              "simulação do efeito de uma mudança antes de executá-la",
+                              "grau de completude, exatidão, atualidade e consistência das informações",
+                              "valor de atenção ou ação antes do limite técnico absoluto",
+                              "representação das posições ocupadas e livres em unidades de rack"
+                        ],
+                        "a": 0,
+                        "e": "planejamento what-if: simulação do efeito de uma mudança antes de executá-la Na prática, compara cenários de instalação, falha e crescimento sem alterar a produção"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de planejamento what-if em dcim e capacidade?",
+                        "o": [
+                              "compara cenários de instalação, falha e crescimento sem alterar a produção",
+                              "impede decisões de capacidade baseadas em inventário ou relações desatualizadas",
+                              "cria tempo para expansão ou redistribuição sem operar continuamente sem margem",
+                              "planeja instalação, peso, energia, portas e fluxo de ar antes da mudança física"
+                        ],
+                        "a": 0,
+                        "e": "planejamento what-if: simulação do efeito de uma mudança antes de executá-la Na prática, compara cenários de instalação, falha e crescimento sem alterar a produção"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente qualidade de dados?",
+                        "o": [
+                              "grau de completude, exatidão, atualidade e consistência das informações",
+                              "troca controlada de telemetria e contexto entre supervisão predial e gestão de capacidade",
+                              "comparação periódica entre sistema e instalação real",
+                              "margem utilizável do caminho elétrico considerando limites e contingência"
+                        ],
+                        "a": 0,
+                        "e": "qualidade de dados: grau de completude, exatidão, atualidade e consistência das informações Na prática, impede decisões de capacidade baseadas em inventário ou relações desatualizadas"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de qualidade de dados em dcim e capacidade?",
+                        "o": [
+                              "impede decisões de capacidade baseadas em inventário ou relações desatualizadas",
+                              "associa alarmes e medições físicas aos ativos e serviços afetados",
+                              "detecta ativos, cabos ou circuitos movidos sem atualização e restaura confiança no inventário",
+                              "evita instalar carga que retire redundância ou exceda circuitos, PDUs ou UPSs"
+                        ],
+                        "a": 0,
+                        "e": "qualidade de dados: grau de completude, exatidão, atualidade e consistência das informações Na prática, impede decisões de capacidade baseadas em inventário ou relações desatualizadas"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente integração BMS–DCIM?",
+                        "o": [
+                              "troca controlada de telemetria e contexto entre supervisão predial e gestão de capacidade",
+                              "valor de atenção ou ação antes do limite técnico absoluto",
+                              "sistema que integra informações de ativos, capacidade e infraestrutura do data center",
+                              "margem de remoção e distribuição de calor no local da carga"
+                        ],
+                        "a": 0,
+                        "e": "integração BMS–DCIM: troca controlada de telemetria e contexto entre supervisão predial e gestão de capacidade Na prática, associa alarmes e medições físicas aos ativos e serviços afetados"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de integração BMS–DCIM em dcim e capacidade?",
+                        "o": [
+                              "associa alarmes e medições físicas aos ativos e serviços afetados",
+                              "cria tempo para expansão ou redistribuição sem operar continuamente sem margem",
+                              "relaciona espaço, energia, refrigeração, conectividade e mudanças para apoiar decisões",
+                              "confirma se o novo equipamento receberá fluxo e refrigeração também no cenário de falha"
+                        ],
+                        "a": 0,
+                        "e": "integração BMS–DCIM: troca controlada de telemetria e contexto entre supervisão predial e gestão de capacidade Na prática, associa alarmes e medições físicas aos ativos e serviços afetados"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente limiar de capacidade?",
+                        "o": [
+                              "valor de atenção ou ação antes do limite técnico absoluto",
+                              "comparação periódica entre sistema e instalação real",
+                              "representação das posições ocupadas e livres em unidades de rack",
+                              "área, posições, peso e acessos realmente disponíveis"
+                        ],
+                        "a": 0,
+                        "e": "limiar de capacidade: valor de atenção ou ação antes do limite técnico absoluto Na prática, cria tempo para expansão ou redistribuição sem operar continuamente sem margem"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de limiar de capacidade em dcim e capacidade?",
+                        "o": [
+                              "cria tempo para expansão ou redistribuição sem operar continuamente sem margem",
+                              "detecta ativos, cabos ou circuitos movidos sem atualização e restaura confiança no inventário",
+                              "planeja instalação, peso, energia, portas e fluxo de ar antes da mudança física",
+                              "distingue um U vazio de uma localização apta a receber determinado equipamento"
+                        ],
+                        "a": 0,
+                        "e": "limiar de capacidade: valor de atenção ou ação antes do limite técnico absoluto Na prática, cria tempo para expansão ou redistribuição sem operar continuamente sem margem"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente reconciliação física?",
+                        "o": [
+                              "comparação periódica entre sistema e instalação real",
+                              "sistema que integra informações de ativos, capacidade e infraestrutura do data center",
+                              "margem utilizável do caminho elétrico considerando limites e contingência",
+                              "simulação do efeito de uma mudança antes de executá-la"
+                        ],
+                        "a": 0,
+                        "e": "reconciliação física: comparação periódica entre sistema e instalação real Na prática, detecta ativos, cabos ou circuitos movidos sem atualização e restaura confiança no inventário"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de reconciliação física em dcim e capacidade?",
+                        "o": [
+                              "detecta ativos, cabos ou circuitos movidos sem atualização e restaura confiança no inventário",
+                              "relaciona espaço, energia, refrigeração, conectividade e mudanças para apoiar decisões",
+                              "evita instalar carga que retire redundância ou exceda circuitos, PDUs ou UPSs",
+                              "compara cenários de instalação, falha e crescimento sem alterar a produção"
+                        ],
+                        "a": 0,
+                        "e": "reconciliação física: comparação periódica entre sistema e instalação real Na prática, detecta ativos, cabos ou circuitos movidos sem atualização e restaura confiança no inventário"
+                  }
+            ]
+      },
+      {
+            "id": "protocolos-automacao",
+            "title": "Protocolos de Automação",
+            "description": "BACnet, Modbus, SNMP, OPC UA, MQTT, redes seriais, coleta e sincronismo.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente BACnet?",
+                        "o": [
+                              "protocolo orientado a objetos para automação e controle predial",
+                              "protocolo de comunicação baseado em registros e operações de leitura e escrita",
+                              "arquitetura interoperável com modelo de informação e recursos de segurança",
+                              "identificador único usado para alcançar cada nó dentro do segmento ou protocolo"
+                        ],
+                        "a": 0,
+                        "e": "BACnet: protocolo orientado a objetos para automação e controle predial Na prática, integra controladores, unidades HVAC, medidores e supervisórios com propriedades e serviços padronizados"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de BACnet em protocolos de automação?",
+                        "o": [
+                              "integra controladores, unidades HVAC, medidores e supervisórios com propriedades e serviços padronizados",
+                              "coleta grandezas e comandos de medidores, UPSs, CLPs e dispositivos em redes seriais ou TCP",
+                              "conecta sistemas industriais e aplicações preservando contexto sem depender de um único fabricante",
+                              "evita colisões e associa a leitura ao equipamento certo"
+                        ],
+                        "a": 0,
+                        "e": "BACnet: protocolo orientado a objetos para automação e controle predial Na prática, integra controladores, unidades HVAC, medidores e supervisórios com propriedades e serviços padronizados"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente Modbus?",
+                        "o": [
+                              "protocolo de comunicação baseado em registros e operações de leitura e escrita",
+                              "estrutura de gerenciamento de rede baseada em objetos consultados e notificações",
+                              "protocolo leve de mensagens no modelo publicação e assinatura",
+                              "consulta periódica iniciada pelo sistema de supervisão"
+                        ],
+                        "a": 0,
+                        "e": "Modbus: protocolo de comunicação baseado em registros e operações de leitura e escrita Na prática, coleta grandezas e comandos de medidores, UPSs, CLPs e dispositivos em redes seriais ou TCP"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de Modbus em protocolos de automação?",
+                        "o": [
+                              "coleta grandezas e comandos de medidores, UPSs, CLPs e dispositivos em redes seriais ou TCP",
+                              "monitora estado e contadores de equipamentos IP, com segurança e MIBs apropriadas",
+                              "distribui telemetria por tópicos entre dispositivos, broker e consumidores autorizados",
+                              "atualiza pontos em intervalo definido, equilibrando rapidez, carga de rede e capacidade do dispositivo"
+                        ],
+                        "a": 0,
+                        "e": "Modbus: protocolo de comunicação baseado em registros e operações de leitura e escrita Na prática, coleta grandezas e comandos de medidores, UPSs, CLPs e dispositivos em redes seriais ou TCP"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente SNMP?",
+                        "o": [
+                              "estrutura de gerenciamento de rede baseada em objetos consultados e notificações",
+                              "arquitetura interoperável com modelo de informação e recursos de segurança",
+                              "camada física diferencial adequada a redes multiponto em distâncias industriais",
+                              "mensagem enviada pelo dispositivo quando uma condição ocorre"
+                        ],
+                        "a": 0,
+                        "e": "SNMP: estrutura de gerenciamento de rede baseada em objetos consultados e notificações Na prática, monitora estado e contadores de equipamentos IP, com segurança e MIBs apropriadas"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de SNMP em protocolos de automação?",
+                        "o": [
+                              "monitora estado e contadores de equipamentos IP, com segurança e MIBs apropriadas",
+                              "conecta sistemas industriais e aplicações preservando contexto sem depender de um único fabricante",
+                              "interliga dispositivos seriais quando topologia, terminação, polaridade e aterramento são corretos",
+                              "reduz espera até a próxima consulta, mas exige recepção, confirmação e supervisão da conectividade"
+                        ],
+                        "a": 0,
+                        "e": "SNMP: estrutura de gerenciamento de rede baseada em objetos consultados e notificações Na prática, monitora estado e contadores de equipamentos IP, com segurança e MIBs apropriadas"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente OPC UA?",
+                        "o": [
+                              "arquitetura interoperável com modelo de informação e recursos de segurança",
+                              "protocolo leve de mensagens no modelo publicação e assinatura",
+                              "identificador único usado para alcançar cada nó dentro do segmento ou protocolo",
+                              "alinhamento dos relógios entre controladores, servidores e dispositivos"
+                        ],
+                        "a": 0,
+                        "e": "OPC UA: arquitetura interoperável com modelo de informação e recursos de segurança Na prática, conecta sistemas industriais e aplicações preservando contexto sem depender de um único fabricante"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de OPC UA em protocolos de automação?",
+                        "o": [
+                              "conecta sistemas industriais e aplicações preservando contexto sem depender de um único fabricante",
+                              "distribui telemetria por tópicos entre dispositivos, broker e consumidores autorizados",
+                              "evita colisões e associa a leitura ao equipamento certo",
+                              "permite ordenar alarmes, comandos e tendências de fontes diferentes em uma linha do tempo confiável"
+                        ],
+                        "a": 0,
+                        "e": "OPC UA: arquitetura interoperável com modelo de informação e recursos de segurança Na prática, conecta sistemas industriais e aplicações preservando contexto sem depender de um único fabricante"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente MQTT?",
+                        "o": [
+                              "protocolo leve de mensagens no modelo publicação e assinatura",
+                              "camada física diferencial adequada a redes multiponto em distâncias industriais",
+                              "consulta periódica iniciada pelo sistema de supervisão",
+                              "protocolo orientado a objetos para automação e controle predial"
+                        ],
+                        "a": 0,
+                        "e": "MQTT: protocolo leve de mensagens no modelo publicação e assinatura Na prática, distribui telemetria por tópicos entre dispositivos, broker e consumidores autorizados"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de MQTT em protocolos de automação?",
+                        "o": [
+                              "distribui telemetria por tópicos entre dispositivos, broker e consumidores autorizados",
+                              "interliga dispositivos seriais quando topologia, terminação, polaridade e aterramento são corretos",
+                              "atualiza pontos em intervalo definido, equilibrando rapidez, carga de rede e capacidade do dispositivo",
+                              "integra controladores, unidades HVAC, medidores e supervisórios com propriedades e serviços padronizados"
+                        ],
+                        "a": 0,
+                        "e": "MQTT: protocolo leve de mensagens no modelo publicação e assinatura Na prática, distribui telemetria por tópicos entre dispositivos, broker e consumidores autorizados"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente RS-485?",
+                        "o": [
+                              "camada física diferencial adequada a redes multiponto em distâncias industriais",
+                              "identificador único usado para alcançar cada nó dentro do segmento ou protocolo",
+                              "mensagem enviada pelo dispositivo quando uma condição ocorre",
+                              "protocolo de comunicação baseado em registros e operações de leitura e escrita"
+                        ],
+                        "a": 0,
+                        "e": "RS-485: camada física diferencial adequada a redes multiponto em distâncias industriais Na prática, interliga dispositivos seriais quando topologia, terminação, polaridade e aterramento são corretos"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de RS-485 em protocolos de automação?",
+                        "o": [
+                              "interliga dispositivos seriais quando topologia, terminação, polaridade e aterramento são corretos",
+                              "evita colisões e associa a leitura ao equipamento certo",
+                              "reduz espera até a próxima consulta, mas exige recepção, confirmação e supervisão da conectividade",
+                              "coleta grandezas e comandos de medidores, UPSs, CLPs e dispositivos em redes seriais ou TCP"
+                        ],
+                        "a": 0,
+                        "e": "RS-485: camada física diferencial adequada a redes multiponto em distâncias industriais Na prática, interliga dispositivos seriais quando topologia, terminação, polaridade e aterramento são corretos"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente endereçamento de dispositivo?",
+                        "o": [
+                              "identificador único usado para alcançar cada nó dentro do segmento ou protocolo",
+                              "consulta periódica iniciada pelo sistema de supervisão",
+                              "alinhamento dos relógios entre controladores, servidores e dispositivos",
+                              "estrutura de gerenciamento de rede baseada em objetos consultados e notificações"
+                        ],
+                        "a": 0,
+                        "e": "endereçamento de dispositivo: identificador único usado para alcançar cada nó dentro do segmento ou protocolo Na prática, evita colisões e associa a leitura ao equipamento certo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de endereçamento de dispositivo em protocolos de automação?",
+                        "o": [
+                              "evita colisões e associa a leitura ao equipamento certo",
+                              "atualiza pontos em intervalo definido, equilibrando rapidez, carga de rede e capacidade do dispositivo",
+                              "permite ordenar alarmes, comandos e tendências de fontes diferentes em uma linha do tempo confiável",
+                              "monitora estado e contadores de equipamentos IP, com segurança e MIBs apropriadas"
+                        ],
+                        "a": 0,
+                        "e": "endereçamento de dispositivo: identificador único usado para alcançar cada nó dentro do segmento ou protocolo Na prática, evita colisões e associa a leitura ao equipamento certo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente polling?",
+                        "o": [
+                              "consulta periódica iniciada pelo sistema de supervisão",
+                              "mensagem enviada pelo dispositivo quando uma condição ocorre",
+                              "protocolo orientado a objetos para automação e controle predial",
+                              "arquitetura interoperável com modelo de informação e recursos de segurança"
+                        ],
+                        "a": 0,
+                        "e": "polling: consulta periódica iniciada pelo sistema de supervisão Na prática, atualiza pontos em intervalo definido, equilibrando rapidez, carga de rede e capacidade do dispositivo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de polling em protocolos de automação?",
+                        "o": [
+                              "atualiza pontos em intervalo definido, equilibrando rapidez, carga de rede e capacidade do dispositivo",
+                              "reduz espera até a próxima consulta, mas exige recepção, confirmação e supervisão da conectividade",
+                              "integra controladores, unidades HVAC, medidores e supervisórios com propriedades e serviços padronizados",
+                              "conecta sistemas industriais e aplicações preservando contexto sem depender de um único fabricante"
+                        ],
+                        "a": 0,
+                        "e": "polling: consulta periódica iniciada pelo sistema de supervisão Na prática, atualiza pontos em intervalo definido, equilibrando rapidez, carga de rede e capacidade do dispositivo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente notificação por evento?",
+                        "o": [
+                              "mensagem enviada pelo dispositivo quando uma condição ocorre",
+                              "alinhamento dos relógios entre controladores, servidores e dispositivos",
+                              "protocolo de comunicação baseado em registros e operações de leitura e escrita",
+                              "protocolo leve de mensagens no modelo publicação e assinatura"
+                        ],
+                        "a": 0,
+                        "e": "notificação por evento: mensagem enviada pelo dispositivo quando uma condição ocorre Na prática, reduz espera até a próxima consulta, mas exige recepção, confirmação e supervisão da conectividade"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de notificação por evento em protocolos de automação?",
+                        "o": [
+                              "reduz espera até a próxima consulta, mas exige recepção, confirmação e supervisão da conectividade",
+                              "permite ordenar alarmes, comandos e tendências de fontes diferentes em uma linha do tempo confiável",
+                              "coleta grandezas e comandos de medidores, UPSs, CLPs e dispositivos em redes seriais ou TCP",
+                              "distribui telemetria por tópicos entre dispositivos, broker e consumidores autorizados"
+                        ],
+                        "a": 0,
+                        "e": "notificação por evento: mensagem enviada pelo dispositivo quando uma condição ocorre Na prática, reduz espera até a próxima consulta, mas exige recepção, confirmação e supervisão da conectividade"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente sincronização de tempo?",
+                        "o": [
+                              "alinhamento dos relógios entre controladores, servidores e dispositivos",
+                              "protocolo orientado a objetos para automação e controle predial",
+                              "estrutura de gerenciamento de rede baseada em objetos consultados e notificações",
+                              "camada física diferencial adequada a redes multiponto em distâncias industriais"
+                        ],
+                        "a": 0,
+                        "e": "sincronização de tempo: alinhamento dos relógios entre controladores, servidores e dispositivos Na prática, permite ordenar alarmes, comandos e tendências de fontes diferentes em uma linha do tempo confiável"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de sincronização de tempo em protocolos de automação?",
+                        "o": [
+                              "permite ordenar alarmes, comandos e tendências de fontes diferentes em uma linha do tempo confiável",
+                              "integra controladores, unidades HVAC, medidores e supervisórios com propriedades e serviços padronizados",
+                              "monitora estado e contadores de equipamentos IP, com segurança e MIBs apropriadas",
+                              "interliga dispositivos seriais quando topologia, terminação, polaridade e aterramento são corretos"
+                        ],
+                        "a": 0,
+                        "e": "sincronização de tempo: alinhamento dos relógios entre controladores, servidores e dispositivos Na prática, permite ordenar alarmes, comandos e tendências de fontes diferentes em uma linha do tempo confiável"
+                  }
+            ]
+      },
+      {
+            "id": "alarmes-tendencias",
+            "title": "Alarmes e Tendências",
+            "description": "Alertas, métricas, históricos, correlação, percentis e qualidade da telemetria.",
+            "questions": [
+                  {
+                        "q": "Quais sinais são amplamente utilizados para observar sistemas modernos?",
+                        "o": [
+                              "Métricas, logs e traces",
+                              "Somente capturas de tela",
+                              "Apenas chamadas telefônicas",
+                              "Temperatura externa e calendário"
+                        ],
+                        "a": 0,
+                        "e": "Métricas mostram medidas, logs registram eventos e traces acompanham o caminho de operações. A correlação desses sinais amplia o contexto."
+                  },
+                  {
+                        "q": "O que é uma métrica?",
+                        "o": [
+                              "Uma medida numérica associada a tempo e dimensões, como uso de CPU ou taxa de erros",
+                              "Um texto livre sem horário",
+                              "Uma senha de acesso",
+                              "Um diagrama físico do rack"
+                        ],
+                        "a": 0,
+                        "e": "Métricas permitem acompanhar valores, contadores, taxas e distribuições ao longo do tempo."
+                  },
+                  {
+                        "q": "Qual é a utilidade principal dos logs?",
+                        "o": [
+                              "Registrar eventos e contexto de execução para análise operacional e investigação",
+                              "Garantir disponibilidade sem monitoramento",
+                              "Substituir todos os indicadores",
+                              "Aumentar a capacidade do link"
+                        ],
+                        "a": 0,
+                        "e": "Logs documentam ocorrências com horário, severidade e atributos. Precisam de estrutura, retenção e proteção adequadas."
+                  },
+                  {
+                        "q": "Em rastreamento distribuído, o que um trace representa?",
+                        "o": [
+                              "O caminho de uma operação entre componentes, formado por spans relacionados",
+                              "A lista completa de usuários do sistema",
+                              "Uma cópia de segurança integral",
+                              "Somente o endereço IP do servidor"
+                        ],
+                        "a": 0,
+                        "e": "Cada span representa uma unidade de trabalho. Relações entre spans ajudam a localizar latência e falhas em chamadas distribuídas."
+                  },
+                  {
+                        "q": "O que significa telemetria?",
+                        "o": [
+                              "Dados emitidos ou coletados sobre o estado e o comportamento de sistemas",
+                              "A substituição física de um equipamento",
+                              "Um contrato de nível de serviço",
+                              "Uma reunião pós-incidente"
+                        ],
+                        "a": 0,
+                        "e": "Telemetria inclui sinais usados para entender saúde, desempenho e atividade. A coleta deve ter qualidade e contexto."
+                  },
+                  {
+                        "q": "Qual conjunto resume sinais operacionais importantes de um serviço?",
+                        "o": [
+                              "Latência, tráfego, erros e saturação",
+                              "Cor, tamanho, fabricante e preço",
+                              "Férias, salários, estoque e compras",
+                              "Somente disponibilidade elétrica"
+                        ],
+                        "a": 0,
+                        "e": "Esses sinais ajudam a responder se há demanda, lentidão, falha e esgotamento de recursos, sem dispensar indicadores específicos do negócio."
+                  },
+                  {
+                        "q": "Uma média de latência baixa pode esconder:",
+                        "o": [
+                              "Uma pequena parcela de requisições muito lentas, visível em percentis superiores",
+                              "A existência de endereços IP",
+                              "O nome do serviço",
+                              "A quantidade de operadores"
+                        ],
+                        "a": 0,
+                        "e": "Distribuições assimétricas exigem percentis. Média isolada pode parecer saudável mesmo quando usuários enfrentam caudas de latência."
+                  },
+                  {
+                        "q": "O que indica o percentil 95 de latência?",
+                        "o": [
+                              "Aproximadamente 95% das observações ficaram nesse valor ou abaixo, no período e população definidos",
+                              "95% das requisições falharam",
+                              "A média foi exatamente 95 milissegundos",
+                              "Somente 5% das requisições foram medidas"
+                        ],
+                        "a": 0,
+                        "e": "Percentis descrevem a distribuição. É necessário declarar janela, filtros e unidade para interpretar corretamente."
+                  },
+                  {
+                        "q": "Um contador acumulado de requisições é mais útil quando convertido em:",
+                        "o": [
+                              "Taxa por unidade de tempo para avaliar ritmo e mudanças",
+                              "Texto sem valor numérico",
+                              "Endereço MAC",
+                              "Alarme permanente"
+                        ],
+                        "a": 0,
+                        "e": "A diferença do contador entre instantes permite calcular requisições por segundo ou minuto, tratando reinicializações do contador."
+                  },
+                  {
+                        "q": "Qual tipo de métrica representa um valor que pode subir ou descer, como conexões ativas?",
+                        "o": [
+                              "Gauge",
+                              "Contador estritamente crescente",
+                              "Trace",
+                              "Ticket"
+                        ],
+                        "a": 0,
+                        "e": "Gauges refletem um estado medido naquele momento. Contadores são adequados para totais acumulados."
+                  },
+                  {
+                        "q": "O que é alta cardinalidade em dimensões de métricas?",
+                        "o": [
+                              "Grande quantidade de combinações de valores, que pode elevar custo e dificultar consultas",
+                              "Poucos dados coletados",
+                              "Uso de somente uma unidade de medida",
+                              "Ausência de rótulos"
+                        ],
+                        "a": 0,
+                        "e": "Identificadores únicos em rótulos, como ID de cada requisição, podem criar séries demais. O desenho deve equilibrar contexto e custo."
+                  },
+                  {
+                        "q": "Para que servem labels ou dimensões em uma métrica?",
+                        "o": [
+                              "Segmentar e filtrar observações por atributos controlados, como serviço, região ou status",
+                              "Guardar senhas",
+                              "Substituir o valor numérico",
+                              "Eliminar a necessidade de horário"
+                        ],
+                        "a": 0,
+                        "e": "Dimensões dão contexto à série. Precisam de nomes consistentes e valores governados para evitar cardinalidade excessiva."
+                  },
+                  {
+                        "q": "Qual é a diferença entre limite estático e detecção de anomalia?",
+                        "o": [
+                              "Limite compara com valor fixo; anomalia compara o comportamento com padrão ou modelo esperado",
+                              "Não existe diferença",
+                              "Anomalia sempre dispensa histórico",
+                              "Limite estático nunca gera falso positivo"
+                        ],
+                        "a": 0,
+                        "e": "Ambos podem ser úteis. A escolha depende da estabilidade do sinal, sazonalidade, risco e capacidade de explicar o alerta."
+                  },
+                  {
+                        "q": "Como a correlação melhora a observabilidade?",
+                        "o": [
+                              "Relaciona sinais por tempo, serviço, dependência e identificadores para formar contexto causal",
+                              "Remove todos os eventos antigos",
+                              "Aumenta limites automaticamente",
+                              "Transforma qualquer log em incidente"
+                        ],
+                        "a": 0,
+                        "e": "Métricas, logs e traces isolados dão visões parciais. Contexto compartilhado ajuda a seguir uma transação e separar causa de sintomas."
+                  },
+                  {
+                        "q": "Um dashboard para liderança deve priorizar:",
+                        "o": [
+                              "Impacto, tendência, risco e indicadores de serviço em linguagem clara",
+                              "Todos os logs brutos em uma única tela",
+                              "Credenciais administrativas",
+                              "Somente detalhes de configuração de interfaces"
+                        ],
+                        "a": 0,
+                        "e": "O público define a visualização. Liderança precisa de síntese e decisão; equipes técnicas precisam de detalhes para diagnóstico."
+                  },
+                  {
+                        "q": "Como deve ser definida a retenção de telemetria?",
+                        "o": [
+                              "Com base em necessidade operacional, investigação, conformidade, custo e sensibilidade dos dados",
+                              "Manter tudo para sempre sem avaliação",
+                              "Apagar todos os dados ao fim do turno",
+                              "Usar o mesmo prazo para qualquer sinal"
+                        ],
+                        "a": 0,
+                        "e": "Retenção é uma decisão de risco e custo. Dados relevantes devem permanecer pelo período necessário e com acesso protegido."
+                  },
+                  {
+                        "q": "Qual é o efeito da amostragem de traces?",
+                        "o": [
+                              "Reduz volume e custo, mas pode deixar algumas operações fora da análise",
+                              "Garante captura de todos os erros",
+                              "Elimina a necessidade de métricas",
+                              "Aumenta automaticamente a precisão"
+                        ],
+                        "a": 0,
+                        "e": "Amostragem deve preservar casos importantes e ser documentada. Estratégias podem priorizar erros ou decisões após observar o trace."
+                  },
+                  {
+                        "q": "A ausência inesperada de dados deve ser tratada como:",
+                        "o": [
+                              "Possível falha de coleta ou do ativo, exigindo detecção e validação",
+                              "Prova de que tudo está normal",
+                              "Motivo para encerrar o monitoramento",
+                              "Redução confirmada de demanda"
+                        ],
+                        "a": 0,
+                        "e": "Sem dados não se pode afirmar saúde. Alertas de ausência, freshness e volume ajudam a detectar pontos cegos."
+                  },
+                  {
+                        "q": "O que é propagação de contexto?",
+                        "o": [
+                              "Mecanismo que transporta identificadores e atributos entre componentes para correlacionar uma operação",
+                              "Cópia de senhas entre equipes",
+                              "Expansão automática de capacidade",
+                              "Atualização do inventário físico"
+                        ],
+                        "a": 0,
+                        "e": "Trace ID e contexto relacionado permitem conectar spans e, quando suportado, associar métricas e logs ao mesmo fluxo."
+                  },
+                  {
+                        "q": "Um alerta de qualidade deve ser:",
+                        "o": [
+                              "Acionável, relevante, com contexto, responsável e resposta definida",
+                              "Criado para cada variação mínima",
+                              "Sem indicação do ativo",
+                              "Mantido mesmo sem utilidade"
+                        ],
+                        "a": 0,
+                        "e": "Alertas devem apontar uma condição que exige decisão. Revisão contínua reduz duplicidades, ruído e lacunas."
+                  }
+            ]
+      },
+      {
+            "id": "diagnostico-integrado",
+            "title": "Diagnóstico Integrado",
+            "description": "Escopo, hipóteses, camadas, dependências, testes, evidências e recuperação controlada.",
+            "questions": [
+                  {
+                        "q": "Qual é o primeiro objetivo de uma triagem técnica?",
+                        "o": [
+                              "Definir sintomas, impacto, escopo, horário e estado atual antes de escolher testes",
+                              "Reiniciar todos os componentes",
+                              "Escolher uma causa sem evidência",
+                              "Encerrar alarmes duplicados"
+                        ],
+                        "a": 0,
+                        "e": "Delimitar o problema evita testes aleatórios e ajuda a decidir prioridade, responsáveis e dependências a verificar."
+                  },
+                  {
+                        "q": "Por que perguntar sobre mudanças recentes?",
+                        "o": [
+                              "Porque alterações de configuração, código, capacidade ou dependência podem coincidir com o início do sintoma",
+                              "Porque toda mudança é necessariamente a causa",
+                              "Para evitar consultar telemetria",
+                              "Para culpar quem realizou a atividade"
+                        ],
+                        "a": 0,
+                        "e": "Mudança recente é uma hipótese relevante, não uma conclusão. Horário, escopo e evidências devem ser correlacionados."
+                  },
+                  {
+                        "q": "O que significa diagnosticar por camadas?",
+                        "o": [
+                              "Testar sistematicamente físico, enlace, rede, transporte e aplicação conforme o sintoma",
+                              "Verificar somente a aplicação",
+                              "Trocar todos os cabos primeiro",
+                              "Ignorar dependências externas"
+                        ],
+                        "a": 0,
+                        "e": "Uma abordagem em camadas organiza hipóteses e impede concluir que a aplicação falhou quando o problema está em conectividade ou serviço dependente."
+                  },
+                  {
+                        "q": "Um ping falha, mas a aplicação continua acessível. Qual explicação é plausível?",
+                        "o": [
+                              "ICMP pode estar bloqueado ou despriorizado, enquanto a porta da aplicação continua permitida",
+                              "A aplicação não usa rede",
+                              "O DNS sempre substitui ICMP",
+                              "O servidor está obrigatoriamente desligado"
+                        ],
+                        "a": 0,
+                        "e": "Ping é uma evidência limitada. Políticas podem filtrar ICMP, por isso o teste deve corresponder ao protocolo e ao caminho real do serviço."
+                  },
+                  {
+                        "q": "O que o traceroute ajuda a observar?",
+                        "o": [
+                              "Os saltos e possíveis mudanças ou interrupções no caminho até o destino",
+                              "O conteúdo completo do banco de dados",
+                              "A temperatura do rack",
+                              "Todas as regras do firewall"
+                        ],
+                        "a": 0,
+                        "e": "Traceroute usa respostas de tempo excedido para inferir saltos. Ausências podem ocorrer por filtragem e não provam sozinhas uma falha."
+                  },
+                  {
+                        "q": "Um serviço funciona por endereço IP, mas falha pelo nome. Qual dependência deve ser investigada primeiro?",
+                        "o": [
+                              "Resolução DNS e registros associados",
+                              "Alimentação da UPS",
+                              "Inventário do rack",
+                              "Contadores de temperatura"
+                        ],
+                        "a": 0,
+                        "e": "Quando o caminho IP funciona e o nome não, DNS, cache, registro, search domain e resolvedores tornam-se hipóteses prioritárias."
+                  },
+                  {
+                        "q": "Perda de pacotes aparece apenas em horários de pico. Qual hipótese merece análise?",
+                        "o": [
+                              "Saturação, filas, congestionamento ou recurso compartilhado próximo do limite",
+                              "Falha permanente de DNS",
+                              "Relógio adiantado",
+                              "Ausência de inventário"
+                        ],
+                        "a": 0,
+                        "e": "Correlação com utilização, filas, drops e caminhos ajuda a verificar se a capacidade é insuficiente durante a demanda máxima."
+                  },
+                  {
+                        "q": "Muitos erros e descartes crescem em uma interface. O que fazer?",
+                        "o": [
+                              "Comparar contadores, tráfego, estado físico, negociação e eventos do equipamento e do enlace remoto",
+                              "Zerar contadores e encerrar sem registro",
+                              "Alterar o SLA",
+                              "Desligar a interface sem validar redundância"
+                        ],
+                        "a": 0,
+                        "e": "O lado local e remoto, a camada física e a carga precisam ser correlacionados. Qualquer intervenção deve seguir controle operacional."
+                  },
+                  {
+                        "q": "CPU alta em um dispositivo deve ser tratada como:",
+                        "o": [
+                              "Um sintoma a correlacionar com processos, tráfego, eventos e impacto antes de definir a causa",
+                              "Prova automática de ataque",
+                              "Motivo para apagar os logs",
+                              "Condição que sempre exige reinicialização"
+                        ],
+                        "a": 0,
+                        "e": "Uso elevado pode ser causa ou consequência. A investigação verifica duração, processos, plano de controle, volume e mudanças."
+                  },
+                  {
+                        "q": "Por que comparar o estado atual com uma baseline?",
+                        "o": [
+                              "Para identificar o que realmente mudou em relação ao padrão daquele serviço e período",
+                              "Para dispensar testes",
+                              "Para garantir que a causa seja capacidade",
+                              "Para ocultar sazonalidade"
+                        ],
+                        "a": 0,
+                        "e": "A comparação reduz falsos diagnósticos: um valor alto pode ser normal naquele horário, enquanto uma pequena mudança em outro sinal pode ser anormal."
+                  },
+                  {
+                        "q": "Antes de testar failover para um caminho redundante, deve-se:",
+                        "o": [
+                              "Confirmar autorização, saúde e capacidade do caminho alternativo, riscos e plano de retorno",
+                              "Desligar os dois caminhos",
+                              "Ignorar mudanças em andamento",
+                              "Remover o monitoramento"
+                        ],
+                        "a": 0,
+                        "e": "Teste de redundância pode causar impacto se a alternativa estiver degradada ou houver dependências comuns. Controle de mudança é essencial."
+                  },
+                  {
+                        "q": "Quando um rollback é apropriado durante troubleshooting?",
+                        "o": [
+                              "Quando critérios definidos indicam que a mudança falhou ou elevou o risco e o retorno é seguro",
+                              "Sempre que surge qualquer alarme",
+                              "Somente depois de apagar evidências",
+                              "Quando não existe estado anterior conhecido"
+                        ],
+                        "a": 0,
+                        "e": "Rollback precisa de gatilho, sequência, responsável e validação. Não é improvisação nem garantia de recuperar toda dependência."
+                  },
+                  {
+                        "q": "Como reproduzir um problema com segurança?",
+                        "o": [
+                              "Em ambiente ou método controlado, com escopo, autorização e proteção contra impacto adicional",
+                              "Diretamente em produção sem avisar",
+                              "Alterando várias variáveis ao mesmo tempo",
+                              "Compartilhando credenciais"
+                        ],
+                        "a": 0,
+                        "e": "Reprodução ajuda a validar hipóteses, mas deve preservar serviço e dados. Quando produção é necessária, controles precisam ser reforçados."
+                  },
+                  {
+                        "q": "O que é a técnica de dividir para conquistar?",
+                        "o": [
+                              "Reduzir o espaço de busca testando pontos intermediários ou grupos de hipóteses",
+                              "Executar todas as ações simultaneamente",
+                              "Transferir o incidente sem contexto",
+                              "Eliminar logs antigos"
+                        ],
+                        "a": 0,
+                        "e": "Ao verificar um ponto intermediário, a equipe determina em qual metade do caminho a falha provavelmente está e continua refinando."
+                  },
+                  {
+                        "q": "Por que os timestamps dos logs precisam ser comparáveis?",
+                        "o": [
+                              "Para estabelecer a sequência entre solicitações, falhas, alarmes e mudanças",
+                              "Para aumentar o tamanho do arquivo",
+                              "Para corrigir perda de pacote",
+                              "Para definir a máscara de rede"
+                        ],
+                        "a": 0,
+                        "e": "Relógios divergentes podem inverter causa e consequência. Também é preciso observar fuso, formato e precisão."
+                  },
+                  {
+                        "q": "Usuários de várias localidades falham ao mesmo tempo. Qual hipótese ganha força?",
+                        "o": [
+                              "Dependência central ou compartilhada, como DNS, autenticação, backbone ou serviço comum",
+                              "Defeito simultâneo em todos os computadores",
+                              "Problema local obrigatório em uma única filial",
+                              "Falha exclusiva de um cabo de usuário"
+                        ],
+                        "a": 0,
+                        "e": "Escopo amplo e horário comum sugerem investigar componentes compartilhados antes de tratar cada local como evento independente."
+                  },
+                  {
+                        "q": "O NOC não vê alarmes, mas usuários relatam indisponibilidade. O que isso pode indicar?",
+                        "o": [
+                              "Lacuna de cobertura, falha de coleta ou health check que não representa a experiência real",
+                              "Prova de que os usuários estão errados",
+                              "Garantia de que o serviço está normal",
+                              "Motivo para desativar o canal de atendimento"
+                        ],
+                        "a": 0,
+                        "e": "Monitoramento é um modelo parcial. Relatos externos podem revelar ponto cego, e a própria cadeia de coleta deve ser testada."
+                  },
+                  {
+                        "q": "Como investigar uma falha intermitente?",
+                        "o": [
+                              "Coletar evidências com horário, aumentar observabilidade de modo controlado e correlacionar padrões e dependências",
+                              "Reiniciar repetidamente sem registrar",
+                              "Aguardar que se torne permanente",
+                              "Alterar vários limites ao mesmo tempo"
+                        ],
+                        "a": 0,
+                        "e": "Problemas intermitentes exigem capturar o estado durante a ocorrência e comparar janelas boas e ruins sem gerar excesso de dados sensíveis."
+                  },
+                  {
+                        "q": "Um registro de troubleshooting deve relacionar:",
+                        "o": [
+                              "Hipótese, evidência, teste, resultado, conclusão e próximo passo",
+                              "Somente a ação que funcionou",
+                              "Opiniões sem horário",
+                              "Credenciais usadas"
+                        ],
+                        "a": 0,
+                        "e": "Documentar tentativas evita repetição, permite revisão por pares e mostra por que uma hipótese foi aceita ou descartada."
+                  },
+                  {
+                        "q": "Após restaurar o serviço, qual trabalho ainda pode ser necessário?",
+                        "o": [
+                              "Monitorar estabilidade, documentar, investigar causa, remover soluções temporárias e acompanhar ações preventivas",
+                              "Apagar o incidente imediatamente",
+                              "Desativar todos os alertas",
+                              "Reverter a restauração"
+                        ],
+                        "a": 0,
+                        "e": "Recuperação encerra o impacto imediato, mas não necessariamente a causa. Acompanhamento reduz recorrência e dívida operacional."
+                  }
+            ]
+      }
+];
+
+    const STORAGE_KEY = "gdc-premium-automacao-bms-dcim-v1";
+    const LETTERS = ["A","B","C","D"];
+    const state = {session:[],index:0,answers:[],remaining:60,timer:null,startedAt:0,mode:"module",moduleId:null,sound:true,volume:.35,lastConfig:null};
+    const el = id => document.getElementById(id);
+    const views = {home:el("homeView"),quiz:el("quizView"),result:el("resultView")};
+    const audio = {background:el("backgroundAudio"),correct:el("correctAudio"),wrong:el("wrongAudio")};
+
+    function safeLoad(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||{modules:{},full:null}}catch{return {modules:{},full:null}}}
+    function safeSave(data){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}catch{/* modo privado ou armazenamento indisponível */}}
+    function showView(name){Object.entries(views).forEach(([key,node])=>node.hidden=key!==name);window.scrollTo({top:0,behavior:"smooth"})}
+    function formatTime(seconds){const min=Math.floor(seconds/60);const sec=seconds%60;return `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`}
+    function shuffle(items){const copy=[...items];for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]]}return copy}
+    function randomizeQuestion(question,moduleTitle){const options=shuffle(question.o.map((text,index)=>({text,correct:index===question.a})));return {...question,moduleTitle,o:options.map(item=>item.text),a:options.findIndex(item=>item.correct)}}
+    function setAudioVolumes(){audio.background.volume=state.volume*.42;audio.correct.volume=state.volume;audio.wrong.volume=state.volume}
+    function startBackground(){if(!state.sound)return;audio.background.play().catch(()=>{})}
+    function stopBackground(){audio.background.pause()}
+    function playEffect(kind){if(!state.sound)return;const sound=audio[kind];sound.currentTime=0;sound.play().catch(()=>{})}
+    function toggleSound(){state.sound=!state.sound;const button=el("soundToggle");button.classList.toggle("off",!state.sound);button.setAttribute("aria-pressed",String(state.sound));button.querySelector(".sound-text").textContent=state.sound?"Som ligado":"Som desligado";if(state.sound&&views.quiz.hidden===false)startBackground();else stopBackground()}
+
+    function renderHome(){
+      const progress=safeLoad();
+      const grid=el("moduleGrid");grid.textContent="";
+      let completed=0,totalBest=0;
+      MODULES.forEach((module,index)=>{
+        const saved=progress.modules[module.id];const best=saved?.best||0;if(saved){completed++;totalBest+=best}
+        const card=document.createElement("article");card.className="module-card";
+        const number=document.createElement("div");number.className="module-number";number.textContent=String(index+1).padStart(2,"0");
+        const title=document.createElement("h3");title.textContent=module.title;
+        const desc=document.createElement("p");desc.textContent=module.description;
+        const meta=document.createElement("div");meta.className="module-meta";meta.innerHTML=`<span>20 questões</span><span>${saved?`Melhor: ${best}%`:"Não iniciado"}</span>`;
+        const track=document.createElement("div");track.className="mini-track";const fill=document.createElement("span");fill.style.width=`${best}%`;track.appendChild(fill);
+        const button=document.createElement("button");button.type="button";button.className="btn btn-secondary btn-block";button.textContent=saved?"Refazer módulo":"Iniciar módulo";button.addEventListener("click",()=>startModule(module.id));
+        card.append(number,title,desc,meta,track,button);grid.appendChild(card);
+      });
+      const percent=Math.round((completed/MODULES.length)*100);
+      el("overallPercent").textContent=`${percent}%`;el("overallBar").style.width=`${percent}%`;el("completedModules").textContent=`${completed}/${MODULES.length}`;el("bestAverage").textContent=completed?`${Math.round(totalBest/completed)}%`:"—";
+      showView("home");
+    }
+
+    function startModule(moduleId){const module=MODULES.find(item=>item.id===moduleId);state.lastConfig={type:"module",id:moduleId};beginSession(shuffle(module.questions.map(q=>randomizeQuestion(q,module.title))),"module",moduleId,module.title)}
+    function startFull(){state.lastConfig={type:"full"};const questions=MODULES.flatMap(module=>module.questions.map(q=>randomizeQuestion(q,module.title)));beginSession(shuffle(questions),"full",null,"Simulado completo")}
+    function beginSession(questions,mode,moduleId,title){clearInterval(state.timer);state.session=questions;state.index=0;state.answers=[];state.mode=mode;state.moduleId=moduleId;state.startedAt=Date.now();el("quizModule").textContent=mode==="full"?"Consolidação • 7 módulos":"Simulado gratuito • módulo";el("quizTitle").textContent=title;showView("quiz");startBackground();renderQuestion()}
+
+    function renderQuestion(){
+      clearInterval(state.timer);state.remaining=60;
+      const current=state.session[state.index];const total=state.session.length;
+      el("questionCounter").textContent=`Questão ${state.index+1} de ${total}`;el("liveScore").textContent=`${state.answers.filter(a=>a.correct).length} acertos`;el("quizBar").style.width=`${(state.index/total)*100}%`;el("questionModuleLabel").textContent=current.moduleTitle;el("questionText").textContent=current.q;
+      el("feedbackBox").hidden=true;el("nextQuestion").hidden=true;
+      const list=el("optionsList");list.textContent="";
+      current.o.forEach((option,index)=>{const button=document.createElement("button");button.className="option";button.type="button";const letter=document.createElement("span");letter.className="letter";letter.textContent=LETTERS[index];const text=document.createElement("span");text.textContent=option;button.append(letter,text);button.addEventListener("click",()=>answerQuestion(index,false));list.appendChild(button)});
+      updateTimer();state.timer=setInterval(()=>{state.remaining--;updateTimer();if(state.remaining<=0){clearInterval(state.timer);answerQuestion(-1,true)}},1000);
+    }
+
+    function updateTimer(){const box=el("timerBox");el("timerText").textContent=formatTime(Math.max(0,state.remaining));box.classList.toggle("warn",state.remaining<=20&&state.remaining>10);box.classList.toggle("danger",state.remaining<=10)}
+    function answerQuestion(selected,timedOut){
+      clearInterval(state.timer);const current=state.session[state.index];const buttons=[...el("optionsList").querySelectorAll(".option")];if(buttons.some(button=>button.disabled))return;
+      const correct=selected===current.a;buttons.forEach((button,index)=>{button.disabled=true;if(index===current.a)button.classList.add("correct");else if(index===selected)button.classList.add("wrong")});
+      state.answers.push({question:current,selected,correct,timedOut});
+      const box=el("feedbackBox");box.hidden=false;box.className=`feedback ${correct?"good":"bad"}`;el("feedbackTitle").textContent=correct?"Resposta correta!":timedOut?"Tempo esgotado.":"Resposta incorreta.";el("feedbackText").textContent=current.e;playEffect(correct?"correct":"wrong");el("liveScore").textContent=`${state.answers.filter(a=>a.correct).length} acertos`;const next=el("nextQuestion");next.hidden=false;next.textContent=state.index===state.session.length-1?"Ver resultado":"Próxima questão";
+    }
+
+    function goNext(){if(state.answers.length<=state.index)return;if(state.index<state.session.length-1){state.index++;renderQuestion()}else{finishSession()}}
+    function finishSession(){
+      clearInterval(state.timer);stopBackground();const elapsed=Math.max(1,Math.round((Date.now()-state.startedAt)/1000));const correct=state.answers.filter(item=>item.correct).length;const total=state.session.length;const percent=Math.round((correct/total)*100);const progress=safeLoad();
+      if(state.mode==="module"){const old=progress.modules[state.moduleId]||{best:0,attempts:0};progress.modules[state.moduleId]={best:Math.max(old.best,percent),last:percent,attempts:old.attempts+1,completedAt:new Date().toISOString()}}else{const old=progress.full||{best:0,attempts:0};progress.full={best:Math.max(old.best,percent),last:percent,attempts:old.attempts+1,completedAt:new Date().toISOString()}}
+      safeSave(progress);const title=state.mode==="module"?MODULES.find(m=>m.id===state.moduleId).title:"Simulado completo";el("resultTitle").textContent=title;el("resultMessage").textContent=performanceMessage(percent);el("resultPercent").textContent=`${percent}%`;el("scoreRing").style.setProperty("--score",percent);el("resultCorrect").textContent=`${correct}/${total}`;el("resultWrong").textContent=String(total-correct);el("resultTime").textContent=formatTime(elapsed);renderReview();showView("result")
+    }
+    function performanceMessage(score){if(score>=90)return"Excelente domínio. Você demonstrou consistência para reconhecer riscos, prioridades e boas práticas operacionais.";if(score>=75)return"Bom desempenho. Revise os pontos de atenção abaixo para transformar conhecimento em resposta mais consistente.";if(score>=60)return"Base em desenvolvimento. Reforce os temas em que houve erro antes de avançar para o simulado completo.";return"Este resultado é um diagnóstico, não uma sentença. Refaça o módulo após revisar as explicações e os procedimentos fundamentais."}
+    function renderReview(){const list=el("reviewList");list.textContent="";const misses=state.answers.filter(item=>!item.correct);el("reviewBlock").hidden=misses.length===0;if(!misses.length)return;misses.forEach((item,index)=>{const card=document.createElement("article");card.className="review-item";const title=document.createElement("strong");title.textContent=`${index+1}. ${item.question.q}`;const chosen=document.createElement("p");chosen.className="answer-wrong";chosen.textContent=item.timedOut?"Sua resposta: tempo esgotado":`Sua resposta: ${item.question.o[item.selected]}`;const right=document.createElement("p");right.className="answer-correct";right.textContent=`Resposta correta: ${item.question.o[item.question.a]}`;const why=document.createElement("p");why.textContent=item.question.e;card.append(title,chosen,right,why);list.appendChild(card)})}
+    function exitQuiz(){if(state.answers.length&&state.answers.length<state.session.length&&!confirm("Sair agora? O resultado desta tentativa não será salvo."))return;clearInterval(state.timer);stopBackground();renderHome()}
+    function retry(){if(state.lastConfig?.type==="full")startFull();else if(state.lastConfig?.id)startModule(state.lastConfig.id)}
+
+    el("soundToggle").addEventListener("click",toggleSound);el("volumeControl").addEventListener("input",event=>{state.volume=Number(event.target.value);setAudioVolumes()});el("brandHome").addEventListener("click",event=>{event.preventDefault();if(!views.quiz.hidden)exitQuiz();else renderHome()});el("startFull").addEventListener("click",startFull);el("nextQuestion").addEventListener("click",goNext);el("exitQuiz").addEventListener("click",exitQuiz);el("returnHome").addEventListener("click",renderHome);el("retryQuiz").addEventListener("click",retry);el("printResult").addEventListener("click",()=>window.print());
+    setAudioVolumes();renderHome();
+  </script>
+</body>
+</html>

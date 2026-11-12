@@ -1,0 +1,2569 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071321">
+  <meta name="description" content="Simulado gratuito Gabarito Data Center — Engenharia, Obras e Comissionamento, com 200 questões em 10 módulos.">
+  <title>Gabarito Data Center | Gratuito — Engenharia, Obras e Comissionamento</title>
+  <style>
+    :root {
+      --navy-950:#030b14; --navy-900:#071321; --navy-850:#0a1b2d; --navy-800:#0d2439;
+      --cyan:#18d6ff; --cyan-soft:#86eaff; --lime:#b9ff39; --amber:#ffbd2e;
+      --red:#ff5f72; --green:#4df0a7; --white:#f7fbff; --muted:#9eb4c7;
+      --line:rgba(134,234,255,.17); --panel:rgba(10,27,45,.84); --shadow:0 24px 70px rgba(0,0,0,.34);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--white);background:
+      radial-gradient(circle at 12% 0%,rgba(24,214,255,.16),transparent 27rem),
+      radial-gradient(circle at 92% 14%,rgba(185,255,57,.09),transparent 24rem),
+      linear-gradient(145deg,var(--navy-950),var(--navy-900) 45%,#061a28);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:
+      linear-gradient(rgba(134,234,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(134,234,255,.12) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 75%)}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    a{color:var(--cyan-soft)}
+    .shell{width:min(1180px,calc(100% - 32px));margin:0 auto;position:relative;z-index:1}
+    .topbar{padding:22px 0 8px}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:13px;color:var(--white);text-decoration:none}
+    .brand-mark{width:56px;height:56px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(145deg,rgba(24,214,255,.23),rgba(185,255,57,.10));border:1px solid var(--line);box-shadow:0 0 35px rgba(24,214,255,.14)}
+    .brand-mark svg{width:39px;height:39px}
+    .brand-copy strong{display:block;font-size:clamp(1rem,2.2vw,1.28rem);letter-spacing:.08em}
+    .brand-copy span{display:block;color:var(--cyan-soft);font-size:.72rem;letter-spacing:.22em;margin-top:3px}
+    .sound-panel{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(3,11,20,.56);backdrop-filter:blur(12px)}
+    .sound-btn{border:0;background:transparent;color:var(--white);display:flex;align-items:center;gap:7px;padding:5px 6px}
+    .sound-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 13px var(--green)}
+    .sound-btn.off .sound-dot{background:var(--red);box-shadow:0 0 13px var(--red)}
+    .volume{width:85px;accent-color:var(--cyan)}
+    main{padding:34px 0 60px}
+    .view[hidden]{display:none!important}
+    .hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:24px;align-items:stretch;margin-bottom:28px}
+    .hero-copy,.hero-side,.panel,.module-card,.question-card,.result-card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(13,36,57,.91),rgba(7,19,33,.82));box-shadow:var(--shadow);border-radius:var(--radius);backdrop-filter:blur(15px)}
+    .hero-copy{padding:clamp(28px,5vw,54px);position:relative;overflow:hidden}
+    .hero-copy::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-110px;top:-120px;border:42px solid rgba(24,214,255,.06);box-shadow:0 0 90px rgba(24,214,255,.12)}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--lime);font-weight:800;letter-spacing:.13em;font-size:.74rem;text-transform:uppercase;margin:0 0 16px}
+    .eyebrow::before{content:"";width:26px;height:2px;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(2.15rem,6vw,4.8rem);line-height:.96;letter-spacing:-.055em;margin-bottom:20px;max-width:760px}
+    h1 span{display:block;color:var(--cyan)}
+    .lead{color:#ccdae6;line-height:1.72;font-size:clamp(1rem,2vw,1.13rem);max-width:720px;margin-bottom:24px}
+    .chips{display:flex;flex-wrap:wrap;gap:9px}
+    .chip{padding:9px 12px;border-radius:999px;background:rgba(24,214,255,.08);border:1px solid rgba(24,214,255,.23);font-size:.82rem;color:#d9f8ff}
+    .hero-side{padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+    .score-label{color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.13em}
+    .score-value{font-size:clamp(3rem,8vw,5.4rem);line-height:1;font-weight:900;color:var(--lime);letter-spacing:-.07em;margin:9px 0}
+    .progress-track{height:11px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+    .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--lime));border-radius:inherit;transition:width .4s ease}
+    .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .stat{padding:14px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.35)}
+    .stat b{display:block;font-size:1.25rem;color:var(--cyan-soft)}
+    .stat span{color:var(--muted);font-size:.76rem}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:42px 0 18px}
+    .section-head h2{font-size:clamp(1.55rem,3vw,2.35rem);margin:0;letter-spacing:-.035em}
+    .section-head p{color:var(--muted);margin:0;max-width:510px;line-height:1.6;text-align:right}
+    .module-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+    .module-card{padding:23px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+    .module-card:hover{transform:translateY(-4px);border-color:rgba(24,214,255,.42)}
+    .module-number{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,rgba(24,214,255,.23),rgba(24,214,255,.07));color:var(--cyan);font-weight:900;margin-bottom:18px;border:1px solid rgba(24,214,255,.25)}
+    .module-card h3{font-size:1.15rem;margin-bottom:9px}
+    .module-card p{color:var(--muted);font-size:.88rem;line-height:1.55;min-height:68px}
+    .module-meta{display:flex;justify-content:space-between;gap:10px;color:#c5d8e7;font-size:.78rem;margin:17px 0 13px}
+    .mini-track{height:7px;background:rgba(255,255,255,.07);border-radius:999px;overflow:hidden;margin-bottom:17px}
+    .mini-track span{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--lime));border-radius:inherit}
+    .btn{border:0;border-radius:13px;padding:13px 18px;font-weight:850;letter-spacing:.01em;transition:transform .18s,filter .18s,background .18s;display:inline-flex;justify-content:center;align-items:center;gap:8px;text-decoration:none}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+    .btn-primary{background:linear-gradient(95deg,var(--cyan),#55e4ff 46%,var(--lime));color:#03101a;box-shadow:0 12px 35px rgba(24,214,255,.18)}
+    .btn-secondary{background:rgba(24,214,255,.09);color:var(--white);border:1px solid rgba(24,214,255,.25)}
+    .btn-danger{background:rgba(255,95,114,.10);color:#ffc4cb;border:1px solid rgba(255,95,114,.27)}
+    .btn-block{width:100%}
+    .full-card{margin-top:19px;padding:25px;display:flex;align-items:center;justify-content:space-between;gap:25px;border:1px solid rgba(185,255,57,.24);border-radius:var(--radius);background:linear-gradient(110deg,rgba(185,255,57,.10),rgba(24,214,255,.08),rgba(7,19,33,.88));box-shadow:var(--shadow)}
+    .full-card h3{margin-bottom:7px;font-size:1.34rem}
+    .full-card p{margin:0;color:var(--muted);line-height:1.55}
+    .notice{margin-top:20px;padding:18px 20px;border-radius:17px;border:1px solid rgba(255,189,46,.24);background:rgba(255,189,46,.07);color:#ffe5ab;line-height:1.6;font-size:.89rem}
+    .refs{margin-top:20px;padding:0;border:1px solid var(--line);border-radius:17px;background:rgba(7,19,33,.6)}
+    .refs summary{cursor:pointer;padding:18px 20px;font-weight:800;color:#dff9ff}
+    .refs div{padding:0 20px 18px;color:var(--muted);line-height:1.7;font-size:.87rem}
+    .quiz-top{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:18px}
+    .crumb{color:var(--cyan-soft);font-size:.85rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+    .timer{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(3,11,20,.62);font-variant-numeric:tabular-nums}
+    .timer.warn{color:var(--amber);border-color:rgba(255,189,46,.38)}
+    .timer.danger{color:#ffc1c9;border-color:rgba(255,95,114,.5);animation:pulse 1s infinite}
+    @keyframes pulse{50%{box-shadow:0 0 24px rgba(255,95,114,.18)}}
+    .quiz-progress{margin-bottom:18px}
+    .quiz-progress-row{display:flex;justify-content:space-between;color:var(--muted);font-size:.82rem;margin-bottom:8px}
+    .question-card{padding:clamp(24px,5vw,43px)}
+    .question-kicker{display:flex;align-items:center;gap:9px;color:var(--lime);font-size:.77rem;text-transform:uppercase;letter-spacing:.12em;font-weight:850;margin-bottom:15px}
+    .question-card h2{font-size:clamp(1.28rem,3vw,1.85rem);line-height:1.35;letter-spacing:-.025em;margin-bottom:26px}
+    .options{display:grid;gap:11px}
+    .option{width:100%;text-align:left;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.44);color:var(--white);padding:15px 17px;display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:center;line-height:1.48;transition:border-color .18s,background .18s,transform .18s}
+    .option:hover:not(:disabled){border-color:rgba(24,214,255,.45);background:rgba(24,214,255,.09);transform:translateX(3px)}
+    .option:disabled{cursor:default}
+    .letter{width:35px;height:35px;display:grid;place-items:center;border-radius:10px;background:rgba(24,214,255,.09);border:1px solid rgba(24,214,255,.17);color:var(--cyan-soft);font-weight:900}
+    .option.correct{border-color:rgba(77,240,167,.65);background:rgba(77,240,167,.10)}
+    .option.correct .letter{background:var(--green);border-color:var(--green);color:#03150e}
+    .option.wrong{border-color:rgba(255,95,114,.62);background:rgba(255,95,114,.10)}
+    .option.wrong .letter{background:var(--red);border-color:var(--red);color:white}
+    .feedback{margin-top:20px;padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(3,11,20,.48);line-height:1.62}
+    .feedback.good{border-color:rgba(77,240,167,.35)}
+    .feedback.bad{border-color:rgba(255,95,114,.34)}
+    .feedback strong{display:block;margin-bottom:5px}
+    .feedback p{margin:0;color:#c7d7e3}
+    .quiz-actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:19px}
+    .result-card{padding:clamp(26px,5vw,48px);text-align:center}
+    .result-badge{display:inline-block;padding:8px 12px;border:1px solid rgba(185,255,57,.28);border-radius:999px;color:var(--lime);font-size:.75rem;letter-spacing:.12em;font-weight:900;text-transform:uppercase}
+    .result-card h1{font-size:clamp(2rem,5vw,3.6rem);margin:19px auto 10px;max-width:800px}
+    .result-card>p{color:var(--muted);line-height:1.65}
+    .score-ring{--score:0;width:190px;height:190px;margin:28px auto;display:grid;place-items:center;border-radius:50%;background:conic-gradient(var(--lime) calc(var(--score)*1%),rgba(255,255,255,.08) 0);position:relative}
+    .score-ring::before{content:"";position:absolute;inset:14px;border-radius:50%;background:var(--navy-900);border:1px solid var(--line)}
+    .score-ring div{position:relative;z-index:1}
+    .score-ring b{display:block;font-size:3.25rem;line-height:1;color:var(--white)}
+    .score-ring span{color:var(--muted);font-size:.8rem}
+    .result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:680px;margin:0 auto 26px}
+    .result-stat{padding:18px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.35)}
+    .result-stat b{display:block;font-size:1.45rem;color:var(--cyan-soft)}
+    .result-stat span{font-size:.77rem;color:var(--muted)}
+    .result-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+    .review{margin-top:24px;text-align:left}
+    .review h2{margin-bottom:14px}
+    .review-item{padding:18px;margin-bottom:10px;border:1px solid var(--line);border-radius:15px;background:rgba(3,11,20,.36)}
+    .review-item strong{display:block;margin-bottom:8px;line-height:1.45}
+    .review-item p{margin:5px 0;color:var(--muted);line-height:1.55;font-size:.9rem}
+    .review-item .answer-correct{color:var(--green)}
+    .review-item .answer-wrong{color:#ffb6bf}
+    footer{padding:28px 0 42px;border-top:1px solid var(--line);color:var(--muted);font-size:.83rem;line-height:1.6}
+    .footer-inner{display:flex;justify-content:space-between;gap:25px}
+    .footer-inner p{margin:0}
+    .footer-inner div:last-child{text-align:right}
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.module-grid{grid-template-columns:repeat(2,1fr)}.hero-side{min-height:280px}}
+    @media(max-width:640px){.shell{width:min(100% - 22px,1180px)}.topbar-inner{align-items:flex-start}.brand-mark{width:47px;height:47px}.brand-copy strong{font-size:.92rem}.brand-copy span{font-size:.61rem}.volume{display:none}.sound-panel{padding:7px 8px}.sound-btn .sound-text{display:none}.hero-copy,.hero-side,.question-card,.result-card{border-radius:18px}.hero-copy{padding:27px 22px}.module-grid{grid-template-columns:1fr}.section-head{display:block}.section-head p{text-align:left;margin-top:8px}.full-card{align-items:flex-start;flex-direction:column}.quiz-top{align-items:flex-start}.timer{padding:8px 11px}.quiz-actions{align-items:stretch;flex-direction:column-reverse}.quiz-actions .btn{width:100%}.result-stats{grid-template-columns:1fr}.footer-inner{display:block}.footer-inner div:last-child{text-align:left;margin-top:12px}.option{grid-template-columns:34px 1fr;padding:13px}.letter{width:32px;height:32px}}
+    @media print{body{background:white;color:#111}.topbar,#homeView,#quizView,footer,.result-actions,.sound-panel{display:none!important}.result-card{box-shadow:none;border:1px solid #bbb;background:white}.result-card h1,.score-ring b{color:#111}.score-ring::before{background:white}.review-item{background:white;color:#111}.review-item p{color:#333}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#" id="brandHome" aria-label="Voltar ao início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="7" y="5" width="34" height="38" rx="7" stroke="#18d6ff" stroke-width="2"/><path d="M13 14h22M13 23h22M13 32h22" stroke="#86eaff" stroke-width="2"/><circle cx="16" cy="14" r="2" fill="#b9ff39"/><circle cx="16" cy="23" r="2" fill="#b9ff39"/><circle cx="16" cy="32" r="2" fill="#ffbd2e"/><path d="M29 11v6m0 3v6m0 3v6" stroke="#18d6ff" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-copy"><strong>GABARITO DATA CENTER</strong><span>ACESSO GRATUITO</span></span>
+      </a>
+      <div class="sound-panel" aria-label="Controles de áudio">
+        <button class="sound-btn" id="soundToggle" type="button" aria-pressed="true"><span class="sound-dot"></span><span class="sound-text">Som ligado</span></button>
+        <label class="sr-only" for="volumeControl">Volume</label>
+        <input class="volume" id="volumeControl" type="range" min="0" max="1" value="0.35" step="0.05">
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div role="note" style="margin:12px 0 26px;padding:16px 20px;border:1px solid rgba(185,255,57,.36);border-radius:14px;background:#102a32;color:#e9fbf1;line-height:1.6"><a href="../../catalogo-gratuito.html" style="font-weight:800;color:#b9ff39;text-decoration:underline">← Voltar ao catálogo gratuito do Instituto EnsinoMeu</a><p style="margin:9px 0 0">Acesso 100% gratuito. Material de estudo em revisão pedagógica e técnica. As questões não representam certificação profissional nem habilitação para intervenções.</p></div>
+
+    <section class="view" id="homeView">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Formação profissional 2026</p>
+          <h1>Engenharia, Obras e <span>Comissionamento</span></h1>
+          <p class="lead">Treinamento premium para arquitetura, projetos elétricos e mecânicos, automação, obras, qualidade, comissionamento, testes e handover.</p>
+          <div class="chips"><span class="chip">10 módulos</span><span class="chip">200 questões</span><span class="chip">Explicações imediatas</span><span class="chip">Progresso salvo</span><span class="chip">Áudio inteligente</span></div>
+        </div>
+        <aside class="hero-side" aria-label="Seu progresso">
+          <div><div class="score-label">Progresso geral</div><div class="score-value" id="overallPercent">0%</div><div class="progress-track"><div class="progress-fill" id="overallBar"></div></div></div>
+          <div class="hero-stats"><div class="stat"><b id="completedModules">0/6</b><span>módulos concluídos</span></div><div class="stat"><b id="bestAverage">—</b><span>média dos melhores</span></div></div>
+        </aside>
+      </div>
+
+      <div class="section-head"><div><p class="eyebrow">Trilha gratuita</p><h2>Escolha um módulo</h2></div><p>Cada módulo tem 20 questões objetivas, correção comentada e resultado proporcional correto de 0 a 100%.</p></div>
+      <div class="module-grid" id="moduleGrid"></div>
+      <div class="full-card panel"><div><h3>Simulado completo de consolidação</h3><p>Reúna as 200 questões dos dez módulos em uma única sessão. Recomendado após concluir toda a trilha.</p></div><button class="btn btn-primary" id="startFull" type="button">Iniciar 200 questões</button></div>
+      <div class="notice"><strong>Orientação de segurança:</strong> este material é educacional. Em atividades reais, siga sempre os procedimentos locais, a análise de risco, as permissões de trabalho e as orientações de profissionais autorizados. O simulado não substitui treinamento obrigatório nem habilitação técnica.</div>
+      <details class="refs"><summary>Referências gerais e transparência</summary><div>Conteúdo autoral de preparação baseado em engenharia multidisciplinar, gestão de obras, comissionamento, testes integrados e entrega de instalações críticas.</div></details>
+    </section>
+
+    <section class="view" id="quizView" hidden>
+      <div class="quiz-top"><div><div class="crumb" id="quizModule">Módulo</div><h1 id="quizTitle" style="font-size:clamp(1.65rem,4vw,2.7rem);margin:8px 0 0">Simulado</h1></div><div class="timer" id="timerBox" title="Tempo por questão"><span aria-hidden="true">◷</span><b id="timerText">01:00</b></div></div>
+      <div class="quiz-progress"><div class="quiz-progress-row"><span id="questionCounter">Questão 1 de 20</span><span id="liveScore">0 acertos</span></div><div class="progress-track"><div class="progress-fill" id="quizBar"></div></div></div>
+      <article class="question-card">
+        <div class="question-kicker" id="questionModuleLabel">Conhecimento aplicado</div>
+        <h2 id="questionText"></h2>
+        <div class="options" id="optionsList"></div>
+        <div class="feedback" id="feedbackBox" hidden aria-live="polite"><strong id="feedbackTitle"></strong><p id="feedbackText"></p></div>
+      </article>
+      <div class="quiz-actions"><button class="btn btn-danger" id="exitQuiz" type="button">Sair do simulado</button><button class="btn btn-primary" id="nextQuestion" type="button" hidden>Próxima questão</button></div>
+    </section>
+
+    <section class="view" id="resultView" hidden>
+      <article class="result-card">
+        <span class="result-badge">Resultado concluído</span>
+        <h1 id="resultTitle">Seu desempenho</h1>
+        <p id="resultMessage"></p>
+        <div class="score-ring" id="scoreRing"><div><b id="resultPercent">0%</b><span>aproveitamento</span></div></div>
+        <div class="result-stats"><div class="result-stat"><b id="resultCorrect">0</b><span>acertos</span></div><div class="result-stat"><b id="resultWrong">0</b><span>erros / não respondidas</span></div><div class="result-stat"><b id="resultTime">00:00</b><span>tempo total</span></div></div>
+        <div class="result-actions"><button class="btn btn-primary" id="retryQuiz" type="button">Refazer simulado</button><button class="btn btn-secondary" id="printResult" type="button">Imprimir resultado</button><button class="btn btn-secondary" id="returnHome" type="button">Voltar aos módulos</button></div>
+        <div class="review" id="reviewBlock"><h2>Revisão dos pontos de atenção</h2><div id="reviewList"></div></div>
+      </article>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-inner"><div><p><strong>GABARITO DATA CENTER</strong> — preparação independente para candidatos.</p><p>Sem promessa de contratação e sem vínculo com TikTok, ByteDance, Omnia ou operadores de data center.</p></div><div><p>Equipe técnica e dúvidas</p><p><a href="mailto:cincoregioes@gmail.com">cincoregioes@gmail.com</a></p></div></div></footer>
+
+  <audio id="backgroundAudio" loop preload="metadata" src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3"></audio>
+  <audio id="correctAudio" preload="metadata" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3"></audio>
+  <audio id="wrongAudio" preload="metadata" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3"></audio>
+
+  <script>
+    "use strict";
+    const MODULES = [
+      {
+            "id": "arquitetura-data-centers",
+            "title": "Arquitetura de Data Centers",
+            "description": "Infraestrutura, energia, climatização, conectividade, disponibilidade e capacidade.",
+            "questions": [
+                  {
+                        "q": "Qual é a finalidade central de um data center?",
+                        "o": [
+                              "Apenas armazenar documentos impressos",
+                              "Hospedar e sustentar sistemas, dados e conectividade com controle e disponibilidade",
+                              "Produzir energia para o bairro",
+                              "Substituir todas as redes de telecomunicações"
+                        ],
+                        "a": 1,
+                        "e": "Um data center reúne recursos de TI e infraestrutura de suporte para processar, armazenar e transportar dados com níveis controlados de disponibilidade, segurança e desempenho."
+                  },
+                  {
+                        "q": "Em uma análise de consumo, o que normalmente compõe a carga de TI?",
+                        "o": [
+                              "Servidores, armazenamento e equipamentos de rede",
+                              "Iluminação do estacionamento e elevadores",
+                              "Somente os geradores",
+                              "Apenas o sistema de climatização"
+                        ],
+                        "a": 0,
+                        "e": "Carga de TI é a energia utilizada pelos equipamentos que executam processamento, armazenamento e comunicação. Climatização e perdas elétricas pertencem à infraestrutura de suporte."
+                  },
+                  {
+                        "q": "Qual é a principal função de um rack em uma sala de dados?",
+                        "o": [
+                              "Resfriar sozinho todos os servidores",
+                              "Organizar, proteger e permitir a instalação padronizada de equipamentos",
+                              "Gerar endereços IP públicos",
+                              "Substituir o controle de acesso físico"
+                        ],
+                        "a": 1,
+                        "e": "O rack fornece estrutura padronizada para montagem, organização, cabeamento e manutenção dos equipamentos, respeitando capacidade, fluxo de ar e distribuição elétrica."
+                  },
+                  {
+                        "q": "Qual equipamento encaminha quadros entre dispositivos de uma rede local com base, em geral, em endereços MAC?",
+                        "o": [
+                              "UPS",
+                              "Switch",
+                              "Gerador",
+                              "Sensor de umidade"
+                        ],
+                        "a": 1,
+                        "e": "O switch conecta dispositivos em uma rede local e toma decisões de encaminhamento na camada de enlace. Roteadores realizam o encaminhamento entre redes."
+                  },
+                  {
+                        "q": "Para que serve uma UPS, também chamada de nobreak?",
+                        "o": [
+                              "Fornecer energia temporária condicionada e sustentar a carga durante transições ou interrupções",
+                              "Resfriar o corredor quente",
+                              "Fazer cópias de segurança dos bancos de dados",
+                              "Controlar a entrada física de visitantes"
+                        ],
+                        "a": 0,
+                        "e": "A UPS ajuda a manter a alimentação elétrica sem interrupção imediata, condiciona energia conforme sua arquitetura e cobre o intervalo até outra fonte assumir ou ocorrer desligamento controlado."
+                  },
+                  {
+                        "q": "Em um evento prolongado de falta da concessionária, qual é o papel típico do gerador?",
+                        "o": [
+                              "Assumir a alimentação das cargas previstas após a transferência do sistema",
+                              "Substituir permanentemente as baterias da UPS",
+                              "Eliminar a necessidade de manutenção elétrica",
+                              "Criar redundância de dados"
+                        ],
+                        "a": 0,
+                        "e": "O gerador fornece energia para as cargas definidas durante interrupções mais longas. A sequência exata de partida e transferência deve seguir o projeto e os procedimentos do local."
+                  },
+                  {
+                        "q": "O que uma PDU faz no contexto de energia do data center?",
+                        "o": [
+                              "Distribui energia para equipamentos ou circuitos de TI",
+                              "Converte todo tráfego de rede em fibra",
+                              "Apaga incêndios automaticamente",
+                              "Mede somente a velocidade dos servidores"
+                        ],
+                        "a": 0,
+                        "e": "A Power Distribution Unit distribui energia a jusante. Dependendo do modelo, também mede grandezas, monitora circuitos e permite gestão, mas sua função básica é a distribuição elétrica."
+                  },
+                  {
+                        "q": "Qual é o objetivo da organização em corredores frio e quente?",
+                        "o": [
+                              "Misturar o ar de insuflamento e o ar de retorno",
+                              "Separar fluxos de ar para reduzir recirculação e melhorar a eficiência térmica",
+                              "Aumentar o ruído da sala",
+                              "Eliminar todos os sensores ambientais"
+                        ],
+                        "a": 1,
+                        "e": "A separação direciona ar frio às entradas dos equipamentos e conduz o ar aquecido para retorno, reduzindo mistura e pontos quentes quando o projeto e a contenção são adequados."
+                  },
+                  {
+                        "q": "Por que se adota redundância em sistemas críticos?",
+                        "o": [
+                              "Para aumentar o número de alarmes sem necessidade",
+                              "Para manter a função quando um componente ou caminho previsto fica indisponível",
+                              "Para dispensar testes e manutenção",
+                              "Para duplicar todos os custos sem análise"
+                        ],
+                        "a": 1,
+                        "e": "Redundância oferece componentes ou caminhos alternativos para tolerar falhas ou manutenção. Ela só é efetiva quando o desenho, a capacidade, a independência e os testes são adequados."
+                  },
+                  {
+                        "q": "O que é um ponto único de falha?",
+                        "o": [
+                              "Um item cuja falha pode interromper uma função sem alternativa disponível",
+                              "Qualquer equipamento que tenha dois cabos",
+                              "Um alarme de baixa prioridade",
+                              "Uma tarefa executada por duas pessoas"
+                        ],
+                        "a": 0,
+                        "e": "Um single point of failure é um componente, caminho ou dependência que, ao falhar, pode derrubar o serviço porque não existe alternativa funcional naquele cenário."
+                  },
+                  {
+                        "q": "Como é calculado o PUE em sua forma básica?",
+                        "o": [
+                              "Energia de TI dividida pela energia total da instalação",
+                              "Energia total da instalação dividida pela energia dos equipamentos de TI",
+                              "Temperatura dividida pela umidade",
+                              "Número de racks dividido pelo número de servidores"
+                        ],
+                        "a": 1,
+                        "e": "PUE é a razão entre a energia total usada pelo data center e a energia usada pela carga de TI, considerando limites de medição consistentes."
+                  },
+                  {
+                        "q": "Mantidas medições comparáveis, o que indica um PUE mais próximo de 1?",
+                        "o": [
+                              "Maior parcela de energia de suporte em relação à TI",
+                              "Menor eficiência energética obrigatoriamente",
+                              "Menor sobrecarga de energia não destinada diretamente à TI",
+                              "Ausência de qualquer consumo elétrico"
+                        ],
+                        "a": 2,
+                        "e": "Como a razão mínima teórica se aproxima de 1, valores menores geralmente indicam menor energia adicional para refrigeração, distribuição e outros suportes. Comparações exigem o mesmo escopo e condições."
+                  },
+                  {
+                        "q": "Quais variáveis são exemplos de monitoramento ambiental básico na sala de dados?",
+                        "o": [
+                              "Temperatura e umidade",
+                              "Salário e férias",
+                              "Somente velocidade da internet pública",
+                              "Apenas quantidade de usuários"
+                        ],
+                        "a": 0,
+                        "e": "Temperatura e umidade são variáveis ambientais fundamentais. Projetos também podem acompanhar pressão diferencial, partículas, água, fumaça e outros riscos."
+                  },
+                  {
+                        "q": "Qual afirmação descreve melhor a função geral de unidades CRAC ou CRAH?",
+                        "o": [
+                              "Gerenciar exclusivamente senhas de administradores",
+                              "Remover calor e movimentar ar conforme o projeto de climatização",
+                              "Distribuir endereços MAC",
+                              "Substituir o sistema de detecção de incêndio"
+                        ],
+                        "a": 1,
+                        "e": "Essas unidades participam do condicionamento e da circulação do ar para controlar a temperatura. A forma de rejeição de calor e os componentes variam conforme a solução."
+                  },
+                  {
+                        "q": "Em operação, disponibilidade significa principalmente:",
+                        "o": [
+                              "O serviço estar acessível e apto a cumprir sua função quando necessário",
+                              "O prédio permanecer aberto ao público",
+                              "Todos os equipamentos estarem sempre com 100% de uso",
+                              "Nunca realizar manutenção"
+                        ],
+                        "a": 0,
+                        "e": "Disponibilidade relaciona-se à capacidade de um serviço ou recurso estar utilizável quando requerido, dentro de critérios definidos. Manutenção planejada faz parte de sua gestão."
+                  },
+                  {
+                        "q": "Qual é o propósito do planejamento de capacidade?",
+                        "o": [
+                              "Esperar que o limite seja ultrapassado para agir",
+                              "Antecipar demanda e garantir recursos adequados sem comprometer margens e resiliência",
+                              "Eliminar históricos de consumo",
+                              "Dimensionar somente pelo espaço livre"
+                        ],
+                        "a": 1,
+                        "e": "Planejamento de capacidade acompanha tendências de energia, refrigeração, espaço, portas, desempenho e outros recursos para agir antes de esgotamentos ou perda de redundância."
+                  },
+                  {
+                        "q": "Por que etiquetas consistentes em ativos, cabos e portas são importantes?",
+                        "o": [
+                              "Apenas por estética",
+                              "Para reduzir ambiguidades, apoiar rastreabilidade e diminuir erros em intervenções",
+                              "Para substituir diagramas e registros",
+                              "Para permitir que qualquer pessoa desconecte equipamentos"
+                        ],
+                        "a": 1,
+                        "e": "Identificação clara ajuda a confirmar o alvo correto, relacionar documentação e ativo físico e registrar mudanças. Ela complementa, não substitui, autorização e procedimento."
+                  },
+                  {
+                        "q": "Qual princípio deve orientar o acesso físico às áreas críticas?",
+                        "o": [
+                              "Livre acesso para acelerar visitas",
+                              "Privilégio mínimo, autenticação, registro e autorização conforme a função",
+                              "Compartilhamento de crachás entre turnos",
+                              "Portas mantidas abertas em horário comercial"
+                        ],
+                        "a": 1,
+                        "e": "Áreas críticas exigem acesso limitado ao necessário, com identidade verificável, autorização, registro e acompanhamento de visitantes conforme a política local."
+                  },
+                  {
+                        "q": "Qual alternativa diferencia corretamente backup de dados e alimentação por UPS?",
+                        "o": [
+                              "São exatamente a mesma proteção",
+                              "Backup permite recuperar dados; UPS mantém energia por um período. Uma proteção não substitui a outra",
+                              "UPS recupera arquivos apagados e backup liga geradores",
+                              "Nenhuma delas precisa ser testada"
+                        ],
+                        "a": 1,
+                        "e": "Backup trata recuperabilidade de informações. UPS trata continuidade elétrica de curto prazo e qualidade de energia. São controles diferentes e ambos precisam de estratégia e testes."
+                  },
+                  {
+                        "q": "Sobre piso elevado em data centers, qual afirmação é correta?",
+                        "o": [
+                              "É obrigatório em todo data center moderno",
+                              "Pode ser parte do projeto, mas não é requisito universal; cabeamento e ar também podem usar outras soluções",
+                              "Elimina a necessidade de detecção de água",
+                              "Garante sozinho a disponibilidade do ambiente"
+                        ],
+                        "a": 1,
+                        "e": "Piso elevado é uma solução possível para distribuição de ar, energia ou cabos, mas existem projetos sem ele. A escolha depende da arquitetura, dos riscos e da manutenção."
+                  }
+            ]
+      },
+      {
+            "id": "projetos-eletricos",
+            "title": "Projetos Elétricos",
+            "description": "Grandezas, proteção, distribuição, diagramas, capacidade e segurança de projeto.",
+            "questions": [
+                  {
+                        "q": "O que representa a tensão elétrica?",
+                        "o": [
+                              "A diferença de potencial entre dois pontos",
+                              "A quantidade de energia consumida em um mês",
+                              "A resistência mecânica do cabo",
+                              "A frequência de rotação do gerador"
+                        ],
+                        "a": 0,
+                        "e": "Tensão é a diferença de potencial que pode impulsionar corrente em um circuito. Sua medição e interpretação exigem referência e instrumento adequados."
+                  },
+                  {
+                        "q": "Em um circuito resistivo simples, como tensão, corrente e resistência se relacionam?",
+                        "o": [
+                              "Pela Lei de Ohm: V = R × I",
+                              "Pela fórmula kWh = kW ÷ tempo",
+                              "Pela relação frequência = tensão × corrente",
+                              "Não existe relação entre elas"
+                        ],
+                        "a": 0,
+                        "e": "A Lei de Ohm descreve a relação em elementos resistivos. Sistemas reais podem incluir reatância e comportamento não linear."
+                  },
+                  {
+                        "q": "Em corrente contínua ou carga monofásica ideal com fator de potência unitário, a potência ativa pode ser estimada por:",
+                        "o": [
+                              "P = V × I",
+                              "P = V ÷ I",
+                              "P = I ÷ V",
+                              "P = V + I"
+                        ],
+                        "a": 0,
+                        "e": "Em circuitos CA reais, fator de potência, número de fases e forma de onda também precisam entrar no cálculo."
+                  },
+                  {
+                        "q": "Qual é a diferença entre kW e kWh?",
+                        "o": [
+                              "kW mede potência; kWh mede energia acumulada ao longo do tempo",
+                              "São unidades idênticas",
+                              "kWh mede corrente e kW mede tensão",
+                              "kW mede somente potência reativa"
+                        ],
+                        "a": 0,
+                        "e": "Uma carga de 10 kW operando por duas horas, em condição constante, consome 20 kWh."
+                  },
+                  {
+                        "q": "Por que sistemas trifásicos são comuns em instalações de maior potência?",
+                        "o": [
+                              "Permitem distribuição eficiente e alimentação equilibrada de cargas com potência mais uniforme",
+                              "Eliminam a necessidade de proteção",
+                              "Usam somente um condutor",
+                              "Impedem qualquer desequilíbrio"
+                        ],
+                        "a": 0,
+                        "e": "Sistemas trifásicos suportam cargas elevadas e motores com eficiência. Projeto, sequência e equilíbrio das fases continuam essenciais."
+                  },
+                  {
+                        "q": "Qual é a função principal de um disjuntor?",
+                        "o": [
+                              "Interromper o circuito diante de condições previstas de sobrecorrente e permitir seccionamento conforme seu projeto",
+                              "Regular a temperatura do rack",
+                              "Corrigir automaticamente qualquer fator de potência",
+                              "Armazenar energia como uma bateria"
+                        ],
+                        "a": 0,
+                        "e": "A proteção depende de corrente nominal, curva, capacidade de interrupção, coordenação e instalação corretas."
+                  },
+                  {
+                        "q": "Qual é a finalidade do aterramento de proteção?",
+                        "o": [
+                              "Oferecer referência e caminho planejado para correntes de falha, apoiando a atuação das proteções e a segurança",
+                              "Conduzir permanentemente toda corrente da carga",
+                              "Substituir o condutor neutro em qualquer circuito",
+                              "Aumentar a potência nominal do gerador"
+                        ],
+                        "a": 0,
+                        "e": "Aterramento, equipotencialização e proteção devem formar um sistema coerente. Não se deve improvisar conexões."
+                  },
+                  {
+                        "q": "O que o fator de potência expressa?",
+                        "o": [
+                              "A relação entre potência ativa e potência aparente em uma carga CA",
+                              "A relação entre energia e temperatura",
+                              "A frequência dividida pela tensão",
+                              "A autonomia exata da bateria"
+                        ],
+                        "a": 0,
+                        "e": "Fator de potência baixo aumenta corrente para a mesma potência útil e pode elevar perdas e ocupação de capacidade."
+                  },
+                  {
+                        "q": "Para que serve um diagrama unifilar?",
+                        "o": [
+                              "Representar de forma simplificada fontes, caminhos, proteções, barramentos e cargas",
+                              "Mostrar apenas a planta arquitetônica",
+                              "Registrar senhas dos relés",
+                              "Substituir inspeções e identificação física"
+                        ],
+                        "a": 0,
+                        "e": "O unifilar ajuda a compreender a distribuição e a isolar dependências, mas precisa estar atualizado e ser usado por pessoal competente."
+                  },
+                  {
+                        "q": "Por que a queda de tensão precisa ser controlada?",
+                        "o": [
+                              "Porque tensão insuficiente na carga pode causar mau funcionamento, perdas e aquecimento",
+                              "Porque ela sempre aumenta a frequência",
+                              "Porque elimina sobrecorrentes",
+                              "Porque substitui a seletividade"
+                        ],
+                        "a": 0,
+                        "e": "Comprimento, corrente, seção, material e fator de potência influenciam a queda. Limites dependem do projeto e da aplicação."
+                  },
+                  {
+                        "q": "Qual é a função de um quadro ou switchgear de distribuição?",
+                        "o": [
+                              "Receber, seccionar, proteger e distribuir energia por circuitos conforme o projeto",
+                              "Armazenar energia como bateria",
+                              "Converter logs em alarmes",
+                              "Resfriar diretamente os servidores"
+                        ],
+                        "a": 0,
+                        "e": "O conjunto inclui barramentos, disjuntores, medição, controle e intertravamentos adequados ao nível de tensão e corrente de falta."
+                  },
+                  {
+                        "q": "Por que o diagrama unifilar deve estar atualizado?",
+                        "o": [
+                              "Para mostrar fontes, caminhos, proteções e dependências reais antes de manobras e análises",
+                              "Somente para atender estética documental",
+                              "Para substituir etiquetas físicas",
+                              "Para permitir mudanças sem autorização"
+                        ],
+                        "a": 0,
+                        "e": "Diferença entre documento e instalação aumenta risco de atuar no circuito errado ou desconhecer dependências compartilhadas."
+                  },
+                  {
+                        "q": "O que uma PDU de data center normalmente faz?",
+                        "o": [
+                              "Distribui energia a cargas de TI e pode incluir transformação, proteção e medição conforme o modelo",
+                              "Roteia pacotes IP",
+                              "Armazena combustível",
+                              "Substitui a UPS"
+                        ],
+                        "a": 0,
+                        "e": "A arquitetura pode usar PDUs, RPPs e busways. Funções e limites precisam ser confirmados no projeto específico."
+                  },
+                  {
+                        "q": "Por que circuitos e dispositivos precisam de identificação consistente?",
+                        "o": [
+                              "Para confirmar o alvo, a origem e as dependências e reduzir erros durante operação",
+                              "Apenas para melhorar aparência",
+                              "Para substituir autorização",
+                              "Para permitir desconexão por qualquer visitante"
+                        ],
+                        "a": 0,
+                        "e": "Etiquetas devem corresponder ao unifilar, painel, rack e sistema de registros. Ambiguidade é condição para interromper a atividade."
+                  },
+                  {
+                        "q": "O que representa capacidade disponível em um painel?",
+                        "o": [
+                              "A margem elétrica e física utilizável após considerar limites, diversidade, proteção, redundância e projeto",
+                              "Somente espaços vazios na tampa",
+                              "A soma das correntes nominais sem contexto",
+                              "Uma autorização automática para novas cargas"
+                        ],
+                        "a": 0,
+                        "e": "Adicionar carga exige análise do caminho completo, incluindo fonte, cabos, proteção, refrigeração e condição de contingência."
+                  },
+                  {
+                        "q": "Para que servem intertravamentos em conjuntos elétricos?",
+                        "o": [
+                              "Impedir sequências ou estados incompatíveis e reduzir risco de manobra incorreta",
+                              "Aumentar a corrente de curto",
+                              "Substituir todos os procedimentos",
+                              "Permitir fechamento simultâneo de qualquer fonte"
+                        ],
+                        "a": 0,
+                        "e": "Intertravamentos podem ser mecânicos, elétricos ou lógicos. Não devem ser burlados sem processo formal de engenharia."
+                  },
+                  {
+                        "q": "Como equipamentos de TI com duas fontes devem receber energia para obter redundância real?",
+                        "o": [
+                              "De caminhos A e B independentes conforme o projeto, não de duas tomadas do mesmo ponto único",
+                              "De duas tomadas do mesmo PDU",
+                              "De um único cabo com adaptador",
+                              "Somente do circuito de iluminação"
+                        ],
+                        "a": 0,
+                        "e": "Duas fontes não garantem resiliência se convergem na mesma proteção, PDU, UPS ou fonte a montante."
+                  },
+                  {
+                        "q": "O que indica um circuito derivado próximo da corrente limite por longo período?",
+                        "o": [
+                              "Risco de perda de margem, aquecimento e atuação, exigindo análise de capacidade e redistribuição",
+                              "Que há capacidade infinita",
+                              "Que o disjuntor pode ser aumentado sem projeto",
+                              "Que a medição deve ser ocultada"
+                        ],
+                        "a": 0,
+                        "e": "Limites contínuos e fatores de projeto precisam ser respeitados. A correção considera cabos, proteção, conectores e carga."
+                  },
+                  {
+                        "q": "Qual é a finalidade da proteção contra falta à terra?",
+                        "o": [
+                              "Detectar correntes indevidas para terra e atuar conforme a sensibilidade e coordenação do sistema",
+                              "Aumentar a potência ativa",
+                              "Sincronizar geradores",
+                              "Medir nível de combustível"
+                        ],
+                        "a": 0,
+                        "e": "O método varia conforme esquema de aterramento e criticidade. Alarmes ou disparos precisam ser investigados por equipe competente."
+                  },
+                  {
+                        "q": "O que o monitoramento de circuitos derivados pode revelar?",
+                        "o": [
+                              "Carga, desequilíbrio, aproximação de limite, eventos e tendências por circuito",
+                              "Conteúdo dos dados dos servidores",
+                              "A causa raiz de todo incidente sem análise",
+                              "A localização de qualquer pessoa"
+                        ],
+                        "a": 0,
+                        "e": "Medição granular melhora capacidade e detecção, mas sensores, relações de transformação e nomenclatura precisam estar corretos."
+                  }
+            ]
+      },
+      {
+            "id": "projetos-mecanicos",
+            "title": "Projetos Mecânicos",
+            "description": "Termodinâmica, ciclo frigorífico, água gelada, equipamentos e rejeição de calor.",
+            "questions": [
+                  {
+                        "q": "Qual é a diferença entre calor e temperatura?",
+                        "o": [
+                              "Calor é energia em transferência por diferença de temperatura; temperatura indica o estado térmico",
+                              "São exatamente a mesma grandeza",
+                              "Temperatura é medida em watts",
+                              "Calor existe somente em líquidos"
+                        ],
+                        "a": 0,
+                        "e": "A temperatura orienta o sentido espontâneo da transferência de calor, mas não representa sozinha a quantidade de energia transferida."
+                  },
+                  {
+                        "q": "O que é calor sensível?",
+                        "o": [
+                              "Energia que altera a temperatura sem mudança de fase",
+                              "Energia usada exclusivamente para evaporar água",
+                              "Calor que não pode ser medido",
+                              "Potência elétrica do compressor"
+                        ],
+                        "a": 0,
+                        "e": "Em resfriamento de data center, grande parte da carga de TI é sensível porque aparece como aumento da temperatura do ar."
+                  },
+                  {
+                        "q": "O que é calor latente?",
+                        "o": [
+                              "Energia associada a mudança de fase, como condensação ou evaporação, sem variar a temperatura durante a transição ideal",
+                              "Energia que apenas aumenta a temperatura",
+                              "Perda elétrica no cabo",
+                              "Variação de pressão do ventilador"
+                        ],
+                        "a": 0,
+                        "e": "Controle de umidade envolve carga latente. Remover vapor por condensação exige energia além do resfriamento sensível."
+                  },
+                  {
+                        "q": "No evaporador de um sistema frigorífico, o refrigerante normalmente:",
+                        "o": [
+                              "Absorve calor ao evaporar em baixa pressão",
+                              "Rejeita calor ao condensar",
+                              "Aumenta a pressão sem trabalho",
+                              "Filtra partículas do ar"
+                        ],
+                        "a": 0,
+                        "e": "O evaporador recebe calor do ar ou da água. O controle garante evaporação e retorno seguro ao compressor."
+                  },
+                  {
+                        "q": "No condensador, o refrigerante normalmente:",
+                        "o": [
+                              "Rejeita calor ao meio externo e condensa em pressão mais alta",
+                              "Absorve calor da sala e evapora",
+                              "Reduz pressão sem rejeitar energia",
+                              "Mistura-se à água de consumo"
+                        ],
+                        "a": 0,
+                        "e": "O condensador precisa rejeitar o calor removido mais o trabalho do compressor."
+                  },
+                  {
+                        "q": "Qual é a função do compressor no ciclo de compressão de vapor?",
+                        "o": [
+                              "Elevar a pressão e promover a circulação do refrigerante",
+                              "Reduzir a pressão por estrangulamento",
+                              "Filtrar o ar do corredor frio",
+                              "Medir a temperatura de entrada do rack"
+                        ],
+                        "a": 0,
+                        "e": "O compressor recebe vapor de baixa pressão e fornece trabalho para que o ciclo transfira calor a uma fonte mais quente."
+                  },
+                  {
+                        "q": "Qual é a função do dispositivo de expansão?",
+                        "o": [
+                              "Reduzir a pressão e controlar o fluxo de refrigerante para o evaporador",
+                              "Comprimir vapor",
+                              "Rejeitar calor no condensador",
+                              "Aumentar a umidade da sala"
+                        ],
+                        "a": 0,
+                        "e": "A expansão cria condição de baixa pressão para evaporação. Válvulas eletrônicas ou termostáticas modulam conforme o sistema."
+                  },
+                  {
+                        "q": "O que é ponto de orvalho?",
+                        "o": [
+                              "A temperatura em que o ar, resfriado a pressão aproximadamente constante, começa a condensar vapor",
+                              "A temperatura máxima do rack",
+                              "A diferença entre ida e retorno de água",
+                              "A pressão mínima do compressor"
+                        ],
+                        "a": 0,
+                        "e": "Superfícies abaixo do ponto de orvalho podem formar condensação, mesmo quando a temperatura ambiente parece normal."
+                  },
+                  {
+                        "q": "Uma tonelada de refrigeração é uma unidade de:",
+                        "o": [
+                              "Capacidade térmica, não de massa do equipamento",
+                              "Peso do chiller",
+                              "Consumo de água por hora",
+                              "Pressão de sucção"
+                        ],
+                        "a": 0,
+                        "e": "A unidade pode ser convertida em kW térmicos. Potência térmica removida não é igual ao consumo elétrico do equipamento."
+                  },
+                  {
+                        "q": "Quais parcelas entram na carga térmica de uma sala de dados?",
+                        "o": [
+                              "TI, perdas elétricas, pessoas, iluminação, envoltória, infiltração e outras fontes presentes",
+                              "Somente a temperatura externa",
+                              "Apenas os servidores",
+                              "Somente a potência do chiller"
+                        ],
+                        "a": 0,
+                        "e": "Quase toda energia elétrica consumida dentro da sala termina como calor, mas limites de análise e simultaneidade precisam ser definidos."
+                  },
+                  {
+                        "q": "Qual é uma distinção comum entre CRAC e CRAH?",
+                        "o": [
+                              "CRAC costuma incluir circuito de expansão direta; CRAH usa normalmente serpentina de água gelada",
+                              "CRAH sempre possui compressor interno",
+                              "CRAC não movimenta ar",
+                              "São termos legalmente idênticos em qualquer fabricante"
+                        ],
+                        "a": 0,
+                        "e": "A nomenclatura comercial pode variar. O operador deve confirmar o diagrama e as fontes reais de resfriamento."
+                  },
+                  {
+                        "q": "Qual é a função de um chiller?",
+                        "o": [
+                              "Retirar calor de um circuito de água e rejeitá-lo por um sistema de condensação",
+                              "Insuflar diretamente ar em qualquer rack",
+                              "Gerar energia elétrica",
+                              "Filtrar logs do BMS"
+                        ],
+                        "a": 0,
+                        "e": "Chillers podem ser resfriados a ar ou a água e usar diferentes compressores e controles."
+                  },
+                  {
+                        "q": "Em sistema de água gelada, qual é o papel da bomba?",
+                        "o": [
+                              "Fornecer vazão e pressão para transportar água entre chiller, tubulação e serpentinas",
+                              "Comprimir refrigerante dentro de todo CRAH",
+                              "Reduzir umidade sem serpentinas",
+                              "Gerar ar comprimido"
+                        ],
+                        "a": 0,
+                        "e": "Vazão inadequada reduz capacidade e pode acionar proteções. Bombas, válvulas e diferencial de pressão formam o circuito."
+                  },
+                  {
+                        "q": "Qual é a função de uma torre de resfriamento?",
+                        "o": [
+                              "Rejeitar calor da água do condensador para o ambiente, principalmente por evaporação",
+                              "Resfriar diretamente servidores com água potável",
+                              "Substituir o evaporador do chiller",
+                              "Armazenar combustível"
+                        ],
+                        "a": 0,
+                        "e": "Torres exigem tratamento de água, ventiladores, bombas, controle microbiológico e avaliação climática."
+                  },
+                  {
+                        "q": "Para que serve uma válvula de controle em serpentina de água gelada?",
+                        "o": [
+                              "Modular vazão para ajustar a capacidade à demanda",
+                              "Aumentar a pressão do refrigerante",
+                              "Filtrar o ar",
+                              "Desligar o gerador"
+                        ],
+                        "a": 0,
+                        "e": "Válvulas e atuadores precisam de faixa, autoridade e feedback adequados para evitar instabilidade e baixo delta T."
+                  },
+                  {
+                        "q": "Por que vazamento de refrigerante requer resposta especializada?",
+                        "o": [
+                              "Pode reduzir capacidade, danificar o sistema, afetar segurança e ambiente e exigir detecção e reparo regulamentados",
+                              "Porque refrigerante é sempre inofensivo",
+                              "Apenas por perda financeira",
+                              "Porque aumenta a umidade do ar por definição"
+                        ],
+                        "a": 0,
+                        "e": "Não se deve procurar vazamento com método improvisado. Tipo de fluido, ventilação e exposição definem o risco."
+                  },
+                  {
+                        "q": "O que é economização pelo lado da água?",
+                        "o": [
+                              "Usar condições externas para resfriar água parcial ou totalmente com menor uso do compressor",
+                              "Aumentar permanentemente a temperatura da sala",
+                              "Desligar bombas",
+                              "Misturar água do condensador e água de TI sem trocador"
+                        ],
+                        "a": 0,
+                        "e": "A arquitetura pode usar torre e trocador. Limites climáticos, qualidade da água e controles são essenciais."
+                  },
+                  {
+                        "q": "Qual é a função de um trocador de calor?",
+                        "o": [
+                              "Transferir energia entre fluidos separados por uma superfície",
+                              "Misturar obrigatoriamente os fluidos",
+                              "Gerar frio sem rejeitar calor",
+                              "Substituir qualquer bomba"
+                        ],
+                        "a": 0,
+                        "e": "Placas, tubos ou serpentinas permitem separar circuitos e suas pressões, fluidos e qualidades."
+                  },
+                  {
+                        "q": "Qual é a função de uma CDU em refrigeração líquida?",
+                        "o": [
+                              "Controlar e separar circuitos de fluido, pressão, temperatura e vazão entre instalação e equipamentos",
+                              "Distribuir energia aos racks",
+                              "Gerar endereços IP",
+                              "Substituir o chiller em qualquer projeto"
+                        ],
+                        "a": 0,
+                        "e": "Cooling Distribution Units podem incluir trocador, bombas, filtros, controles e detecção de vazamentos."
+                  },
+                  {
+                        "q": "O que uma arquitetura redundante de chillers precisa incluir além da máquina?",
+                        "o": [
+                              "Bombas, torres ou condensadores, energia, controles, tubulações e válvulas compatíveis com o cenário de falha",
+                              "Somente outro compressor em estoque",
+                              "Dois nomes diferentes no BMS",
+                              "Uma unidade desligada sem teste"
+                        ],
+                        "a": 0,
+                        "e": "A capacidade alternativa deve chegar efetivamente às serpentinas e rejeitar calor sob as condições de projeto."
+                  }
+            ]
+      },
+      {
+            "id": "automacao-integracao",
+            "title": "Automação e Integração",
+            "description": "Sensores, controles, BMS, protocolos, pontos, alarmes e interoperabilidade.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente sensor?",
+                        "o": [
+                              "elemento que detecta uma grandeza física e produz uma resposta relacionada",
+                              "dispositivo que converte uma forma de energia ou grandeza em outra",
+                              "proximidade entre o valor indicado e o valor de referência",
+                              "comparação documentada com referência rastreável e ajuste quando aplicável"
+                        ],
+                        "a": 0,
+                        "e": "sensor: elemento que detecta uma grandeza física e produz uma resposta relacionada Na prática, fornece ao controle uma representação mensurável de temperatura, pressão, nível, vazão ou outra variável"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente transdutor?",
+                        "o": [
+                              "dispositivo que converte uma forma de energia ou grandeza em outra",
+                              "equipamento que condiciona e envia o valor medido em um padrão de sinal",
+                              "capacidade de repetir resultados próximos nas mesmas condições",
+                              "padrão analógico em corrente cujo zero vivo ajuda a detectar circuito aberto"
+                        ],
+                        "a": 0,
+                        "e": "transdutor: dispositivo que converte uma forma de energia ou grandeza em outra Na prática, transforma o fenômeno medido em sinal utilizável por instrumentos e controladores"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente transmissor?",
+                        "o": [
+                              "equipamento que condiciona e envia o valor medido em um padrão de sinal",
+                              "proximidade entre o valor indicado e o valor de referência",
+                              "limites inferior e superior de medição e a diferença entre eles",
+                              "sensor resistivo cuja resistência varia de modo conhecido com a temperatura"
+                        ],
+                        "a": 0,
+                        "e": "transmissor: equipamento que condiciona e envia o valor medido em um padrão de sinal Na prática, leva a medição do campo até o sistema de controle com faixa e diagnóstico definidos"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente exatidão?",
+                        "o": [
+                              "proximidade entre o valor indicado e o valor de referência",
+                              "capacidade de repetir resultados próximos nas mesmas condições",
+                              "comparação documentada com referência rastreável e ajuste quando aplicável",
+                              "diferença de pressão entre dois pontos"
+                        ],
+                        "a": 0,
+                        "e": "exatidão: proximidade entre o valor indicado e o valor de referência Na prática, determina quanto a leitura pode representar corretamente a grandeza real"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente precisão?",
+                        "o": [
+                              "capacidade de repetir resultados próximos nas mesmas condições",
+                              "limites inferior e superior de medição e a diferença entre eles",
+                              "padrão analógico em corrente cujo zero vivo ajuda a detectar circuito aberto",
+                              "elemento que detecta uma grandeza física e produz uma resposta relacionada"
+                        ],
+                        "a": 0,
+                        "e": "precisão: capacidade de repetir resultados próximos nas mesmas condições Na prática, ajuda a distinguir dispersão da medição de um erro sistemático de calibração"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente faixa e span?",
+                        "o": [
+                              "limites inferior e superior de medição e a diferença entre eles",
+                              "comparação documentada com referência rastreável e ajuste quando aplicável",
+                              "sensor resistivo cuja resistência varia de modo conhecido com a temperatura",
+                              "dispositivo que converte uma forma de energia ou grandeza em outra"
+                        ],
+                        "a": 0,
+                        "e": "faixa e span: limites inferior e superior de medição e a diferença entre eles Na prática, garantem que o instrumento trabalhe dentro da capacidade adequada ao processo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente calibração?",
+                        "o": [
+                              "comparação documentada com referência rastreável e ajuste quando aplicável",
+                              "padrão analógico em corrente cujo zero vivo ajuda a detectar circuito aberto",
+                              "diferença de pressão entre dois pontos",
+                              "equipamento que condiciona e envia o valor medido em um padrão de sinal"
+                        ],
+                        "a": 0,
+                        "e": "calibração: comparação documentada com referência rastreável e ajuste quando aplicável Na prática, confirma erro, deriva e confiança do ponto antes de usá-lo em alarmes e controle"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente sinal 4–20 mA?",
+                        "o": [
+                              "padrão analógico em corrente cujo zero vivo ajuda a detectar circuito aberto",
+                              "sensor resistivo cuja resistência varia de modo conhecido com a temperatura",
+                              "elemento que detecta uma grandeza física e produz uma resposta relacionada",
+                              "proximidade entre o valor indicado e o valor de referência"
+                        ],
+                        "a": 0,
+                        "e": "sinal 4–20 mA: padrão analógico em corrente cujo zero vivo ajuda a detectar circuito aberto Na prática, transporta medições de campo com boa imunidade a quedas de tensão em distâncias usuais"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente RTD?",
+                        "o": [
+                              "sensor resistivo cuja resistência varia de modo conhecido com a temperatura",
+                              "diferença de pressão entre dois pontos",
+                              "dispositivo que converte uma forma de energia ou grandeza em outra",
+                              "capacidade de repetir resultados próximos nas mesmas condições"
+                        ],
+                        "a": 0,
+                        "e": "RTD: sensor resistivo cuja resistência varia de modo conhecido com a temperatura Na prática, mede temperatura com estabilidade quando ligação, corrente e compensação são corretas"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente pressão diferencial?",
+                        "o": [
+                              "diferença de pressão entre dois pontos",
+                              "elemento que detecta uma grandeza física e produz uma resposta relacionada",
+                              "equipamento que condiciona e envia o valor medido em um padrão de sinal",
+                              "limites inferior e superior de medição e a diferença entre eles"
+                        ],
+                        "a": 0,
+                        "e": "pressão diferencial: diferença de pressão entre dois pontos Na prática, monitora filtros, fluxo em salas, serpentinas e condição de bombas ou ventiladores"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente BACnet?",
+                        "o": [
+                              "protocolo orientado a objetos para automação e controle predial",
+                              "protocolo de comunicação baseado em registros e operações de leitura e escrita",
+                              "arquitetura interoperável com modelo de informação e recursos de segurança",
+                              "identificador único usado para alcançar cada nó dentro do segmento ou protocolo"
+                        ],
+                        "a": 0,
+                        "e": "BACnet: protocolo orientado a objetos para automação e controle predial Na prática, integra controladores, unidades HVAC, medidores e supervisórios com propriedades e serviços padronizados"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente Modbus?",
+                        "o": [
+                              "protocolo de comunicação baseado em registros e operações de leitura e escrita",
+                              "estrutura de gerenciamento de rede baseada em objetos consultados e notificações",
+                              "protocolo leve de mensagens no modelo publicação e assinatura",
+                              "consulta periódica iniciada pelo sistema de supervisão"
+                        ],
+                        "a": 0,
+                        "e": "Modbus: protocolo de comunicação baseado em registros e operações de leitura e escrita Na prática, coleta grandezas e comandos de medidores, UPSs, CLPs e dispositivos em redes seriais ou TCP"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente SNMP?",
+                        "o": [
+                              "estrutura de gerenciamento de rede baseada em objetos consultados e notificações",
+                              "arquitetura interoperável com modelo de informação e recursos de segurança",
+                              "camada física diferencial adequada a redes multiponto em distâncias industriais",
+                              "mensagem enviada pelo dispositivo quando uma condição ocorre"
+                        ],
+                        "a": 0,
+                        "e": "SNMP: estrutura de gerenciamento de rede baseada em objetos consultados e notificações Na prática, monitora estado e contadores de equipamentos IP, com segurança e MIBs apropriadas"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente OPC UA?",
+                        "o": [
+                              "arquitetura interoperável com modelo de informação e recursos de segurança",
+                              "protocolo leve de mensagens no modelo publicação e assinatura",
+                              "identificador único usado para alcançar cada nó dentro do segmento ou protocolo",
+                              "alinhamento dos relógios entre controladores, servidores e dispositivos"
+                        ],
+                        "a": 0,
+                        "e": "OPC UA: arquitetura interoperável com modelo de informação e recursos de segurança Na prática, conecta sistemas industriais e aplicações preservando contexto sem depender de um único fabricante"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente MQTT?",
+                        "o": [
+                              "protocolo leve de mensagens no modelo publicação e assinatura",
+                              "camada física diferencial adequada a redes multiponto em distâncias industriais",
+                              "consulta periódica iniciada pelo sistema de supervisão",
+                              "protocolo orientado a objetos para automação e controle predial"
+                        ],
+                        "a": 0,
+                        "e": "MQTT: protocolo leve de mensagens no modelo publicação e assinatura Na prática, distribui telemetria por tópicos entre dispositivos, broker e consumidores autorizados"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente RS-485?",
+                        "o": [
+                              "camada física diferencial adequada a redes multiponto em distâncias industriais",
+                              "identificador único usado para alcançar cada nó dentro do segmento ou protocolo",
+                              "mensagem enviada pelo dispositivo quando uma condição ocorre",
+                              "protocolo de comunicação baseado em registros e operações de leitura e escrita"
+                        ],
+                        "a": 0,
+                        "e": "RS-485: camada física diferencial adequada a redes multiponto em distâncias industriais Na prática, interliga dispositivos seriais quando topologia, terminação, polaridade e aterramento são corretos"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente endereçamento de dispositivo?",
+                        "o": [
+                              "identificador único usado para alcançar cada nó dentro do segmento ou protocolo",
+                              "consulta periódica iniciada pelo sistema de supervisão",
+                              "alinhamento dos relógios entre controladores, servidores e dispositivos",
+                              "estrutura de gerenciamento de rede baseada em objetos consultados e notificações"
+                        ],
+                        "a": 0,
+                        "e": "endereçamento de dispositivo: identificador único usado para alcançar cada nó dentro do segmento ou protocolo Na prática, evita colisões e associa a leitura ao equipamento certo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente polling?",
+                        "o": [
+                              "consulta periódica iniciada pelo sistema de supervisão",
+                              "mensagem enviada pelo dispositivo quando uma condição ocorre",
+                              "protocolo orientado a objetos para automação e controle predial",
+                              "arquitetura interoperável com modelo de informação e recursos de segurança"
+                        ],
+                        "a": 0,
+                        "e": "polling: consulta periódica iniciada pelo sistema de supervisão Na prática, atualiza pontos em intervalo definido, equilibrando rapidez, carga de rede e capacidade do dispositivo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente notificação por evento?",
+                        "o": [
+                              "mensagem enviada pelo dispositivo quando uma condição ocorre",
+                              "alinhamento dos relógios entre controladores, servidores e dispositivos",
+                              "protocolo de comunicação baseado em registros e operações de leitura e escrita",
+                              "protocolo leve de mensagens no modelo publicação e assinatura"
+                        ],
+                        "a": 0,
+                        "e": "notificação por evento: mensagem enviada pelo dispositivo quando uma condição ocorre Na prática, reduz espera até a próxima consulta, mas exige recepção, confirmação e supervisão da conectividade"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente sincronização de tempo?",
+                        "o": [
+                              "alinhamento dos relógios entre controladores, servidores e dispositivos",
+                              "protocolo orientado a objetos para automação e controle predial",
+                              "estrutura de gerenciamento de rede baseada em objetos consultados e notificações",
+                              "camada física diferencial adequada a redes multiponto em distâncias industriais"
+                        ],
+                        "a": 0,
+                        "e": "sincronização de tempo: alinhamento dos relógios entre controladores, servidores e dispositivos Na prática, permite ordenar alarmes, comandos e tendências de fontes diferentes em uma linha do tempo confiável"
+                  }
+            ]
+      },
+      {
+            "id": "planejamento-obras",
+            "title": "Planejamento de Obras",
+            "description": "Escopo, cronograma, dependências, recursos, riscos e planejamento de curto prazo.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente EAP?",
+                        "o": [
+                              "decomposição hierárquica do escopo em entregas e pacotes de trabalho",
+                              "evento relevante de duração zero que sinaliza decisão ou entrega",
+                              "sequência de atividades que determina a duração mínima do projeto",
+                              "tempo que uma atividade pode atrasar sem afetar marco definido, conforme a rede"
+                        ],
+                        "a": 0,
+                        "e": "EAP: decomposição hierárquica do escopo em entregas e pacotes de trabalho Na prática, organiza o que precisa ser produzido antes de estimar prazo, custo e responsáveis"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de EAP em planejamento e cronogramas?",
+                        "o": [
+                              "organiza o que precisa ser produzido antes de estimar prazo, custo e responsáveis",
+                              "acompanha autorizações, aceite, início e conclusão de fases",
+                              "direciona atenção aos atrasos sem folga que movem a data final",
+                              "apoia priorização sem ser tratada como tempo livre sem controle"
+                        ],
+                        "a": 0,
+                        "e": "EAP: decomposição hierárquica do escopo em entregas e pacotes de trabalho Na prática, organiza o que precisa ser produzido antes de estimar prazo, custo e responsáveis"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente marco?",
+                        "o": [
+                              "evento relevante de duração zero que sinaliza decisão ou entrega",
+                              "relação lógica que condiciona o início ou término de uma atividade a outra",
+                              "versão aprovada usada para comparar execução e mudanças",
+                              "ajuste das datas para respeitar disponibilidade limitada de pessoas ou equipamentos"
+                        ],
+                        "a": 0,
+                        "e": "marco: evento relevante de duração zero que sinaliza decisão ou entrega Na prática, acompanha autorizações, aceite, início e conclusão de fases"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de marco em planejamento e cronogramas?",
+                        "o": [
+                              "acompanha autorizações, aceite, início e conclusão de fases",
+                              "define sequência real e evidencia atrasos que afetam tarefas seguintes",
+                              "distingue desvio real de uma reprogramação ainda não autorizada",
+                              "produz cronograma executável quando várias tarefas disputam o mesmo recurso"
+                        ],
+                        "a": 0,
+                        "e": "marco: evento relevante de duração zero que sinaliza decisão ou entrega Na prática, acompanha autorizações, aceite, início e conclusão de fases"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente dependência?",
+                        "o": [
+                              "relação lógica que condiciona o início ou término de uma atividade a outra",
+                              "sequência de atividades que determina a duração mínima do projeto",
+                              "medida do trabalho realmente concluído segundo critério objetivo",
+                              "tempo protegido para incertezas identificadas ou gerais segundo a estratégia"
+                        ],
+                        "a": 0,
+                        "e": "dependência: relação lógica que condiciona o início ou término de uma atividade a outra Na prática, define sequência real e evidencia atrasos que afetam tarefas seguintes"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de dependência em planejamento e cronogramas?",
+                        "o": [
+                              "define sequência real e evidencia atrasos que afetam tarefas seguintes",
+                              "direciona atenção aos atrasos sem folga que movem a data final",
+                              "evita declarar avanço apenas pelo tempo decorrido ou custo pago",
+                              "absorve variabilidade sem esconder atraso dentro de cada atividade"
+                        ],
+                        "a": 0,
+                        "e": "dependência: relação lógica que condiciona o início ou término de uma atividade a outra Na prática, define sequência real e evidencia atrasos que afetam tarefas seguintes"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente caminho crítico?",
+                        "o": [
+                              "sequência de atividades que determina a duração mínima do projeto",
+                              "versão aprovada usada para comparar execução e mudanças",
+                              "tempo que uma atividade pode atrasar sem afetar marco definido, conforme a rede",
+                              "planejamento detalhado de curto prazo derivado do cronograma principal"
+                        ],
+                        "a": 0,
+                        "e": "caminho crítico: sequência de atividades que determina a duração mínima do projeto Na prática, direciona atenção aos atrasos sem folga que movem a data final"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de caminho crítico em planejamento e cronogramas?",
+                        "o": [
+                              "direciona atenção aos atrasos sem folga que movem a data final",
+                              "distingue desvio real de uma reprogramação ainda não autorizada",
+                              "apoia priorização sem ser tratada como tempo livre sem controle",
+                              "remove restrições e confirma materiais, acessos e equipes antes da execução"
+                        ],
+                        "a": 0,
+                        "e": "caminho crítico: sequência de atividades que determina a duração mínima do projeto Na prática, direciona atenção aos atrasos sem folga que movem a data final"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente baseline de cronograma?",
+                        "o": [
+                              "versão aprovada usada para comparar execução e mudanças",
+                              "medida do trabalho realmente concluído segundo critério objetivo",
+                              "ajuste das datas para respeitar disponibilidade limitada de pessoas ou equipamentos",
+                              "decomposição hierárquica do escopo em entregas e pacotes de trabalho"
+                        ],
+                        "a": 0,
+                        "e": "baseline de cronograma: versão aprovada usada para comparar execução e mudanças Na prática, distingue desvio real de uma reprogramação ainda não autorizada"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de baseline de cronograma em planejamento e cronogramas?",
+                        "o": [
+                              "distingue desvio real de uma reprogramação ainda não autorizada",
+                              "evita declarar avanço apenas pelo tempo decorrido ou custo pago",
+                              "produz cronograma executável quando várias tarefas disputam o mesmo recurso",
+                              "organiza o que precisa ser produzido antes de estimar prazo, custo e responsáveis"
+                        ],
+                        "a": 0,
+                        "e": "baseline de cronograma: versão aprovada usada para comparar execução e mudanças Na prática, distingue desvio real de uma reprogramação ainda não autorizada"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente percentual físico?",
+                        "o": [
+                              "medida do trabalho realmente concluído segundo critério objetivo",
+                              "tempo que uma atividade pode atrasar sem afetar marco definido, conforme a rede",
+                              "tempo protegido para incertezas identificadas ou gerais segundo a estratégia",
+                              "evento relevante de duração zero que sinaliza decisão ou entrega"
+                        ],
+                        "a": 0,
+                        "e": "percentual físico: medida do trabalho realmente concluído segundo critério objetivo Na prática, evita declarar avanço apenas pelo tempo decorrido ou custo pago"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de percentual físico em planejamento e cronogramas?",
+                        "o": [
+                              "evita declarar avanço apenas pelo tempo decorrido ou custo pago",
+                              "apoia priorização sem ser tratada como tempo livre sem controle",
+                              "absorve variabilidade sem esconder atraso dentro de cada atividade",
+                              "acompanha autorizações, aceite, início e conclusão de fases"
+                        ],
+                        "a": 0,
+                        "e": "percentual físico: medida do trabalho realmente concluído segundo critério objetivo Na prática, evita declarar avanço apenas pelo tempo decorrido ou custo pago"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente folga?",
+                        "o": [
+                              "tempo que uma atividade pode atrasar sem afetar marco definido, conforme a rede",
+                              "ajuste das datas para respeitar disponibilidade limitada de pessoas ou equipamentos",
+                              "planejamento detalhado de curto prazo derivado do cronograma principal",
+                              "relação lógica que condiciona o início ou término de uma atividade a outra"
+                        ],
+                        "a": 0,
+                        "e": "folga: tempo que uma atividade pode atrasar sem afetar marco definido, conforme a rede Na prática, apoia priorização sem ser tratada como tempo livre sem controle"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de folga em planejamento e cronogramas?",
+                        "o": [
+                              "apoia priorização sem ser tratada como tempo livre sem controle",
+                              "produz cronograma executável quando várias tarefas disputam o mesmo recurso",
+                              "remove restrições e confirma materiais, acessos e equipes antes da execução",
+                              "define sequência real e evidencia atrasos que afetam tarefas seguintes"
+                        ],
+                        "a": 0,
+                        "e": "folga: tempo que uma atividade pode atrasar sem afetar marco definido, conforme a rede Na prática, apoia priorização sem ser tratada como tempo livre sem controle"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente nivelamento de recursos?",
+                        "o": [
+                              "ajuste das datas para respeitar disponibilidade limitada de pessoas ou equipamentos",
+                              "tempo protegido para incertezas identificadas ou gerais segundo a estratégia",
+                              "decomposição hierárquica do escopo em entregas e pacotes de trabalho",
+                              "sequência de atividades que determina a duração mínima do projeto"
+                        ],
+                        "a": 0,
+                        "e": "nivelamento de recursos: ajuste das datas para respeitar disponibilidade limitada de pessoas ou equipamentos Na prática, produz cronograma executável quando várias tarefas disputam o mesmo recurso"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de nivelamento de recursos em planejamento e cronogramas?",
+                        "o": [
+                              "produz cronograma executável quando várias tarefas disputam o mesmo recurso",
+                              "absorve variabilidade sem esconder atraso dentro de cada atividade",
+                              "organiza o que precisa ser produzido antes de estimar prazo, custo e responsáveis",
+                              "direciona atenção aos atrasos sem folga que movem a data final"
+                        ],
+                        "a": 0,
+                        "e": "nivelamento de recursos: ajuste das datas para respeitar disponibilidade limitada de pessoas ou equipamentos Na prática, produz cronograma executável quando várias tarefas disputam o mesmo recurso"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente reserva de prazo?",
+                        "o": [
+                              "tempo protegido para incertezas identificadas ou gerais segundo a estratégia",
+                              "planejamento detalhado de curto prazo derivado do cronograma principal",
+                              "evento relevante de duração zero que sinaliza decisão ou entrega",
+                              "versão aprovada usada para comparar execução e mudanças"
+                        ],
+                        "a": 0,
+                        "e": "reserva de prazo: tempo protegido para incertezas identificadas ou gerais segundo a estratégia Na prática, absorve variabilidade sem esconder atraso dentro de cada atividade"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de reserva de prazo em planejamento e cronogramas?",
+                        "o": [
+                              "absorve variabilidade sem esconder atraso dentro de cada atividade",
+                              "remove restrições e confirma materiais, acessos e equipes antes da execução",
+                              "acompanha autorizações, aceite, início e conclusão de fases",
+                              "distingue desvio real de uma reprogramação ainda não autorizada"
+                        ],
+                        "a": 0,
+                        "e": "reserva de prazo: tempo protegido para incertezas identificadas ou gerais segundo a estratégia Na prática, absorve variabilidade sem esconder atraso dentro de cada atividade"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente lookahead?",
+                        "o": [
+                              "planejamento detalhado de curto prazo derivado do cronograma principal",
+                              "decomposição hierárquica do escopo em entregas e pacotes de trabalho",
+                              "relação lógica que condiciona o início ou término de uma atividade a outra",
+                              "medida do trabalho realmente concluído segundo critério objetivo"
+                        ],
+                        "a": 0,
+                        "e": "lookahead: planejamento detalhado de curto prazo derivado do cronograma principal Na prática, remove restrições e confirma materiais, acessos e equipes antes da execução"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de lookahead em planejamento e cronogramas?",
+                        "o": [
+                              "remove restrições e confirma materiais, acessos e equipes antes da execução",
+                              "organiza o que precisa ser produzido antes de estimar prazo, custo e responsáveis",
+                              "define sequência real e evidencia atrasos que afetam tarefas seguintes",
+                              "evita declarar avanço apenas pelo tempo decorrido ou custo pago"
+                        ],
+                        "a": 0,
+                        "e": "lookahead: planejamento detalhado de curto prazo derivado do cronograma principal Na prática, remove restrições e confirma materiais, acessos e equipes antes da execução"
+                  }
+            ]
+      },
+      {
+            "id": "qualidade-inspecoes",
+            "title": "Qualidade e Inspeções",
+            "description": "Critérios, evidências, não conformidades, amostragem, ações e eficácia.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente critério de auditoria?",
+                        "o": [
+                              "requisito, política, procedimento ou norma usado como referência da avaliação",
+                              "informação verificável obtida por registro, observação, entrevista ou medição",
+                              "oportunidade identificada sem caracterizar descumprimento formal",
+                              "grau de imparcialidade em relação ao trabalho avaliado"
+                        ],
+                        "a": 0,
+                        "e": "critério de auditoria: requisito, política, procedimento ou norma usado como referência da avaliação Na prática, permite comparar evidência com obrigação clara em vez de opinião pessoal"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de critério de auditoria em qualidade e auditorias?",
+                        "o": [
+                              "permite comparar evidência com obrigação clara em vez de opinião pessoal",
+                              "sustenta conclusão rastreável e distingue fato de interpretação",
+                              "estimula prevenção e maturidade sem alterar indevidamente o resultado da auditoria",
+                              "reduz conflito de interesse e fortalece credibilidade das conclusões"
+                        ],
+                        "a": 0,
+                        "e": "critério de auditoria: requisito, política, procedimento ou norma usado como referência da avaliação Na prática, permite comparar evidência com obrigação clara em vez de opinião pessoal"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente evidência objetiva?",
+                        "o": [
+                              "informação verificável obtida por registro, observação, entrevista ou medição",
+                              "não atendimento comprovado de um requisito aplicável",
+                              "conjunto de medidas com responsáveis, prazos e critérios de conclusão",
+                              "capacidade de seguir requisito, evidência, decisão e ação ao longo dos registros"
+                        ],
+                        "a": 0,
+                        "e": "evidência objetiva: informação verificável obtida por registro, observação, entrevista ou medição Na prática, sustenta conclusão rastreável e distingue fato de interpretação"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de evidência objetiva em qualidade e auditorias?",
+                        "o": [
+                              "sustenta conclusão rastreável e distingue fato de interpretação",
+                              "gera correção e análise proporcional ao risco e à causa",
+                              "transforma achados em correções acompanháveis e verificáveis",
+                              "permite reconstruir por que um item foi aceito ou rejeitado"
+                        ],
+                        "a": 0,
+                        "e": "evidência objetiva: informação verificável obtida por registro, observação, entrevista ou medição Na prática, sustenta conclusão rastreável e distingue fato de interpretação"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente não conformidade?",
+                        "o": [
+                              "não atendimento comprovado de um requisito aplicável",
+                              "oportunidade identificada sem caracterizar descumprimento formal",
+                              "seleção de parte representativa dos itens ou registros para avaliação",
+                              "confirmação de que a ação resolveu a causa e evitou repetição"
+                        ],
+                        "a": 0,
+                        "e": "não conformidade: não atendimento comprovado de um requisito aplicável Na prática, gera correção e análise proporcional ao risco e à causa"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de não conformidade em qualidade e auditorias?",
+                        "o": [
+                              "gera correção e análise proporcional ao risco e à causa",
+                              "estimula prevenção e maturidade sem alterar indevidamente o resultado da auditoria",
+                              "torna a auditoria viável sem afirmar que itens não examinados foram comprovados",
+                              "impede encerrar achados apenas porque uma tarefa foi marcada como concluída"
+                        ],
+                        "a": 0,
+                        "e": "não conformidade: não atendimento comprovado de um requisito aplicável Na prática, gera correção e análise proporcional ao risco e à causa"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente observação de melhoria?",
+                        "o": [
+                              "oportunidade identificada sem caracterizar descumprimento formal",
+                              "conjunto de medidas com responsáveis, prazos e critérios de conclusão",
+                              "grau de imparcialidade em relação ao trabalho avaliado",
+                              "ciclo de medir, analisar, agir e padronizar resultados melhores"
+                        ],
+                        "a": 0,
+                        "e": "observação de melhoria: oportunidade identificada sem caracterizar descumprimento formal Na prática, estimula prevenção e maturidade sem alterar indevidamente o resultado da auditoria"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de observação de melhoria em qualidade e auditorias?",
+                        "o": [
+                              "estimula prevenção e maturidade sem alterar indevidamente o resultado da auditoria",
+                              "transforma achados em correções acompanháveis e verificáveis",
+                              "reduz conflito de interesse e fortalece credibilidade das conclusões",
+                              "incorpora lições de auditorias e incidentes aos processos futuros"
+                        ],
+                        "a": 0,
+                        "e": "observação de melhoria: oportunidade identificada sem caracterizar descumprimento formal Na prática, estimula prevenção e maturidade sem alterar indevidamente o resultado da auditoria"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente plano de ação?",
+                        "o": [
+                              "conjunto de medidas com responsáveis, prazos e critérios de conclusão",
+                              "seleção de parte representativa dos itens ou registros para avaliação",
+                              "capacidade de seguir requisito, evidência, decisão e ação ao longo dos registros",
+                              "requisito, política, procedimento ou norma usado como referência da avaliação"
+                        ],
+                        "a": 0,
+                        "e": "plano de ação: conjunto de medidas com responsáveis, prazos e critérios de conclusão Na prática, transforma achados em correções acompanháveis e verificáveis"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de plano de ação em qualidade e auditorias?",
+                        "o": [
+                              "transforma achados em correções acompanháveis e verificáveis",
+                              "torna a auditoria viável sem afirmar que itens não examinados foram comprovados",
+                              "permite reconstruir por que um item foi aceito ou rejeitado",
+                              "permite comparar evidência com obrigação clara em vez de opinião pessoal"
+                        ],
+                        "a": 0,
+                        "e": "plano de ação: conjunto de medidas com responsáveis, prazos e critérios de conclusão Na prática, transforma achados em correções acompanháveis e verificáveis"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente amostragem?",
+                        "o": [
+                              "seleção de parte representativa dos itens ou registros para avaliação",
+                              "grau de imparcialidade em relação ao trabalho avaliado",
+                              "confirmação de que a ação resolveu a causa e evitou repetição",
+                              "informação verificável obtida por registro, observação, entrevista ou medição"
+                        ],
+                        "a": 0,
+                        "e": "amostragem: seleção de parte representativa dos itens ou registros para avaliação Na prática, torna a auditoria viável sem afirmar que itens não examinados foram comprovados"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de amostragem em qualidade e auditorias?",
+                        "o": [
+                              "torna a auditoria viável sem afirmar que itens não examinados foram comprovados",
+                              "reduz conflito de interesse e fortalece credibilidade das conclusões",
+                              "impede encerrar achados apenas porque uma tarefa foi marcada como concluída",
+                              "sustenta conclusão rastreável e distingue fato de interpretação"
+                        ],
+                        "a": 0,
+                        "e": "amostragem: seleção de parte representativa dos itens ou registros para avaliação Na prática, torna a auditoria viável sem afirmar que itens não examinados foram comprovados"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente independência do auditor?",
+                        "o": [
+                              "grau de imparcialidade em relação ao trabalho avaliado",
+                              "capacidade de seguir requisito, evidência, decisão e ação ao longo dos registros",
+                              "ciclo de medir, analisar, agir e padronizar resultados melhores",
+                              "não atendimento comprovado de um requisito aplicável"
+                        ],
+                        "a": 0,
+                        "e": "independência do auditor: grau de imparcialidade em relação ao trabalho avaliado Na prática, reduz conflito de interesse e fortalece credibilidade das conclusões"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de independência do auditor em qualidade e auditorias?",
+                        "o": [
+                              "reduz conflito de interesse e fortalece credibilidade das conclusões",
+                              "permite reconstruir por que um item foi aceito ou rejeitado",
+                              "incorpora lições de auditorias e incidentes aos processos futuros",
+                              "gera correção e análise proporcional ao risco e à causa"
+                        ],
+                        "a": 0,
+                        "e": "independência do auditor: grau de imparcialidade em relação ao trabalho avaliado Na prática, reduz conflito de interesse e fortalece credibilidade das conclusões"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente rastreabilidade?",
+                        "o": [
+                              "capacidade de seguir requisito, evidência, decisão e ação ao longo dos registros",
+                              "confirmação de que a ação resolveu a causa e evitou repetição",
+                              "requisito, política, procedimento ou norma usado como referência da avaliação",
+                              "oportunidade identificada sem caracterizar descumprimento formal"
+                        ],
+                        "a": 0,
+                        "e": "rastreabilidade: capacidade de seguir requisito, evidência, decisão e ação ao longo dos registros Na prática, permite reconstruir por que um item foi aceito ou rejeitado"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de rastreabilidade em qualidade e auditorias?",
+                        "o": [
+                              "permite reconstruir por que um item foi aceito ou rejeitado",
+                              "impede encerrar achados apenas porque uma tarefa foi marcada como concluída",
+                              "permite comparar evidência com obrigação clara em vez de opinião pessoal",
+                              "estimula prevenção e maturidade sem alterar indevidamente o resultado da auditoria"
+                        ],
+                        "a": 0,
+                        "e": "rastreabilidade: capacidade de seguir requisito, evidência, decisão e ação ao longo dos registros Na prática, permite reconstruir por que um item foi aceito ou rejeitado"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente verificação de eficácia?",
+                        "o": [
+                              "confirmação de que a ação resolveu a causa e evitou repetição",
+                              "ciclo de medir, analisar, agir e padronizar resultados melhores",
+                              "informação verificável obtida por registro, observação, entrevista ou medição",
+                              "conjunto de medidas com responsáveis, prazos e critérios de conclusão"
+                        ],
+                        "a": 0,
+                        "e": "verificação de eficácia: confirmação de que a ação resolveu a causa e evitou repetição Na prática, impede encerrar achados apenas porque uma tarefa foi marcada como concluída"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de verificação de eficácia em qualidade e auditorias?",
+                        "o": [
+                              "impede encerrar achados apenas porque uma tarefa foi marcada como concluída",
+                              "incorpora lições de auditorias e incidentes aos processos futuros",
+                              "sustenta conclusão rastreável e distingue fato de interpretação",
+                              "transforma achados em correções acompanháveis e verificáveis"
+                        ],
+                        "a": 0,
+                        "e": "verificação de eficácia: confirmação de que a ação resolveu a causa e evitou repetição Na prática, impede encerrar achados apenas porque uma tarefa foi marcada como concluída"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente melhoria contínua?",
+                        "o": [
+                              "ciclo de medir, analisar, agir e padronizar resultados melhores",
+                              "requisito, política, procedimento ou norma usado como referência da avaliação",
+                              "não atendimento comprovado de um requisito aplicável",
+                              "seleção de parte representativa dos itens ou registros para avaliação"
+                        ],
+                        "a": 0,
+                        "e": "melhoria contínua: ciclo de medir, analisar, agir e padronizar resultados melhores Na prática, incorpora lições de auditorias e incidentes aos processos futuros"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de melhoria contínua em qualidade e auditorias?",
+                        "o": [
+                              "incorpora lições de auditorias e incidentes aos processos futuros",
+                              "permite comparar evidência com obrigação clara em vez de opinião pessoal",
+                              "gera correção e análise proporcional ao risco e à causa",
+                              "torna a auditoria viável sem afirmar que itens não examinados foram comprovados"
+                        ],
+                        "a": 0,
+                        "e": "melhoria contínua: ciclo de medir, analisar, agir e padronizar resultados melhores Na prática, incorpora lições de auditorias e incidentes aos processos futuros"
+                  }
+            ]
+      },
+      {
+            "id": "comissionamento-niveis",
+            "title": "Comissionamento por Níveis",
+            "description": "Requisitos, projeto, fábrica, campo, checklists, testes funcionais e pendências.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente plano de comissionamento?",
+                        "o": [
+                              "documento que define escopo, fases, papéis, testes, registros e critérios de aceite",
+                              "expectativas funcionais, capacidade, disponibilidade, operação e desempenho do empreendimento",
+                              "avaliação de testabilidade, operação, manutenção e aderência aos requisitos",
+                              "teste de aceitação realizado no local após instalação"
+                        ],
+                        "a": 0,
+                        "e": "plano de comissionamento: documento que define escopo, fases, papéis, testes, registros e critérios de aceite Na prática, coordena disciplinas desde o projeto até a entrega operacional"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de plano de comissionamento em comissionamento por níveis?",
+                        "o": [
+                              "coordena disciplinas desde o projeto até a entrega operacional",
+                              "servem de referência para projeto, testes e aceitação final",
+                              "identifica lacunas antes que sejam incorporadas à construção",
+                              "confirma montagem, interfaces e função nas condições do empreendimento"
+                        ],
+                        "a": 0,
+                        "e": "plano de comissionamento: documento que define escopo, fases, papéis, testes, registros e critérios de aceite Na prática, coordena disciplinas desde o projeto até a entrega operacional"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente requisitos do proprietário?",
+                        "o": [
+                              "expectativas funcionais, capacidade, disponibilidade, operação e desempenho do empreendimento",
+                              "documento que explica critérios, premissas e soluções adotadas para atender aos requisitos",
+                              "verificação de dados e desenhos do fornecedor contra projeto e especificação",
+                              "verificação de instalação, identificação, energia, fluidos e pré-requisitos antes do teste"
+                        ],
+                        "a": 0,
+                        "e": "requisitos do proprietário: expectativas funcionais, capacidade, disponibilidade, operação e desempenho do empreendimento Na prática, servem de referência para projeto, testes e aceitação final"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de requisitos do proprietário em comissionamento por níveis?",
+                        "o": [
+                              "servem de referência para projeto, testes e aceitação final",
+                              "permite revisar se a intenção foi traduzida corretamente em sistemas",
+                              "impede aprovar equipamento incompatível apenas por equivalência comercial",
+                              "evita iniciar ensaio funcional com componentes incompletos ou inseguros"
+                        ],
+                        "a": 0,
+                        "e": "requisitos do proprietário: expectativas funcionais, capacidade, disponibilidade, operação e desempenho do empreendimento Na prática, servem de referência para projeto, testes e aceitação final"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente base de projeto?",
+                        "o": [
+                              "documento que explica critérios, premissas e soluções adotadas para atender aos requisitos",
+                              "avaliação de testabilidade, operação, manutenção e aderência aos requisitos",
+                              "teste de aceitação realizado na fábrica antes do envio",
+                              "ensaio que demonstra resposta do sistema a comandos, cargas, falhas e sequências previstas"
+                        ],
+                        "a": 0,
+                        "e": "base de projeto: documento que explica critérios, premissas e soluções adotadas para atender aos requisitos Na prática, permite revisar se a intenção foi traduzida corretamente em sistemas"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de base de projeto em comissionamento por níveis?",
+                        "o": [
+                              "permite revisar se a intenção foi traduzida corretamente em sistemas",
+                              "identifica lacunas antes que sejam incorporadas à construção",
+                              "verifica fabricação, lógica e desempenho possível em ambiente controlado",
+                              "comprova função e controles, não apenas presença física do equipamento"
+                        ],
+                        "a": 0,
+                        "e": "base de projeto: documento que explica critérios, premissas e soluções adotadas para atender aos requisitos Na prática, permite revisar se a intenção foi traduzida corretamente em sistemas"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente revisão de projeto para comissionamento?",
+                        "o": [
+                              "avaliação de testabilidade, operação, manutenção e aderência aos requisitos",
+                              "verificação de dados e desenhos do fornecedor contra projeto e especificação",
+                              "teste de aceitação realizado no local após instalação",
+                              "registro controlado de desvios, responsáveis, prioridade, prazo e evidência de fechamento"
+                        ],
+                        "a": 0,
+                        "e": "revisão de projeto para comissionamento: avaliação de testabilidade, operação, manutenção e aderência aos requisitos Na prática, identifica lacunas antes que sejam incorporadas à construção"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de revisão de projeto para comissionamento em comissionamento por níveis?",
+                        "o": [
+                              "identifica lacunas antes que sejam incorporadas à construção",
+                              "impede aprovar equipamento incompatível apenas por equivalência comercial",
+                              "confirma montagem, interfaces e função nas condições do empreendimento",
+                              "mantém pendências visíveis até correção e reteste"
+                        ],
+                        "a": 0,
+                        "e": "revisão de projeto para comissionamento: avaliação de testabilidade, operação, manutenção e aderência aos requisitos Na prática, identifica lacunas antes que sejam incorporadas à construção"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente revisão de submittal?",
+                        "o": [
+                              "verificação de dados e desenhos do fornecedor contra projeto e especificação",
+                              "teste de aceitação realizado na fábrica antes do envio",
+                              "verificação de instalação, identificação, energia, fluidos e pré-requisitos antes do teste",
+                              "documento que define escopo, fases, papéis, testes, registros e critérios de aceite"
+                        ],
+                        "a": 0,
+                        "e": "revisão de submittal: verificação de dados e desenhos do fornecedor contra projeto e especificação Na prática, impede aprovar equipamento incompatível apenas por equivalência comercial"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de revisão de submittal em comissionamento por níveis?",
+                        "o": [
+                              "impede aprovar equipamento incompatível apenas por equivalência comercial",
+                              "verifica fabricação, lógica e desempenho possível em ambiente controlado",
+                              "evita iniciar ensaio funcional com componentes incompletos ou inseguros",
+                              "coordena disciplinas desde o projeto até a entrega operacional"
+                        ],
+                        "a": 0,
+                        "e": "revisão de submittal: verificação de dados e desenhos do fornecedor contra projeto e especificação Na prática, impede aprovar equipamento incompatível apenas por equivalência comercial"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente FAT?",
+                        "o": [
+                              "teste de aceitação realizado na fábrica antes do envio",
+                              "teste de aceitação realizado no local após instalação",
+                              "ensaio que demonstra resposta do sistema a comandos, cargas, falhas e sequências previstas",
+                              "expectativas funcionais, capacidade, disponibilidade, operação e desempenho do empreendimento"
+                        ],
+                        "a": 0,
+                        "e": "FAT: teste de aceitação realizado na fábrica antes do envio Na prática, verifica fabricação, lógica e desempenho possível em ambiente controlado"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de FAT em comissionamento por níveis?",
+                        "o": [
+                              "verifica fabricação, lógica e desempenho possível em ambiente controlado",
+                              "confirma montagem, interfaces e função nas condições do empreendimento",
+                              "comprova função e controles, não apenas presença física do equipamento",
+                              "servem de referência para projeto, testes e aceitação final"
+                        ],
+                        "a": 0,
+                        "e": "FAT: teste de aceitação realizado na fábrica antes do envio Na prática, verifica fabricação, lógica e desempenho possível em ambiente controlado"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente SAT?",
+                        "o": [
+                              "teste de aceitação realizado no local após instalação",
+                              "verificação de instalação, identificação, energia, fluidos e pré-requisitos antes do teste",
+                              "registro controlado de desvios, responsáveis, prioridade, prazo e evidência de fechamento",
+                              "documento que explica critérios, premissas e soluções adotadas para atender aos requisitos"
+                        ],
+                        "a": 0,
+                        "e": "SAT: teste de aceitação realizado no local após instalação Na prática, confirma montagem, interfaces e função nas condições do empreendimento"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de SAT em comissionamento por níveis?",
+                        "o": [
+                              "confirma montagem, interfaces e função nas condições do empreendimento",
+                              "evita iniciar ensaio funcional com componentes incompletos ou inseguros",
+                              "mantém pendências visíveis até correção e reteste",
+                              "permite revisar se a intenção foi traduzida corretamente em sistemas"
+                        ],
+                        "a": 0,
+                        "e": "SAT: teste de aceitação realizado no local após instalação Na prática, confirma montagem, interfaces e função nas condições do empreendimento"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente checklist pré-funcional?",
+                        "o": [
+                              "verificação de instalação, identificação, energia, fluidos e pré-requisitos antes do teste",
+                              "ensaio que demonstra resposta do sistema a comandos, cargas, falhas e sequências previstas",
+                              "documento que define escopo, fases, papéis, testes, registros e critérios de aceite",
+                              "avaliação de testabilidade, operação, manutenção e aderência aos requisitos"
+                        ],
+                        "a": 0,
+                        "e": "checklist pré-funcional: verificação de instalação, identificação, energia, fluidos e pré-requisitos antes do teste Na prática, evita iniciar ensaio funcional com componentes incompletos ou inseguros"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de checklist pré-funcional em comissionamento por níveis?",
+                        "o": [
+                              "evita iniciar ensaio funcional com componentes incompletos ou inseguros",
+                              "comprova função e controles, não apenas presença física do equipamento",
+                              "coordena disciplinas desde o projeto até a entrega operacional",
+                              "identifica lacunas antes que sejam incorporadas à construção"
+                        ],
+                        "a": 0,
+                        "e": "checklist pré-funcional: verificação de instalação, identificação, energia, fluidos e pré-requisitos antes do teste Na prática, evita iniciar ensaio funcional com componentes incompletos ou inseguros"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente teste funcional de desempenho?",
+                        "o": [
+                              "ensaio que demonstra resposta do sistema a comandos, cargas, falhas e sequências previstas",
+                              "registro controlado de desvios, responsáveis, prioridade, prazo e evidência de fechamento",
+                              "expectativas funcionais, capacidade, disponibilidade, operação e desempenho do empreendimento",
+                              "verificação de dados e desenhos do fornecedor contra projeto e especificação"
+                        ],
+                        "a": 0,
+                        "e": "teste funcional de desempenho: ensaio que demonstra resposta do sistema a comandos, cargas, falhas e sequências previstas Na prática, comprova função e controles, não apenas presença física do equipamento"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de teste funcional de desempenho em comissionamento por níveis?",
+                        "o": [
+                              "comprova função e controles, não apenas presença física do equipamento",
+                              "mantém pendências visíveis até correção e reteste",
+                              "servem de referência para projeto, testes e aceitação final",
+                              "impede aprovar equipamento incompatível apenas por equivalência comercial"
+                        ],
+                        "a": 0,
+                        "e": "teste funcional de desempenho: ensaio que demonstra resposta do sistema a comandos, cargas, falhas e sequências previstas Na prática, comprova função e controles, não apenas presença física do equipamento"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente issue log?",
+                        "o": [
+                              "registro controlado de desvios, responsáveis, prioridade, prazo e evidência de fechamento",
+                              "documento que define escopo, fases, papéis, testes, registros e critérios de aceite",
+                              "documento que explica critérios, premissas e soluções adotadas para atender aos requisitos",
+                              "teste de aceitação realizado na fábrica antes do envio"
+                        ],
+                        "a": 0,
+                        "e": "issue log: registro controlado de desvios, responsáveis, prioridade, prazo e evidência de fechamento Na prática, mantém pendências visíveis até correção e reteste"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de issue log em comissionamento por níveis?",
+                        "o": [
+                              "mantém pendências visíveis até correção e reteste",
+                              "coordena disciplinas desde o projeto até a entrega operacional",
+                              "permite revisar se a intenção foi traduzida corretamente em sistemas",
+                              "verifica fabricação, lógica e desempenho possível em ambiente controlado"
+                        ],
+                        "a": 0,
+                        "e": "issue log: registro controlado de desvios, responsáveis, prioridade, prazo e evidência de fechamento Na prática, mantém pendências visíveis até correção e reteste"
+                  }
+            ]
+      },
+      {
+            "id": "testes-integrados",
+            "title": "Testes Integrados",
+            "description": "Cenários, causa e efeito, perda de fontes, carga, evidências, abortagem e recuperação.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente IST?",
+                        "o": [
+                              "teste integrado de sistemas que verifica a resposta conjunta a cenários de operação e falha",
+                              "lista estruturada de eventos, estados iniciais, ações e resultados esperados",
+                              "cenário controlado de perda ampla de energia e recuperação pela infraestrutura de emergência",
+                              "presença e registro de parte autorizada que confirma método e resultado observado"
+                        ],
+                        "a": 0,
+                        "e": "IST: teste integrado de sistemas que verifica a resposta conjunta a cenários de operação e falha Na prática, demonstra interfaces entre energia, HVAC, automação, segurança e TI"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de IST em testes integrados?",
+                        "o": [
+                              "demonstra interfaces entre energia, HVAC, automação, segurança e TI",
+                              "garante cobertura sem improvisar condições críticas durante o ensaio",
+                              "comprova partida, transferência, carregamento, resfriamento e retorno quando formalmente autorizado",
+                              "fortalece aceite sem substituir instrumentos e evidências objetivas"
+                        ],
+                        "a": 0,
+                        "e": "IST: teste integrado de sistemas que verifica a resposta conjunta a cenários de operação e falha Na prática, demonstra interfaces entre energia, HVAC, automação, segurança e TI"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente matriz de cenários?",
+                        "o": [
+                              "lista estruturada de eventos, estados iniciais, ações e resultados esperados",
+                              "relação entre evento de entrada e respostas automáticas esperadas",
+                              "equipamento que aplica demanda elétrica ou térmica controlada",
+                              "coleta sincronizada de medições, alarmes e estados durante o cenário"
+                        ],
+                        "a": 0,
+                        "e": "matriz de cenários: lista estruturada de eventos, estados iniciais, ações e resultados esperados Na prática, garante cobertura sem improvisar condições críticas durante o ensaio"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de matriz de cenários em testes integrados?",
+                        "o": [
+                              "garante cobertura sem improvisar condições críticas durante o ensaio",
+                              "valida alarmes, intertravamentos, desligamentos e sequências entre sistemas",
+                              "simula carga suficiente para observar capacidade, transientes e rejeição de calor",
+                              "permite comparar resposta real com critérios e reconstruir a sequência"
+                        ],
+                        "a": 0,
+                        "e": "matriz de cenários: lista estruturada de eventos, estados iniciais, ações e resultados esperados Na prática, garante cobertura sem improvisar condições críticas durante o ensaio"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente matriz de causa e efeito?",
+                        "o": [
+                              "relação entre evento de entrada e respostas automáticas esperadas",
+                              "cenário controlado de perda ampla de energia e recuperação pela infraestrutura de emergência",
+                              "ensaio de transferência da função para componente ou caminho alternativo",
+                              "condição definida que interrompe o teste para proteger pessoas, equipamentos ou serviço"
+                        ],
+                        "a": 0,
+                        "e": "matriz de causa e efeito: relação entre evento de entrada e respostas automáticas esperadas Na prática, valida alarmes, intertravamentos, desligamentos e sequências entre sistemas"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de matriz de causa e efeito em testes integrados?",
+                        "o": [
+                              "valida alarmes, intertravamentos, desligamentos e sequências entre sistemas",
+                              "comprova partida, transferência, carregamento, resfriamento e retorno quando formalmente autorizado",
+                              "demonstra redundância e revela dependências comuns ou capacidade insuficiente",
+                              "impede continuar um cenário quando premissas ou margens deixam de ser válidas"
+                        ],
+                        "a": 0,
+                        "e": "matriz de causa e efeito: relação entre evento de entrada e respostas automáticas esperadas Na prática, valida alarmes, intertravamentos, desligamentos e sequências entre sistemas"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente teste black building?",
+                        "o": [
+                              "cenário controlado de perda ampla de energia e recuperação pela infraestrutura de emergência",
+                              "equipamento que aplica demanda elétrica ou térmica controlada",
+                              "presença e registro de parte autorizada que confirma método e resultado observado",
+                              "confirmação de que todos os sistemas retornaram ao estado seguro, estável e redundante"
+                        ],
+                        "a": 0,
+                        "e": "teste black building: cenário controlado de perda ampla de energia e recuperação pela infraestrutura de emergência Na prática, comprova partida, transferência, carregamento, resfriamento e retorno quando formalmente autorizado"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de teste black building em testes integrados?",
+                        "o": [
+                              "comprova partida, transferência, carregamento, resfriamento e retorno quando formalmente autorizado",
+                              "simula carga suficiente para observar capacidade, transientes e rejeição de calor",
+                              "fortalece aceite sem substituir instrumentos e evidências objetivas",
+                              "evita encerrar o ensaio deixando bypass, alarme ou capacidade reduzida"
+                        ],
+                        "a": 0,
+                        "e": "teste black building: cenário controlado de perda ampla de energia e recuperação pela infraestrutura de emergência Na prática, comprova partida, transferência, carregamento, resfriamento e retorno quando formalmente autorizado"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente banco de carga?",
+                        "o": [
+                              "equipamento que aplica demanda elétrica ou térmica controlada",
+                              "ensaio de transferência da função para componente ou caminho alternativo",
+                              "coleta sincronizada de medições, alarmes e estados durante o cenário",
+                              "teste integrado de sistemas que verifica a resposta conjunta a cenários de operação e falha"
+                        ],
+                        "a": 0,
+                        "e": "banco de carga: equipamento que aplica demanda elétrica ou térmica controlada Na prática, simula carga suficiente para observar capacidade, transientes e rejeição de calor"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de banco de carga em testes integrados?",
+                        "o": [
+                              "simula carga suficiente para observar capacidade, transientes e rejeição de calor",
+                              "demonstra redundância e revela dependências comuns ou capacidade insuficiente",
+                              "permite comparar resposta real com critérios e reconstruir a sequência",
+                              "demonstra interfaces entre energia, HVAC, automação, segurança e TI"
+                        ],
+                        "a": 0,
+                        "e": "banco de carga: equipamento que aplica demanda elétrica ou térmica controlada Na prática, simula carga suficiente para observar capacidade, transientes e rejeição de calor"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente teste de failover?",
+                        "o": [
+                              "ensaio de transferência da função para componente ou caminho alternativo",
+                              "presença e registro de parte autorizada que confirma método e resultado observado",
+                              "condição definida que interrompe o teste para proteger pessoas, equipamentos ou serviço",
+                              "lista estruturada de eventos, estados iniciais, ações e resultados esperados"
+                        ],
+                        "a": 0,
+                        "e": "teste de failover: ensaio de transferência da função para componente ou caminho alternativo Na prática, demonstra redundância e revela dependências comuns ou capacidade insuficiente"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de teste de failover em testes integrados?",
+                        "o": [
+                              "demonstra redundância e revela dependências comuns ou capacidade insuficiente",
+                              "fortalece aceite sem substituir instrumentos e evidências objetivas",
+                              "impede continuar um cenário quando premissas ou margens deixam de ser válidas",
+                              "garante cobertura sem improvisar condições críticas durante o ensaio"
+                        ],
+                        "a": 0,
+                        "e": "teste de failover: ensaio de transferência da função para componente ou caminho alternativo Na prática, demonstra redundância e revela dependências comuns ou capacidade insuficiente"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente testemunho de teste?",
+                        "o": [
+                              "presença e registro de parte autorizada que confirma método e resultado observado",
+                              "coleta sincronizada de medições, alarmes e estados durante o cenário",
+                              "confirmação de que todos os sistemas retornaram ao estado seguro, estável e redundante",
+                              "relação entre evento de entrada e respostas automáticas esperadas"
+                        ],
+                        "a": 0,
+                        "e": "testemunho de teste: presença e registro de parte autorizada que confirma método e resultado observado Na prática, fortalece aceite sem substituir instrumentos e evidências objetivas"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de testemunho de teste em testes integrados?",
+                        "o": [
+                              "fortalece aceite sem substituir instrumentos e evidências objetivas",
+                              "permite comparar resposta real com critérios e reconstruir a sequência",
+                              "evita encerrar o ensaio deixando bypass, alarme ou capacidade reduzida",
+                              "valida alarmes, intertravamentos, desligamentos e sequências entre sistemas"
+                        ],
+                        "a": 0,
+                        "e": "testemunho de teste: presença e registro de parte autorizada que confirma método e resultado observado Na prática, fortalece aceite sem substituir instrumentos e evidências objetivas"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente aquisição de dados?",
+                        "o": [
+                              "coleta sincronizada de medições, alarmes e estados durante o cenário",
+                              "condição definida que interrompe o teste para proteger pessoas, equipamentos ou serviço",
+                              "teste integrado de sistemas que verifica a resposta conjunta a cenários de operação e falha",
+                              "cenário controlado de perda ampla de energia e recuperação pela infraestrutura de emergência"
+                        ],
+                        "a": 0,
+                        "e": "aquisição de dados: coleta sincronizada de medições, alarmes e estados durante o cenário Na prática, permite comparar resposta real com critérios e reconstruir a sequência"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de aquisição de dados em testes integrados?",
+                        "o": [
+                              "permite comparar resposta real com critérios e reconstruir a sequência",
+                              "impede continuar um cenário quando premissas ou margens deixam de ser válidas",
+                              "demonstra interfaces entre energia, HVAC, automação, segurança e TI",
+                              "comprova partida, transferência, carregamento, resfriamento e retorno quando formalmente autorizado"
+                        ],
+                        "a": 0,
+                        "e": "aquisição de dados: coleta sincronizada de medições, alarmes e estados durante o cenário Na prática, permite comparar resposta real com critérios e reconstruir a sequência"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente critério de abortagem?",
+                        "o": [
+                              "condição definida que interrompe o teste para proteger pessoas, equipamentos ou serviço",
+                              "confirmação de que todos os sistemas retornaram ao estado seguro, estável e redundante",
+                              "lista estruturada de eventos, estados iniciais, ações e resultados esperados",
+                              "equipamento que aplica demanda elétrica ou térmica controlada"
+                        ],
+                        "a": 0,
+                        "e": "critério de abortagem: condição definida que interrompe o teste para proteger pessoas, equipamentos ou serviço Na prática, impede continuar um cenário quando premissas ou margens deixam de ser válidas"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de critério de abortagem em testes integrados?",
+                        "o": [
+                              "impede continuar um cenário quando premissas ou margens deixam de ser válidas",
+                              "evita encerrar o ensaio deixando bypass, alarme ou capacidade reduzida",
+                              "garante cobertura sem improvisar condições críticas durante o ensaio",
+                              "simula carga suficiente para observar capacidade, transientes e rejeição de calor"
+                        ],
+                        "a": 0,
+                        "e": "critério de abortagem: condição definida que interrompe o teste para proteger pessoas, equipamentos ou serviço Na prática, impede continuar um cenário quando premissas ou margens deixam de ser válidas"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente validação de recuperação?",
+                        "o": [
+                              "confirmação de que todos os sistemas retornaram ao estado seguro, estável e redundante",
+                              "teste integrado de sistemas que verifica a resposta conjunta a cenários de operação e falha",
+                              "relação entre evento de entrada e respostas automáticas esperadas",
+                              "ensaio de transferência da função para componente ou caminho alternativo"
+                        ],
+                        "a": 0,
+                        "e": "validação de recuperação: confirmação de que todos os sistemas retornaram ao estado seguro, estável e redundante Na prática, evita encerrar o ensaio deixando bypass, alarme ou capacidade reduzida"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de validação de recuperação em testes integrados?",
+                        "o": [
+                              "evita encerrar o ensaio deixando bypass, alarme ou capacidade reduzida",
+                              "demonstra interfaces entre energia, HVAC, automação, segurança e TI",
+                              "valida alarmes, intertravamentos, desligamentos e sequências entre sistemas",
+                              "demonstra redundância e revela dependências comuns ou capacidade insuficiente"
+                        ],
+                        "a": 0,
+                        "e": "validação de recuperação: confirmação de que todos os sistemas retornaram ao estado seguro, estável e redundante Na prática, evita encerrar o ensaio deixando bypass, alarme ou capacidade reduzida"
+                  }
+            ]
+      },
+      {
+            "id": "documentacao-handover",
+            "title": "Documentação e Handover",
+            "description": "Revisões, as-built, manuais, testes, garantias, treinamentos e dossiê final.",
+            "questions": [
+                  {
+                        "q": "Qual alternativa descreve corretamente controle documental?",
+                        "o": [
+                              "processo de criar, revisar, aprovar, distribuir, reter e retirar documentos",
+                              "regra consistente para identificar disciplina, sistema, tipo e sequência",
+                              "classificação como rascunho, em análise, aprovado ou obsoleto",
+                              "instruções do fabricante e do projeto para uso, inspeção e serviço"
+                        ],
+                        "a": 0,
+                        "e": "controle documental: processo de criar, revisar, aprovar, distribuir, reter e retirar documentos Na prática, garante que equipes usem somente informação válida e rastreável"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de controle documental em documentação técnica?",
+                        "o": [
+                              "garante que equipes usem somente informação válida e rastreável",
+                              "facilita busca, evita duplicidade e permite automação do arquivo",
+                              "impede construção ou operação baseada em documento não liberado",
+                              "apoia treinamento e rotinas sem substituir procedimentos locais"
+                        ],
+                        "a": 0,
+                        "e": "controle documental: processo de criar, revisar, aprovar, distribuir, reter e retirar documentos Na prática, garante que equipes usem somente informação válida e rastreável"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente convenção de nomes?",
+                        "o": [
+                              "regra consistente para identificar disciplina, sistema, tipo e sequência",
+                              "identificador do estado de alteração de um documento",
+                              "documento atualizado para representar o que foi efetivamente instalado",
+                              "representação gráfica controlada de dimensões, conexões, layout ou detalhes"
+                        ],
+                        "a": 0,
+                        "e": "convenção de nomes: regra consistente para identificar disciplina, sistema, tipo e sequência Na prática, facilita busca, evita duplicidade e permite automação do arquivo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de convenção de nomes em documentação técnica?",
+                        "o": [
+                              "facilita busca, evita duplicidade e permite automação do arquivo",
+                              "distingue conteúdo anterior do atual e associa cada mudança à aprovação",
+                              "entrega à operação a configuração real após desvios e mudanças de campo",
+                              "comunica a solução de modo verificável entre disciplinas e campo"
+                        ],
+                        "a": 0,
+                        "e": "convenção de nomes: regra consistente para identificar disciplina, sistema, tipo e sequência Na prática, facilita busca, evita duplicidade e permite automação do arquivo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente revisão documental?",
+                        "o": [
+                              "identificador do estado de alteração de um documento",
+                              "classificação como rascunho, em análise, aprovado ou obsoleto",
+                              "folha de dados com características e limites de um componente",
+                              "registro formal de envio de um conjunto de documentos e revisões"
+                        ],
+                        "a": 0,
+                        "e": "revisão documental: identificador do estado de alteração de um documento Na prática, distingue conteúdo anterior do atual e associa cada mudança à aprovação"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de revisão documental em documentação técnica?",
+                        "o": [
+                              "distingue conteúdo anterior do atual e associa cada mudança à aprovação",
+                              "impede construção ou operação baseada em documento não liberado",
+                              "confirma compatibilidade e parâmetros para projeto, compra e manutenção",
+                              "comprova destinatário, finalidade, data e itens transmitidos"
+                        ],
+                        "a": 0,
+                        "e": "revisão documental: identificador do estado de alteração de um documento Na prática, distingue conteúdo anterior do atual e associa cada mudança à aprovação"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente status de aprovação?",
+                        "o": [
+                              "classificação como rascunho, em análise, aprovado ou obsoleto",
+                              "documento atualizado para representar o que foi efetivamente instalado",
+                              "instruções do fabricante e do projeto para uso, inspeção e serviço",
+                              "pacote final de desenhos, testes, certificados, garantias, treinamentos e pendências"
+                        ],
+                        "a": 0,
+                        "e": "status de aprovação: classificação como rascunho, em análise, aprovado ou obsoleto Na prática, impede construção ou operação baseada em documento não liberado"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de status de aprovação em documentação técnica?",
+                        "o": [
+                              "impede construção ou operação baseada em documento não liberado",
+                              "entrega à operação a configuração real após desvios e mudanças de campo",
+                              "apoia treinamento e rotinas sem substituir procedimentos locais",
+                              "permite que a operação assuma o sistema com informação e responsabilidade claras"
+                        ],
+                        "a": 0,
+                        "e": "status de aprovação: classificação como rascunho, em análise, aprovado ou obsoleto Na prática, impede construção ou operação baseada em documento não liberado"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente as-built?",
+                        "o": [
+                              "documento atualizado para representar o que foi efetivamente instalado",
+                              "folha de dados com características e limites de um componente",
+                              "representação gráfica controlada de dimensões, conexões, layout ou detalhes",
+                              "processo de criar, revisar, aprovar, distribuir, reter e retirar documentos"
+                        ],
+                        "a": 0,
+                        "e": "as-built: documento atualizado para representar o que foi efetivamente instalado Na prática, entrega à operação a configuração real após desvios e mudanças de campo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de as-built em documentação técnica?",
+                        "o": [
+                              "entrega à operação a configuração real após desvios e mudanças de campo",
+                              "confirma compatibilidade e parâmetros para projeto, compra e manutenção",
+                              "comunica a solução de modo verificável entre disciplinas e campo",
+                              "garante que equipes usem somente informação válida e rastreável"
+                        ],
+                        "a": 0,
+                        "e": "as-built: documento atualizado para representar o que foi efetivamente instalado Na prática, entrega à operação a configuração real após desvios e mudanças de campo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente datasheet?",
+                        "o": [
+                              "folha de dados com características e limites de um componente",
+                              "instruções do fabricante e do projeto para uso, inspeção e serviço",
+                              "registro formal de envio de um conjunto de documentos e revisões",
+                              "regra consistente para identificar disciplina, sistema, tipo e sequência"
+                        ],
+                        "a": 0,
+                        "e": "datasheet: folha de dados com características e limites de um componente Na prática, confirma compatibilidade e parâmetros para projeto, compra e manutenção"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de datasheet em documentação técnica?",
+                        "o": [
+                              "confirma compatibilidade e parâmetros para projeto, compra e manutenção",
+                              "apoia treinamento e rotinas sem substituir procedimentos locais",
+                              "comprova destinatário, finalidade, data e itens transmitidos",
+                              "facilita busca, evita duplicidade e permite automação do arquivo"
+                        ],
+                        "a": 0,
+                        "e": "datasheet: folha de dados com características e limites de um componente Na prática, confirma compatibilidade e parâmetros para projeto, compra e manutenção"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente manual de operação e manutenção?",
+                        "o": [
+                              "instruções do fabricante e do projeto para uso, inspeção e serviço",
+                              "representação gráfica controlada de dimensões, conexões, layout ou detalhes",
+                              "pacote final de desenhos, testes, certificados, garantias, treinamentos e pendências",
+                              "identificador do estado de alteração de um documento"
+                        ],
+                        "a": 0,
+                        "e": "manual de operação e manutenção: instruções do fabricante e do projeto para uso, inspeção e serviço Na prática, apoia treinamento e rotinas sem substituir procedimentos locais"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de manual de operação e manutenção em documentação técnica?",
+                        "o": [
+                              "apoia treinamento e rotinas sem substituir procedimentos locais",
+                              "comunica a solução de modo verificável entre disciplinas e campo",
+                              "permite que a operação assuma o sistema com informação e responsabilidade claras",
+                              "distingue conteúdo anterior do atual e associa cada mudança à aprovação"
+                        ],
+                        "a": 0,
+                        "e": "manual de operação e manutenção: instruções do fabricante e do projeto para uso, inspeção e serviço Na prática, apoia treinamento e rotinas sem substituir procedimentos locais"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente desenho técnico?",
+                        "o": [
+                              "representação gráfica controlada de dimensões, conexões, layout ou detalhes",
+                              "registro formal de envio de um conjunto de documentos e revisões",
+                              "processo de criar, revisar, aprovar, distribuir, reter e retirar documentos",
+                              "classificação como rascunho, em análise, aprovado ou obsoleto"
+                        ],
+                        "a": 0,
+                        "e": "desenho técnico: representação gráfica controlada de dimensões, conexões, layout ou detalhes Na prática, comunica a solução de modo verificável entre disciplinas e campo"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de desenho técnico em documentação técnica?",
+                        "o": [
+                              "comunica a solução de modo verificável entre disciplinas e campo",
+                              "comprova destinatário, finalidade, data e itens transmitidos",
+                              "garante que equipes usem somente informação válida e rastreável",
+                              "impede construção ou operação baseada em documento não liberado"
+                        ],
+                        "a": 0,
+                        "e": "desenho técnico: representação gráfica controlada de dimensões, conexões, layout ou detalhes Na prática, comunica a solução de modo verificável entre disciplinas e campo"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente transmittal?",
+                        "o": [
+                              "registro formal de envio de um conjunto de documentos e revisões",
+                              "pacote final de desenhos, testes, certificados, garantias, treinamentos e pendências",
+                              "regra consistente para identificar disciplina, sistema, tipo e sequência",
+                              "documento atualizado para representar o que foi efetivamente instalado"
+                        ],
+                        "a": 0,
+                        "e": "transmittal: registro formal de envio de um conjunto de documentos e revisões Na prática, comprova destinatário, finalidade, data e itens transmitidos"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de transmittal em documentação técnica?",
+                        "o": [
+                              "comprova destinatário, finalidade, data e itens transmitidos",
+                              "permite que a operação assuma o sistema com informação e responsabilidade claras",
+                              "facilita busca, evita duplicidade e permite automação do arquivo",
+                              "entrega à operação a configuração real após desvios e mudanças de campo"
+                        ],
+                        "a": 0,
+                        "e": "transmittal: registro formal de envio de um conjunto de documentos e revisões Na prática, comprova destinatário, finalidade, data e itens transmitidos"
+                  },
+                  {
+                        "q": "Qual alternativa descreve corretamente dossiê de handover?",
+                        "o": [
+                              "pacote final de desenhos, testes, certificados, garantias, treinamentos e pendências",
+                              "processo de criar, revisar, aprovar, distribuir, reter e retirar documentos",
+                              "identificador do estado de alteração de um documento",
+                              "folha de dados com características e limites de um componente"
+                        ],
+                        "a": 0,
+                        "e": "dossiê de handover: pacote final de desenhos, testes, certificados, garantias, treinamentos e pendências Na prática, permite que a operação assuma o sistema com informação e responsabilidade claras"
+                  },
+                  {
+                        "q": "Qual é a principal aplicação de dossiê de handover em documentação técnica?",
+                        "o": [
+                              "permite que a operação assuma o sistema com informação e responsabilidade claras",
+                              "garante que equipes usem somente informação válida e rastreável",
+                              "distingue conteúdo anterior do atual e associa cada mudança à aprovação",
+                              "confirma compatibilidade e parâmetros para projeto, compra e manutenção"
+                        ],
+                        "a": 0,
+                        "e": "dossiê de handover: pacote final de desenhos, testes, certificados, garantias, treinamentos e pendências Na prática, permite que a operação assuma o sistema com informação e responsabilidade claras"
+                  }
+            ]
+      },
+      {
+            "id": "riscos-cenarios",
+            "title": "Riscos e Cenários Críticos",
+            "description": "Impacto, contingência, energia, água, fogo, recuperação e aprendizagem.",
+            "questions": [
+                  {
+                        "q": "Em qualquer incidente técnico, qual prioridade vem antes da continuidade do serviço?",
+                        "o": [
+                              "A segurança das pessoas",
+                              "A aparência do painel de monitoramento",
+                              "O prazo do relatório mensal",
+                              "A preservação de uma mudança não essencial"
+                        ],
+                        "a": 0,
+                        "e": "Nenhum objetivo de disponibilidade justifica expor pessoas a perigo. A resposta deve proteger vidas, controlar riscos e então estabilizar e recuperar o serviço."
+                  },
+                  {
+                        "q": "Na triagem inicial de um incidente, o que deve ser determinado?",
+                        "o": [
+                              "Somente quem estava no turno",
+                              "O que ocorreu, quando, quais ativos e serviços foram afetados e se a condição continua ativa",
+                              "A causa raiz definitiva antes de qualquer ação",
+                              "O custo de todos os equipamentos do prédio"
+                        ],
+                        "a": 1,
+                        "e": "A triagem delimita evento, tempo, escopo, impacto e estado atual. A causa raiz normalmente requer análise posterior e não deve atrasar ações urgentes de proteção."
+                  },
+                  {
+                        "q": "Qual é a função principal de um coordenador ou comandante de incidente?",
+                        "o": [
+                              "Executar sozinho todas as tarefas técnicas",
+                              "Definir prioridades, coordenar frentes, manter visão geral e garantir comunicação e decisões",
+                              "Substituir todas as equipes especializadas",
+                              "Ocultar informações até o encerramento"
+                        ],
+                        "a": 1,
+                        "e": "Uma liderança clara evita decisões conflitantes, distribui responsabilidades e mantém foco em segurança, impacto, recuperação e comunicação."
+                  },
+                  {
+                        "q": "Qual atualização de status é mais útil aos envolvidos?",
+                        "o": [
+                              "Estamos vendo aqui",
+                              "Às 14h20, perda do caminho A; carga estável no caminho B; equipe elétrica validando causa; próxima atualização às 14h35",
+                              "Provavelmente alguém errou",
+                              "Sem novidades, não perguntem"
+                        ],
+                        "a": 1,
+                        "e": "Uma boa atualização traz horário, fatos, impacto, estado atual, ação em curso, riscos relevantes e o momento do próximo comunicado, sem especulação."
+                  },
+                  {
+                        "q": "Por que manter uma linha do tempo do incidente?",
+                        "o": [
+                              "Para aumentar o volume do relatório",
+                              "Para registrar eventos, decisões, ações e resultados em ordem, apoiando coordenação e aprendizado",
+                              "Para substituir todos os logs técnicos",
+                              "Para atribuir culpa rapidamente"
+                        ],
+                        "a": 1,
+                        "e": "Uma cronologia confiável ajuda o turno atual, a passagem de responsabilidade e a revisão posterior. Deve usar horários consistentes e fontes identificáveis."
+                  },
+                  {
+                        "q": "Qual é a diferença entre estabilizar e eliminar a causa raiz?",
+                        "o": [
+                              "Não há diferença",
+                              "Estabilizar reduz o impacto imediato; eliminar a causa trata o mecanismo fundamental e pode exigir trabalho posterior",
+                              "A causa raiz sempre é resolvida antes da contenção",
+                              "Estabilização serve apenas para relatórios"
+                        ],
+                        "a": 1,
+                        "e": "A resposta pode usar medidas temporárias para recuperar segurança ou serviço. A correção definitiva é planejada quando há compreensão e controles suficientes."
+                  },
+                  {
+                        "q": "Para que serve uma ponte de incidente ou canal dedicado?",
+                        "o": [
+                              "Centralizar coordenação e comunicação dos participantes autorizados",
+                              "Substituir o ticket e todos os registros",
+                              "Permitir conversas paralelas sem controle",
+                              "Divulgar o evento publicamente"
+                        ],
+                        "a": 0,
+                        "e": "Um canal dedicado concentra informação operacional e decisões. O registro oficial ainda deve ser mantido nos sistemas definidos."
+                  },
+                  {
+                        "q": "Antes de declarar recuperação, deve-se verificar:",
+                        "o": [
+                              "Apenas se o alarme sumiu",
+                              "Função do serviço, estabilidade, alarmes, redundância, monitoramento e possíveis efeitos residuais",
+                              "Se todos saíram da ponte",
+                              "Se o relatório final já está formatado"
+                        ],
+                        "a": 1,
+                        "e": "Ausência de alarme não garante recuperação completa. Critérios de retorno devem confirmar serviço, infraestrutura e capacidade de observar recorrência."
+                  },
+                  {
+                        "q": "Durante um incidente, por que preservar logs e evidências?",
+                        "o": [
+                              "Para apoiar diagnóstico, auditoria e análise da causa sem alterar a história dos eventos",
+                              "Para ocupar espaço de armazenamento",
+                              "Para divulgar dados pessoais",
+                              "Para evitar qualquer recuperação"
+                        ],
+                        "a": 0,
+                        "e": "Evidências íntegras permitem reconstruir a ocorrência. A coleta deve seguir autorização, segurança da informação e cadeia de custódia quando aplicável."
+                  },
+                  {
+                        "q": "Qual é o foco de uma revisão pós-incidente eficaz?",
+                        "o": [
+                              "Encontrar uma pessoa para culpar",
+                              "Entender o que ocorreu, fatores contribuintes, resposta, controles e melhorias verificáveis",
+                              "Recontar o evento sem ações",
+                              "Evitar participação das equipes envolvidas"
+                        ],
+                        "a": 1,
+                        "e": "A revisão orientada a aprendizado analisa sistema, processo e decisões, gerando ações concretas para reduzir recorrência e melhorar detecção e resposta."
+                  },
+                  {
+                        "q": "A concessionária falha e a UPS entra em bateria. Qual é a prioridade operacional?",
+                        "o": [
+                              "Confirmar impacto, estado da UPS, autonomia estimada, partida do gerador e sequência de transferência",
+                              "Desligar o monitoramento",
+                              "Esperar a bateria esgotar",
+                              "Rearmar a entrada da concessionária repetidamente"
+                        ],
+                        "a": 0,
+                        "e": "A equipe deve acompanhar a cadeia inteira e comunicar desvios. Autonomia é uma janela limitada, não garantia de recuperação."
+                  },
+                  {
+                        "q": "O gerador recebe comando, mas não parte. O que fazer?",
+                        "o": [
+                              "Executar o procedimento de falha de partida, verificar alarmes e auxiliares autorizados e escalar imediatamente",
+                              "Continuar tentando indefinidamente",
+                              "Burlar proteções",
+                              "Desligar a UPS para economizar combustível"
+                        ],
+                        "a": 0,
+                        "e": "Tentativas repetidas podem descarregar baterias ou agravar falhas. Critérios de tentativa e escalonamento devem estar definidos."
+                  },
+                  {
+                        "q": "O gerador estabilizou, mas a ATS não transferiu. Qual abordagem é correta?",
+                        "o": [
+                              "Confirmar permissivos, tensão, frequência, posições, lógica e alarmes sem manobra improvisada",
+                              "Forçar mecanicamente a chave",
+                              "Desligar a fonte alternativa",
+                              "Ignorar enquanto houver bateria"
+                        ],
+                        "a": 0,
+                        "e": "A falha pode estar na fonte, controle, intertravamento ou chave. A resposta segue EOP e equipe autorizada."
+                  },
+                  {
+                        "q": "Uma UPS transferiu inesperadamente para bypass. Qual risco deve ser avaliado?",
+                        "o": [
+                              "Perda de condicionamento ou redundância e exposição da carga à fonte de bypass",
+                              "Aumento automático de autonomia",
+                              "Redundância 2N garantida",
+                              "Desligamento obrigatório de todos os racks"
+                        ],
+                        "a": 0,
+                        "e": "Confirmar causa, qualidade da fonte, carga e caminhos alternativos antes de qualquer retorno ao inversor."
+                  },
+                  {
+                        "q": "Um disjuntor crítico desarmou. Antes de rearmar, deve-se:",
+                        "o": [
+                              "Preservar indicações, identificar a proteção que atuou, avaliar a causa e obter autorização",
+                              "Rearmar várias vezes até manter",
+                              "Aumentar seu ajuste",
+                              "Fechar o circuito alternativo sem verificar capacidade"
+                        ],
+                        "a": 0,
+                        "e": "O trip é uma proteção ou sintoma. Rearme sobre falha ativa pode causar arco, danos e indisponibilidade maior."
+                  },
+                  {
+                        "q": "Um alarme de água ocorre próximo à distribuição elétrica. O operador deve:",
+                        "o": [
+                              "Manter distância, sinalizar, acionar equipes de emergência e elétrica e seguir o plano",
+                              "Tocar o líquido para confirmar",
+                              "Mover cabos energizados",
+                              "Ignorar se não houver goteira visível"
+                        ],
+                        "a": 0,
+                        "e": "Água pode alcançar partes energizadas ou comprometer isolação. Verificação deve usar meios seguros e pessoal competente."
+                  },
+                  {
+                        "q": "Em paralelismo, um gerador desarma e os restantes recebem sua carga. O que verificar?",
+                        "o": [
+                              "Carga e margem dos geradores restantes, frequência, tensão, causa do trip e risco de cascata",
+                              "Somente o nível de ruído",
+                              "A cor dos controladores",
+                              "Aumentar imediatamente todos os ajustes"
+                        ],
+                        "a": 0,
+                        "e": "A perda de uma unidade pode sobrecarregar as demais. Estabilização e eventual redução de carga seguem o plano."
+                  },
+                  {
+                        "q": "O prédio perde toda a energia crítica. Qual comunicação inicial é mais útil?",
+                        "o": [
+                              "Horário, escopo, segurança, estado das fontes, impacto conhecido, ações e próxima atualização",
+                              "Apenas a frase tudo caiu",
+                              "Uma causa especulativa",
+                              "Nenhuma comunicação até recuperar"
+                        ],
+                        "a": 0,
+                        "e": "Informação factual e cadenciada coordena equipes e interessados sem desviar recursos da resposta."
+                  },
+                  {
+                        "q": "Antes de declarar a energia normalizada, deve-se validar:",
+                        "o": [
+                              "Fontes, proteções, carga, redundância, alarmes, modos de operação e estabilidade durante período definido",
+                              "Somente a presença de tensão em uma tomada",
+                              "Apenas o fechamento do ticket",
+                              "Que o gerador parou"
+                        ],
+                        "a": 0,
+                        "e": "Recuperação completa inclui retirar bypasses temporários ou registrá-los, verificar capacidade e acompanhar recorrência."
+                  },
+                  {
+                        "q": "Por que realizar exercícios de contingência elétrica?",
+                        "o": [
+                              "Treinar papéis, testar comunicação e revelar falhas de procedimento e dependências antes de um evento real",
+                              "Garantir que equipamentos nunca falharão",
+                              "Substituir manutenção preventiva",
+                              "Permitir manobras sem análise de risco"
+                        ],
+                        "a": 0,
+                        "e": "Exercícios podem ser de mesa ou técnicos. Resultados devem gerar correções e novos testes controlados."
+                  }
+            ]
+      }
+];
+
+    const STORAGE_KEY = "gdc-premium-engenharia-obras-comissionamento-v1";
+    const LETTERS = ["A","B","C","D"];
+    const state = {session:[],index:0,answers:[],remaining:60,timer:null,startedAt:0,mode:"module",moduleId:null,sound:true,volume:.35,lastConfig:null};
+    const el = id => document.getElementById(id);
+    const views = {home:el("homeView"),quiz:el("quizView"),result:el("resultView")};
+    const audio = {background:el("backgroundAudio"),correct:el("correctAudio"),wrong:el("wrongAudio")};
+
+    function safeLoad(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||{modules:{},full:null}}catch{return {modules:{},full:null}}}
+    function safeSave(data){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}catch{/* modo privado ou armazenamento indisponível */}}
+    function showView(name){Object.entries(views).forEach(([key,node])=>node.hidden=key!==name);window.scrollTo({top:0,behavior:"smooth"})}
+    function formatTime(seconds){const min=Math.floor(seconds/60);const sec=seconds%60;return `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`}
+    function shuffle(items){const copy=[...items];for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]]}return copy}
+    function randomizeQuestion(question,moduleTitle){const options=shuffle(question.o.map((text,index)=>({text,correct:index===question.a})));return {...question,moduleTitle,o:options.map(item=>item.text),a:options.findIndex(item=>item.correct)}}
+    function setAudioVolumes(){audio.background.volume=state.volume*.42;audio.correct.volume=state.volume;audio.wrong.volume=state.volume}
+    function startBackground(){if(!state.sound)return;audio.background.play().catch(()=>{})}
+    function stopBackground(){audio.background.pause()}
+    function playEffect(kind){if(!state.sound)return;const sound=audio[kind];sound.currentTime=0;sound.play().catch(()=>{})}
+    function toggleSound(){state.sound=!state.sound;const button=el("soundToggle");button.classList.toggle("off",!state.sound);button.setAttribute("aria-pressed",String(state.sound));button.querySelector(".sound-text").textContent=state.sound?"Som ligado":"Som desligado";if(state.sound&&views.quiz.hidden===false)startBackground();else stopBackground()}
+
+    function renderHome(){
+      const progress=safeLoad();
+      const grid=el("moduleGrid");grid.textContent="";
+      let completed=0,totalBest=0;
+      MODULES.forEach((module,index)=>{
+        const saved=progress.modules[module.id];const best=saved?.best||0;if(saved){completed++;totalBest+=best}
+        const card=document.createElement("article");card.className="module-card";
+        const number=document.createElement("div");number.className="module-number";number.textContent=String(index+1).padStart(2,"0");
+        const title=document.createElement("h3");title.textContent=module.title;
+        const desc=document.createElement("p");desc.textContent=module.description;
+        const meta=document.createElement("div");meta.className="module-meta";meta.innerHTML=`<span>20 questões</span><span>${saved?`Melhor: ${best}%`:"Não iniciado"}</span>`;
+        const track=document.createElement("div");track.className="mini-track";const fill=document.createElement("span");fill.style.width=`${best}%`;track.appendChild(fill);
+        const button=document.createElement("button");button.type="button";button.className="btn btn-secondary btn-block";button.textContent=saved?"Refazer módulo":"Iniciar módulo";button.addEventListener("click",()=>startModule(module.id));
+        card.append(number,title,desc,meta,track,button);grid.appendChild(card);
+      });
+      const percent=Math.round((completed/MODULES.length)*100);
+      el("overallPercent").textContent=`${percent}%`;el("overallBar").style.width=`${percent}%`;el("completedModules").textContent=`${completed}/${MODULES.length}`;el("bestAverage").textContent=completed?`${Math.round(totalBest/completed)}%`:"—";
+      showView("home");
+    }
+
+    function startModule(moduleId){const module=MODULES.find(item=>item.id===moduleId);state.lastConfig={type:"module",id:moduleId};beginSession(shuffle(module.questions.map(q=>randomizeQuestion(q,module.title))),"module",moduleId,module.title)}
+    function startFull(){state.lastConfig={type:"full"};const questions=MODULES.flatMap(module=>module.questions.map(q=>randomizeQuestion(q,module.title)));beginSession(shuffle(questions),"full",null,"Simulado completo")}
+    function beginSession(questions,mode,moduleId,title){clearInterval(state.timer);state.session=questions;state.index=0;state.answers=[];state.mode=mode;state.moduleId=moduleId;state.startedAt=Date.now();el("quizModule").textContent=mode==="full"?"Consolidação • 10 módulos":"Simulado gratuito • módulo";el("quizTitle").textContent=title;showView("quiz");startBackground();renderQuestion()}
+
+    function renderQuestion(){
+      clearInterval(state.timer);state.remaining=60;
+      const current=state.session[state.index];const total=state.session.length;
+      el("questionCounter").textContent=`Questão ${state.index+1} de ${total}`;el("liveScore").textContent=`${state.answers.filter(a=>a.correct).length} acertos`;el("quizBar").style.width=`${(state.index/total)*100}%`;el("questionModuleLabel").textContent=current.moduleTitle;el("questionText").textContent=current.q;
+      el("feedbackBox").hidden=true;el("nextQuestion").hidden=true;
+      const list=el("optionsList");list.textContent="";
+      current.o.forEach((option,index)=>{const button=document.createElement("button");button.className="option";button.type="button";const letter=document.createElement("span");letter.className="letter";letter.textContent=LETTERS[index];const text=document.createElement("span");text.textContent=option;button.append(letter,text);button.addEventListener("click",()=>answerQuestion(index,false));list.appendChild(button)});
+      updateTimer();state.timer=setInterval(()=>{state.remaining--;updateTimer();if(state.remaining<=0){clearInterval(state.timer);answerQuestion(-1,true)}},1000);
+    }
+
+    function updateTimer(){const box=el("timerBox");el("timerText").textContent=formatTime(Math.max(0,state.remaining));box.classList.toggle("warn",state.remaining<=20&&state.remaining>10);box.classList.toggle("danger",state.remaining<=10)}
+    function answerQuestion(selected,timedOut){
+      clearInterval(state.timer);const current=state.session[state.index];const buttons=[...el("optionsList").querySelectorAll(".option")];if(buttons.some(button=>button.disabled))return;
+      const correct=selected===current.a;buttons.forEach((button,index)=>{button.disabled=true;if(index===current.a)button.classList.add("correct");else if(index===selected)button.classList.add("wrong")});
+      state.answers.push({question:current,selected,correct,timedOut});
+      const box=el("feedbackBox");box.hidden=false;box.className=`feedback ${correct?"good":"bad"}`;el("feedbackTitle").textContent=correct?"Resposta correta!":timedOut?"Tempo esgotado.":"Resposta incorreta.";el("feedbackText").textContent=current.e;playEffect(correct?"correct":"wrong");el("liveScore").textContent=`${state.answers.filter(a=>a.correct).length} acertos`;const next=el("nextQuestion");next.hidden=false;next.textContent=state.index===state.session.length-1?"Ver resultado":"Próxima questão";
+    }
+
+    function goNext(){if(state.answers.length<=state.index)return;if(state.index<state.session.length-1){state.index++;renderQuestion()}else{finishSession()}}
+    function finishSession(){
+      clearInterval(state.timer);stopBackground();const elapsed=Math.max(1,Math.round((Date.now()-state.startedAt)/1000));const correct=state.answers.filter(item=>item.correct).length;const total=state.session.length;const percent=Math.round((correct/total)*100);const progress=safeLoad();
+      if(state.mode==="module"){const old=progress.modules[state.moduleId]||{best:0,attempts:0};progress.modules[state.moduleId]={best:Math.max(old.best,percent),last:percent,attempts:old.attempts+1,completedAt:new Date().toISOString()}}else{const old=progress.full||{best:0,attempts:0};progress.full={best:Math.max(old.best,percent),last:percent,attempts:old.attempts+1,completedAt:new Date().toISOString()}}
+      safeSave(progress);const title=state.mode==="module"?MODULES.find(m=>m.id===state.moduleId).title:"Simulado completo";el("resultTitle").textContent=title;el("resultMessage").textContent=performanceMessage(percent);el("resultPercent").textContent=`${percent}%`;el("scoreRing").style.setProperty("--score",percent);el("resultCorrect").textContent=`${correct}/${total}`;el("resultWrong").textContent=String(total-correct);el("resultTime").textContent=formatTime(elapsed);renderReview();showView("result")
+    }
+    function performanceMessage(score){if(score>=90)return"Excelente domínio. Você demonstrou consistência para reconhecer riscos, prioridades e boas práticas operacionais.";if(score>=75)return"Bom desempenho. Revise os pontos de atenção abaixo para transformar conhecimento em resposta mais consistente.";if(score>=60)return"Base em desenvolvimento. Reforce os temas em que houve erro antes de avançar para o simulado completo.";return"Este resultado é um diagnóstico, não uma sentença. Refaça o módulo após revisar as explicações e os procedimentos fundamentais."}
+    function renderReview(){const list=el("reviewList");list.textContent="";const misses=state.answers.filter(item=>!item.correct);el("reviewBlock").hidden=misses.length===0;if(!misses.length)return;misses.forEach((item,index)=>{const card=document.createElement("article");card.className="review-item";const title=document.createElement("strong");title.textContent=`${index+1}. ${item.question.q}`;const chosen=document.createElement("p");chosen.className="answer-wrong";chosen.textContent=item.timedOut?"Sua resposta: tempo esgotado":`Sua resposta: ${item.question.o[item.selected]}`;const right=document.createElement("p");right.className="answer-correct";right.textContent=`Resposta correta: ${item.question.o[item.question.a]}`;const why=document.createElement("p");why.textContent=item.question.e;card.append(title,chosen,right,why);list.appendChild(card)})}
+    function exitQuiz(){if(state.answers.length&&state.answers.length<state.session.length&&!confirm("Sair agora? O resultado desta tentativa não será salvo."))return;clearInterval(state.timer);stopBackground();renderHome()}
+    function retry(){if(state.lastConfig?.type==="full")startFull();else if(state.lastConfig?.id)startModule(state.lastConfig.id)}
+
+    el("soundToggle").addEventListener("click",toggleSound);el("volumeControl").addEventListener("input",event=>{state.volume=Number(event.target.value);setAudioVolumes()});el("brandHome").addEventListener("click",event=>{event.preventDefault();if(!views.quiz.hidden)exitQuiz();else renderHome()});el("startFull").addEventListener("click",startFull);el("nextQuestion").addEventListener("click",goNext);el("exitQuiz").addEventListener("click",exitQuiz);el("returnHome").addEventListener("click",renderHome);el("retryQuiz").addEventListener("click",retry);el("printResult").addEventListener("click",()=>window.print());
+    setAudioVolumes();renderHome();
+  </script>
+</body>
+</html>
