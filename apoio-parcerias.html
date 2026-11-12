@@ -27,6 +27,12 @@
 .don-hint{font-size:13px;background:#eff6f9;border-left:4px solid #0b7191;padding:11px 13px;border-radius:9px}
 .don-legal{border-top:1px solid #e5dca9;padding:15px 25px;background:#fcf6de;font-size:13px;color:#544b37;line-height:1.6}
 .don-status{min-height:1.5em;font-size:13px;font-weight:750;color:#065e51}
+.don-correction{border:2px solid #e4a62e;background:#fff4d5;color:#4b390e;border-radius:13px;padding:15px 17px;margin:14px 0;line-height:1.55;font-size:14px}
+.don-correction strong{display:block;font-size:16px;margin-bottom:4px}
+.don-steps{padding-left:21px;color:#304e60;font-size:14px;line-height:1.55}
+.don-steps li{margin:6px 0}
+.don-qr-title{display:block;font-size:14px;font-weight:900;line-height:1.4;margin-bottom:10px}
+
 @media(max-width:690px){.don-grid{grid-template-columns:1fr;padding:17px}.don-head{padding:20px}.don-qr{max-width:300px;width:100%;margin:auto}.don-legal{padding:14px 18px}.don-flex .car-btn{flex:1}}
 @media print{.don-qr{max-width:350px;margin:auto}.don-flex{display:none!important}}
 </style>
@@ -81,19 +87,26 @@
  <p>Quem desejar pode contribuir com qualquer quantia para apoiar a manutenção e o desenvolvimento do projeto educacional Instituto EnsinoMeu. O acesso aos conteúdos gratuitos não depende de doação. <a href="#meta-de-apoio" style="font-weight:900;color:#064f51">Consulte a meta de R$ 2.000 e o orçamento previsto.</a></p>
 </div>
 <div class="don-grid">
- <a class="don-qr" href="https://nubank.com.br/cobrar/r2nn0/6af5c713-c133-4a88-a73d-f53afc15188d" target="_blank" rel="noopener noreferrer" title="Abrir página oficial de cobrança do Nubank">
-   <img src="assets/qr-contribuicao-nubank.svg" width="300" height="300" loading="eager" alt="QR Code do link de contribuição Nubank; ao escanear, abrirá a página de cobrança para escolher o valor">
-   <small>Leia o QR Code com a câmera do celular</small>
+ <a class="don-qr" href="https://nubank.com.br/cobrar/r2nn0/6af5c713-c133-4a88-a73d-f53afc15188d" target="_blank" rel="noopener noreferrer" title="Abrir o site de cobrança do Nubank usando a câmera do celular">
+   <span class="don-qr-title">QR Code de LINK, não QR Pix</span>
+   <img src="assets/qr-contribuicao-nubank.svg" width="300" height="300" loading="eager" alt="QR Code que contém endereço de site de cobrança Nubank. Não é QR Pix e não deve ser lido no aplicativo bancário">
+   <small>Escaneie com a câmera do celular, não no aplicativo bancário</small>
  </a>
  <div class="don-info">
    <div class="don-value">Você escolhe o valor</div>
-   <p>O link foi gerado sem valor definido (R$ 0,00 na mensagem de compartilhamento). Na página do Nubank, escolha quanto deseja contribuir e confira os dados do recebedor antes de confirmar.</p>
+   <p>O link foi compartilhado sem valor definido (R$ 0,00). <strong>Esta página não gera um código Pix Copia e Cola.</strong> Acesse o link do Nubank para verificar as opções de pagamento disponíveis e o valor antes de confirmar.</p>
+   <div class="don-correction" role="note"><strong>ATENÇÃO: aqui ainda não há Pix Copia e Cola.</strong>O endereço nubank.com.br/cobrar/… é um <b>link de cobrança</b>, não um código Pix. Por isso, não funciona ao colar na opção “Pix Copia e Cola” do banco. O QR Code ao lado também abre um link, não pode ser lido como QR Pix pelo aplicativo bancário.</div>
+   <ol class="don-steps" aria-label="Como contribuir pelo link de cobrança">
+     <li>No celular, toque em <b>Abrir cobrança no Nubank</b> e consulte as opções disponíveis no site.</li>
+     <li>No computador, utilize a câmera normal do celular para abrir o link pelo QR Code; <b>não use “Ler QR Pix”</b>.</li>
+     <li>Antes de confirmar qualquer transferência, confira nome do recebedor e valor. Se o site não oferecer um método de pagamento compatível, não tente colar o link no Pix.</li>
+   </ol>
    <div class="don-flex">
-     <a class="car-btn gold" href="https://nubank.com.br/cobrar/r2nn0/6af5c713-c133-4a88-a73d-f53afc15188d" target="_blank" rel="noopener noreferrer" id="abrir-contribuicao">Contribuir pelo Nubank ↗</a>
-     <button class="car-btn blue" type="button" id="copiar-contribuicao">Copiar link de contribuição</button>
+     <a class="car-btn gold" href="https://nubank.com.br/cobrar/r2nn0/6af5c713-c133-4a88-a73d-f53afc15188d" target="_blank" rel="noopener noreferrer" id="abrir-contribuicao">Abrir cobrança no Nubank ↗</a>
+     <button class="car-btn blue" type="button" id="copiar-contribuicao">Copiar endereço do site (não Pix)</button>
    </div>
    <p class="don-status" id="estado-copia-contribuicao" role="status" aria-live="polite"></p>
-   <p class="don-hint"><strong>Importante:</strong> este QR Code abre a <strong>página de cobrança do Nubank</strong>; não é um QR Code Pix interoperável para leitura direta dentro do aplicativo de outro banco. Abra a página para consultar as opções de pagamento oferecidas pelo Nubank. O botão copia o <strong>link</strong>, não um código Pix Copia e Cola.</p>
+   <p class="don-hint"><strong>Pix Copia e Cola:</strong> será disponibilizado nesta página somente depois de obtermos o código bancário verdadeiro, gerado pelo Nubank para a conta do responsável. Não substitua esse código por links de sites, CPF ou outras informações.</p>
    <p>Finalidade pretendida: apoio à produção de conteúdos educacionais, manutenção técnica, recursos de acessibilidade e ampliação das oportunidades gratuitas. O recebimento é feito na <strong>conta pessoal indicada pelo responsável pelo projeto</strong>.</p>
  </div>
 </div>
@@ -176,7 +189,7 @@
     try{
       if(!navigator.clipboard || !window.isSecureContext)throw new Error('Clipboard indisponível');
       await navigator.clipboard.writeText(link);
-      status.textContent='Link de contribuição copiado. Abra ou compartilhe o link para continuar.';
+      status.textContent='Endereço do site Nubank copiado. Isto NÃO é um Pix Copia e Cola. Abra o link no navegador.';
     }catch(err){
       status.textContent='Não foi possível copiar automaticamente. Abra o link de contribuição pelo botão ao lado e use a opção de compartilhar do navegador.';
     }
