@@ -1,0 +1,788 @@
+{
+  "course": "IA para Professores Iniciantes",
+  "hours_planned": 20,
+  "bank_version": "2026-11-13-curso09-pro-1",
+  "editorial_method": "60 itens originais; 6 modulos; quatro alternativas plausiveis; gabaritos balanceados; revisao e respostas comentadas; treino sem certificacao automatica",
+  "questions": [
+    {
+      "id": 1,
+      "module": 1,
+      "question": "A IA apresenta um roteiro pronto para uma turma que o professor ainda não conhece. Qual deve ser o primeiro critério para usá-lo?",
+      "options": [
+        "Aceitar o roteiro se o título tiver palavras motivadoras.",
+        "Aplicar integralmente porque a ferramenta redigiu com segurança.",
+        "Conferir objetivo, etapa, realidade da turma e conteúdo.",
+        "Aumentar o número de páginas antes de revisar o material."
+      ],
+      "correct": 2,
+      "explanation": "O docente responde pela escolha didática. Uma resposta fluente não demonstra adequação à turma."
+    },
+    {
+      "id": 2,
+      "module": 1,
+      "question": "Ao preparar atividade, qual uso inicial da IA é mais coerente com a mediação humana?",
+      "options": [
+        "Pedir opções de estratégias e avaliar quais atendem ao objetivo.",
+        "Delegar notas finais à ferramenta sem critérios conhecidos.",
+        "Substituir toda comunicação do professor por mensagens automáticas.",
+        "Publicar orientação sem ler exemplos ou referências citadas."
+      ],
+      "correct": 0,
+      "explanation": "A IA oferece possibilidades; objetivos, critérios e decisões permanecem sob responsabilidade docente."
+    },
+    {
+      "id": 3,
+      "module": 1,
+      "question": "Um modelo fornece data histórica com fonte aparentemente acadêmica. O que fazer antes de ensinar?",
+      "options": [
+        "Considerar a referência autêntica porque contém nome e ano.",
+        "Conferir data, autoria e trecho em fonte verificável.",
+        "Remover o nome da fonte e manter a informação sem checagem.",
+        "Pedir que a IA reescreva a mesma data de modo mais persuasivo."
+      ],
+      "correct": 1,
+      "explanation": "Modelos podem inventar referências. O professor precisa confirmar os documentos originais."
+    },
+    {
+      "id": 4,
+      "module": 1,
+      "question": "Um professor pede adaptação para criança com necessidade específica. Qual informação é prudente usar?",
+      "options": [
+        "Histórico médico identificável para prever comportamento escolar.",
+        "Foto de todos os alunos para classificar habilidades individuais.",
+        "Nome completo, laudo e endereço da criança no chat público.",
+        "Descrição geral da tarefa com perfil fictício e sem dados sensíveis."
+      ],
+      "correct": 3,
+      "explanation": "Apoio pedagógico pode ser planejado com informações simuladas e mínimas."
+    },
+    {
+      "id": 5,
+      "module": 1,
+      "question": "Qual formulação de prompt oferece contexto didático sem identificar estudantes?",
+      "options": [
+        "Dê nota aos estudantes reais cujos nomes seguem nesta lista.",
+        "Crie qualquer atividade para qualquer turma, sem critérios definidos.",
+        "Sugira duas atividades de leitura para turma fictícia do 6º ano.",
+        "Recomende diagnóstico individual a partir de sobrenomes da turma."
+      ],
+      "correct": 2,
+      "explanation": "Definir etapa e tarefa melhora utilidade; dados pessoais não são necessários."
+    },
+    {
+      "id": 6,
+      "module": 1,
+      "question": "A atividade criada pela IA precisa de internet, mas a turma não tem conexão estável. Qual ajuste é adequado?",
+      "options": [
+        "Exigir assinatura paga como requisito da aula gratuita.",
+        "Trocar o objetivo por navegação livre em redes sociais.",
+        "Excluir quem não possui celular e avaliar só quem participou.",
+        "Oferecer alternativa impressa que mantenha o mesmo objetivo."
+      ],
+      "correct": 3,
+      "explanation": "Equidade de acesso exige que objetivos possam ser alcançados por outros meios."
+    },
+    {
+      "id": 7,
+      "module": 1,
+      "question": "Uma IA afirma que todos os alunos aprenderão 50% mais ao usar seu material. Como lidar com isso?",
+      "options": [
+        "Aumentar o número para valor mais atraente aos estudantes.",
+        "Remover promessa sem estudo aplicável e dados verificáveis.",
+        "Tratar a estimativa como resultado medido na própria escola.",
+        "Manter o percentual como slogan da campanha educacional."
+      ],
+      "correct": 1,
+      "explanation": "Ganhos de aprendizagem exigem avaliação adequada; marketing não é prova."
+    },
+    {
+      "id": 8,
+      "module": 1,
+      "question": "Uma professora quer economizar tempo corrigindo textos. Qual divisão de trabalho é aceitável?",
+      "options": [
+        "Aplicar punição automática com base em uma resposta do chatbot.",
+        "Usar sugestões revisáveis, mantendo critérios e decisão humana.",
+        "Permitir que a ferramenta dê diagnósticos psicológicos definitivos.",
+        "Compartilhar redações identificadas sem considerar privacidade."
+      ],
+      "correct": 1,
+      "explanation": "Ferramentas podem apoiar a revisão, mas não substituir julgamento e cuidado pedagógico."
+    },
+    {
+      "id": 9,
+      "module": 1,
+      "question": "Uma aula sem IA atinge o objetivo com menor custo e esforço. Qual decisão faz sentido?",
+      "options": [
+        "Adicionar IA obrigatoriamente para tornar o plano mais moderno.",
+        "Exigir contas novas para toda turma sem necessidade didática.",
+        "Trocar avaliação por demonstração de tecnologia sem aprendizagem.",
+        "Manter a solução simples e documentar por que atende ao objetivo."
+      ],
+      "correct": 3,
+      "explanation": "Inovar é escolher recurso adequado, não usar IA em todas as tarefas."
+    },
+    {
+      "id": 10,
+      "module": 1,
+      "question": "Um chatbot devolve resposta muito convincente, porém contraditória ao livro conferido. Qual atitude demonstra pensamento crítico?",
+      "options": [
+        "Ensinar as duas versões como fatos igualmente comprovados.",
+        "Investigar a divergência em fontes e corrigir o material.",
+        "Considerar o texto do livro incorreto sem análise adicional.",
+        "Preferir a resposta mais longa independentemente da evidência."
+      ],
+      "correct": 1,
+      "explanation": "Conflito de fontes exige exame de evidências e limites, não decisão por aparência."
+    },
+    {
+      "id": 11,
+      "module": 2,
+      "question": "A IA inventa um código de habilidade da BNCC. Qual procedimento correto antes de publicar a apostila?",
+      "options": [
+        "Conferir no documento oficial o texto e a etapa escolar.",
+        "Informar que qualquer código gerado por IA é equivalente.",
+        "Trocar somente a cor do código para destacar o objetivo.",
+        "Repetir o código porque contém letras e números plausíveis."
+      ],
+      "correct": 0,
+      "explanation": "Vínculo curricular depende de documento real, não da aparência do código."
+    },
+    {
+      "id": 12,
+      "module": 2,
+      "question": "Qual objetivo apresenta comportamento observável ao final de uma atividade?",
+      "options": [
+        "Adquirir conhecimento total sobre qualquer texto lido.",
+        "Comparar dois textos e citar evidências de acordo e diferença.",
+        "Gostar da disciplina por meio de sentimentos positivos.",
+        "Entender profundamente toda a importância da leitura."
+      ],
+      "correct": 1,
+      "explanation": "Verbos e produtos observáveis permitem verificar indícios de aprendizagem."
+    },
+    {
+      "id": 13,
+      "module": 2,
+      "question": "Uma proposta de aula dura 40 minutos e inclui cinco vídeos de 15 minutos. Qual revisão é prioritária?",
+      "options": [
+        "Preservar tudo porque o texto gerado chamou a aula de rápida.",
+        "Ajustar etapas e tempo disponível para leitura e debate.",
+        "Solicitar seis vídeos adicionais para cobrir todo o conteúdo.",
+        "Deixar o final da atividade para um encontro não previsto."
+      ],
+      "correct": 1,
+      "explanation": "Tempo disponível e transições determinam a viabilidade pedagógica."
+    },
+    {
+      "id": 14,
+      "module": 2,
+      "question": "Para planejar sem expor informações pessoais, qual entrada é suficiente?",
+      "options": [
+        "Histórico de saúde individual enviado sem necessidade.",
+        "Lista de telefones das famílias vinculada a dificuldades.",
+        "Planilha pública com nomes, notas e laudos identificáveis.",
+        "Perfil fictício de leitura e condições gerais de acesso."
+      ],
+      "correct": 3,
+      "explanation": "Perfis gerais ajudam a planejar apoios sem divulgar dados sensíveis."
+    },
+    {
+      "id": 15,
+      "module": 2,
+      "question": "Um objetivo diz “o aluno saberá História”. Qual ajuste o torna avaliável?",
+      "options": [
+        "Manter a frase vaga e aumentar o tamanho do texto.",
+        "Adicionar o nome de um aplicativo para parecer específico.",
+        "Substituir toda avaliação por declaração de satisfação.",
+        "Identificar duas causas e justificá-las com fonte definida."
+      ],
+      "correct": 3,
+      "explanation": "Objetivos específicos descrevem ação observável e critério pertinente."
+    },
+    {
+      "id": 16,
+      "module": 2,
+      "question": "Uma atividade usa conceitos do Ensino Médio para turma do 5º ano, sem mediação. Como proceder?",
+      "options": [
+        "Aprovar a atividade por ser mais difícil e impressionante.",
+        "Avaliar negativamente quem não dominar o material avançado.",
+        "Rever complexidade segundo o currículo dessa etapa.",
+        "Retirar exemplos e exigir leitura independente do conteúdo."
+      ],
+      "correct": 2,
+      "explanation": "A progressão considera etapa, conhecimentos prévios e apoios disponíveis."
+    },
+    {
+      "id": 17,
+      "module": 2,
+      "question": "A IA recomenda um projetor indisponível na escola. Que informação faltou no pedido?",
+      "options": [
+        "Uma exigência de edição paga da ferramenta para gerar vídeos.",
+        "Recursos reais e alternativa que dispense projetor.",
+        "A marca do equipamento utilizado pelo diretor da escola.",
+        "O nome completo de cada estudante para personalizar o projetor."
+      ],
+      "correct": 1,
+      "explanation": "Recursos e restrições de uso são parte do contexto do planejamento."
+    },
+    {
+      "id": 18,
+      "module": 2,
+      "question": "Uma turma tem ritmos variados. Qual diferenciação é mais apropriada?",
+      "options": [
+        "Definir capacidade futura pela velocidade de digitação.",
+        "Separar estudantes por dados sensíveis fornecidos à ferramenta.",
+        "Oferecer apoios graduais preservando o objetivo principal.",
+        "Diminuir permanentemente expectativas para um grupo rotulado."
+      ],
+      "correct": 2,
+      "explanation": "Diferenciação muda o acesso à tarefa sem estigmatizar pessoas."
+    },
+    {
+      "id": 19,
+      "module": 2,
+      "question": "Em atividade de análise, qual evidência é coerente com o objetivo “comparar fontes”?",
+      "options": [
+        "Quadro com diferenças e trechos de apoio de cada fonte.",
+        "Preferência pessoal pela ferramenta que gerou os textos.",
+        "Quantidade de emojis colocados no título da apresentação.",
+        "Número de vezes que o aluno abriu a página do exercício."
+      ],
+      "correct": 0,
+      "explanation": "O produto da aprendizagem deve corresponder à habilidade desejada."
+    },
+    {
+      "id": 20,
+      "module": 2,
+      "question": "A IA apresenta dez habilidades distintas para uma atividade de 20 minutos. Qual decisão evita dispersão?",
+      "options": [
+        "Aceitar toda a lista por ser um planejamento mais completo.",
+        "Priorizar objetivo verificável e reduzir a dispersão.",
+        "Remover a avaliação para caber mais códigos no material.",
+        "Aumentar o número de slides sem ajustar a atividade."
+      ],
+      "correct": 1,
+      "explanation": "Foco permite mediação e observação de evidências durante o tempo disponível."
+    },
+    {
+      "id": 21,
+      "module": 3,
+      "question": "Uma explicação de porcentagem apresenta conta errada, embora seja muito clara. O que fazer?",
+      "options": [
+        "Acrescentar ilustrações sem alterar o resultado numérico.",
+        "Manter o exemplo porque a linguagem é fácil de compreender.",
+        "Corrigir a operação antes de distribuir o material.",
+        "Pedir um título mais atrativo e ignorar a inconsistência."
+      ],
+      "correct": 2,
+      "explanation": "Precisão factual é condição de um material didático útil."
+    },
+    {
+      "id": 22,
+      "module": 3,
+      "question": "Uma imagem gerada de escola fictícia será usada em apostila. Que legenda evita confusão?",
+      "options": [
+        "Fotografia documental da escola, apesar de ser inventada.",
+        "Imagem comprovando situação real apenas por parecer fotográfica.",
+        "Registro oficial de obra concluída sem verificação.",
+        "Ilustração criada por IA; não representa a unidade real."
+      ],
+      "correct": 3,
+      "explanation": "Rotular imagens ilustrativas protege leitores contra falsa atribuição de realidade."
+    },
+    {
+      "id": 23,
+      "module": 3,
+      "question": "Um gráfico comunica tendência por duas cores, mas não mostra valores. Qual melhoria aumenta acesso?",
+      "options": [
+        "Reduzir o texto até não restar informação verificável.",
+        "Acrescentar rótulos, legenda e descrição da tendência.",
+        "Tornar a legenda legível apenas quando o mouse estiver sobre ela.",
+        "Substituir números por símbolos sem explicação."
+      ],
+      "correct": 1,
+      "explanation": "Informações essenciais precisam permanecer acessíveis além da cor."
+    },
+    {
+      "id": 24,
+      "module": 3,
+      "question": "Um texto adaptado elimina o aviso de segurança de um experimento. Qual problema ocorreu?",
+      "options": [
+        "O texto ficou mais acessível porque possui menos palavras.",
+        "A ausência do aviso comprova que o risco não existe.",
+        "A simplificação retirou alerta essencial; revisar.",
+        "A revisão é desnecessária quando a IA remove frases longas."
+      ],
+      "correct": 2,
+      "explanation": "Linguagem simples preserva requisitos técnicos, prazos e riscos relevantes."
+    },
+    {
+      "id": 25,
+      "module": 3,
+      "question": "Uma imagem essencial para entender mapa não tem texto alternativo. Qual abordagem é adequada?",
+      "options": [
+        "Descrever informação espacial que a atividade exige do leitor.",
+        "Escrever apenas “imagem” no campo de descrição alternativa.",
+        "Deixar alt vazio, mesmo quando a informação só está na imagem.",
+        "Colocar texto decorativo sem relação com coordenadas ou local."
+      ],
+      "correct": 0,
+      "explanation": "O texto alternativo deve transmitir a função e a informação necessária."
+    },
+    {
+      "id": 26,
+      "module": 3,
+      "question": "Qual alternativa evita reduzir acessibilidade a uma solução única para toda turma?",
+      "options": [
+        "Variar formatos de apoio conforme a tarefa comum.",
+        "Supor que a IA pode diagnosticar necessidades individuais.",
+        "Exigir que todos leiam o mesmo texto na mesma velocidade.",
+        "Substituir explicação por imagem sem qualquer descrição."
+      ],
+      "correct": 0,
+      "explanation": "Diferentes recursos podem ajudar a alcançar um objetivo comum sem rótulos."
+    },
+    {
+      "id": 27,
+      "module": 3,
+      "question": "O chatbot apresenta uma citação famosa sem fonte. Qual uso respeita autoria e verificação?",
+      "options": [
+        "Atribuir a qualquer autor histórico da mesma época.",
+        "Repetir a frase como citação autêntica por ser conhecida.",
+        "Usar aspas como prova de que as palavras foram realmente ditas.",
+        "Verificar origem antes de citar; remover se não for confirmada."
+      ],
+      "correct": 3,
+      "explanation": "Citações exigem fonte confiável e atribuição correta."
+    },
+    {
+      "id": 28,
+      "module": 3,
+      "question": "Um cartaz usa foto de terceiro disponível na internet. O que deve ser checado antes da publicação?",
+      "options": [
+        "Apenas o número de resultados ao pesquisar a fotografia.",
+        "Verificar licença, atribuição e direitos sobre a imagem.",
+        "A popularidade da postagem que apresentou a fotografia.",
+        "Se a foto combina visualmente com o fundo da página."
+      ],
+      "correct": 1,
+      "explanation": "Acesso público não significa permissão ilimitada de reutilização."
+    },
+    {
+      "id": 29,
+      "module": 3,
+      "question": "Ao criar questão comentada, qual parte ajuda o aluno a rever a estratégia?",
+      "options": [
+        "Mensagem “certo” ou “errado” sem justificativa de conteúdo.",
+        "Repetição do enunciado no comentário, sem esclarecimento.",
+        "Explicação ligada à evidência e ao raciocínio da resposta.",
+        "Frase genérica de elogio mesmo após erro de conceito."
+      ],
+      "correct": 2,
+      "explanation": "Comentários formativos mostram por que a alternativa está correta."
+    },
+    {
+      "id": 30,
+      "module": 3,
+      "question": "Um material introdutório usa três siglas desconhecidas. Qual revisão favorece compreensão?",
+      "options": [
+        "Explicar cada sigla na primeira ocorrência e incluir exemplo.",
+        "Manter as siglas porque soam mais técnicas e profissionais.",
+        "Trocar siglas por outras abreviações sem significado declarado.",
+        "Retirar exemplos para concentrar maior quantidade de termos."
+      ],
+      "correct": 0,
+      "explanation": "A clareza inclui definição de vocabulário e progressão de ideias."
+    },
+    {
+      "id": 31,
+      "module": 4,
+      "question": "Um estudante pede resposta pronta à IA antes de tentar resolver um problema. Qual intervenção favorece autonomia?",
+      "options": [
+        "Excluir a atividade por apresentar alguma dificuldade.",
+        "Entregar a solução inteira e avaliar apenas a cópia final.",
+        "Pedir que a IA responda por ele sempre que houver dúvida.",
+        "Oferecer pista e solicitar explicação do primeiro passo."
+      ],
+      "correct": 3,
+      "explanation": "Pistas graduais incentivam estratégia e elaboração própria."
+    },
+    {
+      "id": 32,
+      "module": 4,
+      "question": "Uma turma deve comparar resposta de IA com duas fontes. Qual tarefa promove leitura crítica?",
+      "options": [
+        "Confrontar afirmações do texto com fontes verificáveis.",
+        "Aceitar a resposta da IA por estar escrita de modo confiante.",
+        "Apagar diferenças entre documentos e declarar acordo total.",
+        "Escolher o texto com título mais longo sem ler as fontes."
+      ],
+      "correct": 0,
+      "explanation": "Comparação exige evidência localizada e análise das diferenças."
+    },
+    {
+      "id": 33,
+      "module": 4,
+      "question": "Em trabalho de equipe, como evitar que um único aluno faça toda a atividade digital?",
+      "options": [
+        "Avaliar todos somente pela velocidade do digitador.",
+        "Atribuir sempre a mesma função a quem tem celular próprio.",
+        "Distribuir e revezar papéis de leitura, checagem e relato.",
+        "Deixar a participação de cada pessoa sem objetivos compartilhados."
+      ],
+      "correct": 2,
+      "explanation": "Papéis rotativos favorecem participação e desenvolvimento de competências."
+    },
+    {
+      "id": 34,
+      "module": 4,
+      "question": "Uma aula usa IA apenas para gerar respostas finais e não prevê discussão. Qual melhoria é prioritária?",
+      "options": [
+        "Criar etapas de hipótese, debate e justificativa autoral.",
+        "Evitar perguntas para não interferir com o texto da IA.",
+        "Usar somente animações como indicador de reflexão.",
+        "Adicionar mais respostas prontas para reduzir dúvidas."
+      ],
+      "correct": 0,
+      "explanation": "Aprendizagem ativa inclui construção, revisão e explicação do raciocínio."
+    },
+    {
+      "id": 35,
+      "module": 4,
+      "question": "Qual devolutiva é mais formativa diante de resposta parcialmente correta?",
+      "options": [
+        "Copiar comentário genérico sem verificar o que foi escrito.",
+        "Declarar incapacidade permanente com base em uma resposta.",
+        "Reconhecer avanço, indicar lacuna e orientar nova tentativa.",
+        "Dar nota mínima sem explicar critérios nem permitir revisão."
+      ],
+      "correct": 2,
+      "explanation": "Feedback deve conectar a evidência observada a um próximo passo concreto."
+    },
+    {
+      "id": 36,
+      "module": 4,
+      "question": "Um grupo recebeu texto de IA sem referências. Que pergunta ajuda a investigar confiabilidade?",
+      "options": [
+        "Que documentos independentes sustentam essas afirmações?",
+        "Como transformar todas as frases em certezas sem pesquisar?",
+        "Quantos adjetivos positivos aparecem no parágrafo final?",
+        "Qual é a fonte escolhida pela preferência estética do grupo?"
+      ],
+      "correct": 0,
+      "explanation": "Questionar fontes desloca o foco da aparência para a possibilidade de verificação."
+    },
+    {
+      "id": 37,
+      "module": 4,
+      "question": "A turma fica sem internet no meio de oficina. O que demonstra planejamento inclusivo?",
+      "options": [
+        "Cancelar a aprendizagem de quem não pode se conectar.",
+        "Atribuir erro aos estudantes por falta de equipamentos pessoais.",
+        "Mudar o objetivo para cadastro em serviço pago.",
+        "Usar material impresso equivalente e manter a tarefa de análise."
+      ],
+      "correct": 3,
+      "explanation": "Alternativas offline permitem continuidade pedagógica."
+    },
+    {
+      "id": 38,
+      "module": 4,
+      "question": "Uma IA resume uma reportagem de modo diferente do texto original. Qual atividade fortalece autoria?",
+      "options": [
+        "Excluem informações que contradizem a posição inicial.",
+        "Copiam o resumo sem ler para acelerar a entrega.",
+        "Estudantes destacam omissões e reescrevem síntese com fontes.",
+        "Aceitam o resumo automático como interpretação definitiva."
+      ],
+      "correct": 2,
+      "explanation": "Revisão crítica e produção autoral favorecem compreensão do texto."
+    },
+    {
+      "id": 39,
+      "module": 4,
+      "question": "Um docente quer usar debate e IA para tema polêmico. Qual cuidado é importante?",
+      "options": [
+        "Definir critérios de evidência, respeito e pluralidade.",
+        "Usar uma única afirmação sem fonte como base da nota.",
+        "Exigir concordância unânime com uma resposta gerada.",
+        "Classificar alunos por opinião e divulgar listas nominais."
+      ],
+      "correct": 0,
+      "explanation": "Discussão pedagógica exige critérios claros e respeito aos participantes."
+    },
+    {
+      "id": 40,
+      "module": 4,
+      "question": "O plano de grupo termina quando todos recebem um texto da IA. Qual etapa não pode faltar?",
+      "options": [
+        "Explicar as análises, justificar e revisar o resultado.",
+        "Impedir perguntas sobre possíveis erros da resposta.",
+        "Descartar a leitura das fontes após o download do texto.",
+        "Considerar a quantidade de texto como medida suficiente."
+      ],
+      "correct": 0,
+      "explanation": "A mediação transforma o recurso recebido em oportunidade de argumentar e aprender."
+    },
+    {
+      "id": 41,
+      "module": 5,
+      "question": "Uma avaliação mede “comparar fontes”, mas só pergunta nomes de datas. Qual é a falha?",
+      "options": [
+        "A quantidade de itens substitui o critério de aprendizagem.",
+        "A prova deveria ter mais cores para alinhar com o objetivo.",
+        "Qualquer pergunta factual avalia automaticamente análise de fontes.",
+        "Itens não verificam a habilidade de comparação pretendida."
+      ],
+      "correct": 3,
+      "explanation": "A avaliação precisa coletar evidências correspondentes ao objetivo."
+    },
+    {
+      "id": 42,
+      "module": 5,
+      "question": "Uma questão tem duas opções igualmente corretas. O que fazer antes de disponibilizar o simulado?",
+      "options": [
+        "Manter ambas e escolher arbitrariamente a primeira da lista.",
+        "Adicionar música para diminuir reclamações sobre ambiguidade.",
+        "Permitir que a IA escolha o gabarito sem revisar o conteúdo.",
+        "Reescrever enunciado e opções para existir uma melhor resposta."
+      ],
+      "correct": 3,
+      "explanation": "Itens objetivos exigem chave inequívoca sustentada pelo enunciado."
+    },
+    {
+      "id": 43,
+      "module": 5,
+      "question": "Um banco possui 60 questões, mas todas as respostas são A. Qual auditoria é necessária?",
+      "options": [
+        "Excluir os comentários e confiar na ordem das alternativas.",
+        "Rever pistas e gabarito sem mudar fatos por conveniência.",
+        "Mudar respostas verdadeiras apenas para alternar as letras.",
+        "Aprovar porque a quantidade de registros é suficiente."
+      ],
+      "correct": 1,
+      "explanation": "Balanceamento auxilia a qualidade formal, mas não substitui revisão conceitual."
+    },
+    {
+      "id": 44,
+      "module": 5,
+      "question": "Um aplicativo mostra 90% de acessos à apostila. Que conclusão é sustentada por esse indicador?",
+      "options": [
+        "O recurso garante aprovação independentemente da avaliação.",
+        "Todos os estudantes dominaram o conteúdo depois da leitura.",
+        "O dado demonstra acesso, não necessariamente aprendizado.",
+        "A ferramenta causou aumento de notas em toda a rede."
+      ],
+      "correct": 2,
+      "explanation": "Indicadores de uso não demonstram competência ou causalidade."
+    },
+    {
+      "id": 45,
+      "module": 5,
+      "question": "O professor testa IA com planilha contendo CPF e laudos de estudantes. Qual risco se destaca?",
+      "options": [
+        "Exposição desnecessária de dados pessoais e sensíveis.",
+        "Ausência de emojis nos nomes das colunas da tabela.",
+        "Apenas excesso de tamanho de fonte na planilha.",
+        "Falta de ilustrações na tela de acompanhamento."
+      ],
+      "correct": 0,
+      "explanation": "Para testes, use dados sintéticos; informações reais requerem controles e finalidade legítima."
+    },
+    {
+      "id": 46,
+      "module": 5,
+      "question": "Um aluno de dez anos é descrito por um rótulo criado automaticamente. Qual é a conduta adequada?",
+      "options": [
+        "Rejeitar rótulo definitivo e solicitar avaliação humana.",
+        "Publicar o rótulo como diagnóstico e encaminhamento automático.",
+        "Compartilhar com toda a turma como forma de motivação.",
+        "Reduzir permanentemente oportunidades por causa do algoritmo."
+      ],
+      "correct": 0,
+      "explanation": "Decisões sobre crianças exigem proteção, cuidado contextual e respeito a direitos."
+    },
+    {
+      "id": 47,
+      "module": 5,
+      "question": "Um item está correto, mas a alternativa certa é sempre a mais longa. Qual problema pode surgir?",
+      "options": [
+        "Prova de que a IA produziu conteúdo de maior profundidade.",
+        "Melhoria automática da validade de todos os itens.",
+        "Pista de formato que permite acerto sem compreender o tema.",
+        "Garantia de que estudantes leram cada texto integralmente."
+      ],
+      "correct": 2,
+      "explanation": "O comprimento das opções pode revelar chaves; é preciso editar distratores e respostas."
+    },
+    {
+      "id": 48,
+      "module": 5,
+      "question": "Uma turma fictícia melhora após atividade, mas mudou também o professor. Qual cuidado interpretativo?",
+      "options": [
+        "Apresentar comparação de períodos como ensaio controlado.",
+        "Ignorar diferenças de método e dificuldade entre avaliações.",
+        "Afirmar que qualquer mudança ocorreu exclusivamente pela IA.",
+        "Evitar atribuir causa à IA sem controlar outras explicações."
+      ],
+      "correct": 3,
+      "explanation": "Fatores simultâneos impedem inferência causal simples."
+    },
+    {
+      "id": 49,
+      "module": 5,
+      "question": "Que recurso de acessibilidade apoia avaliação em quiz digital?",
+      "options": [
+        "Resposta apresentada somente por cor verde ou vermelha.",
+        "Botões com rótulo, foco visível e navegação pelo teclado.",
+        "Tempo de resposta impossível de ajustar sem justificativa.",
+        "Questões com texto cortado em telas pequenas."
+      ],
+      "correct": 1,
+      "explanation": "A avaliação precisa oferecer interação perceptível e operável."
+    },
+    {
+      "id": 50,
+      "module": 5,
+      "question": "A IA recomenda publicar ranking com nomes e notas de alunos. Qual alternativa é responsável?",
+      "options": [
+        "Compartilhar listas com qualquer pessoa que peça o link.",
+        "Tratar consentimento presumido como autorização irrestrita.",
+        "Usar devolutivas reservadas e dados agregados mínimos.",
+        "Exibir histórico nominal completo em página pública."
+      ],
+      "correct": 2,
+      "explanation": "Privacidade, finalidade e respeito aos estudantes devem orientar divulgação de resultados."
+    },
+    {
+      "id": 51,
+      "module": 6,
+      "question": "Antes de testar uma ferramenta em toda a escola, qual iniciativa reduz riscos?",
+      "options": [
+        "Anunciar resultados de aprendizagem sem medição.",
+        "Obrigar todas as turmas a cadastrar-se imediatamente.",
+        "Trocar todos os materiais de uma vez sem verificação.",
+        "Fazer piloto curto com critérios e opção sem internet."
+      ],
+      "correct": 3,
+      "explanation": "Pilotos observáveis permitem identificar barreiras e ajustar proposta."
+    },
+    {
+      "id": 52,
+      "module": 6,
+      "question": "Num piloto de 20 minutos, metade do tempo é gasto criando contas. Que adaptação considerar?",
+      "options": [
+        "Ignorar o tempo efetivo de aprendizagem no relatório.",
+        "Aumentar tarefas sem reservar tempo para explicação.",
+        "Reduzir etapas e oferecer participação sem cadastro.",
+        "Culpar alunos por dificuldades técnicas que não controlam."
+      ],
+      "correct": 2,
+      "explanation": "Viabilidade envolve tempo real de acesso e execução, não só conteúdo."
+    },
+    {
+      "id": 53,
+      "module": 6,
+      "question": "Dois docentes querem revisar material de IA. Qual divisão é mais produtiva?",
+      "options": [
+        "Ambos avaliam apenas o logotipo e as animações da capa.",
+        "Ninguém consulta fontes porque a IA já aprovou o texto.",
+        "Um publica sem mostrar os itens para o outro revisar.",
+        "Um confere conteúdo; outro analisa clareza, inclusão e uso."
+      ],
+      "correct": 3,
+      "explanation": "Revisão complementar amplia a cobertura de problemas antes da distribuição."
+    },
+    {
+      "id": 54,
+      "module": 6,
+      "question": "Ao informar famílias sobre IA em aula, qual mensagem apresenta transparência?",
+      "options": [
+        "Solicitar dados pessoais desnecessários em mensagem pública.",
+        "Explicar finalidade, revisão humana e proteção dos dados.",
+        "Prometer aprovação de todos os estudantes sem critérios.",
+        "Omitir que conteúdos gerados serão revisados antes do uso."
+      ],
+      "correct": 1,
+      "explanation": "Comunicação clara apresenta responsabilidades e condições reais de participação."
+    },
+    {
+      "id": 55,
+      "module": 6,
+      "question": "Um recurso de aula foi alterado após críticas. O que torna a atualização rastreável?",
+      "options": [
+        "Substituir arquivo sem anotar mudanças ou data.",
+        "Registrar versão, problema identificado, correção e teste.",
+        "Apagar relatos de falha para preservar aparência do projeto.",
+        "Afirmar que a versão anterior nunca apresentou problemas."
+      ],
+      "correct": 1,
+      "explanation": "Histórico de mudança ajuda outros educadores a entender limites e melhorias."
+    },
+    {
+      "id": 56,
+      "module": 6,
+      "question": "Um coordenador pede resultado do piloto. Qual informação distingue entrega de impacto?",
+      "options": [
+        "Relatar entregas; aprendizagem ainda deve ser medida.",
+        "Transformar visitas ao site em aprovação automática.",
+        "Declarar economia de recursos sem contabilizar despesas.",
+        "Confundir downloads com pessoas certificadas."
+      ],
+      "correct": 0,
+      "explanation": "Resultados devem corresponder a evidências, não a expectativas."
+    },
+    {
+      "id": 57,
+      "module": 6,
+      "question": "A atividade funcionou com internet na sede, mas não na extensão escolar. Qual ação é mais responsável?",
+      "options": [
+        "Concluir que docentes da extensão não querem inovar.",
+        "Manter a mesma exigência sem verificar infraestrutura.",
+        "Cancelar participação de estudantes com conexão limitada.",
+        "Rever condições de acesso e preparar versão de baixo custo."
+      ],
+      "correct": 3,
+      "explanation": "Equidade requer adaptar condições concretas de oferta."
+    },
+    {
+      "id": 58,
+      "module": 6,
+      "question": "O portfólio docente contém imagem de estudante identificável sem autorização. Que ajuste considerar?",
+      "options": [
+        "Remover ou substituir a imagem por ilustração autorizada.",
+        "Compartilhar o arquivo com todos os participantes da oficina.",
+        "Excluir a legenda e manter os elementos identificadores.",
+        "Publicar o material porque a imagem melhora o apelo visual."
+      ],
+      "correct": 0,
+      "explanation": "Portfólios devem preservar privacidade e direitos de imagem."
+    },
+    {
+      "id": 59,
+      "module": 6,
+      "question": "Ao receber reclamação de texto cortado no celular, qual é a próxima etapa adequada?",
+      "options": [
+        "Alterar somente a capa sem verificar a tela problemática.",
+        "Reproduzir a falha no celular, corrigir e retestar.",
+        "Explicar que estudantes devem usar computador mais caro.",
+        "Deixar o problema até que a quantidade de visitas aumente."
+      ],
+      "correct": 1,
+      "explanation": "Relatos concretos orientam teste de regressão e manutenção."
+    },
+    {
+      "id": 60,
+      "module": 6,
+      "question": "Qual conclusão resume o uso responsável da IA por professores iniciantes?",
+      "options": [
+        "Substituir vínculo docente por automação de tarefas sensíveis.",
+        "Confiar em respostas longas sem verificar fontes e efeitos.",
+        "Planejar, revisar, proteger os alunos e avaliar resultados.",
+        "Delegar integralmente decisões de aprendizagem ao modelo."
+      ],
+      "correct": 2,
+      "explanation": "IA pode apoiar práticas, mas mediação, cuidado e avaliação permanecem humanos."
+    }
+  ]
+}

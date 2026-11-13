@@ -1,0 +1,18 @@
+INSTITUTO ENSINOMEU — CURSO 09
+IA PARA PROFESSORES INICIANTES — GRATUITO
+
+CONTEÚDO
+• apostila_ia_para_professores_iniciantes_20h.pdf — 46 páginas ilustradas, 30 lições e seis missões.
+• index.html — Arena Gamer principal.
+• simulado_ia_para_professores_iniciantes.html — HTML independente do jogo, com PDF embutido para baixar.
+• banco_60_questoes.json — questões e respostas comentadas para auditoria.
+• NOTA_TECNICA_AVALIACAO.md — controles editoriais e limitações.
+
+USO
+Abra index.html no navegador. Em “Módulos”, escolha um nível ou inicie 60 perguntas. A cada resposta, confira o comentário e avance. O modo de quiz foi adaptado para caber na tela sem barras internas, mantendo navegação, pontuação e feedback.
+Música e efeitos são opcionais; nenhuma pergunta ou resposta é narrada. Se o MP3 remoto falhar, música ambiente e efeitos são gerados localmente. O HTML não solicita conta e não envia dados pessoais de aprendizagem. As missões são salvas só no navegador e podem desaparecer ao limpar dados.
+
+OBSERVAÇÃO
+As 20 horas são tempo de estudo planejado (leitura, prática, simulados e revisão). O resultado local não constitui certificação ou controle de frequência.
+
+Instituto EnsinoMeu — Coordenação editorial: Prof. Carlos Tavares — 2026.
