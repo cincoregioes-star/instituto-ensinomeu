@@ -19,6 +19,17 @@ for(const file of htmlFiles){
  const html=readFileSync(file,'utf8');
  const wanted='../'.repeat(name.split('/').length-1)+'voltar-global.js';
  const found=[...html.matchAll(/<script\b[^>]*\bsrc=["']([^"']*voltar-global\.js[^"']*)["'][^>]*><\/script>/gi)];
+ if(name==='mapa-do-site.html' && found.length===0 && html.includes('href="./">Início</a>')){
+  console.log('OK navegação própria do mapa do site');
+  continue;
+ }
+ if(name.startsWith('cursos-ia/') && found.length===0){
+  const hasInternalHome=html.includes('id="btn-home"') && html.includes('Abrir EnsinoMeu');
+  const hasCatalogBack=name==='cursos-ia/index.html' && html.includes('href="../index.html"');
+  assert.ok(hasInternalHome||hasCatalogBack,name+' precisa de navegação de saída ou início');
+  console.log('OK navegação própria do curso: '+name);
+  continue;
+ }
  assert.equal(found.length,1,name+' deve possuir exatamente um botão global');
  assert.ok(found[0][1].startsWith(wanted),name+' deve usar caminho correto do script');
  console.log('OK navegação Voltar: '+name);
