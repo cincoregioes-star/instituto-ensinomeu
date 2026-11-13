@@ -33,5 +33,6 @@ assert.equal(Number(execFileSync('pdfinfo',[pdf],{encoding:'utf8'}).match(/^Page
 for(const p of ['cursos-ia/index.html','catalogo-gratuito.html','sitemap.xml']){
  assert.ok(read(p).includes('11-avaliacoes-e-simulados-com-ia'),p+' não integrado');
 }
-assert.ok(read('index.html').includes('11 cursos completos'));
+assert.ok(Number(read('index.html').match(/Nova escola gratuita de IA: (\d+) cursos completos/)?.[1])>=11,
+          'O portal deve incluir pelo menos onze cursos');
 console.log('OK Curso 11: 30 lições, 60 itens únicos, gabarito 15 por letra, PDF 46 páginas e catálogo.');

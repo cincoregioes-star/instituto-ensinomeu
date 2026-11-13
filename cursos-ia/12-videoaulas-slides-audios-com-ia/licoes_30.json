@@ -1,0 +1,313 @@
+{
+  "course": "Criação de Videoaulas, Slides e Áudios com Inteligência Artificial",
+  "hours_planned": 20,
+  "method": "30 lições de 33 minutos e 6 missões de 35 minutos; sem certificado automático",
+  "modules": [
+    {
+      "title": "Roteiro pedagógico de videoaulas",
+      "subtitle": "Objetivo, sequência, autoria e tempo de aprendizagem",
+      "lessons": [
+        {
+          "title": "Definir uma aprendizagem verificável",
+          "goal": "Transformar tema amplo em objetivo que possa ser observado.",
+          "case": "Uma aula intitulada 'O clima do Brasil' mostra paisagens bonitas, mas não pede nenhuma interpretação de dados.",
+          "steps": "Escolha uma habilidade verificável; estabeleça o que o estudante analisará e qual evidência produzirá. Separe entretenimento de aprendizagem.",
+          "prompt": "Proponha roteiro de Geografia com comparação de dois climogramas; liste evidências e pontos de checagem, sem inventar códigos curriculares.",
+          "check": "É possível aferir o objetivo com uma produção do estudante?",
+          "challenge": "Reescreva três objetivos genéricos e proponha uma pergunta de transferência."
+        },
+        {
+          "title": "Calcular tempo real de narração",
+          "goal": "Estimar duração a partir de palavras, pausas e demonstrações.",
+          "case": "O produtor promete dez minutos para um roteiro de três mil palavras e quarenta slides sem medir leitura.",
+          "steps": "Leia trecho de amostra com cronômetro, calcule ritmo médio e inclua pausas para observar gráficos. Ajuste extensão do roteiro antes de gerar áudio.",
+          "prompt": "Estime intervalo de duração para 1.200 palavras com ritmos de leitura declarados; explicite pausas e hipóteses.",
+          "check": "Estimativa foi medida ou apenas inferida pela IA?",
+          "challenge": "Meça cem palavras lidas, projete tempo e revise a estimativa."
+        },
+        {
+          "title": "Organizar os 40 slides em uma narrativa",
+          "goal": "Distribuir abertura, conceitos, evidências e síntese.",
+          "case": "A videoaula muda de imagem a cada dez segundos, embora um gráfico exija trinta para ser compreendido.",
+          "steps": "Construa mapa slide–tópico–fala–duração. Agrupe imagens relacionadas e reserve mais tempo para leitura de evidências e resolução guiada.",
+          "prompt": "Monte storyboard de quarenta cenas para tema definido, com função didática de cada bloco e durações flexíveis.",
+          "check": "O ritmo acompanha a complexidade da tela?",
+          "challenge": "Planeje oito slides de um segmento e justifique seus tempos."
+        },
+        {
+          "title": "Vincular roteiro a fontes confiáveis",
+          "goal": "Separar afirmações verificáveis de exemplos criados.",
+          "case": "Um texto gerado informa uma data histórica e um número de habitantes sem citar origem nem período.",
+          "steps": "Marque fatos sujeitos a atualização, consulte fonte primária e registre data da referência. Identifique exemplos fictícios como tal.",
+          "prompt": "Extraia afirmações que exigem fonte deste roteiro; não invente links e deixe lacunas para checagem humana.",
+          "check": "Qualquer dado exibido pode ser rastreado?",
+          "challenge": "Crie ficha com cinco afirmações, fontes e decisões de edição."
+        },
+        {
+          "title": "Desenhar começo, meio e conclusão",
+          "goal": "Preparar gatilho inicial, desenvolvimento e recuperação ativa.",
+          "case": "O vídeo termina com 'até a próxima' sem retomar o problema apresentado na abertura.",
+          "steps": "Abra com pergunta autêntica, construa argumentos apoiados em recursos visuais e finalize com síntese e desafio que aceite resposta verificável.",
+          "prompt": "Estruture aula sobre consumo de água com problema inicial, evidências contrastantes e desafio final sem respostas prontas.",
+          "check": "O fechamento demonstra avanço em relação à pergunta inicial?",
+          "challenge": "Escreva abertura de 30 segundos e síntese de 45 segundos."
+        }
+      ]
+    },
+    {
+      "title": "Slides e design visual profissional",
+      "subtitle": "Legibilidade, coerência de imagens e comunicação visual",
+      "lessons": [
+        {
+          "title": "Compor slides sem excesso de texto",
+          "goal": "Reduzir densidade preservando conceitos essenciais.",
+          "case": "Um slide contém dois parágrafos inteiros; o narrador repete palavra por palavra enquanto o aluno tenta ler.",
+          "steps": "Transforme cada cena em uma ideia visual central. Mantenha termos-chave e exemplos curtos na tela; deixe desenvolvimento completo na locução e na apostila.",
+          "prompt": "Reescreva este slide longo em uma manchete, três rótulos úteis e sugestão visual que corresponda à fala.",
+          "check": "Tela e áudio se complementam sem competir pela atenção?",
+          "challenge": "Produza duas versões do slide e compare leitura em celular."
+        },
+        {
+          "title": "Escolher contraste e tipografia",
+          "goal": "Criar hierarquia visível em telas grandes e pequenas.",
+          "case": "Legenda cinza-clara sobre fotografia de areia desaparece em parte do vídeo quando assistida no celular.",
+          "steps": "Use área de apoio opaca ou contraste sólido, títulos legíveis e hierarquia consistente. Teste redução e contraste real.",
+          "prompt": "Audite paleta e tamanhos para apresentação 16:9 com imagens variáveis e proponha correção sem esconder dados.",
+          "check": "A informação resiste a tela menor e imagem clara?",
+          "challenge": "Ajuste um slide de baixo contraste e registre as escolhas."
+        },
+        {
+          "title": "Gerar imagens coerentes com o conteúdo",
+          "goal": "Criar imagens informativas em lugar de enfeites genéricos.",
+          "case": "Um slide sobre agricultura sintrópica apresenta plantação convencional em monocultura, contradizendo a narração.",
+          "steps": "Descreva local, época, relações entre elementos, escala e restrições no pedido de imagem. Confira detalhes gerados com o conteúdo.",
+          "prompt": "Crie prompt visual em inglês de sistema agroflorestal diversificado, sem texto embutido e com elementos observáveis.",
+          "check": "A imagem ensina o conceito correto ou só parece bonita?",
+          "challenge": "Compare três imagens por fidelidade científica e escolha uma."
+        },
+        {
+          "title": "Evitar cortes e deformações no formato 16:9",
+          "goal": "Planejar enquadramento e zona segura para vídeo Full HD.",
+          "case": "Imagem quadrada é esticada para 1920×1080, deixando rostos deformados e palavras cortadas.",
+          "steps": "Preserve proporção original; recorte apenas o dispensável ou componha margens intencionais. Deixe títulos longe das bordas.",
+          "prompt": "Ofereça duas estratégias de adaptação de imagem vertical para tela 16:9, com perdas e critérios.",
+          "check": "Assuntos essenciais permanecem íntegros após o enquadramento?",
+          "challenge": "Faça esquema de zona segura e registre objetos que não podem ser cortados."
+        },
+        {
+          "title": "Usar gráficos e mapas sem falsear dados",
+          "goal": "Preservar escala, fonte e contexto nas visualizações.",
+          "case": "O gerador inventa barras de altura semelhante para dados de 20 e 90, e a aula apresenta o gráfico como real.",
+          "steps": "Monte gráfico a partir de dados conferidos, com unidade, período, fonte e escala clara. Trate gráfico de IA como esboço a validar.",
+          "prompt": "Descreva gráfico fiel com valores 20, 50 e 90 e instruções de checagem matemática independente.",
+          "check": "Proporções visuais correspondem aos números citados?",
+          "challenge": "Revise um gráfico intencionalmente enganoso e escreva legenda correta."
+        }
+      ]
+    },
+    {
+      "title": "Narração e sincronização de áudio",
+      "subtitle": "Voz adulta, ritmo pedagógico, clareza e legendas",
+      "lessons": [
+        {
+          "title": "Selecionar voz compatível com a turma",
+          "goal": "Definir tom, inteligibilidade e idioma da locução.",
+          "case": "Uma aula brasileira usa voz infantil sintetizada com pronúncia espanhola, comprometendo a identificação de termos.",
+          "steps": "Teste amostra curta de voz adulta em português brasileiro, com termos difíceis e diferentes velocidades. Avalie clareza antes de produzir todos os segmentos.",
+          "prompt": "Redija teste de locução de 120 palavras com nomes geográficos, pausas e um dado numérico que exigirá revisão.",
+          "check": "A voz favorece compreensão sem teatralizar o conteúdo?",
+          "challenge": "Compare duas leituras e documente escolha por inteligibilidade."
+        },
+        {
+          "title": "Preparar texto para síntese de fala",
+          "goal": "Editar números, siglas e pronúncia de nomes.",
+          "case": "A narração lê 'IBGE' de forma inconsistente e confunde 1500 com 15.000 em um exemplo histórico.",
+          "steps": "Expanda siglas quando necessário, escreva números para evitar leitura ambígua e indique pronúncia de termos. Revise o áudio ouvido, não só o texto.",
+          "prompt": "Prepare versão para TTS deste parágrafo com siglas e datas; sinalize termos que exigem escuta humana.",
+          "check": "Valores, unidades, nomes e datas são pronunciados corretamente?",
+          "challenge": "Crie lista de dez palavras críticas e teste uma amostra de áudio."
+        },
+        {
+          "title": "Ajustar pausas com intenção didática",
+          "goal": "Distribuir silêncios onde há conceitos ou figuras difíceis.",
+          "case": "A voz corre sobre uma equação em quatro segundos e deixa quinze segundos sem fala após um slide simples.",
+          "steps": "Use pausas de explicação, observação e mudança de bloco. Meça tempo com conteúdo real e elimine longos intervalos não intencionais.",
+          "prompt": "Marque pausas úteis em explicação de gráfico; diferencie silêncio para leitura de falha de sincronização.",
+          "check": "O silêncio permite pensar ou produz abandono da atenção?",
+          "challenge": "Anote pausas de um minuto de áudio e justifique mudanças."
+        },
+        {
+          "title": "Sincronizar locução com as 40 imagens",
+          "goal": "Vincular entrada de cada cena à frase correspondente.",
+          "case": "A voz começa a falar de Revolução Industrial enquanto ainda aparece imagem da sociedade feudal por oito segundos.",
+          "steps": "Construa lista de marcadores fala–cena, ajuste início dos slides e revise o vídeo em reprodução linear. Não dependa apenas de intervalos iguais.",
+          "prompt": "Organize mapa de sincronização para dez slides com frases-chave e tempos de entrada revisáveis.",
+          "check": "A imagem atual sustenta precisamente a fala atual?",
+          "challenge": "Marque cinco mudanças de cena sobre um roteiro narrado de teste."
+        },
+        {
+          "title": "Criar transcrição e legendas acessíveis",
+          "goal": "Oferecer caminho de aprendizagem sem depender de áudio.",
+          "case": "O aluno com perda auditiva só recebe MP4 sem legenda e sem o texto falado.",
+          "steps": "Revise transcrição, gere legendas com tempo real e mantenha contraste e divisão de frases. Evite cobrir gráficos e nomes essenciais.",
+          "prompt": "Crie três legendas curtas de fala fictícia e aponte como conferir o alinhamento temporal no vídeo.",
+          "check": "A informação é compreensível com o som desativado?",
+          "challenge": "Entregue trecho SRT revisado e transcrição acessível."
+        }
+      ]
+    },
+    {
+      "title": "Autoria, fontes e inclusão",
+      "subtitle": "Uso responsável de vozes, imagens, pessoas e informação",
+      "lessons": [
+        {
+          "title": "Verificar licenças de imagens e trilhas",
+          "goal": "Organizar ficha de direitos de uso por recurso.",
+          "case": "Uma fotografia encontrada em rede social aparece na videoaula porque 'estava disponível para baixar'.",
+          "steps": "Identifique autor, origem, licença, alterações e permissão de distribuição. Quando não houver direito verificável, substitua o recurso.",
+          "prompt": "Monte ficha de proveniência com autor, endereço, licença e condição de uso; não invente autorizações.",
+          "check": "A publicação pode demonstrar o direito de usar cada material?",
+          "challenge": "Audite três imagens fictícias e proponha substituições seguras."
+        },
+        {
+          "title": "Representar contextos históricos com honestidade",
+          "goal": "Diferenciar reconstrução visual de documento histórico.",
+          "case": "Uma imagem sintética de 1888 é exibida como se fosse fotografia documental da assinatura da Lei Áurea.",
+          "steps": "Aplique legenda de recriação artística ou simulação, valide época e detalhes e use documento autêntico quando a evidência histórica for central.",
+          "prompt": "Escreva aviso simples para cena histórica reconstruída por IA e lista de fatos que exigem conferência.",
+          "check": "O espectador consegue distinguir fonte original e imagem criada?",
+          "challenge": "Reformule quatro legendas enganosas para versões honestas."
+        },
+        {
+          "title": "Proteger imagem e voz de pessoas",
+          "goal": "Evitar uso não autorizado de rosto, voz e dados pessoais.",
+          "case": "Um produtor clona a voz de colega e insere foto identificável de estudante porque o projeto é escolar.",
+          "steps": "Examine consentimento e direitos pertinentes, escolha vozes licenciadas e personagens fictícios, reduza exposição desnecessária e registre decisões.",
+          "prompt": "Sugira versão de aula sem clonagem de voz nem rostos reais de estudantes e com o mesmo valor pedagógico.",
+          "check": "A pessoa representada autorizou o uso específico e sua divulgação?",
+          "challenge": "Crie checklist de recursos pessoais e alternativas sem identificação."
+        },
+        {
+          "title": "Evitar estereótipos nos visuais gerados",
+          "goal": "Revisar diversidade e precisão sem produzir caricaturas.",
+          "case": "Todas as imagens de cientistas mostram apenas homens brancos, enquanto comunidades indígenas aparecem com roupas estereotipadas.",
+          "steps": "Defina representações pertinentes ao tema, consulte fontes contextuais e revise erros de cultura, vestimenta, papéis e tempo histórico.",
+          "prompt": "Revise dez prompts para diversidade respeitosa e elimine sinais visuais estereotipados sem evidência.",
+          "check": "A imagem apresenta pessoas reais ou contextos com dignidade e exatidão?",
+          "challenge": "Corrija três prompts enviesados e explique cada ajuste."
+        },
+        {
+          "title": "Desenhar alternativas inclusivas e offline",
+          "goal": "Planejar acesso quando o vídeo não puder ser exibido.",
+          "case": "Parte da turma usa pacote de dados limitado e o vídeo em Full HD não abre no celular.",
+          "steps": "Disponibilize roteiro textual, PDF de apoio, versão de qualidade reduzida e atividade de aprendizagem equivalente; teste sem som quando apropriado.",
+          "prompt": "Desenhe pacote de aula com vídeo, transcrição e atividade impressa para escola com internet instável.",
+          "check": "Quem não consegue reproduzir MP4 ainda alcança o objetivo?",
+          "challenge": "Prepare plano de contingência para baixa conectividade."
+        }
+      ]
+    },
+    {
+      "title": "Montagem, exportação e testes",
+      "subtitle": "Fluxo de produção e verificação técnica de ponta a ponta",
+      "lessons": [
+        {
+          "title": "Organizar arquivos e versões de produção",
+          "goal": "Controlar nomes, cena, áudio e alterações sem perder materiais.",
+          "case": "Há quarenta imagens chamadas 'final2.png', dois áudios 'novo.mp3' e ninguém sabe a ordem correta.",
+          "steps": "Numere cenas, preserve originais, registre roteiro e mapa de tempos. Diferencie versões de revisão e versão de publicação.",
+          "prompt": "Proponha pasta e nomes para 40 imagens, dois áudios, roteiro, legendas e vídeo exportado.",
+          "check": "Outra pessoa conseguiria reconstruir a aula sem adivinhar a ordem?",
+          "challenge": "Monte manifesto de produção com versões e responsáveis."
+        },
+        {
+          "title": "Montar vídeo sem distorcer as cenas",
+          "goal": "Configurar proporção e sequência mantendo foco didático.",
+          "case": "O editor aplica zoom automático a cada slide, corta datas e produz movimento excessivo.",
+          "steps": "Defina canvas 16:9, transições discretas e zona segura. Prefira cortes orientados ao roteiro, não efeitos que competem com o conteúdo.",
+          "prompt": "Proponha roteiro de montagem de dez slides com critérios de corte, duração e espaço para legendas.",
+          "check": "Informações essenciais permanecem visíveis durante a transição?",
+          "challenge": "Compare montagem com e sem zoom e justifique a opção."
+        },
+        {
+          "title": "Exportar com equilíbrio entre tamanho e qualidade",
+          "goal": "Escolher resolução, taxa de quadros e compressão conforme o uso.",
+          "case": "Uma aula de 11 minutos com slides estáticos vira arquivo enorme, difícil de baixar em rede móvel.",
+          "steps": "Faça exportação piloto, inspecione legibilidade e áudio; ajuste compressão a partir de testes reais, sem assumir um bitrate universal.",
+          "prompt": "Explique critérios para comparar dois exports Full HD e 720p sem prometer que um serve para todos.",
+          "check": "Arquivo abre, é legível e cabe nas condições de acesso previstas?",
+          "challenge": "Monte tabela de tamanho, tempo de carga e observações visuais."
+        },
+        {
+          "title": "Realizar auditoria de sincronismo e áudio",
+          "goal": "Detectar falhas antes de o vídeo ser chamado de pronto.",
+          "case": "O MP4 foi exportado, mas ninguém verificou se o áudio termina junto com o último slide.",
+          "steps": "Assista começo, pontos de troca, trecho central e final; compare com roteiro, cheque volume, silêncio e transcrição.",
+          "prompt": "Crie checklist de vinte pontos para revisão de aula narrada com dois áudios e quarenta imagens.",
+          "check": "A evidência de teste cobre trechos críticos, não só o primeiro segundo?",
+          "challenge": "Registre três problemas e uma correção de cada um."
+        },
+        {
+          "title": "Testar reprodução em diferentes dispositivos",
+          "goal": "Validar layout, legendas e controles em contextos reais.",
+          "case": "O vídeo funciona no computador do editor, mas no celular a legenda cobre a escala do gráfico.",
+          "steps": "Teste telas e navegadores disponíveis, modo vertical e horizontal quando aplicável, controles e disponibilidade de download. Registre limitações.",
+          "prompt": "Crie plano de teste com desktop, celular, áudio desligado e conexão reduzida; defina critérios de aceitação.",
+          "check": "Um erro reproduzível foi corrigido e retestado no dispositivo afetado?",
+          "challenge": "Preencha relatório de teste com observação, ação e resultado."
+        }
+      ]
+    },
+    {
+      "title": "Publicação e melhoria contínua",
+      "subtitle": "Distribuição gratuita, feedback e manutenção de aulas",
+      "lessons": [
+        {
+          "title": "Publicar aula e materiais associados",
+          "goal": "Conferir links de vídeo, apostila, transcrição e atividades.",
+          "case": "A página divulga uma videoaula, mas o link retorna erro 404 e não existe alternativa textual.",
+          "steps": "Valide URL final após publicação e acesso sem login, forneça materiais complementares e identifique versão da aula.",
+          "prompt": "Elabore página de uma aula com título, objetivos, vídeo, transcrição, PDF e desafio sem recursos pagos.",
+          "check": "Uma pessoa sem conta consegue abrir o material prometido?",
+          "challenge": "Monte checklist público de quatro URLs e respectivos testes."
+        },
+        {
+          "title": "Explicar limites e créditos do material",
+          "goal": "Publicar autoria, fontes e uso de ferramentas de modo transparente.",
+          "case": "Uma videoaula apresenta imagens de IA como fotografias exclusivas do professor e omite materiais de terceiros.",
+          "steps": "Crie créditos proporcionais, diferencie material autoral e síntese visual, registre fontes e deixe claro que IA assistiu a produção.",
+          "prompt": "Escreva créditos concisos para roteiro autoral, voz sintética licenciada e três recursos com fonte documentada.",
+          "check": "Créditos e legendas não induzem o público ao erro?",
+          "challenge": "Prepare ficha editorial e texto de créditos para o vídeo."
+        },
+        {
+          "title": "Distinguir audiência de aprendizagem",
+          "goal": "Usar métricas de acesso sem prometer resultado educacional não medido.",
+          "case": "O vídeo teve mil visualizações, e o relatório anuncia mil estudantes aprovados no conteúdo.",
+          "steps": "Separe visualização, tempo de consumo, resposta a atividade e evidência de aprendizagem. Proponha verificação formativa pertinente.",
+          "prompt": "Revise relatório com métricas de acesso e sugira instrumento para medir compreensão sem dados individualizados.",
+          "check": "Cada conclusão divulgada corresponde a dado realmente coletado?",
+          "challenge": "Escreva relatório honesto com duas métricas e limites."
+        },
+        {
+          "title": "Corrigir vídeo com rastreabilidade",
+          "goal": "Planejar atualização quando fonte, narração ou imagem estiver errada.",
+          "case": "A aula publicada chama um bioma pelo nome incorreto, mas o arquivo é substituído sem aviso de versão.",
+          "steps": "Registre defeito, trecho, correção, data e impacto; preserve fonte e teste a versão corrigida antes de atualizar links.",
+          "prompt": "Crie nota de correção transparente para slide 18 com conceito equivocado e exportação nova.",
+          "check": "É possível identificar o que mudou e se a correção chegou ao público?",
+          "challenge": "Escreva changelog e revalide três trechos da versão corrigida."
+        },
+        {
+          "title": "Montar portfólio final de videoaula",
+          "goal": "Integrar plano, arquivos, testes e evidências de qualidade.",
+          "case": "A equipe entrega somente MP4 bonito, sem roteiro, fontes, controle de direitos, legendas nem relatório de acesso.",
+          "steps": "Reúna objetivos, roteiro, storyboard, locução, imagens revisadas, legendas, licença, teste de playback e revisão crítica em um portfólio.",
+          "prompt": "Defina checklist de entrega para videoaula de dez minutos com quarenta cenas e evidências verificáveis.",
+          "check": "Outro editor consegue conferir e manter a produção?",
+          "challenge": "Entregue índice de portfólio com dez evidências e plano de melhoria."
+        }
+      ]
+    }
+  ]
+}

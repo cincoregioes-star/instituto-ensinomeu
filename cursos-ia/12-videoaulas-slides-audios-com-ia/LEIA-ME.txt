@@ -1,0 +1,8 @@
+INSTITUTO ENSINOMEU · CURSO 12 · CRIAÇÃO DE VIDEOAULAS, SLIDES E ÁUDIOS COM IA
+
+Apostila vetorial A4: 46 páginas, 30 lições e 6 missões. Duração planejada de estudo: 20h.
+Arena: 60 questões contextualizadas, quatro alternativas, feedback individual, desafios por módulo,
+música e efeitos opcionais, sem narração. Progresso local do navegador.
+A criação de vídeo/áudio é tema do curso; não há geração automática de MP4 nem certificado.
+Verifique fontes, licenças, direitos de imagem, conteúdo, sincronismo e acessibilidade.
+Entrada pública: index.html
