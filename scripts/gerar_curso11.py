@@ -16,6 +16,7 @@ core.COURSE_NO = 11
 core.COVER_LINES = ["AVALIAÇÕES", "E SIMULADOS", "COM IA"]
 core.COVER_TAG = "CURSO 11 · FORMAÇÃO GRATUITA"
 core.COVER_SUBTITLE = "Projetar, testar, corrigir e acompanhar"
+core.HEADER_TAG = "AVALIAÇÃO E SIMULADOS + IA"
 core.LESSONS = json.loads((DEST / "licoes_30.json").read_text("utf-8"))
 core.SOURCE = json.loads((DEST / "questoes_originais.json").read_text("utf-8"))
 core.MISSIONS = [
@@ -86,6 +87,80 @@ def make_html(bank):
         "Validar matriz, clareza, plausibilidade, gabaritos e acessibilidade no contexto da escola.\n", "utf-8")
 
 
+FLOW_STEPS = [
+    ("OBJETIVO", "INSTRUMENTO", "EVIDÊNCIA"),
+    ("ENUNCIADO", "ALTERNATIVAS", "VALIDAÇÃO"),
+    ("SOLUÇÃO", "RUBRICA", "DEVOLUTIVA"),
+    ("TELA", "ACESSO", "FEEDBACK"),
+    ("DADOS", "LEITURA", "RETOMADA"),
+    ("AUDITORIA", "PUBLICAÇÃO", "CORREÇÃO"),
+]
+
+
+def illustrated_lesson_page(c: Canvas, page: int, module_index: int,
+                            lesson_index: int, lesson: dict):
+    """Lição com fluxograma vetorial específico do módulo, quando houver espaço."""
+    from reportlab.lib import colors
+
+    core.base(c, page, "Lição")
+    col = colors.HexColor(core.MODULE_COLORS[module_index])
+    core.label(c, f"MÓDULO {module_index + 1:02d} / LIÇÃO {module_index * 5 + lesson_index + 1:02d}",
+               42, core.H - 67, col, 9)
+    top = core.pdraw(c, lesson["title"], 40, core.H - 80, core.W - 80, "title") - 14
+    top = core.banner(c, top, f"<b>OBJETIVO VERIFICÁVEL</b><br/>{lesson['goal']}") - 2
+    for name, field in [
+        ("SITUAÇÃO DE SALA DE AULA", "case"),
+        ("PROCEDIMENTO ORIENTADO", "steps"),
+        ("COMANDO DE IA PARA TESTAR", "prompt"),
+        ("CRITÉRIO DE QUALIDADE", "check"),
+        ("DESAFIO PRÁTICO", "challenge"),
+    ]:
+        core.label(c, name, 42, top, col, 9)
+        top -= 13
+        if field == "prompt":
+            top = core.banner(c, top, lesson[field], colors.HexColor("#EDF3FF"), maxheight=108)
+        else:
+            top = core.pdraw(c, lesson[field], 44, top, core.W - 88, "body") - 19
+    if top < 105:
+        raise ValueError(f"Texto ultrapassa a margem na lição {module_index * 5 + lesson_index + 1}")
+
+    # O esquema não invade o texto: páginas mais densas preservam apenas a área de notas.
+    if top >= 172:
+        core.label(c, "FLUXO VISUAL · DO PROBLEMA À DECISÃO", 43, top - 10, col, 8)
+        steps = FLOW_STEPS[module_index]
+        left, gap, width, box_h = 43, 17, 159, 58
+        bottom = top - 91
+        for i, step in enumerate(steps):
+            x = left + i * (width + gap)
+            c.setFillColor(colors.HexColor("#EDF5F8"))
+            c.setStrokeColor(colors.HexColor("#D0E3EA"))
+            c.roundRect(x, bottom, width, box_h, 9, fill=1, stroke=1)
+            c.setFillColor(col)
+            c.circle(x + 18, bottom + box_h / 2, 11, fill=1, stroke=0)
+            c.setFillColor(colors.white)
+            c.setFont("DejaVu-Bold", 9)
+            c.drawCentredString(x + 18, bottom + box_h / 2 - 3.5, str(i + 1))
+            c.setFillColor(core.INK)
+            c.setFont("DejaVu-Bold", 9)
+            c.drawString(x + 35, bottom + box_h / 2 - 3.5, step)
+            if i != 2:
+                arrow_x = x + width + 6
+                c.setFillColor(col)
+                c.line(arrow_x - 2, bottom + 29, arrow_x + 3, bottom + 29)
+                path = c.beginPath()
+                path.moveTo(arrow_x + 5, bottom + 29)
+                path.lineTo(arrow_x, bottom + 32.5)
+                path.lineTo(arrow_x, bottom + 25.5)
+                path.close()
+                c.drawPath(path, fill=1, stroke=0)
+    else:
+        c.setStrokeColor(colors.HexColor("#B8CDD6"))
+        for i in range(2):
+            c.line(43, max(74, top - 15 - i * 20), core.W - 43,
+                   max(74, top - 15 - i * 20))
+    c.showPage()
+
+
 def make_pdf():
     c = Canvas(str(DEST / PDF_NAME), pagesize=A4, pageCompression=1, invariant=1,
                title="Curso 11 - Avaliações e Simulados com IA | Instituto EnsinoMeu",
@@ -108,7 +183,7 @@ def make_pdf():
         core.module_intro(c, page, i, module)
         page += 1
         for j, lesson in enumerate(module["lessons"]):
-            core.lesson_page(c, page, i, j, lesson)
+            illustrated_lesson_page(c, page, i, j, lesson)
             page += 1
         core.mission_page(c, page, i, core.MISSIONS[i])
         page += 1

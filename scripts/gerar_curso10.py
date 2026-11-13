@@ -25,6 +25,7 @@ COVER_LINES = ["PLANOS", "DE AULA", "COM IA"]
 COVER_TAG = "CURSO 10 · FORMAÇÃO GRATUITA"
 COVER_SUBTITLE = "Planejar, verificar, adaptar e avaliar"
 COVER_CREDIT = "Coordenação editorial: Prof. Carlos Tavares"
+HEADER_TAG = "PLANEJAMENTO DOCENTE + IA"
 FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
 pdfmetrics.registerFont(TTFont("DejaVu", str(FONT_DIR / "DejaVuSans.ttf")))
 pdfmetrics.registerFont(TTFont("DejaVu-Bold", str(FONT_DIR / "DejaVuSans-Bold.ttf")))
@@ -161,7 +162,7 @@ def base(c: Canvas, number: int, chapter: str):
     c.setFillColor(colors.white)
     c.drawString(36, H - 22, f"INSTITUTO ENSINOMEU  /  CURSO {COURSE_NO:02d}")
     c.setFont("DejaVu", 8)
-    c.drawRightString(W - 36, H - 22, "PLANEJAMENTO DOCENTE + IA")
+    c.drawRightString(W - 36, H - 22, HEADER_TAG)
     c.setStrokeColor(colors.HexColor("#D5E1E8"))
     c.line(36, 45, W - 36, 45)
     c.setFillColor(MUTED)
