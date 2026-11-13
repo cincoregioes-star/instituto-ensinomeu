@@ -1,5 +1,12 @@
 # Curso 10 — Auditoria editorial de qualidade (13/11/2026)
 
+> **Registro histórico de rejeição da primeira versão.** Em 13/11/2026,
+> foi publicada uma edição reescrita em cursos-ia/10-planos-de-aula-com-ia/.
+> A edição pública contém 30 lições, PDF A4 de 46 páginas, 60 itens inéditos
+> com 15 gabaritos por letra e seis missões. Verificações: PDF, HTTP 200,
+> navegação e ciclo de 60 respostas com pontuação 60/60 em navegador real.
+> As ressalvas a seguir descrevem a versão rejeitada, não a versão pública.
+
 **Status: NÃO PUBLICAR até refazer e validar.** A pasta pública `cursos-ia/10-planos-de-aula-com-ia/index.html` não existia na consulta ao GitHub desta execução. O curso 09 existe.
 
 ## Inspeção dos artefatos locais anteriores
