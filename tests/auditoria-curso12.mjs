@@ -33,6 +33,7 @@ assert.equal(Number(execFileSync('pdfinfo',[pdf],{encoding:'utf8'}).match(/^Page
 for(const p of ['cursos-ia/index.html','catalogo-gratuito.html','sitemap.xml']){
  assert.ok(read(p).includes('12-videoaulas-slides-audios-com-ia'),p+' não integrado');
 }
-assert.ok(read('index.html').includes('12 cursos completos'));
+assert.ok(Number(read('index.html').match(/Nova escola gratuita de IA: (\d+) cursos completos/)?.[1])>=12,
+          'O portal deve manter pelo menos doze cursos publicados');
 assert.ok(!html.includes('Criação de Avaliações e Simulados com Inteligência Artificial'));
 console.log('OK Curso 12: 30 lições, 60 casos distintos, gabarito equilibrado, PDF A4 de 46 páginas, catálogo e JavaScript válido.');

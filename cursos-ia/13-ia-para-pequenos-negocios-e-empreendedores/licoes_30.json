@@ -1,0 +1,313 @@
+{
+  "course": "Inteligência Artificial para Pequenos Negócios e Empreendedores",
+  "hours_planned": 20,
+  "method": "30 lições de 33 minutos e 6 missões de 35 minutos, sem certificação automática",
+  "modules": [
+    {
+      "title": "Problemas, público e oportunidades",
+      "subtitle": "Começar pelo problema real, não pela tecnologia",
+      "lessons": [
+        {
+          "title": "Mapear problemas antes de pedir soluções à IA",
+          "goal": "Separar necessidade observada de ideia sem evidência.",
+          "case": "Uma moradora quer vender mudas, mas não sabe se vizinhos precisam de espécies frutíferas, ornamentais ou hortaliças.",
+          "steps": "Liste problemas que as pessoas relatam, frequência, consequência e alternativas atuais. Use IA para organizar hipóteses, nunca para inventar demanda existente.",
+          "prompt": "Monte tabela de hipóteses para comércio local de mudas com perguntas neutras de entrevista e critérios de validação.",
+          "check": "A escolha decorre de observação verificável ou de uma resposta confiante do modelo?",
+          "challenge": "Desenhe cinco hipóteses de demanda e um teste simples para cada."
+        },
+        {
+          "title": "Definir um cliente sem estereótipos",
+          "goal": "Descrever situação e necessidade sem inferir atributos pessoais.",
+          "case": "O vendedor afirma que toda pessoa acima de sessenta anos rejeita compra digital e decide não oferecer WhatsApp.",
+          "steps": "Crie perfis baseados em comportamentos e barreiras relatadas, sem usar idade ou deficiência como previsão automática. Teste canais com pessoas interessadas.",
+          "prompt": "Proponha três perfis por contexto de compra e necessidade, sem estereótipos de idade, renda ou deficiência.",
+          "check": "As descrições poderiam ser confirmadas por entrevistas e dados voluntários?",
+          "challenge": "Reescreva três personas enviesadas em hipóteses testáveis."
+        },
+        {
+          "title": "Identificar proposta de valor concreta",
+          "goal": "Explicar benefício e condição de entrega em uma frase.",
+          "case": "Um serviço anuncia 'qualidade, inovação e excelência' sem dizer quanto demora nem o que é entregue.",
+          "steps": "Defina problema, solução, público, formato, limites e prova disponível. Compare linguagem bonita com informações que o cliente realmente usa para decidir.",
+          "prompt": "Reescreva anúncio genérico de manutenção residencial com escopo, prazo estimado e condições a confirmar.",
+          "check": "O cliente sabe o que receberá e o que ainda depende de orçamento?",
+          "challenge": "Produza proposta de valor e três perguntas de validação."
+        },
+        {
+          "title": "Investigar concorrentes com fontes identificadas",
+          "goal": "Comparar alternativas sem inventar preços ou avaliações.",
+          "case": "A IA fornece nome e preço de três oficinas que ninguém encontrou, e o empreendedor quer publicar a tabela.",
+          "steps": "Liste critérios comparáveis e origens de cada dado. Confirme informações em canais oficiais ou diretamente com estabelecimentos; marque desconhecidos.",
+          "prompt": "Estruture comparação entre três serviços com campos fonte, data e dados pendentes, sem criar empresas fictícias reais.",
+          "check": "Toda afirmação pública sobre terceiros tem fonte e data?",
+          "challenge": "Monte matriz com seis critérios e valores ainda não verificados."
+        },
+        {
+          "title": "Escolher um primeiro teste de baixo risco",
+          "goal": "Definir experimento reversível sem exigir gasto alto.",
+          "case": "Uma pequena comunidade quer abrir loja completa antes de confirmar se existe interesse por cestas de hortaliças.",
+          "steps": "Desenhe protótipo simples, convide participação voluntária, registre retorno e revise proposta. Defina teto de tempo e recursos sem assumir vendas.",
+          "prompt": "Proponha piloto de sete dias com oferta demonstrativa, custo limitado, objetivo e critérios de continuar ou ajustar.",
+          "check": "O teste pode ser interrompido sem deixar obrigações inviáveis?",
+          "challenge": "Crie cartão de piloto com hipótese, observação e decisão."
+        }
+      ]
+    },
+    {
+      "title": "Pesquisa, ofertas e validação",
+      "subtitle": "Escuta de clientes, testes honestos e escolhas simples",
+      "lessons": [
+        {
+          "title": "Criar perguntas que não induzam a resposta",
+          "goal": "Aplicar entrevista curta baseada em fatos de uso.",
+          "case": "A pesquisa pergunta 'Você compraria nosso maravilhoso curso?', produzindo respostas educadas sem sinal de compra real.",
+          "steps": "Pergunte comportamento recente, dificuldade, solução usada e condição de escolha. Separe elogio, intenção declarada e comportamento observado.",
+          "prompt": "Redija entrevista de cinco perguntas sobre serviço de conserto sem elogios embutidos e sem solicitar dados sensíveis.",
+          "check": "As respostas permitem contestar a hipótese inicial?",
+          "challenge": "Reformule cinco perguntas tendenciosas e justifique mudanças."
+        },
+        {
+          "title": "Organizar respostas sem inventar conclusões",
+          "goal": "Resumir dados pequenos com incerteza explícita.",
+          "case": "Quatro pessoas entrevistadas preferiram entrega em casa, e o relatório anuncia '80% da cidade exige entrega'.",
+          "steps": "Conte participantes, fonte, seleção e padrão de respostas. Peça IA para organizar tópicos, não extrapolar para população inteira.",
+          "prompt": "Resuma dados fictícios de seis entrevistas com frequência absoluta, limitações e hipóteses futuras.",
+          "check": "A conclusão corresponde ao tamanho e à origem da amostra?",
+          "challenge": "Crie quadro de evidências e três limites do levantamento."
+        },
+        {
+          "title": "Desenhar pacotes e entregas comparáveis",
+          "goal": "Distinguir conteúdo básico, opcionais e condições.",
+          "case": "Um prestador oferece pacote completo de jardinagem, mas não esclarece se inclui materiais, transporte e manutenção posterior.",
+          "steps": "Defina escopo de cada pacote, unidade de cobrança, itens excluídos e condições que exigem vistoria. Teste compreensão com cliente voluntário.",
+          "prompt": "Crie três pacotes de jardinagem com entregáveis, limites, recursos e pergunta de confirmação.",
+          "check": "A diferença entre versões pode ser demonstrada na entrega?",
+          "challenge": "Escreva fichas de três ofertas sem prometer serviços indefinidos."
+        },
+        {
+          "title": "Construir protótipo e mensagem de teste",
+          "goal": "Validar interesse sem vender promessa inexistente.",
+          "case": "Uma página anuncia curso pronto com certificado, embora só existam três lições em planejamento.",
+          "steps": "Mostre demonstração real e estado do produto. Convide comentários sem pedir pagamento por recurso indisponível e registre dúvidas frequentes.",
+          "prompt": "Escreva convite transparente para demonstrar três lições piloto, explicitando o que existe e o que não está pronto.",
+          "check": "O público entende o estágio real da oferta?",
+          "challenge": "Crie página de piloto com descrição, limites e formulário não invasivo."
+        },
+        {
+          "title": "Usar critérios de decisão antes do piloto",
+          "goal": "Definir indicadores úteis e regras de revisão sem manipular dados.",
+          "case": "O empreendedor decide que o teste foi excelente porque três amigos elogiaram a ideia, apesar de não terem experimentado.",
+          "steps": "Defina previamente interesse observado, dúvidas, viabilidade de entrega e custo do teste. Registre também resultados desfavoráveis.",
+          "prompt": "Proponha critérios de avaliação de piloto de serviço com objetivos, evidências e limites da amostra.",
+          "check": "Uma evidência contrária poderia levar a alterar a proposta?",
+          "challenge": "Monte matriz de continuar, alterar ou encerrar o teste."
+        }
+      ]
+    },
+    {
+      "title": "Comunicação e marketing responsável",
+      "subtitle": "Mensagens, calendário e materiais claros para o público",
+      "lessons": [
+        {
+          "title": "Escrever mensagens com benefício demonstrável",
+          "goal": "Evitar exagero e adequar texto ao canal.",
+          "case": "Um anúncio promete 'aprenda inglês em dois dias' sem oferecer teste ou evidência de domínio.",
+          "steps": "Defina público, situação, benefício verificável, funcionamento e convite. Remova garantias impossíveis e peça uma revisão crítica da mensagem gerada.",
+          "prompt": "Reescreva promessa exagerada em descrição honesta de curso de reforço escolar gratuito com conteúdo real.",
+          "check": "Cada afirmação pode ser demonstrada com material ou teste disponível?",
+          "challenge": "Produza versões de 50 e 120 palavras e audite promessas."
+        },
+        {
+          "title": "Planejar conteúdo útil para redes sociais",
+          "goal": "Alternar informação, demonstração e convite sem repetição vazia.",
+          "case": "Um perfil agenda sete publicações idênticas com imagem genérica e link que não funciona.",
+          "steps": "Monte calendário por pergunta do público, prova visual, bastidores e demonstração. Verifique acesso e chamada para ação antes de agendar.",
+          "prompt": "Organize sete posts para pequeno curso gratuito, com objetivo distinto, peça visual e link a testar.",
+          "check": "O calendário ajuda a pessoa a compreender a oferta progressivamente?",
+          "challenge": "Crie sete pautas e identifique indicadores possíveis."
+        },
+        {
+          "title": "Criar imagens promocionais fiéis ao serviço",
+          "goal": "Evitar edição que sugira produto ou resultado inexistente.",
+          "case": "Uma campanha de hortas mostra estufa industrial que a iniciativa comunitária não possui.",
+          "steps": "Descreva ativos verdadeiros, escolha ilustração identificada como conceitual quando necessário e revise texto de números e locais.",
+          "prompt": "Gere briefing visual de uma horta comunitária sem equipamentos inexistentes, com espaço legível para a oferta.",
+          "check": "O anúncio cria uma expectativa realista sobre a estrutura disponível?",
+          "challenge": "Compare dois prompts e registre riscos de representação enganosa."
+        },
+        {
+          "title": "Construir chamadas para ação sem pressão indevida",
+          "goal": "Redigir convite com passos claros e condições verdadeiras.",
+          "case": "A página diz 'última oportunidade' todos os dias, apesar de inscrições permanecerem abertas.",
+          "steps": "Informe ação específica, canal, horário e condição verificável. Evite urgência inventada, descontos fictícios e confusão entre aula gratuita e serviço pago.",
+          "prompt": "Crie três chamadas para inscrição gratuita com data somente se confirmada; sinalize campos pendentes.",
+          "check": "Uma pessoa pode tomar decisão informada sem informação falsa de escassez?",
+          "challenge": "Revise quatro CTAs e explique quais são responsáveis."
+        },
+        {
+          "title": "Testar mensagens e aprender com retorno real",
+          "goal": "Comparar clareza das versões com métricas apropriadas.",
+          "case": "Um post recebeu cem curtidas, mas ninguém conseguiu abrir o link do formulário de interesse.",
+          "steps": "Defina uma métrica por objetivo: acesso, pergunta respondida, clique funcional ou solicitação. Teste links e compare contextos similares.",
+          "prompt": "Planeje comparação de duas mensagens com hipótese clara, janela, métricas e limites sem prometer conversão.",
+          "check": "O indicador mede o objetivo ou apenas popularidade superficial?",
+          "challenge": "Elabore relatório de teste com resultado fictício e próximo ajuste."
+        }
+      ]
+    },
+    {
+      "title": "Atendimento e rotinas com IA",
+      "subtitle": "Respostas úteis, registros simples e escalonamento humano",
+      "lessons": [
+        {
+          "title": "Criar respostas frequentes com base em fatos",
+          "goal": "Redigir FAQ sem inventar prazos ou condições.",
+          "case": "A IA responde que uma costureira entrega em 24 horas, embora o prazo varie conforme a encomenda.",
+          "steps": "Liste perguntas reais, escreva respostas aprovadas e campos variáveis. Indique quando precisa confirmar manualmente orçamento ou prazo.",
+          "prompt": "Monte dez respostas frequentes para ateliê com condições documentadas e marcador de confirmação humana.",
+          "check": "A resposta automática contém apenas informação comprovada?",
+          "challenge": "Revise cinco mensagens para distinguir confirmado de estimado."
+        },
+        {
+          "title": "Desenhar fluxo de atendimento sem expor clientes",
+          "goal": "Definir entrada, pergunta mínima e resposta responsável.",
+          "case": "Um chatbot exige CPF e foto de documento antes de informar horário de funcionamento.",
+          "steps": "Mapeie finalidade de cada pergunta, minimize dados e ofereça contato humano. Guarde apenas informações necessárias para executar serviço autorizado.",
+          "prompt": "Descreva fluxo de triagem para conserto de bicicletas sem CPF, fotos pessoais ou dados sensíveis.",
+          "check": "Cada campo é indispensável ao serviço naquele momento?",
+          "challenge": "Desenhe fluxograma de atendimento com dois pontos de escalonamento."
+        },
+        {
+          "title": "Escrever mensagens de orçamento e confirmação",
+          "goal": "Comunicar escopo, estimativa e dependências sem ambiguidade.",
+          "case": "O cliente pergunta por reparo de portão e recebe valor fixo sem vistoria, embora o material necessário seja desconhecido.",
+          "steps": "Separe diagnóstico, itens previstos, hipóteses, confirmação e próxima ação. Use modelo revisado por pessoa responsável antes de enviar.",
+          "prompt": "Crie orçamento demonstrativo de serviço com campos variáveis, validade a definir e aprovação humana.",
+          "check": "Cliente entende o que é estimativa e o que está contratado?",
+          "challenge": "Produza ficha de orçamento e revise três riscos de interpretação."
+        },
+        {
+          "title": "Organizar pedidos por etapa e prioridade",
+          "goal": "Criar quadro de trabalho simples e rastreável.",
+          "case": "Um microempreendedor esquece encomendas porque conserva apenas mensagens espalhadas em aplicativos.",
+          "steps": "Defina estados recebido, confirmado, em andamento, entregue e pendente. Use identificador não sensível e revise prazo com o cliente.",
+          "prompt": "Proponha quadro de pedidos fictícios com estados, responsável, prazo e avisos sem expor nomes reais.",
+          "check": "O fluxo revela atrasos antes de comprometer a entrega?",
+          "challenge": "Monte planilha exemplo com dez pedidos fictícios e filtros simples."
+        },
+        {
+          "title": "Criar procedimento de correção de falhas",
+          "goal": "Responder reclamações com evidência e possibilidade de revisão.",
+          "case": "A entrega veio incompleta, e o assistente envia desculpa genérica sem registrar o item faltante.",
+          "steps": "Reconheça problema específico, confirme pedido e acordo, proponha solução viável e acompanhe conclusão. Não invente culpa nem resolução.",
+          "prompt": "Escreva resposta humana assistida por IA para entrega incompleta, com pergunta de confirmação e próximo passo.",
+          "check": "O cliente consegue verificar qual ação será tomada e quando será revista?",
+          "challenge": "Desenhe protocolo de quatro etapas para incidentes de atendimento."
+        }
+      ]
+    },
+    {
+      "title": "Números, custos e operações",
+      "subtitle": "Cálculos auditáveis e decisões sem promessas financeiras",
+      "lessons": [
+        {
+          "title": "Separar custos fixos e variáveis",
+          "goal": "Classificar gastos reais e montar cenário fictício.",
+          "case": "Uma artesã atribui todo aluguel ao custo de cada peça e depois soma o mesmo valor outra vez no resultado mensal.",
+          "steps": "Liste período, unidade de produção, custos fixos e variáveis. Evite contagem dupla e registre fonte de cada estimativa. Resolva as operações fora da IA.",
+          "prompt": "Classifique gastos hipotéticos de oficina, sinalize ambiguidades e mostre fórmulas com unidades claras.",
+          "check": "O mesmo gasto foi registrado mais de uma vez?",
+          "challenge": "Monte tabela com seis custos e justifique cada classificação."
+        },
+        {
+          "title": "Calcular preço e margem com hipótese explícita",
+          "goal": "Distinguir receita, custo, margem e resultado.",
+          "case": "Uma vendedora compra material por R$18 e vende por R$30, anunciando ganho líquido de R$12 sem incluir embalagem.",
+          "steps": "Some custos por unidade, identifique despesas não incluídas e faça cenários. Diferencie margem sobre preço de acréscimo sobre custo.",
+          "prompt": "Calcule exemplo fictício com material, embalagem e taxa de entrega; identifique dados faltantes e confira contas.",
+          "check": "Qual parcela é lucro estimado e quais despesas ainda não foram consideradas?",
+          "challenge": "Crie três cenários de preço fictício sem recomendação automática de valor real."
+        },
+        {
+          "title": "Analisar capacidade antes de aceitar encomendas",
+          "goal": "Relacionar tempo de trabalho, recursos e prazo sustentável.",
+          "case": "Uma pessoa promete produzir 80 peças em dois dias, mas leva vinte minutos por peça e trabalha seis horas por dia.",
+          "steps": "Calcule horas disponíveis e tempo por unidade, inclua folga para falhas e interrupções e negocie condições possíveis.",
+          "prompt": "Audite capacidade fictícia com 12 horas e 20 minutos por peça; apresente limites e alternativas honestas.",
+          "check": "A promessa cabe no tempo disponível com margem para imprevistos?",
+          "challenge": "Elabore quadro de capacidade e comunicação de prazo."
+        },
+        {
+          "title": "Montar indicadores de operação interpretáveis",
+          "goal": "Diferenciar pedidos recebidos, concluídos e reclamações.",
+          "case": "Um relatório aponta cem solicitações e apresenta esse número como cem vendas concluídas.",
+          "steps": "Defina origem e significado de cada contador, período, duplicidade e unidade. Não misture mensagem, interesse, pedido pago e entrega.",
+          "prompt": "Crie painel fictício com cinco indicadores de um ateliê e legenda de cálculo para cada.",
+          "check": "Alguém reproduz a contagem sem depender da opinião do modelo?",
+          "challenge": "Revisite tabela com dados duplicados e explique a limpeza."
+        },
+        {
+          "title": "Comparar cenários sem prometer retorno",
+          "goal": "Considerar risco, premissas e alternativas reversíveis.",
+          "case": "Um assistente prevê faturamento triplicado porque a loja passará a postar diariamente, sem dados históricos.",
+          "steps": "Construa cenários ilustrativos baixo, central e alto com premissas explícitas, custos, capacidade e possíveis falhas. Não venda projeção como garantia.",
+          "prompt": "Gere tabela fictícia de três cenários com unidades, fórmulas, limites e variáveis a acompanhar.",
+          "check": "A projeção foi apresentada como possibilidade condicionada ou certeza?",
+          "challenge": "Escreva duas decisões de baixo risco baseadas em cenários fictícios."
+        }
+      ]
+    },
+    {
+      "title": "Ética, testes e evolução do negócio",
+      "subtitle": "Publicar com responsabilidade e melhorar por evidências",
+      "lessons": [
+        {
+          "title": "Proteger informações e relações de confiança",
+          "goal": "Definir dados mínimos para executar atendimento.",
+          "case": "Uma empresa de consertos coloca em chatbot externo uma lista completa de clientes com endereço, documentos e problemas pessoais.",
+          "steps": "Use dados fictícios em testes, restrinja acesso, avalie finalidade e exclua campos desnecessários. Revise políticas e regras aplicáveis antes de processar dados reais.",
+          "prompt": "Redesenhe formulário de atendimento que usa dados mínimos e acesso humano para casos excepcionais.",
+          "check": "A finalidade pode ser atendida sem identificação excessiva?",
+          "challenge": "Classifique oito campos como necessários, condicionais ou dispensáveis."
+        },
+        {
+          "title": "Verificar publicidade e respostas automatizadas",
+          "goal": "Auditar promessas e evitar comunicação enganosa.",
+          "case": "Uma IA escreve 'mil clientes satisfeitos' em banner de empresa recém-iniciada, sem registro dessas vendas.",
+          "steps": "Marque alegações verificáveis, confira evidências e substitua números inventados. Identifique materiais meramente ilustrativos e limites do atendimento.",
+          "prompt": "Audite campanha fictícia e proponha cinco substituições honestas para promessas sem evidência.",
+          "check": "Cada número e testemunho corresponde a registro legítimo e uso permitido?",
+          "challenge": "Monte checklist para anúncio e FAQ antes da publicação."
+        },
+        {
+          "title": "Planejar um piloto de trinta dias",
+          "goal": "Selecionar ações e indicadores em sequência sustentável.",
+          "case": "O empreendedor pretende adotar cinco ferramentas pagas de uma vez, sem testar atendimento, custos ou retorno de trabalho.",
+          "steps": "Escolha uma prioridade, limite uso de ferramentas, execute teste controlado, compare horas e erros e registre decisão de manter ou alterar.",
+          "prompt": "Desenhe cronograma de quatro semanas com entregas e critérios observáveis, evitando compra obrigatória.",
+          "check": "O piloto pode ser avaliado sem depender de propaganda da ferramenta?",
+          "challenge": "Monte plano de trinta dias com revisão semanal e critério de encerramento."
+        },
+        {
+          "title": "Ler resultados com honestidade",
+          "goal": "Separar entregas, acessos, satisfação e resultados.",
+          "case": "Uma campanha gerou quinhentos acessos, mas a equipe anuncia quinhentos novos clientes recorrentes.",
+          "steps": "Especifique funil de etapas e denominadores, registre período e amostra. Compare números equivalentes e não atribua causalidade sem investigação.",
+          "prompt": "Reescreva relatório fictício de acesso e pedidos confirmados com três métricas e limitações.",
+          "check": "A frase de resultado está sustentada por indicador correspondente?",
+          "challenge": "Elabore painel de cinco métricas com notas sobre o que não provam."
+        },
+        {
+          "title": "Construir portfólio e plano de atualização",
+          "goal": "Entregar recursos, decisões e evidências de revisão.",
+          "case": "O grupo declara que a IA revolucionou as vendas, mas não preservou roteiros, questionários, versão do anúncio nem dados do piloto.",
+          "steps": "Reúna mapa de problema, entrevistas fictícias, comunicação, FAQ, planilha de cenários, testes e correções. Planeje acompanhamento humano.",
+          "prompt": "Organize portfólio de pequeno negócio com seis artefatos, justificativas e critérios de revisão de conteúdos.",
+          "check": "Outra pessoa consegue compreender o que foi testado e reproduzir as contas?",
+          "challenge": "Monte índice final de evidências e proposta de melhoria contínua."
+        }
+      ]
+    }
+  ]
+}
