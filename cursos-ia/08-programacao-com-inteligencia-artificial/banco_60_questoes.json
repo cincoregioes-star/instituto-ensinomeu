@@ -1,0 +1,788 @@
+{
+  "course": "Programação com Inteligência Artificial",
+  "hours_planned": 20,
+  "bank_version": "2026-11-13-curso08-pro-1",
+  "editorial_method": "60 itens originais; 6 modulos; quatro alternativas plausiveis; gabaritos balanceados; revisao e respostas comentadas; treino sem certificacao automatica",
+  "questions": [
+    {
+      "id": 1,
+      "module": 1,
+      "question": "Um gestor quer criar programa para contar inscrições válidas. Qual sequência descreve um algoritmo auditável?",
+      "options": [
+        "Somar registros duplicados e corrigir somente a aparência.",
+        "Apresentar resultado e então decidir quais registros consultar.",
+        "Ler registros, validar campos, contar válidos e mostrar resultado.",
+        "Pedir à IA um total sem fornecer dados nem regra de contagem."
+      ],
+      "correct": 2,
+      "explanation": "Algoritmo organiza entradas, processamento e saída. Validação antecede a contagem de registros válidos."
+    },
+    {
+      "id": 2,
+      "module": 1,
+      "question": "Uma IA escreve código antes de saber quem pode usar o sistema. Qual passo inicial reduz retrabalho?",
+      "options": [
+        "Definir usuários, entradas, saídas, regras e situações de erro.",
+        "Escolher uma cor de fundo antes de definir regras de negócio.",
+        "Copiar um aplicativo sem investigar as necessidades locais.",
+        "Solicitar cem linhas de código sem descrever o problema."
+      ],
+      "correct": 0,
+      "explanation": "Uma especificação curta orienta o código e permite criar testes a partir das regras."
+    },
+    {
+      "id": 3,
+      "module": 1,
+      "question": "Em uma planilha, idade é 17 e nome é \"Ana\". Que tipos representam adequadamente esses valores?",
+      "options": [
+        "Idade como booleano e nome como inteiro.",
+        "Idade como inteiro e nome como texto.",
+        "Idade como imagem e nome como número decimal.",
+        "Idade como função e nome como condição."
+      ],
+      "correct": 1,
+      "explanation": "Tipos expressam como os valores são interpretados e quais operações fazem sentido."
+    },
+    {
+      "id": 4,
+      "module": 1,
+      "question": "O programa soma \"5\" e \"3\" como textos e produz \"53\". Qual correção expressa soma aritmética?",
+      "options": [
+        "Remover mensagens de erro sem conferir a entrada do usuário.",
+        "Concatenar novamente e aceitar \"53\" como resultado correto.",
+        "Trocar o título da tela sem modificar os valores recebidos.",
+        "Converter entradas numéricas e então adicionar os dois valores."
+      ],
+      "correct": 3,
+      "explanation": "Concatenação de strings difere de adição numérica. Conversões devem validar entradas inválidas."
+    },
+    {
+      "id": 5,
+      "module": 1,
+      "question": "Um sistema deve oferecer desconto apenas a pessoas com 60 anos ou mais. Qual condição é coerente?",
+      "options": [
+        "Aplicar desconto quando idade for menor ou igual a 60.",
+        "Aplicar desconto somente quando idade for maior que 60.",
+        "Aplicar desconto quando idade for maior ou igual a 60.",
+        "Aplicar desconto a todos os registros com nome preenchido."
+      ],
+      "correct": 2,
+      "explanation": "O limite inclui exatamente 60 anos, portanto usa comparação maior ou igual."
+    },
+    {
+      "id": 6,
+      "module": 1,
+      "question": "Uma IA gera um bloco if sem tratar valores negativos de idade. Que teste deve ser adicionado?",
+      "options": [
+        "Converter idade negativa em número de telefone para salvar.",
+        "Trocar a mensagem de boas-vindas e ignorar o valor informado.",
+        "Mostrar o desconto automaticamente para idades negativas.",
+        "Rejeitar idade negativa antes de avaliar direito ao desconto."
+      ],
+      "correct": 3,
+      "explanation": "Validações de domínio protegem decisões de negócio contra valores impossíveis."
+    },
+    {
+      "id": 7,
+      "module": 1,
+      "question": "É necessário percorrer vinte respostas e contar alternativas corretas. Que estrutura ajuda?",
+      "options": [
+        "Uma tela com vinte botões sem qualquer regra de contagem.",
+        "Um laço que examina cada resposta e atualiza o contador.",
+        "Uma função que substitui respostas por valores aleatórios.",
+        "Uma condição isolada que examina somente a primeira resposta."
+      ],
+      "correct": 1,
+      "explanation": "Laços percorrem coleções; o contador muda apenas quando a resposta atende ao critério."
+    },
+    {
+      "id": 8,
+      "module": 1,
+      "question": "Um loop mantém variável i igual a zero, mas a condição é i < 10. Qual risco surge?",
+      "options": [
+        "Conversão do laço em decisão que executa uma única vez.",
+        "Repetição infinita porque i nunca alcança o limite de parada.",
+        "Encerramento imediato porque zero é menor que dez.",
+        "Ordenação automática de dados sem qualquer comando adicional."
+      ],
+      "correct": 1,
+      "explanation": "Laços exigem progresso em direção à condição de encerramento ou outra saída explícita."
+    },
+    {
+      "id": 9,
+      "module": 1,
+      "question": "Um pseudocódigo usa ESCREVER antes de LER para calcular média. Qual é o problema?",
+      "options": [
+        "Os comandos são equivalentes e podem trocar de ordem sempre.",
+        "A média deve ser calculada a partir do título do programa.",
+        "Pseudocódigo só funciona se for escrito em uma linguagem específica.",
+        "A saída depende de dados ainda não recebidos nem processados."
+      ],
+      "correct": 3,
+      "explanation": "Pseudocódigo descreve a lógica sem exigir sintaxe executável, mas a ordem importa."
+    },
+    {
+      "id": 10,
+      "module": 1,
+      "question": "O assistente diz que o algoritmo está \"perfeito\". Qual evidência deve orientar a aceitação?",
+      "options": [
+        "O número de linhas produzidas na resposta do assistente.",
+        "Testar entradas comuns, limites e valores inválidos.",
+        "Uma captura da tela inicial sem testar operações internas.",
+        "A confiança declarada pela IA, sem executar o programa."
+      ],
+      "correct": 1,
+      "explanation": "Código gerado pode conter erros. Testes com resultados esperados são necessários."
+    },
+    {
+      "id": 11,
+      "module": 2,
+      "question": "Em Python, o código depois de if deve ser agrupado como bloco. Que recurso define esse bloco?",
+      "options": [
+        "Indentação consistente das linhas subordinadas à condição.",
+        "Parênteses envolvendo todas as linhas do programa.",
+        "Ponto e vírgula obrigatório ao final de cada instrução.",
+        "Chaves obrigatórias antes e depois de todos os comandos."
+      ],
+      "correct": 0,
+      "explanation": "Python usa a indentação sintática para delimitar blocos; inconsistências causam erro."
+    },
+    {
+      "id": 12,
+      "module": 2,
+      "question": "Um script precisa obter três primeiros nomes de uma lista. Qual operação Python seleciona índices 0 a 2?",
+      "options": [
+        "nomes[3:0], que sempre ordena os elementos em ordem crescente.",
+        "nomes[0:3], que exclui o limite final do fatiamento.",
+        "nomes[0:2], que retorna exatamente três elementos.",
+        "nomes[1:3], que inclui o primeiro item da coleção."
+      ],
+      "correct": 1,
+      "explanation": "No slice padrão o índice de início é incluído e o final excluído."
+    },
+    {
+      "id": 13,
+      "module": 2,
+      "question": "Em Python, nomes = [\"Ana\", \"Beto\"]. Qual resultado de len(nomes)?",
+      "options": [
+        "O texto \"AnaBeto\", concatenação dos nomes.",
+        "O inteiro 2, quantidade de elementos na lista.",
+        "O inteiro 1, por existir somente uma lista.",
+        "Uma exceção, pois listas não aceitam len."
+      ],
+      "correct": 1,
+      "explanation": "len conta itens da coleção; não soma os comprimentos dos textos sem outra operação."
+    },
+    {
+      "id": 14,
+      "module": 2,
+      "question": "O código precisa mostrar o nome guardado em aluno = {\"nome\": \"Lia\"}. Qual acesso é direto?",
+      "options": [
+        "aluno[\"idade\"], mesmo que essa chave não exista no registro.",
+        "aluno.nome(), pois chaves sempre são funções com parênteses.",
+        "aluno[0], pois todo dicionário é indexado pela posição zero.",
+        "aluno[\"nome\"], usando a chave existente do dicionário."
+      ],
+      "correct": 3,
+      "explanation": "Dicionários mapeiam chaves a valores; chaves inexistentes exigem tratamento."
+    },
+    {
+      "id": 15,
+      "module": 2,
+      "question": "Uma rotina de cálculo se repete em várias telas. Por que criar uma função em Python?",
+      "options": [
+        "Garantir que qualquer erro desapareça independentemente da entrada.",
+        "Evitar documentar o que a regra faz e quais dados recebe.",
+        "Impedir que outro módulo chame operações já implementadas.",
+        "Reutilizar a regra por função e testá-la isoladamente."
+      ],
+      "correct": 3,
+      "explanation": "Funções reduzem duplicação e favorecem testes; ainda precisam de contratos e validação."
+    },
+    {
+      "id": 16,
+      "module": 2,
+      "question": "Qual retorno de uma função Python sem comando return explícito?",
+      "options": [
+        "Zero, independentemente das operações executadas.",
+        "Uma cópia completa dos argumentos recebidos.",
+        "None, valor que indica ausência de retorno definido.",
+        "False, mesmo quando a função imprime valores."
+      ],
+      "correct": 2,
+      "explanation": "Sem return explícito, Python retorna None; imprimir não equivale a retornar."
+    },
+    {
+      "id": 17,
+      "module": 2,
+      "question": "Uma lista de notas pode vir vazia. Antes de calcular sum(notas)/len(notas), o que fazer?",
+      "options": [
+        "Adicionar nota fictícia ao registro real sem identificar.",
+        "Verificar se a lista está vazia antes de dividir.",
+        "Supor que a IA sempre enviará ao menos um número.",
+        "Dividir por zero e substituir a mensagem de erro por outra."
+      ],
+      "correct": 1,
+      "explanation": "A divisão por zero levanta exceção. Entradas vazias requerem regra de negócio."
+    },
+    {
+      "id": 18,
+      "module": 2,
+      "question": "Ao ler arquivo CSV, uma vírgula pode aparecer dentro de um campo entre aspas. Que abordagem é indicada?",
+      "options": [
+        "Eliminar registros que contenham pontuação para evitar trabalho.",
+        "Trocar qualquer texto entre aspas pelo último campo da linha.",
+        "Usar leitor CSV apropriado que respeite delimitadores e aspas.",
+        "Separar todas as linhas por vírgula sem considerar aspas."
+      ],
+      "correct": 2,
+      "explanation": "O módulo csv trata regras do formato melhor que um split ingênuo."
+    },
+    {
+      "id": 19,
+      "module": 2,
+      "question": "Um script abre arquivo de relatórios, mas deve fechá-lo mesmo após uma falha. Qual prática Python ajuda?",
+      "options": [
+        "Usar with open(...), que administra o fechamento do arquivo.",
+        "Desativar erros de leitura para manter arquivo aberto indefinidamente.",
+        "Repetir abertura em laço até o sistema operacional desistir.",
+        "Guardar caminho em variável e supor fechamento automático imediato."
+      ],
+      "correct": 0,
+      "explanation": "O gerenciador de contexto libera o recurso ao sair do bloco, inclusive em exceções."
+    },
+    {
+      "id": 20,
+      "module": 2,
+      "question": "Uma IA recomenda instalar pacote desconhecido para contar palavras. Qual decisão é prudente?",
+      "options": [
+        "Instalar qualquer pacote sugerido sem ler nome nem procedência.",
+        "Avaliar solução nativa, licença, origem, segurança e necessidade.",
+        "Enviar credenciais ao pacote para confirmar que a conta é válida.",
+        "Executar comandos administrativos obtidos em comentários anônimos."
+      ],
+      "correct": 1,
+      "explanation": "Dependências ampliam superfície de risco. Priorize necessidade e verificação de fontes oficiais."
+    },
+    {
+      "id": 21,
+      "module": 3,
+      "question": "Uma página contém título principal, menu e conteúdo. Qual HTML favorece semântica?",
+      "options": [
+        "Simular cabeçalhos usando apenas aumento do tamanho da fonte.",
+        "Criar todos os elementos como span sem identificação semântica.",
+        "Usar h1, nav e main conforme as funções de cada região.",
+        "Inserir textos importantes somente como imagem sem alternativa."
+      ],
+      "correct": 2,
+      "explanation": "Elementos semânticos facilitam navegação, manutenção e tecnologia assistiva."
+    },
+    {
+      "id": 22,
+      "module": 3,
+      "question": "Uma imagem informa a localização de uma sala. Que texto alternativo é mais útil?",
+      "options": [
+        "Texto genérico \"imagem\" que não informa conteúdo relevante.",
+        "Campo alt vazio mesmo quando a imagem contém instrução essencial.",
+        "Repetição integral de todos os parágrafos do documento.",
+        "Descrição objetiva da localização comunicada pela imagem."
+      ],
+      "correct": 3,
+      "explanation": "Alternativa textual deve transmitir função e informação essencial, sem excesso."
+    },
+    {
+      "id": 23,
+      "module": 3,
+      "question": "Para ligar o arquivo styles.css à página HTML, qual elemento é apropriado no head?",
+      "options": [
+        "Um script com src apontando à folha de estilos.",
+        "Um link com rel=\"stylesheet\" e href apontando ao CSS.",
+        "Um botão que contém diretamente o nome do arquivo CSS.",
+        "Um div com src apontando ao arquivo de estilos."
+      ],
+      "correct": 1,
+      "explanation": "link rel=\"stylesheet\" associa uma folha de estilos externa ao HTML."
+    },
+    {
+      "id": 24,
+      "module": 3,
+      "question": "Uma turma quer aumentar a largura dos cards em telas grandes, preservando celulares. Qual recurso CSS ajuda?",
+      "options": [
+        "Largura fixa maior que a tela para todos os dispositivos.",
+        "Tamanho de letra próximo a zero apenas em telefones.",
+        "Usar media queries e medidas adaptáveis às telas.",
+        "Esconder títulos das disciplinas quando a tela é estreita."
+      ],
+      "correct": 2,
+      "explanation": "Layout responsivo ajusta colunas e medidas à viewport sem sacrificar legibilidade."
+    },
+    {
+      "id": 25,
+      "module": 3,
+      "question": "Um formulário pede e-mail obrigatório. Qual medida é mais correta?",
+      "options": [
+        "Combinar input type=\"email\" e required com validação do servidor.",
+        "Validar somente pelo nome colorido mostrado no botão de envio.",
+        "Aceitar qualquer string como e-mail porque o navegador sempre corrige.",
+        "Guardar o e-mail diretamente na URL pública de confirmação."
+      ],
+      "correct": 0,
+      "explanation": "Validação HTML melhora experiência, mas checagem no servidor ainda é necessária."
+    },
+    {
+      "id": 26,
+      "module": 3,
+      "question": "Dois campos de formulário têm labels visuais, mas não associados. Qual mudança é apropriada?",
+      "options": [
+        "Conectar o for do label ao id único do campo correspondente.",
+        "Mover texto descritivo para atributo de estilo sem conteúdo.",
+        "Substituir labels por emojis sem descrição para leitores de tela.",
+        "Reutilizar o mesmo id em todos os campos da página."
+      ],
+      "correct": 0,
+      "explanation": "Associação explícita permite identificar campo e descrição por tecnologia assistiva."
+    },
+    {
+      "id": 27,
+      "module": 3,
+      "question": "Um card parece botão, mas não funciona pelo teclado. Que solução é recomendada?",
+      "options": [
+        "Remover o contorno do foco para esconder navegação por teclado.",
+        "Adicionar cursor em forma de mão sem permitir ativação.",
+        "Acionar ações apenas por hover que depende do mouse.",
+        "Usar button para ação e a para navegação, com foco visível."
+      ],
+      "correct": 3,
+      "explanation": "Elementos nativos têm comportamento semântico e teclado que deve ser preservado."
+    },
+    {
+      "id": 28,
+      "module": 3,
+      "question": "Uma IA gera um site com contraste fraco entre texto e fundo. O que validar?",
+      "options": [
+        "Apenas o efeito visual em um monitor de alta qualidade.",
+        "Verificar contraste, leitura, foco e diferentes telas.",
+        "Se o fundo combina com a fotografia do criador do portal.",
+        "Somente a quantidade de sombras e gradientes aplicados."
+      ],
+      "correct": 1,
+      "explanation": "Acessibilidade requer critérios observáveis, não aprovação estética isolada."
+    },
+    {
+      "id": 29,
+      "module": 3,
+      "question": "Um cabeçalho tem largura maior que o celular e cria barra horizontal. Que correção investigar primeiro?",
+      "options": [
+        "Trocar textos reais por imagens para ocultar o problema.",
+        "Desligar o zoom do navegador como ajuste definitivo.",
+        "Identificar largura rígida e elementos sem quebra.",
+        "Aumentar ainda mais a largura mínima da página no celular."
+      ],
+      "correct": 2,
+      "explanation": "Overflow horizontal costuma ter causa em larguras rígidas, elementos não quebráveis ou margens."
+    },
+    {
+      "id": 30,
+      "module": 3,
+      "question": "Uma página usa links com texto \"clique aqui\" repetidos. Qual melhoria favorece orientação?",
+      "options": [
+        "Descrever o destino ou ação no próprio texto do link.",
+        "Manter rótulos iguais porque os endereços diferem nos bastidores.",
+        "Deixar o texto vazio e apresentar apenas uma seta decorativa.",
+        "Colocar todos os destinos no mesmo botão sem informar mudança."
+      ],
+      "correct": 0,
+      "explanation": "Links descritivos funcionam melhor fora do contexto visual do parágrafo."
+    },
+    {
+      "id": 31,
+      "module": 4,
+      "question": "Um botão deve executar verificarResposta ao clique. Qual técnica JavaScript favorece separação de funções?",
+      "options": [
+        "Usar CSS de cor para realizar a verificação lógica do gabarito.",
+        "Trocar o título da página para representar o evento de clique.",
+        "Executar a função somente quando o HTML termina de ser escrito.",
+        "Associar listener de click ao botão selecionado no DOM."
+      ],
+      "correct": 3,
+      "explanation": "addEventListener registra reação a eventos; lógica de correção permanece na função."
+    },
+    {
+      "id": 32,
+      "module": 4,
+      "question": "Um programa recebe comentário digitado por usuário. Qual propriedade é mais segura para exibir texto simples?",
+      "options": [
+        "textContent, que exibe caracteres sem interpretar HTML.",
+        "outerHTML, substituindo o nó por marcação livre fornecida.",
+        "eval, executando o comentário como instruções JavaScript.",
+        "innerHTML, mesmo quando a origem não é confiável."
+      ],
+      "correct": 0,
+      "explanation": "textContent evita interpretar a entrada como HTML e reduz risco de injeção de marcação."
+    },
+    {
+      "id": 33,
+      "module": 4,
+      "question": "No navegador, const valores = [2, 4, 6]. Qual é valores.length?",
+      "options": [
+        "Dois, pois o primeiro índice da lista é zero.",
+        "Doze, pois equivale à soma dos valores.",
+        "Três, pois a lista contém três elementos.",
+        "Seis, pois corresponde ao maior elemento."
+      ],
+      "correct": 2,
+      "explanation": "A propriedade length informa a quantidade de itens, não o maior índice nem a soma."
+    },
+    {
+      "id": 34,
+      "module": 4,
+      "question": "Um quiz deve escolher uma questão com base no índice atual. Qual acesso corresponde ao item de índice 0?",
+      "options": [
+        "questoes[0], primeiro elemento do array.",
+        "questoes[-1], único primeiro índice aceito em arrays.",
+        "questoes.length, elemento inicial da lista.",
+        "questoes[1], primeiro elemento porque inicia em um."
+      ],
+      "correct": 0,
+      "explanation": "Arrays JavaScript usam índices iniciados em zero."
+    },
+    {
+      "id": 35,
+      "module": 4,
+      "question": "A variável pontos foi declarada com let. Qual comando aumenta seu valor em uma unidade?",
+      "options": [
+        "pontos == 1, expressão sem atribuição do novo valor.",
+        "pontos === 1, apenas fazendo comparação estrita.",
+        "pontos += 1, atualizando o acumulador numérico.",
+        "pontos = \"pontos\", trocando número por texto literal."
+      ],
+      "correct": 2,
+      "explanation": "Atribuição composta soma um ao valor anterior; operadores de comparação não atualizam estado."
+    },
+    {
+      "id": 36,
+      "module": 4,
+      "question": "Qual valor resulta de \"2\" === 2 em JavaScript?",
+      "options": [
+        "false, porque o operador exige mesmo tipo e mesmo valor.",
+        "Erro de sintaxe, pois JavaScript não permite três sinais iguais.",
+        "true, porque dois valores numéricos têm escrita parecida.",
+        "undefined, porque comparação estrita não tem resultado booleano."
+      ],
+      "correct": 0,
+      "explanation": "=== não realiza coerção para igualar string e número."
+    },
+    {
+      "id": 37,
+      "module": 4,
+      "question": "Um quiz grava progresso no localStorage. Qual informação deve acompanhar esse recurso?",
+      "options": [
+        "O registro está automaticamente sincronizado em todas as escolas.",
+        "O histórico é prova oficial de presença validada por professor.",
+        "A pontuação persiste no servidor mesmo após limpar o navegador.",
+        "Os dados ficam neste navegador e podem ser apagados pelo usuário."
+      ],
+      "correct": 3,
+      "explanation": "localStorage é persistência local do navegador, sem sincronização ou certificado por si só."
+    },
+    {
+      "id": 38,
+      "module": 4,
+      "question": "Uma IA entrega array de perguntas mas repete a mesma alternativa correta. Que auditoria é necessária?",
+      "options": [
+        "Aprovar o banco por conter sessenta registros JSON.",
+        "Manter todas as opções iguais para facilitar o tempo da prova.",
+        "Auditar as questões, as opções, as chaves e os comentários.",
+        "Trocar as cores dos botões e considerar a avaliação validada."
+      ],
+      "correct": 2,
+      "explanation": "Quantidade de questões não garante qualidade pedagógica nem distribuição adequada."
+    },
+    {
+      "id": 39,
+      "module": 4,
+      "question": "O aluno toca em \"próxima\" duas vezes rapidamente e o quiz pula item. Qual proteção ajuda?",
+      "options": [
+        "Controlar eventos durante a troca de perguntas.",
+        "Limpar todas as respostas salvas a cada toque no botão.",
+        "Adicionar mais animações sem tratar os eventos repetidos.",
+        "Permitir todas as ativações simultâneas sem controle de estado."
+      ],
+      "correct": 0,
+      "explanation": "Controle de estado previne múltiplas transições e inconsistência de pontuação."
+    },
+    {
+      "id": 40,
+      "module": 4,
+      "question": "Uma página pública precisa obter dados atualizados de uma API. Qual abordagem merece cuidado?",
+      "options": [
+        "Verificar contrato da API, tratamento de erros e exposição de chaves.",
+        "Ignorar limite de requisições e repetir indefinidamente.",
+        "Inserir chave privada diretamente em JavaScript visível no navegador.",
+        "Assumir que a API sempre responde imediatamente e sem falhas."
+      ],
+      "correct": 0,
+      "explanation": "Aplicações front-end expõem código ao usuário; segredos não devem ser embutidos nele."
+    },
+    {
+      "id": 41,
+      "module": 5,
+      "question": "O navegador acusa \"Unexpected token\" antes de iniciar o programa. Qual categoria de erro é provável?",
+      "options": [
+        "Um problema de licença de uso das imagens da página.",
+        "Erro de cálculo detectado somente após o resultado ser exibido.",
+        "Falha de contraste visual entre o título e o fundo.",
+        "Erro de sintaxe na estrutura do código JavaScript."
+      ],
+      "correct": 3,
+      "explanation": "Erros sintáticos impedem análise/execução do programa até que a instrução seja corrigida."
+    },
+    {
+      "id": 42,
+      "module": 5,
+      "question": "O código roda, mas calcula média com divisor errado. Qual tipo de falha descreve isso?",
+      "options": [
+        "Erro de sintaxe, porque toda conta errada impede a execução.",
+        "Erro de rede, pois qualquer média depende de internet.",
+        "Erro tipográfico apenas no texto do botão de envio.",
+        "Erro lógico, pois executa mas produz um cálculo incorreto."
+      ],
+      "correct": 3,
+      "explanation": "A execução bem-sucedida não garante correção da regra ou dos resultados."
+    },
+    {
+      "id": 43,
+      "module": 5,
+      "question": "Um sistema aceita idade de 60 anos. Quais casos ajudam a testar exatamente o limite?",
+      "options": [
+        "Somente o caso 60 repetido com o mesmo cadastro.",
+        "Idades 59, 60 e 61, além de valores inválidos.",
+        "Somente idade 30, por estar distante do limite.",
+        "Apenas idades múltiplas de dez, sem entradas inválidas."
+      ],
+      "correct": 1,
+      "explanation": "Testes de fronteira verificam valores imediatamente abaixo, no limite e acima dele."
+    },
+    {
+      "id": 44,
+      "module": 5,
+      "question": "Um teste automatizado da função somar(2,3) falha ao receber 6. Qual resultado era esperado?",
+      "options": [
+        "Dois, por ser o primeiro argumento informado à função.",
+        "Seis, porque o programa é a fonte final da verdade.",
+        "Cinco, de acordo com a soma dos dois argumentos numéricos.",
+        "Vinte e três, como concatenação de valores convertidos."
+      ],
+      "correct": 2,
+      "explanation": "Um teste compara o resultado observado com valor esperado obtido da especificação."
+    },
+    {
+      "id": 45,
+      "module": 5,
+      "question": "Um erro é intermitente no quiz. Qual registro é útil para reproduzi-lo?",
+      "options": [
+        "Registrar passos, ambiente e resultado esperado e real.",
+        "O nome de quem programou, sem descrever o comportamento.",
+        "Somente uma frase dizendo que o aplicativo não funciona.",
+        "Uma captura do logotipo sem estado da questão afetada."
+      ],
+      "correct": 0,
+      "explanation": "Relatórios reprodutíveis aceleram diagnóstico e evitam alterações aleatórias."
+    },
+    {
+      "id": 46,
+      "module": 5,
+      "question": "Um site usa biblioteca externa. Qual cuidado é importante antes de atualizar versão?",
+      "options": [
+        "Ler mudanças, verificar origem e executar testes de regressão.",
+        "Atualizar tudo em produção sem salvar estado nem testar.",
+        "Confiar no número da versão sem examinar compatibilidade.",
+        "Desabilitar toda mensagem de erro para a atualização parecer correta."
+      ],
+      "correct": 0,
+      "explanation": "Dependências podem introduzir regressões e vulnerabilidades, exigindo controle de versão."
+    },
+    {
+      "id": 47,
+      "module": 5,
+      "question": "Um assistente sugere enviar a senha do servidor para \"corrigir\" um bug. Qual deve ser a reação?",
+      "options": [
+        "Inserir credenciais no código HTML e depois esquecer o arquivo.",
+        "Enviar a senha porque pedidos de IA são sempre locais.",
+        "Proteger a senha; usar diagnóstico sem revelar segredos.",
+        "Publicar o token no repositório para agilizar revisão."
+      ],
+      "correct": 2,
+      "explanation": "Credenciais não devem ser compartilhadas com ferramentas sem necessidade e controles autorizados."
+    },
+    {
+      "id": 48,
+      "module": 5,
+      "question": "Um arquivo JavaScript recebe entradas para compor HTML. Qual risco precisa ser mitigado?",
+      "options": [
+        "Mudança automática no sistema operacional de todos os alunos.",
+        "Aumento obrigatório do número de módulos da plataforma.",
+        "Perda de cor do card causada exclusivamente pelo nome do arquivo.",
+        "Injeção de código ao interpretar entrada não confiável."
+      ],
+      "correct": 3,
+      "explanation": "Conteúdo não confiável deve ser tratado como dados; evitar inserir HTML arbitrário."
+    },
+    {
+      "id": 49,
+      "module": 5,
+      "question": "O projeto tem duas alterações concorrentes feitas por diferentes pessoas. Qual papel do Git ajuda?",
+      "options": [
+        "Garantir que qualquer alteração tenha qualidade pedagógica automática.",
+        "Registrar histórico de versões e permitir revisão de diferenças.",
+        "Transformar todo comentário em publicação no site sem aprovação.",
+        "Evitar a necessidade de testar o aplicativo após integrar mudanças."
+      ],
+      "correct": 1,
+      "explanation": "Controle de versão facilita rastreabilidade, comparação, reversão e colaboração."
+    },
+    {
+      "id": 50,
+      "module": 5,
+      "question": "O teste visual passou, mas a navegação pelo teclado falha. Qual conclusão é adequada?",
+      "options": [
+        "A navegação com teclado é dispensável em qualquer curso público.",
+        "O problema desaparece necessariamente se usar outra cor de borda.",
+        "A qualidade ainda exige testes funcionais e de acessibilidade.",
+        "A aparência aprovada comprova usabilidade para todos os alunos."
+      ],
+      "correct": 2,
+      "explanation": "Diferentes testes cobrem riscos distintos; avaliação visual não substitui acessibilidade."
+    },
+    {
+      "id": 51,
+      "module": 6,
+      "question": "Um colega recebe repositório sem instruções. Qual conteúdo mínimo deve constar no README?",
+      "options": [
+        "Somente elogios ao programa sem instruções reproduzíveis.",
+        "Apenas a biografia do autor e uma imagem de capa.",
+        "Uma senha de acesso privado para facilitar a instalação.",
+        "Objetivo, requisitos, modo de uso, testes e limites."
+      ],
+      "correct": 3,
+      "explanation": "Documentação explica como compreender, executar, avaliar e manter o projeto."
+    },
+    {
+      "id": 52,
+      "module": 6,
+      "question": "Uma IA recomenda copiar imagens aleatórias para página pública. O que verificar?",
+      "options": [
+        "Se o arquivo abre no navegador, independentemente de licença.",
+        "Somente se a imagem combina com o esquema de cores.",
+        "Licença, origem, atribuição e direitos de terceiros.",
+        "A quantidade de curtidas da fotografia original na internet."
+      ],
+      "correct": 2,
+      "explanation": "A disponibilidade pública de um arquivo não implica licença livre de reutilização."
+    },
+    {
+      "id": 53,
+      "module": 6,
+      "question": "Um curso anuncia \"certificação automática\" apenas porque há quiz local. Qual correção é honesta?",
+      "options": [
+        "Emitir diploma oficial sem rastreamento de estudo ou avaliação.",
+        "Transformar pontuação local em carga horária comprovada.",
+        "Ocultar a ausência de verificação da identidade do participante.",
+        "Explicar que quiz local é treino, não certificado."
+      ],
+      "correct": 3,
+      "explanation": "Quiz local não comprova identidade, frequência, carga horária nem reconhecimento institucional."
+    },
+    {
+      "id": 54,
+      "module": 6,
+      "question": "O app conta visitas, mas promete \"melhorar aprendizagem\". Qual dado ainda falta?",
+      "options": [
+        "A quantidade de cores utilizadas nos certificados de exemplo.",
+        "Avaliação de desempenho com método e itens adequados.",
+        "O número total de cliques no logotipo de abertura.",
+        "A frequência de atualização da fotografia institucional."
+      ],
+      "correct": 1,
+      "explanation": "Uso, participação e aprendizagem são conceitos distintos e exigem indicadores diferentes."
+    },
+    {
+      "id": 55,
+      "module": 6,
+      "question": "Uma escola pretende publicar registros de alunos no GitHub Pages. Qual prática deve ser evitada?",
+      "options": [
+        "Usar conteúdo fictício para demonstração de componentes.",
+        "Publicar dados pessoais de alunos em arquivos públicos.",
+        "Documentar objetivos do projeto sem identificar estudantes.",
+        "Publicar guia de acessibilidade com exemplos não pessoais."
+      ],
+      "correct": 1,
+      "explanation": "Repositórios e sites públicos não são locais adequados para dados pessoais de estudantes."
+    },
+    {
+      "id": 56,
+      "module": 6,
+      "question": "Um protótipo funciona em notebook, mas falha em celular. Qual próximo passo é mais útil?",
+      "options": [
+        "Testar diferentes tamanhos e corrigir interação e responsividade.",
+        "Adicionar imagens pesadas para disfarçar problemas de navegação.",
+        "Remover os textos explicativos para a página ficar menor.",
+        "Declarar que só funciona em telas grandes sem investigar."
+      ],
+      "correct": 0,
+      "explanation": "Testes em dispositivos e larguras diferentes revelam problemas reais de interação."
+    },
+    {
+      "id": 57,
+      "module": 6,
+      "question": "Uma IA gerou função longa, difícil de entender. Qual refatoração costuma ajudar?",
+      "options": [
+        "Trocar nomes de todas as variáveis por uma única letra.",
+        "Duplicar o código em cada botão para evitar chamar funções.",
+        "Remover mensagens de erro para diminuir o número de linhas.",
+        "Separar funções por tarefa, documentar e testar."
+      ],
+      "correct": 3,
+      "explanation": "Refatoração melhora manutenção sem alterar o comportamento esperado; testes verificam preservação."
+    },
+    {
+      "id": 58,
+      "module": 6,
+      "question": "Uma equipe pretende medir tempo de carregamento. Qual medição torna a comparação mais justa?",
+      "options": [
+        "Repetir testes nas mesmas condições e registrar método e variações.",
+        "Declarar melhoria sem medir qualquer versão anterior.",
+        "Escolher apenas a execução mais rápida entre centenas de testes.",
+        "Comparar computadores diferentes sem informar conexão ou navegador."
+      ],
+      "correct": 0,
+      "explanation": "Medições comparáveis exigem condições, método e observações documentadas."
+    },
+    {
+      "id": 59,
+      "module": 6,
+      "question": "O professor recebe código de IA que parece correto. Qual é a responsabilidade de quem publica?",
+      "options": [
+        "Atribuir todos os erros exclusivamente à ferramenta utilizada.",
+        "Revisar funcionamento, segurança, autoria e adequação ao público.",
+        "Publicar imediatamente porque a IA explicou o funcionamento.",
+        "Ignorar problemas relatados após a publicação do programa."
+      ],
+      "correct": 1,
+      "explanation": "Ferramenta auxilia a criação; a responsabilidade pela entrega permanece com quem a valida e divulga."
+    },
+    {
+      "id": 60,
+      "module": 6,
+      "question": "Antes de lançar projeto de programação com IA, qual checklist final é mais completo?",
+      "options": [
+        "Somente a contagem de linhas de código geradas pela IA.",
+        "Aprovação de um único print sem abrir o aplicativo.",
+        "Requisitos, testes, acesso, privacidade e documentação.",
+        "Apenas logotipo, cores e um texto otimista sobre o futuro."
+      ],
+      "correct": 2,
+      "explanation": "Produto pronto exige evidências técnicas, pedagógicas e éticas, além de apresentação visual."
+    }
+  ]
+}
