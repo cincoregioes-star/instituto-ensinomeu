@@ -1,0 +1,6 @@
+INSTITUTO ENSINOMEU · CURSO 10 · PLANOS DE AULA COM IA
+
+Apostila: 46 páginas A4, 30 lições, 6 missões. Carga de estudo estimada: 20 horas.
+Arena: 60 itens contextualizados, quatro opções e gabarito comentado, com treino por módulo, revisão dos erros, progresso local, música e efeitos opcionais (sem narração).
+Não há emissão automática de certificado ou comprovação de horas. Verifique a BNCC e os documentos curriculares oficiais vigentes e proteja dados pessoais de estudantes.
+Entrada pública: index.html
