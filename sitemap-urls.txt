@@ -23,3 +23,4 @@ https://cincoregioes-star.github.io/instituto-ensinomeu/cursos-ia/01-ia-do-zero/
 https://cincoregioes-star.github.io/instituto-ensinomeu/cursos-ia/02-como-a-ia-funciona/
 https://cincoregioes-star.github.io/instituto-ensinomeu/cursos-ia/03-ia-generativa-e-prompts/
 https://cincoregioes-star.github.io/instituto-ensinomeu/conteudos-recuperados/
+https://cincoregioes-star.github.io/instituto-ensinomeu/mapa-do-site.html
