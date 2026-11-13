@@ -11,13 +11,13 @@
     const css = document.createElement('link');
     css.id = 'em-identidade-css';
     css.rel = 'stylesheet';
-    css.href = new URL('ensino-identidade-2026.css?v=20261112', scriptURL).href;
+    css.href = new URL('ensino-identidade-2026.css?v=20261113-menu', scriptURL).href;
     document.head.appendChild(css);
   }
   if (!document.querySelector('#em-identidade-js')) {
     const js = document.createElement('script');
     js.id = 'em-identidade-js';
-    js.src = new URL('ensino-identidade-2026.js?v=20261112-meta-inicial', scriptURL).href;
+    js.src = new URL('ensino-identidade-2026.js?v=20261113-menu', scriptURL).href;
     js.defer = true;
     document.body.appendChild(js);
   }
@@ -28,6 +28,8 @@
   const home = base + 'index.html';
   const panel = base + 'painel.html';
   const source = relative.toLowerCase();
+  // Na página inicial o botão de voltar é redundante e pode levar a uma tela inesperada.
+  if (source === '' || source === 'index.html') return;
   function fallback() {
     if (source.startsWith('simulados/')) {
       const name = source.split('/').pop() || '';
