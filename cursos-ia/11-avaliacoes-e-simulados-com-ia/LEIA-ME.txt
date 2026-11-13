@@ -1,0 +1,8 @@
+INSTITUTO ENSINOMEU · CURSO 11 · CRIAÇÃO DE AVALIAÇÕES E SIMULADOS COM IA
+
+Conteúdo: 30 lições, 6 missões, PDF ilustrado A4 de 46 páginas e 60 questões comentadas.
+Percurso de estudo estimado: 20 horas, sem certificado ou comprovação automática.
+A arena disponibiliza treino por módulo, resultado por habilidade, revisão de erros,
+progresso salvo somente no navegador e música/efeitos opcionais, sem narração.
+Orientação: verificar fontes, gabaritos, documentos curriculares e proteção de dados.
+Entrada pública: index.html

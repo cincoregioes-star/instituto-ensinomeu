@@ -1,0 +1,788 @@
+{
+  "course": "Criação de Avaliações e Simulados com Inteligência Artificial",
+  "hours_planned": 20,
+  "bank_version": "2026-11-13-curso11-v1",
+  "editorial_method": "60 situações distintas; 6 módulos; gabarito balanceado; revisão humana obrigatória; sem certificação automática",
+  "questions": [
+    {
+      "id": 1,
+      "module": 1,
+      "question": "Um item pede o ano de um evento, mas o objetivo é comparar duas interpretações históricas. Qual alteração melhora a validade?",
+      "options": [
+        "Exigir comparação entre trechos de fontes e justificativa apoiada neles.",
+        "Usar o mesmo ano como resposta e trocar a ordem das alternativas.",
+        "Adicionar cronômetro curto para tornar a lembrança mais exigente.",
+        "Acrescentar quatro datas próximas para aumentar a dificuldade de memória."
+      ],
+      "correct": 0,
+      "explanation": "A comparação fundamentada exige a operação cognitiva prevista. Datas e tempo de resposta podem aumentar esforço, mas não demonstram análise de interpretações."
+    },
+    {
+      "id": 2,
+      "module": 1,
+      "question": "Dois estudantes erram 25% de 80. Que item adicional separa dificuldade com fração de dificuldade com leitura de enunciado?",
+      "options": [
+        "Exigir que ambos expliquem a regra de três sem representar a fração.",
+        "Propor representar um quarto de 80 em desenho e explicar o procedimento.",
+        "Solicitar cálculo idêntico, apenas trocando as letras das alternativas.",
+        "Pedir cópia da definição de porcentagem antes de nova tentativa."
+      ],
+      "correct": 1,
+      "explanation": "Representar um quarto investiga significado da fração e seu vínculo com porcentagem. Repetir a conta ou exigir regra de três pode não revelar a origem da dificuldade."
+    },
+    {
+      "id": 3,
+      "module": 1,
+      "question": "A rubrica exige uma conclusão única, embora as fontes permitam duas interpretações fundamentadas. O que deve ser revisado?",
+      "options": [
+        "O tipo de letra, pois a apresentação interfere diretamente no argumento.",
+        "A duração da prova, para reduzir a diversidade de respostas possíveis.",
+        "Os critérios, para valorar qualidade das evidências e não frase idêntica.",
+        "As fontes, para que reste só uma opinião possível na discussão."
+      ],
+      "correct": 2,
+      "explanation": "Em tarefa argumentativa, conclusões defensáveis podem divergir; critérios devem verificar evidências e coerência. Impor frase única confunde reprodução com raciocínio."
+    },
+    {
+      "id": 4,
+      "module": 1,
+      "question": "Um quiz de treino dá pistas durante as respostas. Como usá-lo em uma decisão somativa importante?",
+      "options": [
+        "Somar pontos de participação ao treino e converter diretamente em avaliação final.",
+        "Tratar o resultado do treino como nota final, pois o feedback foi imediato.",
+        "Conservar as mesmas perguntas sem pistas e considerar equivalência perfeita.",
+        "Criar instrumento independente e equivalente, com condições de aplicação definidas."
+      ],
+      "correct": 3,
+      "explanation": "Treino com pistas tem finalidade formativa e condições distintas. Uma decisão somativa requer instrumento e critérios adequados, não conversão automática de pontos."
+    },
+    {
+      "id": 5,
+      "module": 1,
+      "question": "A matriz prevê 40% de interpretação de gráficos, mas só 2 dos 20 itens exigem lê-los. Qual diagnóstico é correto?",
+      "options": [
+        "A cobertura real é 10%; devem ser revistos itens e distribuição por habilidade.",
+        "É aceitável porque os demais itens mencionam palavras de estatística.",
+        "A proporção deve considerar apenas questões de maior dificuldade.",
+        "O percentual deve ser calculado por quantidade de linhas do enunciado."
+      ],
+      "correct": 0,
+      "explanation": "Dois de vinte itens equivalem a 10%, bem abaixo dos 40% previstos. A referência é a competência efetivamente avaliada, não o vocabulário do enunciado."
+    },
+    {
+      "id": 6,
+      "module": 1,
+      "question": "Uma prova pretende medir leitura crítica, mas grande parte do tempo é gasta decifrando linguagem confusa. Que risco isso gera?",
+      "options": [
+        "A prova mede somente a habilidade anunciada, independentemente da redação.",
+        "Barreiras acessórias podem contaminar a medida da análise crítica desejada.",
+        "A prova se torna mais válida porque também exige rapidez de leitura.",
+        "A dificuldade linguística é sempre parte necessária de qualquer competência."
+      ],
+      "correct": 1,
+      "explanation": "Elementos irrelevantes ao objetivo introduzem dificuldade adicional e prejudicam a interpretação da nota. Clareza deve preservar, não eliminar, a exigência cognitiva."
+    },
+    {
+      "id": 7,
+      "module": 1,
+      "question": "Um diagnóstico revela erro no segundo item e acerto no terceiro, mais complexo. Qual inferência é mais prudente?",
+      "options": [
+        "Classificar o segundo item como inválido sem revisar suas condições.",
+        "Descartar as respostas incoerentes e calcular apenas os acertos esperados.",
+        "Investigar estratégias e enunciados antes de afirmar lacuna conceitual estável.",
+        "Concluir que a turma dominou integralmente o conteúdo porque acertou o último."
+      ],
+      "correct": 2,
+      "explanation": "Padrões aparentemente contraditórios podem refletir estratégia, contexto ou ambiguidade. Uma resposta isolada não demonstra domínio ou deficiência definitiva."
+    },
+    {
+      "id": 8,
+      "module": 1,
+      "question": "Um objetivo diz “argumentar com duas evidências”, mas a correção pontua apenas quantidade de palavras. O que muda primeiro?",
+      "options": [
+        "Adicionar pontuação de velocidade para compensar a ausência de análise.",
+        "Aumentar o limite de palavras para aproximar a pontuação do esforço.",
+        "Retirar o objetivo argumentativo e manter contagem como competência principal.",
+        "Trocar a métrica por critérios de evidência, pertinência e justificativa."
+      ],
+      "correct": 3,
+      "explanation": "O critério deve medir a qualidade da argumentação. Extensão e rapidez podem variar sem representar uso efetivo de evidências."
+    },
+    {
+      "id": 9,
+      "module": 1,
+      "question": "Uma turma faz quiz semanal com feedback. O coordenador quer concluir que todos dominam o tema por média de 85%. O que falta?",
+      "options": [
+        "Evidência por habilidade, condições do treino e verificação sem pistas.",
+        "Um novo nome de categoria para representar a média dos estudantes.",
+        "Uma comparação com outra escola feita sem controlar temas avaliados.",
+        "Apenas um gráfico mais colorido para comunicar o percentual ao público."
+      ],
+      "correct": 0,
+      "explanation": "Uma média de treino não garante domínio uniforme. É preciso examinar distribuição, objetivos, feedback recebido e desempenho em situações equivalentes."
+    },
+    {
+      "id": 10,
+      "module": 1,
+      "question": "Na criação de 20 itens para quatro habilidades, qual é o uso mais adequado da IA?",
+      "options": [
+        "Distribuir automaticamente cinco por tema sem considerar objetivos reais.",
+        "Definir matriz antes e usar a IA para propor itens sujeitos à revisão.",
+        "Solicitar 20 perguntas e aceitar a distribuição que o modelo escolher.",
+        "Pedir itens só para a habilidade mais fácil, para obter acertos maiores."
+      ],
+      "correct": 1,
+      "explanation": "A matriz pedagógica orienta a cobertura e a ferramenta auxilia na redação. Uma repartição automática ou orientada por facilidade pode distorcer prioridades."
+    },
+    {
+      "id": 11,
+      "module": 2,
+      "question": "Uma questão sobre consumo de água não informa se os valores são diários ou mensais. Qual revisão preserva a interpretação?",
+      "options": [
+        "Informar só a região com maior valor para reduzir a ambiguidade.",
+        "Substituir os valores por adjetivos como “alto” e “baixo” sem referência.",
+        "Especificar período, unidade e fonte dos números antes das alternativas.",
+        "Manter os dados e admitir qualquer resposta baseada em período inventado."
+      ],
+      "correct": 2,
+      "explanation": "Período e unidade fazem parte dos dados necessários para uma comparação única. Sem eles, respostas diferentes podem ser justificáveis por pressupostos distintos."
+    },
+    {
+      "id": 12,
+      "module": 2,
+      "question": "Um item de média tem distratores 30, 300 e 3000, embora os dados fiquem perto de 40. Qual revisão aumenta poder diagnóstico?",
+      "options": [
+        "Eliminar as alternativas e marcar a primeira resposta digitada como válida.",
+        "Trocar as opções extremas por números próximos escolhidos aleatoriamente.",
+        "Manter números extremos para acelerar o preenchimento da avaliação.",
+        "Construir opções ligadas a erro de divisão, soma e escolha do denominador."
+      ],
+      "correct": 3,
+      "explanation": "Distratores derivados de erros de raciocínio permitem interpretar a escolha. Números simplesmente próximos ou absurdos não garantem valor diagnóstico."
+    },
+    {
+      "id": 13,
+      "module": 2,
+      "question": "Uma alternativa correta tem 44 palavras e as outras, entre 6 e 8. Qual ação é justificável?",
+      "options": [
+        "Redigir todas com extensão e precisão semelhantes, sem pistas formais.",
+        "Reduzir a correta a uma palavra, ainda que perca condição importante.",
+        "Manter porque respostas longas necessariamente representam mais conhecimento.",
+        "Aumentar as três erradas com detalhes irrelevantes para igualar contagem."
+      ],
+      "correct": 0,
+      "explanation": "Equilíbrio de forma ajuda a evitar acerto por pistas. O ajuste deve preservar precisão e plausibilidade, não acrescentar enfeites ou apagar condições."
+    },
+    {
+      "id": 14,
+      "module": 2,
+      "question": "Após uma aula de erosão, o item novo apresenta canteiro com cobertura vegetal diferente. O que caracteriza transferência?",
+      "options": [
+        "Memorizar a data da demonstração feita no pátio escolar.",
+        "Prever efeito no novo canteiro e justificar com o princípio estudado.",
+        "Repetir a frase da apostila sobre erosão com a mesma redação.",
+        "Identificar qual exemplo foi exibido na terceira imagem da aula."
+      ],
+      "correct": 1,
+      "explanation": "Aplicar um princípio a condições novas evidencia transferência. Relembrar slide, data ou definição não demonstra uso do conceito no cenário proposto."
+    },
+    {
+      "id": 15,
+      "module": 2,
+      "question": "Duas alternativas explicam corretamente o mesmo resultado em condições não especificadas. Qual é o problema mais provável?",
+      "options": [
+        "A distribuição de letras do gabarito produz coincidência indesejada.",
+        "O contexto contém dados suficientes, mas o leitor escolhe arbitrariamente.",
+        "O comando permite mais de uma resposta defensável e precisa de revisão.",
+        "O nível cognitivo é alto demais para qualquer avaliação de múltipla escolha."
+      ],
+      "correct": 2,
+      "explanation": "Se a questão não diferencia condições, duas opções válidas quebram a unicidade. O item deve explicitar critério ou ser transformado em resposta aberta."
+    },
+    {
+      "id": 16,
+      "module": 2,
+      "question": "A pergunta “Qual NÃO é incorreta?” contém dupla negação sem necessidade. Qual revisão mantém o raciocínio?",
+      "options": [
+        "Trocar o assunto por um conceito menos complexo e sem dados de apoio.",
+        "Adicionar uma terceira negação para detalhar o objetivo da escolha.",
+        "Manter dupla negação porque torna a resposta mais resistente ao chute.",
+        "Pedir diretamente a alternativa correta, preservando o mesmo estímulo."
+      ],
+      "correct": 3,
+      "explanation": "Negação dupla pode introduzir carga de leitura não relacionada ao conteúdo. Um comando direto mede a mesma competência com menos ruído."
+    },
+    {
+      "id": 17,
+      "module": 2,
+      "question": "Em um item contextualizado, três parágrafos de cenário não influenciam a solução. Qual edição é mais adequada?",
+      "options": [
+        "Preservar só informações necessárias para interpretar e resolver o problema.",
+        "Converter o cenário em imagem decorativa sem descrição textual.",
+        "Eliminar todo contexto, mesmo quando os dados são indispensáveis à resposta.",
+        "Adicionar dados históricos para dar aspecto ainda mais realista à questão."
+      ],
+      "correct": 0,
+      "explanation": "O contexto deve servir à decisão avaliada. Detalhes decorativos consomem atenção e podem prejudicar acessibilidade sem enriquecer o raciocínio."
+    },
+    {
+      "id": 18,
+      "module": 2,
+      "question": "Um distrator é verdadeiro, mas não responde ao comando “Qual fator é principal segundo a tabela?”. Como justificar sua rejeição?",
+      "options": [
+        "Apontar que a opção tem menos palavras do que a resposta oficial.",
+        "Explicar que o dado não sustenta sua prioridade naquele recorte.",
+        "Afirmar que qualquer frase verdadeira pode ser gabarito alternativo.",
+        "Dizer que o fator não existe na realidade, mesmo quando existe."
+      ],
+      "correct": 1,
+      "explanation": "Uma opção pode conter afirmação verdadeira e ainda não satisfazer o critério solicitado. O comentário deve ligar a rejeição aos dados e à pergunta específica."
+    },
+    {
+      "id": 19,
+      "module": 2,
+      "question": "Uma questão menciona “pessoas que trabalham em horta familiar” como experiência necessária. Como reduzir viés de acesso?",
+      "options": [
+        "Reduzir a pontuação de quem não conhece trabalho agrícola doméstico.",
+        "Converter experiência familiar em pré-requisito obrigatório do conteúdo.",
+        "Acrescentar caso descrito suficiente para quem nunca viveu a experiência.",
+        "Retirar o enunciado completo e exigir relato pessoal de todos."
+      ],
+      "correct": 2,
+      "explanation": "O estímulo deve fornecer informações necessárias para resolver a tarefa. Experiências familiares diferentes não devem determinar vantagem injusta na avaliação."
+    },
+    {
+      "id": 20,
+      "module": 2,
+      "question": "Para verificar se uma questão tem gabarito único, qual teste é mais informativo?",
+      "options": [
+        "Alterar todas as alternativas para tamanho idêntico sem reler conteúdos.",
+        "Consultar quantas palavras há na alternativa indicada pelo modelo.",
+        "Pedir à IA para responder novamente até repetir a mesma letra.",
+        "Tentar defender cada opção com evidências do enunciado e revisar ambiguidades."
+      ],
+      "correct": 3,
+      "explanation": "Testar condições de validade de cada alternativa revela possíveis respostas adicionais e enunciados incompletos. Repetição do modelo não é validação independente."
+    },
+    {
+      "id": 21,
+      "module": 3,
+      "question": "Um gabarito marca 48, mas a resolução mostrada termina em 42. Qual é o procedimento mínimo antes de publicar?",
+      "options": [
+        "Refazer a conta e alinhar solução, unidade, alternativa e comentário.",
+        "Selecionar a opção mais frequente no banco para equilibrar letras.",
+        "Apagar o cálculo para que o aluno não perceba a inconsistência.",
+        "Manter a opção marcada e explicar a divergência em nota de rodapé."
+      ],
+      "correct": 0,
+      "explanation": "Divergência entre solução e gabarito exige cálculo independente e correção de todos os componentes. Ocultar a resolução não corrige o erro."
+    },
+    {
+      "id": 22,
+      "module": 3,
+      "question": "O feedback do item informa somente “Letra B”. O que acrescentar para apoiar a aprendizagem?",
+      "options": [
+        "Uma mensagem motivacional sem discutir as opções oferecidas.",
+        "Raciocínio correto e explicação do erro plausível em cada distrator.",
+        "Um elogio genérico que aparece igual após qualquer resposta do participante.",
+        "Descrição mais longa do tema sem mostrar como resolver o caso."
+      ],
+      "correct": 1,
+      "explanation": "Comentário formativo mostra como chegar à resposta e por que os outros caminhos falham. Elogio sem análise não permite revisar o conceito."
+    },
+    {
+      "id": 23,
+      "module": 3,
+      "question": "Uma rubrica de resposta aberta usa três níveis: “bom”, “ótimo” e “excelente”. Qual lacuna compromete consistência?",
+      "options": [
+        "Falta avaliar caligrafia, mesmo quando o objetivo é argumentação.",
+        "A rubrica não informa o nome do estudante em cada descritor.",
+        "Os níveis não descrevem evidências observáveis que diferenciem desempenho.",
+        "O instrumento não tem cinco critérios, quantidade obrigatória em qualquer curso."
+      ],
+      "correct": 2,
+      "explanation": "Rótulos de qualidade sem descritores deixam a interpretação subjetiva. Critérios precisam corresponder a comportamentos observáveis na resposta."
+    },
+    {
+      "id": 24,
+      "module": 3,
+      "question": "Um banco tem 60 enunciados, mas 18 repetem a mesma escolha com nomes diferentes. Que auditoria identifica a redundância?",
+      "options": [
+        "Verificar somente se há duplicação literal de palavras no enunciado.",
+        "Contar caracteres de cada pergunta e remover as mais curtas.",
+        "Comparar cor da tela e estilo das alternativas de cada item.",
+        "Agrupar pelo raciocínio exigido, contexto e estratégia de solução."
+      ],
+      "correct": 3,
+      "explanation": "Duplicação semântica não depende de texto idêntico. Itens que pedem a mesma decisão com mudanças superficiais empobrecem cobertura do simulado."
+    },
+    {
+      "id": 25,
+      "module": 3,
+      "question": "Há 60 itens e 34 respostas corretas na letra A. Qual ajuste deve ser feito depois de revisar cada gabarito?",
+      "options": [
+        "Reordenar alternativas preservando o texto correto e atualizar o índice.",
+        "Excluir itens difíceis que aumentam a concentração na letra A.",
+        "Adicionar erros ao banco para compensar distribuição das posições.",
+        "Trocar respostas consideradas corretas para distribuir as letras."
+      ],
+      "correct": 0,
+      "explanation": "A posição é arbitrária e pode ser equilibrada sem alterar validade. O conteúdo correto não deve mudar para satisfazer uma contagem estética."
+    },
+    {
+      "id": 26,
+      "module": 3,
+      "question": "A resposta “usar duas evidências” recebe nota 2, embora o texto só faça uma afirmação sem fonte. Que rubrica evitaria isso?",
+      "options": [
+        "Uma que permita ao corretor escolher critério depois de ler o texto.",
+        "Uma que exija evidências localizáveis e relação explícita com a conclusão.",
+        "Uma que pontue apenas o número de linhas escritas pelo participante.",
+        "Uma que use a nota máxima sempre que a resposta seja confiante."
+      ],
+      "correct": 1,
+      "explanation": "Descritores devem exigir evidência de fato, não apenas mencionar o conceito. Pontuar frase declarativa sem fontes distorce o objetivo argumentativo."
+    },
+    {
+      "id": 27,
+      "module": 3,
+      "question": "A IA marcou como correta uma opção que parece plausível. Qual verificação humana é independente do modelo?",
+      "options": [
+        "Verificar se a opção escolhida contém palavras usadas na pergunta.",
+        "Selecionar o comentário mais persuasivo entre as saídas de IA.",
+        "Resolver o problema a partir do enunciado antes de consultar o gabarito.",
+        "Pedir à mesma ferramenta para dizer se sua resposta é confiável."
+      ],
+      "correct": 2,
+      "explanation": "Resolver sem consultar a resposta reduz o risco de confirmar erro sugerido pela ferramenta. Fluência e repetição não substituem cálculo e evidência."
+    },
+    {
+      "id": 28,
+      "module": 3,
+      "question": "Ao corrigir um erro no item 27, o editor muda apenas o texto da alternativa correta. Que outra parte precisa de auditoria?",
+      "options": [
+        "A paleta visual de todos os cartões, sem rever a explicação.",
+        "Somente o ícone de medalha que aparece no final da prova.",
+        "A música de fundo, pois mudanças no texto afetam o som.",
+        "Índice do gabarito, comentário, revisão dos erros e histórico de versão."
+      ],
+      "correct": 3,
+      "explanation": "Uma alteração de resposta pode afetar índice, feedback, pontuação e registros. A correção precisa manter coerência do item em todas as telas."
+    },
+    {
+      "id": 29,
+      "module": 3,
+      "question": "Dois itens são semanticamente parecidos, mas um interpreta gráfico e outro avalia fonte de dados. Qual critério decide mantê-los?",
+      "options": [
+        "A operação cognitiva e evidência produzida por cada um, mesmo com tema igual.",
+        "A alternância das letras corretas no arquivo JSON original.",
+        "A preferência do autor pelo enunciado escrito primeiro.",
+        "A diferença de número de palavras entre os textos dos itens."
+      ],
+      "correct": 0,
+      "explanation": "Itens podem compartilhar tema e ainda medir competências distintas. A comparação relevante é de tarefa mental e evidência, não de vocabulário ou ordem."
+    },
+    {
+      "id": 30,
+      "module": 3,
+      "question": "Uma avaliação com quatro módulos mostra 20 itens no primeiro e 2 no último. Qual análise vem antes de reordenar respostas?",
+      "options": [
+        "O tamanho dos arquivos PDF usados nas atividades de cada módulo.",
+        "A coerência da distribuição com a matriz de competências e seus pesos.",
+        "A cor de cada módulo, para que o estudante perceba o equilíbrio visual.",
+        "A velocidade média do jogador nas perguntas do primeiro módulo."
+      ],
+      "correct": 1,
+      "explanation": "Cobertura desigual pode ser legítima ou um defeito, conforme os objetivos definidos. A matriz determina pesos; distribuição de letras não corrige lacunas de conteúdo."
+    },
+    {
+      "id": 31,
+      "module": 4,
+      "question": "Um quiz para celular mostra só duas de quatro opções sem rolar. Qual é a primeira revisão de interface?",
+      "options": [
+        "Aumentar o tamanho do logotipo e reduzir espaço de conteúdo.",
+        "Colocar mais opções por linha sem medir legibilidade em tela pequena.",
+        "Reorganizar áreas e testar todas as opções e ações na altura disponível.",
+        "Eliminar o texto da questão e manter apenas as alternativas."
+      ],
+      "correct": 2,
+      "explanation": "A interface deve preservar enunciado, quatro respostas e controle seguinte. Ajustes visuais que escondem conteúdo ou eliminam pergunta prejudicam a validade."
+    },
+    {
+      "id": 32,
+      "module": 4,
+      "question": "O som informa acerto, mas não aparece texto de feedback. Qual requisito de acessibilidade está ausente?",
+      "options": [
+        "Impedir o participante de usar o quiz quando desativa o alto-falante.",
+        "Aumentar a duração do som para facilitar sua percepção por todos.",
+        "Trocar todos os sons por animação sem outra informação textual.",
+        "Apresentar indicação textual de acerto ou erro independente do áudio."
+      ],
+      "correct": 3,
+      "explanation": "A informação essencial não pode depender de um canal sensorial. Texto de feedback permite concluir o treino com áudio desligado e apoia tecnologias assistivas."
+    },
+    {
+      "id": 33,
+      "module": 4,
+      "question": "Uma questão contém gráfico vermelho/verde sem outros rótulos. Qual alternativa mantém a mesma interpretação possível?",
+      "options": [
+        "Identificar séries por nomes, padrões e dados em tabela acessível.",
+        "Exibir a resposta no texto alternativo para garantir que todos acertem.",
+        "Remover uma das séries e pedir comparação de um único conjunto.",
+        "Trocar cores por outras mais intensas mantendo apenas distinção cromática."
+      ],
+      "correct": 0,
+      "explanation": "Identificação redundante e tabela preservam dados necessários sem antecipar conclusão. Retirar série ou revelar resultado altera o desafio."
+    },
+    {
+      "id": 34,
+      "module": 4,
+      "question": "O aluno sai na questão 18 e retorna no dia seguinte. Qual comportamento é coerente com um treino de progresso local?",
+      "options": [
+        "Reiniciar sem aviso para garantir que todos façam o quiz inteiro.",
+        "Oferecer continuar no ponto salvo e explicitar onde os dados ficam.",
+        "Atribuir automaticamente nota zero às questões ainda não respondidas.",
+        "Enviar as respostas pessoais para um painel público por padrão."
+      ],
+      "correct": 1,
+      "explanation": "Persistência transparente evita perda de trabalho e respeita escolhas. Em treino, pausar não equivale a terminar, e dados não devem ser divulgados sem finalidade."
+    },
+    {
+      "id": 35,
+      "module": 4,
+      "question": "Após responder a uma questão, comentário de seis linhas cobre o botão Próxima no celular. Que teste faltou?",
+      "options": [
+        "Teste de volume máximo para efeitos positivos e negativos da questão.",
+        "Avaliação de popularidade dos ícones usados nos botões.",
+        "Teste com maior texto de feedback e verificação da área de ação no viewport.",
+        "Verificação de quantos usuários preferem o tema de cor do aplicativo."
+      ],
+      "correct": 2,
+      "explanation": "Casos extremos de texto revelam cortes e sobreposição que não aparecem com feedback curto. O botão de avanço precisa continuar acessível."
+    },
+    {
+      "id": 36,
+      "module": 4,
+      "question": "O jogo muda todas as respostas para verde antes do clique. Como isso afeta o instrumento?",
+      "options": [
+        "Torna qualquer item adequado a leitores de tela automaticamente.",
+        "Melhora a validade porque toda resposta fica igualmente visível.",
+        "Reduz a necessidade de solução e libera tempo para mais conteúdo.",
+        "Pode sugerir acerto por cor, comprometendo escolha independente."
+      ],
+      "correct": 3,
+      "explanation": "Pistas visuais anteriores à decisão podem contaminar o acerto. Estados de correto/errado devem aparecer após a resposta e com alternativa textual."
+    },
+    {
+      "id": 37,
+      "module": 4,
+      "question": "Um teste de teclado alcança as respostas, mas a opção focada não tem contorno visível. Qual consequência?",
+      "options": [
+        "Há barreira de orientação; é preciso indicador de foco perceptível.",
+        "O foco permanece suficiente porque o navegador conhece sua posição.",
+        "O estudante ainda pode perceber a posição por áudio obrigatório.",
+        "A solução é retirar suporte a teclado e usar apenas o mouse."
+      ],
+      "correct": 0,
+      "explanation": "Usuários de teclado precisam localizar o controle ativo. Exigir áudio ou mouse cria barreiras adicionais e não resolve falta de feedback visual."
+    },
+    {
+      "id": 38,
+      "module": 4,
+      "question": "Em uma arena, música automática aumenta o tempo de leitura de uma pessoa. Como oferecer participação equivalente?",
+      "options": [
+        "Desativar o cronômetro de todos sem informar as regras da avaliação.",
+        "Permitir desligar efeitos e música mantendo enunciado e pontuação.",
+        "Tornar a música obrigatória para que condições pareçam iguais.",
+        "Reduzir o volume de todos os participantes por decisão automática."
+      ],
+      "correct": 1,
+      "explanation": "Sons opcionais respeitam diferenças de atenção e sensibilidade sem modificar o conteúdo avaliado. Uma condição sensorial fixa não é igualdade de acesso."
+    },
+    {
+      "id": 39,
+      "module": 4,
+      "question": "Um simulado registra progresso em localStorage. Qual informação deve constar da interface?",
+      "options": [
+        "Que o desempenho é automaticamente validado para certificado oficial.",
+        "Que trocar de navegador sempre mantém todas as respostas salvas.",
+        "Que o resultado fica neste dispositivo e pode não sincronizar entre aparelhos.",
+        "Que o resultado está protegido em servidor institucional sem existir servidor."
+      ],
+      "correct": 2,
+      "explanation": "Armazenamento local depende do navegador/dispositivo e pode ser apagado. Transparência evita promessas de sincronização ou certificação não implementadas."
+    },
+    {
+      "id": 40,
+      "module": 4,
+      "question": "Um cartão apresenta duas alternativas muito longas e o layout reduz fonte para 8 pixels a fim de caber. Qual decisão é melhor?",
+      "options": [
+        "Impedir acesso por celular e informar que só computadores são suportados.",
+        "Manter fonte minúscula porque prioriza ausência de rolagem.",
+        "Remover informações essenciais do enunciado para abrir espaço.",
+        "Reescrever com precisão e adaptar layout sem sacrificar legibilidade."
+      ],
+      "correct": 3,
+      "explanation": "A ausência de rolagem não justifica texto ilegível. Revisão textual e responsividade devem preservar o raciocínio e área confortável de leitura."
+    },
+    {
+      "id": 41,
+      "module": 5,
+      "question": "Duas turmas têm 70% de acerto geral; uma erra gráficos e outra, avaliação de fontes. Qual relatório ajuda mais o professor?",
+      "options": [
+        "Percentuais por habilidade com tamanho da amostra e erros frequentes.",
+        "Uma única média conjunta para toda a escola, sem discriminar temas.",
+        "Total de cliques e visitas como substituto de desempenho curricular.",
+        "Ranking nominal de estudantes de cada turma, ordenado por tempo."
+      ],
+      "correct": 0,
+      "explanation": "Resultados por habilidade orientam intervenção específica, mesmo com médias iguais. Ranking e cliques não mostram a origem das dificuldades pedagógicas."
+    },
+    {
+      "id": 42,
+      "module": 5,
+      "question": "A questão 12 tem 8% de acerto e outras da mesma habilidade têm 75%. O que investigar antes de reensinar tudo?",
+      "options": [
+        "Remover o item do relatório e anunciar taxa média mais alta.",
+        "Revisar ambiguidade, gabarito, unidades, distratores e padrões de resposta.",
+        "Supor que o conteúdo da questão é intrinsecamente impossível de aprender.",
+        "Atribuir dificuldade à falta de motivação sem analisar o instrumento."
+      ],
+      "correct": 1,
+      "explanation": "Diferença extrema pode sinalizar defeito do item além de lacuna de conteúdo. Revisar primeiro evita intervenção baseada em erro de avaliação."
+    },
+    {
+      "id": 43,
+      "module": 5,
+      "question": "Uma mensagem diz ao aluno “Você é fraco em gráficos”. Qual versão é formativamente mais adequada?",
+      "options": [
+        "“Sua nota revela sua capacidade natural de aprender esta disciplina.”",
+        "“Você precisa estudar mais”, sem indicar conceito ou próxima ação.",
+        "“Você identificou a escala, mas precisa comparar valores; tente esta tabela.”",
+        "“Você está abaixo da média porque não sabe interpretar informações.”"
+      ],
+      "correct": 2,
+      "explanation": "Feedback eficaz descreve evidência e próximo passo, sem rotular pessoa. Frases globais não mostram o erro nem orientam ação possível."
+    },
+    {
+      "id": 44,
+      "module": 5,
+      "question": "O Instituto registra 500 downloads e anuncia 500 estudantes aprovados. Qual é a falha central?",
+      "options": [
+        "O número de downloads está errado porque alguns arquivos são pequenos.",
+        "Uma aprovação precisa ter sempre mais de mil acessos para ser válida.",
+        "Downloads não deveriam contar como uso de recurso em qualquer relatório.",
+        "Acesso ao material foi confundido com desempenho verificado em avaliação."
+      ],
+      "correct": 3,
+      "explanation": "Download mede acesso, não aprovação ou aprendizagem. São necessárias evidências reais de conclusão e critérios avaliativos antes dessa afirmação."
+    },
+    {
+      "id": 45,
+      "module": 5,
+      "question": "Após erros em média e mediana, o professor reaplica a mesma pergunta como pós-teste. Qual limite tem esse resultado?",
+      "options": [
+        "Acerto pode refletir memória da resposta em vez de transferência conceitual.",
+        "O pós-teste deixa de medir qualquer coisa após uma única aula.",
+        "A comparação só é válida se a nova pergunta usar palavras idênticas.",
+        "Questões repetidas sempre têm dificuldade maior por serem familiares."
+      ],
+      "correct": 0,
+      "explanation": "Item repetido pode medir lembrança, especialmente após feedback. Verificação equivalente com novos dados evidencia melhor a aprendizagem do conceito."
+    },
+    {
+      "id": 46,
+      "module": 5,
+      "question": "Em uma turma de oito participantes, 75% acertaram um item. Qual informação deve acompanhar o percentual?",
+      "options": [
+        "A cor predominante da tela e o sistema operacional mais comum.",
+        "O número absoluto de seis acertos em oito respostas e o contexto.",
+        "O peso total do arquivo HTML usado para executar a prova.",
+        "O número de cliques na página inicial durante o mesmo dia."
+      ],
+      "correct": 1,
+      "explanation": "Percentuais com amostra pequena podem parecer mais robustos do que são. Relatar 6/8 e condições facilita interpretação responsável."
+    },
+    {
+      "id": 47,
+      "module": 5,
+      "question": "O relatório diz que o simulado “causou ganho de 30%” sem medir desempenho antes. Qual redação é defensável?",
+      "options": [
+        "Substituir 30% por 20% para soar menos ambicioso e manter causalidade.",
+        "Confundir a quantidade de questões com número de alunos avaliados.",
+        "Relatar acertos observados e declarar que ganho ainda não foi medido.",
+        "Repetir a afirmação porque a plataforma demonstrou bom engajamento."
+      ],
+      "correct": 2,
+      "explanation": "Sem medida inicial e desenho adequado, não há base para atribuir crescimento causal. Dados observados podem ser informados com suas limitações."
+    },
+    {
+      "id": 48,
+      "module": 5,
+      "question": "A maioria erra um distrator que soma porcentagens incorretamente. Que decisão didática decorre da análise?",
+      "options": [
+        "Excluir os participantes que erraram da análise de desempenho agregado.",
+        "Reorganizar apenas a posição das alternativas para reduzir concentração.",
+        "Aplicar punição uniforme porque a mesma letra foi escolhida.",
+        "Retomar composição percentual com exemplo e aplicar nova situação equivalente."
+      ],
+      "correct": 3,
+      "explanation": "Um erro recorrente e interpretável pode orientar ensino focalizado. Reordenar opções ou punir não enfrenta a dificuldade conceitual."
+    },
+    {
+      "id": 49,
+      "module": 5,
+      "question": "Em dois grupos, 90% e 60% acertaram um item, mas os tamanhos foram 10 e 100. Qual comparação é mais honesta?",
+      "options": [
+        "Informar 9/10 e 60/100 e discutir condições antes de tirar conclusões.",
+        "Combinar ambos percentuais pela média simples e declarar equivalência de grupos.",
+        "Afirmar superioridade permanente do grupo menor sem analisar amostragem.",
+        "Destacar apenas o 90%, pois o percentual maior resume melhor o resultado."
+      ],
+      "correct": 0,
+      "explanation": "Denominadores e condições influenciam interpretação da proporção. Uma diferença observada não prova causa ou superioridade estável."
+    },
+    {
+      "id": 50,
+      "module": 5,
+      "question": "Um painel por disciplina mostra queda de acertos após mudança no banco de questões. Qual investigação precede conclusão de piora?",
+      "options": [
+        "Substituir os alunos por outro grupo para estabilizar porcentagens.",
+        "Comparar dificuldade, cobertura, perfil da aplicação e versões dos itens.",
+        "Aumentar o objetivo de acerto para tornar o relatório motivador.",
+        "Ocultar a série anterior para evitar questionamento do público."
+      ],
+      "correct": 1,
+      "explanation": "Mudança de instrumento pode alterar porcentagem sem mudança real de aprendizagem. Versões e condições precisam ser comparáveis antes de inferir tendência."
+    },
+    {
+      "id": 51,
+      "module": 6,
+      "question": "Um simulado usa código de habilidade que a IA inventou. Qual é a atitude necessária antes da publicação?",
+      "options": [
+        "Comparar a resposta com outra IA e aceitar se houver concordância.",
+        "Substituir apenas a fonte tipográfica do código para evitar confusão.",
+        "Conferir código, etapa e redação em documento curricular oficial vigente.",
+        "Manter o código se a descrição do item parecer alinhada ao assunto."
+      ],
+      "correct": 2,
+      "explanation": "Vínculo curricular não pode depender de aparência ou consenso entre modelos. O documento oficial da rede valida habilidade e etapa."
+    },
+    {
+      "id": 52,
+      "module": 6,
+      "question": "O painel público sugere mostrar nome, idade, nota e deficiência dos alunos em um ranking. Que desenho é mais prudente?",
+      "options": [
+        "Publicar nomes abreviados e fotografias para dar aparência de anonimização.",
+        "Divulgar todos os campos porque o uso do simulado foi voluntário.",
+        "Remover nomes e manter combinações individuais que ainda identifiquem pessoas.",
+        "Publicar desempenho agregado e restringir dados individualizados por finalidade."
+      ],
+      "correct": 3,
+      "explanation": "Informações identificáveis e sensíveis exigem proteção e finalidade, enquanto estatísticas agregadas podem comunicar resultados sem expor pessoas. Pseudônimos isolados não garantem anonimato."
+    },
+    {
+      "id": 53,
+      "module": 6,
+      "question": "Uma auditoria aprova as cores do quiz, mas não verifica se as respostas estão corretas. Qual etapa foi omitida?",
+      "options": [
+        "Validação pedagógica de enunciados, soluções e justificativas por revisão humana.",
+        "Inspeção de quantas vezes o visitante muda a música da tela.",
+        "Comparação de temas de cor com jogos de plataformas concorrentes.",
+        "Teste de velocidade de download de imagens de fundo."
+      ],
+      "correct": 0,
+      "explanation": "Usabilidade e validade pedagógica são eixos distintos. Um visual bonito pode apresentar gabaritos errados ou enunciados ambíguos."
+    },
+    {
+      "id": 54,
+      "module": 6,
+      "question": "O gabarito do item 27 muda após publicação. Qual nota de versão é mais transparente?",
+      "options": [
+        "Nenhum registro, pois itens digitais podem mudar a qualquer momento.",
+        "Identificar item, defeito, nova resposta, data e tratamento de resultados prévios.",
+        "“Houve melhorias”, sem identificar questão, correção ou impacto.",
+        "“O item foi ajustado”, omitindo que resultados anteriores podem mudar."
+      ],
+      "correct": 1,
+      "explanation": "Alterações materiais precisam de rastreabilidade e tratamento de quem já respondeu. Changelog genérico não permite entender impacto."
+    },
+    {
+      "id": 55,
+      "module": 6,
+      "question": "Um curso declara “simulado premium validado” porque sua capa é moderna. Qual conjunto de evidências sustenta qualidade?",
+      "options": [
+        "Número de slides promocionais e aprovação verbal da ferramenta de IA.",
+        "Quantidade de downloads, ainda sem dados de avaliação ou acessibilidade.",
+        "Matriz, questões originais, solução conferida, testes de acesso e revisão documentada.",
+        "Tamanho do logotipo, quantidade de gradientes e música durante o exercício."
+      ],
+      "correct": 2,
+      "explanation": "Qualidade depende de alinhamento, originalidade, gabarito, acessibilidade e testes reproduzíveis. Aparência e popularidade não substituem evidências."
+    },
+    {
+      "id": 56,
+      "module": 6,
+      "question": "Uma imagem de estudante identificável foi inserida em questão sem autorização verificada. Qual caminho responsável?",
+      "options": [
+        "Trocar o nome da criança e deixar rosto e contexto integralmente visíveis.",
+        "Manter a imagem porque a intenção do professor é educacional.",
+        "Publicar em tamanho reduzido para diminuir chance de reconhecimento.",
+        "Verificar direitos e permissão adequada ou substituir por ilustração autorizada."
+      ],
+      "correct": 3,
+      "explanation": "Finalidade educacional não elimina análise de imagem e dados pessoais. Reduzir dimensão ou trocar nome pode manter identificação."
+    },
+    {
+      "id": 57,
+      "module": 6,
+      "question": "Um banco foi revisado por dois profissionais; ambos analisaram apenas ortografia. Qual revisão complementar é necessária?",
+      "options": [
+        "Designar verificação de conteúdo, gabarito, distratores e funcionamento.",
+        "Substituir toda questão que contenha números, independentemente do objetivo.",
+        "Tratar revisão ortográfica como prova suficiente de validade curricular.",
+        "Adicionar um terceiro corretor focado em diagramação de capa."
+      ],
+      "correct": 0,
+      "explanation": "Revisão redundante de forma não cobre erros de conteúdo e lógica. Papéis complementares ampliam detecção de falhas reais."
+    },
+    {
+      "id": 58,
+      "module": 6,
+      "question": "O simulado é publicado com 60 questões, mas ainda não foi aberto em celular. Que status editorial é honesto?",
+      "options": [
+        "Indicar somente a quantidade de páginas do PDF como teste suficiente.",
+        "Informar conteúdo publicado e acessibilidade móvel ainda pendente de teste.",
+        "Declarar certificação e acessibilidade integral por ser versão HTML.",
+        "Afirmar que todos os testes foram concluídos pela existência dos arquivos."
+      ],
+      "correct": 1,
+      "explanation": "Um arquivo existente não prova funcionamento em todos os contextos. O status deve corresponder aos testes efetivamente feitos."
+    },
+    {
+      "id": 59,
+      "module": 6,
+      "question": "Uma correção foi feita no item 4 e o editor quer reaproveitar progresso de usuários antigos. Qual análise antecede a mudança?",
+      "options": [
+        "Mudar chave de armazenamento e declarar que ninguém foi prejudicado.",
+        "Ignorar impacto porque o item representa apenas um sessenta avos da prova.",
+        "Verificar impacto da correção em pontuação, histórico e retomada do treino.",
+        "Apagar todos os resultados sem explicar o motivo ou delimitar afetados."
+      ],
+      "correct": 2,
+      "explanation": "Uma alteração de gabarito pode afetar pessoas que responderam. Antes de mudar dados, é preciso avaliar impacto, preservar histórico e comunicar política adequada."
+    },
+    {
+      "id": 60,
+      "module": 6,
+      "question": "Para entregar portfólio do micro-simulado, qual afirmação pode ser demonstrada imediatamente?",
+      "options": [
+        "Todos os participantes estarão certificados ao abrir a primeira tela do curso.",
+        "Os itens são universalmente válidos independentemente da turma e do currículo.",
+        "O instrumento elevará a aprendizagem de toda escola no próximo semestre.",
+        "Foram produzidos dez itens auditados com matriz, gabarito, feedback e testes registrados."
+      ],
+      "correct": 3,
+      "explanation": "A produção e a auditoria documentadas são evidências demonstráveis. Efeito futuro, certificação e validade universal exigem processos e medidas adicionais."
+    }
+  ]
+}

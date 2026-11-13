@@ -20,6 +20,11 @@ ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / "cursos-ia" / "10-planos-de-aula-com-ia"
 TEMPLATE = ROOT / "cursos-ia" / "09-ia-para-professores-iniciantes" / "index.html"
 PDF_NAME = "apostila_planos_de_aula_com_ia_20h.pdf"
+COURSE_NO = 10
+COVER_LINES = ["PLANOS", "DE AULA", "COM IA"]
+COVER_TAG = "CURSO 10 · FORMAÇÃO GRATUITA"
+COVER_SUBTITLE = "Planejar, verificar, adaptar e avaliar"
+COVER_CREDIT = "Coordenação editorial: Prof. Carlos Tavares"
 FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
 pdfmetrics.registerFont(TTFont("DejaVu", str(FONT_DIR / "DejaVuSans.ttf")))
 pdfmetrics.registerFont(TTFont("DejaVu-Bold", str(FONT_DIR / "DejaVuSans-Bold.ttf")))
@@ -154,7 +159,7 @@ def base(c: Canvas, number: int, chapter: str):
     c.rect(0, H - 34, W, 34, fill=1, stroke=0)
     c.setFont("DejaVu-Bold", 9)
     c.setFillColor(colors.white)
-    c.drawString(36, H - 22, "INSTITUTO ENSINOMEU  /  CURSO 10")
+    c.drawString(36, H - 22, f"INSTITUTO ENSINOMEU  /  CURSO {COURSE_NO:02d}")
     c.setFont("DejaVu", 8)
     c.drawRightString(W - 36, H - 22, "PLANEJAMENTO DOCENTE + IA")
     c.setStrokeColor(colors.HexColor("#D5E1E8"))
@@ -185,14 +190,14 @@ def cover(c: Canvas):
         c.circle(W * .82, H * .42, 60 + i * 26, stroke=1, fill=0)
     c.setFillColor(CYAN)
     c.roundRect(42, H - 115, 252, 27, 12, fill=1, stroke=0)
-    label(c, "CURSO 10 · FORMAÇÃO GRATUITA", 57, H - 107, NAVY, 10)
+    label(c, COVER_TAG, 57, H - 107, NAVY, 10)
     c.setFillColor(colors.white)
     c.setFont("DejaVu-Bold", 37)
-    for n, s in enumerate(["PLANOS", "DE AULA", "COM IA"]):
+    for n, s in enumerate(COVER_LINES):
         c.drawString(42, H - 235 - n * 56, s)
     c.setFillColor(GOLD)
     c.setFont("DejaVu", 14)
-    c.drawString(44, H - 435, "Planejar, verificar, adaptar e avaliar")
+    c.drawString(44, H - 435, COVER_SUBTITLE)
     for i, (a, b) in enumerate([("30", "lições aplicadas"), ("60", "questões comentadas"), ("06", "missões autorais")]):
         x = 43 + i * 178
         c.setFillColor(colors.HexColor("#1B3B56"))
@@ -206,7 +211,7 @@ def cover(c: Canvas):
     c.setFillColor(colors.white)
     c.setFont("DejaVu", 10)
     c.drawString(44, 80, "20 horas de estudo planejadas · Apostila A4 ilustrada · 2026")
-    c.drawString(44, 58, "Coordenação editorial: Prof. Carlos Tavares")
+    c.drawString(44, 58, COVER_CREDIT)
     c.showPage()
 
 
