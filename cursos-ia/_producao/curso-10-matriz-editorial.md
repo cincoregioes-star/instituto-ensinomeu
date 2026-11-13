@@ -1,5 +1,11 @@
 # Curso 10 — Planos de Aula com Inteligência Artificial
 
+> **Matriz preliminar arquivada.** A edição publicada segue a sequência
+> definitiva de cursos-ia/10-planos-de-aula-com-ia/licoes_30.json; o banco
+> final está em banco_60_questoes.json e o material imprimível na apostila
+> PDF da mesma pasta. O índice abaixo registra a proposta inicial e não
+> corresponde integralmente ao percurso publicado.
+
 **Instituto EnsinoMeu | Material editorial de produção, ainda não publicado como curso.**
 
 Carga de estudo planejada: 20 horas. A IA auxilia o professor, mas não substitui julgamento pedagógico. Não inserir dados identificáveis de alunos em serviços externos. Toda referência curricular deve ser conferida em documento oficial vigente.
