@@ -52,7 +52,7 @@
   function desktop(){
     return sections.map(function(x){
       var active=currentID()===x.id ? ' aria-current="page"' : '';
-      var sub=x.children ? '<div class="em-submenu" aria-label="Turmas de simulados">' + x.children.map(function(c){return '<a href="'+u(c[1])+'">'+c[0]+'</a>';}).join('') + '</div>' : '';
+      var sub=x.children ? '<div class="em-submenu" aria-label="Mais opções: '+x.label+'">' + x.children.map(function(c){return '<a href="'+u(c[1])+'">'+c[0]+'</a>';}).join('') + '</div>' : '';
       return '<div class="em-tab"><a class="em-nav-link" href="'+u(x.href)+'"'+active+'>'+svg(x.icon)+'<span>'+x.label+'</span></a>'+sub+'</div>';
     }).join('');
   }
@@ -61,19 +61,17 @@
       return '<a href="'+u(x.href)+'">'+svg(x.icon)+'<span>'+x.label+'</span></a>' +
         (x.children ? x.children.map(function(c){return '<a href="'+u(c[1])+'">↳ '+c[0]+'</a>';}).join('') : '');
     }).join('');
-    return s + '<a class="em-entry-mobile" href="'+u('login.html')+'">Entrar / Cadastrar</a>';
+    return s;
   }
   function updateHomepage(){
     var header=document.querySelector('body > header.top');
     var nav=header && header.querySelector('nav.nav');
     if (!header || !nav) return false;
-    var back=nav.querySelector('#ensino-voltar-global');
     nav.innerHTML=desktop();
-    if(back) nav.prepend(back);
     var brandNote=header.querySelector('.brand small');
     if(brandNote) brandNote.textContent='EDUCAÇÃO GRATUITA • BNCC • PROFISSÕES';
     var sign=header.querySelector('.top-sign');
-    if(sign){sign.textContent='Entrar / Cadastrar';sign.href=u('login.html');}
+    if(sign)sign.remove();
     var mobileNav=header.querySelector('.mobile-links');
     if(mobileNav){mobileNav.innerHTML=mobile();mobileNav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){var d=mobileNav.closest('details');if(d)d.open=false;});});}
     var heroEyebrow=document.querySelector('.hero .eyebrow');
@@ -133,8 +131,6 @@
       '<img src="'+u('assets/brasao.png')+'" alt="Brasão do Instituto EnsinoMeu">'+
       '<span class="em-identity-text">INSTITUTO ENSINOMEU<small>EDUCAÇÃO GRATUITA • BNCC • PROFISSÕES</small></span></a>'+
       '<nav class="em-global-nav" aria-label="Menu institucional">'+desktop()+'</nav>'+
-      '<a class="em-entry" href="'+u('login.html')+'">'+
-      '<svg viewBox="0 0 24 24" aria-hidden="true">'+icons.user+'</svg><span>Entrar / Cadastrar</span></a>'+
       '<details class="em-dropdown"><summary aria-label="Abrir menu institucional">☰ Menu</summary>'+
       '<nav class="em-dropdown-links" aria-label="Menu de navegação para celular">'+mobile()+'</nav></details></div>';
     document.body.insertBefore(bar,document.body.firstChild);
