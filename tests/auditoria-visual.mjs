@@ -40,7 +40,7 @@ try{
   const page=await openPage('index.html',viewport);
   await page.locator('.lesson').first().waitFor({timeout:5000});
   const info=await noOverflow(page,'Início '+viewport.width);
-  if(!(await page.locator('#ensino-voltar-global').isVisible()))failures.push('Início '+viewport.width+': botão Voltar não está visível');
+  if(await page.locator('#ensino-voltar-global').isVisible())failures.push('Início '+viewport.width+': botão Voltar não deve aparecer na página inicial');
   const content=await page.evaluate(()=>({
     cards:document.querySelectorAll('.lesson').length,
     title:document.querySelector('#aulas-gravadas h2')?.textContent?.trim(),
