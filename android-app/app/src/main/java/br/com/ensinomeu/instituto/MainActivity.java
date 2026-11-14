@@ -196,6 +196,12 @@ public final class MainActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 progressBar.setVisibility(View.GONE);
                 if (!mainPageFailed) offlinePanel.setVisibility(View.GONE);
+                if (belongsToInstitute(Uri.parse(url))) {
+                    // Evita oferecer a instalação PWA dentro do próprio aplicativo Android.
+                    view.evaluateJavascript(
+                            "var appButton=document.getElementById('instalar-app');" +
+                            "if(appButton){appButton.hidden=true;}", null);
+                }
             }
 
             @Override
