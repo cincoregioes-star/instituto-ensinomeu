@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#052d4c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="EnsinoMeu">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script id="em-app-install-js" src="app-install.js?v=20261114" defer></script>
 <meta name="description" content="Instituto EnsinoMeu: educação gratuita, reforço escolar BNCC, cursos livres de IA e profissões, videoaulas, apostilas, simulados gamificados, ENEM e concursos.">
 <meta name="author" content="Professor Carlos Tavares">
 <meta property="og:type" content="website"><meta property="og:locale" content="pt_BR">
@@ -43,7 +49,7 @@
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:44px;padding:75px 0 81px}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:950;letter-spacing:.16em;color:#ffe38b;text-transform:uppercase}.eyebrow:before{content:"";width:28px;height:5px;border-radius:3px;background:#ffcb39}
 .hero h1{font-size:clamp(39px,4.8vw,69px);letter-spacing:-.048em;line-height:1.08;margin:20px 0 17px;font-weight:950}.hero h1 span{color:#70eaae}.hero p{color:#e0f2fb;font-size:17px;max-width:630px;line-height:1.7;margin:0 0 25px}
-.actions{display:flex;flex-wrap:wrap;gap:11px}.btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;padding:12px 21px;border-radius:11px;font-weight:900;text-decoration:none;border:1px solid transparent;transition:transform .18s,filter .18s}.btn:hover{transform:translateY(-2px);filter:brightness(1.07)}.btn-gold{background:var(--gold);color:#062e44;box-shadow:0 9px 19px #0326373d}.btn-glass{background:#ffffff19;border-color:#ffffff9c;color:#fff}.btn-green{background:linear-gradient(120deg,#079365,#005c45);color:#fff}.btn-outline{border-color:#b8d6cb;background:#edf8f4;color:#075e4b}
+.actions{display:flex;flex-wrap:wrap;gap:11px}.btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;padding:12px 21px;border-radius:11px;font-weight:900;text-decoration:none;border:1px solid transparent;transition:transform .18s,filter .18s}.btn:hover{transform:translateY(-2px);filter:brightness(1.07)}.btn-gold{background:var(--gold);color:#062e44;box-shadow:0 9px 19px #0326373d}.btn-glass{background:#ffffff19;border-color:#ffffff9c;color:#fff}.btn-green{background:linear-gradient(120deg,#079365,#005c45);color:#fff}.btn-outline{border-color:#b8d6cb;background:#edf8f4;color:#075e4b}#instalar-app[hidden]{display:none!important}
 .hero-note{display:flex;align-items:center;gap:9px;margin-top:26px;color:#c8eae6;font-size:13px}.hero-note b{color:#fff}
 .mock{position:relative;min-width:0;border:1px solid #ffffff4a;border-radius:25px;padding:17px;background:linear-gradient(145deg,#effaff,#e4f3ff);box-shadow:0 26px 60px #00192c65;color:#082f4a;transform:rotate(.6deg)}
 .mock-top{display:flex;align-items:center;gap:8px;padding:0 0 14px;border-bottom:1px solid #c5d9eb;font-size:13px}.mock-dot{width:10px;height:10px;background:#e7b534;border-radius:50%}.mock-dot:nth-child(2){background:#06a4a8}.mock-dot:nth-child(3){background:#0c8c63}.mock-title{margin-left:auto;font-weight:900;letter-spacing:.025em}
@@ -155,7 +161,7 @@
 </div></header>
 <section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">Aprendizagem alinhada à BNCC</span><h1>Educação gratuita para <span>escola, IA e profissões.</span></h1>
 <p><strong>Acesso gratuito aos materiais publicados.</strong> Reforço escolar alinhado à BNCC, videoaulas, apostilas e simulados gamificados. Também oferecemos cursos livres de Inteligência Artificial e formação profissional, além de recursos para ENEM e concursos. O <strong>EnsinoMeu Play</strong> segue em desenvolvimento.</p>
-<div class="actions"><a class="btn btn-gold" href="#aulas-gravadas">▶ Ver aulas gravadas</a><a class="btn btn-glass" href="simulados/8ano.html">🎮 Simulados do 8º ano</a><a class="btn btn-glass" href="simulados/9ano.html">🎮 Simulados do 9º ano</a><a class="btn btn-glass" href="catalogo-gratuito.html">📚 Cursos gratuitos</a></div>
+<div class="actions"><a class="btn btn-gold" href="#aulas-gravadas">▶ Ver aulas gravadas</a><a class="btn btn-glass" href="simulados/8ano.html">🎮 Simulados do 8º ano</a><a class="btn btn-glass" href="simulados/9ano.html">🎮 Simulados do 9º ano</a><a class="btn btn-glass" href="catalogo-gratuito.html">📚 Cursos gratuitos</a><button class="btn btn-green" id="instalar-app" type="button" aria-label="Instalar aplicativo gratuito Instituto EnsinoMeu">📲 Instalar aplicativo grátis</button></div>
 <div class="hero-note"><span aria-hidden="true">◆</span><span><b>Do 1º ano do Fundamental à 3ª série do Médio.</b> Aprenda no seu ritmo.</span></div></div>
 <div class="mock" aria-label="Ilustração de um ambiente digital de estudos colorido"><div class="mock-top"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-title">ENSINOMEU • SALA DE AULA</span></div>
 <div class="mock-body"><div class="mock-banner"><div><small>ESTUDO PERSONALIZADO</small><strong>Seu conhecimento<br>em evolução</strong></div><span class="symbol" aria-hidden="true">📘</span></div>

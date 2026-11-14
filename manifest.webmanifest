@@ -1,0 +1,25 @@
+{
+  "id": "./",
+  "name": "Instituto EnsinoMeu — Educação Gratuita",
+  "short_name": "EnsinoMeu",
+  "description": "Aulas, apostilas, simulados gamificados e cursos gratuitos de IA e profissões.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#061f37",
+  "theme_color": "#052d4c",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "assets/app-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/app-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/app-icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Videoaulas", "short_name": "Aulas", "url": "./#aulas-gravadas", "icons": [{ "src": "assets/app-icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Cursos gratuitos", "short_name": "Cursos", "url": "./catalogo-gratuito.html", "icons": [{ "src": "assets/app-icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Simulados 9º ano", "short_name": "Simulados", "url": "./simulados/9ano.html", "icons": [{ "src": "assets/app-icon-192.png", "sizes": "192x192", "type": "image/png" }] }
+  ]
+}

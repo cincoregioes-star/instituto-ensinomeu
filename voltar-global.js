@@ -6,6 +6,13 @@
   if (document.getElementById('ensino-voltar-global')) return;
   // Resolve o caminho pelo próprio script: funciona no GitHub Pages e no ambiente de testes.
   const scriptURL = document.currentScript?.src || location.href;
+  // Metadados e instalação PWA compartilhados em todas as páginas do Instituto.
+  if (!document.querySelector('#em-app-install-js')) {
+    const app = document.createElement('script');
+    app.id = 'em-app-install-js';
+    app.src = new URL('app-install.js?v=20261114', scriptURL).href;
+    document.body.appendChild(app);
+  }
   // Carrega a identidade institucional em todas as paginas que utilizam esta navegacao global.
   if (!document.querySelector('#em-identidade-css')) {
     const css = document.createElement('link');

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#052d4c">
+  <title>Sem conexão | Instituto EnsinoMeu</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100dvh; display: grid; place-items: center; padding: 24px; background: linear-gradient(145deg,#051f37,#075b56); color: #fff; font: 16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    main { max-width: 490px; width: 100%; padding: clamp(26px,6vw,46px); text-align: center; background: #ffffff13; border: 1px solid #ffffff45; border-radius: 24px; box-shadow: 0 22px 60px #031b2d66; }
+    img { width: 112px; height: 112px; object-fit: contain; }
+    h1 { font-size: clamp(26px,6vw,34px); line-height: 1.17; margin: 18px 0 12px; }
+    p { color: #e1f0f1; }
+    a,button { display: inline-flex; align-items: center; justify-content: center; border: 0; min-height: 48px; border-radius: 12px; padding: 12px 18px; text-decoration: none; font: 800 15px system-ui,sans-serif; cursor: pointer; }
+    a { color: #052d4c; background: #f5c136; }
+    button { color: #fff; background: #ffffff1e; border: 1px solid #a4d8d3; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px; }
+    :focus-visible { outline: 3px solid #f5c136; outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="assets/app-icon-192.png" alt="Brasão do Instituto EnsinoMeu">
+    <h1>Você está sem internet</h1>
+    <p>O Instituto EnsinoMeu continua instalado. Reconecte-se para acessar as videoaulas, apostilas, simulados e demais conteúdos que exigem conexão.</p>
+    <div class="actions">
+      <button type="button" onclick="location.reload()">↻ Tentar novamente</button>
+      <a href="./">Ir para o início</a>
+    </div>
+  </main>
+</body>
+</html>
