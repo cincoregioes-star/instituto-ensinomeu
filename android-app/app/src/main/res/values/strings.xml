@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Instituto EnsinoMeu</string>
+    <string name="offline_title">Sem conexão com a internet</string>
+    <string name="offline_message">Conecte-se para acessar as aulas, apostilas, simulados e cursos do Instituto EnsinoMeu.</string>
+    <string name="retry">Tentar novamente</string>
+</resources>
