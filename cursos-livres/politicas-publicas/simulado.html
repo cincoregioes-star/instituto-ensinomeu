@@ -13,9 +13,19 @@
 <a class="skip" href="#jogo">Ir à atividade</a>
 <header class="top">
  <a class="brand" href="index.html"><span class="mark">E</span><span class="brand-text">INSTITUTO ENSINOMEU<small>SIMULADOS GAMERS • POLÍTICAS PÚBLICAS</small></span></a>
- <nav class="topnav"><a class="chip" href="index.html">← Curso</a><button class="chip gold" id="som" type="button" aria-pressed="true">🔊 Sons ligados</button></nav>
+ <nav class="topnav"><a class="chip" href="index.html">← Curso</a><button class="chip gold" id="som" type="button" aria-pressed="true" title="Ligar ou desligar música de fundo e efeitos originais">🎵 Áudios ligados</button></nav>
 </header>
 <main id="jogo" class="game-shell"><section id="app" class="game-main" aria-live="polite"><p>Preparando questões…</p></section></main>
+<!-- Os mesmos três MP3 originais adotados nos simulados Brasil Forte/Gabarito Max. -->
+<audio id="audio-bg" loop preload="auto" playsinline hidden>
+ <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=tension-103701.mp3" type="audio/mpeg">
+</audio>
+<audio id="audio-correct" preload="auto" playsinline hidden>
+ <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=success-1-6297.mp3" type="audio/mpeg">
+</audio>
+<audio id="audio-wrong" preload="auto" playsinline hidden>
+ <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_c6ccf3232f.mp3?filename=error-126627.mp3" type="audio/mpeg">
+</audio>
 <script src="banco-questoes.js"></script>
 <script src="motor-politicas.js"></script>
 </body>

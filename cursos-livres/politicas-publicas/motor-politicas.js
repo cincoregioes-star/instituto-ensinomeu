@@ -10,12 +10,14 @@ const mode=modes.find(m=>m.id===qs.get('tipo'))||modes.find(m=>m.id==='fundament
 if(!mode)return;
 const questions=bank[mode.id]||[];
 const $=id=>document.getElementById(id),app=$('app'),soundBtn=$('som');
+const music=$('audio-bg'),correctSound=$('audio-correct'),wrongSound=$('audio-wrong');
+music.volume=.06;correctSound.volume=.45;wrongSound.volume=.45;
 const draftKey='ensinomeu_pp_rascunho_'+mode.id,histKey='ensinomeu_pp_hist_'+mode.id;
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const shuffle=arr=>{const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const load=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||'null')??fallback}catch{return fallback}};
 const save=(key,obj)=>{try{localStorage.setItem(key,JSON.stringify(obj))}catch{}};
-let sound=load('ensinomeu_pp_sound',true),ctx=null,stage='home',order=[],alts=[],answers=[],current=0,started=0,seconds=0,finishedRecord=null;
+let sound=load('ensinomeu_pp_sound',true),stage='home',order=[],alts=[],answers=[],current=0,started=0,seconds=0,finishedRecord=null;
 let history=load(histKey,[]);if(!Array.isArray(history))history=[];
 let draft=load(draftKey,null);
 document.title=mode.title+' | Instituto EnsinoMeu';
@@ -28,12 +30,12 @@ if(!validateBank())return;
 
 function initNew(){
  order=shuffle([...questions.keys()]);alts=order.map(()=>shuffle([0,1,2,3]));
- answers=Array(questions.length).fill(null);current=0;seconds=0;started=Date.now();finishedRecord=null;stage='quiz';saveDraft();render();
+ answers=Array(questions.length).fill(null);current=0;seconds=0;started=Date.now();finishedRecord=null;stage='quiz';saveDraft();render();startMusic();
 }
 function canResume(v){
  return v&&Array.isArray(v.order)&&v.order.length===questions.length&&new Set(v.order).size===questions.length&&v.order.every(i=>Number.isInteger(i)&&i>=0&&i<questions.length)&&Array.isArray(v.alts)&&v.alts.length===questions.length&&v.alts.every(a=>Array.isArray(a)&&a.length===4&&new Set(a).size===4&&a.every(x=>Number.isInteger(x)&&x>=0&&x<4))&&Array.isArray(v.answers)&&v.answers.length===questions.length&&v.answers.every(x=>x===null||(Number.isInteger(x)&&x>=0&&x<4));
 }
-function resume(){if(!canResume(draft))return initNew();order=draft.order;alts=draft.alts;answers=draft.answers;current=Math.max(0,Math.min(questions.length-1,Number(draft.current)||0));started=Number(draft.started)||Date.now();stage='quiz';render()}
+function resume(){if(!canResume(draft))return initNew();order=draft.order;alts=draft.alts;answers=draft.answers;current=Math.max(0,Math.min(questions.length-1,Number(draft.current)||0));started=Number(draft.started)||Date.now();stage='quiz';render();startMusic()}
 function saveDraft(){save(draftKey,{order,alts,answers,current,started})}
 function clearDraft(){try{localStorage.removeItem(draftKey)}catch{}draft=null}
 function fmtTime(){let n=Math.max(0,Math.floor((Date.now()-started)/1000));return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0')}
@@ -47,14 +49,22 @@ function narrate(kind){
  const u=new SpeechSynthesisUtterance(content);u.lang='pt-BR';u.rate=.95;u.pitch=1;u.volume=1;const voice=preferredVoice();if(voice)u.voice=voice;
  try{window.speechSynthesis.speak(u)}catch{alert('Não foi possível reproduzir a leitura. Confira a voz instalada no dispositivo.')}
 }
-function beep(ok){
- if(!sound)return;
- try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;ctx=ctx||new A();if(ctx.state==='suspended')ctx.resume().catch(()=>{});
- const notes=ok?[523.25,659.25,783.99]:[310,232];notes.forEach((hz,i)=>{const start=ctx.currentTime+i*.095,o=ctx.createOscillator(),g=ctx.createGain();o.type=ok?'sine':'triangle';o.frequency.setValueAtTime(hz,start);g.gain.setValueAtTime(.0001,start);g.gain.exponentialRampToValueAtTime(.08,start+.018);g.gain.exponentialRampToValueAtTime(.0001,start+.19);o.connect(g);g.connect(ctx.destination);o.start(start);o.stop(start+.20)})
- }catch{}
+function stopMusic(){music.pause()}
+function startMusic(){
+ if(!sound||stage!=='quiz'||document.hidden)return;
+ try{const result=music.play();if(result&&typeof result.catch==='function')result.catch(()=>{})}catch{}
 }
-function updateSound(){soundBtn.textContent=sound?'🔊 Sons ligados':'🔇 Sons desligados';soundBtn.setAttribute('aria-pressed',String(sound))}
-soundBtn.addEventListener('click',()=>{sound=!sound;save('ensinomeu_pp_sound',sound);updateSound();if(!sound)stopSpeech();else beep(true)});updateSound();
+function playOriginal(ok){
+ if(!sound)return;
+ const track=ok?correctSound:wrongSound;
+ try{track.pause();track.currentTime=0;const result=track.play();if(result&&typeof result.catch==='function')result.catch(()=>{})}catch{}
+}
+function stopEffects(){[correctSound,wrongSound].forEach(track=>{try{track.pause();track.currentTime=0}catch{}})}
+function updateSound(){soundBtn.textContent=sound?'🎵 Áudios ligados':'🔇 Áudios desligados';soundBtn.setAttribute('aria-pressed',String(sound))}
+soundBtn.addEventListener('click',()=>{
+ sound=!sound;save('ensinomeu_pp_sound',sound);updateSound();
+ if(sound)startMusic();else{stopMusic();stopEffects();stopSpeech()}
+});updateSound();
 
 function home(){
  const best=history.length?Math.max(...history.map(r=>r.pct))+'%':'—';const last=history[0]?.pct;
@@ -75,8 +85,8 @@ function finish(){
  if(answers.some(a=>a===null)){
   const missing=answers.findIndex(a=>a===null);current=missing;saveDraft();render();alert('Responda as questões pendentes antes de enviar. Voltamos à primeira questão sem resposta.');return
  }
- stopSpeech();seconds=Math.max(0,Math.floor((Date.now()-started)/1000));const right=score(),pct=Math.round(right*100/questions.length);
- finishedRecord={right,pct,total:questions.length,seconds,when:new Date().toISOString()};history=[finishedRecord,...history].slice(0,30);save(histKey,history);clearDraft();stage='result';beep(pct>=70);render();
+ stopSpeech();stopMusic();seconds=Math.max(0,Math.floor((Date.now()-started)/1000));const right=score(),pct=Math.round(right*100/questions.length);
+ finishedRecord={right,pct,total:questions.length,seconds,when:new Date().toISOString()};history=[finishedRecord,...history].slice(0,30);save(histKey,history);clearDraft();stage='result';playOriginal(pct>=70);render();
 }
 function result(){
  const right=finishedRecord?.right??score(),pct=finishedRecord?.pct??Math.round(100*right/questions.length);
@@ -93,7 +103,7 @@ function render(){
 app.addEventListener('click',event=>{
  const choice=event.target.closest('[data-choose]');if(choice&&stage==='quiz'){
   if(mode.immediate&&answers[current]!==null)return;
-  const opt=Number(choice.dataset.choose);if(opt<0||opt>3)return;answers[current]=opt;const good=opt===questions[order[current]][4];if(mode.immediate)beep(good);saveDraft();stopSpeech();render();return;
+  const opt=Number(choice.dataset.choose);if(opt<0||opt>3)return;answers[current]=opt;const good=opt===questions[order[current]][4];if(mode.immediate)playOriginal(good);saveDraft();stopSpeech();render();return;
  }
  const el=event.target.closest('[data-act]');if(!el)return;
  switch(el.dataset.act){
@@ -107,7 +117,7 @@ app.addEventListener('click',event=>{
  }
 });
 setInterval(()=>{if(stage==='quiz'){const el=$('timer');if(el)el.textContent=fmtTime()}},1000);
-window.addEventListener('pagehide',()=>{stopSpeech();if(stage==='quiz')saveDraft()});
-document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSpeech()});
+window.addEventListener('pagehide',()=>{stopSpeech();stopMusic();stopEffects();if(stage==='quiz')saveDraft()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){stopSpeech();stopMusic()}else startMusic()});
 render();
 })();
