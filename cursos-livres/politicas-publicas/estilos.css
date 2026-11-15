@@ -35,3 +35,36 @@ body.game{height:100dvh;min-height:0;overflow:hidden;display:flex;flex-direction
 @media(max-width:680px){.top{padding:9px}.brand-text{font-size:12px}.topnav .chip{font-size:11px;padding:7px}.cards{grid-template-columns:1fr}.intro{padding:24px 18px}.course-wrap{padding:12px 13px 30px}.game .top{min-height:54px}.game .brand small{display:none}.game .topnav .chip{font-size:10px;padding:6px}.game-shell{padding:5px;gap:5px}.quiz-area{gap:5px}.quiz-progress{padding:5px 8px;gap:3px}.quiz-progress span{font-size:11px}.rail{height:5px}.quiz-grid{grid-template-columns:1fr;grid-template-rows:minmax(100px,.66fr) minmax(235px,1fr);gap:5px}.question-panel{padding:9px;gap:5px}.question-panel .context{padding:6px;font-size:11px;line-height:1.35}.question-panel h2{font-size:clamp(15px,4vw,19px);line-height:1.25;margin:6px 0}.question-panel .topic{font-size:10px}.voice{gap:5px}.voice button{padding:5px;font-size:10px}.voice small{display:none}.answer-panel{padding:7px;gap:3px}.answer-title{font-size:10px}.answers{gap:4px}.option{font-size:clamp(11px,2.9vw,13px);padding:6px 7px;line-height:1.25;min-height:40px}.letter{flex-basis:24px;height:24px;font-size:11px;border-radius:7px}.feedback{font-size:11px;line-height:1.25;padding:6px}.feedback b{margin:0 0 2px}.quiz-foot{padding:5px;gap:4px;min-height:43px}.quiz-foot .btn{padding:7px 9px;font-size:11px}.quiz-foot .help{display:none}.result-card{padding:15px}.donut{width:122px;height:122px}.donut:after{inset:18px}.donut b{font-size:25px}.topic-row{grid-template-columns:110px 1fr 27px}}
 @media(max-height:650px){.quiz-progress{padding:4px 8px}.game-shell{gap:4px;padding:4px}.game .top{min-height:48px}.quiz-foot{min-height:37px}.quiz-foot .btn{padding:5px 8px}.quiz-grid{grid-template-rows:minmax(75px,.57fr) minmax(180px,1fr)}.question-panel{padding:6px}.answer-panel{padding:5px}.voice button{padding:4px}.option{padding:4px 6px;min-height:32px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Simulados: enunciado e quatro respostas sempre inteiros, sem rolagens
+   dentro dos cartões. Só em telas fisicamente baixas o documento cresce. */
+body.game{height:auto;min-height:100dvh;overflow-x:hidden;overflow-y:auto}
+.game .game-shell{height:auto;min-height:calc(100dvh - 58px);flex:1 0 auto}
+.game .quiz-area{height:auto;min-height:calc(100dvh - 78px)}
+.game .quiz-grid{min-height:max-content;flex:1 0 auto;align-items:stretch}
+.game .question-scroll{overflow:visible;min-height:max-content;flex:0 0 auto}
+.game .question-panel,.game .answer-panel{min-height:max-content}
+.game .answers{overflow:visible;min-height:236px;flex:1 0 auto;grid-template-rows:repeat(4,minmax(50px,1fr))}
+.game .option{min-height:50px}
+@media(max-width:680px){
+ .game .quiz-grid{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto}
+ .game .question-panel{padding:10px}
+ .game .question-panel h2{margin:6px 0}
+ .game .voice{margin-top:8px}
+ .game .answer-panel{padding:8px}
+ .game .answers{min-height:216px;grid-template-rows:repeat(4,minmax(47px,auto))}
+ .game .option{min-height:47px}
+}
+@media(max-height:650px) and (min-width:681px){
+ .game .game-shell{min-height:calc(100dvh - 48px)}
+ .game .quiz-area{min-height:calc(100dvh - 60px)}
+ .game .quiz-grid{grid-template-rows:auto}
+ .game .question-panel,.game .answer-panel{padding:10px}
+ .game .question-panel{gap:6px}
+ .game .question-panel h2{margin:6px 0;font-size:clamp(16px,1.6vw,22px)}
+ .game .context{padding:8px 11px}
+ .game .voice{gap:5px}
+ .game .answers{min-height:184px;grid-template-rows:repeat(4,minmax(40px,1fr));gap:5px}
+ .game .option{min-height:40px;padding:5px 9px;font-size:clamp(12px,.95vw,14px)}
+ .game .letter{flex-basis:26px;height:26px}
+}
