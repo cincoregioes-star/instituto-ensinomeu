@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071826">
+<meta name="description" content="Curso gratuito de Assistente de Recursos Humanos: e-book ilustrado com 32 páginas, 80 questões de simulado, avaliação diagnóstica e final, áudio original e gabarito comentado.">
+<title>Assistente de Recursos Humanos — Curso Gratuito, Simulados e Avaliações | Instituto EnsinoMeu</title>
+<link rel="canonical" href="https://cincoregioes-star.github.io/instituto-ensinomeu/cursos-livres/assistente-recursos-humanos/">
+<link rel="icon" href="../../assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="estilos.css?v=20261116-rh">
+</head>
+<body>
+<a class="skip" href="#conteudo">Ir ao conteúdo</a>
+<header class="top">
+<a class="brand" href="../../index.html"><span class="mark">E</span><span class="brand-text">INSTITUTO ENSINOMEU<small>EDUCAÇÃO GRATUITA • FORMAÇÃO PROFISSIONAL</small></span></a>
+<nav class="topnav" aria-label="Navegação do curso"><a class="chip" href="../../catalogo-gratuito.html#cursos">← Cursos livres</a><a class="chip" href="../../index.html">Início</a></nav>
+</header>
+<main class="course-wrap" id="conteudo">
+ <section class="intro" aria-labelledby="titulo">
+  <div><div class="eyebrow">Formação nacional • curso livre gratuito</div><h1 id="titulo">Assistente de<br><span>Recursos Humanos</span></h1>
+  <p>Aprenda na prática a apoiar recrutamento, seleção, integração de colaboradores, comunicação, treinamento, inclusão e rotinas administrativas de RH — com exemplos aplicáveis a organizações de todo o Brasil.</p>
+  <div class="pills"><span class="pill">📘 E-book ilustrado · 32 páginas</span><span class="pill">🎮 80 questões em simulados</span><span class="pill">📝 30 questões em avaliações</span><span class="pill">🎵 Música e efeitos MP3 originais</span><span class="pill">🔊 Leitura em voz alta PT-BR</span></div>
+  <div class="buttons"><a class="btn primary" href="ebook-assistente-recursos-humanos-32-paginas.pdf" target="_blank" rel="noopener">📖 Ler e-book completo</a><a class="btn green" href="#atividades">🎮 Começar atividades ↓</a></div>
+  </div>
+  <aside class="intro-aside"><div><div class="badge">CURSO EM 4 UNIDADES</div><strong>110</strong><p>questões originais e comentadas</p></div><div><span>As avaliações apresentam o gabarito somente após a conclusão. Seu histórico permanece salvo neste dispositivo, sem cadastro e sem coleta de dados pessoais.</span></div></aside>
+ </section>
+ <section id="atividades" aria-label="Simulados e avaliações">
+  <div class="section-head"><h2>Escolha sua atividade</h2><p>Faça a avaliação diagnóstica, estude o e-book, pratique as quatro unidades e encerre com a avaliação final.</p></div>
+  <div class="cards" id="lista-atividades" aria-live="polite"></div>
+ </section>
+ <div class="note"><strong>Como funciona:</strong> os simulados mostram explicação logo após a resposta; as avaliações apresentam o gabarito ao final. Meta pedagógica sugerida: 70% na avaliação final. Este curso é uma formação livre complementar, sem habilitação profissional ou certificado oficial automático. Os sons MP3 podem ser desligados e precisam de internet; a leitura das questões usa a voz PT-BR disponível em seu dispositivo.</div>
+ <p class="sources"><b>Referências:</b> orientações oficiais do Ministério do Trabalho e Emprego, eSocial, Consolidação das Leis do Trabalho e Autoridade Nacional de Proteção de Dados, indicadas no e-book. Tópicos de DP e legislação são introdutórios e não substituem análise profissional de casos específicos.</p>
+</main>
+<script src="banco-questoes.js?v=20261116-rh"></script>
+<script>
+ 'use strict';
+ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const grid=document.getElementById('lista-atividades');
+ grid.innerHTML=window.RH_MODOS.map(m=>{
+   let records=[];try{records=JSON.parse(localStorage.getItem('ensinomeu_rh_hist_'+m.id)||'[]')}catch{}
+   const last=records[0];
+   return `<article class="card" style="--accent:${esc(m.color)}"><div class="stripe"></div><div class="card-body"><div class="tag">${m.type==='avaliacao'?'AVALIAÇÃO':'SIMULADO'} • ${m.count} QUESTÕES</div><h3>${esc(m.title)}</h3><p>${esc(m.subtitle)}. ${esc(m.info)}</p><div class="stats"><span class="stat">${last?'Último: '+last.pct+'%':'Ainda não realizado'}</span><span class="stat">${records.length} tentativa(s)</span></div><a href="simulado.html?tipo=${encodeURIComponent(m.id)}">${last?'↻ Refazer atividade':'▶ Iniciar atividade'}</a></div></article>`;
+ }).join('');
+</script>
+<script src="../../voltar-global.js" defer></script>
+</body>
+</html>
