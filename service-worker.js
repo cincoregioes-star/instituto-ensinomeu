@@ -1,7 +1,7 @@
 /* Instituto EnsinoMeu: app instalável, com fallback offline leve.
    Não faz download de aulas, apostilas, provas ou dados de estudantes. */
 const PREFIX = 'ensinomeu-app-';
-const VERSION = '2026-11-14-v1';
+const VERSION = '2026-11-20-v1';
 const SHELL = PREFIX + 'shell-' + VERSION;
 const PAGES = PREFIX + 'pages-' + VERSION;
 const ASSETS = PREFIX + 'assets-' + VERSION;

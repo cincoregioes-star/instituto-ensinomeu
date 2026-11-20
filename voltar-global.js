@@ -18,13 +18,13 @@
     const css = document.createElement('link');
     css.id = 'em-identidade-css';
     css.rel = 'stylesheet';
-    css.href = new URL('ensino-identidade-2026.css?v=20261113-menu', scriptURL).href;
+    css.href = new URL('ensino-identidade-2026.css?v=20261120-foco', scriptURL).href;
     document.head.appendChild(css);
   }
   if (!document.querySelector('#em-identidade-js')) {
     const js = document.createElement('script');
     js.id = 'em-identidade-js';
-    js.src = new URL('ensino-identidade-2026.js?v=20261113-menu', scriptURL).href;
+    js.src = new URL('ensino-identidade-2026.js?v=20261120-foco', scriptURL).href;
     js.defer = true;
     document.body.appendChild(js);
   }

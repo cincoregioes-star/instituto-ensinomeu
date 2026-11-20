@@ -68,54 +68,27 @@
     var nav=header && header.querySelector('nav.nav');
     if (!header || !nav) return false;
     nav.innerHTML=desktop();
-    var brandNote=header.querySelector('.brand small');
-    if(brandNote) brandNote.textContent='EDUCAÇÃO GRATUITA • BNCC • PROFISSÕES';
     var sign=header.querySelector('.top-sign');
     if(sign)sign.remove();
     var mobileNav=header.querySelector('.mobile-links');
     if(mobileNav){mobileNav.innerHTML=mobile();mobileNav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){var d=mobileNav.closest('details');if(d)d.open=false;});});}
-    var heroEyebrow=document.querySelector('.hero .eyebrow');
-    if(heroEyebrow)heroEyebrow.textContent='EDUCAÇÃO GRATUITA • BNCC • PROFISSÕES';
-    var heroTitle=document.querySelector('.hero h1');
-    if(heroTitle)heroTitle.innerHTML='Educação gratuita para <span>aprender, evoluir e conquistar.</span>';
-    var heroLead=document.querySelector('.hero-grid p');
-    if(heroLead)heroLead.innerHTML='<strong>100% gratuito.</strong> Reforço escolar alinhado à BNCC, videoaulas, apostilas digitais, simulados gamers, inteligência artificial e cursos de qualificação profissional para todas as gerações.';
-    var heroActions=document.querySelectorAll('.hero .actions > a');
-    if(heroActions.length >= 3){
-      heroActions[1].href=u('simulados/8ano.html');heroActions[1].textContent='🎮 Simulados Gamers';
-      heroActions[2].href=u('catalogo-gratuito.html');heroActions[2].textContent='🎓 Cursos profissionalizantes gratuitos';
-    }
-    var note=document.querySelector('.hero-note span:last-child');
-    if(note)note.innerHTML='<b>Do Ensino Fundamental ao Ensino Médio e à formação profissional livre.</b> Aprenda no seu ritmo, sem mensalidade.';
-    document.title='Instituto EnsinoMeu | Educação Gratuita, BNCC e Qualificação Profissional';
-    var description=document.querySelector('meta[name="description"]');
-    if(description)description.content='Instituto EnsinoMeu: educação gratuita, reforço escolar BNCC, videoaulas, apostilas, simulados gamers, IA e cursos de qualificação profissional.';
     if(!document.getElementById('em-quem-somos')){
       var quem=document.createElement('section');
       quem.id='em-quem-somos';quem.className='em-prof-about';
-      quem.innerHTML='<div class="em-prof-inner"><img src="https://raw.githubusercontent.com/cincoregioes-star/base-sintropia/main/assets/carlos-tavares.jpg" width="155" height="155" alt="Professor Carlos Tavares, idealizador do Instituto EnsinoMeu" loading="lazy"><div><span class="em-prof-kicker">QUEM SOMOS • IDEALIZAÇÃO E RESPONSABILIDADE</span><h2>Professor Carlos Tavares</h2><p>Licenciado em Geografia, desenvolvedor de plataformas digitais educacionais e responsável pelo Instituto EnsinoMeu. Formação multidisciplinar com cinco especializações, incluindo duas em andamento. Conheça o portfólio de projetos e os compromissos com a educação gratuita.</p><a href="professor-carlos-tavares.html">Ver formação acadêmica e portfólio →</a></div></div>';
+      quem.innerHTML='<div class="em-prof-inner"><img src="https://raw.githubusercontent.com/cincoregioes-star/base-sintropia/main/assets/carlos-tavares.jpg" width="155" height="155" alt="Professor Carlos Tavares, idealizador do Instituto EnsinoMeu" loading="lazy"><div><span class="em-prof-kicker">QUEM SOMOS • IDEALIZAÇÃO E RESPONSABILIDADE</span><h2>Professor Carlos Tavares</h2><p>Licenciado em Geografia, desenvolvedor de plataformas digitais educacionais e responsável pelo Instituto EnsinoMeu. Especialista em Gestão Escolar e em Ciência de Dados e Inteligência Artificial. Conheça o portfólio de projetos e os compromissos do Instituto.</p><a href="professor-carlos-tavares.html">Ver formação acadêmica e portfólio →</a></div></div>';
       var footerProf=document.querySelector('footer');if(footerProf)footerProf.before(quem);else document.body.appendChild(quem);
     }
     if(!document.getElementById('ensino-trilhas-carreira')){
       var orient=document.createElement('section');
       orient.className='em-home-careers';orient.id='ensino-trilhas-carreira';
-      orient.innerHTML='<div class="em-home-careers-inner"><span class="em-home-careers-kicker">NOVAS FERRAMENTAS GRATUITAS</span><h2>Orientação para estudar e conquistar oportunidades</h2><p>Não sabe por onde começar? Escolha um caminho com orientações práticas, exercícios e recursos já publicados.</p><div class="em-home-careers-grid"><a href="orientador-profissoes.html"><span>🧭</span><strong>Qual profissão combina comigo?</strong><small>10 perguntas e sugestões de cursos</small><b>Começar orientação →</b></a><a href="carreira-entrevistas.html"><span>💼</span><strong>Currículo e Entrevista</strong><small>Monte seu currículo e pratique 10 situações</small><b>Preparar meu emprego →</b></a><a href="central-atendimento.html"><span>🤝</span><strong>Fale com o Instituto</strong><small>Dúvidas, críticas, elogios e sugestões</small><b>Obter orientação →</b></a></div></div>';
+      orient.innerHTML='<div class="em-home-careers-inner"><span class="em-home-careers-kicker">FERRAMENTAS GRÁTIS</span><h2>Orientação para estudar e conquistar oportunidades</h2><p>Não sabe por onde começar? Escolha um caminho com orientações práticas, exercícios e recursos já publicados.</p><div class="em-home-careers-grid"><a href="orientador-profissoes.html"><span>🧭</span><strong>Qual profissão combina comigo?</strong><small>10 perguntas e sugestões de cursos</small><b>Começar orientação →</b></a><a href="carreira-entrevistas.html"><span>💼</span><strong>Currículo e Entrevista</strong><small>Monte seu currículo e pratique 10 situações</small><b>Preparar meu emprego →</b></a><a href="central-atendimento.html"><span>🤝</span><strong>Fale com o Instituto</strong><small>Dúvidas, críticas, elogios e sugestões</small><b>Obter orientação →</b></a></div></div>';
       var foot=document.querySelector('footer');if(foot)foot.before(orient);else document.body.appendChild(orient);
-    }
-    var heroActions=document.querySelector('.hero .actions');
-    if(heroActions&&!heroActions.querySelector('.em-hero-donate')){
-      var donate=document.createElement('a');
-      donate.className='btn btn-gold em-hero-donate';
-      donate.href=u('apoio-parcerias.html#contribuicoes');
-      donate.textContent='♥ Apoie a educação gratuita';
-      donate.setAttribute('aria-label','Contribuir voluntariamente para o Instituto EnsinoMeu');
-      heroActions.appendChild(donate);
     }
     if(!document.getElementById('apoie-o-instituto')){
       var section=document.createElement('section');
       section.id='apoie-o-instituto';section.className='em-apoie';
       section.setAttribute('aria-labelledby','em-support-heading');
-      section.innerHTML='<div class="em-apoie-inner"><span class="em-apoie-badge" aria-hidden="true">♥</span><div><h2 id="em-support-heading">Apoie o Instituto EnsinoMeu</h2><p>O Instituto oferece aulas, materiais, simulados e orientações gratuitos. Contribuições voluntárias ajudam a buscar recursos para manutenção, acessibilidade e expansão do projeto. Nenhum estudante precisa contribuir para acessar conteúdos gratuitos.</p><small>Meta inicial proposta: R$ 2.000,00 para recursos educacionais, videoaulas, acessibilidade e formação profissional. A contribuição é opcional e recebida na conta pessoal do responsável, Professor Carlos Tavares.</small><p style="margin-top:14px"><a class="em-support-link" href="apoio-parcerias.html#contribuicoes">♥ Contribuir com qualquer valor →</a> <a class="em-support-link" href="apoio-parcerias.html#meta-de-apoio">Ver meta e prestação de contas →</a> <a class="em-support-link" href="apoio-parcerias.html">Conhecer patrocínio e parcerias →</a></p></div></div>';
+      section.innerHTML='<div class="em-apoie-inner"><span class="em-apoie-badge" aria-hidden="true">♥</span><div><h2 id="em-support-heading">Apoie o Instituto EnsinoMeu</h2><p>Contribuições voluntárias ajudam a produzir novas videoaulas e simulados. Nenhum estudante precisa contribuir para acessar os conteúdos grátis.</p><small>A contribuição é opcional e recebida pelo responsável, Professor Carlos Tavares.</small><p style="margin-top:14px"><a class="em-support-link" href="apoio-parcerias.html#contribuicoes">♥ Contribuir com qualquer valor →</a> <a class="em-support-link" href="apoio-parcerias.html#meta-de-apoio">Ver meta e prestação de contas →</a> <a class="em-support-link" href="apoio-parcerias.html">Conhecer patrocínio e parcerias →</a></p></div></div>';
       var footer=document.querySelector('footer');
       if(footer)footer.before(section);else document.body.appendChild(section);
     }
@@ -129,7 +102,7 @@
     bar.innerHTML='<div class="em-sitebar-inner">'+
       '<a class="em-identity" href="'+u('index.html')+'" aria-label="Instituto EnsinoMeu — página inicial">'+
       '<img src="'+u('assets/brasao.png')+'" alt="Brasão do Instituto EnsinoMeu">'+
-      '<span class="em-identity-text">INSTITUTO ENSINOMEU<small>EDUCAÇÃO GRATUITA • BNCC • PROFISSÕES</small></span></a>'+
+      '<span class="em-identity-text">INSTITUTO ENSINOMEU<small>REFORÇO ESCOLAR • BNCC • 6º AO 9º ANO</small></span></a>'+
       '<nav class="em-global-nav" aria-label="Menu institucional">'+desktop()+'</nav>'+
       '<details class="em-dropdown"><summary aria-label="Abrir menu institucional">☰ Menu</summary>'+
       '<nav class="em-dropdown-links" aria-label="Menu de navegação para celular">'+mobile()+'</nav></details></div>';
@@ -147,7 +120,7 @@
       path.includes('carreira')||path.includes('profissoes')?'Precisa de orientação profissional?':
       path.startsWith('conteudos-recuperados/')?'Quer descobrir outra área para estudar?':
       'Não sabe por onde começar?';
-    host.innerHTML='<button type="button" class="em-guide-toggle" aria-expanded="false" aria-controls="em-guide-menu">🧭 <span>Agente de Orientação</span></button>'+
+    host.innerHTML='<button type="button" class="em-guide-toggle" aria-label="Agente de Orientação" title="Agente de Orientação" aria-expanded="false" aria-controls="em-guide-menu">🧭 <span>Agente de Orientação</span></button>'+
       '<div class="em-guide-panel" id="em-guide-menu" hidden><strong>Como podemos orientar?</strong><p>'+text+'</p>'+
       '<a href="'+u('orientador-profissoes.html')+'">🎓 Descobrir qual profissão estudar</a>'+ 
       '<a href="'+u('agentes-educacionais.html')+'">📘 Conversar com agentes educativos guiados</a>'+
